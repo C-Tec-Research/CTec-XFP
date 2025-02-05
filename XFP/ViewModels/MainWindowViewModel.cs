@@ -1395,29 +1395,31 @@ namespace Xfp.ViewModels
         #region Print pop-up
         private void showPrintOptions()
         {
-            UIState.SetBusyState();
-            MainWindowEnabled = false;
-            PrintIsOpen = true;
-            OnPropertyChanged(nameof(Printers));
-            OnPropertyChanged(nameof(SelectedPrinter));
-            OnPropertyChanged(nameof(PrintAllPages));
-            OnPropertyChanged(nameof(CanPrint));
-            refreshPrinterStatus();
+            //UIState.SetBusyState();
+            //MainWindowEnabled = false;
+            //PrintIsOpen = true;
+            //OnPropertyChanged(nameof(Printers));
+            //OnPropertyChanged(nameof(SelectedPrinter));
+            //OnPropertyChanged(nameof(PrintAllPages));
+            //OnPropertyChanged(nameof(CanPrint));
+            //refreshPrinterStatus();
 
-            //if (PrintCurrentPage)
-            //    setCurrentPageToPrint();
+            ////if (PrintCurrentPage)
+            ////    setCurrentPageToPrint();
 
-            //var printDialog = new PrintDialogWindow(_pages);
-            //printDialog.ShowDialog(_mainAppWindow, _currentPage);
-            //if (printDialog.DialogResult == true)
-            //{
-            //    //var pd = new PrintDialog();
-            //    //pd.UserPageRangeEnabled = false;
-            //    //pd.PrintQueue = printDialog.Settings.PrinterSettings.P;
-            //    //var tk = pd.PrintTicket;
-            //    //var q  = pd.PrintQueue;
-            //    PrintDocument();
-            //}
+            ////var printDialog = new PrintDialogWindow(_pages);
+            ////printDialog.ShowDialog(_mainAppWindow, _currentPage);
+            ////if (printDialog.DialogResult == true)
+            ////{
+            ////    //var pd = new PrintDialog();
+            ////    //pd.UserPageRangeEnabled = false;
+            ////    //pd.PrintQueue = printDialog.Settings.PrinterSettings.P;
+            ////    //var tk = pd.PrintTicket;
+            ////    //var q  = pd.PrintQueue;
+            ////    PrintDocument();
+            ////}
+            var printOptions = new PrintDialogWindow(XfpApplicationConfig.Settings);
+            printOptions.ShowDialog();
         }
 
         public bool ClosePrintOption()
