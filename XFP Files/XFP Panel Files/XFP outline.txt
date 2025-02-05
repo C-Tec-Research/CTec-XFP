@@ -1,0 +1,243 @@
+File XFPTools
+
+
+  Object C_E Table
+    Array C_E Array
+    Array Time Events
+  End Object
+  
+  
+  Array Zone List
+    Max = 40
+    Object Item( 0 )
+      Name = Use in Special C&E
+      MCP = FALSE
+      Detector = TRUE
+      Remote Delay = 0
+      Sounder Delay = 0
+      Relay 1 Delay = 0
+      Relay 2 Delay = 0
+      Detector Reset = 0
+      Alarm Reset = 0
+      NonFire = FALSE
+      End Delays = FALSE
+      Array Groups
+      Array Zone Sets
+      Array Dependencies
+    End Object    
+  End Array
+  
+  
+  Object Repeater List
+    Segment = 1
+    Panel Name = Main Panel
+    Array Repeater
+      Max = 8
+      Object Item( 0 )
+        Name = 
+        Fitted = FALSE
+      End Object
+    End Array
+    Array Output
+      Max = 8
+      Object Item( 0 )
+        Name = 
+        Fitted = FALSE
+      End Object
+    End Array
+  End Object
+  
+  
+  Object Group List
+    Array Group
+      Max = 16
+      Item( 0 ) = Use in Special C&E
+      Item( 1 ) = Group 1
+      Item( 16 ) = Group 16
+    End Array
+    Array Output Set
+      Max = 18
+      Item( 0 ) = Use in Special C&E
+      Item( 1 ) = Set 1
+      Item( 18 ) = Set 18
+    End Array
+  End Object
+  
+  Object XFP Network
+    Array Panels Data
+      Max = 8
+      Object Item( 0 )
+        Accept_Faults = FALSE
+        Accept_Alarms = FALSE
+        Accept_Controls = FALSE
+        Accept_Disablements = FALSE
+        Accept_Occupied = FALSE
+      End Object
+    End Array
+  End Object
+  
+  
+  Loop Count = 2
+  System Type = stCASTLoop
+  Object Loop 1
+    Device Index = 0
+    Group = 0
+    As I/O Unit = FALSE
+    Array Device
+      Max = 254
+      Object Item( 0 )
+        Device Type = 160
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 0
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = No name allocated
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+      Object Item( 254 )
+        Device Type = 254
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = No name allocated
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+    End Array
+  End Object
+  
+  Object Loop 2
+    Device Index = 0
+    Group = 0
+    As I/O Unit = FALSE
+    Array Device
+      Max = 254
+      Object Item( 0 )
+        Device Type = 254
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = No name allocated
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+      Object Item( 254 )
+        Device Type = 254
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = No name allocated
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+    End Array
+  End Object
+
+
+  DateEnabled = FALSE
+  SoundersPulsed = FALSE
+  CopyTime = TRUE
+  FaultLockout = 10
+  PhasedDelay = 65535
+  InvestigationPeriod = 300
+  InvestigationPeriod1 = 180
+  PanelLocation = 
+  EngineerNo = 1234
+  MaintenanceString = Call the Engineer
+  QuiescentString = XFP Fire Panel
+  Engineer = Jamie
+  MaintenanceDate = 01/01/2099
+  AL3Code = 4444
+  AL2Code = 3333
+  ClientName = Test
+  Loop2 = Not Available
+  FrontPanel = Not Available
+  Loop1 = Not Available
+  MainVersion = Not Available
+  Installer = Jamie
+  ClientAddress3 = Mawdesley
+  ClientAddress2 = Dark Lane
+  ClientAddress1 = C-Teca
+  ClientAddress5 = 
+  ClientAddress4 = 
+  InstallerAddress3 = 
+  InstallerAddress2 = New Mills
+  InstallerAddress1 = St George's Rd
+  InstallerAddress5 = SK22 4JT
+  InstallerAddress4 = 
+  NightBegin = 00:00
+  NightEnd = 00:00
+  ReCal = 04:00
+  PanelSounder1_Group = 1
+  PanelSounder2_Group = 2
+  Day_Enable_Flags = 0
+  Night_Enable_Flags = 0
+  Polling_LED = TRUE
+  MCP_Delay = 1
+  Detector_Delay = 5
+  IO_Delay = 1
+  ReSound_Function = FALSE
+  BST_Adjustment = TRUE
+  RealTime_Event_Output = FALSE
+  Panel Number = 1
+  
+  
+  Memo Comments
+  End Memo
+  
+  
+  Intermittent Tone = 1
+  Continuous Tone = 0
+  Delay Timer = 300
+End File
