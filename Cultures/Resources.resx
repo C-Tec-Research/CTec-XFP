@@ -1,0 +1,2051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Access_Codes" xml:space="preserve">
+    <value>Access codes</value>
+  </data>
+  <data name="Cancelled_By_User" xml:space="preserve">
+    <value>Cancelled by user</value>
+  </data>
+  <data name="Check_Validity_Of_Panel_Data" xml:space="preserve">
+    <value>Check the validity of the Panel data</value>
+  </data>
+  <data name="Click_To_Edit" xml:space="preserve">
+    <value>Click to edit</value>
+  </data>
+  <data name="Client_Address" xml:space="preserve">
+    <value>Client Address</value>
+  </data>
+  <data name="Client_Details" xml:space="preserve">
+    <value>Client details</value>
+  </data>
+  <data name="Client_Name" xml:space="preserve">
+    <value>Client Name</value>
+  </data>
+  <data name="Comments_For_File_Copy" xml:space="preserve">
+    <value>for file copy</value>
+  </data>
+  <data name="Commissioned_On" xml:space="preserve">
+    <value>Commissioned</value>
+  </data>
+  <data name="Comms_Device_Details" xml:space="preserve">
+    <value>Device details</value>
+  </data>
+  <data name="Comms_Downloading_Page" xml:space="preserve">
+    <value>Downloading page from panel...</value>
+  </data>
+  <data name="Comms_Downloading_System" xml:space="preserve">
+    <value>Downloading system from panel...</value>
+  </data>
+  <data name="Comms_Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Comms_Panel_Status" xml:space="preserve">
+    <value>Panel Status:</value>
+  </data>
+  <data name="Comms_Site_Information" xml:space="preserve">
+    <value>Site information</value>
+  </data>
+  <data name="Comms_Uploading_Page" xml:space="preserve">
+    <value>Uploading page to panel...</value>
+  </data>
+  <data name="Comms_Uploading_System" xml:space="preserve">
+    <value>Uploading system to panel...</value>
+  </data>
+  <data name="Comms_Zones" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="Control_Button_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Control_Button_Maximise" xml:space="preserve">
+    <value>Maximise</value>
+  </data>
+  <data name="Control_Button_Minimise" xml:space="preserve">
+    <value>Minimise</value>
+  </data>
+  <data name="Control_Button_Restore" xml:space="preserve">
+    <value>Restore Down</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="Copyright_Details" xml:space="preserve">
+    <value>© {0} Computionics Ltd (C-Tec)</value>
+  </data>
+  <data name="Send_To_Panel" xml:space="preserve">
+    <value>Send to Panel?</value>
+  </data>
+  <data name="Data_Validation" xml:space="preserve">
+    <value>Data Validation</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Debug_Config_Bytes" xml:space="preserve">
+    <value>Data bytes:</value>
+  </data>
+  <data name="Debug_Config_String" xml:space="preserve">
+    <value>Data string:</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="Device_Name" xml:space="preserve">
+    <value>Device Name</value>
+  </data>
+  <data name="Device_Program" xml:space="preserve">
+    <value>Program device</value>
+  </data>
+  <data name="Device_Read" xml:space="preserve">
+    <value>Read device</value>
+  </data>
+  <data name="Device_Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Device_Receive" xml:space="preserve">
+    <value>Rx</value>
+  </data>
+  <data name="Device_Transmit" xml:space="preserve">
+    <value>Tx</value>
+  </data>
+  <data name="Device_Type" xml:space="preserve">
+    <value>Device Type</value>
+  </data>
+  <data name="Device_x" xml:space="preserve">
+    <value>Device #{0}</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Double_Click_To_Edit" xml:space="preserve">
+    <value>Double-click to edit</value>
+  </data>
+  <data name="Download_Page" xml:space="preserve">
+    <value>Download this page from panel</value>
+  </data>
+  <data name="Download_System" xml:space="preserve">
+    <value>Download system from panel</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Enable_Changes" xml:space="preserve">
+    <value>Allow modifications</value>
+  </data>
+  <data name="Real_Time_Output_Of_Events" xml:space="preserve">
+    <value>Real time output of events</value>
+  </data>
+  <data name="AL3_Code" xml:space="preserve">
+    <value>Access level 3 code (AL3)</value>
+  </data>
+  <data name="Engineer_Name" xml:space="preserve">
+    <value>Engineer Name</value>
+  </data>
+  <data name="Error_Comms_Connection_Status_Unknown" xml:space="preserve">
+    <value>The panel connection status is unknown.</value>
+  </data>
+  <data name="Error_Comms_Firmware_Not_Supported" xml:space="preserve">
+    <value>The panel's firmware version is not supported by this Programming Tool.</value>
+  </data>
+  <data name="Error_Comms_Firmware_Unknown" xml:space="preserve">
+    <value>The panel's firmware version could not be checked.</value>
+  </data>
+  <data name="Error_Comms_Firmware_x_Not_Supported" xml:space="preserve">
+    <value>Panel firmware version {0} is not supported by this Programming Tool.</value>
+  </data>
+  <data name="Error_Comms_Logging_Mode" xml:space="preserve">
+    <value>Commands cannot be sent to the panel while it is in Logging Mode.</value>
+  </data>
+  <data name="Error_Comms_Panel_x_Not_Connected" xml:space="preserve">
+    <value>Panel #{0} is not connected.</value>
+  </data>
+  <data name="Error_Comms_Nvm_Link" xml:space="preserve">
+    <value>The NVM link is not fitted in the panel.
+Please fit the link and retry sending data.</value>
+  </data>
+  <data name="Error_Confirm" xml:space="preserve">
+    <value>Please confirm this is correct</value>
+  </data>
+  <data name="Error_Could_Not_Parse_File" xml:space="preserve">
+    <value>The file could not be interpreted.</value>
+  </data>
+  <data name="Error_Data_Not_Read" xml:space="preserve">
+    <value>The data could not be read.</value>
+  </data>
+  <data name="Error_Device_Page_Not_Opened" xml:space="preserve">
+    <value>The page for this device could not be opened.</value>
+  </data>
+  <data name="Error_File_Data_Is_Not_Device_Data" xml:space="preserve">
+    <value>The file does not contain valid device settings.</value>
+  </data>
+  <data name="Error_File_Data_Is_Not_Panel_Data" xml:space="preserve">
+    <value>The file does not contain valid panel settings.</value>
+  </data>
+  <data name="Error_Invalid_AL2_Code" xml:space="preserve">
+    <value>Invalid access level 2 code (AL2)</value>
+  </data>
+  <data name="Error_Invalid_AL3_Code" xml:space="preserve">
+    <value>Invalid access level 3 code (AL3)</value>
+  </data>
+  <data name="Error_Invalid_Device_Type" xml:space="preserve">
+    <value>Invalid device type</value>
+  </data>
+  <data name="Error_Invalid_Group_Num" xml:space="preserve">
+    <value>Invalid group number</value>
+  </data>
+  <data name="Error_Invalid_Logging_Setting" xml:space="preserve">
+    <value>Invalid print log setting</value>
+  </data>
+  <data name="Error_Invalid_Place_Name" xml:space="preserve">
+    <value>Invalid placename</value>
+  </data>
+  <data name="Error_Invalid_Zone_Group_Area_Code" xml:space="preserve">
+    <value>Invalid zone/group/area code</value>
+  </data>
+  <data name="Error_Invalid_Zone_Num" xml:space="preserve">
+    <value>Invalid zone number</value>
+  </data>
+  <data name="Error_Missing_Client_Address" xml:space="preserve">
+    <value>Client address has not been entered</value>
+  </data>
+  <data name="Error_Missing_Client_Tel" xml:space="preserve">
+    <value>The client telephone number has not been entered</value>
+  </data>
+  <data name="Error_Missing_Commissioning_Date" xml:space="preserve">
+    <value>The commissioning date has not been entered</value>
+  </data>
+  <data name="Error_Missing_Engineer_Name" xml:space="preserve">
+    <value>The engineer name has not been entered</value>
+  </data>
+  <data name="Error_Missing_Installation_Date" xml:space="preserve">
+    <value>The installation date has not been entered</value>
+  </data>
+  <data name="Error_Missing_Installer_Address" xml:space="preserve">
+    <value>Installer address has not been entered</value>
+  </data>
+  <data name="Error_Missing_Installer_Tel" xml:space="preserve">
+    <value>The installer telephone number has not been entered</value>
+  </data>
+  <data name="Error_Missing_Panel_Location" xml:space="preserve">
+    <value>The panel location has not been entered</value>
+  </data>
+  <data name="Error_No_Client_Name" xml:space="preserve">
+    <value>The Client Name has not been entered</value>
+  </data>
+  <data name="Error_No_Installer_Name" xml:space="preserve">
+    <value>The Installer Name has not been entered</value>
+  </data>
+  <data name="Error_No_System_Name" xml:space="preserve">
+    <value>The System Name is blank</value>
+  </data>
+  <data name="Error_Opening_File" xml:space="preserve">
+    <value>An error occurred while opening the file.</value>
+  </data>
+  <data name="Error_Page_Data" xml:space="preserve">
+    <value>Errors on this page:</value>
+  </data>
+  <data name="Error_Print_Log_Setting" xml:space="preserve">
+    <value>Invalid print log setting</value>
+  </data>
+  <data name="Error_Serial_Port_Settings" xml:space="preserve">
+    <value>Please configure the serial port using the Settings menu.</value>
+  </data>
+  <data name="False" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="Firmware_Version" xml:space="preserve">
+    <value>Firmware Version</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Info_Abbr" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="Installation_Details" xml:space="preserve">
+    <value>Installation details</value>
+  </data>
+  <data name="Installed_On" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="Installer_Address" xml:space="preserve">
+    <value>Installer Address</value>
+  </data>
+  <data name="Installer_Name" xml:space="preserve">
+    <value>Installer Name</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Loop_x_Devices" xml:space="preserve">
+    <value>Loop {0} Devices</value>
+  </data>
+  <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
+    <value>The panel settings have been changed.
+
+Are you sure you want to exit without saving?</value>
+  </data>
+  <data name="Message_Settings_x_Not_Saved" xml:space="preserve">
+    <value>The following settings have been changed:
+
+{0}
+
+Are you sure you want to exit without saving?</value>
+  </data>
+  <data name="Message_Title_Settings_Not_Saved" xml:space="preserve">
+    <value>Settings Not Saved</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Nav_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Nav_Device_Details" xml:space="preserve">
+    <value>Device Details</value>
+  </data>
+  <data name="Nav_Loop_x" xml:space="preserve">
+    <value>Loop {0}</value>
+  </data>
+  <data name="Nav_Event_Log" xml:space="preserve">
+    <value>Event Log Viewer</value>
+  </data>
+  <data name="Nav_Group_Configuration" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Nav_C_And_E_Configuration" xml:space="preserve">
+    <value>Causes and Effects</value>
+  </data>
+  <data name="Nav_Set Configuration" xml:space="preserve">
+    <value>Sets</value>
+  </data>
+  <data name="Nav_Site_Configuration" xml:space="preserve">
+    <value>Site Configuration</value>
+  </data>
+  <data name="Nav_Network_Configuration" xml:space="preserve">
+    <value>Network Configuration</value>
+  </data>
+  <data name="Nav_Zone_Configuration" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="New_File_Not_Saved" xml:space="preserve">
+    <value>New file has not been saved</value>
+  </data>
+  <data name="New_Line_Before_SOH" xml:space="preserve">
+    <value>New line before &lt;SOH&gt;</value>
+  </data>
+  <data name="Night" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="Day_Begins_At" xml:space="preserve">
+    <value>Occupied (Day) begins at</value>
+  </data>
+  <data name="Night_Begins_At" xml:space="preserve">
+    <value>Unoccupied (Night) starts at</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note:</value>
+  </data>
+  <data name="Notes_Link" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Not_Defined" xml:space="preserve">
+    <value>Not Defined</value>
+  </data>
+  <data name="Not_Fitted" xml:space="preserve">
+    <value>Not Fitted</value>
+  </data>
+  <data name="No_Device" xml:space="preserve">
+    <value>** No device **</value>
+  </data>
+  <data name="No_Errors_Found" xml:space="preserve">
+    <value>No errors found.</value>
+  </data>
+  <data name="No_Name_Allocated" xml:space="preserve">
+    <value>No name allocated</value>
+    <comment>Don't translate?</comment>
+  </data>
+  <data name="No_Ports_Available" xml:space="preserve">
+    <value>No ports available</value>
+  </data>
+  <data name="Number_Symbol" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Number_Symbol_x" xml:space="preserve">
+    <value>#{0}</value>
+  </data>
+  <data name="Open_File" xml:space="preserve">
+    <value>Open file</value>
+  </data>
+  <data name="Option_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Option_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Option_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Panel_Comms" xml:space="preserve">
+    <value>Panel Comms</value>
+  </data>
+  <data name="Panel_Configuration" xml:space="preserve">
+    <value>Panel configuration</value>
+  </data>
+  <data name="Panel_Location" xml:space="preserve">
+    <value>Panel Location</value>
+  </data>
+  <data name="Part_Number" xml:space="preserve">
+    <value>Part Number</value>
+  </data>
+  <data name="Postcode" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="Primary_Areas" xml:space="preserve">
+    <value>Primary Areas</value>
+  </data>
+  <data name="Product_Full_Name" xml:space="preserve">
+    <value>C-Tec XFP Programming Tools</value>
+  </data>
+  <data name="Programming_Tools" xml:space="preserve">
+    <value>Programming Tools</value>
+  </data>
+  <data name="Program_Name" xml:space="preserve">
+    <value>XFP</value>
+  </data>
+  <data name="Xfp_Log_Files" xml:space="preserve">
+    <value>XFP log files</value>
+  </data>
+  <data name="Query_Change_Device_Type" xml:space="preserve">
+    <value>Change this device to '{0}'?</value>
+  </data>
+  <data name="Query_Delete_Device" xml:space="preserve">
+    <value>Delete this device?</value>
+  </data>
+  <data name="Query_Enable_Changes" xml:space="preserve">
+    <value>Do you want to allow changes to the settings?</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>Seconds</value>
+  </data>
+  <data name="See_Data_Errors_Warnings_Below" xml:space="preserve">
+    <value>See errors / warnings below.</value>
+  </data>
+  <data name="See_Data_Warnings_Below" xml:space="preserve">
+    <value>See warnings below.</value>
+  </data>
+  <data name="Select_Area" xml:space="preserve">
+    <value>Select Area</value>
+  </data>
+  <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
+    <value>Select a device to show details</value>
+  </data>
+  <data name="Select_Baud_Rate" xml:space="preserve">
+    <value>Select Baud Rate</value>
+  </data>
+  <data name="Select_Duration" xml:space="preserve">
+    <value>Select duration</value>
+  </data>
+  <data name="Select_Group" xml:space="preserve">
+    <value>Select Group</value>
+  </data>
+  <data name="Select_Handshake" xml:space="preserve">
+    <value>Select Handshake</value>
+  </data>
+  <data name="Select_Language" xml:space="preserve">
+    <value>Select Language</value>
+  </data>
+  <data name="Select_Level" xml:space="preserve">
+    <value>Select Level</value>
+  </data>
+  <data name="Select_Location" xml:space="preserve">
+    <value>Select Location</value>
+  </data>
+  <data name="Select_Logging_Frequency" xml:space="preserve">
+    <value>Select Logging Frequency</value>
+  </data>
+  <data name="Select_Option" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Select_Paging_Type" xml:space="preserve">
+    <value>Select Paging Type</value>
+  </data>
+  <data name="Select_Parity" xml:space="preserve">
+    <value>Select Parity</value>
+  </data>
+  <data name="Select_Port" xml:space="preserve">
+    <value>Select Port</value>
+  </data>
+  <data name="Select_Protocol" xml:space="preserve">
+    <value>Select Protocol</value>
+  </data>
+  <data name="Select_Stop_Bits" xml:space="preserve">
+    <value>Select Stop Bits</value>
+  </data>
+  <data name="Select_Tone_Type" xml:space="preserve">
+    <value>Select Tone Type</value>
+  </data>
+  <data name="Select_Zoom_Level" xml:space="preserve">
+    <value>Select Zoom Level</value>
+  </data>
+  <data name="Serial_Baud_Rate" xml:space="preserve">
+    <value>Baud rate</value>
+  </data>
+  <data name="Serial_Data_Bits" xml:space="preserve">
+    <value>Data bits</value>
+  </data>
+  <data name="Serial_Handshake" xml:space="preserve">
+    <value>Handshake</value>
+  </data>
+  <data name="Serial_Monitor_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Serial_Monitor_Title" xml:space="preserve">
+    <value>Configurator Serial Monitor</value>
+  </data>
+  <data name="Serial_Parity" xml:space="preserve">
+    <value>Parity</value>
+  </data>
+  <data name="Serial_Port_Name" xml:space="preserve">
+    <value>Port name</value>
+  </data>
+  <data name="Serial_Port_Settings_Header" xml:space="preserve">
+    <value>Serial Port</value>
+  </data>
+  <data name="Serial_Read_Timeout" xml:space="preserve">
+    <value>Read timeout</value>
+  </data>
+  <data name="Serial_Stop_Bits" xml:space="preserve">
+    <value>Stop bits</value>
+  </data>
+  <data name="Serial_Write_Timeout" xml:space="preserve">
+    <value>Write timeout</value>
+  </data>
+  <data name="Show_Fitted_Devices_Only" xml:space="preserve">
+    <value>Show fitted devices only</value>
+  </data>
+  <data name="Switching_To_x_Protocol" xml:space="preserve">
+    <value>Switching to {0} protocol</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="System_Name" xml:space="preserve">
+    <value>System Name</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Title_Device_Type" xml:space="preserve">
+    <value>Device: {0}</value>
+  </data>
+  <data name="Title_Open_File" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="ToolTip_Click_To_Change_Device_Type" xml:space="preserve">
+    <value>Click to change the device type</value>
+  </data>
+  <data name="ToolTip_Click_To_Edit_Name" xml:space="preserve">
+    <value>Click to edit the name</value>
+  </data>
+  <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
+    <value>Click to show the device details</value>
+  </data>
+  <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
+    <value>Select a device type, then click on the device list to set or
+change to that type, or select Delete to remove a device</value>
+  </data>
+  <data name="ToolTip_Next_Area" xml:space="preserve">
+    <value>Select next area</value>
+  </data>
+  <data name="ToolTip_Next_Device" xml:space="preserve">
+    <value>Select next device</value>
+  </data>
+  <data name="ToolTip_Previous_Device" xml:space="preserve">
+    <value>Select previous device</value>
+  </data>
+  <data name="ToolTip_Select_Protocol" xml:space="preserve">
+    <value>Select protocol</value>
+  </data>
+  <data name="True" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="Unassigned" xml:space="preserve">
+    <value>Unassigned</value>
+  </data>
+  <data name="Unsaved_Changes_Will_Be_Lost" xml:space="preserve">
+    <value>Any unsaved changes will be lost.</value>
+  </data>
+  <data name="Upload_Page" xml:space="preserve">
+    <value>Send this page to panel</value>
+  </data>
+  <data name="Upload_System" xml:space="preserve">
+    <value>Send system to panel</value>
+  </data>
+  <data name="AL2_Code" xml:space="preserve">
+    <value>Access level 2 code (AL2)</value>
+  </data>
+  <data name="Validation_Error" xml:space="preserve">
+    <value>Validation Error</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Version_x" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="Version_x_Abbr" xml:space="preserve">
+    <value>v{0}</value>
+  </data>
+  <data name="Warn_Clear_Data" xml:space="preserve">
+    <value>This will clear the current configuration.</value>
+  </data>
+  <data name="Warn_Confirm_Continue" xml:space="preserve">
+    <value>Do you wish to continue?</value>
+  </data>
+  <data name="Warn_Overwrite_Changes" xml:space="preserve">
+    <value>This will overwrite the changes made to the configuration.</value>
+  </data>
+  <data name="Written_By" xml:space="preserve">
+    <value>Written by</value>
+  </data>
+  <data name="Zone" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="Zone_Zero_Name" xml:space="preserve">
+    <value>No Zone Allocated</value>
+  </data>
+  <data name="Zoom_Level" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Protocol_Header" xml:space="preserve">
+    <value>Protocol:</value>
+  </data>
+  <data name="Fitted" xml:space="preserve">
+    <value>Fitted</value>
+  </data>
+  <data name="Hour_Abbr" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="Minute_Abbr" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Day_Fri_Abbr" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="Day_Mon_Abbr" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Day_Sat_Abbr" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="Day_Sun_Abbr" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="Day_Thu_Abbr" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="Day_Tue_Abbr" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="Day_Wed_Abbr" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="Maintenance_Date" xml:space="preserve">
+    <value>Maintenance date</value>
+  </data>
+  <data name="Maintenance_String" xml:space="preserve">
+    <value>Maintenance string</value>
+  </data>
+  <data name="Normal_String" xml:space="preserve">
+    <value>Normal string</value>
+  </data>
+  <data name="Recalibrate_At" xml:space="preserve">
+    <value>Recalibrate at</value>
+  </data>
+  <data name="Blink_Polling_LED" xml:space="preserve">
+    <value>Blink polling LED</value>
+  </data>
+  <data name="Xfp_Panel_Config_Files" xml:space="preserve">
+    <value>XFP files</value>
+  </data>
+  <data name="Auto_Adjust_DST" xml:space="preserve">
+    <value>Auto adjust DST?</value>
+  </data>
+  <data name="Panel_x" xml:space="preserve">
+    <value>Panel {0}</value>
+  </data>
+  <data name="Set_x" xml:space="preserve">
+    <value>Set {0}</value>
+  </data>
+  <data name="Use_In_Special_C_And_E" xml:space="preserve">
+    <value>Use in Special C&amp;E</value>
+  </data>
+  <data name="DeviceInfo_Alarm_Verificaton_Count" xml:space="preserve">
+    <value>Alarm Verification Count</value>
+  </data>
+  <data name="DeviceInfo_Detectors" xml:space="preserve">
+    <value>Detectors</value>
+  </data>
+  <data name="DeviceInfo_Interface_Units" xml:space="preserve">
+    <value>Interface units</value>
+  </data>
+  <data name="DeviceInfo_Manual_Callpoints" xml:space="preserve">
+    <value>Manual callpoints</value>
+  </data>
+  <data name="Zone_Group_Set" xml:space="preserve">
+    <value>Zone/Group/Set</value>
+  </data>
+  <data name="Base_Sounder_Header" xml:space="preserve">
+    <value>Base
+Sounder</value>
+  </data>
+  <data name="Action_Abstract_Event" xml:space="preserve">
+    <value>Abstract event</value>
+  </data>
+  <data name="Action_End_Phased_Evac" xml:space="preserve">
+    <value>End phased evac</value>
+  </data>
+  <data name="Action_End_Zone_Delays" xml:space="preserve">
+    <value>End zone delays</value>
+  </data>
+  <data name="Action_Group_Disable" xml:space="preserve">
+    <value>Group disable</value>
+  </data>
+  <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
+    <value>Loop {0} device disabled</value>
+  </data>
+  <data name="Action_Mute_The_Panel" xml:space="preserve">
+    <value>Mute the panel</value>
+  </data>
+  <data name="Action_No_Events" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Action_Output_Delays_Disable" xml:space="preserve">
+    <value>Output delays disable</value>
+  </data>
+  <data name="Action_Output_Disable" xml:space="preserve">
+    <value>Output disable</value>
+  </data>
+  <data name="Action_Panel_Relay" xml:space="preserve">
+    <value>Panel relay</value>
+  </data>
+  <data name="Action_Put_Zone_Into_Alarm" xml:space="preserve">
+    <value>Put zone into alarm</value>
+  </data>
+  <data name="Action_Reset_Panel" xml:space="preserve">
+    <value>Reset panel</value>
+  </data>
+  <data name="Action_Set_To_Occupied" xml:space="preserve">
+    <value>Set to occupied</value>
+  </data>
+  <data name="Action_Set_To_Unoccupied" xml:space="preserve">
+    <value>Set to unoccupied</value>
+  </data>
+  <data name="Action_Silence_Panel" xml:space="preserve">
+    <value>Silence panel</value>
+  </data>
+  <data name="Action_Sounder_Alert" xml:space="preserve">
+    <value>Sounder alert</value>
+  </data>
+  <data name="Action_Sounder_Evac" xml:space="preserve">
+    <value>Sounder evac</value>
+  </data>
+  <data name="Action_Trigger_Beacons" xml:space="preserve">
+    <value>Trigger beacons</value>
+  </data>
+  <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
+    <value>Trigger loop {0} device</value>
+  </data>
+  <data name="Action_Trigger_Network_Event" xml:space="preserve">
+    <value>Trigger network event</value>
+  </data>
+  <data name="Action_Trigger_Output_Set" xml:space="preserve">
+    <value>Trigger output set</value>
+  </data>
+  <data name="Action_Zone_Disable" xml:space="preserve">
+    <value>Zone disable</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="Alert_Tone" xml:space="preserve">
+    <value>Alert tone</value>
+  </data>
+  <data name="Clear_All" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+  <data name="Delay_Time" xml:space="preserve">
+    <value>Delay time</value>
+  </data>
+  <data name="Dependencies" xml:space="preserve">
+    <value>Dependencies</value>
+  </data>
+  <data name="Dependency_Options" xml:space="preserve">
+    <value>Dependency Options</value>
+  </data>
+  <data name="Detectors" xml:space="preserve">
+    <value>Detectors</value>
+  </data>
+  <data name="Double_Click_For_Dependency_Options" xml:space="preserve">
+    <value>Double-click for dependency options</value>
+  </data>
+  <data name="Evac" xml:space="preserve">
+    <value>Evac</value>
+  </data>
+  <data name="Evac_Tone" xml:space="preserve">
+    <value>Evac tone</value>
+  </data>
+  <data name="Functioning_With" xml:space="preserve">
+    <value>Functioning with</value>
+  </data>
+  <data name="Input_Delay" xml:space="preserve">
+    <value>Input delay:</value>
+  </data>
+  <data name="Investigation_Period" xml:space="preserve">
+    <value>Investigation period:</value>
+  </data>
+  <data name="MCPs" xml:space="preserve">
+    <value>MCPs</value>
+  </data>
+  <data name="Minutes_Abbr" xml:space="preserve">
+    <value>mins</value>
+  </data>
+  <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
+    <value>Multiple Alarms End Delays</value>
+  </data>
+  <data name="New_Fire_Causes_Resound" xml:space="preserve">
+    <value>New fire causes re-sound</value>
+  </data>
+  <data name="Not_Triggered" xml:space="preserve">
+    <value>Not Triggered</value>
+  </data>
+  <data name="Occurs_At" xml:space="preserve">
+    <value>Occurs at:</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Outputs" xml:space="preserve">
+    <value>Outputs</value>
+  </data>
+  <data name="Output_Delays_Mins" xml:space="preserve">
+    <value>Output delays (mins)</value>
+  </data>
+  <data name="Output_Set_Triggered" xml:space="preserve">
+    <value>Output Set Triggered</value>
+  </data>
+  <data name="Panel_Relay_Triggered" xml:space="preserve">
+    <value>Panel Relay Triggered</value>
+  </data>
+  <data name="Phased_Delay" xml:space="preserve">
+    <value>Phased delay</value>
+  </data>
+  <data name="Pulsed" xml:space="preserve">
+    <value>Pulsed</value>
+  </data>
+  <data name="Relay_1" xml:space="preserve">
+    <value>Relay 1</value>
+  </data>
+  <data name="Set_All_To_Off" xml:space="preserve">
+    <value>Set all to Off</value>
+  </data>
+  <data name="Set_All_To_Alert" xml:space="preserve">
+    <value>Set all to Alert</value>
+  </data>
+  <data name="Set_All_To_Evac" xml:space="preserve">
+    <value>Set all to Evac</value>
+  </data>
+  <data name="Sounders" xml:space="preserve">
+    <value>Sounders</value>
+  </data>
+  <data name="Timer_Event" xml:space="preserve">
+    <value>Event:</value>
+  </data>
+  <data name="Timer_Event_Times" xml:space="preserve">
+    <value>Timer Event Times</value>
+  </data>
+  <data name="Time_T_x" xml:space="preserve">
+    <value>T{0}</value>
+  </data>
+  <data name="Triggers_Sounder_Groups" xml:space="preserve">
+    <value>Triggers Sounder Groups</value>
+  </data>
+  <data name="Trigger_Any_Device_In_Alarm" xml:space="preserve">
+    <value>Any device in 'Alarm'</value>
+  </data>
+  <data name="Trigger_Any_Disablement" xml:space="preserve">
+    <value>Any disablement</value>
+  </data>
+  <data name="Trigger_Any_Dwelling_And_Communal" xml:space="preserve">
+    <value>Any dwelling and communal</value>
+  </data>
+  <data name="Trigger_Any_Fault" xml:space="preserve">
+    <value>Any fault</value>
+  </data>
+  <data name="Trigger_Any_Pre_Alarm" xml:space="preserve">
+    <value>Any pre-alarm</value>
+  </data>
+  <data name="Trigger_Any_Remote_Panel_In_Fire" xml:space="preserve">
+    <value>Any remote panel in 'Fire'</value>
+  </data>
+  <data name="Trigger_Any_Zone_In_Fire" xml:space="preserve">
+    <value>Any zone in 'Fire'</value>
+  </data>
+  <data name="Trigger_Event_AND" xml:space="preserve">
+    <value>Event AND</value>
+  </data>
+  <data name="Trigger_Loop_x_Device_Triggered" xml:space="preserve">
+    <value>Loop {0} device triggered</value>
+  </data>
+  <data name="Trigger_Loop_x_Device_Pre_Alarm" xml:space="preserve">
+    <value>Loop {0} device pre-alarm</value>
+  </data>
+  <data name="Trigger_More_Than_One_Alarm" xml:space="preserve">
+    <value>More than one alarm</value>
+  </data>
+  <data name="Trigger_More_Than_One_Zone_In_Alarm" xml:space="preserve">
+    <value>More than one zone in 'Alarm'</value>
+  </data>
+  <data name="Trigger_Network_Event_Triggered" xml:space="preserve">
+    <value>Network event triggered</value>
+  </data>
+  <data name="Trigger_Other_Event_Triggered" xml:space="preserve">
+    <value>Other event triggered</value>
+  </data>
+  <data name="Trigger_Panel_Input" xml:space="preserve">
+    <value>Panel input</value>
+  </data>
+  <data name="Trigger_Panel_Occupied" xml:space="preserve">
+    <value>Panel occupied</value>
+  </data>
+  <data name="Trigger_Panel_Reset" xml:space="preserve">
+    <value>Panel reset</value>
+  </data>
+  <data name="Trigger_Panel_Silenced" xml:space="preserve">
+    <value>Panel silenced</value>
+  </data>
+  <data name="Trigger_Panel_Unoccupied" xml:space="preserve">
+    <value>Panel unoccupied</value>
+  </data>
+  <data name="Trigger_Timer_Event" xml:space="preserve">
+    <value>Timer event</value>
+  </data>
+  <data name="Trigger_Zone_AND" xml:space="preserve">
+    <value>Zone AND</value>
+  </data>
+  <data name="Trigger_Zone_Has_Device_In_Alarm" xml:space="preserve">
+    <value>Zone has device in 'Alarm'</value>
+  </data>
+  <data name="Trigger_Zone_Or_Panel_In_Fire" xml:space="preserve">
+    <value>Zone or panel in 'Fire'</value>
+  </data>
+  <data name="Accepts_Alarms" xml:space="preserve">
+    <value>Alarms</value>
+  </data>
+  <data name="Accepts_Controls" xml:space="preserve">
+    <value>Controls</value>
+  </data>
+  <data name="Accepts_Disablements" xml:space="preserve">
+    <value>Disablements</value>
+  </data>
+  <data name="Accepts_Faults" xml:space="preserve">
+    <value>Faults</value>
+  </data>
+  <data name="Accepts_From_Panels" xml:space="preserve">
+    <value>Accepts from panels</value>
+  </data>
+  <data name="Accepts_Occupied_Unoccupied" xml:space="preserve">
+    <value>Occupied/Unoccupied</value>
+  </data>
+  <data name="Panel_Name" xml:space="preserve">
+    <value>Panel Name</value>
+  </data>
+  <data name="Loop_x" xml:space="preserve">
+    <value>Loop {0}</value>
+  </data>
+  <data name="Loop_Number" xml:space="preserve">
+    <value>Loop</value>
+  </data>
+  <data name="Zone_Set" xml:space="preserve">
+    <value>Zone/Set</value>
+  </data>
+  <data name="Menu_Remove_File_From_List" xml:space="preserve">
+    <value>Click to remove file from list</value>
+  </data>
+  <data name="ToolTip_Double_Click_For_Protocol_Menu" xml:space="preserve">
+    <value>Double-click to open Protocol menu</value>
+  </data>
+  <data name="Change_Protocol_To_x" xml:space="preserve">
+    <value>Change Protocol to {0}</value>
+  </data>
+  <data name="Pre_Save_Check" xml:space="preserve">
+    <value>Pre-Save Check</value>
+  </data>
+  <data name="Query_Data_Errors_Save_Anyway" xml:space="preserve">
+    <value>The data contains errors or warnings - see Data Validation window for details.
+
+Save anyway?</value>
+  </data>
+  <data name="See_IO_Configuration" xml:space="preserve">
+    <value>See I/O configuration</value>
+  </data>
+  <data name="Query_Change_Device_Type1" xml:space="preserve">
+    <value>Change this device to '{0}'?</value>
+  </data>
+  <data name="Query_Change_Device_Types" xml:space="preserve">
+    <value>Change {0} devices to '{1}'?</value>
+  </data>
+  <data name="Query_Delete_1_Device" xml:space="preserve">
+    <value>Delete 1 device?</value>
+  </data>
+  <data name="Query_Delete_Device1" xml:space="preserve">
+    <value>Delete this device?</value>
+  </data>
+  <data name="Query_Delete_Devices" xml:space="preserve">
+    <value>Delete {0} devices?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Asterisk" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="Multiple_Device_Types" xml:space="preserve">
+    <value>Multiple device types</value>
+  </data>
+  <data name="Multiple_Values" xml:space="preserve">
+    <value>Multiple values</value>
+  </data>
+  <data name="IO_Configuration" xml:space="preserve">
+    <value>I/O Configuration</value>
+  </data>
+  <data name="Group_x" xml:space="preserve">
+    <value>Group {0}</value>
+  </data>
+  <data name="Zone_x" xml:space="preserve">
+    <value>Zone {0}</value>
+  </data>
+  <data name="Channel_x" xml:space="preserve">
+    <value>Channel {0}</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Subaddress_x" xml:space="preserve">
+    <value>Subaddress {0}</value>
+  </data>
+  <data name="Fire_x" xml:space="preserve">
+    <value>Fire {0}</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="Not_Used" xml:space="preserve">
+    <value>Not used</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="Sounder" xml:space="preserve">
+    <value>Sounder</value>
+  </data>
+  <data name="IO_Config" xml:space="preserve">
+    <value>I/O config</value>
+  </data>
+  <data name="AlarmType_Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="AlarmType_Evacuate" xml:space="preserve">
+    <value>Evac</value>
+  </data>
+  <data name="AlarmType_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Channel" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="Input_Output" xml:space="preserve">
+    <value>Input/Output</value>
+  </data>
+  <data name="Panel_Sounder_x_Belongs_To_Sounder_Group" xml:space="preserve">
+    <value>Panel sounder {0} belongs to Sounder Group</value>
+  </data>
+  <data name="Subaddress" xml:space="preserve">
+    <value>Subaddress</value>
+  </data>
+  <data name="Minute_Short" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="Tone_Message_Pair_x_Primary" xml:space="preserve">
+    <value>Tone/Message pair {0} Primary</value>
+  </data>
+  <data name="Tone_Message_Pair_x_Secondary" xml:space="preserve">
+    <value>Tone/Message pair {0} Secondary</value>
+  </data>
+  <data name="Set_Selected_Items" xml:space="preserve">
+    <value>Set selected items:</value>
+  </data>
+  <data name="Relay_2" xml:space="preserve">
+    <value>Relay 2</value>
+  </data>
+  <data name="Error_Invalid_Zone_Name" xml:space="preserve">
+    <value>Invalid zone name</value>
+  </data>
+  <data name="Alarm" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="Day_Occupied" xml:space="preserve">
+    <value>Day (Occupied)</value>
+  </data>
+  <data name="Detector" xml:space="preserve">
+    <value>Detector</value>
+  </data>
+  <data name="Night_Unoccupied" xml:space="preserve">
+    <value>Night (Unoccupied)</value>
+  </data>
+  <data name="N_A" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Time_To_Reset" xml:space="preserve">
+    <value>Time to Reset</value>
+  </data>
+  <data name="TriggerType_Continuous" xml:space="preserve">
+    <value>Continuous</value>
+  </data>
+  <data name="TriggerType_Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+  <data name="TriggerType_Not_Triggered" xml:space="preserve">
+    <value>Not triggered</value>
+  </data>
+  <data name="TriggerType_Pulsed" xml:space="preserve">
+    <value>Pulsed</value>
+  </data>
+  <data name="Is_Set_Silenceable" xml:space="preserve">
+    <value>Is set silenceable?</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Event_x" xml:space="preserve">
+    <value>Event {0}</value>
+  </data>
+  <data name="Input_x" xml:space="preserve">
+    <value>Input {0}</value>
+  </data>
+  <data name="Logical_And" xml:space="preserve">
+    <value>AND</value>
+  </data>
+  <data name="Occurs_When" xml:space="preserve">
+    <value>Occurs when...</value>
+  </data>
+  <data name="Relay_x" xml:space="preserve">
+    <value>Relay {0}</value>
+  </data>
+  <data name="Resets_When" xml:space="preserve">
+    <value>Resets when...</value>
+  </data>
+  <data name="Time_x" xml:space="preserve">
+    <value>Time: {0}</value>
+  </data>
+  <data name="ToolTip_Clear_All" xml:space="preserve">
+    <value>Reset all to NotTriggered</value>
+  </data>
+  <data name="ToolTip_Continuous" xml:space="preserve">
+    <value>Set selected items to Continuous</value>
+  </data>
+  <data name="ToolTip_Delayed" xml:space="preserve">
+    <value>Set selected items to Delayed</value>
+  </data>
+  <data name="ToolTip_Not_Triggered" xml:space="preserve">
+    <value>Set selected items to Not Triggered</value>
+  </data>
+  <data name="ToolTip_Pulsed" xml:space="preserve">
+    <value>Set selected items to Pulsed
+- applies to Panel Relays only</value>
+  </data>
+  <data name="Panel" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="File_x_Already_Exists" xml:space="preserve">
+    <value>'{0}' already exists.
+Do you want to replace it?</value>
+  </data>
+  <data name="Save_File_Header" xml:space="preserve">
+    <value>Save File...</value>
+  </data>
+  <data name="Zone_x_Name_y" xml:space="preserve">
+    <value>Zone {0} - '{1}'</value>
+  </data>
+  <data name="Not_Set" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="Open_File_x" xml:space="preserve">
+    <value>Open File: {0}</value>
+  </data>
+  <data name="Zone_Dependency_A" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="Zone_Dependency_B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Zone_Dependency_C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Zone_Dependency_Dwelling" xml:space="preserve">
+    <value>Dwelling</value>
+  </data>
+  <data name="Zone_Dependency_Investigation" xml:space="preserve">
+    <value>Investigation</value>
+  </data>
+  <data name="Zone_Dependency_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="x_Zones" xml:space="preserve">
+    <value>[ {0} zones ]</value>
+  </data>
+  <data name="ToolTip_Next_Zone" xml:space="preserve">
+    <value>Select next zone</value>
+  </data>
+  <data name="ToolTip_Previous_Zone" xml:space="preserve">
+    <value>Select previous zone</value>
+  </data>
+  <data name="Multiple_Rows_Selected" xml:space="preserve">
+    <value>Multiple rows selected</value>
+  </data>
+  <data name="Select_Zone_Or_Panel_To_Show_Details" xml:space="preserve">
+    <value>Select a zone or panel to show details</value>
+  </data>
+  <data name="ToolTip_Dependencies_Day_Occupied" xml:space="preserve">
+    <value>Dependency options for Day (Occupied)</value>
+  </data>
+  <data name="ToolTip_Dependencies_Night_Unoccupied" xml:space="preserve">
+    <value>Dependency options for Night (Unoccupied)</value>
+  </data>
+  <data name="Panels" xml:space="preserve">
+    <value>Panels</value>
+  </data>
+  <data name="Zones" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="Day_Dependencies" xml:space="preserve">
+    <value>Day Dependencies</value>
+  </data>
+  <data name="Error_Total_Delay_x_Cannot_Be_More_Than_y" xml:space="preserve">
+    <value>Total delay is {0}.  It cannot be more than {1}</value>
+  </data>
+  <data name="Night_Dependencies" xml:space="preserve">
+    <value>Night Dependencies</value>
+  </data>
+  <data name="Action_All_Groups" xml:space="preserve">
+    <value>All Groups</value>
+  </data>
+  <data name="Is_Silenceable" xml:space="preserve">
+    <value>Is silenceable</value>
+  </data>
+  <data name="Zone_Group" xml:space="preserve">
+    <value>Zone/Group</value>
+  </data>
+  <data name="Error_Total_Delay_Is_Too_Long" xml:space="preserve">
+    <value>Total delay time is too long</value>
+  </data>
+  <data name="Error_Device_Name_Too_Long" xml:space="preserve">
+    <value>The name/description is too long</value>
+  </data>
+  <data name="Error_Invalid_Sounder_Group" xml:space="preserve">
+    <value>Invalid base sounder group</value>
+  </data>
+  <data name="Error_File_Data_Unsupported_Protocol" xml:space="preserve">
+    <value>The file does not contain settings for a supported protocol.</value>
+  </data>
+  <data name="Channel_Abbr" xml:space="preserve">
+    <value>Chan.</value>
+  </data>
+  <data name="I_O" xml:space="preserve">
+    <value>I/O</value>
+  </data>
+  <data name="Error_Invalid_IO_Description_Too_Long" xml:space="preserve">
+    <value>I/O subaddress description is too long</value>
+  </data>
+  <data name="Error_Invalid_IO_Channel" xml:space="preserve">
+    <value>Invalid I/O subaddress channel</value>
+  </data>
+  <data name="Error_Invalid_IO_Input_Output" xml:space="preserve">
+    <value>Invalid subaddress Input/Output setting</value>
+  </data>
+  <data name="Error_Invalid_IO_Set" xml:space="preserve">
+    <value>Invalid I/O subaddress set</value>
+  </data>
+  <data name="Error_Invalid_IO_Zone" xml:space="preserve">
+    <value>Invalid I/O subaddress zone</value>
+  </data>
+  <data name="Device_Strings" xml:space="preserve">
+    <value>Device strings</value>
+  </data>
+  <data name="Error_Day_Alarm_Reset_Too_Long" xml:space="preserve">
+    <value>Day alarm reset is too long</value>
+  </data>
+  <data name="Error_Day_Dependency_Option_Invalid" xml:space="preserve">
+    <value>Day dependency option is invalid</value>
+  </data>
+  <data name="Error_Day_Detector_Reset_Too_Long" xml:space="preserve">
+    <value>Day detector reset is too long</value>
+  </data>
+  <data name="Error_Maintenance_String_Too_long" xml:space="preserve">
+    <value>Maintenance string is too long</value>
+  </data>
+  <data name="Error_Night_Alarm_Reset_Too_Long" xml:space="preserve">
+    <value>Night alarm reset is too long</value>
+  </data>
+  <data name="Error_Night_Dependency_Option_Invalid" xml:space="preserve">
+    <value>Night dependency option is invalid</value>
+  </data>
+  <data name="Error_Night_Detector_Reset_Too_Long" xml:space="preserve">
+    <value>Night detector reset is too long</value>
+  </data>
+  <data name="Error_Output_Delay_Too_Long" xml:space="preserve">
+    <value>Output delay is too long</value>
+  </data>
+  <data name="Error_Quiescent_String_Too_long" xml:space="preserve">
+    <value>Normal string is too long</value>
+  </data>
+  <data name="Error_Relay_1_Delay_Too_Long" xml:space="preserve">
+    <value>Relay 1 delay is too long</value>
+  </data>
+  <data name="Error_Relay_2_Delay_Too_Long" xml:space="preserve">
+    <value>Relay 2 delay is too long</value>
+  </data>
+  <data name="Error_Sounder_Delay_Too_Long" xml:space="preserve">
+    <value>Sounder delay is too long</value>
+  </data>
+  <data name="Error_Zone_Name_Too_Long" xml:space="preserve">
+    <value>Zone name is too long</value>
+  </data>
+  <data name="Error_Set_Delay_Timer_Too_Long" xml:space="preserve">
+    <value>Delay time is too long</value>
+  </data>
+  <data name="Error_Invalid_Repeater_Name" xml:space="preserve">
+    <value>Invalid repeater name</value>
+  </data>
+  <data name="Error_Invalid_Panel_Name" xml:space="preserve">
+    <value>Invalid panel name</value>
+  </data>
+  <data name="Error_Invalid_Panel_Num" xml:space="preserve">
+    <value>Invalid panel number</value>
+  </data>
+  <data name="Error_Panel_Name_Too_Long" xml:space="preserve">
+    <value>Panel name is too long</value>
+  </data>
+  <data name="Error_CE_Action_Beacon_Group_Not_Set" xml:space="preserve">
+    <value>Action's beacon group is not set</value>
+  </data>
+  <data name="Error_CE_Action_Device_Unassigned" xml:space="preserve">
+    <value>Action's device is unnassigned</value>
+  </data>
+  <data name="Error_CE_Action_Group_Not_Set" xml:space="preserve">
+    <value>Action's group is not set</value>
+  </data>
+  <data name="Error_CE_Action_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>Action's loop 1 device is not set</value>
+  </data>
+  <data name="Error_CE_Action_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>Action's loop 2 device is not set</value>
+  </data>
+  <data name="Error_CE_Action_Network_Event_Not_Set" xml:space="preserve">
+    <value>Action's network event is not set</value>
+  </data>
+  <data name="Error_CE_Action_Output_Not_Set" xml:space="preserve">
+    <value>Action's output is not set</value>
+  </data>
+  <data name="Error_CE_Action_Panel_Relay_Not_Set" xml:space="preserve">
+    <value>Action's panel relay is not set</value>
+  </data>
+  <data name="Error_CE_Action_Sounder_Group_Not_Set" xml:space="preserve">
+    <value>Action's sounder group is not set</value>
+  </data>
+  <data name="Error_CE_Action_Zone_Not_Set" xml:space="preserve">
+    <value>Action's zone is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Condition_Not_Set" xml:space="preserve">
+    <value>Reset trigger condition is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Device_Unassigned" xml:space="preserve">
+    <value>Reset trigger's device is unnassigned</value>
+  </data>
+  <data name="Error_CE_Reset_Event_2_Not_Set" xml:space="preserve">
+    <value>Reset trigger's second event is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Event_Not_Set" xml:space="preserve">
+    <value>Reset trigger's event is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>Reset trigger's loop 1 device is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>Reset trigger's loop 2 device is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Network_Event_Not_Set" xml:space="preserve">
+    <value>Reset trigger's network event is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Panel_Input_Not_Set" xml:space="preserve">
+    <value>Reset trigger's panel input is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Timer_Not_Set" xml:space="preserve">
+    <value>Reset trigger's timer is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Type_Not_Set" xml:space="preserve">
+    <value>Reset trigger type is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_2_Not_Set" xml:space="preserve">
+    <value>Reset trigger's second zone is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_Not_Set" xml:space="preserve">
+    <value>Reset trigger's zone is not set</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_Or_Panel_Not_Set" xml:space="preserve">
+    <value>Reset trigger's zone or panel is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Condition_Not_Set" xml:space="preserve">
+    <value>Trigger condition is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Device_Unassigned" xml:space="preserve">
+    <value>Trigger's device is unnassigned</value>
+  </data>
+  <data name="Error_CE_Trigger_Event_2_Not_Set" xml:space="preserve">
+    <value>Trigger's second event is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Event_Not_Set" xml:space="preserve">
+    <value>Trigger's event is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>Trigger's loop 1 device is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>Trigger's loop 1 device is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Network_Event_Not_Set" xml:space="preserve">
+    <value>Trigger's network event is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Panel_Input_Not_Set" xml:space="preserve">
+    <value>Trigger's panel input is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Timer_Not_Set" xml:space="preserve">
+    <value>Trigger's timer is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Type_Not_Set" xml:space="preserve">
+    <value>Trigger type is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_2_Not_Set" xml:space="preserve">
+    <value>Trigger's second zone is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_Not_Set" xml:space="preserve">
+    <value>Trigger's zone is not set</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_Or_Panel_Not_Set" xml:space="preserve">
+    <value>Trigger's zone or panel is not set</value>
+  </data>
+  <data name="Trigger_Condition_Is" xml:space="preserve">
+    <value>is</value>
+  </data>
+  <data name="Saving_Settings_To_File" xml:space="preserve">
+    <value>Saving settings to file:</value>
+  </data>
+  <data name="Error_Comms_Panel_Protocol_x_Does_Not_Match_Tools_y" xml:space="preserve">
+    <value>The panel protocol ({0}) does not match the current settings ({1})</value>
+  </data>
+  <data name="Comms_Device_Names" xml:space="preserve">
+    <value>Device names</value>
+  </data>
+  <data name="Error_Device_Name_Blank" xml:space="preserve">
+    <value>The name/description is empty</value>
+  </data>
+  <data name="Subaddress_Hush_0" xml:space="preserve">
+    <value>Sounder</value>
+  </data>
+  <data name="Subaddress_Hush_1" xml:space="preserve">
+    <value>Fire 2</value>
+  </data>
+  <data name="Subaddress_Hush_2" xml:space="preserve">
+    <value>Fire 1</value>
+  </data>
+  <data name="Subaddress_Hush_3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Sensitivity" xml:space="preserve">
+    <value>Sensitivity</value>
+  </data>
+  <data name="Volume_Sensitivity_mode" xml:space="preserve">
+    <value>Vol/Sens
+Mode</value>
+  </data>
+  <data name="Sensitivity_x" xml:space="preserve">
+    <value>Sens: {0}</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Volume_x" xml:space="preserve">
+    <value>Vol: {0}</value>
+  </data>
+  <data name="Day_Night" xml:space="preserve">
+    <value>Day:Night</value>
+  </data>
+  <data name="Comms_C_And_E" xml:space="preserve">
+    <value>Causes and Effects</value>
+  </data>
+  <data name="Comms_Sets" xml:space="preserve">
+    <value>Sets</value>
+  </data>
+  <data name="Default_Maintenance_String" xml:space="preserve">
+    <value>Call the Engineer</value>
+  </data>
+  <data name="Default_Quiescent_String" xml:space="preserve">
+    <value>XFP Fire Panel</value>
+  </data>
+  <data name="Ancillary_Base_Sounder_Group" xml:space="preserve">
+    <value>Ancillary base sounder group</value>
+  </data>
+  <data name="Remote_LED_Enabled" xml:space="preserve">
+    <value>Remote LED enabled</value>
+  </data>
+  <data name="Tone_Message_M_x" xml:space="preserve">
+    <value>Tone/Message M{0}</value>
+  </data>
+  <data name="Remote_LED_Header" xml:space="preserve">
+    <value>Remote
+LED</value>
+  </data>
+  <data name="Comms_Zone_Names" xml:space="preserve">
+    <value>Zone names</value>
+  </data>
+  <data name="Error_Preupload_Data_Validation" xml:space="preserve">
+    <value>Please correct errors before uploading settings to the panel.
+
+See Validation window for details.</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_1_Loop" xml:space="preserve">
+    <value>The connected panel has only one loop.</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_2_Loops" xml:space="preserve">
+    <value>The connected panel has 2 loops.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_Count_1_Loop" xml:space="preserve">
+    <value>The connected panel has only one loop.
+
+Any Loop 2 settings configured here will not be saved to the panel.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_Count_2_Loops" xml:space="preserve">
+    <value>Note: the connected panel has 2 loops.
+
+Only one loop has been configured here.</value>
+  </data>
+  <data name="Error_Name_Limit_Exceeded" xml:space="preserve">
+    <value>The name was not updated because the panel's storage limit for Device Names has been exceeded.</value>
+  </data>
+  <data name="Device_x_Type_y" xml:space="preserve">
+    <value>{0}:  {1}</value>
+  </data>
+  <data name="Settings_Are_Readonly" xml:space="preserve">
+    <value>Read-Only Settings</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_x_Not_Present" xml:space="preserve">
+    <value>Loop {0} is not present on the panel.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_x_Not_Present" xml:space="preserve">
+    <value>Loop {0} is not present on the panel, so this loop's settings will not be uploaded.</value>
+  </data>
+  <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
+    <value>Base sounder groups</value>
+  </data>
+  <data name="Sensitivities_For_The_Selected_Devices_Have_Different_Ranges" xml:space="preserve">
+    <value>Sensitivities for the selected devices have different ranges</value>
+  </data>
+  <data name="Data_Info_Bytes_Remaining" xml:space="preserve">
+    <value>Remaining:</value>
+  </data>
+  <data name="Data_Info_Bytes_Used" xml:space="preserve">
+    <value>Total bytes:</value>
+  </data>
+  <data name="Data_Info_Device_Names" xml:space="preserve">
+    <value>Device names:</value>
+  </data>
+  <data name="Data_Info_Loops_Detected" xml:space="preserve">
+    <value>Loops detected:</value>
+  </data>
+  <data name="Device_Names_Data_Limit" xml:space="preserve">
+    <value>DeviceNames data limit</value>
+  </data>
+  <data name="Error_Device_Name_Bytes_Exceeded" xml:space="preserve">
+    <value>The total size of the Device Names data is too large
+(see 'View / Show data usage').</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Query_Install_Update" xml:space="preserve">
+    <value>Download and install updates now? This will restart the app.</value>
+  </data>
+  <data name="Error_File_x_Does_Not_Exist" xml:space="preserve">
+    <value>The file '{0}' does not exist in this location.
+
+Remove from the list?</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="Warn_Modes_Not_Available_For_Selected_Devices" xml:space="preserve">
+    <value>Some modes are not available for the selected devices</value>
+  </data>
+  <data name="Error_Invalid_Day_Mode" xml:space="preserve">
+    <value>Invalid day mode</value>
+  </data>
+  <data name="Error_Invalid_Day_Sensitivity" xml:space="preserve">
+    <value>Invalid day sensitivity</value>
+  </data>
+  <data name="Error_Invalid_Day_Volume" xml:space="preserve">
+    <value>Invalid day volume</value>
+  </data>
+  <data name="Error_Invalid_Night_Mode" xml:space="preserve">
+    <value>Invalid night mode</value>
+  </data>
+  <data name="Error_Invalid_Night_Sensitivity" xml:space="preserve">
+    <value>Invalid night sensitivity</value>
+  </data>
+  <data name="Error_Invalid_Night_Volume" xml:space="preserve">
+    <value>Invalid night volume</value>
+  </data>
+  <data name="Warn_No_Modes_Available_For_Selected_Devices" xml:space="preserve">
+    <value>There are no valid modes common to all the selected devices</value>
+  </data>
+  <data name="Add_Panel" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Panel_Number" xml:space="preserve">
+    <value>Panel number</value>
+  </data>
+  <data name="Manage_Panels" xml:space="preserve">
+    <value>Manage panels</value>
+  </data>
+  <data name="Option_Keep" xml:space="preserve">
+    <value>Keep</value>
+  </data>
+  <data name="Option_Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Other_Panel_Settings" xml:space="preserve">
+    <value>Other Panel Settings</value>
+  </data>
+  <data name="Panel_Count_x" xml:space="preserve">
+    <value>Panels: {0}</value>
+  </data>
+  <data name="Query_Keep_Other_Panel_Settings" xml:space="preserve">
+    <value>The file contains settings for Panel {0}.
+
+What do you want to do with the settings for the other panels?</value>
+  </data>
+  <data name="Error_Maintenance_String_Blank" xml:space="preserve">
+    <value>Maintenance string is blank</value>
+  </data>
+  <data name="Error_Quiescent_String_Blank" xml:space="preserve">
+    <value>Normal string is blank</value>
+  </data>
+  <data name="Remove_Panel" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Warn_File_Protocol_x" xml:space="preserve">
+    <value>The file contains settings for {0} devices.</value>
+  </data>
+  <data name="Query_Keep_Other_Panel_Settings_Single_x" xml:space="preserve">
+    <value>The file contains settings for Panel {0}.
+
+What do you want to do with the settings for panel {1}?</value>
+  </data>
+  <data name="ToolTip_Panel_x_of_y" xml:space="preserve">
+    <value>Panel #{0} ({1} panels available)</value>
+  </data>
+  <data name="ToolTip_Panel_x_of_y_Single" xml:space="preserve">
+    <value>Panel #{0} (1 panel available)</value>
+  </data>
+  <data name="Option_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Panel_Management" xml:space="preserve">
+    <value>Panel Management</value>
+  </data>
+  <data name="Print_Event_Log" xml:space="preserve">
+    <value>Event Log</value>
+  </data>
+  <data name="Print_Loop_Information" xml:space="preserve">
+    <value>Loop Information</value>
+  </data>
+  <data name="Select_Print_Options" xml:space="preserve">
+    <value>Select Print Options</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Print_All_Loop_Devices" xml:space="preserve">
+    <value>Print all loop devices</value>
+  </data>
+  <data name="Print_All_Pages" xml:space="preserve">
+    <value>All pages</value>
+  </data>
+  <data name="Print_Current_Page" xml:space="preserve">
+    <value>Current page</value>
+  </data>
+  <data name="Print_Num_Copies" xml:space="preserve">
+    <value>Copies:</value>
+  </data>
+  <data name="Print_Only_Fitted_Devices" xml:space="preserve">
+    <value>Print only fitted devices</value>
+  </data>
+  <data name="Print_Order_By" xml:space="preserve">
+    <value>Order by:</value>
+  </data>
+  <data name="Print_Order_By_Device" xml:space="preserve">
+    <value>Device number</value>
+  </data>
+  <data name="Print_Order_By_Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Print_Order_By_Zone" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="Print_Preview" xml:space="preserve">
+    <value>Print preview</value>
+  </data>
+  <data name="Print_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Print_Select_Pages" xml:space="preserve">
+    <value>Select pages:</value>
+  </data>
+  <data name="Cancel_Changes" xml:space="preserve">
+    <value>Cancel changes?</value>
+  </data>
+  <data name="Do_You_Want_To_Save_These_Changes" xml:space="preserve">
+    <value>Do you want to save these changes?</value>
+  </data>
+  <data name="One_Panel_Added" xml:space="preserve">
+    <value>1 panel added</value>
+  </data>
+  <data name="One_Panel_Removed" xml:space="preserve">
+    <value>1 panel removed</value>
+  </data>
+  <data name="Send_Data_To_Panel_x" xml:space="preserve">
+    <value>Send this data to panel {0}?</value>
+  </data>
+  <data name="x_Panels_Added" xml:space="preserve">
+    <value>{0} panels added</value>
+  </data>
+  <data name="x_Panels_Removed" xml:space="preserve">
+    <value>{0} panels removed</value>
+  </data>
+  <data name="Warn_Overwrite_Panel_x" xml:space="preserve">
+    <value>This will overwrite the configuration for panel {0}.</value>
+  </data>
+  <data name="File_Data_Is_Newer_Firmware_x" xml:space="preserve">
+    <value>The file contains data that was created for newer panel firmware ({0})</value>
+  </data>
+  <data name="File_Data_Is_Older_Firmware_x" xml:space="preserve">
+    <value>The file contains data that was created for older panel firmware ({0})</value>
+  </data>
+  <data name="File_Data_Is_Unknown_Firmware" xml:space="preserve">
+    <value>The file contains data for an unknown panel firmware version</value>
+  </data>
+  <data name="File_Data_Saved_By_Newer_Tools_Version_x" xml:space="preserve">
+    <value>The data was saved by a newer version of the XFP Tools ({0})</value>
+  </data>
+  <data name="File_Data_Saved_By_Older_Tools_Version_x" xml:space="preserve">
+    <value>The data was saved by an older version of the XFP Tools ({0})</value>
+  </data>
+  <data name="File_Data_Saved_By_Unknown_Tools_Version" xml:space="preserve">
+    <value>The file contains data saved by an unknown XFP Tools version</value>
+  </data>
+  <data name="Printer_Status" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="Select_Printer" xml:space="preserve">
+    <value>Printer:</value>
+  </data>
+  <data name="Error_Printing_Document" xml:space="preserve">
+    <value>An error occurred while printing document.</value>
+  </data>
+  <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
+    <value>The Site Configuration details are incomplete - see Data Validation window for details.
+
+Save anyway?</value>
+  </data>
+  <data name="Warn_Modes_Not_Available_For_Selected_Device" xml:space="preserve">
+    <value>Some modes are not available for the selected device</value>
+  </data>
+  <data name="Erase_Event_Log_After_Reading" xml:space="preserve">
+    <value>Erase events from the panel after reading?</value>
+  </data>
+  <data name="ToolTip_Event_Log_Clear" xml:space="preserve">
+    <value>Clear the Event Log screen</value>
+  </data>
+  <data name="ToolTip_Event_Log_Open" xml:space="preserve">
+    <value>Load the contents of an event log file to the screen</value>
+  </data>
+  <data name="ToolTip_Event_Log_Pause" xml:space="preserve">
+    <value>Pause recording the event log from the panel</value>
+  </data>
+  <data name="ToolTip_Event_Log_Reset" xml:space="preserve">
+    <value>Reset the logging start point to the beginning</value>
+  </data>
+  <data name="ToolTip_Event_Log_Resume" xml:space="preserve">
+    <value>Resume recording the event log from the previous event</value>
+  </data>
+  <data name="ToolTip_Event_Log_Save" xml:space="preserve">
+    <value>Save the contents of the Event Log screen to a file</value>
+  </data>
+  <data name="ToolTip_Event_Log_Start" xml:space="preserve">
+    <value>Start recording the event log from the panel</value>
+  </data>
+  <data name="ToolTip_Event_Log_Stop" xml:space="preserve">
+    <value>Stop recording the event log</value>
+  </data>
+  <data name="Remove_Panel_x" xml:space="preserve">
+    <value>Remove panel {0}?
+All of its data will be lost.</value>
+  </data>
+  <data name="Save_These_Changes" xml:space="preserve">
+    <value>Save these changes?</value>
+  </data>
+  <data name="Comms_Download_Is_Complete" xml:space="preserve">
+    <value>Download is complete.</value>
+  </data>
+  <data name="Comms_Upload_Is_Complete" xml:space="preserve">
+    <value>Upload is complete.</value>
+  </data>
+  <data name="Panel_x_Configuration" xml:space="preserve">
+    <value>Panel {0} Configuration</value>
+  </data>
+  <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
+    <value>Loop {0} device {1} : {2}</value>
+  </data>
+  <data name="C_And_E_Event_x" xml:space="preserve">
+    <value>Cause &amp; Effect Event #{0}</value>
+  </data>
+  <data name="Day_And_Night_Settings" xml:space="preserve">
+    <value>Day &amp; night settings</value>
+  </data>
+  <data name="Group_Phased_Settings" xml:space="preserve">
+    <value>Group phased settings</value>
+  </data>
+  <data name="Network_Panel_Data" xml:space="preserve">
+    <value>Network panel data</value>
+  </data>
+  <data name="Panel_Name_x" xml:space="preserve">
+    <value>Panel name: {0}</value>
+  </data>
+  <data name="Zone_Group_Settings" xml:space="preserve">
+    <value>Zone group settings</value>
+  </data>
+  <data name="Zone_Name_x" xml:space="preserve">
+    <value>Zone name: {0}</value>
+  </data>
+  <data name="Zone_Phased_Settings" xml:space="preserve">
+    <value>Zone phased settings</value>
+  </data>
+  <data name="Zone_Timers" xml:space="preserve">
+    <value>Zone timers</value>
+  </data>
+  <data name="Loop_x_Base_Sounder_Group_y" xml:space="preserve">
+    <value>Loop {0} base sounder group #{1}</value>
+  </data>
+  <data name="Alarm_Verification_Counts" xml:space="preserve">
+    <value>Verification counts</value>
+  </data>
+  <data name="Device_x_Name_y" xml:space="preserve">
+    <value>Device name {0}: {1}</value>
+  </data>
+  <data name="End_Of_Device_Names" xml:space="preserve">
+    <value>[end of device names list]</value>
+  </data>
+  <data name="Zone_Group_Settings_x" xml:space="preserve">
+    <value>Zone group settings {0}</value>
+  </data>
+  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
+    <value>View last download log</value>
+  </data>
+  <data name="Error_After_Download_End" xml:space="preserve">
+    <value>An error occurred after download ended</value>
+  </data>
+  <data name="Zone_Timers_Type_x_Index_y" xml:space="preserve">
+    <value>Zone timers: {0} {1}</value>
+  </data>
+  <data name="Error_Comms_Panel_Protocol_Not_Identified" xml:space="preserve">
+    <value>The panel protocol has not been identified.</value>
+  </data>
+  <data name="Device_Name_x" xml:space="preserve">
+    <value>Device name #{0}</value>
+  </data>
+  <data name="Device_Name_x_Value_y" xml:space="preserve">
+    <value>Device name #{0}: {1}</value>
+  </data>
+  <data name="Loop_x_Device_y" xml:space="preserve">
+    <value>Loop {0} device #{1}</value>
+  </data>
+  <data name="Panel_Name_x_Value_y" xml:space="preserve">
+    <value>Panel name #{0}: '{1}'</value>
+  </data>
+  <data name="Phased_Settings" xml:space="preserve">
+    <value>Phased settings</value>
+  </data>
+  <data name="Send_Time_To_Panel" xml:space="preserve">
+    <value>Send time to panel</value>
+  </data>
+  <data name="Zone_Group_x" xml:space="preserve">
+    <value>Zone/Group #{0}</value>
+  </data>
+  <data name="Zone_Set_x" xml:space="preserve">
+    <value>Zone/Set #{0}</value>
+  </data>
+  <data name="Zone_Timer_x" xml:space="preserve">
+    <value>Zone timer #{0}</value>
+  </data>
+  <data name="Error_Validation_Window" xml:space="preserve">
+    <value>There was an error while showing the Validation window</value>
+  </data>
+  <data name="Error_Validation_Window_Timeout" xml:space="preserve">
+    <value>There was a timeout error while showing the Validation window</value>
+  </data>
+</root>
