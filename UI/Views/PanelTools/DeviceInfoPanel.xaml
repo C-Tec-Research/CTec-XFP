@@ -1,0 +1,1387 @@
+﻿<UserControl x:Class="Xfp.UI.Views.PanelTools.DeviceInfoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ctc="clr-namespace:CTecControls.UI;assembly=CTecControls"
+             xmlns:ctcb="clr-namespace:CTecControls.UI.Behaviours;assembly=CTecControls" 
+             xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
+             xmlns:local="clr-namespace:Xfp.UI.Views.PanelTools"
+             xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
+             xmlns:viewmodels="clr-namespace:Xfp.ViewModels.PanelTools" 
+             xmlns:ctcval="clr-namespace:CTecControls.UI.Validation;assembly=CTecControls"
+             xmlns:val="clr-namespace:Xfp.UI.Validation"
+             d:DataContext="{d:DesignInstance Type=viewmodels:DeviceInfoPanelViewModel}"
+             mc:Ignorable="d"
+             KeyDown="infoPanel_KeyDown">
+
+    <Control.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <ctcvh:BoolToVisibilityHiddenConverter x:Key="BoolToVisibilityHiddenConverter"/>
+        <ctcvh:InverseBoolToVisibilityHiddenConverter x:Key="InverseBoolToVisibilityHiddenConverter"/>
+        <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
+        <ctcvh:BoolToYesNoConverter x:Key="BoolToYesNoConverter"/>
+        <ctcvh:BoolToBoldConverter x:Key="BoolToBoldConverter"/>
+        <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+        <ctcvh:IsNullToBoolConverter x:Key="IsNullToBoolConverter"/>
+        <ctcvh:NonNullToBoolConverter x:Key="NonNullToBoolConverter"/>
+        <ctcvh:NonNullToVisibilityConverter x:Key="NonNullToVisibilityConverter"/>
+        <ctcvh:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter"/>
+        <ctcvh:EqualsOneToVisibilityConverter x:Key="Is1ToVisibilityConverter"/>
+        <ctcvh:IsNot1ToVisibilityConverter x:Key="IsNot1ToVisibilityConverter"/>
+        <ctcvh:ValidSelectedItemToVisibilityConverter x:Key="ValidSelectedItemToVisibilityConverter"/>
+        <ctcvh:InvalidSelectedItemToVisibilityConverter x:Key="InvalidSelectedItemToVisibilityConverter"/>
+        <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
+        <ctcvh:EqualsZeroToVisibilityConverter x:Key="EqualsZeroToVisibilityConverter"/>
+        <ctcvh:BoolToOpacity20pcConverter x:Key="BoolToOpacity20pcConverter"/>
+        <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
+        <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
+        <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:BoolToErrorColourConverter x:Key="BoolToErrorColourConverter"/>
+        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <vh:IndexToDeviceNameConverter x:Key="IndexToDeviceNameConverter"/>
+        <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
+        <vh:BaseSounderGroupToStringConverter x:Key="BaseSounderGroupToStringConverter"/>
+
+    </Control.Resources>
+    
+
+    <Grid KeyDown="detailsPanel_KeyDown" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--#region show fitted devices-->
+        <Border Grid.Row="0" 
+                BorderBrush="{StaticResource Brush02}" BorderThickness="1" CornerRadius="0"
+                Background="{StaticResource Brush09}"
+                Visibility="{Binding DisplayShowFittedDevicesOnlyOption, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                VerticalAlignment="Top" Margin="0,0,0,10" Padding="5">
+
+            <CheckBox Content="{Binding Path=Show_Fitted_Devices_Only, Source={StaticResource Resources}}" 
+                        IsChecked="{Binding ShowFittedDevicesOnly}"         
+                        Visibility="{Binding DisplayShowFittedDevicesOnlyOption, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                        HorizontalAlignment="Left"
+                        Margin="10,5,10,0"/>
+        </Border>
+        <!--#endregion -->
+
+
+        <!--#region alarm verification count-->
+        <Border Grid.Row="2" 
+                BorderBrush="{StaticResource Brush02}" BorderThickness="1" CornerRadius="0"
+                Background="{StaticResource Brush09}"
+                Visibility="{Binding CurrentProtocolIsXfpCast, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                VerticalAlignment="Top" Margin="0,0,0,10">
+
+            <StackPanel Orientation="Vertical">
+
+                <Border Background="{StaticResource Brush02}">
+                    <TextBlock Text="{Binding Path=DeviceInfo_Alarm_Verificaton_Count, Source={StaticResource Resources}}" 
+                               Foreground="{StaticResource Brush10}" FontSize="13" FontWeight="DemiBold" 
+                               HorizontalAlignment="Left" Margin="30,3,0,5"/>
+                </Border>
+
+                <Grid Margin="30,5,10,5" HorizontalAlignment="Left"
+                      Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=DeviceInfo_Manual_Callpoints, Source={StaticResource Resources}}" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=DeviceInfo_Interface_Units, Source={StaticResource Resources}}" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=DeviceInfo_Detectors, Source={StaticResource Resources}}" HorizontalAlignment="Right"/>
+
+                    <ctc:NumberSpinner Grid.Row="0" Grid.Column="1" 
+                                       Value="{Binding ManualCallpoints}" 
+                                       Minimum="{Binding MinManualCallpoints}" Maximum="{Binding MaxManualCallpoints}" 
+                                       Margin="3,2,0,2"
+                                       PreviewMouseDown="spinner_PreviewMouseDown"
+                                       PreviewKeyDown="spinner_PreviewKeyDown"/>
+                    <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" 
+                                       Value="{Binding InterfaceUnits}" 
+                                       Minimum="{Binding MinInterfaceUnits}" Maximum="{Binding MaxInterfaceUnits}" 
+                                       Margin="3,2,0,2"
+                                       PreviewMouseDown="spinner_PreviewMouseDown"
+                                       PreviewKeyDown="spinner_PreviewKeyDown"/>
+                    <ctc:NumberSpinner Grid.Row="2" Grid.Column="1" 
+                                       Value="{Binding Detectors}" 
+                                       Minimum="{Binding MinDetectors}" Maximum="{Binding MaxDetectors}" 
+                                       Margin="3,2,0,2"
+                                       PreviewMouseDown="spinner_PreviewMouseDown"
+                                       PreviewKeyDown="spinner_PreviewKeyDown"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+        <!--#endregion -->
+
+
+        <!--#region device properties-->
+        <Border Grid.Row="3"  Grid.ColumnSpan="2"
+                BorderBrush="{StaticResource Brush02}" BorderThickness="1" CornerRadius="0"
+                Background="{StaticResource Brush09}"
+                VerticalAlignment="Top" 
+                MinWidth="250" MinHeight="230">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+
+                    <!--#region header-->
+                    <StackPanel Orientation="Horizontal" Background="{StaticResource Brush02}">
+                        <!--<StackPanel Orientation="Vertical" Margin="10,5,10,5" >
+                            <Button Style="{StaticResource ArrowButtonUpOnDarkBg}" Click="prevButton_Click" ToolTip="{Binding Path=ToolTip_Previous_Device, Source={StaticResource Resources}}" Cursor="Hand" Margin="0,0,0,2"/>
+                            <Button Style="{StaticResource ArrowButtonDownOnDarkBg}" Click="nextButton_Click" ToolTip="{Binding Path=ToolTip_Next_Device, Source={StaticResource Resources}}" Cursor="Hand"/>
+                        </StackPanel>-->
+                        <TextBlock Text="{Binding DeviceNum, Converter={StaticResource IndexToDeviceNameConverter}, Mode=OneWay}"  
+                                   Visibility="{Binding NoDeviceDetails, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                   FontFamily="Arial" FontSize="16" FontWeight="Bold"
+                                   Foreground="{StaticResource Brush09}"
+                                   Margin="20,10,0,10"/>
+                    </StackPanel>
+                    <!--#endregion-->
+
+
+                    <!--#region device icon & type-->
+                    <Grid Grid.Row="0" Grid.Column="0" MouseDown="deviceType_MouseDown" Cursor="Hand" Margin="5,8,0,0">
+                        <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                BorderThickness="1"
+                                Padding="2,0,2,0" Margin="5,0,5,0">
+                            <Grid Margin="5" HorizontalAlignment="Left" Height="48">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" Margin="0,0,0,0">
+                                    <Image Source="{Binding DeviceType, Converter={StaticResource DeviceIconConverter}, Mode=OneWay}" 
+                                           ToolTip="{Binding DeviceTypeToolTip}" 
+                                           Style="{StaticResource DeviceSelectorCurrentSelectionImage}" 
+                                           HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0"
+                                           IsEnabled="{Binding DeviceSelectorDeviceType, Converter={StaticResource NonNullToBoolConverter}}"
+                                           Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}"/>
+                                    <Border Width="32" Height="32" Padding="0">
+                                        <ctc:Icon IconType="ThreeDotsHorizontal"
+                                                  Foreground="{StaticResource Brush04}"
+                                                  HorizontalAlignment="Left" 
+                                                  IsEnabled="False"
+                                                  Visibility="{Binding DeviceType, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                                  Margin="5,0,8,0"/>
+                                    </Border>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
+                                    <TextBlock Text="{Binding DeviceTypeName, Mode=OneWay}" 
+                                               Visibility="{Binding NoDeviceType, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                               FontWeight="DemiBold" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" MaxWidth="300" Margin="0"/>
+                                    <TextBlock Text="{Binding Path=No_Device, Source={StaticResource Resources}}" 
+                                               VerticalAlignment="Center" 
+                                               FontStyle="Italic" FontWeight="Normal" FontSize="16" Margin="0"
+                                               Visibility="{Binding NoDeviceType, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                    <Grid Visibility="{Binding DeviceList.Count, Converter={StaticResource IsNot1ToVisibilityConverter}}">
+                                        <Grid Visibility="{Binding DeviceTypesAreAllNull, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding Path=Multiple_Device_Types, Source={StaticResource Resources}}"
+                                                       FontStyle="Italic" FontSize="14" Opacity="0.7" Margin="0,2,0,0"
+                                                       Visibility="{Binding DeviceType, Converter={StaticResource IsNullToVisibilityConverter}}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <!--#endregion-->
+
+
+                    <!--#region device properties-->
+                    <Grid Margin="20,0,0,0" 
+                          Visibility="{Binding NoDeviceDetails, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                          Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"
+                                    Visibility="{Binding NoDeviceType, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                            <Grid Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!--#region Zone-->
+                                <Grid Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Text="{Binding Path=Zone, Source={StaticResource Resources}, Mode=OneWay}"  Margin="0" Padding="0" 
+                                               Visibility="{Binding IsZonedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                               Opacity="{Binding IsIODevice, Converter={StaticResource InverseBoolToOpacity40pcConverter}}"/>
+                                </Grid>
+
+                                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal"
+                                            Visibility="{Binding IsZonedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                    <Border BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="7,0,0,0"  Padding="2,0,2,0">
+                                        <Grid>
+                                            <!--first combo here is disabled and is only visible when the other doesn't overlay it-->
+                                            <ComboBox Text=""
+                                                      MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                      PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                      PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                      IsEnabled="False" 
+                                                      Opacity="0.4"/>
+                                            <ComboBox ItemsSource="{Binding Zones}"
+                                                      SelectedItem="{Binding Zone}"
+                                                      MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                      PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                      PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                      Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                        </Grid>
+                                    </Border>
+
+                                    <Grid Visibility="{Binding IsGroupedDevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonZone, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                    </Grid>
+                                </StackPanel>
+                                <!--#endregion-->
+
+
+                                <!--#region group (not cast pro)-->
+                                <Grid Grid.Row="0" Grid.Column="0"
+                                      Visibility="{Binding IsZonedDevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                    <TextBlock Text="{Binding Path=Group, Source={StaticResource Resources}, Mode=OneWay}" Margin="0" Padding="0" 
+                                               Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                               Opacity="{Binding IsIODevice, Converter={StaticResource InverseBoolToOpacity40pcConverter}}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="0" Grid.Column="1" 
+                                      Visibility="{Binding IsZonedDevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                                Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                    
+                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,0,2,2">
+                                            <Grid>
+                                                <!--first combo here is disabled and is only visible when the other doesn't overlay it-->
+                                                <ComboBox Text=""
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                          IsEnabled="False" 
+                                                          Opacity="0.4"/>
+                                                <ComboBox ItemsSource="{Binding Groups}"
+                                                          SelectedItem="{Binding Group}"
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                          Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <Grid Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                       FontSize="18"
+                                                       Foreground="{StaticResource BrushInfo}"
+                                                       Visibility="{Binding DevicesHaveCommonGroup, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                                <!--#endregion-->
+
+
+                                <!--#region device description-->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Name, Source={StaticResource Resources}}" Margin="0" Padding="0"/>
+                                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
+                                            IsEnabled="{Binding DeviceTypesAreAllNull, Converter={StaticResource BoolToInverseConverter}}">
+                                    <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="7,0,0,0"  Padding="2,0,2,0">
+                                        <Grid IsEnabled="{Binding DeviceTypeIsValid}">
+                                            <TextBox Grid.Row="1" Grid.Column="1"
+                                                     x:Name="txtDeviceName"
+                                                     Text="{Binding DeviceName, Mode=OneWay}" 
+                                                     MaxLength="{Binding MaxNameLength}" Margin="0" Padding="0" MinWidth="80" HorizontalAlignment="Left" FontSize="12"
+                                                     PreviewKeyDown="textBox_PreviewKeyDown" KeyUp="deviceName_KeyUp"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="1,0,0,0" Padding="0" 
+                                               FontSize="18"
+                                               Foreground="{StaticResource BrushInfo}"
+                                               Visibility="{Binding DevicesHaveCommonDeviceName, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                </StackPanel>
+                                <!--#endregion-->
+
+
+                                <!--#region mode-->
+                                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                                      Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                      Margin="0,15,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BorderBrush="{StaticResource Brush04}" BorderThickness="0,0,0,0.5" Margin="0,0,10,5">
+                                        <TextBlock Text="{Binding Path=Mode, Source={StaticResource Resources}}" FontStyle="Italic"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Day, Source={StaticResource Resources}}" Margin="0,0,0,0"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Night, Source={StaticResource Resources}}" Margin="0,0,0,0"/>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                        <Border BorderBrush="{Binding DayModeIsInvalid, Converter={StaticResource BoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,0,2,0">
+                                            <ComboBox ItemsSource="{Binding Modes}"
+                                                      SelectedItem="{Binding DayMode}"
+                                                      PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                      PreviewKeyDown="comboBox_PreviewKeyDown"
+                                                      MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition MinWidth="17"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="{Binding Number}" Opacity="0.6" HorizontalAlignment="Right" Margin="0,0,3,0" Padding="0"/>
+                                                            <TextBlock Grid.Column="1" Text=":" Opacity="0.6"/>
+                                                            <TextBlock Grid.Column="2" Text="{Binding Text}"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                        </Border>
+
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonDayMode, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                        <Border BorderBrush="{Binding NightModeIsInvalid, Converter={StaticResource BoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,0,2,0">
+                                            <ComboBox x:Name="nightMode"
+                                                      ItemsSource="{Binding Modes}"
+                                                      SelectedItem="{Binding NightMode}"
+                                                      PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                      PreviewKeyDown="comboBox_PreviewKeyDown"
+                                                      MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="17"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="{Binding Number}" Opacity="0.6" HorizontalAlignment="Right" Margin="0,0,3,0" Padding="0"/>
+                                                            <TextBlock Grid.Column="1" Text=":" Opacity="0.6"/>
+                                                            <TextBlock Grid.Column="2" Text="{Binding Text}"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                        </Border>
+
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonNightMode, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+
+
+                                    <StackPanel Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Orientation="Horizontal" 
+                                                Visibility="{Binding SomeModesNotAvailableForSelectedDevices, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                Margin="5,3,5,0">
+                                        <!--<TextBlock Text="}" FontFamily="Calibri" FontSize="38" FontWeight="ExtraLight" Foreground="{StaticResource BrushWarn}" Opacity="0.5" Margin="0,0,3,5"/>-->
+                                        <TextBlock Text="{Binding Path=Note, Source={StaticResource Resources}}"
+                                                   FontSize="11" FontStyle="Italic" FontWeight="Light" Opacity="0.8"
+                                                   VerticalAlignment="Top"
+                                                   Foreground="{StaticResource BrushWarn}" 
+                                                   Margin="0,0,5,5"/>
+                                        <TextBlock Text="{Binding Path=Warn_Modes_Not_Available_For_Selected_Device, Source={StaticResource Resources}}" 
+                                                   Visibility="{Binding DeviceList.Count, Converter={StaticResource Is1ToVisibilityConverter}}"
+                                                   FontSize="11" FontStyle="Italic" FontWeight="Light" Opacity="0.8"
+                                                   Width="100" VerticalAlignment="Top"
+                                                   Foreground="{StaticResource BrushWarn}"
+                                                   Margin="0"/>
+                                        <TextBlock Text="{Binding Path=Warn_Modes_Not_Available_For_Selected_Devices, Source={StaticResource Resources}}" 
+                                                   Visibility="{Binding DeviceList.Count, Converter={StaticResource IsNot1ToVisibilityConverter}}"
+                                                   FontSize="11" FontStyle="Italic" FontWeight="Light" Opacity="0.8"
+                                                   Width="100" VerticalAlignment="Top"
+                                                   Foreground="{StaticResource BrushWarn}"
+                                                   Margin="0"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Orientation="Horizontal" 
+                                                Visibility="{Binding NoModesAvailableForSelectedDevices, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                Margin="0,0,5,0">
+                                        <TextBlock Text="}" FontFamily="Calibri" FontSize="38" FontWeight="ExtraLight" Foreground="{StaticResource BrushError}" Opacity="0.7" Margin="0,0,3,5"/>
+                                        <TextBlock Text="{Binding Path=Warn_No_Modes_Available_For_Selected_Devices, Source={StaticResource Resources}}" 
+                                                   FontSize="11" FontStyle="Italic" FontWeight="Light"
+                                                   Width="120" VerticalAlignment="Center"
+                                                   Foreground="{StaticResource BrushError}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <!--#endregion-->
+
+
+                                <!--#region volume-->
+                                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                                      Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}" 
+                                      Margin="0,15,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="{StaticResource Brush04}" BorderThickness="0,0,0,0.5" Margin="0,0,10,5">
+                                        <TextBlock Text="{Binding Path=Volume, Source={StaticResource Resources}}" FontStyle="Italic"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Day_Occupied, Source={StaticResource Resources}}" Margin="0,0,0,0"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Night_Unoccupied, Source={StaticResource Resources}}" Margin="0,0,0,0"/>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                        <Border BorderBrush="{Binding DayVolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Volumes}"
+                                                          SelectedItem="{Binding DayVolume}"
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonDayVolume, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                        <Border BorderBrush="{Binding NightVolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Volumes}"
+                                                          SelectedItem="{Binding NightVolume}"
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonNightVolume, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+
+                                </Grid>
+                                <!--#endregion-->
+
+
+                                <!--#region sensitivity, remote LED, ancillary base sounder group-->
+                                <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                                      Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}" 
+                                      Margin="0,15,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--#region sensitivity-->
+                                    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{StaticResource Brush04}" BorderThickness="0,0,0,0.5" Margin="0,0,0,5">
+                                        <TextBlock Text="{Binding Path=Sensitivity, Source={StaticResource Resources}}" FontStyle="Italic"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Day_Occupied, Source={StaticResource Resources}}" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Night_Unoccupied, Source={StaticResource Resources}}" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+
+                                    <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="25"/>
+                                        </Grid.RowDefinitions>
+
+                                        <!--#region day sensitivity-->
+                                        <StackPanel Grid.Row="0" Grid.Column="0" 
+                                                Orientation="Horizontal"
+                                                Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                HorizontalAlignment="Left">
+                                            <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                            <Border BorderBrush="{Binding DaySensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                    BorderThickness="1" 
+                                                    HorizontalAlignment="Left" 
+                                                    Margin="7,0,0,0" Padding="2,0,0,0">
+                                                <Grid>
+                                                    <ctc:NumberSpinner Value="{Binding DaySensitivity}" Minimum="{Binding MinSensitivity}" Maximum="{Binding MaxSensitivity}"
+                                                                       HorizontalAlignment="Left" Margin="0,0,0,0"
+                                                                       PreviewMouseDown="spinner_PreviewMouseDown" 
+                                                                       PreviewKeyDown="spinner_PreviewKeyDown"/>
+                                                </Grid>
+                                            </Border>
+
+                                            <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" 
+                                                       Margin="0" Padding="0" FontSize="18"
+                                                       Foreground="{StaticResource BrushInfo}"
+                                                       Visibility="{Binding DevicesHaveCommonDaySensitivity, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="0" Grid.Column="0"
+                                              Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <ctc:NumberSpinner Maximum="9" IsEnabled="False"
+                                                               HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                            <TextBlock Width="8" Height="12" Text="  " Background="{StaticResource Brush10}" Margin="14,0,0,0"/>
+                                        </Grid>
+                                        <!--#endregion-->
+
+                                        <!--#region night sensitivity-->
+                                        <StackPanel Grid.Row="1" Grid.Column="0" 
+                                                    Orientation="Horizontal" 
+                                                    Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    HorizontalAlignment="Left">
+                                            <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+                                            <Border BorderBrush="{Binding NightSensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                    BorderThickness="1" 
+                                                    HorizontalAlignment="Left" 
+                                                    Margin="7,0,0,0"  Padding="2,0,0,0">
+                                                <Grid>
+                                                    <ctc:NumberSpinner Value="{Binding NightSensitivity}" Minimum="{Binding MinSensitivity}" Maximum="{Binding MaxSensitivity}"
+                                                                       HorizontalAlignment="Left" Margin="0,0,0,0"
+                                                                       PreviewMouseDown="spinner_PreviewMouseDown" 
+                                                                       PreviewKeyDown="spinner_PreviewKeyDown"/>
+                                                </Grid>
+                                            </Border>
+
+                                            <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                       FontSize="18"
+                                                       Foreground="{StaticResource BrushInfo}"
+                                                       Visibility="{Binding DevicesHaveCommonNightSensitivity, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="1" Grid.Column="0"
+                                              Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <ctc:NumberSpinner Maximum="9" IsEnabled="False"
+                                                               HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                            <TextBlock Width="8" Height="12" Text="  " Background="{StaticResource Brush10}" Margin="14,0,0,0"/>
+                                        </Grid>
+                                        <!--#endregion-->
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Orientation="Horizontal" 
+                                                    Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                    HorizontalAlignment="Left" Opacity="0.8" Margin="10,0,15,0">
+                                            <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                                                <TextBlock Text="ü" Foreground="{StaticResource BrushInfo}" FontSize="16" FontFamily="Symbol" FontWeight="UltraLight" FontStretch="UltraCondensed" Margin="-3,2,0,0"/>
+                                                <TextBlock Text="ý" Foreground="{StaticResource BrushInfo}" FontSize="16" FontFamily="Symbol" FontWeight="UltraLight" FontStretch="UltraCondensed" Margin="-3,-7,0,0"/>
+                                                <TextBlock Text="þ" Foreground="{StaticResource BrushInfo}" FontSize="16" FontFamily="Symbol" FontWeight="UltraLight" FontStretch="UltraCondensed" Margin="-3,-7,0,-2"/>
+                                            </StackPanel>
+                                                <TextBlock Text="{Binding Path=Sensitivities_For_The_Selected_Devices_Have_Different_Ranges, Source={StaticResource Resources}}" Foreground="{StaticResource BrushInfo}" FontSize="10" MaxWidth="140" Margin="5,0,5,0"/>
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                    <!--#endregion-->
+
+                                    <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
+                                            Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"
+                                            BorderBrush="{StaticResource Brush04}" BorderThickness="0,0,0,0.5" Margin="0,5,20,20"/>
+
+                                    <!--#region Remote LED enabled-->
+                                    <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"
+                                                Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <CheckBox Content="{Binding Path=Remote_LED_Enabled, Source={StaticResource Resources}}" 
+                                                  IsChecked="{Binding RemoteLEDEnabled}"
+                                                  HorizontalAlignment="Left" FontSize="12" Margin="0,5,0,0"
+                                                  PreviewMouseDown="checkBox_PreviewMouseDown" 
+                                                  PreviewKeyDown="checkBox_PreviewKeyDown"/>
+
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-2,3,0,0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonRemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                    <!--#endregion-->
+
+                                    <!--#region ancillary base sounder-->
+                                    <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" 
+                                          Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"
+                                          Opacity="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">
+
+                                        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,-2,0,0">
+                                            
+                                            <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" 
+                                                       Text="{Binding Path=Ancillary_Base_Sounder_Group, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Left" Margin="0,10,0,0"/>
+
+                                            <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,-2,0,0">
+
+                                                <ComboBox ItemsSource="{Binding AncillaryBaseSounderGroups}"
+                                                          SelectedItem="{Binding AncillaryBaseSounderGroup}"
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                          CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                          Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                          Margin="10,5,0,0"/>
+
+                                                <ComboBox MinWidth="80" 
+                                                          Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          IsEnabled="false"
+                                                          Margin="10,5,0,0"/>
+                                                
+                                                <Grid Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="3,3,0,0" Padding="0" 
+                                                               FontSize="18"
+                                                               Foreground="{StaticResource BrushInfo}"
+                                                               Visibility="{Binding DevicesHaveCommonAncillaryBaseSounderGroup, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                    <!--#endregion-->
+
+                                </Grid>
+                                <!--#endregion-->
+
+
+                                <!--#region group (cast pro)-->
+                                <Border Grid.Row="6" Grid.ColumnSpan="2"
+                                        BorderBrush="{StaticResource Brush05}" BorderThickness="0,0,0,0.5" 
+                                        Visibility="{Binding IsZoneAndGroupDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                        Margin="0,17,10,8"/>
+
+                                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                                            Orientation="Horizontal"
+                                      Visibility="{Binding IsZoneAndGroupDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    
+                                    <TextBlock Text="{Binding Path=Group, Source={StaticResource Resources}, Mode=OneWay}"
+                                               Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                               Opacity="{Binding IsIODevice, Converter={StaticResource InverseBoolToOpacity40pcConverter}}"
+                                               Padding="0" Margin="0"/>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                                Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
+
+                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" 
+                                                HorizontalAlignment="Left" 
+                                                Margin="7,0,0,0"  Padding="2,2,2,2">
+                                            <Grid>
+                                                <!--first combo here is disabled and is only visible when the other doesn't overlay it-->
+                                                <ComboBox Text=""
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                          IsEnabled="False" 
+                                                          Opacity="0.4"/>
+                                                <ComboBox ItemsSource="{Binding Groups}"
+                                                          SelectedItem="{Binding Group}"
+                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                          Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <Grid Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0" Padding="0" 
+                                                       FontSize="18"
+                                                       Foreground="{StaticResource BrushInfo}"
+                                                       Visibility="{Binding DevicesHaveCommonGroup, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                                <!--#endregion-->
+
+                            </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                    <!--#endregion-->
+
+
+                    <!--#region text when no device is selected-->
+                    <Grid Margin="10,0,10,0" Visibility="{Binding NoDeviceDetails, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Path=Select_A_Device_To_Show_Details, Source={StaticResource Resources}}" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Width="180" Margin="0,20,0,0"/>
+                    </Grid>
+                    <!--#endregion-->
+
+
+                    <!--#region I/O config-->
+                    <Grid Visibility="{Binding IsIODevice, Converter={StaticResource BoolToVisibilityConverter}}" Margin="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="{StaticResource Brush04}" BorderThickness="0,0,0,0.5" Margin="0,5,10,10">
+                            <TextBlock Text="{Binding Path=IO_Configuration, Source={StaticResource Resources}}" FontStyle="Italic" Margin="0"/>
+                        </Border>
+
+                        <Grid Grid.Row="1"  Grid.ColumnSpan="3"
+                                Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}"
+                                Margin="0,0,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" MinWidth="50"/>
+                                <ColumnDefinition Width="Auto" MinWidth="30"/>
+                                <ColumnDefinition Width="Auto" MinWidth="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--#region column headers-->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Path=Subaddress, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="↓" FontSize="12" FontFamily="Arial" Foreground="{StaticResource Brush05}" Margin="0,-5,0,0" Padding="0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=I_O, Source={StaticResource Resources}}" Margin="5,0,2,0" Padding="0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=Channel_Abbr, Source={StaticResource Resources}}" Margin="3,0,2,0" Padding="0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Path=Zone_Group_Set, Source={StaticResource Resources}}" Margin="2,0,2,0" Padding="0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=Description, Source={StaticResource Resources}}" Margin="1,0,0,0" Padding="0"/>
+                            <!--#endregion-->
+
+                            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="0,0,0,0.5" BorderBrush="{StaticResource Brush06}" Margin="0,0,5,-1"/>
+
+                            <!--#region row headers-->
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding SubaddressNames[0]}" Margin="0,5,0,5" Padding="0" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding SubaddressNames[1]}" Margin="0,5,0,5" Padding="0" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding SubaddressNames[2]}" Margin="0,5,5,5" Padding="0" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding SubaddressNames[3]}" Margin="0,5,5,5" Padding="0" />
+                            <!--#endregion-->
+
+
+                            <!--#region input/outputs-->
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border BorderBrush="{Binding IOInputOutput1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0" Padding="2,0,0,0">
+                                    <ComboBox ItemsSource="{Binding InputOutputs}"
+                                                SelectedIndex="{Binding IOInputOutput1}"
+                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                PreviewKeyDown="showComboBoxDropdown" />
+                                </Border>
+                                <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
+                                            FontSize="18"
+                                            Foreground="{StaticResource BrushInfo}"
+                                            Visibility="{Binding DevicesHaveCommonIOInputOutput1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="2" Grid.Column="1" 
+                                        Text="{Binding IOInputOutputDesc1, Mode=OneWay}"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Opacity="{Binding IOInUse1, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+
+                            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border BorderBrush="{Binding IOInputOutput2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
+                                    <ComboBox ItemsSource="{Binding InputOutputs}"
+                                                SelectedIndex="{Binding IOInputOutput2}"
+                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
+                                            FontSize="18"
+                                            Foreground="{StaticResource BrushInfo}"
+                                            Visibility="{Binding DevicesHaveCommonIOInputOutput2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="3" Grid.Column="1" 
+                                        Text="{Binding IOInputOutputDesc2, Mode=OneWay}"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Opacity="{Binding IOInUse2, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+
+                            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border BorderBrush="{Binding IOInputOutput3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
+                                    <ComboBox ItemsSource="{Binding InputOutputs}"
+                                                SelectedIndex="{Binding IOInputOutput3}"
+                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
+                                            FontSize="18"
+                                            Foreground="{StaticResource BrushInfo}"
+                                            Visibility="{Binding DevicesHaveCommonIOInputOutput3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="4" Grid.Column="1" 
+                                        Text="{Binding IOInputOutputDesc3, Mode=OneWay}"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Opacity="{Binding IOInUse3, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+
+                            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border BorderBrush="{Binding IOInputOutput4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
+                                    <ComboBox ItemsSource="{Binding InputOutputs}"
+                                                SelectedIndex="{Binding IOInputOutput4}"
+                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
+                                            FontSize="18"
+                                            Foreground="{StaticResource BrushInfo}"
+                                            Visibility="{Binding DevicesHaveCommonIOInputOutput4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="5" Grid.Column="1" 
+                                        Text="{Binding IOInputOutputDesc4, Mode=OneWay}"
+                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Opacity="{Binding IOInUse4, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                            <!--#endregion-->
+
+
+                            <!--#region channels-->
+                            <Grid Grid.Row="2" Grid.Column="2" Visibility="{Binding IOInUse1, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOChannel1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding InputChannels}"
+                                                            SelectedIndex="{Binding IOInputChannel1}"
+                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                <ComboBox ItemsSource="{Binding OutputChannels}"
+                                                            SelectedIndex="{Binding IOOutputChannel1}"
+                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOChannel1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="3" Grid.Column="2" Visibility="{Binding IOInUse2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOChannel2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding InputChannels}"
+                                                            SelectedIndex="{Binding IOInputChannel2}"
+                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                <ComboBox ItemsSource="{Binding OutputChannels}"
+                                                            SelectedIndex="{Binding IOOutputChannel2}"
+                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOChannel2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="4" Grid.Column="2" Visibility="{Binding IOInUse3, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOChannel3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding InputChannels}"
+                                                            SelectedIndex="{Binding IOInputChannel3}"
+                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                <ComboBox ItemsSource="{Binding OutputChannels}"
+                                                            SelectedIndex="{Binding IOOutputChannel3}"
+                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOChannel3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="5" Grid.Column="2" Visibility="{Binding IOInUse4, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOChannel4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding InputChannels}"
+                                                            SelectedIndex="{Binding IOInputChannel4}"
+                                                            Visibility="{Binding IOIsInput4, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                <ComboBox ItemsSource="{Binding OutputChannels}"
+                                                            SelectedIndex="{Binding IOOutputChannel4}"
+                                                            Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOChannel4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput4, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
+                            </Grid>
+                            <!--#endregion-->
+
+
+                            <!--#region zones/groups/sets-->
+                            <Grid Grid.Row="2" Grid.Column="3" 
+                                    Visibility="{Binding IOInUse1, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOZoneSet1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Zones}"
+                                                            Text="{Binding IOZoneSet1}"
+                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                                                <Grid Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                    <ComboBox ItemsSource="{Binding Groups}"
+                                                                Text="{Binding IOZoneSet1}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox ItemsSource="{Binding Sets}"
+                                                                Text="{Binding IOZoneSet1}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="3" Grid.Column="3" 
+                                    Visibility="{Binding IOInUse2, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOZoneSet2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Zones}"
+                                                            Text="{Binding IOZoneSet2}"
+                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown" 
+                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                                                <Grid Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                    <ComboBox ItemsSource="{Binding Groups}"
+                                                                Text="{Binding IOZoneSet2}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                PreviewKeyDown="showComboBoxDropdown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox ItemsSource="{Binding Sets}"
+                                                                Text="{Binding IOZoneSet2}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                PreviewKeyDown="showComboBoxDropdown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="4" Grid.Column="3" 
+                                    Visibility="{Binding IOInUse3, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOZoneSet3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Zones}"
+                                                            Text="{Binding IOZoneSet3}"
+                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                            PreviewKeyDown="showComboBoxDropdown" 
+                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                                                <Grid Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                    <ComboBox ItemsSource="{Binding Groups}"
+                                                                Text="{Binding IOZoneSet3}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                PreviewKeyDown="showComboBoxDropdown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox ItemsSource="{Binding Sets}"
+                                                                Text="{Binding IOZoneSet3}"
+                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                PreviewKeyDown="showComboBoxDropdown" 
+                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
+                                                    FontSize="18"
+                                                    Foreground="{StaticResource BrushInfo}"
+                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
+                            </Grid>
+
+                            <Grid Grid.Row="5" Grid.Column="3"
+                                    Visibility="{Binding IOInUse4, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <Grid Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderBrush="{Binding IOZoneSet4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                                BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                            <Grid>
+                                                <ComboBox ItemsSource="{Binding Zones}"
+                                                          Text="{Binding IOZoneSet4}"
+                                                          MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown" 
+                                                          Visibility="{Binding IOIsInput4, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                                                <Grid Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                    <ComboBox ItemsSource="{Binding Groups}"
+                                                              Text="{Binding IOZoneSet4}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox ItemsSource="{Binding Sets}"
+                                                              Text="{Binding IOZoneSet4}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput4, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
+                            </Grid>
+                            <!--#endregion-->
+
+
+                            <!--#region i/o descriptions-->
+                            <Grid Grid.Row="2" Grid.Column="4" 
+                                    Visibility="{Binding IOInUse1, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <Border BorderBrush="{Binding IODescription1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                        <Grid>
+                                            <TextBox Text="{Binding IODescription1}"
+                                                     MaxLength="{Binding MaxNameLength}" 
+                                                     MinWidth="100" HorizontalAlignment="Left"
+                                                     PreviewKeyDown="textBox_PreviewKeyDown"
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                     KeyUp="ioDescription1_KeyUp"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" 
+                                                Margin="-1,0,0,0" Padding="0" FontSize="18" Foreground="{StaticResource BrushInfo}"
+                                                Visibility="{Binding DevicesHaveCommonIODescription1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                </StackPanel>
+                                <TextBox Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                            IsEnabled="False" Opacity="0.5" MinWidth="100" HorizontalAlignment="Left"/>
+                            </Grid>
+
+                            <Grid Grid.Row="3" Grid.Column="4"
+                                    Visibility="{Binding IOInUse2, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <Border BorderBrush="{Binding IODescription2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                        <Grid>
+                                            <TextBox Text="{Binding IODescription2}"
+                                                     MaxLength="{Binding MaxNameLength}" 
+                                                     MinWidth="100" HorizontalAlignment="Left"
+                                                     PreviewKeyDown="textBox_PreviewKeyDown"
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                     KeyUp="ioDescription2_KeyUp"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" 
+                                                Margin="-1,0,0,0" Padding="0" FontSize="18" Foreground="{StaticResource BrushInfo}"
+                                                Visibility="{Binding DevicesHaveCommonIODescription2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                </StackPanel>
+                                <TextBox Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                            IsEnabled="False" Opacity="0.5" MinWidth="100" HorizontalAlignment="Left"/>
+                            </Grid>
+
+                            <Grid Grid.Row="4" Grid.Column="4"
+                                    Visibility="{Binding IOInUse3, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <Border BorderBrush="{Binding IODescription3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                        <Grid>
+                                            <TextBox Text="{Binding IODescription3}"
+                                                     MaxLength="{Binding MaxNameLength}" 
+                                                     MinWidth="100" HorizontalAlignment="Left"
+                                                     PreviewKeyDown="textBox_PreviewKeyDown"
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}"
+                                                Margin="-1,0,0,0" Padding="0" FontSize="18" Foreground="{StaticResource BrushInfo}"
+                                                Visibility="{Binding DevicesHaveCommonIODescription3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                </StackPanel>
+                                <TextBox Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                            IsEnabled="False" Opacity="0.5" MinWidth="100" HorizontalAlignment="Left"/>
+                            </Grid>
+
+                            <Grid Grid.Row="5" Grid.Column="4"
+                                    Visibility="{Binding IOInUse4, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Margin="2,0,0,0">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                    <Border BorderBrush="{Binding IODescription4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
+                                        <Grid>
+                                            <TextBox Text="{Binding IODescription4}"
+                                                     MaxLength="{Binding MaxNameLength}" 
+                                                     MinWidth="100" HorizontalAlignment="Left"
+                                                     PreviewKeyDown="textBox_PreviewKeyDown"
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                     KeyUp="ioDescription4_KeyUp"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}"
+                                                Margin="-1,0,0,0" Padding="0" FontSize="18" Foreground="{StaticResource BrushInfo}"
+                                                Visibility="{Binding DevicesHaveCommonIODescription4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                </StackPanel>
+                                <TextBox Visibility="{Binding IOInputOutput4, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                            IsEnabled="False" Opacity="0.5" MinWidth="100" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <!--#endregion-->
+
+
+                            <!--#region N/As-->
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse1, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse1, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse1, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse2, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse2, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse2, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse3, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse3, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse3, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse4, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse4, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding Path=N_A, Source={StaticResource Resources}}" Visibility="{Binding IOInUse4, Converter={StaticResource InverseBoolToVisibilityConverter}}" FontWeight="Light" Foreground="{StaticResource Brush06}" Margin="3,0,0,0"/>
+                            <!--#endregion-->
+
+                        </Grid>
+
+                    </Grid>
+                    <!--#endregion-->
+
+                </StackPanel>
+
+                <!--#region footer for multiple values-->
+                <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" 
+                                Visibility="{Binding IndicateMultipleValues, Converter={StaticResource BoolToVisibilityHiddenConverter}}">
+                        <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" 
+                                   Padding="0" Margin="0,-2,0,0"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="18"
+                                   Foreground="{StaticResource BrushInfo}"/>
+                        <TextBlock Text="{Binding Path=Multiple_Values, Source={StaticResource Resources}}"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12" FontStyle="Italic"
+                                   Foreground="{StaticResource BrushInfo}"
+                                   Opacity="0.8"
+                                   Margin="0,0,5,0" Padding="0"/>
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+
+        <!--#region debug info-->
+        <Border Grid.Row="4" 
+                Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}"
+                BorderBrush="#80ffff" Background="#2080ffff" BorderThickness="2" CornerRadius="0"
+                Margin="0,10,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Text="Loops detected:" Foreground="{StaticResource Brush03}" HorizontalAlignment="Right" FontSize="11" FontWeight="Light" Margin="10,3,0,0"/>
+                <TextBlock Grid.Row="1" Text="Device names:" Foreground="{StaticResource Brush03}" HorizontalAlignment="Right" FontSize="11" FontWeight="Light" Margin="10,3,0,0"/>
+                <TextBlock Grid.Row="2" Text="Total bytes:" Foreground="{StaticResource Brush03}" HorizontalAlignment="Right" FontSize="11" FontWeight="Light" Margin="10,0,0,0"/>
+                <TextBlock Grid.Row="3" Text="Remaining:" Foreground="{StaticResource Brush03}" HorizontalAlignment="Right" FontSize="11" FontWeight="Light" Margin="10,0,0,3"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding DetectedLoops, Mode=OneWay}" FontSize="11" Foreground="{StaticResource Brush03}" FontWeight="SemiBold" Margin="5,3,10,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DebugNamesUsed, Mode=OneWay}" FontSize="11" Foreground="{StaticResource Brush03}" FontWeight="SemiBold" Margin="5,3,10,0"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding DebugNameBytesUsed, Mode=OneWay}" FontSize="11" Foreground="{StaticResource Brush03}" FontWeight="SemiBold" Margin="5,0,10,0"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding DebugNameBytesRemaining, Mode=OneWay}" FontSize="11" Foreground="{StaticResource Brush03}" FontWeight="SemiBold" Margin="5,0,10,3"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>
