@@ -1,0 +1,435 @@
+{
+  "DeviceSelectorMenu": {
+      "Menus": [
+        {
+          "ProtocolName": "CAST",
+          "MenuItems": [
+            {
+              "MenuType": "detector",
+              "MenuName": "Detector",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "CAST Optical Detector",
+                  "ShortName": "Optical"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "CAST Heat Detector",
+                  "ShortName": "Heat"
+                },
+                {
+                  "DeviceTypeHex": "0xB8",
+                  "Name": "CAST Multi Detector",
+                  "ShortName": "Multi"
+                }
+              ]
+            },
+            {
+              "MenuType": "callpoint",
+              "MenuName": "Callpoint",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "Name": "CAST MCP",
+                  "ShortName": "Callpoint"
+                }
+              ]
+            },
+            {
+              "MenuType": "interface",
+              "MenuName": "Interface",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "Name": "CAST I/O",
+                  "ShortName": "Interface"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "Name": "CAST Mains I/O",
+                  "ShortName": "Mains I/O"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "Name": "CAST Zone Monitor",
+                  "ShortName": "ZMU"
+                },
+                {
+                  "DeviceTypeHex": "0x08",
+                  "Name": "CAST Non-Latching I/O",
+                  "ShortName": "NonLatch I/O"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "CAST Hush Switch 2",
+                  "ShortName": "HS2"
+                }
+              ]
+            },
+            {
+              "MenuType": "sounder",
+              "MenuName": "Sounder",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x30",
+                  "Name": "CAST Sounder/VAD",
+                  "ShortName": "Sounder/VAD"
+                },
+                {
+                  "DeviceTypeHex": "0x20",
+                  "Name": "CAST Sounder",
+                  "ShortName": "Sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Voice Sounder/VAD",
+                  "ShortName": "Voice/VAD"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Voice Sounder",
+                  "ShortName": "Voice"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ProtocolName": "Apollo",
+          "MenuItems": [
+            {
+              "MenuType": "detector-optical",
+              "MenuName": "Optical",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Discovery Optical",
+                  "ShortName": "Disc Opt"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "XP95/S90 Detector",
+                  "ShortName": "XP95/S90 Opt"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-ionisation",
+              "MenuName": "Ionisation",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Discovery Ion",
+                  "ShortName": "Disc Ion"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "XP95/S90 Ion",
+                  "ShortName": "XP95/S90 Ion"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-heat",
+              "MenuName": "Heat",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Discovery Heat",
+                  "ShortName": "Disc Heat"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "XP95/S90 Heat",
+                  "ShortName": "XP95/S90 Heat"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "XP95/S90 High Temp",
+                  "ShortName": "Hi Temp"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-co",
+              "MenuName": "CO",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Discovery CO",
+                  "ShortName": "Disc CO"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "Discovery CO/Heat",
+                  "ShortName": "Disc CO Heat"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-multi",
+              "MenuName": "Multi",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Discovery Multi",
+                  "ShortName": "Disc Multi"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "Name": "XP95 Multi",
+                  "ShortName": "XP95/S90 Multi"
+                }
+              ]
+            },
+            {
+              "MenuType": "callpoint",
+              "MenuName": "Callpoint",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "Name": "Discovery MCP",
+                  "ShortName": "Disc MCP"
+                },
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "Name": "XP95 MCP",
+                  "ShortName": "XP95 MPC"
+                },
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "Name": "S90 MCP",
+                  "ShortName": "S90 MCP"
+                }
+              ]
+            },
+            {
+              "MenuType": "interface",
+              "MenuName": "Interface",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "Name": "XP95/S90 I/O Unit",
+                  "ShortName": "I/O Unit"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "Name": "XP95 Switch Monitor",
+                  "ShortName": "Sw Mon+"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "Name": "Intelligent Beam Detector",
+                  "ShortName": "Beam Det"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "XP95 Flame Detector",
+                  "ShortName": "Flame Det"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "XP95/S90 Zone Monitor",
+                  "ShortName": "Zone Mon"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Sounder I/O Unit",
+                  "ShortName": "Sounder I/O"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Non-Latching I/O Unit",
+                  "ShortName": "NonLatch I/O"
+                }
+              ]
+            },
+            {
+              "MenuType": "sounder",
+              "MenuName": "Sounder",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x20",
+                  "Name": "Wall Sounder",
+                  "ShortName": "Sndr/SCU"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "Name": "Beacon",
+                  "ShortName": "Sndr/SCU"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "Name": "Sounder Controller",
+                  "ShortName": "Sndr/SCU"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Sounder Beacon Base",
+                  "ShortName": "Sndr/SCU"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Sounder Base",
+                  "ShortName": "Sndr/SCU"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Sounder I/O Unit",
+                  "ShortName": "Sounder I/O"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Voice Sounder/Beacon",
+                  "ShortName": "Voice Sndr"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "Name": "Voice Sounder",
+                  "ShortName": "Voice Sndr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ProtocolName": "Hochiki",
+          "MenuItems": [
+            {
+              "MenuType": "detector-optical",
+              "MenuName": "Optical",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Optical",
+                  "ShortName": "Optical"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-ionisation",
+              "MenuName": "Ionisation",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Ion",
+                  "ShortName": "Ion"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-heat",
+              "MenuName": "Heat",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Heat",
+                  "ShortName": "Heat"
+                }
+              ]
+            },
+            {
+              "MenuType": "detector-multi",
+              "MenuName": "Multi",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "Name": "Multi",
+                  "ShortName": "Multi"
+                }
+              ]
+            },
+            {
+              "MenuType": "callpoint",
+              "MenuName": "Callpoint",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "Name": "Callpoint",
+                  "ShortName": "MCP"
+                }
+              ]
+            },
+            {
+              "MenuType": "module",
+              "MenuName": "Module",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "Name": "Addressable Beacon",
+                  "ShortName": "Beacon"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "Name": "Mini Zone Monitor",
+                  "ShortName": "Mini Zone Mon"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "Name": "Relay Controller",
+                  "ShortName": "Relay Unit"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Dual Switch Controller",
+                  "ShortName": "Sw Module"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Single I/O Module",
+                  "ShortName": "I/O Module"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Dual Zone Monitor",
+                  "ShortName": "DualZone Mon"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Non-Latching I/O Unit",
+                  "ShortName": "NonLatch I/O"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Sounder Controller (Sets)",
+                  "ShortName": "Sndr Cont (Set)"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Sounder Controller (Groups)",
+                  "ShortName": "Sndr Cont (Grp)"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "Name": "Remote Indicator",
+                  "ShortName": "Remote Ind"
+                }
+              ]
+            },
+            {
+              "MenuType": "base",
+              "MenuName": "Base",
+              "Devices": [
+                {
+                  "DeviceTypeHex": "0x20",
+                  "Name": "Base/Wall Sounder",
+                  "ShortName": "Base/Wall Sndr"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "Name": "Addressable Base",
+                  "ShortName": "Addr Base"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "Name": "Master Addressable Base",
+                  "ShortName": "Addr Base"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }

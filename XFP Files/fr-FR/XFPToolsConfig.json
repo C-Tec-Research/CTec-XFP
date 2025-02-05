@@ -1,0 +1,356 @@
+{
+  "DeviceSelectorMenu": {
+      "Menus": [
+        {
+          "ProtocolName": "CAST",
+          "MenuItems": [
+            {
+              "MenuName": "detector",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-ionisation"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-heat"
+                },
+                {
+                  "DeviceTypeHex": "0xB8",
+                  "MenuName": "detector-multi"
+                }
+              ]
+            },
+            {
+              "MenuName": "callpoint",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "MenuName": "callpoint"
+                }
+              ]
+            },
+            {
+              "MenuName": "interface",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "MenuName": "interface-mains"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "MenuName": "zone-monitor"
+                },
+                {
+                  "DeviceTypeHex": "0x08",
+                  "MenuName": "interface-unit"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "hush-button"
+                }
+              ]
+            },
+            {
+              "MenuName": "sounder",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x30",
+                  "MenuName": "sounder-vad"
+                },
+                {
+                  "DeviceTypeHex": "0x20",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder-voice-vad"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder-voice"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ProtocolName": "Apollo",
+          "MenuItems": [
+            {
+              "MenuName": "detector-optical",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-optical"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-optical"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-ionisation",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-ionisation"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-ionisation"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-heat",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-heat"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-heat"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-heat"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-co",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-co"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-multi"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-multi",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-multi"
+                },
+                {
+                  "DeviceTypeHex": "0xC0",
+                  "MenuName": "detector-multi"
+                }
+              ]
+            },
+            {
+              "MenuName": "callpoint",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "MenuName": "callpoint"
+                },
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "MenuName": "callpoint"
+                },
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "MenuName": "callpoint"
+                }
+              ]
+            },
+            {
+              "MenuName": "interface",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "MenuName": "interface-unit"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "MenuName": "interface-unit"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "MenuName": "detector-optical"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "detector-heat"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "zone-monitor"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                }
+              ]
+            },
+            {
+              "MenuName": "sounder",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x20",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder-voice"
+                },
+                {
+                  "DeviceTypeHex": "0x34",
+                  "MenuName": "sounder-voice"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ProtocolName": "Hochiki",
+          "MenuItems": [
+            {
+              "MenuName": "detector-optical",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-optical"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-ionisation",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-ionisation"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-heat",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-heat"
+                }
+              ]
+            },
+            {
+              "MenuName": "detector-multi",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0xA0",
+                  "MenuName": "detector-multi"
+                }
+              ]
+            },
+            {
+              "MenuName": "callpoint",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x1F",
+                  "MenuName": "callpoint"
+                }
+              ]
+            },
+            {
+              "MenuName": "module",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x08",
+                  "MenuName": "addressable-sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x09",
+                  "MenuName": "zone-monitor"
+                },
+                {
+                  "DeviceTypeHex": "0x10",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "zone-monitor"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                },
+                {
+                  "DeviceTypeHex": "0x41",
+                  "MenuName": "interface"
+                }
+              ]
+            },
+            {
+              "MenuName": "base",
+              "Submenu": [
+                {
+                  "DeviceTypeHex": "0x20",
+                  "MenuName": "sounder"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "MenuName": "base"
+                },
+                {
+                  "DeviceTypeHex": "0x30",
+                  "MenuName": "base"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
