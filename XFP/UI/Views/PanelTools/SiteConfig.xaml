@@ -1,0 +1,404 @@
+﻿<Page x:Class="Xfp.UI.Views.PanelTools.SiteConfig"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Xfp.UI.Views.PanelTools"
+      xmlns:ctc="clr-namespace:CTecControls.UI;assembly=CTecControls"
+      xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
+      xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
+      xmlns:viewmodels="clr-namespace:Xfp.ViewModels.PanelTools" 
+      xmlns:val="clr-namespace:Xfp.UI.Validation"
+      d:DataContext="{d:DesignInstance Type=viewmodels:SiteConfigViewModel}"
+      mc:Ignorable="d" 
+      Title="SiteConfig">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <ctcvh:BlankToNotAvailableConverter x:Key="BlankToNotAvailableConverter"/>
+        <ctcvh:BlankToItalicConverter x:Key="BlankToItalicConverter"/>
+        <ctcvh:BoolToBoldConverter x:Key="BoolToBoldConverter"/>
+        <ctcvh:InverseBoolToBoldConverter x:Key="InverseBoolToBoldConverter"/>
+        <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
+        <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
+        <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
+        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+    </Page.Resources>
+
+    <Grid Margin="10,0,0,0">
+        
+        <ScrollViewer x:Name="scrollViewer" HorizontalScrollBarVisibility="Auto" Margin="0">
+
+            <Grid Margin="0,5,5,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding PageHeader}" Style="{StaticResource PageTitle}"/>
+
+                <!--#region system, client & installation details-->
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource InputPanelBorder}" Margin="0,0,0,5" Padding="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0,0,0,1" Margin="0,0,0,10" Padding="0,3,0,13">
+                            <Grid>
+                                
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,0,0,0">
+                                    <TextBlock Text="{Binding Path=System_Name, Source={StaticResource Resources}}" FontWeight="Bold" Foreground="{StaticResource Brush03}" Margin="0,0,5,0" Padding="0"/>
+                                    <ctc:CTecTextBox Text="{Binding SystemName}" 
+                                                     MaxLength="16" Width="132" FontWeight="Bold" Foreground="{StaticResource Brush03}" FontFamily="Courier New" FontSize="13" Padding="0,1,0,0"
+                                                     PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                     Margin="0">
+                                    </ctc:CTecTextBox>
+                                </StackPanel>
+
+                                <!--<TextBlock Text="{Binding Path=Panel_Location, Source={StaticResource Resources}}" Padding="0,2,0,0" Margin="50,0,5,0"/>
+                                    <ctc:CTecTextBox Text="{Binding PanelLocation}" 
+                                                     PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                                     CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                     Width="132" Margin="0"/>-->
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Firmware_Version, Source={StaticResource Resources}}" Opacity="0.7" Padding="0,2,0,0" Margin="50,0,5,0"/>
+                                    <ctc:CTecTextBox Grid.Row="5" Grid.Column="1" Text="{Binding FirmwareVersion, Converter={StaticResource BlankToNotAvailableConverter}, Mode=OneWay}" Width="60" HorizontalAlignment="Left" IsEnabled="False" Margin="0" Padding="2,0,0,0"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Row="1" HorizontalAlignment="Center" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="24.553"/>
+                                <ColumnDefinition Width="15.447"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Client_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="1" Text="{Binding ClientName}" PreviewKeyDown="ctrl_PreviewKeyDown" Width="200" Margin="0,2,25,3" Grid.ColumnSpan="2"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Client_Address, Source={StaticResource Resources}}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,2,25,0" Grid.ColumnSpan="2">
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[0]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[1]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[2]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[3]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Postcode, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,0,25,0" Grid.ColumnSpan="2">
+                                <ctc:CTecTextBox Grid.Column="0" Text="{Binding ClientPostcode}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
+                                <TextBlock Text="{Binding Path=Tel, Source={StaticResource Resources}}" Width="35" TextAlignment="Right" Margin="0,0,5,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientTelephone}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=Installer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="5" Text="{Binding InstallerName}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,2,0,3"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=Installer_Address, Source={StaticResource Resources}}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Vertical" Margin="0,2,0,0">
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[0]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[1]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[2]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[3]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Path=Postcode, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                            <StackPanel Grid.Row="2" Grid.Column="5" Orientation="Horizontal">
+                                <ctc:CTecTextBox Text="{Binding InstallerPostcode}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
+                                <TextBlock Text="{Binding Path=Tel, Source={StaticResource Resources}}" Width="35" TextAlignment="Right" Margin="0,0,5,0"/>
+                                <ctc:CTecTextBox Text="{Binding EngineerTelephone}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Path=Engineer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <ctc:CTecTextBox Grid.Row="4" Grid.Column="5" Width="200" Text="{Binding EngineerName}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Installed_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <ctc:CTecDatePicker Grid.Row="4" Grid.Column="1" 
+                                                SelectedDate="{Binding InstallDate}" 
+                                                SelectedDateFormat="Short"
+                                                PreviewMouseDown="ctrl_PreviewMouseDown" 
+                                                PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                                Foreground="{StaticResource Brush02}" FontSize="11" MinWidth="130" HorizontalAlignment="Left" Margin="0,9,0,3"/>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Commissioned_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                            <ctc:CTecDatePicker Grid.Row="5" Grid.Column="1" 
+                                                SelectedDate="{Binding CommissionDate}"
+                                                SelectedDateFormat="Short"
+                                                PreviewMouseDown="ctrl_PreviewMouseDown" 
+                                                PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                                Foreground="{StaticResource Brush02}" FontSize="11" MinWidth="130" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+
+                        </Grid>
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region maintenance-->
+                <TextBlock Grid.Row="2" Text="{Binding PanelDesc}" Style="{StaticResource PageTitle}" Margin="0,5,0,0"/>
+                <!--#endregion-->
+                
+                <!--#region maintenance-->
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0,0,5,5" Padding="10">
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Normal_String, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,0,5,0" />
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="{Binding QuiescentStringIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1">
+                            <ctc:CTecTextBox Text="{Binding QuiescentString}"
+                                             HorizontalAlignment="Left"
+                                             FontFamily="Lucida Console" FontSize="12"
+                                             PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                             CommandManager.PreviewExecuted="textBox_PreviewExecuted" 
+                                             MaxLength="40" Padding="0,2,0,0" MinWidth="250" Margin="2,1,1,0" Height="20" VerticalAlignment="Top"/>
+                        </Border>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Maintenance_String, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,6,5,0" Padding="0"/>
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="{Binding MaintenanceStringIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1">
+                            <ctc:CTecTextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                             Text="{Binding MaintenanceString}"
+                                             HorizontalAlignment="Left"
+                                             FontFamily="Lucida Console" FontSize="12" 
+                                             PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                             CommandManager.PreviewExecuted="textBox_PreviewExecuted" 
+                                             MaxLength="40" Padding="0,2,0,0" MinWidth="250" Margin="2,1,1,0"/>
+                        </Border>
+                    
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Maintenance_Date, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,2,5,0" Padding="0"/>
+                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                            <ctc:CTecDatePicker Grid.Row="2" Grid.Column="1" 
+                                                SelectedDate="{Binding MaintenanceDate}" 
+                                                SelectedDateFormat="Short"
+                                                PreviewMouseDown="ctrl_PreviewMouseDown" 
+                                                PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                                Foreground="{StaticResource Brush02}" FontSize="11" MinWidth="130" HorizontalAlignment="Left" Margin="3,3,0,3"/>
+                            <CheckBox Grid.Row="2" Grid.Column="2" Content="{Binding Path=Send_To_Panel, Source={StaticResource Resources}}" HorizontalAlignment="Right" IsChecked="{Binding SendMaintToPanel}" PreviewMouseDown="ctrl_PreviewMouseDown" FontSize="12" Margin="20,4,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region night/day modes-->
+                <Border Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0,0,0,5" Padding="10,15,10,10">
+                    <Grid Margin="15,-5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Hour_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=Minute_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>-->
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=Day_Mon_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="5" Text="{Binding Path=Day_Tue_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="6" Text="{Binding Path=Day_Wed_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding Path=Day_Thu_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="8" Text="{Binding Path=Day_Fri_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="9" Text="{Binding Path=Day_Sat_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="10" Text="{Binding Path=Day_Sun_Abbr, Source={StaticResource Resources}}" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                                  Text="{Binding Path=Day_Begins_At, Source={StaticResource Resources}}" 
+                                  Style="{StaticResource StandardTextBlock}" 
+                                  Opacity="{Binding EnableAutoNightMode, Converter={StaticResource BoolToOpacity40pcConverter}}" 
+                                  HorizontalAlignment="Right" Margin="0,-5,5,0"/>
+                        <ctc:TimePicker Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="tpOccupied" HorizontalAlignment="Center" Value="{Binding OccupiedBegins}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0"
+                                   Text="{Binding Path=Night_Begins_At, Source={StaticResource Resources}}"
+                                   Style="{StaticResource StandardTextBlock}"
+                                   Opacity="{Binding EnableAutoNightMode, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                                   HorizontalAlignment="Right" Margin="0,-5,5,0"/>
+                        <ctc:TimePicker Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="tpUnoccupied" HorizontalAlignment="Center" Value="{Binding OccupiedEnds}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+
+                        <CheckBox Grid.Row="1" Grid.Column="4" IsChecked="{Binding DayStart[0]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="5" IsChecked="{Binding DayStart[1]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="6" IsChecked="{Binding DayStart[2]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="7" IsChecked="{Binding DayStart[3]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="8" IsChecked="{Binding DayStart[4]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="9" IsChecked="{Binding DayStart[5]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="1" Grid.Column="10" IsChecked="{Binding DayStart[6]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+
+                        <CheckBox Grid.Row="2" Grid.Column="4" IsChecked="{Binding NightStart[0]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="5" IsChecked="{Binding NightStart[1]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="6" IsChecked="{Binding NightStart[2]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="7" IsChecked="{Binding NightStart[3]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="8" IsChecked="{Binding NightStart[4]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="9" IsChecked="{Binding NightStart[5]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+                        <CheckBox Grid.Row="2" Grid.Column="10" IsChecked="{Binding NightStart[6]}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,3,0,0" />
+
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region time-->
+                <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" Style="{StaticResource InputPanelBorder}" Margin="0,0,5,0" Padding="10">
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource Brush10}" BorderBrush="{StaticResource Brush06}" BorderThickness="1" Margin="0,5,0,0">
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentTime}" HorizontalAlignment="Center" FontFamily="Arial Black" Foreground="{StaticResource Brush04}" FontSize="14" Margin="5,6,5,6" Padding="0,2,0,0"/>
+                        </Border>
+                        <CheckBox Grid.Row="1" Grid.Column="0" Content="{Binding Path=Send_To_Panel, Source={StaticResource Resources}}" HorizontalAlignment="Left" IsChecked="{Binding SyncPanelTime}" FontSize="12" Margin="20,10,0,0"/>
+                        <CheckBox Grid.Row="2" Grid.Column="0" Content="{Binding Path=Auto_Adjust_DST, Source={StaticResource Resources}}" HorizontalAlignment="Left" IsChecked="{Binding AutoAdjustDST}" PreviewMouseDown="ctrl_PreviewMouseDown" FontSize="12" Margin="20,10,0,0"/>
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region access/reset codes-->
+                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource InputPanelBorder}" Margin="0,0,5,0" Padding="10">
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=AL2_Code, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,0,5,0" />
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="{Binding AL2CodeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1">
+                            <ctc:CTecTextBox Text="{Binding AL2Code}"
+                                             FontFamily="Lucida Console" FontSize="12" CharacterCasing="Upper" 
+                                             PreviewKeyDown="al2Code_PreviewKeyDown" 
+                                             PreviewTextInput="al2Code_PreviewTextInput"
+                                             CommandManager.PreviewExecuted="textBox_PreviewExecuted" 
+                                             MaxLength="4" Padding="0,2,0,0" Width="36" Margin="0,2,0,0" Grid.ColumnSpan="2" Height="20" VerticalAlignment="Top"/>
+                        </Border>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=AL3_Code, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,6,5,0" Padding="0"/>
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="{Binding AL3CodeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1">
+                            <ctc:CTecTextBox Text="{Binding AL3Code}"
+                                             FontFamily="Lucida Console" FontSize="12" CharacterCasing="Upper" 
+                                             PreviewKeyDown="al3Code_PreviewKeyDown" 
+                                             PreviewTextInput="al3Code_PreviewTextInput"
+                                             CommandManager.PreviewExecuted="textBox_PreviewExecuted" 
+                                             MaxLength="4" Padding="0,2,0,0" Width="36" Margin="0,2,0,0"/>
+                        </Border>
+
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region event output, LED, recalibrate-->
+                <Border Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0,0,0,0" Padding="10">
+                    <Grid Margin="10,3,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Grid.Row="1" Grid.Column="0" 
+                                  Content="{Binding Path=Real_Time_Output_Of_Events, Source={StaticResource Resources}}" 
+                                  IsChecked="{Binding RealTimeEventOutput}" 
+                                  PreviewMouseDown="ctrl_PreviewMouseDown" 
+                                  PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                  FontSize="12" Margin="0,2,0,0"/>
+
+                        <CheckBox Grid.Row="2" Grid.Column="0" 
+                                  Content="{Binding Path=Blink_Polling_LED, Source={StaticResource Resources}}" 
+                                  IsChecked="{Binding BlinkPollingLED}" 
+                                  PreviewMouseDown="ctrl_PreviewMouseDown" 
+                                  PreviewKeyDown="ctrl_PreviewKeyDown" 
+                                  FontSize="12" Margin="0,10,0,0"/>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,5,0,0">
+                            <TextBlock Visibility="{Binding ShowRecalibrationTime, Converter={StaticResource BoolToVisibilityConverter}}"
+                                       Text="{Binding Path=Recalibrate_At, Source={StaticResource Resources}}" 
+                                       Style="{StaticResource StandardTextBlock}" 
+                                       HorizontalAlignment="Right"/>
+
+                            <ctc:TimePicker Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
+                                        Visibility="{Binding ShowRecalibrationTime, Converter={StaticResource BoolToVisibilityConverter}}"
+                                        Value="{Binding RecalibrationTime}" Format="hh" 
+                                        HorizontalAlignment="Center" Margin="0,4,0,0"
+                                        PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <!--<Border Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="1" Style="{StaticResource InputPanelBorder}" Padding="10">
+                    
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Path=Firmware_Version, Source={StaticResource Resources}}" Opacity="0.7"/>
+                        <TextBlock Text="{Binding FirmwareVersion, Converter={StaticResource BlankToNotAvailableConverter}, Mode=OneWay}" Opacity="0.7"/>
+                    </StackPanel>
+
+                </Border>-->
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

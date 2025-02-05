@@ -1,0 +1,848 @@
+﻿<Page x:Class="Xfp.UI.Views.PanelTools.DeviceDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ctce="clr-namespace:CTecControls.UI.Extensions;assembly=CTecControls"
+      xmlns:ctcds="clr-namespace:CTecControls.UI.DeviceSelector;assembly=CTecControls"
+      xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
+      xmlns:local="clr-namespace:Xfp.UI.Views.PanelTools"
+      xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
+      xmlns:viewmodels="clr-namespace:Xfp.ViewModels.PanelTools" 
+      d:DataContext="{d:DesignInstance Type=viewmodels:DeviceDetailsViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="950">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
+        <ctcvh:BoolToBoldConverter x:Key="BoolToBoldConverter"/>
+        <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
+        <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+        <ctcvh:GreaterThanOneToVisibilityConverter x:Key="GreaterThanOneToVisibilityConverter"/>
+        <ctcvh:EqualsZeroToVisibilityConverter x:Key="EqualsZeroToVisibilityConverter"/>
+        <ctcvh:EqualsOneToVisibilityConverter x:Key="EqualsOneToVisibilityConverter"/>
+        <ctcvh:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter"/>
+        <ctcvh:NonNullToVisibilityConverter x:Key="NonNullToVisibilityConverter"/>
+        <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
+        <ctcvh:NonBlankToVisibilityConverter x:Key="NonBlankToVisibilityConverter"/>
+        <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
+        <ctcvh:BoolToYesNoConverter x:Key="BoolToYesNoConverter"/>
+        <ctcvh:IsInvalidIndexToErrorColourConverter x:Key="IsInvalidIndexToErrorColourConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
+        <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
+        <vh:GroupToStringConverter x:Key="GroupToStringConverter"/>
+        <vh:ZoneToStringConverter x:Key="ZoneToStringConverter"/>
+        <vh:DeviceNameKeyToValueConverter x:Key="DeviceNameKeyToValueConverter"/>
+        <vh:DeviceNameToStringConverter x:Key="DeviceNameToStringConverter"/>
+        <vh:BaseSounderGroupToStringConverter x:Key="BaseSounderGroupToStringConverter"/>
+
+        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+            <Track x:Name="PART_Track" 
+                   IsDirectionReversed="True"
+                   ViewportSize="NaN"
+                   Margin="0,14,0,0" 
+                   Width="20">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}" MinHeight="60" Margin="0,1,9,3.5">
+                        <Thumb.BorderBrush>
+                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
+                        </Thumb.BorderBrush>
+                        <Thumb.Background>
+                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
+                        </Thumb.Background>
+                    </Thumb>
+                </Track.Thumb>
+            </Track>
+        </ControlTemplate>
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+            <Setter Property="Width" Value="14"/>
+            <Setter Property="Margin" Value="-14,-14,-8,-2" />
+            <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="MinHeight" Value="{Binding Height, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                            <Border Padding="0 4">
+                                <Track x:Name="PART_Track"
+                                       IsDirectionReversed="true"
+                                       IsEnabled="{TemplateBinding IsMouseOver}"
+                                       Width="10"
+                                       HorizontalAlignment="Center" >
+                                    <Track.Thumb>
+                                        <Thumb Style="{StaticResource ScrollBarThumb}"/>
+                                    </Track.Thumb>
+                                </Track>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="Width" Value="Auto" />
+                    <Setter Property="Height" Value="14" />
+                    <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+                </Trigger>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Width" Value="18" />
+                    <Setter Property="Height" Value="Auto" />
+                    <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Margin="0,5,0,0">
+        <ScrollViewer x:Name="scrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="5,0,0,0">
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+
+                <!--#region header bar-->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,4">
+
+                    <!--#region loop selector-->
+                    <StackPanel Orientation="Vertical"
+                                Visibility="{Binding NumLoops, Converter={StaticResource GreaterThanOneToVisibilityConverter}}"
+                                VerticalAlignment="Bottom" Margin="0,0,0,2">
+                        <Border Background="{StaticResource Brush02}" BorderBrush="{StaticResource Brush02}" BorderThickness="1.5,1.5,1.5,0" CornerRadius="10,10,0,0" Padding="10,1,10,1">
+                            <TextBlock Text="{Binding Path=Loop_Number, Source={StaticResource Resources}}" 
+                                    Foreground="{StaticResource Brush10}" 
+                                    FontSize="14" FontWeight="DemiBold" 
+                                    HorizontalAlignment="Center" Margin="0"/>
+                        </Border>
+                        <Border Background="{StaticResource Brush08}" BorderBrush="{StaticResource Brush02}" BorderThickness="1.5,0,1.5,1.5" CornerRadius="0,0,10,10" Padding="5,3,5,3">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton Content="1" GroupName="LoopSelector" Style="{StaticResource LoopSelectorRadioButton}" IsChecked="{Binding IsLoop1}" Margin="2,0,5,0"/>
+                                <RadioButton Content="2" GroupName="LoopSelector" Style="{StaticResource LoopSelectorRadioButton}" IsChecked="{Binding IsLoop1, Converter={StaticResource BoolToInverseConverter}}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region device selector-->
+                    <ctcds:DeviceSelectorMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                            x:Name="ctcDeviceSelector" 
+                                            ToolTip="{Binding Path=ToolTip_DeviceSelector_Select, Source={StaticResource Resources}}" 
+                                            Margin="10,0,10,0"/>
+                    <!--#endregion-->
+
+                </StackPanel>
+                <!--#endregion-->
+
+                
+                <!--#region main data grids-->
+                <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--contextProxy is here to give DataGridTemplateColumns access to the DataContext-->
+                    <FrameworkElement x:Name="contextProxy" Visibility="Collapsed"/>
+
+                    <!--#region Loop 1 grid-->
+                    <DataGrid Grid.Row="1" x:Name="grdDeviceSummaryLoop1"
+                              ItemsSource="{Binding Loop1}"
+                              SelectionMode="Extended"
+                              ctce:DataGridListBoxExtender.SelectedItems="{Binding Loop1SelectedItems}" 
+                              SelectedItem="{Binding Loop1SelectedItem}" 
+                              Visibility="{Binding IsLoop1, Converter={StaticResource BoolToVisibilityConverter}}"
+                              CanUserSortColumns="True"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionUnit="FullRow"
+                              SelectionChanged="grdDeviceDetails_SelectionChanged"
+                              KeyUp="grdDeviceDetails_KeyUp">
+                        
+                        <!--  *** don't forget to replicate the column definitions for Loop 2 *** -->
+                        
+                        <DataGrid.Columns>
+
+                            <!--#region device number-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}" TextAlignment="Right" Margin="12,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding DeviceNum}" 
+                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                               Style="{StaticResource StandardLabel}" 
+                                               HorizontalContentAlignment="Right"
+                                               Margin="0,5,15,0"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region device type-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}"/>
+                                    </StackPanel>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                BorderThickness="1" CornerRadius="5" 
+                                                Height="42" Padding="0,0,2,0">
+                                            <StackPanel Orientation="Horizontal" Margin="0,-2,3,-2" ToolTip="{Binding DeviceTypeToolTip}">
+                                                <Image Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
+                                                       Style="{StaticResource MainDataGridIcon}" 
+                                                       Width="34" Height="34" Stretch="Uniform" Margin="0,1,5,0"/>
+                                                <TextBlock Text="{Binding DeviceTypeName, Mode=OneWay}" Margin="0,0,0,0"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region zone/group-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}" Margin="5,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                    <Grid Grid.Row ="0" Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}" VerticalAlignment="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        
+                                                        <Border Grid.Row="0"
+                                                                Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                                BorderThickness="1" CornerRadius="5" 
+                                                                Height="26" Padding="0">
+                                                            <Grid>
+                                                                <TextBlock Text="{Binding ZoneDesc}"
+                                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                           Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                           Margin="5,0,3,0"/>
+                                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                                    <TextBlock Text="--" 
+                                                                                HorizontalAlignment="Left" 
+                                                                                Visibility="{Binding ZoneDesc, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                                                                Margin="10,0,18,0"/>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+                                                        
+                                                        <Border Grid.Row="1"
+                                                                Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                                BorderThickness="1" CornerRadius="5" 
+                                                                Height="26" Padding="0">
+                                                            <Grid>
+                                                                <TextBlock Text="{Binding GroupDesc}" 
+                                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                           Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                           Margin="5,0,3,0" />
+                                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                                    <TextBlock Text="--" 
+                                                                                HorizontalAlignment="Left" 
+                                                                                Visibility="{Binding GroupDesc, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                                                                Margin="10,0,18,0"/>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+                                                    
+                                                    <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                            BorderThickness="1" CornerRadius="5" 
+                                                            Visibility="{Binding IsIODevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            Height="26" Padding="0">
+                                                        <TextBlock Text="{Binding Path=See_IO_Configuration, Source={StaticResource Resources}}" 
+                                                                   ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                   Foreground="{StaticResource BrushWarn}" FontStyle="Italic" Margin="5,0,3,0" />
+                                                    </Border>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                <TextBlock Text="--" 
+                                                            HorizontalAlignment="Left" 
+                                                            Visibility="{Binding DeviceType, Converter={StaticResource NonZeroToVisibilityConverter}}"
+                                                            Margin="10,0,18,0"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region device name-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Device_Name, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}" />
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <TextBlock Text="{Binding DeviceNameIndex, Converter={StaticResource DeviceNameKeyToValueConverter}}" 
+                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                           Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                           Margin="3,0,3,0"/>
+                                            </Border>
+                                            <TextBlock Text="--" 
+                                                       HorizontalAlignment="Left" 
+                                                       Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                       Margin="10,0,18,0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+                            
+                            <!--#region sensitivity/volume desc-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Volume_Sensitivity_mode, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                               Margin="10,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                                    Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding SensitivityDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        Height="21" Padding="0" Margin="10,5,10,0"/>
+                                            <TextBlock Text="{Binding ModeDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       Height="21" Padding="0" Margin="10,5,10,0"/>
+                                            <TextBlock Text="{Binding VolumeDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       Height="21" Padding="0" Margin="10,5,10,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region sensitivity/volume/mode-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Day_Night, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                               Margin="0,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                                    Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding SensitivityValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding ModeValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding VolumeValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region remote LED-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.RemoteLEDColumnVisibility, Source={x:Reference contextProxy}}">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Remote_LED_Header, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               Margin="10,0,8,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="10" Height="10" Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Path Fill="{StaticResource Brush03}" Stretch="Fill" 
+                                                  Data="{Binding RemoteLEDEnabled, Converter={StaticResource IsTrueToSVGPathDataConverter}}"
+                                                  Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                            <TextBlock Text="-" HorizontalAlignment="Left" Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource InverseBoolToVisibilityConverter}}" Margin="0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region base sounder-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.BaseSounderColumnVisibility, Source={x:Reference contextProxy}}">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Base_Sounder_Header, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               Margin="10,0,8,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                    <TextBlock Text="{Binding AncillaryBaseSounderGroup, Converter={StaticResource BaseSounderGroupToStringConverter}, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Left" 
+                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                               Margin="10,0,18,0"/>
+                                                    <TextBlock Text="--" 
+                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                               HorizontalAlignment="Left" 
+                                                               Margin="10,0,18,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                <TextBlock Text="--" 
+                                                           HorizontalAlignment="Left" 
+                                                           Margin="10,0,18,0"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Margin" Value="1,0,-2,0" />
+                                <Setter Property="Visibility" Value="{Binding ShowThisDevice, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Border.IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource SelectedDeviceBackground}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource SelectedDeviceBackground}" />
+                                        <Setter Property="BorderBrush" Value="{StaticResource SelectedDeviceBackground}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+
+                    </DataGrid>
+                    <!--#endregion-->
+
+                    
+                    <!--#region Loop 2 grid-->
+                    <DataGrid Grid.Row="1" x:Name="grdDeviceSummaryLoop2"
+                              ItemsSource="{Binding Loop2}"
+                              SelectionMode="Extended"
+                              ctce:DataGridListBoxExtender.SelectedItems="{Binding Loop2SelectedItems}" 
+                              SelectedItem="{Binding Loop2SelectedItem}"
+                              Visibility="{Binding IsLoop1, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                              CanUserSortColumns="False"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionUnit="FullRow"
+                              SelectionChanged="grdDeviceDetails_SelectionChanged"
+                              KeyUp="grdDeviceDetails_KeyUp">
+
+                        <DataGrid.Columns>
+
+                            <!--#region device number-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}" TextAlignment="Right" Margin="12,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding DeviceNum}" 
+                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                               Style="{StaticResource StandardLabel}" 
+                                               HorizontalContentAlignment="Right"
+                                               Margin="0,5,15,0"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region device type-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}"/>
+                                    </StackPanel>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                BorderThickness="1" CornerRadius="5" 
+                                                Height="42" Padding="0,0,2,0">
+                                            <StackPanel Orientation="Horizontal" Margin="0,-2,3,-2" ToolTip="{Binding DeviceTypeToolTip}">
+                                                <Image Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
+                                                       Style="{StaticResource MainDataGridIcon}" 
+                                                       Width="34" Height="34" Stretch="Uniform" Margin="0,1,5,0"/>
+                                                <TextBlock Text="{Binding DeviceTypeName, Mode=OneWay}" Margin="0,0,0,0"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region zone/group-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource Brush10}" Margin="5,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                    <Grid Grid.Row ="0" Visibility="{Binding IsIODevice, Converter={StaticResource InverseBoolToVisibilityConverter}}" VerticalAlignment="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Border Grid.Row="0"
+                                                                Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                                BorderThickness="1" CornerRadius="5" 
+                                                                Height="26" Padding="0">
+                                                            <Grid>
+                                                                <TextBlock Text="{Binding ZoneDesc}"
+                                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                           Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                           Margin="5,0,3,0"/>
+                                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                                    <TextBlock Text="--" 
+                                                                                HorizontalAlignment="Left" 
+                                                                                Visibility="{Binding ZoneDesc, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                                                                Margin="10,0,18,0"/>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+
+                                                        <Border Grid.Row="1"
+                                                                Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                                BorderThickness="1" CornerRadius="5" 
+                                                                Height="26" Padding="0">
+                                                            <Grid>
+                                                                <TextBlock Text="{Binding GroupDesc}" 
+                                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                           Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                           Margin="5,0,3,0" />
+                                                                <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                                                    <TextBlock Text="--" 
+                                                                                HorizontalAlignment="Left" 
+                                                                                Visibility="{Binding GroupDesc, Converter={StaticResource IsNullToVisibilityConverter}}"
+                                                                                Margin="10,0,18,0"/>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+
+                                                    <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                            BorderThickness="1" CornerRadius="5" 
+                                                            Visibility="{Binding IsIODevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            Height="26" Padding="0">
+                                                        <TextBlock Text="{Binding Path=See_IO_Configuration, Source={StaticResource Resources}}" 
+                                                                   ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                                   Foreground="{StaticResource BrushWarn}" FontStyle="Italic" Margin="5,0,3,0" />
+                                                    </Border>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                <TextBlock Text="--" 
+                                                            HorizontalAlignment="Left" 
+                                                            Visibility="{Binding DeviceType, Converter={StaticResource NonZeroToVisibilityConverter}}"
+                                                            Margin="10,0,18,0"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region device name-->
+                            <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Device_Name, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}" />
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <TextBlock Text="{Binding DeviceNameIndex, Converter={StaticResource DeviceNameKeyToValueConverter}}" 
+                                                           ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                           Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                           Margin="3,0,3,0"/>
+                                            </Border>
+                                            <TextBlock Text="--" 
+                                                       HorizontalAlignment="Left" 
+                                                       Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                       Margin="10,0,18,0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region sensitivity/volume desc-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Volume_Sensitivity_mode, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                               Margin="10,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                                    Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding SensitivityDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        Height="21" Padding="0" Margin="10,5,10,0"/>
+                                            <TextBlock Text="{Binding ModeDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       Height="21" Padding="0" Margin="10,5,10,0"/>
+                                            <TextBlock Text="{Binding VolumeDesc, Mode=OneWay}" 
+                                                       Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                       ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       Height="21" Padding="0" Margin="10,5,10,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region sensitivity/volume/mode-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Day_Night, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                               Margin="0,0,0,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                                    Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding SensitivityValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding ModeValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding VolumeValue, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Center" 
+                                                               Margin="0"/>
+                                                </Grid>
+                                            </Border>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region remote LED-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.RemoteLEDColumnVisibility, Source={x:Reference contextProxy}}">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Remote_LED_Header, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               Margin="10,0,8,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="10" Height="10" Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Path Fill="{StaticResource Brush03}" Stretch="Fill" 
+                                                  Data="{Binding RemoteLEDEnabled, Converter={StaticResource IsTrueToSVGPathDataConverter}}"
+                                                  Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                            <TextBlock Text="-" HorizontalAlignment="Left" Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource InverseBoolToVisibilityConverter}}" Margin="0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                            <!--#region base sounder-->
+                            <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.BaseSounderColumnVisibility, Source={x:Reference contextProxy}}">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Path=Base_Sounder_Header, Source={StaticResource Resources}}"
+                                               Foreground="{StaticResource Brush10}"
+                                               Margin="10,0,8,0"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
+                                            <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderThickness="1" CornerRadius="5" 
+                                                    Height="26" Padding="0">
+                                                <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                    <TextBlock Text="{Binding AncillaryBaseSounderGroup, Converter={StaticResource BaseSounderGroupToStringConverter}, Mode=OneWay}" 
+                                                               ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
+                                                               HorizontalAlignment="Left" 
+                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                               Margin="10,0,18,0"/>
+                                                    <TextBlock Text="--" 
+                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                               HorizontalAlignment="Left" 
+                                                               Margin="10,0,18,0"/>
+                                                </Grid>
+                                            </Border>
+                                            <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                                <TextBlock Text="--" 
+                                                           HorizontalAlignment="Left" 
+                                                           Margin="10,0,18,0"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--#endregion-->
+
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Margin" Value="1,0,-2,0" />
+                                <Setter Property="Visibility" Value="{Binding ShowThisDevice, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Border.IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource SelectedDeviceBackground}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource SelectedDeviceBackground}" />
+                                        <Setter Property="BorderBrush" Value="{StaticResource SelectedDeviceBackground}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+
+                    </DataGrid>
+                    <!--#endregion-->
+
+
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region right bar-->
+                <WrapPanel Grid.Row="1" Grid.Column="1" Margin="10,0,10,0">
+                    <local:DeviceInfoPanel x:Name="ctcInfoPanel"/>
+                </WrapPanel>
+                <!--#endregion-->
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+</Page>
