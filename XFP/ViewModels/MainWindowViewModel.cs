@@ -473,7 +473,7 @@ namespace Xfp.ViewModels
 
         private bool _mainWindowEnabled  = true;
         private bool _headerPanelEnabled = true;
-        public bool MainWindowEnabled { get => _mainWindowEnabled && !PrintIsOpen; set { _mainWindowEnabled = value; OnPropertyChanged(); } }
+        public bool MainWindowEnabled { get => _mainWindowEnabled /*&& !PrintIsOpen*/; set { _mainWindowEnabled = value; OnPropertyChanged(); } }
         public bool HeaderPanelEnabled { get => _headerPanelEnabled; set { _headerPanelEnabled = value; OnPropertyChanged(); OnPropertyChanged(nameof(PanelIsReadOnly)); } }
 
 
@@ -638,6 +638,7 @@ namespace Xfp.ViewModels
                  || text == CTecControls.Cultures.Resources.Menu_New
                  || text == CTecControls.Cultures.Resources.Menu_Open
                  || text == CTecControls.Cultures.Resources.Menu_Save
+                 || text == CTecControls.Cultures.Resources.Menu_Print
                  || text == CTecControls.Cultures.Resources.Menu_Settings
                  || text == CTecControls.Cultures.Resources.Menu_Protocol
                  || text == CTecControls.Cultures.Resources.Menu_View
@@ -694,9 +695,9 @@ namespace Xfp.ViewModels
                     {
                         // set menu item's hotkey modifiers
                         var prefix = new StringBuilder();
-                        if (ctrl) prefix.Append(CTecControls.Cultures.Resources.Key_Name_Ctrl + "+");
+                        if (ctrl)  prefix.Append(CTecControls.Cultures.Resources.Key_Name_Ctrl + "+");
                         if (shift) prefix.Append(CTecControls.Cultures.Resources.Key_Name_Shift + "+");
-                        if (alt) prefix.Append(CTecControls.Cultures.Resources.Key_Name_Alt + "+");
+                        if (alt)   prefix.Append(CTecControls.Cultures.Resources.Key_Name_Alt + "+");
 
                         return prefix + key;
                     }
@@ -713,6 +714,7 @@ namespace Xfp.ViewModels
             if (menuText == CTecControls.Cultures.Resources.Menu_Open) return () => FileOpen(null);
             if (menuText == CTecControls.Cultures.Resources.Menu_Save) return FileSave;
             if (menuText == CTecControls.Cultures.Resources.Menu_Save_As) return FileSaveAs;
+            if (menuText == CTecControls.Cultures.Resources.Menu_Print) return showPrintOptions;
             if (menuText == CTecControls.Cultures.Resources.Menu_Zoom) return showZoomControl;
             if (menuText == CTecControls.Cultures.Resources.Menu_Hotkey_Debug_Mode) return ToggleDebugMode;
             return null;
@@ -1418,16 +1420,16 @@ namespace Xfp.ViewModels
             ////    //var q  = pd.PrintQueue;
             ////    PrintDocument();
             ////}
-            var printOptions = new PrintDialogWindow(XfpApplicationConfig.Settings);
-            printOptions.ShowDialog();
+            var printOptions = new PrintDialogWindow(XfpApplicationConfig.Settings, _pages, _currentPage);
+            var result = printOptions.ShowDialog();
         }
 
-        public bool ClosePrintOption()
-        {
-            bool closedIt = PrintIsOpen;
-            PrintIsOpen = false;
-            return closedIt;
-        }
+        //public bool ClosePrintOption()
+        //{
+        //    bool closedIt = PrintIsOpen;
+        //    PrintIsOpen = false;
+        //    return closedIt;
+        //}
 
         public bool ClosePrinterList()
         {
@@ -1447,7 +1449,7 @@ namespace Xfp.ViewModels
         private bool _printOrderZone;
         private bool _canPrint;
 
-        public bool PrintIsOpen         { get => _printIsOpen;                           set { _printIsOpen = value; OnPropertyChanged(); } }
+        //public bool PrintIsOpen         { get => _printIsOpen;                           set { _printIsOpen = value; OnPropertyChanged(); } }
         
         public PrintDialogSettings _printSettings = new();
         public PrintDialogSettings Settings { get => _printSettings;                set { _printSettings = value; OnPropertyChanged(); } }
@@ -1491,13 +1493,13 @@ namespace Xfp.ViewModels
 
         public PrintQueueStatus PrinterStatus => new LocalPrintServer().GetPrintQueue(SelectedPrinter).QueueStatus;
 
-        private async void refreshPrinterStatus()
-        {
-            OnPropertyChanged(nameof(PrinterStatus));
-            await Task.Delay(2000);
-            if (PrintIsOpen)
-                refreshPrinterStatus();
-        }
+        //private async void refreshPrinterStatus()
+        //{
+        //    OnPropertyChanged(nameof(PrinterStatus));
+        //    await Task.Delay(2000);
+        //    if (PrintIsOpen)
+        //        refreshPrinterStatus();
+        //}
 
         public bool CanPrint => PrintSiteConfig || PrintLoopInfo || PrintZones || PrintGroup || PrintSets || PrintNetworkConfig || PrintCAndE || PrintComments || PrintEventLog;
         
@@ -1751,13 +1753,13 @@ namespace Xfp.ViewModels
         public bool ClosePopups(bool excludingZoomPopup)
         {
             var closedPrinters   = ClosePrinterList();
-            var closedPrint      = ClosePrintOption();
+            //var closedPrint      = ClosePrintOption();
             var closedLang       = CloseLanguageSelector();
             var closedMain       = CloseMainMenu();
             var closedAbout      = CloseAboutPopup();
             var closedZoom       = excludingZoomPopup || CloseZoomControl();
 
-            return closedPrinters || closedPrint || closedLang || closedMain || closedAbout || closedZoom;
+            return closedPrinters || /*closedPrint ||*/ closedLang || closedMain || closedAbout || closedZoom;
         }
 
         #endregion

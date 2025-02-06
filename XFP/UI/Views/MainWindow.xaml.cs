@@ -299,8 +299,8 @@ namespace Xfp.Views
         private void Print_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
         private void PrintReport_Click(object sender, RoutedEventArgs e) => _context.PrintDocument();
         private void PrintProperties_Click(object sender, RoutedEventArgs e) => _context.PrinterProperties();
-        private void ClosePrint_Click(object sender, EventArgs e) => _context.ClosePrintOption();
-        private void CancelPrint_Click(object sender, RoutedEventArgs e) => _context.ClosePrintOption();
+        private void ClosePrint_Click(object sender, EventArgs e) { }// => _context.ClosePrintOption();
+        private void CancelPrint_Click(object sender, RoutedEventArgs e) { }// => _context.ClosePrintOption();
         private void ConnectSerial_MouseDown(object sender, MouseButtonEventArgs e) => _context.ConnectSerialCommand.Execute(null);
         private void DisconnectSerial_MouseDown(object sender, MouseButtonEventArgs e) => _context.DisconnectSerialCommand.Execute(null);
         private void SelectLanguage_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.SelectLanguageCommand.Execute(null);

@@ -1100,7 +1100,7 @@
                 <!--#region pop-ups-->
 
                 <!--#region Print pop-up-->
-                <!--<Popup x:Name="popPrinterList" 
+                <Popup x:Name="popPrinterList" 
                        IsOpen="{Binding PrinterListIsOpen}" StaysOpen="True"
                        Placement="RelativePoint" PlacementTarget="{Binding ElementName=cboPrinter}" 
                        VerticalOffset="16" 
@@ -1114,9 +1114,9 @@
                                                   SelectedItem="{Binding SelectedPrinter}"
                                                   MinWidth="150"/>
                     </Grid>
-                </Popup>-->
-                
-                <!--<Popup x:Name="popPrint" 
+                </Popup>
+
+                <Popup x:Name="popPrint" 
                        IsOpen="{Binding PrintIsOpen}"
                        Placement="Center"
                        VerticalOffset="-150" 
@@ -1124,7 +1124,7 @@
                        PopupAnimation="Fade">
                     <Border Style="{StaticResource PopupBorder}" Padding="5" PreviewMouseDown="PrintOptions_PreviewMouseDown">
                         <StackPanel Orientation="Vertical">
-                            
+
                             <Grid Margin="10,0,5,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -1218,31 +1218,31 @@
                                     </Border>
                                 </WrapPanel>
 
-                                --><!--<Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                                <!--<Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                                         Content="{Binding Path=Print, Source={StaticResource Resources}}" 
                                         IsEnabled="{Binding CanPrint}" 
                                         Click="PrintReport_Click" 
-                                        Height="40" Margin="30,0,0,0"/>--><!--
-<Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                                        Height="40" Margin="30,0,0,0"/>-->
+                                <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
         Content="{Binding Path=Print, Source={StaticResource Resources}}" 
         IsEnabled="False" 
         Click="PrintReport_Click" 
         Height="40" Margin="30,0,0,0"/>
-<TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                                <TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
            Text="COMING SOON" 
            Foreground="Red" Background="Transparent" Opacity="0.4"
            HorizontalAlignment="Center" 
            FontSize="12" FontFamily="Cambria" Margin="26,0,0,0"
            RenderTransformOrigin="0.5,0.5">
-    <TextBlock.RenderTransform>
-        <TransformGroup>
-            <ScaleTransform/>
-            <SkewTransform/>
-            <RotateTransform Angle="340"/>
-            <TranslateTransform/>
-        </TransformGroup>
-    </TextBlock.RenderTransform>
-</TextBlock>
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="340"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
 
                                 <Button Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
                                         Content="{Binding Path=Option_Cancel, Source={StaticResource Resources}}"
@@ -1252,7 +1252,7 @@
                             </Grid>
                         </StackPanel>
                     </Border>
-                </Popup>-->
+                </Popup>
                 <!--#endregion-->
 
 

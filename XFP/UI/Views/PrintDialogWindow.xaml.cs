@@ -17,6 +17,8 @@ using Newtonsoft.Json.Linq;
 using CTecUtil.Config;
 using CTecUtil.UI.Util;
 using Xfp.ViewModels;
+using System.Collections.ObjectModel;
+using Windows.UI.Composition;
 
 namespace Xfp.UI.Views
 {
@@ -26,83 +28,46 @@ namespace Xfp.UI.Views
         /// Instance of the Comms Log display window
         /// </summary>
         /// <param name="logData"></param>
-        public PrintDialogWindow(ApplicationConfig applicationConfig)
+        public PrintDialogWindow(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             InitializeComponent();
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig);
-            //_context.AppendText = appendText;
-            //_context.ReadText(debugMode);
-
-            restoreWindowState();
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage);
+            //restoreWindowState();
         }
 
 
         private PrintDialogWindowViewModel _context;
+        private bool _isOpen;
 
 
-        public void Show(Window parent)
+        private void restoreWindowState()
         {
-            this.Top = parent.Top + parent.Height / 2 - this.Height / 2;
-            this.Left = parent.Left + parent.Width / 2 - this.Width / 2;
-            base.Show();
+            WindowUtil.SetWindowDimensions(this, _context.ApplicationConfig.PrintParametersWindow);
+            this.Width  = grdContainer.ActualWidth;
+            this.Height = grdContainer.ActualHeight;
+           // updateWindowParams();
         }
 
-
-//        private void appendText(string text, Color color)
-//        {
-//            //rtb.SuspendLayout();
-//            //rtb. = rtb.Text.Length;
-//            rtb.SelectionTextBrush = new SolidColorBrush(color);
-////            rtb.SelectionBrush = new SolidColorBrush(color);
-//            var w = CTecUtil.TextProcessing.MeasureText(text, rtb.FontFamily, rtb.FontSize, rtb.FontStyle, rtb.FontWeight, rtb.FontStretch).Width + 8;
-//            if (rtb.Width < w)
-//                rtb.Width = w;
-//            rtb.AppendText(text + "\r");
-//           // rtb.SelectionLength = text.Length;
-//            rtb.ScrollToEnd();
-//            //box.ResumeLayout();
-//        }
+        private void updateWindowParams(bool save = false) { if (_isOpen) _context.UpdateWindowParams(this, save); }
 
 
-        public void ScrollToEnd() => scrollViewer.ScrollToEnd();
-        public void RefreshView() { }
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }
 
-
-        private void window_StateChanged(object sender, EventArgs e) { _context.ChangeWindowState(WindowState); updateWindowParams(); }
-        
-        private void restoreWindowState()                  => _context.ChangeWindowState(this.WindowState = WindowUtil.SetWindowDimensions(this, _context.ApplicationConfig.LogWindow));
-        private void updateWindowParams(bool save = false) => _context.UpdateWindowParams(this, save);
-
-
-        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) => _context.Close(this);
-
-
-        /// <summary>
-        /// For some reason this ScrollViewer doesn't scroll, so handle the mouswheel explicitly here.
-        /// </summary>
-        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            scrollViewer.ScrollToVerticalOffset(scrollViewer.ContentVerticalOffset - e.Delta / 4);
-            e.Handled = true;
-        }
 
         private void btnMinimise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Minimized; updateWindowParams(); }
         private void btnMaximise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Maximized; updateWindowParams(); }
         private void btnRestore_Click(object sender, RoutedEventArgs e)  { WindowState = WindowState.Normal;    updateWindowParams(); }
         private void btnExit_Click(object sender, RoutedEventArgs e)           => Close();
-        private void window_SizeChanged(object sender, SizeChangedEventArgs e) { /*rtb.Height = rtbContainer.Width;*/ updateWindowParams(true); }
+        private void window_SizeChanged(object sender, SizeChangedEventArgs e) => updateWindowParams(true);
         private void window_LocationChanged(object sender, EventArgs e)        => updateWindowParams(true);
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Home: 
-                    scrollViewer.ScrollToHome();
-                    break;
-                case Key.End: 
-                    scrollViewer.ScrollToEnd();
+                case Key.Escape: 
+                    Close();
                     break;
             }
         }
@@ -120,7 +85,11 @@ namespace Xfp.UI.Views
         }
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) { }// => rtb.Width = rtbContainer.Width;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _isOpen = true;
+            restoreWindowState();
+        }
 
         /*
         FlowDocument: A FlowDocument is created with some sample text.
@@ -145,24 +114,14 @@ namespace Xfp.UI.Views
             }
         }
 
-        private void ClosePrint_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
-        private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void ClosePrint_Click(object sender, EventArgs e)        => Close();
+        private void CancelPrint_Click(object sender, RoutedEventArgs e) => Close();
 
-        }
 
-        private void CancelPrint_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;
+        private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
+        private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)           => _context.PrinterListIsOpen = false;
+        private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { try { DragMove(); updateWindowParams(); } catch { } }
     }
 }
