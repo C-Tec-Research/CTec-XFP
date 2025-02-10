@@ -28,12 +28,14 @@ namespace Xfp.UI.Views
         /// Instance of the Comms Log display window
         /// </summary>
         /// <param name="logData"></param>
-        public PrintDialogWindow(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
+        public PrintDialogWindow(Window owner, ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             InitializeComponent();
 
             DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage);
             //restoreWindowState();
+            this.Left = owner.Left + owner.ActualWidth / 2 - 100;
+            this.Top  = owner.Top + owner.ActualHeight / 2 - 200;
         }
 
 
@@ -41,13 +43,14 @@ namespace Xfp.UI.Views
         private bool _isOpen;
 
 
-        private void restoreWindowState()
+        private void setSize()
         {
-            WindowUtil.SetWindowDimensions(this, _context.ApplicationConfig.PrintParametersWindow);
-            this.Width  = grdContainer.ActualWidth;
-            this.Height = grdContainer.ActualHeight;
-           // updateWindowParams();
+            grdOuter.Width  = grdInner.ActualWidth;
+            grdOuter.Height = grdInner.ActualHeight;
+            this.Width  = grdInner.ActualWidth;
+            this.Height = grdInner.ActualHeight;
         }
+
 
         private void updateWindowParams(bool save = false) { if (_isOpen) _context.UpdateWindowParams(this, save); }
 
@@ -59,7 +62,7 @@ namespace Xfp.UI.Views
         private void btnMaximise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Maximized; updateWindowParams(); }
         private void btnRestore_Click(object sender, RoutedEventArgs e)  { WindowState = WindowState.Normal;    updateWindowParams(); }
         private void btnExit_Click(object sender, RoutedEventArgs e)           => Close();
-        private void window_SizeChanged(object sender, SizeChangedEventArgs e) => updateWindowParams(true);
+        private void window_SizeChanged(object sender, SizeChangedEventArgs e)  { setSize(); updateWindowParams(true); }
         private void window_LocationChanged(object sender, EventArgs e)        => updateWindowParams(true);
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -88,14 +91,13 @@ namespace Xfp.UI.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _isOpen = true;
-            restoreWindowState();
         }
 
         /*
         FlowDocument: A FlowDocument is created with some sample text.
         PrintDialog: A PrintDialog is used to allow the user to select a printer and configure print settings.
         Print Action: If the user confirms the print action, the document is sent to the printer.
-        - This example provides a basic framework for printing a document in a WPF application. You can customize the FlowDocument with more complex content as needed.
+        - The FlowDocument can be customised with more complex content as needed.
         */
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +106,7 @@ namespace Xfp.UI.Views
 
             // Create a PrintDialog
             PrintDialog printDialog = new PrintDialog();
+            var printQueue = printDialog.PrintQueue;
 
             // Check if the user clicked the Print button
             if (printDialog.ShowDialog() == true)

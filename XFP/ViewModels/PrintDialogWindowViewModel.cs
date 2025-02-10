@@ -80,7 +80,7 @@ namespace Xfp.ViewModels
         }
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen; set { _printerListIsOpen = value; OnPropertyChanged(); } }
-        public string SelectedPrinter { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
+        public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
 
         public PrintQueueStatus PrinterStatus => new LocalPrintServer().GetPrintQueue(SelectedPrinter).QueueStatus;
 
@@ -117,7 +117,7 @@ namespace Xfp.ViewModels
         public bool PrintAllPages       { get => _printAllPages;                    set { if (_printAllPages = value) setAllPagesToPrint(true); OnPropertyChanged(); } }
         public bool PrintCurrentPage    { get => _printCurrentPage;                 set { if (_printCurrentPage = value) setCurrentPageToPrint(); OnPropertyChanged(); } }
         public bool SelectPagesToPrint  { get => _selectPagesToPrint;               set { _selectPagesToPrint = value; OnPropertyChanged(); } }
-        public int  NumPrintCopies      { get => PrintSettings.NumCopies;          set { PrintSettings.NumCopies = value; OnPropertyChanged(); } }
+        public int  NumPrintCopies      { get => PrintSettings.NumCopies;           set { PrintSettings.NumCopies = value; OnPropertyChanged(); } }
         public bool PrintAllLoopDevices { get => PrintSettings.PrintAllLoopDevices; set { PrintSettings.PrintAllLoopDevices = value; OnPropertyChanged(); } }
         public LoopPrintOrder LoopPrintOrder { get => PrintSettings.LoopPrintOrder; set { PrintSettings.LoopPrintOrder = value; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderGroup)); OnPropertyChanged(nameof(PrintOrderZone)); } }
         public bool PrintOrderDevice    { get => LoopPrintOrder == LoopPrintOrder.ByDevice; set { LoopPrintOrder = LoopPrintOrder.ByDevice; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderGroup)); OnPropertyChanged(nameof(PrintOrderZone)); } }
@@ -125,7 +125,7 @@ namespace Xfp.ViewModels
         public bool PrintOrderZone      { get => LoopPrintOrder == LoopPrintOrder.ByZone;   set { LoopPrintOrder = LoopPrintOrder.ByZone; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderGroup)); } }
 
 
-        public bool CanPrint => PrintSiteConfig || PrintLoopInfo || PrintZones || PrintGroup || PrintSets || PrintNetworkConfig || PrintCAndE || PrintComments || PrintEventLog;
+        public bool CanPrint => SelectedPrinter is not null && (PrintAllPages || PrintSiteConfig || PrintLoopInfo || PrintZones || PrintGroup || PrintSets || PrintNetworkConfig || PrintCAndE || PrintComments || PrintEventLog);
 
         private void setAllPagesToPrint(bool print)
         {

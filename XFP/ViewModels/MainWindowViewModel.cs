@@ -1420,7 +1420,7 @@ namespace Xfp.ViewModels
             ////    //var q  = pd.PrintQueue;
             ////    PrintDocument();
             ////}
-            var printOptions = new PrintDialogWindow(XfpApplicationConfig.Settings, _pages, _currentPage);
+            var printOptions = new PrintDialogWindow(Application.Current.MainWindow, XfpApplicationConfig.Settings, _pages, _currentPage);
             var result = printOptions.ShowDialog();
         }
 
