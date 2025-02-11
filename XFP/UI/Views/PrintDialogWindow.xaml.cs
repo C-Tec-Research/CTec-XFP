@@ -19,6 +19,8 @@ using CTecUtil.UI.Util;
 using Xfp.ViewModels;
 using System.Collections.ObjectModel;
 using Windows.UI.Composition;
+using Xfp.DataTypes;
+using System.Printing;
 
 namespace Xfp.UI.Views
 {
@@ -28,15 +30,20 @@ namespace Xfp.UI.Views
         /// Instance of the Comms Log display window
         /// </summary>
         /// <param name="logData"></param>
-        public PrintDialogWindow(Window owner, ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
+        public PrintDialogWindow(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             InitializeComponent();
 
             DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage);
-            //restoreWindowState();
-            this.Left = owner.Left + owner.ActualWidth / 2 - 100;
-            this.Top  = owner.Top + owner.ActualHeight / 2 - 200;
+
+            var owner = Application.Current.MainWindow;
+            this.Left = owner.Left + owner.ActualWidth  / 2 - 100;
+            this.Top  = owner.Top  + owner.ActualHeight / 2 - 200;
         }
+
+
+//        public CTecUtil.PrinterSettings PrinterSettings => _context.PrinterSettings;
+        public PrintingParameters PrintParams => _context.PrintParams;
 
 
         private PrintDialogWindowViewModel _context;
@@ -58,12 +65,12 @@ namespace Xfp.UI.Views
         private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }
 
 
-        private void btnMinimise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Minimized; updateWindowParams(); }
-        private void btnMaximise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Maximized; updateWindowParams(); }
-        private void btnRestore_Click(object sender, RoutedEventArgs e)  { WindowState = WindowState.Normal;    updateWindowParams(); }
-        private void btnExit_Click(object sender, RoutedEventArgs e)           => Close();
+        //private void btnMinimise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Minimized; updateWindowParams(); }
+        //private void btnMaximise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Maximized; updateWindowParams(); }
+        //private void btnRestore_Click(object sender, RoutedEventArgs e)  { WindowState = WindowState.Normal;    updateWindowParams(); }
+        //private void btnExit_Click(object sender, RoutedEventArgs e)           => Close();
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)  { setSize(); updateWindowParams(true); }
-        private void window_LocationChanged(object sender, EventArgs e)        => updateWindowParams(true);
+        //private void window_LocationChanged(object sender, EventArgs e)        => updateWindowParams(true);
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -99,27 +106,11 @@ namespace Xfp.UI.Views
         Print Action: If the user confirms the print action, the document is sent to the printer.
         - The FlowDocument can be customised with more complex content as needed.
         */
-        private void PrintButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Create a FlowDocument
-            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Hello, this is a test document for printing.")));
-
-            // Create a PrintDialog
-            PrintDialog printDialog = new PrintDialog();
-            var printQueue = printDialog.PrintQueue;
-
-            // Check if the user clicked the Print button
-            if (printDialog.ShowDialog() == true)
-            {
-                // Print the document
-                IDocumentPaginatorSource idpSource = doc;
-                printDialog.PrintDocument(idpSource.DocumentPaginator, "Printing FlowDocument");
-            }
-        }
+        private void PrintButton_Click(object sender, RoutedEventArgs e) => DialogResult = true;
 
 
         private void ClosePrint_Click(object sender, EventArgs e)        => Close();
-        private void CancelPrint_Click(object sender, RoutedEventArgs e) => Close();
+        //private void CancelPrint_Click(object sender, RoutedEventArgs e) => Close();
 
 
         private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;

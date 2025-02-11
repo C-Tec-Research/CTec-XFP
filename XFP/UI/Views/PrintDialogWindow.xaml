@@ -12,7 +12,7 @@
         xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
         d:DataContext="{d:DesignInstance Type=viewmodels:PrintDialogWindowViewModel}"
         mc:Ignorable="d"
-        BorderBrush="{StaticResource Brush03}" BorderThickness="1"
+        BorderBrush="{StaticResource Brush03}" BorderThickness="2"
         WindowStyle="None"
         ResizeMode="NoResize"
         ShowInTaskbar="True"
@@ -22,7 +22,6 @@
         WindowStartupLocation="CenterOwner"
         Loaded="Window_Loaded"
         SizeChanged="window_SizeChanged"
-        LocationChanged="window_LocationChanged"
         PreviewKeyDown="Window_PreviewKeyDown"
         PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
@@ -49,6 +48,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <ctuvh:PrintQueueStatusToStringConverter x:Key="PrintQueueStatusToStringConverter"/>
+        <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
         <ctcvh:BoolToOpacity80pcConverter x:Key="BoolToOpacity80pcConverter"/>
         <ctcvh:ErrorLevelOKToVisibilityConverter x:Key="ErrorLevelOKToVisibilityConverter"/>
@@ -64,7 +64,7 @@
     </Window.Resources>
 
 
-    <Grid x:Name="grdOuter" Margin="0" Background="{StaticResource Brush095}">
+    <Grid x:Name="grdOuter" Margin="0" Background="{StaticResource Brush10}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -93,7 +93,7 @@
                 <ctc:CloseButton Grid.Row="0" Grid.Column="5" 
                                  WindowChrome.IsHitTestVisibleInChrome="True"
                                  Click="ClosePrint_Click" 
-                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"/>
+                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,5,10,5"/>
             </Grid>
             <!--#endregion-->
 
@@ -117,7 +117,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="0,10,0,15">
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="0,5,0,15">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -148,7 +148,7 @@
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
                             <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}"/>
                             <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}"/>
-                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroup}"/>
+                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}"/>
                             <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}"/>
                             <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
                             <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}"/>
@@ -167,7 +167,7 @@
                                 Margin="0,0,0,0" Padding="10,10,10,5">
                             <StackPanel Orientation="Vertical">
                                 <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" FontSize="13" Margin="0,0,0,0"/>
-                                <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" FontSize="13" Margin="0,0,0,0"/>
+                                <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices, Converter={StaticResource BoolToInverseConverter}}" FontSize="13" Margin="0,0,0,0"/>
                                 <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0.3" Margin="-5,5,-5,5"/>
                                 <TextBlock Text="{Binding Path=Print_Order_By, Source={StaticResource Resources}}"/>
                                 <RadioButton Content="{Binding Path=Print_Order_By_Device, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDevice}" FontSize="13" Margin="0,5,0,0"/>
@@ -177,60 +177,43 @@
                         </Border>
                     </WrapPanel>
 
-                    
-                    <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
-                                Orientation="Vertical"
-                                Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                Margin="10,10,0,20">
-                        <StackPanel Orientation="Horizontal" 
-                                    IsEnabled="{Binding CanPrint}">
-                            <!--<TextBlock Text="Orientation"
-                                       VerticalAlignment="Top"
-                                       Margin="0,0,5,2"/>-->
-                            <!--<StackPanel Orientation="Vertical">-->
-                                <RadioButton Content="Portrait"/>
-                                <RadioButton Content="Landscape"/>
-                            <!--</StackPanel>-->
-                        </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-                                    IsEnabled="{Binding CanPrint}">
-                            <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
-                            <ctc:NumberSpinner Value="{Binding NumPrintCopies}" Minimum="1" Maximum="10"/>
-                        </StackPanel>
-                    </StackPanel>
+                    <Border Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"
+                            BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5"
+                            IsEnabled="{Binding CanPrint}"
+                            Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                            Margin="0,8,0,10">
+                        <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
+                                    Orientation="Vertical"
+                                    Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                                    Margin="10,10,0,5">
+                            <TextBlock Text="{Binding Path=Print_Orientation_Format, Source={StaticResource Resources}}"
+                                       Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                                       Margin="0,0,0,3"/>
+                            <StackPanel Orientation="Horizontal" 
+                                        IsEnabled="{Binding CanPrint}">
+                                <RadioButton Content="{Binding Path=Print_Orientation_Portrait, Source={StaticResource Resources}}" GroupName="grpFormat" IsChecked="{Binding IsPortrait}"/>
+                                <RadioButton Content="{Binding Path=Print_Orientation_Landscape, Source={StaticResource Resources}}" GroupName="grpFormat" IsChecked="{Binding IsPortrait, Converter={StaticResource BoolToInverseConverter}}"/>
+                            </StackPanel>
 
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                                        IsEnabled="{Binding CanPrint}">
+                                <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
+                                <ctc:NumberSpinner Value="{Binding PrinterSettings.Copies}" Minimum="1" Maximum="10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
 
                     <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-                                    Content="{Binding Path=Print, Source={StaticResource Resources}}" 
-                                    IsEnabled="{Binding CanPrint}" 
-                                    Click="PrintButton_Click" 
-                                    MinHeight="40" Margin="30,0,0,0"/>
-                    <!--<Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                             Content="{Binding Path=Print, Source={StaticResource Resources}}" 
-                            IsEnabled="False" 
+                            IsEnabled="{Binding CanPrint}" 
                             Click="PrintButton_Click" 
-                            Height="40" Margin="30,0,0,0"/>
-                    <TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-                                Text="COMING SOON" 
-                                Foreground="Red" Background="Transparent" Opacity="0.4"
-                                HorizontalAlignment="Center" 
-                                FontSize="12" FontFamily="Cambria" Margin="26,0,0,0"
-                                RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="340"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>-->
+                            MinHeight="40" Margin="30,0,0,0"/>
 
                     <Button Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
                             x:Name="btnCancel"
                             Content="{Binding Path=Option_Cancel, Source={StaticResource Resources}}"
-                            Click="CancelPrint_Click"
+                            IsCancel="True"
                             MinHeight="24"  Margin="30,10,0,0"/>
 
                 </Grid>

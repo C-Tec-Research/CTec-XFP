@@ -2046,4 +2046,16 @@ Toutes ses données seront perdues.</value>
   <data name="Error_Validation_Window_Timeout" xml:space="preserve">
     <value>Une erreur de délai d’attente s’est produite lors de l’affichage de la Fenêtre de Validation.</value>
   </data>
+  <data name="Printer_Not_Found" xml:space="preserve">
+    <value>Imprimante non trouvée</value>
+  </data>
+  <data name="Print_Orientation_Format" xml:space="preserve">
+    <value>Format :</value>
+  </data>
+  <data name="Print_Orientation_Landscape" xml:space="preserve">
+    <value>Paysage</value>
+  </data>
+  <data name="Print_Orientation_Portrait" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
 </root>

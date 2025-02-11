@@ -3841,6 +3841,33 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Format:.
+        /// </summary>
+        public static string Print_Orientation_Format {
+            get {
+                return ResourceManager.GetString("Print_Orientation_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landscape.
+        /// </summary>
+        public static string Print_Orientation_Landscape {
+            get {
+                return ResourceManager.GetString("Print_Orientation_Landscape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portrait.
+        /// </summary>
+        public static string Print_Orientation_Portrait {
+            get {
+                return ResourceManager.GetString("Print_Orientation_Portrait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Print preview.
         /// </summary>
         public static string Print_Preview {
@@ -3864,6 +3891,15 @@ namespace Xfp.Cultures {
         public static string Print_Select_Pages {
             get {
                 return ResourceManager.GetString("Print_Select_Pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Printer not found.
+        /// </summary>
+        public static string Printer_Not_Found {
+            get {
+                return ResourceManager.GetString("Printer_Not_Found", resourceCulture);
             }
         }
         

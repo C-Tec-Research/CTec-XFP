@@ -2048,4 +2048,16 @@ All of its data will be lost.</value>
   <data name="Error_Validation_Window_Timeout" xml:space="preserve">
     <value>There was a timeout error while showing the Validation window</value>
   </data>
+  <data name="Printer_Not_Found" xml:space="preserve">
+    <value>Printer not found</value>
+  </data>
+  <data name="Print_Orientation_Format" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="Print_Orientation_Landscape" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="Print_Orientation_Portrait" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
 </root>
