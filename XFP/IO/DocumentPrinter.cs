@@ -39,6 +39,12 @@ namespace Xfp.DataTypes.Printing
 
             // Create a FlowDocument
             FlowDocument doc = new FlowDocument(new Paragraph(new Run("Hello, this is a test document for printing.")));
+            
+            doc.PageHeight = ptr.PrintableAreaHeight;
+            doc.PageWidth = ptr.PrintableAreaWidth;
+            doc.PagePadding = new Thickness(50);
+            doc.ColumnGap = 0;
+            doc.ColumnWidth = ptr.PrintableAreaWidth;
 
             // Print the document
             IDocumentPaginatorSource idpSource = doc;

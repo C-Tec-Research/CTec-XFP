@@ -1364,63 +1364,6 @@ namespace Xfp.ViewModels
                 DocumentPrinter.PrintDocument(_data, printDialog.PrintParams);
         }
 
-
-        public void PrintDocument(PrintingParameters @params)
-        {
-            if (@params.PrintQueue == null)  
-            {  
-                MessageBox.Show(Cultures.Resources.Printer_Not_Found);
-                return;  
-            }
-
-            PrintDialog ptr                 = @params.PrintHandler;
-            ptr.PrintQueue                  = @params.PrintQueue;
-            ptr.PrintTicket.CopyCount       = @params.Copies;
-            ptr.PrintTicket.PageOrientation = @params.Orientation;
-
-            //ptr.PrintVisual(canvas);
-
-            // Create a FlowDocument
-            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Hello, this is a test document for printing.")));
-
-            // Print the document
-            IDocumentPaginatorSource idpSource = doc;
-            ptr.PrintDocument(idpSource.DocumentPaginator, "Printing FlowDocument");
-
-            UIState.SetBusyState();
-
-            try
-            {
-                var tempFilePath = PrintUtil.GetTempPrintFileName("test");
-                //using (Package package = Package.Open(tempFilePath))
-                {
-                    var xpsDocument = new XpsDocument(tempFilePath, FileAccess.ReadWrite);
-                    XpsDocumentWriter xpsdw = XpsDocument.CreateXpsDocumentWriter(xpsDocument);
-
-                    foreach (var pg in _pages)
-                    {
-                        if (pg.DataContext is PanelToolsPageViewModelBase p)
-                        {
-                            if (_currentPage.DataContext is DevicesViewModel          && @params.PrintLoopInfo
-                             || _currentPage.DataContext is ZoneConfigViewModel       && @params.PrintZones
-                             || _currentPage.DataContext is GroupConfigViewModel      && @params.PrintGroups
-                             || _currentPage.DataContext is SetConfigViewModel        && @params.PrintSets
-                             || _currentPage.DataContext is SiteConfigViewModel       && @params.PrintSiteConfig
-                             || _currentPage.DataContext is CausesAndEffectsViewModel && @params.PrintCAndE
-                             || _currentPage.DataContext is NetworkConfigViewModel    && @params.PrintNetworkConfig
-                             || _currentPage.DataContext is EventLogViewerViewModel   && @params.PrintEventLog
-                             || _currentPage.DataContext is CommentsViewModel         && @params.PrintComments)
-                                p.PrintPage(xpsdw);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CTecMessageBox.ShowException(Cultures.Resources.Error_Printing_Document, Cultures.Resources.Print, ex);
-            }
-        }
-
         internal void PrintPreview() { }
         #endregion
 
