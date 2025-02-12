@@ -12,17 +12,16 @@
         xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
         d:DataContext="{d:DesignInstance Type=viewmodels:PrintDialogWindowViewModel}"
         mc:Ignorable="d"
-        BorderBrush="{StaticResource Brush03}" BorderThickness="2"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         ShowInTaskbar="True"
         Title="{Binding Path=Last_Comms_Log, Source={StaticResource Resources}}"
-        Icon="/Resources/info.png"
+        Icon="/Resources/print.png"
         LayoutTransform="{Binding LayoutTransform}"
-        WindowStartupLocation="CenterOwner"
         Loaded="Window_Loaded"
         SizeChanged="window_SizeChanged"
         PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewMouseLeftButtonDown="window_PreviewMouseLeftButtonDown" 
         PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
         Margin="0" Padding="0"
@@ -83,7 +82,7 @@
             <!--#region icon & title-->
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource Brush07}">
                 <StackPanel Orientation="Horizontal">
-                    <ctc:Icon IconType="Print" Foreground="{StaticResource Brush02}" Width="16" Height="16" Margin="8,0,0,2"/>
+                    <ctc:Icon IconType="Print" Foreground="{StaticResource Brush02}" Width="16" Height="16" Margin="8,0,0,0"/>
                     <TextBlock Text="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}" 
                                Style="{StaticResource PopupTextTitle}" 
                                Visibility="{Binding LogText, Converter={StaticResource NonNullToVisibilityConverter}}"
@@ -93,7 +92,7 @@
                 <ctc:CloseButton Grid.Row="0" Grid.Column="5" 
                                  WindowChrome.IsHitTestVisibleInChrome="True"
                                  Click="ClosePrint_Click" 
-                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,5,10,5"/>
+                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"/>
             </Grid>
             <!--#endregion-->
 
@@ -117,7 +116,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="0,5,0,15">
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="0,3,0,13">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -186,7 +185,7 @@
                         <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
                                     Orientation="Vertical"
                                     Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                    Margin="10,10,0,5">
+                                    Margin="10,5,0,5">
                             <TextBlock Text="{Binding Path=Print_Orientation_Format, Source={StaticResource Resources}}"
                                        Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
                                        Margin="0,0,0,3"/>
@@ -199,7 +198,7 @@
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                                         IsEnabled="{Binding CanPrint}">
                                 <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
-                                <ctc:NumberSpinner Value="{Binding PrinterSettings.Copies}" Minimum="1" Maximum="10"/>
+                                <ctc:NumberSpinner Value="{Binding NumCopies}" Minimum="1" Maximum="10"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

@@ -1358,9 +1358,20 @@ namespace Xfp.ViewModels
         #region Print pop-up
         private void showPrintOptions()
         {
-            var printDialog = new PrintDialogWindow(XfpApplicationConfig.Settings, _pages, _currentPage);
+            var printDialog = new PrintDialogWindow(XfpApplicationConfig.Settings, _pages, _currentPage) { Owner = _mainAppWindow };
+            bool? result;
 
-            if (printDialog.ShowDialog() == true)
+            try
+            {
+                MainWindowEnabled = false;
+                result = printDialog.ShowDialog();
+            }
+            finally
+            {
+                MainWindowEnabled = true; 
+            }
+
+            if (result == true)
                 DocumentPrinter.PrintDocument(_data, printDialog.PrintParams);
         }
 
@@ -1557,6 +1568,22 @@ namespace Xfp.ViewModels
         #endregion
 
 
+        #region Revision History pop-up
+        public void ShowRevisionHistoryPopup() => RevisionHistoryIsOpen = true;
+
+        public bool CloseRevisionHistoryPopup()
+        {
+            bool closedIt = RevisionHistoryIsOpen;
+            RevisionHistoryIsOpen = false;
+            return closedIt;
+        }
+
+
+        private bool _revisionHistoryIsOpen;
+        public bool RevisionHistoryIsOpen { get => _revisionHistoryIsOpen; set { _revisionHistoryIsOpen = value; OnPropertyChanged(); } }
+        #endregion
+
+
         public bool ClosePopups() => ClosePopups(false);
 
         public bool ClosePopups(bool excludingZoomPopup)
@@ -1566,9 +1593,10 @@ namespace Xfp.ViewModels
             var closedLang       = CloseLanguageSelector();
             var closedMain       = CloseMainMenu();
             var closedAbout      = CloseAboutPopup();
+            var closedHistory    = false;//CloseRevisionHistoryPopup();
             var closedZoom       = excludingZoomPopup || CloseZoomControl();
 
-            return /*closedPrinters || closedPrint ||*/ closedLang || closedMain || closedAbout || closedZoom;
+            return /*closedPrinters || closedPrint ||*/ closedLang || closedMain || closedAbout || closedHistory || closedZoom;
         }
 
         #endregion

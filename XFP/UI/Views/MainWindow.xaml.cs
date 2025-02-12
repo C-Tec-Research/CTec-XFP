@@ -144,6 +144,7 @@ namespace Xfp.Views
         private void closeLanguage_Click(object sender, EventArgs e) => _context.CloseLanguageSelector();
         private void closeData_Click(object sender, EventArgs e)     => _context.DataPopupIsOpen = false;
         private void closeAbout_Click(object sender, EventArgs e)    => _context.AboutIsOpen = false;
+        private void closeHistory_Click(object sender, EventArgs e)  => _context.RevisionHistoryIsOpen = false;
         #endregion
 
 
@@ -308,6 +309,7 @@ namespace Xfp.Views
         private void Data_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.DataCommand.Execute(null);
         private void CommsLog_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowCommsLog(false);
         private void About_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowAboutPopup();
+        private void History_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowRevisionHistoryPopup();
         private void Exit_PreviewMouseDown(object sender, MouseButtonEventArgs e) => exitApp();
         private void LeftBar_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();
         private void MainPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();

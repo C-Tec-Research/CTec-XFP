@@ -95,9 +95,9 @@ namespace Xfp.ViewModels
         private ApplicationConfig applicationConfig { get; }
 
 
-        public void UpdateWindowParams(Window window, bool save = false) => applicationConfig.UpdatePrintParametersWindowParams(window, LayoutTransform.ScaleX, save);
+        public void UpdateWindowParams(bool save = false) => applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
 
-        public void Close(Window window) { UpdateWindowParams(window, true); }
+        public void Close(Window window) { UpdateWindowParams(true); }
 
 
         #region printer
@@ -138,11 +138,12 @@ namespace Xfp.ViewModels
             set => PrintParams.Orientation = value ? PageOrientation.Portrait : PageOrientation.Landscape; 
         }
 
+        public int NumCopies { get => PrintParams.Copies; set { PrintParams.Copies = value; OnPropertyChanged(); } }
         #endregion
 
 
         #region print parameters
-        public PrintingParameters PrintParams { get; set; } = new();
+        public PrintParameters PrintParams { get; set; } = new();
 
         public bool PrintAllPages       { get => PrintParams.PrintAllPages;      set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintCurrentPage    { get => PrintParams.PrintCurrentPage;   set { if (PrintParams.PrintCurrentPage = value) setCurrentPageToPrint(); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }

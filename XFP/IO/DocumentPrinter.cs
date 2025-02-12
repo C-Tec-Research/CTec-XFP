@@ -22,7 +22,7 @@ namespace Xfp.DataTypes.Printing
         }
 
 
-        public static void PrintDocument(XfpData data, PrintingParameters printParams)
+        public static void PrintDocument(XfpData data, PrintParameters printParams)
         {
             if (printParams.PrintQueue == null)
             {
@@ -30,7 +30,8 @@ namespace Xfp.DataTypes.Printing
                 return;
             }
 
-            PrintDialog ptr = printParams.PrintHandler;
+            //use PrintDialog (not displayed) to get printer properties
+            var ptr = printParams.PrintHandler;
             ptr.PrintQueue = printParams.PrintQueue;
             ptr.PrintTicket.CopyCount = printParams.Copies;
             ptr.PrintTicket.PageOrientation = printParams.Orientation;
@@ -46,30 +47,29 @@ namespace Xfp.DataTypes.Printing
             doc.ColumnGap = 0;
             doc.ColumnWidth = ptr.PrintableAreaWidth;
 
-            // Print the document
-            IDocumentPaginatorSource idpSource = doc;
-            ptr.PrintDocument(idpSource.DocumentPaginator, "Printing FlowDocument");
 
             UIState.SetBusyState();
 
             try
             {
                 var tempFilePath = PrintUtil.GetTempPrintFileName("test");
-                //using (Package package = Package.Open(tempFilePath))
-                {
-                    var xpsDocument = new XpsDocument(tempFilePath, FileAccess.ReadWrite);
-                    XpsDocumentWriter xpsdw = XpsDocument.CreateXpsDocumentWriter(xpsDocument);
 
-                    if (printParams.PrintSiteConfig) printSite();
-                    if (printParams.PrintLoopInfo)  printDevices();
-                    if (printParams.PrintZones) printZones();
-                    if (printParams.PrintGroups) printGroups();
-                    if (printParams.PrintSets) printSets();
-                    if (printParams.PrintCAndE) printCAndE();
-                    if (printParams.PrintNetworkConfig) printNetworkConfig();
-                    if (printParams.PrintEventLog) printEventLog();
-                    if (printParams.PrintComments) printComments();
-                }
+                var xpsDocument = new XpsDocument(tempFilePath, FileAccess.ReadWrite);
+                XpsDocumentWriter xpsdw = XpsDocument.CreateXpsDocumentWriter(xpsDocument);
+
+                if (printParams.PrintSiteConfig)    printSite(xpsdw);
+                if (printParams.PrintLoopInfo)      printDevices(xpsdw);
+                if (printParams.PrintZones)         printZones(xpsdw);
+                if (printParams.PrintGroups)        printGroups(xpsdw);
+                if (printParams.PrintSets)          printSets(xpsdw);
+                if (printParams.PrintCAndE)         printCAndE(xpsdw);
+                if (printParams.PrintNetworkConfig) printNetworkConfig(xpsdw);
+                if (printParams.PrintEventLog)      printEventLog(xpsdw);
+                if (printParams.PrintComments)      printComments(xpsdw);
+
+                // Print the document
+                IDocumentPaginatorSource idpSource = doc;
+                //ptr.PrintDocument(idpSource.DocumentPaginator, "Printing FlowDocument");
             }
             catch (Exception ex)
             {
@@ -78,14 +78,14 @@ namespace Xfp.DataTypes.Printing
         }
 
 
-        private static void printSite() { }
-        private static void printDevices() { }
-        private static void printZones() { }
-        private static void printGroups() { }
-        private static void printSets() { }
-        private static void printCAndE() { }
-        private static void printNetworkConfig() { }
-        private static void printEventLog() { }
-        private static void printComments() { }
+        private static void printSite(XpsDocumentWriter writer) { }
+        private static void printDevices(XpsDocumentWriter writer) { }
+        private static void printZones(XpsDocumentWriter writer) { }
+        private static void printGroups(XpsDocumentWriter writer) { }
+        private static void printSets(XpsDocumentWriter writer) { }
+        private static void printCAndE(XpsDocumentWriter writer) { }
+        private static void printNetworkConfig(XpsDocumentWriter writer) { }
+        private static void printEventLog(XpsDocumentWriter writer) { }
+        private static void printComments(XpsDocumentWriter writer) { }
     }
 }

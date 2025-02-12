@@ -12,6 +12,9 @@
     <Compile Update="UI\Views\PanelTools\PanelConfig.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Views\ViewRevisionHistory.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Cultures\Resources.fr-FR.resx">
@@ -33,6 +36,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Views\PanelTools\PanelConfig.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\ViewRevisionHistory.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

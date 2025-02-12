@@ -895,8 +895,8 @@
                             <ctc:HamburgerMenuSeparator/>
 
                             <!--#region Help menu-->
-                            <ctc:HamburgerMenuSubheader x:Name="mnuHelp" IconType="Help" Submenu="{Binding ElementName=mnuAbout}"/>
-                            <ctc:HamburgerMenu x:Name="mnuAbout"
+                            <ctc:HamburgerMenuSubheader x:Name="mnuHelp" IconType="Help" Submenu="{Binding ElementName=mnuHelpOptions}"/>
+                            <ctc:HamburgerMenu x:Name="mnuHelpOptions"
                                                Width="{Binding Width, ElementName=hbgMainMenu}"
                                                OpenCloseDuration="0:0:0.1"
                                                HorizontalAlignment="Left"
@@ -907,7 +907,7 @@
                                     <!-- NB: must put this single submenu item in a container else it won't be found when changing culture -->
                                     <StackPanel Orientation="Vertical">
                                         <ctc:HamburgerMenuOption IconType="About" PreviewMouseDown="About_PreviewMouseDown"/>
-                                        <!--<ctc:HamburgerMenuOption IconType="CheckForUpdates" PreviewMouseDown="Update_PreviewMouseDown"/>-->
+                                        <ctc:HamburgerMenuOption IconType="History" PreviewMouseDown="History_PreviewMouseDown"/>
                                     </StackPanel>
                                 </ctc:HamburgerMenu.Content>
                             </ctc:HamburgerMenu>
@@ -1099,163 +1099,6 @@
                 
                 <!--#region pop-ups-->
 
-                <!--#region Print pop-up-->
-                <!--<Popup x:Name="popPrinterList" 
-                       IsOpen="{Binding PrinterListIsOpen}" StaysOpen="True"
-                       Placement="RelativePoint" PlacementTarget="{Binding ElementName=cboPrinter}" 
-                       VerticalOffset="16" 
-                       HorizontalOffset="0"
-                       AllowsTransparency="True" 
-                       PopupAnimation="Slide"
-                       MouseUp="PrinterList_MouseUp">
-                    <Grid>
-                        <ListView Grid.Row="0" Grid.Column="1" 
-                                                  ItemsSource="{Binding Printers}"
-                                                  SelectedItem="{Binding SelectedPrinter}"
-                                                  MinWidth="150"/>
-                    </Grid>
-                </Popup>-->
-
-                <!--<Popup x:Name="popPrint" 
-                       IsOpen="{Binding PrintIsOpen}"
-                       Placement="Center"
-                       VerticalOffset="-150" 
-                       AllowsTransparency="True" 
-                       PopupAnimation="Fade">
-                    <Border Style="{StaticResource PopupBorder}" Padding="5" PreviewMouseDown="PrintOptions_PreviewMouseDown">
-                        <StackPanel Orientation="Vertical">
-
-                            <Grid Margin="10,0,5,10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="15"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" BorderBrush="{StaticResource Brush07}" BorderThickness="0,0,0,1" Margin="0,0,10,15">
-                                    <TextBlock Text="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}" Style="{StaticResource GridHeaderTextBlock}" Margin="0"/>
-                                </Border>
-
-                                <ctc:CloseButton Grid.Row="0" Grid.Column="5" Click="ClosePrint_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-5,5,0,0"/>
-
-                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,15">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Select_Printer, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
-                                        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboPrinter"
-                                                  ItemsSource="{Binding Printers}"
-                                                  SelectedItem="{Binding SelectedPrinter}"
-                                                  PreviewMouseDown="cboPrinter_PreviewMouseDown"
-                                                  MinWidth="150"/>
-
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Printer_Status, Source={StaticResource Resources}}" Margin="0,2,8,0"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PrinterStatus, Converter={StaticResource PrintQueueStatusToStringConverter}}" Margin="2,2,0,0"/>
-                                    </Grid>
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
-                                    <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintAllPages}" FontSize="13" Margin="0,0,0,0"/>
-                                    <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintCurrentPage}" FontSize="13" Margin="0,2,0,0"/>
-                                    <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding SelectPagesToPrint}" FontSize="13" Margin="0,10,0,0"/>
-                                    <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
-                                        <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
-                                        <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}"/>
-                                        <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}"/>
-                                        <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroup}"/>
-                                        <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}"/>
-                                        <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}"/>
-                                        <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}"/>
-                                        <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}"/>
-                                        <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}"/>
-                                    </StackPanel>
-
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="6" Grid.Column="0" IsEnabled="{Binding CanPrint}"
-                                            Orientation="Horizontal" VerticalAlignment="Center"
-                                            Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}" 
-                                            Margin="0,10,0,0">
-                                    <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
-                                    <ctc:NumberSpinner Value="{Binding NumPrintCopies}" Minimum="1" Maximum="10"/>
-                                </StackPanel>
-
-                                <WrapPanel   Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
-                                    <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"
-                                            BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5" 
-                                            IsEnabled="{Binding PrintLoopInfo}"
-                                            Opacity="{Binding PrintLoopInfo, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                            Margin="0,0,0,0" Padding="10,10,10,5">
-                                        <StackPanel Orientation="Vertical">
-                                            <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" FontSize="13" Margin="0,0,0,0"/>
-                                            <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" FontSize="13" Margin="0,0,0,0"/>
-                                            <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0.3" Margin="-5,5,-5,5"/>
-                                            <TextBlock Text="{Binding Path=Print_Order_By, Source={StaticResource Resources}}"/>
-                                            <RadioButton Content="{Binding Path=Print_Order_By_Device, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDevice}" FontSize="13" Margin="0,5,0,0"/>
-                                            <RadioButton Content="{Binding Path=Print_Order_By_Group, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderGroup}" FontSize="13" Margin="0,0,0,0"/>
-                                            <RadioButton Content="{Binding Path=Print_Order_By_Zone, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderZone}" FontSize="13" Margin="0,0,0,0"/>
-                                        </StackPanel>
-                                    </Border>
-                                </WrapPanel>
-
-                                --><!--<Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-                                        Content="{Binding Path=Print, Source={StaticResource Resources}}" 
-                                        IsEnabled="{Binding CanPrint}" 
-                                        Click="PrintReport_Click" 
-                                        Height="40" Margin="30,0,0,0"/>--><!--
-                                <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-        Content="{Binding Path=Print, Source={StaticResource Resources}}" 
-        IsEnabled="False" 
-        Click="PrintReport_Click" 
-        Height="40" Margin="30,0,0,0"/>
-                                <TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-           Text="COMING SOON" 
-           Foreground="Red" Background="Transparent" Opacity="0.4"
-           HorizontalAlignment="Center" 
-           FontSize="12" FontFamily="Cambria" Margin="26,0,0,0"
-           RenderTransformOrigin="0.5,0.5">
-                                    <TextBlock.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="340"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </TextBlock.RenderTransform>
-                                </TextBlock>
-
-                                <Button Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
-                                        Content="{Binding Path=Option_Cancel, Source={StaticResource Resources}}"
-                                        Click="CancelPrint_Click"
-                                        Margin="30,10,0,0"/>
-
-                            </Grid>
-                        </StackPanel>
-                    </Border>
-                </Popup>-->
-                <!--#endregion-->
-
-
                 <!--#region language selector pop-up-->
                 <Popup x:Name="popLanguageSelector" 
                        IsOpen="{Binding LanguageSelectorIsOpen}" StaysOpen="{Binding LanguageSelectorStaysOpen}" 
@@ -1389,7 +1232,7 @@
                 <!--#region About pop-up-->
                 <Popup x:Name="popAbout" 
                        IsOpen="{Binding AboutIsOpen}" StaysOpen="True" 
-                       Placement="RelativePoint" PlacementTarget="{Binding ElementName=mnuAbout}" 
+                       Placement="RelativePoint" PlacementTarget="{Binding ElementName=mnuHelpOptions}" 
                        VerticalOffset="-150" 
                        HorizontalOffset="-150"
                        AllowsTransparency="True" 
@@ -1422,6 +1265,70 @@
                                 <Image Grid.Row="0" Grid.Column="2" Source="/CTecControls;component/UI/Images/c-tec.png" Height="70" Stretch="Uniform" Margin="20,10,10,5" VerticalAlignment="Top"/>
 
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="XFP" FontWeight="DemiBold" FontStyle="Italic"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ExeVersion}" FontWeight="DemiBold"/>
+                                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ExeDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
+
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="CTecControls" FontWeight="DemiBold" FontStyle="Italic"/>
+                                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ControlsVersion}" FontWeight="DemiBold"/>
+                                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ControlsDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
+
+                                <TextBlock Grid.Row="6" Grid.Column="0" Text="CTecDevices" FontWeight="DemiBold" FontStyle="Italic"/>
+                                <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding DevicesVersion}" FontWeight="DemiBold"/>
+                                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding DevicesDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
+
+                                <TextBlock Grid.Row="8" Grid.Column="0" Text="CTecUtil" FontWeight="DemiBold" FontStyle="Italic"/>
+                                <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding UtilVersion}" FontWeight="DemiBold"/>
+                                <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding UtilDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
+
+                                <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding Path=Copyright, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CopyrightDetails}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Popup>
+                <!--#endregion-->
+
+                
+                <!--#region Revision History pop-up-->
+                <Popup x:Name="popHistory" 
+                       IsOpen="{Binding RevisionHistoryIsOpen}" StaysOpen="True" 
+                       Placement="RelativePoint" PlacementTarget="{Binding ElementName=mnuHelpOptions}" 
+                       VerticalOffset="-150" 
+                       HorizontalOffset="-150"
+                       AllowsTransparency="True" 
+                       PopupAnimation="Fade">
+                    <Border Style="{StaticResource PopupBorder}" Padding="5" >
+                        <StackPanel Orientation="Vertical">
+                            <ctc:CloseButton Click="closeHistory_Click" HorizontalAlignment="Right"/>
+                            <Grid Margin="10,0,10,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <ctc:Icon Grid.Row="0" Grid.Column="0" IconType="History" Foreground="{StaticResource Brush02}" Width="24" Height="24"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Product_Full_Name, Source={StaticResource Resources}}" FontSize="16" FontWeight="Bold" MaxWidth="250" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="XFP" FontWeight="DemiBold"/>
                                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ExeVersion}" FontWeight="DemiBold"/>
                                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ExeDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
 

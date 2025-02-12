@@ -19,9 +19,9 @@ using Windows.Graphics.Printing;
 
 namespace Xfp.DataTypes
 {
-    public class PrintingParameters
+    public class PrintParameters
     {
-        public PrintingParameters()
+        public PrintParameters()
         {
             PrintHandler = new PrintDialog() { CurrentPageEnabled = false, SelectedPagesEnabled = false, UserPageRangeEnabled = false };
         }

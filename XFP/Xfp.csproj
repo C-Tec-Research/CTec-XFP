@@ -33,9 +33,11 @@
     <None Remove="Resources\Download_Single.png" />
     <None Remove="Resources\info.png" />
     <None Remove="Resources\panel.png" />
+    <None Remove="Resources\print.png" />
     <None Remove="Resources\Upload_All.png" />
     <None Remove="Resources\Upload_Single.png" />
     <None Remove="Resources\ToolsConfig.json" />
+    <None Remove="Resources\XFP Revision History.docx" />
     <None Remove="Resources\XfpToolsConfigfp.json" />
     <None Remove="UI\Images\menu-file-new.png" />
     <None Remove="UI\Images\menu-file-open.png" />
@@ -133,6 +135,8 @@
     <Resource Include="Resources\info.png" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <Resource Include="Resources\print.png" />
+    <Resource Include="Resources\XFP Revision History.docx" />
     <Resource Include="UI\Images\download-all.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

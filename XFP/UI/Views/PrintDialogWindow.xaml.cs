@@ -37,13 +37,13 @@ namespace Xfp.UI.Views
             DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage);
 
             var owner = Application.Current.MainWindow;
-            this.Left = owner.Left + owner.ActualWidth  / 2 - 100;
-            this.Top  = owner.Top  + owner.ActualHeight / 2 - 200;
+            this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
+            this.Top  = owner.Top  + owner.ActualHeight / 2 - 235;
         }
 
 
 //        public CTecUtil.PrinterSettings PrinterSettings => _context.PrinterSettings;
-        public PrintingParameters PrintParams => _context.PrintParams;
+        public PrintParameters PrintParams => _context.PrintParams;
 
 
         private PrintDialogWindowViewModel _context;
@@ -52,25 +52,18 @@ namespace Xfp.UI.Views
 
         private void setSize()
         {
-            grdOuter.Width  = grdInner.ActualWidth;
-            grdOuter.Height = grdInner.ActualHeight;
-            this.Width  = grdInner.ActualWidth;
-            this.Height = grdInner.ActualHeight;
+            this.Width  = grdOuter.Width  = grdInner.ActualWidth;
+            this.Height = grdOuter.Height = grdInner.ActualHeight;
         }
 
 
-        private void updateWindowParams(bool save = false) { if (_isOpen) _context.UpdateWindowParams(this, save); }
+        private void updateWindowParams(bool save = false) { if (_isOpen) _context.UpdateWindowParams(save); }
 
 
         private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }
 
 
-        //private void btnMinimise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Minimized; updateWindowParams(); }
-        //private void btnMaximise_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Maximized; updateWindowParams(); }
-        //private void btnRestore_Click(object sender, RoutedEventArgs e)  { WindowState = WindowState.Normal;    updateWindowParams(); }
-        //private void btnExit_Click(object sender, RoutedEventArgs e)           => Close();
-        private void window_SizeChanged(object sender, SizeChangedEventArgs e)  { setSize(); updateWindowParams(true); }
-        //private void window_LocationChanged(object sender, EventArgs e)        => updateWindowParams(true);
+        private void window_SizeChanged(object sender, SizeChangedEventArgs e)  => setSize();
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -117,5 +110,10 @@ namespace Xfp.UI.Views
         private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
         private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)           => _context.PrinterListIsOpen = false;
         private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { try { DragMove(); updateWindowParams(); } catch { } }
+
+        private void window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //e.Handled = true;
+        }
     }
 }
