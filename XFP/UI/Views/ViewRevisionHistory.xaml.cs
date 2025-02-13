@@ -5,6 +5,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using CTecUtil.IO;
+using System.Reflection;
+using System.Linq;
 
 namespace Xfp.UI.Views
 {
@@ -13,18 +15,30 @@ namespace Xfp.UI.Views
         public ViewRevisionHistory()
         {
             InitializeComponent();
-            ReadDocx("/Resources/View Revision History.docx");
+            
+            var owner = Application.Current.MainWindow;
+            this.Left = owner.Left + owner.ActualWidth  / 2 - 200;
+            this.Top  = owner.Top  + 45;
+
+            //ReadDocx(Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(str => str.EndsWith("XFP Revision History.docx")));
+            var name = Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(str => str.EndsWith("XFP Revision History.docx"));
+            fdr.Document = DocxToFlowDocumentConverter.ReadDocxResource(name);
         }
 
-        private void ReadDocx(string path)
+        private void ReadDocx(string resourceName)
         {
-            using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            try
             {
-                var flowDocumentConverter = new DocxToFlowDocumentConverter(stream);
-                flowDocumentConverter.Read();
-                fdr.Document = flowDocumentConverter.Document;
-                this.Title = Path.GetFileName(path);
+                //var sr = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName));
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                {
+                    var flowDocumentConverter = new DocxToFlowDocumentConverter(stream);
+                    flowDocumentConverter.Read();
+                    fdr.Document = flowDocumentConverter.Document;
+                    this.Title = Path.GetFileName(resourceName);
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -44,7 +58,7 @@ namespace Xfp.UI.Views
 
         private void CloseRevisionHistory_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

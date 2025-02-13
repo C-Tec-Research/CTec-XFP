@@ -2058,7 +2058,7 @@ Toutes ses données seront perdues.</value>
   <data name="Print_Orientation_Portrait" xml:space="preserve">
     <value>Portrait</value>
   </data>
-  <data name="Revision_History" xml:space="preserve">
-    <value>Historique des révisions</value>
+  <data name="XFP_Revision_History" xml:space="preserve">
+    <value>Historique des révisions des Outils de Programmation XFP</value>
   </data>
 </root>

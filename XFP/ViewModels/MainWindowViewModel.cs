@@ -1569,7 +1569,12 @@ namespace Xfp.ViewModels
 
 
         #region Revision History pop-up
-        public void ShowRevisionHistoryPopup() => RevisionHistoryIsOpen = true;
+        public void ShowRevisionHistoryPopup()
+        {
+            //RevisionHistoryIsOpen = true;
+            var vrh = new  ViewRevisionHistory();
+            vrh.Show();
+        }
 
         public bool CloseRevisionHistoryPopup()
         {

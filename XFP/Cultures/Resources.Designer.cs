@@ -4175,15 +4175,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revision History.
-        /// </summary>
-        public static string Revision_History {
-            get {
-                return ResourceManager.GetString("Revision_History", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save File....
         /// </summary>
         public static string Save_File_Header {
@@ -5614,6 +5605,15 @@ namespace Xfp.Cultures {
         public static string Xfp_Panel_Config_Files {
             get {
                 return ResourceManager.GetString("Xfp_Panel_Config_Files", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XFP Programming Tools Revision History.
+        /// </summary>
+        public static string XFP_Revision_History {
+            get {
+                return ResourceManager.GetString("XFP_Revision_History", resourceCulture);
             }
         }
         

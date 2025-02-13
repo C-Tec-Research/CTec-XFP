@@ -136,7 +136,9 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <Resource Include="Resources\print.png" />
-    <Resource Include="Resources\XFP Revision History.docx" />
+    <EmbeddedResource Include="Resources\XFP Revision History.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Resource Include="UI\Images\download-all.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

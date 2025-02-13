@@ -10,12 +10,11 @@
         WindowStyle="None"
         ResizeMode="CanResize"
         ShowInTaskbar="True"
-        Title="{Binding Path=Revision_History, Source={StaticResource Resources}}"
-        LayoutTransform="{Binding LayoutTransform}"
+        Title="{Binding Path=XFP_Revision_History, Source={StaticResource Resources}}"
         SizeChanged="window_SizeChanged"
         PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
-        Height="500" Width="400"
+        Height="680" Width="520"
         MinHeight="50" MinWidth="150">
 
     <shell:WindowChrome.WindowChrome>
@@ -47,15 +46,15 @@
         <Grid Grid.Row="0" Background="{StaticResource Brush09}">
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <ctc:Icon IconType="History" Foreground="{StaticResource Brush02}" Width="16" Height="16" Margin="8,0,0,0"/>
-                <TextBlock Text="{Binding Path=Revision_History, Source={StaticResource Resources}}" 
-                            Style="{StaticResource PopupTextTitle}" 
-                            Visibility="{Binding LogText, Converter={StaticResource NonNullToVisibilityConverter}}"
-                            Foreground="{StaticResource Brush02}" 
-                            FontSize="13" VerticalAlignment="Center" Margin="8,0,5,0"/>
+                <TextBlock Text="{Binding Path=XFP_Revision_History, Source={StaticResource Resources}}" 
+                           Style="{StaticResource PopupTextTitle}" 
+                           Visibility="{Binding LogText, Converter={StaticResource NonNullToVisibilityConverter}}"
+                           Foreground="{StaticResource Brush02}" 
+                           FontSize="12" VerticalAlignment="Center" Margin="8,0,5,0"/>
             </StackPanel>
             <ctc:CloseButton Grid.Row="0" WindowChrome.IsHitTestVisibleInChrome="True"
-                                Click="CloseRevisionHistory_Click" 
-                                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"/>
+                             Click="CloseRevisionHistory_Click" 
+                             HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"/>
         </Grid>
 
         <Grid Grid.Row="1" Background="{StaticResource Brush10}">
@@ -64,7 +63,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <FlowDocumentReader Grid.Row="1" x:Name="fdr" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False"/>
+            <FlowDocumentReader Grid.Row="1" x:Name="fdr" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" Zoom="1"/>
         </Grid>
     </Grid>
 </Window>
