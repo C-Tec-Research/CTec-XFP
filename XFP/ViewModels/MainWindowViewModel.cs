@@ -48,6 +48,7 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.DataTypes.Printing;
+using CTecControls.UI.Views;
 
 namespace Xfp.ViewModels
 {
@@ -1477,7 +1478,7 @@ namespace Xfp.ViewModels
 
         public double MinZoom => XfpApplicationConfig.MinZoom;
         public double MaxZoom => XfpApplicationConfig.MaxZoom;
-        public double ZoomStep => XfpApplicationConfig.Settings.ZoomStep;
+        public double ZoomStep => XfpApplicationConfig.ZoomStep;
         public double LargeZoomStep => ZoomStep * 2;
         public double TickFrequency => (MaxZoom - MinZoom) / 4;
 
@@ -1569,23 +1570,18 @@ namespace Xfp.ViewModels
 
 
         #region Revision History pop-up
-        public void ShowRevisionHistoryPopup()
+        public void ShowRevisionHistoryWindow()
         {
-            //RevisionHistoryIsOpen = true;
-            var vrh = new  ViewRevisionHistory();
-            vrh.Show();
+            try
+            {
+                MainWindowEnabled = false;
+                new ViewRevisionHistory().ShowDialog();
+new RegistrationWindow().ShowDialog();
+            }
+            catch (Exception ex) { }
+            finally { MainWindowEnabled = true; }
         }
 
-        public bool CloseRevisionHistoryPopup()
-        {
-            bool closedIt = RevisionHistoryIsOpen;
-            RevisionHistoryIsOpen = false;
-            return closedIt;
-        }
-
-
-        private bool _revisionHistoryIsOpen;
-        public bool RevisionHistoryIsOpen { get => _revisionHistoryIsOpen; set { _revisionHistoryIsOpen = value; OnPropertyChanged(); } }
         #endregion
 
 
@@ -1598,10 +1594,9 @@ namespace Xfp.ViewModels
             var closedLang       = CloseLanguageSelector();
             var closedMain       = CloseMainMenu();
             var closedAbout      = CloseAboutPopup();
-            var closedHistory    = false;//CloseRevisionHistoryPopup();
             var closedZoom       = excludingZoomPopup || CloseZoomControl();
 
-            return /*closedPrinters || closedPrint ||*/ closedLang || closedMain || closedAbout || closedHistory || closedZoom;
+            return /*closedPrinters || closedPrint ||*/ closedLang || closedMain || closedAbout || closedZoom;
         }
 
         #endregion

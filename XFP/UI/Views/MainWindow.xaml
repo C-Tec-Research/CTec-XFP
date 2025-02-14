@@ -1289,71 +1289,7 @@
                     </Border>
                 </Popup>
                 <!--#endregion-->
-
                 
-                <!--#region Revision History pop-up-->
-                <Popup x:Name="popHistory" 
-                       IsOpen="{Binding RevisionHistoryIsOpen}" StaysOpen="True" 
-                       Placement="RelativePoint" PlacementTarget="{Binding ElementName=mnuHelpOptions}" 
-                       VerticalOffset="-150" 
-                       HorizontalOffset="-150"
-                       AllowsTransparency="True" 
-                       PopupAnimation="Fade">
-                    <Border Style="{StaticResource PopupBorder}" Padding="5" >
-                        <StackPanel Orientation="Vertical">
-                            <ctc:CloseButton Click="closeHistory_Click" HorizontalAlignment="Right"/>
-                            <Grid Margin="10,0,10,10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                    <ctc:Icon Grid.Row="0" Grid.Column="0" IconType="History" Foreground="{StaticResource Brush02}" Width="24" Height="24"/>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Product_Full_Name, Source={StaticResource Resources}}" FontSize="16" FontWeight="Bold" MaxWidth="250" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="XFP" FontWeight="DemiBold"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ExeVersion}" FontWeight="DemiBold"/>
-                                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ExeDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
-
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="CTecControls" FontWeight="DemiBold" FontStyle="Italic"/>
-                                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ControlsVersion}" FontWeight="DemiBold"/>
-                                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ControlsDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
-
-                                <TextBlock Grid.Row="6" Grid.Column="0" Text="CTecDevices" FontWeight="DemiBold" FontStyle="Italic"/>
-                                <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding DevicesVersion}" FontWeight="DemiBold"/>
-                                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding DevicesDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
-
-                                <TextBlock Grid.Row="8" Grid.Column="0" Text="CTecUtil" FontWeight="DemiBold" FontStyle="Italic"/>
-                                <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding UtilVersion}" FontWeight="DemiBold"/>
-                                <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding UtilDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="0,0,0,10"/>
-
-                                <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding Path=Copyright, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-                                    <TextBlock Text="{Binding CopyrightDetails}"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                    </Border>
-                </Popup>
-                <!--#endregion-->
-
                 <!--#endregion-->
 
             </Grid>

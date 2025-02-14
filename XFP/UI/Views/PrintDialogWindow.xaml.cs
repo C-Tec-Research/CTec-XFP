@@ -63,7 +63,7 @@ namespace Xfp.UI.Views
         private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }
 
 
-        private void window_SizeChanged(object sender, SizeChangedEventArgs e)  => setSize();
+        private void window_SizeChanged(object sender, SizeChangedEventArgs e) => setSize();
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {

@@ -208,8 +208,8 @@ namespace Xfp.ViewModels
             }
         }
 
-        public void ZoomIn()  { ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + applicationConfig.ZoomStep, ApplicationConfig.MaxZoom); }
-        public void ZoomOut() { ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - applicationConfig.ZoomStep, ApplicationConfig.MinZoom); }
+        public void ZoomIn()  { ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + ApplicationConfig.ZoomStep, ApplicationConfig.MaxZoom); }
+        public void ZoomOut() { ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - ApplicationConfig.ZoomStep, ApplicationConfig.MinZoom); }
         #endregion
     }
 }

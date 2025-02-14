@@ -14,7 +14,7 @@
         SizeChanged="window_SizeChanged"
         PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
-        Height="680" Width="520"
+        Height="650" Width="520"
         MinHeight="50" MinWidth="150">
 
     <shell:WindowChrome.WindowChrome>
@@ -33,9 +33,6 @@
                           BlurRadius="40"
                           ShadowDepth="3"/>
     </Window.Effect>
-
-    <Window.Resources>
-    </Window.Resources>
 
     <Grid Background="{StaticResource Brush10}">
         <Grid.RowDefinitions>

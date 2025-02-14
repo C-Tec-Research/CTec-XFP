@@ -16,7 +16,7 @@
         ResizeMode="NoResize"
         ShowInTaskbar="True"
         Title="{Binding Path=Last_Comms_Log, Source={StaticResource Resources}}"
-        Icon="/Resources/print.png"
+        Foreground="White"
         LayoutTransform="{Binding LayoutTransform}"
         Loaded="Window_Loaded"
         SizeChanged="window_SizeChanged"

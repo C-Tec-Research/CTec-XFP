@@ -154,7 +154,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
             }
         }        
 
-        public void ZoomIn()  { ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + XfpApplicationConfig.Settings.ZoomStep, XfpApplicationConfig.MaxZoom); }
-        public void ZoomOut() { ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - XfpApplicationConfig.Settings.ZoomStep, XfpApplicationConfig.MinZoom); }
+        public void ZoomIn()  { ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + XfpApplicationConfig.ZoomStep, XfpApplicationConfig.MaxZoom); }
+        public void ZoomOut() { ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - XfpApplicationConfig.ZoomStep, XfpApplicationConfig.MinZoom); }
     }
 }
