@@ -11,9 +11,8 @@
         ResizeMode="CanResize"
         ShowInTaskbar="True"
         Title="{Binding Path=XFP_Revision_History, Source={StaticResource Resources}}"
-        SizeChanged="window_SizeChanged"
-        PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
+        PreviewKeyDown="window_PreviewKeyDown"
         Height="650" Width="520"
         MinHeight="50" MinWidth="150">
 

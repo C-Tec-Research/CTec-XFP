@@ -48,7 +48,7 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.DataTypes.Printing;
-using CTecControls.UI.Views;
+using CTecControls.UI;
 
 namespace Xfp.ViewModels
 {
@@ -1502,7 +1502,7 @@ namespace Xfp.ViewModels
 
 
         #region download log window
-        private CTecControls.UI.Views.CommsLogWindow _logWindow;
+        private CTecControls.UI.CommsLogWindow _logWindow;
         
         
         public void ShowCommsLog(bool scrollToEnd)
@@ -1510,7 +1510,7 @@ namespace Xfp.ViewModels
             CloseCommsLog();
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
                                                      {
-                                                         (_logWindow = new CTecControls.UI.Views.CommsLogWindow(XfpApplicationConfig.Settings, DebugMode)).Show();
+                                                         (_logWindow = new CTecControls.UI.CommsLogWindow(XfpApplicationConfig.Settings, DebugMode)).Show();
                                                          if (scrollToEnd) _logWindow.ScrollToEnd();
                                                      }), DispatcherPriority.Background);
         }
@@ -1569,19 +1569,29 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        #region Revision History pop-up
+        #region Revision History & Registration
         public void ShowRevisionHistoryWindow()
         {
             try
             {
                 MainWindowEnabled = false;
-                new ViewRevisionHistory().ShowDialog();
-new RegistrationWindow().ShowDialog();
+                new Xfp.UI.Views.ViewRevisionHistory().ShowDialog();
             }
             catch (Exception ex) { }
             finally { MainWindowEnabled = true; }
         }
 
+        public void ShowRegistrationWindow()
+        {
+            CTecUtil.UI.UIState.SetBusyState();
+            try
+            {
+                MainWindowEnabled = false;
+                new RegistrationWindow(XfpApplicationConfig.Settings).ShowDialog();
+            }
+            catch (Exception ex) { }
+            finally { MainWindowEnabled = true; }
+        }
         #endregion
 
 

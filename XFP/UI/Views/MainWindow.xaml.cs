@@ -309,6 +309,7 @@ namespace Xfp.Views
         private void CommsLog_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowCommsLog(false);
         private void About_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowAboutPopup();
         private void History_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowRevisionHistoryWindow();
+        private void Register_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.ShowRegistrationWindow();
         private void Exit_PreviewMouseDown(object sender, MouseButtonEventArgs e) => exitApp();
         private void LeftBar_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();
         private void MainPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();
