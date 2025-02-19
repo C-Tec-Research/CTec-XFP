@@ -342,9 +342,9 @@ namespace Xfp.Cultures {
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
-        public static string Add_Panel {
+        public static string Add {
             get {
-                return ResourceManager.GetString("Add_Panel", resourceCulture);
+                return ResourceManager.GetString("Add", resourceCulture);
             }
         }
         

@@ -243,9 +243,6 @@
   <data name="Download_System" xml:space="preserve">
     <value>Télécharger système du panneau</value>
   </data>
-  <data name="IO_Configuration" xml:space="preserve">
-    <value>Configuration E/S</value>
-  </data>
   <data name="Enabled" xml:space="preserve">
     <value>Activé</value>
   </data>
@@ -379,11 +376,11 @@ Veuillez insérer le lien et réessayer.</value>
   <data name="Group" xml:space="preserve">
     <value>Groupe</value>
   </data>
-  <data name="Group_x" xml:space="preserve">
-    <value>Groupe {0}</value>
-  </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>
+  </data>
+  <data name="Info_Abbr" xml:space="preserve">
+    <value>i</value>
   </data>
   <data name="Installation_Details" xml:space="preserve">
     <value>Détails de l'installation</value>
@@ -732,9 +729,6 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
   </data>
   <data name="Zone" xml:space="preserve">
     <value>Zone</value>
-  </data>
-  <data name="Zone_x" xml:space="preserve">
-    <value>Zone {0}</value>
   </data>
   <data name="Zone_Zero_Name" xml:space="preserve">
     <value>Aucune zone allouée</value>
@@ -1144,23 +1138,20 @@ Enregistrer quand même ?</value>
   <data name="Multiple_Values" xml:space="preserve">
     <value>Des valeurs diverses</value>
   </data>
+  <data name="IO_Configuration" xml:space="preserve">
+    <value>Configuration E/S</value>
+  </data>
+  <data name="Group_x" xml:space="preserve">
+    <value>Groupe {0}</value>
+  </data>
+  <data name="Zone_x" xml:space="preserve">
+    <value>Zone {0}</value>
+  </data>
   <data name="Channel_x" xml:space="preserve">
     <value>Canal {0}</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
-  </data>
-  <data name="Subaddress_0" xml:space="preserve">
-    <value>Sous-adresse 0</value>
-  </data>
-  <data name="Subaddress_1" xml:space="preserve">
-    <value>Sous-adresse 1</value>
-  </data>
-  <data name="Subaddress_2" xml:space="preserve">
-    <value>Sous-adresse 2</value>
-  </data>
-  <data name="Subaddress_3" xml:space="preserve">
-    <value>Sous-adresse 3</value>
   </data>
   <data name="Subaddress_x" xml:space="preserve">
     <value>Sous-adresse {0}</value>
@@ -1258,20 +1249,17 @@ Enregistrer quand même ?</value>
   <data name="Is_Set_Silenceable" xml:space="preserve">
     <value>Peut l’ensemble être réduit au silence ?</value>
   </data>
-  <data name="Event_x" xml:space="preserve">
-    <value>Evénement {0}</value>
-  </data>
-  <data name="Input_x" xml:space="preserve">
-    <value>Entrée {0}</value>
-  </data>
-  <data name="Time_x" xml:space="preserve">
-    <value>Temps : {0}</value>
-  </data>
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
   <data name="Event" xml:space="preserve">
     <value>Evénement</value>
+  </data>
+  <data name="Event_x" xml:space="preserve">
+    <value>Evénement {0}</value>
+  </data>
+  <data name="Input_x" xml:space="preserve">
+    <value>Entrée {0}</value>
   </data>
   <data name="Logical_And" xml:space="preserve">
     <value>ET</value>
@@ -1284,6 +1272,9 @@ Enregistrer quand même ?</value>
   </data>
   <data name="Resets_When" xml:space="preserve">
     <value>Réinitialise lorsque...</value>
+  </data>
+  <data name="Time_x" xml:space="preserve">
+    <value>Temps : {0}</value>
   </data>
   <data name="ToolTip_Clear_All" xml:space="preserve">
     <value>Tout réinitialiser sur «Non Déclenché»</value>
@@ -1349,6 +1340,9 @@ Voulez-vous le remplacer?</value>
   </data>
   <data name="Multiple_Rows_Selected" xml:space="preserve">
     <value>Plusieurs lignes sélectionnées</value>
+  </data>
+  <data name="Select_Zone_Or_Panel_To_Show_Details" xml:space="preserve">
+    <value>Sélectionnez un zone ou un panneau pour afficher les détails</value>
   </data>
   <data name="ToolTip_Dependencies_Day_Occupied" xml:space="preserve">
     <value>Options de dépendance Jour (Occupé)</value>
@@ -1454,9 +1448,6 @@ Voulez-vous le remplacer?</value>
   </data>
   <data name="Error_Zone_Name_Too_Long" xml:space="preserve">
     <value>Le nom de la zone est trop long</value>
-  </data>
-  <data name="Select_Zone_Or_Panel_To_Show_Details" xml:space="preserve">
-    <value>Sélectionnez un zone ou un panneau pour afficher les détails</value>
   </data>
   <data name="Error_Set_Delay_Timer_Too_Long" xml:space="preserve">
     <value>Le délai est trop long</value>
@@ -1727,6 +1718,9 @@ Un seul boucle a été configuré ici.</value>
 
 Retirer de la liste ?</value>
   </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
   <data name="Warn_Modes_Not_Available_For_Selected_Devices" xml:space="preserve">
     <value>Certains modes ne sont pas disponibles pour les appareils sélectionnés</value>
   </data>
@@ -1750,9 +1744,6 @@ Retirer de la liste ?</value>
   </data>
   <data name="Warn_No_Modes_Available_For_Selected_Devices" xml:space="preserve">
     <value>Il n’y a aucun mode valide commun à tous les appareils sélectionnés</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Ajouter</value>
   </data>
   <data name="Panel_Number" xml:space="preserve">
     <value>Numéro de panneau</value>
@@ -1782,9 +1773,6 @@ Que voulez-vous faire avec les paramètres des autres panneaux?</value>
   </data>
   <data name="Error_Quiescent_String_Blank" xml:space="preserve">
     <value>La chaîne normale manque</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Supprimer</value>
   </data>
   <data name="Warn_File_Protocol_x" xml:space="preserve">
     <value>Le fichier contient les paramètres des appareils {0}.</value>
@@ -2001,7 +1989,7 @@ Toutes ses données seront perdues.</value>
   <data name="Zone_Group_Settings_x" xml:space="preserve">
     <value>Paramètres du groupe zone {0}</value>
   </data>
-  <data name="ToolTip_View_Last_Download_Log" xml:space="preserve">
+  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
     <value>Voyez le journal du dernier téléchargement du centrale</value>
   </data>
   <data name="Error_After_Download_End" xml:space="preserve">
@@ -2126,5 +2114,8 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="Required_Option" xml:space="preserve">
     <value>(Obligatoire)</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
 </root>

@@ -489,7 +489,7 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="No_Name_Allocated" xml:space="preserve">
     <value>No name allocated</value>
-    <comment>Don't translate?</comment>
+    <comment>Don't translate - fixed text on panel</comment>
   </data>
   <data name="No_Ports_Available" xml:space="preserve">
     <value>No ports available</value>
@@ -1753,9 +1753,6 @@ Remove from the list?</value>
   <data name="Warn_No_Modes_Available_For_Selected_Devices" xml:space="preserve">
     <value>There are no valid modes common to all the selected devices</value>
   </data>
-  <data name="Add_Panel" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="Panel_Number" xml:space="preserve">
     <value>Panel number</value>
   </data>
@@ -2128,5 +2125,8 @@ All of its data will be lost.</value>
   </data>
   <data name="Required_Option" xml:space="preserve">
     <value>(Required)</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
   </data>
 </root>
