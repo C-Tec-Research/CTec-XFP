@@ -48,7 +48,6 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.DataTypes.Printing;
-using CTecControls.UI;
 
 namespace Xfp.ViewModels
 {
@@ -563,7 +562,7 @@ namespace Xfp.ViewModels
                 //CurrentProtocol = newProtocol;
                 ClosePopups();
                 //if (askConfirm)
-                    InitNewDataset(newProtocol, false, false);
+                    InitNewDataset(newProtocol, false, true);
             }
 
             return true;
@@ -2088,7 +2087,7 @@ namespace Xfp.ViewModels
         {
             UIState.SetBusyState();
 
-            if (data.CurrentPanel.Protocol != _data?.CurrentPanel?.Protocol)
+            if (CurrentProtocol != _data?.CurrentPanel?.Protocol)
                 changeProtocol(data.CurrentPanel.Protocol, false);
             
             _data = data;
