@@ -48,6 +48,8 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.DataTypes.Printing;
+using CTecUtil.Config;
+using static CTecFtdi.Enums;
 
 namespace Xfp.ViewModels
 {
@@ -127,6 +129,10 @@ namespace Xfp.ViewModels
 
             //start listener in case another instance of the app sends data
             startPipeServer();
+
+            if (XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted is null
+             || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) && XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date)
+                ShowRegistrationWindow(true);
         }
 
 
