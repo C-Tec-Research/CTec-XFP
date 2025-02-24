@@ -38,7 +38,7 @@ namespace Xfp.UI.Views
 
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
-            this.Top  = owner.Top  + owner.ActualHeight / 2 - 235;
+            this.Top  = owner.Top  + owner.ActualHeight / 2 - 240;
         }
 
 
@@ -65,7 +65,7 @@ namespace Xfp.UI.Views
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e) => setSize();
 
-        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
@@ -88,7 +88,7 @@ namespace Xfp.UI.Views
         }
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void window_Loaded(object sender, RoutedEventArgs e)
         {
             _isOpen = true;
         }

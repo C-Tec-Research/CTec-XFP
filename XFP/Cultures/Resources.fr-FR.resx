@@ -2049,71 +2049,8 @@ Toutes ses données seront perdues.</value>
   <data name="XFP_Revision_History" xml:space="preserve">
     <value>Historique des révisions des Outils de Programmation XFP</value>
   </data>
-  <data name="Error_Complete_Required_Fields" xml:space="preserve">
-    <value>Veuillez remplir les champs obligatoires.</value>
-  </data>
   <data name="Option_Submit" xml:space="preserve">
     <value>Envoyer</value>
-  </data>
-  <data name="Register_Address" xml:space="preserve">
-    <value>Addresse :</value>
-  </data>
-  <data name="Register_Audio_Frequency_Induction_Loop_Calculator" xml:space="preserve">
-    <value>Outil de calcul de boucle d’induction audio-fréquence</value>
-  </data>
-  <data name="Register_City" xml:space="preserve">
-    <value>Ville :</value>
-  </data>
-  <data name="Register_Country" xml:space="preserve">
-    <value>Pays :</value>
-  </data>
-  <data name="Register_Email" xml:space="preserve">
-    <value>E-mail :</value>
-  </data>
-  <data name="Register_First_Name" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="Register_Last_Name" xml:space="preserve">
-    <value>Nom de famille</value>
-  </data>
-  <data name="Register_Name" xml:space="preserve">
-    <value>Nom :</value>
-  </data>
-  <data name="Register_Postcode" xml:space="preserve">
-    <value>Code postal/ZIP :</value>
-  </data>
-  <data name="Register_QT423_Configurator_Tools" xml:space="preserve">
-    <value>Outils de Configuration Quantec QT423</value>
-  </data>
-  <data name="Register_Quantec_Surveyor" xml:space="preserve">
-    <value>Logiciel de démonstration Quantec Surveyor</value>
-  </data>
-  <data name="Register_Quantec_Tools" xml:space="preserve">
-    <value>Outils de Programmation Quantec</value>
-  </data>
-  <data name="Register_SigTEL_EVC423_Configurator_Tools" xml:space="preserve">
-    <value>Outils de Configuration SigTEL EVC423</value>
-  </data>
-  <data name="Register_XFP_Tools" xml:space="preserve">
-    <value>Outils de Programmation XFP</value>
-  </data>
-  <data name="Register_XFP_ZFP_Loop_Battery_Calc_Tool" xml:space="preserve">
-    <value>Outil de calcul de boucle et de batterie XFP/ZFP</value>
-  </data>
-  <data name="Registration_Header" xml:space="preserve">
-    <value>Inscrivez-vous pour être tenu informé des mises à jour du logiciel</value>
-  </data>
-  <data name="Registration_Select_Update_Info" xml:space="preserve">
-    <value>Sélectionnez les progiciels pour lesquels vous souhaitez recevoir les informations de mise à jour :</value>
-  </data>
-  <data name="Registration_Title" xml:space="preserve">
-    <value>Inscription</value>
-  </data>
-  <data name="Registration_Where_Do_You_Buy_CTec_Products" xml:space="preserve">
-    <value>Où achetez-vous vos produits C-TEC ?</value>
-  </data>
-  <data name="Required_Option" xml:space="preserve">
-    <value>(Obligatoire)</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>

@@ -1,34 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.DirectoryServices.ActiveDirectory;
-using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
-using System.Printing;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using System.Windows.Xps;
-using System.Windows.Xps.Packaging;
 using Newtonsoft.Json;
 using CTecUtil;
 using CTecUtil.IO;
 using static CTecUtil.IO.SerialComms;
 using CTecUtil.Pipes;
 using static CTecUtil.Pipes.PipeServer;
-using CTecUtil.Printing;
 using CTecUtil.StandardPanelDataTypes;
 using CTecUtil.UI;
 using CTecControls;
@@ -48,8 +39,6 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.DataTypes.Printing;
-using CTecUtil.Config;
-using static CTecFtdi.Enums;
 
 namespace Xfp.ViewModels
 {
@@ -62,6 +51,10 @@ namespace Xfp.ViewModels
             _panelControl = panelControl;
 
             XfpApplicationConfig.Settings.InitConfigSettings(SupportedApps.XFP, updateFileMenuRecentFiles);
+
+            //ShowRegistrationWindow(true);
+
+            CTecUtil.UI.UIState.SetBusyState();
 
             XfpCommands.Initialise(new(() => PanelNumber));
             PanelComms.InitialisePingCommands();
@@ -129,10 +122,6 @@ namespace Xfp.ViewModels
 
             //start listener in case another instance of the app sends data
             startPipeServer();
-
-            if (XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted is null
-             || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) && XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date)
-                ShowRegistrationWindow(true);
         }
 
 
@@ -1378,7 +1367,7 @@ namespace Xfp.ViewModels
             }
 
             if (result == true)
-                DocumentPrinter.PrintDocument(_data, printDialog.PrintParams);
+                XfpDocumentPrinter.PrintDocument(_data, printDialog.PrintParams);
         }
 
         internal void PrintPreview() { }
@@ -1589,8 +1578,12 @@ namespace Xfp.ViewModels
             finally { MainWindowEnabled = true; }
         }
 
-        public void ShowRegistrationWindow()
+        public void ShowRegistrationWindow(bool conditionalCheck = false)
         {
+            if (conditionalCheck && (XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted is null
+                                  || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) && 
+                                     XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date))
+
             CTecUtil.UI.UIState.SetBusyState();
             try
             {

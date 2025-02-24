@@ -2060,71 +2060,8 @@ All of its data will be lost.</value>
   <data name="XFP_Revision_History" xml:space="preserve">
     <value>XFP Programming Tools Revision History</value>
   </data>
-  <data name="Error_Complete_Required_Fields" xml:space="preserve">
-    <value>Please complete the required fields</value>
-  </data>
   <data name="Option_Submit" xml:space="preserve">
     <value>Submit</value>
-  </data>
-  <data name="Register_Address" xml:space="preserve">
-    <value>Address:</value>
-  </data>
-  <data name="Register_Audio_Frequency_Induction_Loop_Calculator" xml:space="preserve">
-    <value>Audio-Frequency Induction Loop Calculator</value>
-  </data>
-  <data name="Register_City" xml:space="preserve">
-    <value>City:</value>
-  </data>
-  <data name="Register_Country" xml:space="preserve">
-    <value>Country:</value>
-  </data>
-  <data name="Register_Email" xml:space="preserve">
-    <value>Email:</value>
-  </data>
-  <data name="Register_First_Name" xml:space="preserve">
-    <value>First</value>
-  </data>
-  <data name="Register_Last_Name" xml:space="preserve">
-    <value>Last</value>
-  </data>
-  <data name="Register_Name" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="Register_Postcode" xml:space="preserve">
-    <value>Postal code/ZIP:</value>
-  </data>
-  <data name="Register_QT423_Configurator_Tools" xml:space="preserve">
-    <value>Quantec QT423 Configurator Tools</value>
-  </data>
-  <data name="Register_Quantec_Surveyor" xml:space="preserve">
-    <value>Quantec Surveyor Demo Software</value>
-  </data>
-  <data name="Register_Quantec_Tools" xml:space="preserve">
-    <value>Quantec Addressable Call System Programming Tools</value>
-  </data>
-  <data name="Register_SigTEL_EVC423_Configurator_Tools" xml:space="preserve">
-    <value>SigTEL EVC423 Configurator Tools</value>
-  </data>
-  <data name="Register_XFP_Tools" xml:space="preserve">
-    <value>XFP Addressable Fire Panel Programming Tools</value>
-  </data>
-  <data name="Register_XFP_ZFP_Loop_Battery_Calc_Tool" xml:space="preserve">
-    <value>XFP/ZFP Loop and Battery Calculator Tool</value>
-  </data>
-  <data name="Registration_Header" xml:space="preserve">
-    <value>Register to be kept informed of software updates</value>
-  </data>
-  <data name="Registration_Select_Update_Info" xml:space="preserve">
-    <value>Please select the software packages for which you want to receive update information:</value>
-  </data>
-  <data name="Registration_Title" xml:space="preserve">
-    <value>Registration</value>
-  </data>
-  <data name="Registration_Where_Do_You_Buy_CTec_Products" xml:space="preserve">
-    <value>Where do you buy your C-TEC products from?</value>
-  </data>
-  <data name="Required_Option" xml:space="preserve">
-    <value>(Required)</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>

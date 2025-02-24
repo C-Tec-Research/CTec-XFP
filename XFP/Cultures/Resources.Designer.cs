@@ -1822,15 +1822,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please complete the required fields.
-        /// </summary>
-        public static string Error_Complete_Required_Fields {
-            get {
-                return ResourceManager.GetString("Error_Complete_Required_Fields", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please confirm this is correct.
         /// </summary>
         public static string Error_Confirm {
@@ -4119,177 +4110,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address:.
-        /// </summary>
-        public static string Register_Address {
-            get {
-                return ResourceManager.GetString("Register_Address", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Audio-Frequency Induction Loop Calculator.
-        /// </summary>
-        public static string Register_Audio_Frequency_Induction_Loop_Calculator {
-            get {
-                return ResourceManager.GetString("Register_Audio_Frequency_Induction_Loop_Calculator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to City:.
-        /// </summary>
-        public static string Register_City {
-            get {
-                return ResourceManager.GetString("Register_City", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Country:.
-        /// </summary>
-        public static string Register_Country {
-            get {
-                return ResourceManager.GetString("Register_Country", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email:.
-        /// </summary>
-        public static string Register_Email {
-            get {
-                return ResourceManager.GetString("Register_Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First.
-        /// </summary>
-        public static string Register_First_Name {
-            get {
-                return ResourceManager.GetString("Register_First_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last.
-        /// </summary>
-        public static string Register_Last_Name {
-            get {
-                return ResourceManager.GetString("Register_Last_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name:.
-        /// </summary>
-        public static string Register_Name {
-            get {
-                return ResourceManager.GetString("Register_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postal code/ZIP:.
-        /// </summary>
-        public static string Register_Postcode {
-            get {
-                return ResourceManager.GetString("Register_Postcode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantec QT423 Configurator Tools.
-        /// </summary>
-        public static string Register_QT423_Configurator_Tools {
-            get {
-                return ResourceManager.GetString("Register_QT423_Configurator_Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantec Surveyor Demo Software.
-        /// </summary>
-        public static string Register_Quantec_Surveyor {
-            get {
-                return ResourceManager.GetString("Register_Quantec_Surveyor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantec Addressable Call System Programming Tools.
-        /// </summary>
-        public static string Register_Quantec_Tools {
-            get {
-                return ResourceManager.GetString("Register_Quantec_Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SigTEL EVC423 Configurator Tools.
-        /// </summary>
-        public static string Register_SigTEL_EVC423_Configurator_Tools {
-            get {
-                return ResourceManager.GetString("Register_SigTEL_EVC423_Configurator_Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to XFP Addressable Fire Panel Programming Tools.
-        /// </summary>
-        public static string Register_XFP_Tools {
-            get {
-                return ResourceManager.GetString("Register_XFP_Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to XFP/ZFP Loop and Battery Calculator Tool.
-        /// </summary>
-        public static string Register_XFP_ZFP_Loop_Battery_Calc_Tool {
-            get {
-                return ResourceManager.GetString("Register_XFP_ZFP_Loop_Battery_Calc_Tool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Register to be kept informed of software updates.
-        /// </summary>
-        public static string Registration_Header {
-            get {
-                return ResourceManager.GetString("Registration_Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please select the software packages for which you want to receive update information:.
-        /// </summary>
-        public static string Registration_Select_Update_Info {
-            get {
-                return ResourceManager.GetString("Registration_Select_Update_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Registration.
-        /// </summary>
-        public static string Registration_Title {
-            get {
-                return ResourceManager.GetString("Registration_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Where do you buy your C-TEC products from?.
-        /// </summary>
-        public static string Registration_Where_Do_You_Buy_CTec_Products {
-            get {
-                return ResourceManager.GetString("Registration_Where_Do_You_Buy_CTec_Products", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Relay 1.
         /// </summary>
         public static string Relay_1 {
@@ -4351,15 +4171,6 @@ namespace Xfp.Cultures {
         public static string Remove_Panel_x {
             get {
                 return ResourceManager.GetString("Remove_Panel_x", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (Required).
-        /// </summary>
-        public static string Required_Option {
-            get {
-                return ResourceManager.GetString("Required_Option", resourceCulture);
             }
         }
         

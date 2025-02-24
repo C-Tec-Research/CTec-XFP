@@ -15,9 +15,9 @@ using System.Windows.Xps;
 
 namespace Xfp.DataTypes.Printing
 {
-    public class DocumentPrinter
+    public class XfpDocumentPrinter
     {
-        public DocumentPrinter()
+        public XfpDocumentPrinter()
         {
         }
 
