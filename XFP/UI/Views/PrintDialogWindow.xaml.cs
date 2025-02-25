@@ -26,10 +26,6 @@ namespace Xfp.UI.Views
 {
     public partial class PrintDialogWindow : Window
     {
-        /// <summary>
-        /// Instance of the Comms Log display window
-        /// </summary>
-        /// <param name="logData"></param>
         public PrintDialogWindow(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             InitializeComponent();
@@ -93,12 +89,7 @@ namespace Xfp.UI.Views
             _isOpen = true;
         }
 
-        /*
-        FlowDocument: A FlowDocument is created with some sample text.
-        PrintDialog: A PrintDialog is used to allow the user to select a printer and configure print settings.
-        Print Action: If the user confirms the print action, the document is sent to the printer.
-        - The FlowDocument can be customised with more complex content as needed.
-        */
+
         private void PrintButton_Click(object sender, RoutedEventArgs e) => DialogResult = true;
 
 

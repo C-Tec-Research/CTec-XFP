@@ -1580,18 +1580,19 @@ namespace Xfp.ViewModels
 
         public void ShowRegistrationWindow(bool conditionalCheck = false)
         {
-            if (conditionalCheck && (XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted is null
-                                  || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) && 
-                                     XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date))
-
-            CTecUtil.UI.UIState.SetBusyState();
-            try
+            if (!conditionalCheck || XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted is null
+                                  || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) &&
+                                     XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date)
             {
-                MainWindowEnabled = false;
-                new RegistrationWindow(XfpApplicationConfig.Settings).ShowDialog();
+                CTecUtil.UI.UIState.SetBusyState();
+                try
+                {
+                    MainWindowEnabled = false;
+                    new RegistrationWindow(XfpApplicationConfig.Settings).ShowDialog();
+                }
+                catch (Exception ex) { }
+                finally { MainWindowEnabled = true; }
             }
-            catch (Exception ex) { }
-            finally { MainWindowEnabled = true; }
         }
         #endregion
 

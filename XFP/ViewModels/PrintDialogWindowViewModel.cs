@@ -116,6 +116,9 @@ namespace Xfp.ViewModels
             }
         }
 
+        public List<string> _printerDevices;
+
+
         public bool   PrinterListIsOpen { get => _printerListIsOpen; set { _printerListIsOpen = value; OnPropertyChanged(); } }
         public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
 

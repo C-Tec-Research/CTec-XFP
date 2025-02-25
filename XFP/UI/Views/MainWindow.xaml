@@ -908,7 +908,7 @@
                                     <StackPanel Orientation="Vertical">
                                         <ctc:HamburgerMenuOption IconType="About" PreviewMouseDown="About_PreviewMouseDown"/>
                                         <ctc:HamburgerMenuOption IconType="History" PreviewMouseDown="History_PreviewMouseDown"/>
-                                        <ctc:HamburgerMenuOption IconType="Register" PreviewMouseDown="Register_PreviewMouseDown"/>
+                                        <!--<ctc:HamburgerMenuOption IconType="Register" PreviewMouseDown="Register_PreviewMouseDown"/>-->
                                     </StackPanel>
                                 </ctc:HamburgerMenu.Content>
                             </ctc:HamburgerMenu>
