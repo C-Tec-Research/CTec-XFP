@@ -208,7 +208,6 @@
         SiteConfigNoClientName = 602,
         SiteConfigNoClientAddress = 603,
         SiteConfigNoClientTel = 604,
-        SiteConfigNoPanelLocation = 605,
         SiteConfigNoInstallerName = 610,
         SiteConfigNoInstallerAddress = 611,
         SiteConfigNoInstallerTel = 612,
@@ -262,6 +261,7 @@
 
         // - NetworkConfigData config errors in 800s
         NetworkConfigInvalidPanelName = 800,
+        NetworkConfigNoPanelLocation = 801,
 
         // - miscellaneous error in 900s
     }

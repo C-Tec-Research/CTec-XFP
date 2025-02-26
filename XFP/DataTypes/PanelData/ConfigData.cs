@@ -88,7 +88,6 @@ namespace Xfp.DataTypes.PanelData
                 ValidationCodes.SiteConfigNoClientName or
                 ValidationCodes.SiteConfigNoClientAddress or
                 ValidationCodes.SiteConfigNoClientTel or
-                ValidationCodes.SiteConfigNoPanelLocation or
                 ValidationCodes.SiteConfigNoInstallerName or 
                 ValidationCodes.SiteConfigNoInstallerAddress or 
                 ValidationCodes.SiteConfigNoInstallerTel or 

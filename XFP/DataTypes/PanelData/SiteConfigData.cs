@@ -27,7 +27,6 @@ namespace Xfp.DataTypes.PanelData
             CommissionDate = original.CommissionDate;
             Installer = new NameAndAddressData(original.Installer);
             InstallerTel = original.InstallerTel;
-            //PanelLocation = original.PanelLocation;
             EngineerName = original.EngineerName;
             AL2Code = original.AL2Code;
             AL3Code = original.AL3Code;
@@ -40,6 +39,7 @@ namespace Xfp.DataTypes.PanelData
         public const int AccessCodeLength = 4;
 
 
+        public string SystemName { get; set; }
         public NameAndAddressData Client { get; set; }
         public string ClientTel { get; set; }
         public DateTime? InstallDate { get; set; }
@@ -53,7 +53,6 @@ namespace Xfp.DataTypes.PanelData
         public bool SoundersPulsed { get; set; }
         public bool CopyTime { get; set; }
         public int FaultLockout { get; set; }
-        //public string PanelLocation { get; set; }
         public string MaintenanceString { get; set; }
         public string QuiescentString { get; set; }
         public DateTime? MaintenanceDate { get; set; }
@@ -76,9 +75,6 @@ namespace Xfp.DataTypes.PanelData
         public bool BlinkPollingLED { get; set; }
         public bool AutoAdjustDST { get; set; }
         public bool RealTimeEventOutput { get; set; }
-
-
-        public string SystemName { get; set; }
 
 
         /// <summary>
@@ -111,7 +107,6 @@ namespace Xfp.DataTypes.PanelData
                 && od.CommissionDate == CommissionDate
                 && od.Installer.Equals(Installer)
                 && od.InstallerTel == InstallerTel
-                //&& od.PanelLocation == PanelLocation
                 && od.EngineerName == EngineerName
                 && od.AL2Code == AL2Code
                 && od.AL3Code == AL3Code;
@@ -148,14 +143,10 @@ namespace Xfp.DataTypes.PanelData
                 _pageErrorOrWarningDetails.Items.Add(deviceStrErrs);
             }
 
-            var systemNameErr = string.IsNullOrWhiteSpace(SystemName);
-            //var panelLocErr   = string.IsNullOrWhiteSpace(PanelLocation);
-
-            if (systemNameErr/* || panelLocErr*/)
+            if (string.IsNullOrWhiteSpace(SystemName))
             {
                 ConfigErrorPageItems systemErrs = new(0, Cultures.Resources.System);
-                if (systemNameErr) systemErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoSystemNameWarning);
-                //if (panelLocErr)   systemErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoPanelLocation);
+                systemErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoSystemNameWarning);
                 _pageErrorOrWarningDetails.Items.Add(systemErrs);
             }
 

@@ -33,6 +33,7 @@ namespace Xfp.Files.XfpFile
                 case XfpTags.InvestigationPeriod:   result.CurrentPanel.ZoneConfig.InputDelay = parseIntTime(currentLine); break;
                 case XfpTags.InvestigationPeriod1:  result.CurrentPanel.ZoneConfig.InvestigationPeriod = parseIntTime(currentLine); break;
 
+                                                    //old XFP files support only 1 panel; any panel location found is stored against our current panel
                 case XfpTags.PanelLocation:         result.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[result.CurrentPanel.PanelNumber - 1].Location = ParseString(currentLine); break;
                 case XfpTags.AL2Code:               result.SiteConfig.AL2Code = ParseString(currentLine); break;
                 case XfpTags.AL3Code:               result.SiteConfig.AL3Code = ParseString(currentLine); break;

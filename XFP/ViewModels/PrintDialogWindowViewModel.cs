@@ -30,7 +30,6 @@ namespace Xfp.ViewModels
         public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             this.applicationConfig = applicationConfig;
-            _pages       = pages;
             _currentPage = currentPage;
 
             ZoomLevel    = this.applicationConfig.PrintParametersWindow.Scale;
@@ -47,49 +46,9 @@ namespace Xfp.ViewModels
         }
 
 
-        //public void ShowDialog()
-        //{
-        //    OnPropertyChanged(nameof(Printers));
-        //    OnPropertyChanged(nameof(SelectedPrinter));
-        //    OnPropertyChanged(nameof(PrintAllPages));
-        //    OnPropertyChanged(nameof(CanPrint));
-        //    refreshPrinterStatus();
-
-        //    if (PrintCurrentPage)
-        //        setCurrentPageToPrint();
-        //}
-
-
         public PrintQueue Queue => new PrintServer().GetPrintQueues().FirstOrDefault(p => p.Name == SelectedPrinter);
 
 
-        //public void Print()
-        //{
-        //    var printQueue = new PrintServer().GetPrintQueues().FirstOrDefault(p => p.Name == SelectedPrinter);
-        //}
-        //    if (printQueue == null)  
-        //    {  
-        //        MessageBox.Show(Cultures.Resources.Printer_Not_Found);
-        //        return;  
-        //    }
-
-            //    PrintDialog printDialog = new PrintDialog();
-            //    printDialog.PrintQueue = printQueue;
-            //    printDialog.PrintTicket.CopyCount = NumPrintCopies;
-            //    printDialog.PrintTicket.PageOrientation =  PageOrientation.Landscape;
-
-            //    //printDialog.PrintVisual(canvas);
-
-            //    // Create a FlowDocument
-            //    FlowDocument doc = new FlowDocument(new Paragraph(new Run("Hello, this is a test document for printing.")));
-
-            //    // Print the document
-            //    IDocumentPaginatorSource idpSource = doc;
-            //    printDialog.PrintDocument(idpSource.DocumentPaginator, "Printing FlowDocument");
-            //}
-
-
-        private ObservableCollection<Page> _pages = new();
         private Page _currentPage;
 
         private ApplicationConfig applicationConfig { get; }
@@ -97,7 +56,7 @@ namespace Xfp.ViewModels
 
         public void UpdateWindowParams(bool save = false) => applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
 
-        public void Close(Window window) { UpdateWindowParams(true); }
+        public void Close(Window window) => UpdateWindowParams(true);
 
 
         #region printer
@@ -120,7 +79,16 @@ namespace Xfp.ViewModels
 
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen; set { _printerListIsOpen = value; OnPropertyChanged(); } }
-        public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
+        public string SelectedPrinter
+        {
+            get => _printerSettings.PrinterName; 
+            set
+            {
+                _printerSettings.PrinterName = value; 
+                PrintParams.SetPrinter(value);
+                OnPropertyChanged(); PrinterListIsOpen = false;
+            }
+        }
 
         public PrintQueueStatus PrinterStatus => new LocalPrintServer().GetPrintQueue(SelectedPrinter).QueueStatus;
 

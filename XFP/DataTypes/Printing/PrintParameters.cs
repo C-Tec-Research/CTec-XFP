@@ -27,6 +27,11 @@ namespace Xfp.DataTypes
         }
 
 
+        public void SetPrinter(string name)
+        {
+            PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(name);
+        }
+
         public PrintDialog PrintHandler;
         //public CTecUtil.PrinterSettings PrinterSettings { get; set; } = new();
         

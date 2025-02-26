@@ -67,7 +67,7 @@ namespace Xfp.DataTypes.PanelData
                 _errorItems.ValidationCodes.Add(ValidationCodes.NetworkConfigInvalidPanelName);
 
             if (Fitted && string.IsNullOrWhiteSpace(Location))
-                _errorItems.ValidationCodes.Add(ValidationCodes.SiteConfigNoPanelLocation);
+                _errorItems.ValidationCodes.Add(ValidationCodes.NetworkConfigNoPanelLocation);
 
             return _errorItems.ValidationCodes.Count == 0;
         }

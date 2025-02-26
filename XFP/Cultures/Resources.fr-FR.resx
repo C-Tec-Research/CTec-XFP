@@ -531,7 +531,7 @@ Veuillez insérer le lien et réessayer.</value>
   <data name="Programming_Tools" xml:space="preserve">
     <value>Outils de Programmation</value>
   </data>
-  <data name="Xfp_Log_Files" xml:space="preserve">
+  <data name="XFP_Log_Files" xml:space="preserve">
     <value>Fichiers journaux XFP</value>
   </data>
   <data name="Query_Change_Device_Type" xml:space="preserve">
@@ -784,7 +784,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
   <data name="Blink_Polling_LED" xml:space="preserve">
     <value>DEL d’interrogation clignotante</value>
   </data>
-  <data name="Xfp_Panel_Config_Files" xml:space="preserve">
+  <data name="XFP_Panel_Config_Files" xml:space="preserve">
     <value>Fichiers XFP</value>
   </data>
   <data name="Auto_Adjust_DST" xml:space="preserve">
@@ -1803,7 +1803,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   <data name="Select_Print_Options" xml:space="preserve">
     <value>Options d’Impression</value>
   </data>
-  <data name="Print" xml:space="preserve">
+  <data name="Option_Print" xml:space="preserve">
     <value>Imprimer</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
@@ -2054,5 +2054,11 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
+  </data>
+  <data name="Option_Preview" xml:space="preserve">
+    <value>Prévoir</value>
+  </data>
+  <data name="XFP_Config_Print_Description" xml:space="preserve">
+    <value>Configuration XFP</value>
   </data>
 </root>

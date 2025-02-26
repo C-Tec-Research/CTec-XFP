@@ -21,7 +21,6 @@
         Loaded="window_Loaded"
         SizeChanged="window_SizeChanged"
         PreviewKeyDown="window_PreviewKeyDown"
-        PreviewMouseLeftButtonDown="window_PreviewMouseLeftButtonDown" 
         PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
         Margin="0" Padding="0"
@@ -145,11 +144,11 @@
                         <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintCurrentPage}" FontSize="13" Margin="0,2,0,0"/>
                         <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding SelectPagesToPrint}" FontSize="13" Margin="0,10,0,0"/>
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
+                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
                             <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}"/>
                             <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}"/>
                             <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}"/>
                             <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}"/>
-                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
                             <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}"/>
                             <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}"/>
                             <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}"/>
@@ -203,18 +202,26 @@
                         </StackPanel>
                     </Border>
 
-                    <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-                            Content="{Binding Path=Print, Source={StaticResource Resources}}" 
+                    <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" >
+                    <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="3"
+                            Content="{Binding Path=Option_Print, Source={StaticResource Resources}}" 
                             IsEnabled="{Binding CanPrint}" 
                             Click="PrintButton_Click" 
-                            MinHeight="40" Margin="30,0,0,0"/>
+                            MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>
+
+                    <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                            Content="{Binding Path=Option_Preview, Source={StaticResource Resources}}" 
+                            IsEnabled="{Binding CanPrint}" 
+                            Click="PreviewButton_Click" 
+                            MinHeight="30" Width="70" Margin="10,0,0,0"/>
 
                     <Button Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
                             x:Name="btnCancel"
                             Content="{Binding Path=Option_Cancel, Source={StaticResource Resources}}"
                             IsCancel="True"
-                            MinHeight="24"  Margin="30,10,0,0"/>
-
+                            Click="CancelButton_Click" 
+                            MinHeight="30" Width="70" Margin="10,10,0,0"/>
+                    </Grid>
                 </Grid>
             </StackPanel>
 

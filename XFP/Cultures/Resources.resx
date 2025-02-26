@@ -539,7 +539,7 @@ Are you sure you want to exit without saving?</value>
   <data name="Program_Name" xml:space="preserve">
     <value>XFP</value>
   </data>
-  <data name="Xfp_Log_Files" xml:space="preserve">
+  <data name="XFP_Log_Files" xml:space="preserve">
     <value>XFP log files</value>
   </data>
   <data name="Query_Change_Device_Type" xml:space="preserve">
@@ -792,7 +792,7 @@ change to that type, or select Delete to remove a device</value>
   <data name="Blink_Polling_LED" xml:space="preserve">
     <value>Blink polling LED</value>
   </data>
-  <data name="Xfp_Panel_Config_Files" xml:space="preserve">
+  <data name="XFP_Panel_Config_Files" xml:space="preserve">
     <value>XFP files</value>
   </data>
   <data name="Auto_Adjust_DST" xml:space="preserve">
@@ -1814,7 +1814,7 @@ What do you want to do with the settings for panel {1}?</value>
   <data name="Select_Print_Options" xml:space="preserve">
     <value>Select Print Options</value>
   </data>
-  <data name="Print" xml:space="preserve">
+  <data name="Option_Print" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
@@ -2065,5 +2065,11 @@ All of its data will be lost.</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="XFP_Config_Print_Description" xml:space="preserve">
+    <value>XFP Configuration</value>
+  </data>
+  <data name="Option_Preview" xml:space="preserve">
+    <value>Preview</value>
   </data>
 </root>

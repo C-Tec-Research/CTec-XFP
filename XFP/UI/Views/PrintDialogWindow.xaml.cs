@@ -84,27 +84,22 @@ namespace Xfp.UI.Views
         }
 
 
-        private void window_Loaded(object sender, RoutedEventArgs e)
-        {
-            _isOpen = true;
-        }
+        private void window_Loaded(object sender, RoutedEventArgs e) => _isOpen = true;
 
 
-        private void PrintButton_Click(object sender, RoutedEventArgs e) => DialogResult = true;
+        public CTecUtil.PrintActions PrintAction { get; private set; }
 
 
-        private void ClosePrint_Click(object sender, EventArgs e)        => Close();
-        //private void CancelPrint_Click(object sender, RoutedEventArgs e) => Close();
+        private void PreviewButton_Click(object sender, RoutedEventArgs e) { PrintAction = CTecUtil.PrintActions.Preview; DialogResult = true; }
+        private void PrintButton_Click(object sender, RoutedEventArgs e) { PrintAction = CTecUtil.PrintActions.Print; DialogResult = true; }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => ClosePrint_Click(sender, e);
+        private void ClosePrint_Click(object sender, EventArgs e) { PrintAction = CTecUtil.PrintActions.None; Close(); }
 
 
         private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;
         private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
         private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)           => _context.PrinterListIsOpen = false;
         private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { try { DragMove(); updateWindowParams(); } catch { } }
-
-        private void window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //e.Handled = true;
-        }
     }
 }

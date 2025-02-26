@@ -276,7 +276,6 @@ namespace Xfp.DataTypes
                 ValidationCodes.SiteConfigNoClientName => Cultures.Resources.Error_No_Client_Name,
                 ValidationCodes.SiteConfigNoClientAddress => Cultures.Resources.Error_Missing_Client_Address,
                 ValidationCodes.SiteConfigNoClientTel => Cultures.Resources.Error_Missing_Client_Tel,
-                ValidationCodes.SiteConfigNoPanelLocation => Cultures.Resources.Error_Missing_Panel_Location,
                 ValidationCodes.SiteConfigNoInstallerName => Cultures.Resources.Error_No_Installer_Name,
                 ValidationCodes.SiteConfigNoInstallerAddress => Cultures.Resources.Error_Missing_Installer_Address,
                 ValidationCodes.SiteConfigNoInstallerTel => Cultures.Resources.Error_Missing_Installer_Tel,
@@ -330,6 +329,7 @@ namespace Xfp.DataTypes
 
                 //network config
                 ValidationCodes.NetworkConfigInvalidPanelName => Cultures.Resources.Error_Panel_Name_Too_Long,
+                ValidationCodes.NetworkConfigNoPanelLocation => Cultures.Resources.Error_Missing_Panel_Location,
 
                 _ => ""
             };

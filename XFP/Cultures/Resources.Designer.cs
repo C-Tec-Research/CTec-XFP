@@ -3481,6 +3481,24 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        public static string Option_Preview {
+            get {
+                return ResourceManager.GetString("Option_Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        public static string Option_Print {
+            get {
+                return ResourceManager.GetString("Option_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         public static string Option_Remove {
@@ -3738,15 +3756,6 @@ namespace Xfp.Cultures {
         public static string Primary_Areas {
             get {
                 return ResourceManager.GetString("Primary_Areas", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Print.
-        /// </summary>
-        public static string Print {
-            get {
-                return ResourceManager.GetString("Print", resourceCulture);
             }
         }
         
@@ -5600,20 +5609,29 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to XFP Configuration.
+        /// </summary>
+        public static string XFP_Config_Print_Description {
+            get {
+                return ResourceManager.GetString("XFP_Config_Print_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to XFP log files.
         /// </summary>
-        public static string Xfp_Log_Files {
+        public static string XFP_Log_Files {
             get {
-                return ResourceManager.GetString("Xfp_Log_Files", resourceCulture);
+                return ResourceManager.GetString("XFP_Log_Files", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to XFP files.
         /// </summary>
-        public static string Xfp_Panel_Config_Files {
+        public static string XFP_Panel_Config_Files {
             get {
-                return ResourceManager.GetString("Xfp_Panel_Config_Files", resourceCulture);
+                return ResourceManager.GetString("XFP_Panel_Config_Files", resourceCulture);
             }
         }
         

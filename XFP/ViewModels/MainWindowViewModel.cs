@@ -1367,7 +1367,7 @@ namespace Xfp.ViewModels
             }
 
             if (result == true)
-                XfpDocumentPrinter.PrintDocument(_data, printDialog.PrintParams);
+                XfpPrinting.PrintConfig(_data, printDialog.PrintParams, printDialog.PrintAction);
         }
 
         internal void PrintPreview() { }

@@ -144,7 +144,7 @@ namespace Xfp.ViewModels.PanelTools
         public void OpenFromFile()
         {
             TextFile.FilePath = CurrentFolder;
-            TextFile.Filter = Cultures.Resources.Xfp_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
+            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
             if (TextFile.OpenFile())
             {
                 LogText = File.ReadAllText(TextFile.FilePath);
@@ -156,7 +156,7 @@ namespace Xfp.ViewModels.PanelTools
         public void SaveToFile()
         {
             TextFile.FilePath = CurrentFolder;
-            TextFile.Filter = Cultures.Resources.Xfp_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
+            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
             TextFile.SaveFileAs(LogText);
             CurrentFolder = System.IO.Path.GetDirectoryName(TextFile.FilePath);
         }
