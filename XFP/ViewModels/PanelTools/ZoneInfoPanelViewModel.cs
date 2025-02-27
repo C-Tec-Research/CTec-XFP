@@ -473,7 +473,8 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null && !NoItemSelected)
                     foreach (var d in _zoneList)
                     {
-                        d.Day.DependencyOption = (ZoneDependencyOptions)(_dayOptionIndex = findIndexInCombo(DependencyOptions, value) ?? 0);
+                        if (d.Day is not null)
+                            d.Day.DependencyOption = (ZoneDependencyOptions)(_dayOptionIndex = findIndexInCombo(DependencyOptions, value) ?? 0);
                         d.RefreshView();
                     }
 
@@ -526,7 +527,8 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null && !NoItemSelected)
                     foreach (var d in _zoneList)
                     {
-                        d.Night.DependencyOption = (ZoneDependencyOptions)(_nightOptionIndex = findIndexInCombo(DependencyOptions, value) ?? 0);
+                        if (d.Night is not null)
+                            d.Night.DependencyOption = (ZoneDependencyOptions)(_nightOptionIndex = findIndexInCombo(DependencyOptions, value) ?? 0);
                         d.RefreshView();
                     }
 

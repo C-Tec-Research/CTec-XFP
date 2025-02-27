@@ -29,10 +29,11 @@ namespace Xfp.ViewModels
     {
         public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
-            this.applicationConfig = applicationConfig;
+            _applicationConfig = applicationConfig;
+            _pages       = pages;
             _currentPage = currentPage;
 
-            ZoomLevel    = this.applicationConfig.PrintParametersWindow.Scale;
+            ZoomLevel    = _applicationConfig.PrintParametersWindow.Scale;
 
             IsPortrait          = true;
             PrintCurrentPage    = true;
@@ -49,14 +50,15 @@ namespace Xfp.ViewModels
         public PrintQueue Queue => new PrintServer().GetPrintQueues().FirstOrDefault(p => p.Name == SelectedPrinter);
 
 
+        private ObservableCollection<Page> _pages = new();
         private Page _currentPage;
 
-        private ApplicationConfig applicationConfig { get; }
+        private ApplicationConfig _applicationConfig { get; }
 
 
-        public void UpdateWindowParams(bool save = false) => applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
+        public void UpdateWindowParams(bool save = false) => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
 
-        public void Close(Window window) => UpdateWindowParams(true);
+        public void Close(Window window) { UpdateWindowParams(true); }
 
 
         #region printer
@@ -79,16 +81,7 @@ namespace Xfp.ViewModels
 
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen; set { _printerListIsOpen = value; OnPropertyChanged(); } }
-        public string SelectedPrinter
-        {
-            get => _printerSettings.PrinterName; 
-            set
-            {
-                _printerSettings.PrinterName = value; 
-                PrintParams.SetPrinter(value);
-                OnPropertyChanged(); PrinterListIsOpen = false;
-            }
-        }
+        public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
 
         public PrintQueueStatus PrinterStatus => new LocalPrintServer().GetPrintQueue(SelectedPrinter).QueueStatus;
 
@@ -175,10 +168,10 @@ namespace Xfp.ViewModels
 
         public double ZoomLevel
         {
-            get => applicationConfig.PrintParametersWindow.Scale;
+            get => _applicationConfig.PrintParametersWindow.Scale;
             set
             {
-                applicationConfig.PrintParametersWindow.Scale = value;
+                _applicationConfig.PrintParametersWindow.Scale = value;
                 LayoutTransform = new ScaleTransform(value, value);
                 OnPropertyChanged();
             }

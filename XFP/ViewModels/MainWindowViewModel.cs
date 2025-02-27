@@ -1572,7 +1572,7 @@ namespace Xfp.ViewModels
 
                 var docName = Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(str => str.EndsWith("XFP Revision History.docx"));
                 var document = DocxToFlowDocumentConverter.ReadDocxResource(docName);
-                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History).ShowDialog();
+                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History, XfpApplicationConfig.Settings, false).ShowDialog();
             }
             catch (Exception ex) { }
             finally { MainWindowEnabled = true; }

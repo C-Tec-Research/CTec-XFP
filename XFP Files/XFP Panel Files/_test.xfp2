@@ -58,13 +58,13 @@
           },
           {
             "Index": 4,
-            "ActionType": 0,
-            "ActionParam": -1,
-            "TriggerType": 0,
+            "ActionType": 80,
+            "ActionParam": 6,
+            "TriggerType": 35,
             "TriggerParam": -1,
             "TriggerParam2": -1,
-            "TriggerCondition": false,
-            "ResetType": 0,
+            "TriggerCondition": true,
+            "ResetType": 50,
             "ResetParam": -1,
             "ResetParam2": -1,
             "ResetCondition": false
@@ -24775,8 +24775,8 @@
             "InputDelay": "00:05:00",
             "SounderDelay": "00:01:30",
             "Relay1Delay": "00:02:00",
-            "Relay2Delay": "00:02:30",
-            "RemoteDelay": "00:03:00",
+            "Relay2Delay": "00:01:30",
+            "RemoteDelay": "00:00:00",
             "SounderGroups": [
               0,
               0,
@@ -24824,8 +24824,8 @@
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:30",
             "Relay1Delay": "00:01:30",
-            "Relay2Delay": "00:02:30",
-            "RemoteDelay": "00:03:30",
+            "Relay2Delay": "00:00:30",
+            "RemoteDelay": "00:02:30",
             "SounderGroups": [
               0,
               0,
@@ -26546,8 +26546,8 @@
             "InputDelay": "00:05:00",
             "SounderDelay": "00:03:00",
             "Relay1Delay": "00:00:30",
-            "Relay2Delay": "00:01:00",
-            "RemoteDelay": "00:02:00",
+            "Relay2Delay": "00:00:00",
+            "RemoteDelay": "00:01:00",
             "SounderGroups": [
               0,
               0,
@@ -27625,7 +27625,40 @@
       "NetworkConfig": {
         "RepeaterSettings": {
           "Segment": 0,
-          "Repeaters": []
+          "Repeaters": [
+            {
+              "Fitted": true,
+              "Location": "Front door"
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            },
+            {
+              "Fitted": false,
+              "Location": null
+            }
+          ]
         },
         "PanelSettings": [
           {
@@ -27686,9 +27719,7 @@
           }
         ]
       },
-      "Protocol": 2,
-      "Loop2Available": "",
-      "Loop1Available": "o"
+      "Protocol": 2
     },
     "6": {
       "PanelNumber": 6,
@@ -27755,9 +27786,9 @@
             "TriggerParam2": 0,
             "TriggerCondition": false,
             "ResetType": 125,
-            "ResetParam": 255,
-            "ResetParam2": -1,
-            "ResetCondition": true
+            "ResetParam": 14,
+            "ResetParam2": 1,
+            "ResetCondition": false
           },
           {
             "Index": 5,
@@ -27768,21 +27799,21 @@
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 65,
-            "ResetParam": 255,
-            "ResetParam2": -1,
-            "ResetCondition": true
+            "ResetParam": 8,
+            "ResetParam2": 2,
+            "ResetCondition": false
           },
           {
             "Index": 6,
             "ActionType": 40,
             "ActionParam": 11,
             "TriggerType": 125,
-            "TriggerParam": 255,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
-            "ResetType": 115,
-            "ResetParam": 1,
-            "ResetParam2": 0,
+            "TriggerParam": 1,
+            "TriggerParam2": 6,
+            "TriggerCondition": true,
+            "ResetType": 95,
+            "ResetParam": -1,
+            "ResetParam2": -1,
             "ResetCondition": false
           },
           {
@@ -52456,7 +52487,7 @@
             "PanelRelayTriggers": null,
             "Index": 0,
             "Name": "Zone 1",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52505,7 +52536,7 @@
             "PanelRelayTriggers": null,
             "Index": 1,
             "Name": "Zone 2",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52554,7 +52585,7 @@
             "PanelRelayTriggers": null,
             "Index": 2,
             "Name": "Zone 3",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52603,7 +52634,7 @@
             "PanelRelayTriggers": null,
             "Index": 3,
             "Name": "Zone 4",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52652,7 +52683,7 @@
             "PanelRelayTriggers": null,
             "Index": 4,
             "Name": "Zone 5",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52701,7 +52732,7 @@
             "PanelRelayTriggers": null,
             "Index": 5,
             "Name": "Zone 6",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52750,7 +52781,7 @@
             "PanelRelayTriggers": null,
             "Index": 6,
             "Name": "Zone 7",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52799,7 +52830,7 @@
             "PanelRelayTriggers": null,
             "Index": 7,
             "Name": "Zone 8",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52848,7 +52879,7 @@
             "PanelRelayTriggers": null,
             "Index": 8,
             "Name": "Zone 9",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52897,7 +52928,7 @@
             "PanelRelayTriggers": null,
             "Index": 9,
             "Name": "Zone 10",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52946,7 +52977,7 @@
             "PanelRelayTriggers": null,
             "Index": 10,
             "Name": "Zone 11",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -52995,7 +53026,7 @@
             "PanelRelayTriggers": null,
             "Index": 11,
             "Name": "Zone 12",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53044,7 +53075,7 @@
             "PanelRelayTriggers": null,
             "Index": 12,
             "Name": "Zone 13",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53093,7 +53124,7 @@
             "PanelRelayTriggers": null,
             "Index": 13,
             "Name": "Zone 14",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53142,7 +53173,7 @@
             "PanelRelayTriggers": null,
             "Index": 14,
             "Name": "Zone 15",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53191,7 +53222,7 @@
             "PanelRelayTriggers": null,
             "Index": 15,
             "Name": "Zone 16",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53240,7 +53271,7 @@
             "PanelRelayTriggers": null,
             "Index": 16,
             "Name": "Zone 17",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53289,7 +53320,7 @@
             "PanelRelayTriggers": null,
             "Index": 17,
             "Name": "Zone 18",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53338,7 +53369,7 @@
             "PanelRelayTriggers": null,
             "Index": 18,
             "Name": "Zone 19",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53387,7 +53418,7 @@
             "PanelRelayTriggers": null,
             "Index": 19,
             "Name": "Zone 20",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53436,7 +53467,7 @@
             "PanelRelayTriggers": null,
             "Index": 20,
             "Name": "Zone 21",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53485,7 +53516,7 @@
             "PanelRelayTriggers": null,
             "Index": 21,
             "Name": "Zone 22",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53534,7 +53565,7 @@
             "PanelRelayTriggers": null,
             "Index": 22,
             "Name": "Zone 23",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53583,7 +53614,7 @@
             "PanelRelayTriggers": null,
             "Index": 23,
             "Name": "Zone 24",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53632,7 +53663,7 @@
             "PanelRelayTriggers": null,
             "Index": 24,
             "Name": "Zone 25",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53681,7 +53712,7 @@
             "PanelRelayTriggers": null,
             "Index": 25,
             "Name": "Zone 26",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53730,7 +53761,7 @@
             "PanelRelayTriggers": null,
             "Index": 26,
             "Name": "Zone 27",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53779,7 +53810,7 @@
             "PanelRelayTriggers": null,
             "Index": 27,
             "Name": "Zone 28",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53828,7 +53859,7 @@
             "PanelRelayTriggers": null,
             "Index": 28,
             "Name": "Zone 29",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53877,7 +53908,7 @@
             "PanelRelayTriggers": null,
             "Index": 29,
             "Name": "Zone 30",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53926,7 +53957,7 @@
             "PanelRelayTriggers": null,
             "Index": 30,
             "Name": "Zone 31",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -53975,7 +54006,7 @@
             "PanelRelayTriggers": null,
             "Index": 31,
             "Name": "Zone 32",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54031,7 +54062,7 @@
             "IsPanelData": true,
             "Index": 0,
             "Name": "Panel 1",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54059,7 +54090,7 @@
             "IsPanelData": true,
             "Index": 1,
             "Name": "Panel 2",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54087,7 +54118,7 @@
             "IsPanelData": true,
             "Index": 2,
             "Name": "Panel 3",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54115,7 +54146,7 @@
             "IsPanelData": true,
             "Index": 3,
             "Name": "Panel 4",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54143,7 +54174,7 @@
             "IsPanelData": true,
             "Index": 4,
             "Name": "Panel 5",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54171,7 +54202,7 @@
             "IsPanelData": true,
             "Index": 5,
             "Name": "Panel 6",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54199,7 +54230,7 @@
             "IsPanelData": true,
             "Index": 6,
             "Name": "Panel 7",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -54227,7 +54258,7 @@
             "IsPanelData": true,
             "Index": 7,
             "Name": "Panel 8",
-            "InputDelay": "00:00:00",
+            "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
@@ -55311,34 +55342,42 @@
           "Segment": 1,
           "Repeaters": [
             {
-              "Fitted": true
+              "Fitted": true,
+              "Location": "Back door"
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             },
             {
-              "Fitted": false
+              "Fitted": false,
+              "Location": null
             }
           ]
         },
         "PanelSettings": [
           {
-            "AcceptFaults": false,
+            "AcceptFaults": true,
             "AcceptAlarms": false,
             "AcceptControls": false,
             "AcceptDisablements": false,
@@ -55361,7 +55400,7 @@
           {
             "AcceptFaults": false,
             "AcceptAlarms": false,
-            "AcceptControls": false,
+            "AcceptControls": true,
             "AcceptDisablements": false,
             "AcceptOccupied": false
           },
@@ -55395,62 +55434,59 @@
           }
         ]
       },
-      "Protocol": 2,
-      "Loop2Available": "",
-      "Loop1Available": "n"
+      "Protocol": 2
     }
   },
   "SiteConfig": {
+    "SystemName": "XFP",
     "Client": {
-      "Name": "",
+      "Name": "Jamie",
       "Address": [
-        "",
-        "",
-        "",
+        "84 St George's Rd",
+        "New Mills",
+        "Derbyshire",
         ""
       ],
-      "Postcode": ""
+      "Postcode": "SK22 4JT"
     },
-    "ClientTel": null,
-    "InstallDate": null,
-    "CommissionDate": null,
+    "ClientTel": "07918027882",
+    "InstallDate": "2025-01-28T00:00:00",
+    "CommissionDate": "2025-02-18T00:00:00",
     "Installer": {
-      "Name": "",
+      "Name": "Burt Ward",
       "Address": [
-        "",
-        "",
-        "",
-        ""
+        "C-Tec R&D",
+        "Dark Lane",
+        "Mawdesley",
+        "Lancashire"
       ],
-      "Postcode": ""
+      "Postcode": "L40 2QU"
     },
-    "EngineerName": "",
+    "EngineerName": "Adam West",
     "EngineerNo": null,
-    "InstallerTel": null,
+    "InstallerTel": "017029594212",
     "LoopCount": 0,
     "DateEnabled": false,
     "SoundersPulsed": false,
     "CopyTime": false,
     "FaultLockout": 0,
-    "PanelLocation": "",
-    "MaintenanceString": null,
-    "QuiescentString": null,
-    "MaintenanceDate": null,
+    "MaintenanceString": "Call an engineer",
+    "QuiescentString": "All's well",
+    "MaintenanceDate": "2027-02-04T00:00:00",
     "AL2Code": "3333",
     "AL3Code": "4444",
     "MCPDebounce": 1,
     "IODebounce": 1,
     "DetectorDebounce": 1,
     "FrontPanel": null,
-    "OccupiedBegins": "00:00:00",
-    "OccupiedEnds": "00:00:00",
+    "OccupiedBegins": "07:00:00",
+    "OccupiedEnds": "18:00:00",
     "RecalibrationTime": "00:00:00",
     "DayStart": null,
     "NightStart": null,
     "BlinkPollingLED": false,
     "AutoAdjustDST": false,
-    "RealTimeEventOutput": false,
-    "SystemName": "XFP"
+    "RealTimeEventOutput": false
   },
   "Comments": "",
   "FirmwareVersion": "13A26",

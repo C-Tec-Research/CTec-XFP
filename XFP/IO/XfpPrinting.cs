@@ -12,6 +12,7 @@ using CTecUtil.Printing;
 using CTecUtil.UI;
 using CTecControls.UI;
 using System.Windows.Forms;
+using Xfp.Config;
 
 namespace Xfp.DataTypes.Printing
 {
@@ -75,7 +76,7 @@ namespace Xfp.DataTypes.Printing
                         break;
 
                     case CTecUtil.PrintActions.Preview: 
-                        new FlowDocumentViewer(doc, Cultures.Resources.XFP_Config_Print_Description).ShowDialog();
+                        new FlowDocumentViewer(doc, Cultures.Resources.XFP_Config_Print_Description, XfpApplicationConfig.Settings, true).ShowDialog();
                         break;
                 }
 
