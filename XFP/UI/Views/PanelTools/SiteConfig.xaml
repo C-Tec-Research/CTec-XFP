@@ -135,6 +135,10 @@
                             <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Path=Engineer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <ctc:CTecTextBox Grid.Row="4" Grid.Column="5" Width="200" Text="{Binding EngineerName}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
 
+
+                            <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding Path=Engineer_Number, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
+                            <ctc:CTecTextBox Grid.Row="5" Grid.Column="5" Width="200" Text="{Binding EngineerNumber}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
+
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Installed_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <ctc:CTecDatePicker Grid.Row="4" Grid.Column="1" 
                                                 SelectedDate="{Binding InstallDate}" 

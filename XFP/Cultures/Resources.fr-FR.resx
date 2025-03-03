@@ -2061,4 +2061,7 @@ Toutes ses données seront perdues.</value>
   <data name="XFP_Config_Print_Description" xml:space="preserve">
     <value>Configuration XFP</value>
   </data>
+  <data name="Engineer_Number" xml:space="preserve">
+    <value>Numéro d’ingénieur</value>
+  </data>
 </root>

@@ -1398,6 +1398,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Engineer Number.
+        /// </summary>
+        public static string Engineer_Number {
+            get {
+                return ResourceManager.GetString("Engineer_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erase events from the panel after reading?.
         /// </summary>
         public static string Erase_Event_Log_After_Reading {

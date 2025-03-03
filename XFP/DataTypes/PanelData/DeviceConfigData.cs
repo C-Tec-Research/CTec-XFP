@@ -12,7 +12,7 @@ using CTecDevices.Protocol;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public class DeviceConfigData : ConfigData, IConfigData
+    public partial class DeviceConfigData : ConfigData, IConfigData
     {
         internal DeviceConfigData()
         {

@@ -57,14 +57,21 @@ namespace Xfp.DataTypes.Printing
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
                 if (printParams.PrintSiteConfig)    data.SiteConfig.Print(doc);
-                if (printParams.PrintLoopInfo)      printDevices(doc);
-                if (printParams.PrintZones)         printZones(doc);
-                if (printParams.PrintGroups)        printGroups(doc);
-                if (printParams.PrintSets)          printSets(doc);
-                if (printParams.PrintCAndE)         printCAndE(doc);
-                if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
-                if (printParams.PrintEventLog)      printEventLog(doc);
-                if (printParams.PrintComments)      printComments(doc);
+                foreach (var p in data.Panels.Values)
+                {
+                    if (printParams.PrintLoopInfo)          
+                    {
+                        p.Loop1Config.Print(doc, printParams.PrintAllLoopDevices);
+                        p.Loop2Config.Print(doc, printParams.PrintAllLoopDevices);
+                    }
+                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc);
+                    if (printParams.PrintGroups)        printGroups(doc);
+                    if (printParams.PrintSets)          printSets(doc);
+                    if (printParams.PrintCAndE)         printCAndE(doc);
+                    if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
+                    if (printParams.PrintEventLog)      printEventLog(doc);
+                    if (printParams.PrintComments)      printComments(doc);
+                }
 
                 //print or preview the document
 

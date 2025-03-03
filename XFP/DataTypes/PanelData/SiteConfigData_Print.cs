@@ -10,7 +10,7 @@ namespace Xfp.DataTypes.PanelData
             var sitePage = new Section();
             sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));
 
-            sitePage.Blocks.Add(new Paragraph(new Run(Cultures.Resources.System_Name + ": " + SystemName)));
+            sitePage.Blocks.Add(new Paragraph(new Run(Cultures.Resources.System_Name + "\t: " + SystemName)));
 
             sitePage.Blocks.Add(nameAndAddress(Client, true));
             sitePage.Blocks.Add(nameAndAddress(Installer, false));
@@ -52,7 +52,7 @@ namespace Xfp.DataTypes.PanelData
 
         public Run nameValuePair(string left, string right)
         {
-            var result = new Run(left + " : " + right);
+            var result = new Run(left + "\t: " + right);
             return result;
         }
     }

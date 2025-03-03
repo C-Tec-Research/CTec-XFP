@@ -56,6 +56,7 @@ namespace Xfp.ViewModels.PanelTools
         public string InstallerPostcode      { get => _data?.SiteConfig.Installer.Postcode; set { if (_data != null) { _data.SiteConfig.Installer.Postcode = value; OnPropertyChanged(); } } }
         public string EngineerTelephone      { get => _data?.SiteConfig.InstallerTel;       set { if (_data != null) { _data.SiteConfig.InstallerTel = value; OnPropertyChanged(); } } }
         public string EngineerName           { get => _data?.SiteConfig.EngineerName;       set { if (_data != null) { _data.SiteConfig.EngineerName = value; OnPropertyChanged(); } } }
+        public string EngineerNumber         { get => _data?.SiteConfig.EngineerNo;         set { if (_data != null) { _data.SiteConfig.EngineerNo = value; OnPropertyChanged(); } } }
         public string FirmwareVersion        { get => _data?.FirmwareVersion;               set { if (_data != null) { _data.FirmwareVersion = value; OnPropertyChanged(); } } }
 
         public string QuiescentString        { get => _data?.SiteConfig.QuiescentString;    set { if (_data is not null) { _data.SiteConfig.QuiescentString = value; OnPropertyChanged(); OnPropertyChanged(nameof(QuiescentStringIsValid)); } } }
