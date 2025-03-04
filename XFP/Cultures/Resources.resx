@@ -937,7 +937,7 @@ Sounder</value>
   <data name="MCPs" xml:space="preserve">
     <value>MCPs</value>
   </data>
-  <data name="Minutes_Abbr" xml:space="preserve">
+  <data name="Minutes_Short" xml:space="preserve">
     <value>mins</value>
   </data>
   <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
@@ -1815,7 +1815,7 @@ What do you want to do with the settings for panel {1}?</value>
     <value>Select Print Options</value>
   </data>
   <data name="Option_Print" xml:space="preserve">
-    <value>Print</value>
+    <value>_Print</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Print all loop devices</value>
@@ -1843,9 +1843,6 @@ What do you want to do with the settings for panel {1}?</value>
   </data>
   <data name="Print_Order_By_Zone" xml:space="preserve">
     <value>Zone</value>
-  </data>
-  <data name="Print_Preview" xml:space="preserve">
-    <value>Print preview</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Properties</value>
@@ -2070,7 +2067,7 @@ All of its data will be lost.</value>
     <value>XFP Configuration</value>
   </data>
   <data name="Option_Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Pre_view</value>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Engineer Number</value>

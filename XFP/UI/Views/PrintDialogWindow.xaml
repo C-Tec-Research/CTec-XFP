@@ -199,7 +199,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+                    <Grid x:Name="grdButtons" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right">
                         
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -210,13 +210,20 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         
-                        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                        <!--<Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                x:Name="btnPrint"
                                 Content="{Binding Path=Option_Print, Source={StaticResource Resources}}" 
                                 IsEnabled="{Binding CanPrint}" 
                                 Click="PrintButton_Click" 
+                                MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>-->
+                        <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                x:Name="btnPrint"
+                                Content="{Binding Path=Option_Print, Source={StaticResource Resources}}" 
+                                IsEnabled="false"
                                 MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>
 
                         <Button Grid.Row="0" Grid.Column="1" 
+                                x:Name="btnPreview"
                                 Content="{Binding Path=Option_Preview, Source={StaticResource Resources}}" 
                                 IsEnabled="{Binding CanPrint}" 
                                 Click="PreviewButton_Click" 
@@ -234,7 +241,7 @@
 
         </Grid>
 
-        <!--#region Print pop-up-->
+        <!--#region Printer list pop-up-->
         <Popup x:Name="popPrinterList" 
                        IsOpen="{Binding PrinterListIsOpen}" StaysOpen="True"
                        Placement="RelativePoint" PlacementTarget="{Binding ElementName=cboPrinter}" 

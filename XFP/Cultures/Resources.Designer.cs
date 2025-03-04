@@ -3024,9 +3024,9 @@ namespace Xfp.Cultures {
         /// <summary>
         ///   Looks up a localized string similar to mins.
         /// </summary>
-        public static string Minutes_Abbr {
+        public static string Minutes_Short {
             get {
-                return ResourceManager.GetString("Minutes_Abbr", resourceCulture);
+                return ResourceManager.GetString("Minutes_Short", resourceCulture);
             }
         }
         
@@ -3490,7 +3490,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preview.
+        ///   Looks up a localized string similar to Pre_view.
         /// </summary>
         public static string Option_Preview {
             get {
@@ -3499,7 +3499,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Print.
+        ///   Looks up a localized string similar to _Print.
         /// </summary>
         public static string Option_Print {
             get {
@@ -3891,15 +3891,6 @@ namespace Xfp.Cultures {
         public static string Print_Orientation_Portrait {
             get {
                 return ResourceManager.GetString("Print_Orientation_Portrait", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Print preview.
-        /// </summary>
-        public static string Print_Preview {
-            get {
-                return ResourceManager.GetString("Print_Preview", resourceCulture);
             }
         }
         

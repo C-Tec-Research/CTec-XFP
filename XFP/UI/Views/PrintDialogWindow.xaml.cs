@@ -21,6 +21,10 @@ using System.Collections.ObjectModel;
 using Windows.UI.Composition;
 using Xfp.DataTypes;
 using System.Printing;
+using Windows.Media.Capture.Core;
+using CTecControls.UI;
+using CTecUtil;
+using System.Globalization;
 
 namespace Xfp.UI.Views
 {
@@ -30,7 +34,11 @@ namespace Xfp.UI.Views
         {
             InitializeComponent();
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage);
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, btnPrint, btnPreview);
+            
+            addShortcutKey(btnPrint);
+            addShortcutKey(btnPreview);
+            _context.CloseAction = printOrPreview;
 
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
@@ -44,6 +52,40 @@ namespace Xfp.UI.Views
 
         private PrintDialogWindowViewModel _context;
         private bool _isOpen;
+
+        private void addShortcutKey(Button button)
+        {
+            var text = button.Content.ToString();
+
+            if (text is null)
+                return;
+
+            if (text.Trim().TrimEnd('_').Contains('_') || text == CTecControls.Cultures.Resources.Menu_Exit)
+            {
+                string key;
+
+                // find the underscore in the menu text (already guaranteed it's there and isn't last char)
+                var ul = text.IndexOf("_");
+
+                // underscore precedes the hotkey
+                key = text.ToUpper(CultureInfo.CurrentCulture)[ul + 1].ToString();
+
+                // add the key and its related action to the hotkeys
+                var properties = new HotKeyList.KeyProperties(key, false, false, true);
+                Action command = null;
+
+                // is it one of the options that have hotkeys?
+                if (text == Cultures.Resources.Option_Print)
+                    command = new(() => printOrPreview(PrintActions.Print));
+                else if (text == Cultures.Resources.Option_Preview)
+                    command = new(() => printOrPreview(PrintActions.Preview));
+
+                _context.HotKeys.Add(properties, command);
+
+                //remove the underline from the button text
+                button.Content = text.Remove(ul, 1);
+            }
+        }
 
 
         private void setSize()
@@ -63,12 +105,10 @@ namespace Xfp.UI.Views
 
         private void window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Escape: 
-                    Close();
-                    break;
-            }
+            if (e.Key == Key.Escape) 
+                Close();
+            else
+                _context.CheckHotKey(e);
         }
 
         private void window_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -90,7 +130,14 @@ namespace Xfp.UI.Views
         public CTecUtil.PrintActions PrintAction { get; private set; }
 
 
-        private void PreviewButton_Click(object sender, RoutedEventArgs e) { PrintAction = CTecUtil.PrintActions.Preview; DialogResult = true; }
+        internal void printOrPreview(CTecUtil.PrintActions action)
+        {
+            PrintAction = action;
+            DialogResult = true;
+        }
+
+
+        private void PreviewButton_Click(object sender, RoutedEventArgs e) {  PrintAction = CTecUtil.PrintActions.Preview; DialogResult = true; }
         private void PrintButton_Click(object sender, RoutedEventArgs e) { PrintAction = CTecUtil.PrintActions.Print; DialogResult = true; }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e) => ClosePrint_Click(sender, e);

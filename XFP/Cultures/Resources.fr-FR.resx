@@ -929,7 +929,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
   <data name="MCPs" xml:space="preserve">
     <value>PAMs</value>
   </data>
-  <data name="Minutes_Abbr" xml:space="preserve">
+  <data name="Minutes_Short" xml:space="preserve">
     <value>mins</value>
   </data>
   <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
@@ -1804,7 +1804,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
     <value>Options d’Impression</value>
   </data>
   <data name="Option_Print" xml:space="preserve">
-    <value>Imprimer</value>
+    <value>_Imprimer</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Imprimer tous les appareils de boucle</value>
@@ -1832,9 +1832,6 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   </data>
   <data name="Print_Order_By_Zone" xml:space="preserve">
     <value>Zone</value>
-  </data>
-  <data name="Print_Preview" xml:space="preserve">
-    <value>Aperçu</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Propriétés</value>
@@ -2056,7 +2053,7 @@ Toutes ses données seront perdues.</value>
     <value>Ajouter</value>
   </data>
   <data name="Option_Preview" xml:space="preserve">
-    <value>Prévoir</value>
+    <value>Pré_voir</value>
   </data>
   <data name="XFP_Config_Print_Description" xml:space="preserve">
     <value>Configuration XFP</value>

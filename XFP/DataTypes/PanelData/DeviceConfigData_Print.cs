@@ -25,12 +25,12 @@ namespace Xfp.DataTypes.PanelData
             var trg = new TableRowGroup();
             var tr  = new TableRow() { Background = new SolidColorBrush(Color.FromArgb(0x70, 0xe0, 0xe0, 0xe0)) }; 
 
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Number_Symbol, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Type, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Zone_Group, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Name, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Volume_Sensitivity_mode, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Day_Night, PrintUtil.PrintDefaultFont, PrintUtil.PrintDefaultFontSize))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Number_Symbol))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Type))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Zone_Group))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Name))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Volume_Sensitivity_mode))));
+            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Day_Night))));
 
             foreach (var d in Devices)
             {

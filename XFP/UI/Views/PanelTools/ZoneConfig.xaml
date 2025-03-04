@@ -157,10 +157,10 @@
                             <Border BorderThickness="1" CornerRadius="3" BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" Margin="0,0,2,0">
                                 <ctc:TimePicker x:Name="tpInputDelay" Value="{Binding InputDelay}" Format="mm:ss" SecondsIncrement="30" MaxValue="5:00" PreviewKeyDown="ctrl_PreviewKeyDown" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="0,1,0,0"/>
                             </Border>
-                            <TextBlock Text="{Binding Path=Minutes_Abbr, Source={StaticResource Resources}}" Margin="0,0,20,0"/>
+                            <TextBlock Text="{Binding Path=Minutes_Short, Source={StaticResource Resources}}" Margin="0,0,20,0"/>
                             <TextBlock Text="{Binding Path=Investigation_Period, Source={StaticResource Resources}}"/>
                             <ctc:TimePicker x:Name="tpInvestigationPeriod" Value="{Binding InvestigationPeriod}" Format="mm:ss" SecondsIncrement="30" MaxValue="10:00" PreviewKeyDown="ctrl_PreviewKeyDown" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="1,2,3,0"/>
-                            <TextBlock Text="{Binding Path=Minutes_Abbr, Source={StaticResource Resources}}"/>
+                            <TextBlock Text="{Binding Path=Minutes_Short, Source={StaticResource Resources}}"/>
                         </StackPanel>
                     </Border>
                 </WrapPanel>

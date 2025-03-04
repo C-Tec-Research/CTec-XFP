@@ -22,12 +22,16 @@ using System.Windows.Documents;
 using System.Reflection;
 using System.Security.Permissions;
 using Windows.Graphics.Printing;
+using CTecControls.Util;
+using System.Globalization;
+using System.Diagnostics.Eventing.Reader;
+using System.Windows.Input;
 
 namespace Xfp.ViewModels
 {
     public class PrintDialogWindowViewModel : ViewModelBase
     {
-        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
+        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, Button printButton, Button previewButton)
         {
             _applicationConfig = applicationConfig;
             _pages       = pages;
@@ -54,6 +58,9 @@ namespace Xfp.ViewModels
         private Page _currentPage;
 
         private ApplicationConfig _applicationConfig { get; }
+
+        private HotKeyList _hotKeys = new();
+        internal HotKeyList HotKeys { get => _hotKeys; set => _hotKeys = value; }
 
 
         public void UpdateWindowParams(bool save = false) => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
@@ -156,10 +163,26 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        //#region Minimise, Maximise/Restore buttons
-        //private bool _windowIsMaximised;
-        //public bool WindowIsMaximised { get => _windowIsMaximised; set { _windowIsMaximised = value; OnPropertyChanged(); } }
-        //#endregion
+        internal delegate void OptionSelectedAction(CTecUtil.PrintActions action);
+        internal OptionSelectedAction CloseAction;
+
+
+        public bool CheckHotKey(KeyEventArgs e)
+        {
+            var alt = (e.KeyboardDevice.Modifiers & ModifierKeys.Alt) == ModifierKeys.Alt;
+
+            var keyStr = TextProcessing.KeyToString(e);
+
+            HotKeyList.KeyProperties hotKey = new(keyStr, false, false, alt);
+
+            if (_hotKeys.TryGetValue(hotKey, out Action command))
+            {
+                command?.Invoke();
+                return true;
+            }
+
+            return false;
+        }
 
 
         #region zoom
