@@ -937,9 +937,6 @@ Sounder</value>
   <data name="MCPs" xml:space="preserve">
     <value>MCPs</value>
   </data>
-  <data name="Minutes_Short" xml:space="preserve">
-    <value>mins</value>
-  </data>
   <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
     <value>Multiple Alarms End Delays</value>
   </data>
@@ -2071,5 +2068,8 @@ All of its data will be lost.</value>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Engineer Number</value>
+  </data>
+  <data name="Minutes_Short" xml:space="preserve">
+    <value>mins</value>
   </data>
 </root>

@@ -1353,7 +1353,7 @@ namespace Xfp.ViewModels
         #region Print pop-up
         private void showPrintOptions()
         {
-            var printDialog = new PrintDialogWindow(XfpApplicationConfig.Settings, _pages, _currentPage) { Owner = _mainAppWindow };
+            var printDialog = new PrintDialogWindow(_data, XfpApplicationConfig.Settings, _pages, _currentPage) { Owner = _mainAppWindow };
             bool? result;
 
             try

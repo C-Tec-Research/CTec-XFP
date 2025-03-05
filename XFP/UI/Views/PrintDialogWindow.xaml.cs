@@ -25,14 +25,18 @@ using Windows.Media.Capture.Core;
 using CTecControls.UI;
 using CTecUtil;
 using System.Globalization;
+using Xfp.Config;
+using Xfp.DataTypes.Printing;
 
 namespace Xfp.UI.Views
 {
     public partial class PrintDialogWindow : Window
     {
-        public PrintDialogWindow(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
+        public PrintDialogWindow(XfpData data, ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage)
         {
             InitializeComponent();
+
+            _data = data;
 
             DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, btnPrint, btnPreview);
             
@@ -46,11 +50,11 @@ namespace Xfp.UI.Views
         }
 
 
-//        public CTecUtil.PrinterSettings PrinterSettings => _context.PrinterSettings;
         public PrintParameters PrintParams => _context.PrintParams;
 
 
         private PrintDialogWindowViewModel _context;
+        private XfpData _data;
         private bool _isOpen;
 
         private void addShortcutKey(Button button)
@@ -78,7 +82,8 @@ namespace Xfp.UI.Views
                 if (text == Cultures.Resources.Option_Print)
                     command = new(() => printOrPreview(PrintActions.Print));
                 else if (text == Cultures.Resources.Option_Preview)
-                    command = new(() => printOrPreview(PrintActions.Preview));
+                    //command = new(() => printOrPreview(PrintActions.Preview));
+                    command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
 
                 _context.HotKeys.Add(properties, command);
 

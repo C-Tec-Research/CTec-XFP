@@ -57,15 +57,18 @@ namespace Xfp.DataTypes.Printing
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
                 if (printParams.PrintSiteConfig)    data.SiteConfig.Print(doc);
+
                 foreach (var p in data.Panels.Values)
                 {
+                    doc.Blocks.Add(PrintUtil.DocumentHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber)));
+
                     if (printParams.PrintLoopInfo)          
                     {
                         p.Loop1Config.Print(doc, printParams.PrintAllLoopDevices);
                         p.Loop2Config.Print(doc, printParams.PrintAllLoopDevices);
                     }
-                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc);
-                    if (printParams.PrintGroups)        printGroups(doc);
+                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p.ZonePanelConfig);
+                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc);
                     if (printParams.PrintSets)          printSets(doc);
                     if (printParams.PrintCAndE)         printCAndE(doc);
                     if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
@@ -102,22 +105,6 @@ namespace Xfp.DataTypes.Printing
 
         //    doc.Blocks.Add(sitePage);
         //}
-
-        private static void printDevices(FlowDocument doc)
-        {
-            var devicesPage = new Section();
-            devicesPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Device_Details));
-
-            doc.Blocks.Add(devicesPage);
-        }
-        
-        private static void printZones(FlowDocument doc)
-        {
-            var zonesPage = new Section();
-            zonesPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Zone_Configuration));
-
-            doc.Blocks.Add(zonesPage);
-        }
         
         private static void printGroups(FlowDocument doc)
         {

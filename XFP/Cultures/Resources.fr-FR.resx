@@ -929,9 +929,6 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
   <data name="MCPs" xml:space="preserve">
     <value>PAMs</value>
   </data>
-  <data name="Minutes_Short" xml:space="preserve">
-    <value>mins</value>
-  </data>
   <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
     <value>Plusieurs alarmes mettent fin aux retards</value>
   </data>
@@ -2060,5 +2057,8 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Numéro d’ingénieur</value>
+  </data>
+  <data name="Minutes_Short" xml:space="preserve">
+    <value>mins</value>
   </data>
 </root>
