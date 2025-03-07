@@ -22,27 +22,27 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new Table();
 
-            var trg = new TableRowGroup();
-            var tr  = new TableRow() { Background = PrintUtil.TableHeaderBackground }; 
+            //var trg = new TableRowGroup();
+            //var tr  = new TableRow() { Background = PrintUtil.TableHeaderBackground }; 
 
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Number_Symbol))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Type))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Zone_Group))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Name))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Volume_Sensitivity_mode))));
-            tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Day_Night))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Number_Symbol))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Type))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Zone_Group))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Device_Name))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Volume_Sensitivity_mode))));
+            //tr.Cells.Add(new TableCell(new Paragraph(PrintUtil.BoldText(Cultures.Resources.Day_Night))));
 
-            int row = 0;
+            //int row = 0;
 
-            foreach (var d in Devices)
-            {
-                if (printAllLoopDevices || DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
-                {
-                    tr = new TableRow() { Background = row % 2 == 1 ? PrintUtil.TableAlternatingRowBackground : PrintUtil.TableNoBackground };
+            //foreach (var d in Devices)
+            //{
+            //    if (printAllLoopDevices || DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
+            //    {
+            //        tr = new TableRow() { Background = row % 2 == 1 ? PrintUtil.TableAlternatingRowBackground : PrintUtil.TableNoBackground };
 
-                    var cell = new TableCell();
-                }
-            }
+            //        var cell = new TableCell();
+            //    }
+            //}
 
             return result;
         }

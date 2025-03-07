@@ -86,16 +86,16 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new TableRowGroup();
             
-            var tr = new TableRow() { Background = PrintUtil.TableHeaderBackground }; 
-            tr.Cells.Add(PrintUtil.CellText("", 2));
-            tr.Cells.Add(PrintUtil.CellText(Cultures.Resources.Triggers_Sounder_Groups, NumSounderGroups, true, TextAlignment.Center));
-            result.Rows.Add(tr);
+            //var tr = new TableRow() { Background = PrintUtil.TableHeaderBackground }; 
+            //tr.Cells.Add(PrintUtil.CellText("", 2));
+            //tr.Cells.Add(PrintUtil.CellText(Cultures.Resources.Triggers_Sounder_Groups, NumSounderGroups, true, TextAlignment.Center));
+            //result.Rows.Add(tr);
 
-            tr = new TableRow() { Background = PrintUtil.TableHeaderBackground };
-            tr.Cells.Add(PrintUtil.CellText(Cultures.Resources.Zone, 2, true));
-            for (int i=0; i < NumSounderGroups; i++)
-                tr.Cells.Add(PrintUtil.CellInt (i, 1, true, TextAlignment.Center));
-            result.Rows.Add(tr);
+            //tr = new TableRow() { Background = PrintUtil.TableHeaderBackground };
+            //tr.Cells.Add(PrintUtil.CellText(Cultures.Resources.Zone, 2, true));
+            //for (int i=0; i < NumSounderGroups; i++)
+            //    tr.Cells.Add(PrintUtil.CellInt (i, 1, true, TextAlignment.Center));
+            //result.Rows.Add(tr);
 
             return result;
         }
