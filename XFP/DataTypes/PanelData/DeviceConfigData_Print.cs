@@ -7,10 +7,10 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class DeviceConfigData
     {
-        public void Print(FlowDocument doc, bool printAllLoopDevices)
+        public void Print(FlowDocument doc, int panelNumber, bool printAllLoopDevices)
         {
             var devicePage = new Section();
-            devicePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Device_Details));
+            devicePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_Device_Details));
 
             devicePage.Blocks.Add(deviceList(printAllLoopDevices));
 

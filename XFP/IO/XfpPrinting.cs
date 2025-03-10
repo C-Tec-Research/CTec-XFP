@@ -45,8 +45,6 @@ namespace Xfp.DataTypes.Printing
                     return;
                 }
 
-                //var path = PrintUtil.GetTempPrintFileName(_printFilePrefix);
-
                 // Create a FlowDocument
                 FlowDocument doc = new FlowDocument(PrintUtil.PageHeader(Cultures.Resources.XFP_Config_Print_Description));
                 doc.Name        = _printFilePrefix;
@@ -56,7 +54,8 @@ namespace Xfp.DataTypes.Printing
                 doc.ColumnGap   = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
-                if (printParams.PrintSiteConfig)    data.SiteConfig.Print(doc);
+                if (printParams.PrintSiteConfig)
+                    data.SiteConfig.Print(doc);
 
                 foreach (var p in data.Panels.Values)
                 {
@@ -64,10 +63,10 @@ namespace Xfp.DataTypes.Printing
 
                     if (printParams.PrintLoopInfo)          
                     {
-                        p.Loop1Config.Print(doc, printParams.PrintAllLoopDevices);
-                        p.Loop2Config.Print(doc, printParams.PrintAllLoopDevices);
+                        p.Loop1Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices);
+                        p.Loop2Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices);
                     }
-                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p.ZonePanelConfig);
+                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc);
                     if (printParams.PrintSets)          printSets(doc);
                     if (printParams.PrintCAndE)         printCAndE(doc);

@@ -42,7 +42,6 @@ namespace Xfp.UI.Views
             
             addShortcutKey(btnPrint);
             addShortcutKey(btnPreview);
-            _context.CloseAction = printOrPreview;
 
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
@@ -80,9 +79,8 @@ namespace Xfp.UI.Views
 
                 // is it one of the options that have hotkeys?
                 if (text == Cultures.Resources.Option_Print)
-                    command = new(() => printOrPreview(PrintActions.Print));
+                    command = new(() => DialogResult = true);
                 else if (text == Cultures.Resources.Option_Preview)
-                    //command = new(() => printOrPreview(PrintActions.Preview));
                     command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
 
                 _context.HotKeys.Add(properties, command);
@@ -132,21 +130,10 @@ namespace Xfp.UI.Views
         private void window_Loaded(object sender, RoutedEventArgs e) => _isOpen = true;
 
 
-        public CTecUtil.PrintActions PrintAction { get; private set; }
-
-
-        internal void printOrPreview(CTecUtil.PrintActions action)
-        {
-            PrintAction = action;
-            DialogResult = true;
-        }
-
-
-        private void PreviewButton_Click(object sender, RoutedEventArgs e) {  PrintAction = CTecUtil.PrintActions.Preview; DialogResult = true; }
-        private void PrintButton_Click(object sender, RoutedEventArgs e) { PrintAction = CTecUtil.PrintActions.Print; DialogResult = true; }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e) => ClosePrint_Click(sender, e);
-        private void ClosePrint_Click(object sender, EventArgs e) { PrintAction = CTecUtil.PrintActions.None; Close(); }
+        private void PreviewButton_Click(object sender, RoutedEventArgs e) => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview);
+        private void PrintButton_Click(object sender, RoutedEventArgs e)   => DialogResult = true;
+        private void CancelButton_Click(object sender, RoutedEventArgs e)  => Close();
+        private void ClosePrint_Click(object sender, EventArgs e)          => Close();
 
 
         private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;

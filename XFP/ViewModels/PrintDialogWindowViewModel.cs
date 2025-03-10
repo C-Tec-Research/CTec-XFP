@@ -163,8 +163,8 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        internal delegate void OptionSelectedAction(CTecUtil.PrintActions action);
-        internal OptionSelectedAction CloseAction;
+        //internal delegate void OptionSelectedAction(CTecUtil.PrintActions action);
+        //internal OptionSelectedAction CloseAction;
 
 
         public bool CheckHotKey(KeyEventArgs e)

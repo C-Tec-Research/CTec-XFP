@@ -100,5 +100,11 @@ namespace Xfp.UI.Views.PanelTools
                     _context.ZoomOut();
             }
         }
+
+        private void window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape) 
+                Close();
+        }
     }
 }

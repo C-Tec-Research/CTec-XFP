@@ -20,6 +20,7 @@
         Title="{Binding Path=Data_Validation, Source={StaticResource Resources}}"
         Icon="/Resources/info.png"
         StateChanged="window_StateChanged"
+        PreviewKeyDown="window_PreviewKeyDown"
         PreviewMouseWheel="window_PreviewMouseWheel" 
         Closing="window_Closing">
 
