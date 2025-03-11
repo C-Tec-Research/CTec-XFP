@@ -20,9 +20,9 @@ namespace Xfp.DataTypes.PanelData
             var zonesPage = new Section();
             zonesPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
 
-            zonesPage.Blocks.Add(new BlockUIContainer(headerInfoGrid()));
+            zonesPage.Blocks.Add(new BlockUIContainer(headerInfo()));
             zonesPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            zonesPage.Blocks.Add(new BlockUIContainer(zoneListGrid()));
+            zonesPage.Blocks.Add(new BlockUIContainer(zoneList()));
 
             doc.Blocks.Add(zonesPage);
         }
@@ -31,7 +31,7 @@ namespace Xfp.DataTypes.PanelData
         ZonePanelConfigData _zonePanelData;
 
 
-        private Grid headerInfoGrid()
+        private Grid headerInfo()
         {
             var result = new Grid();
 
@@ -41,18 +41,18 @@ namespace Xfp.DataTypes.PanelData
             result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Input_Delay, 0, 0));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Input_Delay), 0, 0));
             result.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Investigation_Period, 1, 0));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Investigation_Period), 1, 0));
             result.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
 
             return result;
         }
 
 
-        private Grid zoneListGrid()
+        private Grid zoneList()
         {
-            var grid = columnHeadersGrid();
+            var grid = columnHeaders();
 
             //add the rows for the data
             for (int i = 0; i < Zones.Count + _zonePanelData.Panels.Count; i++)
@@ -67,8 +67,8 @@ namespace Xfp.DataTypes.PanelData
 
                 grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, 15, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
-                grid.Children.Add(PrintUtil.GridCell(z.Number.ToString(), row, col++, TextAlignment.Right));
-                grid.Children.Add(PrintUtil.GridCell(z.Name, row, col++, TextAlignment.Left));
+                grid.Children.Add(PrintUtil.GridCell(z.Number, row, col++, TextAlignment.Right));
+                grid.Children.Add(PrintUtil.GridCell(z.Name, row, col++));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.SounderDelay, row, col++, "ms", false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay1Delay,  row, col++, "ms", false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay2Delay,  row, col++, "ms", false, TextAlignment.Center));
@@ -91,7 +91,7 @@ namespace Xfp.DataTypes.PanelData
                 
                 grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, 15, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
-                grid.Children.Add(PrintUtil.GridCell(p.Number.ToString(), row, col++, TextAlignment.Right));
+                grid.Children.Add(PrintUtil.GridCell(p.Number, row, col++, TextAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(p.Name, row, col++, TextAlignment.Left));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(p.SounderDelay, row, col++, "ms", false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(p.Relay1Delay,  row, col++, "ms", false, TextAlignment.Center));
@@ -104,7 +104,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private Grid columnHeadersGrid()
+        private Grid columnHeaders()
         {
             Grid g = new Grid();
 
@@ -112,14 +112,12 @@ namespace Xfp.DataTypes.PanelData
             g.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             g.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            //grid has 14 columns
             for (int i = 0; i < 15; i++)
                 g.ColumnDefinitions.Add(new ColumnDefinition() { Width = i == 8 ? (GridLength)new GridLengthConverter().ConvertFrom(60) : GridLength.Auto });
 
             g.Children.Add(PrintUtil.GridBackground(0, 0, 1, 15, PrintUtil.GridHeaderBackground));
             g.Children.Add(PrintUtil.GridBackground(1, 0, 1, 15, PrintUtil.GridHeaderBackground));
 
-            g.Children.Add(PrintUtil.GridHeaderCell("", 0, 0));
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Output_Delays_Mins,         0,  2, 1, 4, TextAlignment.Center));
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Functioning_With,           0,  6, 1, 2, TextAlignment.Center));
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Multiple_Alarms_End_Delays, 0,  8, 2, 1, TextAlignment.Center));
@@ -127,7 +125,8 @@ namespace Xfp.DataTypes.PanelData
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Night_Dependencies,         0, 12, 1, 3, TextAlignment.Center));
             
             int col = 0;
-            g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone,      1, col++, 1, 2)); col++;
+            g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone,      1, col++, 1, 2));
+            col++;
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Sounders,  1, col++, TextAlignment.Center));
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Relay_1,   1, col++, TextAlignment.Center));
             g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Relay_2,   1, col++, TextAlignment.Center));

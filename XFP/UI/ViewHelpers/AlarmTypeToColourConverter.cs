@@ -31,6 +31,7 @@ namespace Xfp.UI.ViewHelpers
             }
             catch { }
 
+            //...in case the resources were not found
             return (AlarmTypes)value switch
             {
                 AlarmTypes.Alert    => Brushes.Orange,

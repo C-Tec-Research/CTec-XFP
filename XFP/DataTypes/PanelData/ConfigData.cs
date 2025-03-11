@@ -97,5 +97,8 @@ namespace Xfp.DataTypes.PanelData
 
                 _ => ErrorLevels.Error                               
             };
+
+
+        protected string appendColon(string text) => text + ":";
     }
 }

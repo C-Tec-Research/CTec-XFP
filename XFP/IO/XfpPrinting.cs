@@ -67,7 +67,7 @@ namespace Xfp.DataTypes.Printing
                         p.Loop2Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices);
                     }
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
-                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc);
+                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
                     if (printParams.PrintSets)          printSets(doc);
                     if (printParams.PrintCAndE)         printCAndE(doc);
                     if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
