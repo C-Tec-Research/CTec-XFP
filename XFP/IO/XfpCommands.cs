@@ -85,7 +85,7 @@ namespace Xfp.IO
         internal static byte[] SetZoneSet(SetConfigData.SetBundle set)                             => buildCommand(XfpCommandCodes.SetZSet, set.ToByteArray());
 
         internal static byte[] SetAL2Code(Text al2Code)                                  => buildCommand(XfpCommandCodes.SetAL2Code, ByteArrayProcessing.IntStrToByteArray(al2Code.Value, 2));
-        internal static byte[] SetAL3Code(SiteConfigData.AL3CodeBundle al3Code)          => buildCommand(XfpCommandCodes.SetAL3Code, al3Code.ToByteArray());
+        internal static byte[] SetAL3Code(PanelConfigData.AL3CodeBundle al3Code)     => buildCommand(XfpCommandCodes.SetAL3Code, al3Code.ToByteArray());
         internal static byte[] SetQuiescentString(Text text)                             => buildCommand(XfpCommandCodes.SetQuiescentName, text.ToByteArray());
         internal static byte[] SetMaintenanceString(Text text)                           => buildCommand(XfpCommandCodes.SetMaintName, text.ToByteArray());
         internal static byte[] SetMaintenanceDate(Date date)                             => buildCommand(XfpCommandCodes.SetMaintDate, date.ToByteArray("yyMMddHHmmss"));

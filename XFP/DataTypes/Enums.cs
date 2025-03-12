@@ -214,10 +214,12 @@
         SiteConfigNoEngineerName = 613,
         SiteConfigNoInstallDate = 614,
         SiteConfigNoCommissionDate = 615,
-        SiteConfigQuiescentStringBlank = 620,
-        SiteConfigQuiescentStringTooLong = 621,
-        SiteConfigMaintenanceStringBlank = 622,
-        SiteConfigMaintenanceStringTooLong = 623,
+        
+        // - SitePanelData config errors 650+
+        SiteConfigQuiescentStringBlank = 650,
+        SiteConfigQuiescentStringTooLong = 651,
+        SiteConfigMaintenanceStringBlank = 652,
+        SiteConfigMaintenanceStringTooLong = 653,
         SiteConfigAL2CodeError = 660,
         SiteConfigAL3CodeError = 661,
 

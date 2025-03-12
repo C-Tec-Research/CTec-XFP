@@ -8,7 +8,7 @@ using CTecUtil;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class SiteConfigData
+    public partial class PanelConfigData
     {
         /// <summary>
         /// Subset of SiteConfigData containing the AL2 and AL3 access codes

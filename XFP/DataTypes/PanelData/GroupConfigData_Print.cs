@@ -46,19 +46,23 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new Grid();
 
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
             result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
             result.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 0, 2));
             result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 1, 2));
+            result.Children.Add(PrintUtil.GridCell(PanelSounder2Group, 1, 2));
 
             result.Children.Add(PrintUtil.GridCell(" ", 0, 3));
 
@@ -67,10 +71,12 @@ namespace Xfp.DataTypes.PanelData
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 4));
             result.Children.Add(PrintUtil.GridCell(IntermittentTone, 1, 5));
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 2, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCell(ReSoundFunction ? CTecControls.Cultures.Resources.Yes : CTecControls.Cultures.Resources.No, 2, 2));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay), 3, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 3, 2, "ms", true, TextAlignment.Left));
+            result.Children.Add(PrintUtil.GridCell(" ", 2, 0));
+
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
+            result.Children.Add(PrintUtil.GridCell(ReSoundFunction ? CTecControls.Cultures.Resources.Yes : CTecControls.Cultures.Resources.No, 3, 1, 1, 3));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay), 4, 0, 1, 2));
+            result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, TextAlignment.Left));
 
             return result;
         }

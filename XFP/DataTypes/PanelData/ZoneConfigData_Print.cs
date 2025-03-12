@@ -35,11 +35,11 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new Grid();
 
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Input_Delay), 0, 0));
             result.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));

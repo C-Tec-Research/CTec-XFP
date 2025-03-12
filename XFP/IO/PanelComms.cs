@@ -152,13 +152,13 @@ namespace Xfp.IO
         #endregion
             
         #region site config
-        internal static void AddCommandSetQuiescentString(Text text, string description)                       => SerialComms.EnqueueCommand(XfpCommands.SetQuiescentString(text), description);
-        internal static void AddCommandSetMaintenanceString(Text text, string description)                     => SerialComms.EnqueueCommand(XfpCommands.SetMaintenanceString(text), description);
-        internal static void AddCommandSetMaintenanceDate(Date date, string description)                       => SerialComms.EnqueueCommand(XfpCommands.SetMaintenanceDate(date), description);
-        internal static void AddCommandSetAL2Code(Text al2Code, string description)                            => SerialComms.EnqueueCommand(XfpCommands.SetAL2Code(al2Code), description);
-        internal static void AddCommandSetAL3Code(SiteConfigData.AL3CodeBundle al3Code, string description)    => SerialComms.EnqueueCommand(XfpCommands.SetAL3Code(al3Code), description);
-        internal static void AddCommandSetDayNight(SiteConfigData.DayNightBundle dayNight, string description) => SerialComms.EnqueueCommand(XfpCommands.SetDayNight(dayNight), description);
-        internal static void AddCommandSyncPanelTime(string description)                                       => SerialComms.EnqueueCommand(XfpCommands.SetPanelTime(), description);
+        internal static void AddCommandSetQuiescentString(Text text, string description)                         => SerialComms.EnqueueCommand(XfpCommands.SetQuiescentString(text), description);
+        internal static void AddCommandSetMaintenanceString(Text text, string description)                       => SerialComms.EnqueueCommand(XfpCommands.SetMaintenanceString(text), description);
+        internal static void AddCommandSetMaintenanceDate(Date date, string description)                         => SerialComms.EnqueueCommand(XfpCommands.SetMaintenanceDate(date), description);
+        internal static void AddCommandSetAL2Code(Text al2Code, string description)                              => SerialComms.EnqueueCommand(XfpCommands.SetAL2Code(al2Code), description);
+        internal static void AddCommandSetAL3Code(PanelConfigData.AL3CodeBundle al3Code, string description) => SerialComms.EnqueueCommand(XfpCommands.SetAL3Code(al3Code), description);
+        internal static void AddCommandSetDayNight(SiteConfigData.DayNightBundle dayNight, string description)   => SerialComms.EnqueueCommand(XfpCommands.SetDayNight(dayNight), description);
+        internal static void AddCommandSyncPanelTime(string description)                                         => SerialComms.EnqueueCommand(XfpCommands.SetPanelTime(), description);
         #endregion
 
         #region c&e config
@@ -239,11 +239,11 @@ namespace Xfp.IO
         private static SerialComms.ReceivedResponseDataHandler receiveZoneSet            = new((data, index) => (bool)ZoneSetReceived?.Invoke          (SetConfigData.SetBundle.Parse              (data, XfpCommands.ResponseIsZoneSetRequest, index)));
 
         private static SerialComms.ReceivedResponseDataHandler receiveFirmwareVersion    = new((data, index) => (bool)FirmwareVersionReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsFirmwareVersionRequest,   XfpPanelData.FirmwareVersionLength, true)));
-        private static SerialComms.ReceivedResponseDataHandler receiveQuiescentString    = new((data, index) => (bool)QuiescentStringReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsQuiescentStringRequest,   SiteConfigData.MaxQuiescentStringLength)));
-        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceString  = new((data, index) => (bool)MaintenanceStringReceived?.Invoke(Text.Parse                                 (data, XfpCommands.ResponseIsMaintenanceStringRequest, SiteConfigData.MaxMaintenanceStringLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveQuiescentString    = new((data, index) => (bool)QuiescentStringReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsQuiescentStringRequest,   PanelConfigData.MaxQuiescentStringLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceString  = new((data, index) => (bool)MaintenanceStringReceived?.Invoke(Text.Parse                                 (data, XfpCommands.ResponseIsMaintenanceStringRequest, PanelConfigData.MaxMaintenanceStringLength)));
         private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceDate    = new((data, index) => (bool)MaintenanceDateReceived?.Invoke  (Date.Parse                                 (data, XfpCommands.ResponseIsMaintenanceDateRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveAL2Code            = new((data, index) => (bool)AL2CodeReceived?.Invoke          (SiteConfigData.ParseAL2Code                (data, XfpCommands.ResponseIsAL2CodeRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveAL3Code            = new((data, index) => (bool)AL3CodeReceived?.Invoke          (SiteConfigData.AL3CodeBundle.Parse         (data, XfpCommands.ResponseIsAL3CodeRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveAL2Code            = new((data, index) => (bool)AL2CodeReceived?.Invoke          (PanelConfigData.ParseAL2Code           (data, XfpCommands.ResponseIsAL2CodeRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveAL3Code            = new((data, index) => (bool)AL3CodeReceived?.Invoke          (PanelConfigData.AL3CodeBundle.Parse    (data, XfpCommands.ResponseIsAL3CodeRequest)));
         private static SerialComms.ReceivedResponseDataHandler receiveDayNight           = new((data, index) => (bool)DayNightReceived?.Invoke         (SiteConfigData.DayNightBundle.Parse        (data, XfpCommands.ResponseIsDayNightRequest)));
 
         private static SerialComms.ReceivedResponseDataHandler receiveCEEvent            = new((data, index) => (bool)CEEventReceived?.Invoke          (CEConfigData.CEBundle.Parse                (data, XfpCommands.ResponseIsCEEventRequest, index)));

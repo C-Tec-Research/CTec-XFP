@@ -18,13 +18,13 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
 
             _pages = new()
             {
+                new(Cultures.Resources.Panel_Site_Configuration),
                 new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
                 new(string.Format(Cultures.Resources.Nav_Loop_x, 2)),
                 new(Cultures.Resources.Comms_Device_Names),
                 new(Cultures.Resources.Nav_Zone_Configuration),
                 new(Cultures.Resources.Nav_Group_Configuration),
                 new(Cultures.Resources.Nav_Set_Configuration),
-                new(Cultures.Resources.Nav_Site_Configuration),
                 new(Cultures.Resources.Nav_C_And_E_Configuration),
                 new(Cultures.Resources.Nav_Network_Configuration),
             };
@@ -52,6 +52,13 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
             List<ConfigErrorPageItems> pageErrors;
             List<ConfigErrorPageItems> allPageErrors = new();
             bool expand;
+
+            if ((page = FindInChildren(Pages, Cultures.Resources.Panel_Site_Configuration)) is not null)
+            {
+                allPageErrors.AddRange(pageErrors = _panelData.PanelConfig.GetPageErrorDetails().Items);
+                expand = currentPanel == PanelNumber && (currentPage?.Equals(page.Name) ?? false);
+                page.SetChildren(pageErrors, page, expand);
+            }
 
             if ((page = FindInChildren(Pages, string.Format(Cultures.Resources.Nav_Loop_x, 1))) is not null)
             {

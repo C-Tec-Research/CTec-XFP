@@ -1412,8 +1412,8 @@ Do you want to replace it?</value>
   <data name="Error_Invalid_IO_Zone" xml:space="preserve">
     <value>Invalid I/O subaddress zone</value>
   </data>
-  <data name="Device_Strings" xml:space="preserve">
-    <value>Device strings</value>
+  <data name="Panel_Strings" xml:space="preserve">
+    <value>Panel strings</value>
   </data>
   <data name="Error_Day_Alarm_Reset_Too_Long" xml:space="preserve">
     <value>Day alarm reset is too long</value>
@@ -2071,5 +2071,16 @@ All of its data will be lost.</value>
   </data>
   <data name="Minutes_Short" xml:space="preserve">
     <value>mins</value>
+  </data>
+  <data name="Panel_Site_Configuration" xml:space="preserve">
+    <value>Site Panel Configuration</value>
+  </data>
+  <data name="Default_AL2String" xml:space="preserve">
+    <value>3333</value>
+    <comment>Not translated</comment>
+  </data>
+  <data name="Default_AL3String" xml:space="preserve">
+    <value>4444</value>
+    <comment>Not translated</comment>
   </data>
 </root>

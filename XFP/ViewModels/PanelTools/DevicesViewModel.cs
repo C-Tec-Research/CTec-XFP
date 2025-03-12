@@ -673,11 +673,11 @@ namespace Xfp.ViewModels.PanelTools
             //also send the alarm verification counts
             PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Site_Information, uploadRequestsCompleted);
             PanelComms.AddCommandSetAL3Code(new() {
-                                                AL3Code = _data.SiteConfig.AL3Code, 
-                                                BlinkPollingLED = _data.SiteConfig.BlinkPollingLED, 
-                                                DetectorDebounce = _data.SiteConfig.DetectorDebounce, 
-                                                IODebounce = _data.SiteConfig.IODebounce, 
-                                                MCPDebounce = _data.SiteConfig.MCPDebounce
+                                                AL3Code = _data.CurrentPanel.PanelConfig.AL3Code, 
+                                                BlinkPollingLED = _data.CurrentPanel.PanelConfig.BlinkPollingLED, 
+                                                DetectorDebounce = _data.CurrentPanel.PanelConfig.DetectorDebounce, 
+                                                IODebounce = _data.CurrentPanel.PanelConfig.IODebounce, 
+                                                MCPDebounce = _data.CurrentPanel.PanelConfig.MCPDebounce
                                             },
                                             Cultures.Resources.AL3_Code);
         }
@@ -812,16 +812,16 @@ namespace Xfp.ViewModels.PanelTools
 
         private bool al3CodeReceived(object data)
         {
-            if (data is not SiteConfigData.AL3CodeBundle al3Bundle)
+            if (data is not PanelConfigData.AL3CodeBundle al3Bundle)
                 return false;
 
             CTecUtil.CommsLog.AddReceivedData(Cultures.Resources.Alarm_Verification_Counts);
 
-            _data.SiteConfig.AL3Code          = al3Bundle.AL3Code;
-            _data.SiteConfig.BlinkPollingLED  = al3Bundle.BlinkPollingLED;
-            _data.SiteConfig.MCPDebounce      = al3Bundle.MCPDebounce;
-            _data.SiteConfig.IODebounce       = al3Bundle.IODebounce;
-            _data.SiteConfig.DetectorDebounce = al3Bundle.DetectorDebounce;
+            _data.CurrentPanel.PanelConfig.AL3Code          = al3Bundle.AL3Code;
+            _data.CurrentPanel.PanelConfig.BlinkPollingLED  = al3Bundle.BlinkPollingLED;
+            _data.CurrentPanel.PanelConfig.MCPDebounce      = al3Bundle.MCPDebounce;
+            _data.CurrentPanel.PanelConfig.IODebounce       = al3Bundle.IODebounce;
+            _data.CurrentPanel.PanelConfig.DetectorDebounce = al3Bundle.DetectorDebounce;
             return true;
         }
 

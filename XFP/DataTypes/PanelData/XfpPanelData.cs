@@ -25,6 +25,7 @@ namespace Xfp.DataTypes.PanelData
 
             Protocol           = original.Protocol;
             PanelNumber        = original.PanelNumber;
+            PanelConfig        = new(original.PanelConfig);
             LoopConfig         = new(original.LoopConfig);
             DeviceNamesConfig  = new(original.DeviceNamesConfig);
             ZoneConfig         = new(original.ZoneConfig);
@@ -46,6 +47,7 @@ namespace Xfp.DataTypes.PanelData
 
 
         public int                   PanelNumber { get; set; }
+        public PanelConfigData       PanelConfig { get; set; }
         public CEConfigData          CEConfig { get; set; }
         public LoopConfigData        LoopConfig { get; set; }
         public DeviceNamesConfigData DeviceNamesConfig { get; set; }
@@ -112,6 +114,7 @@ namespace Xfp.DataTypes.PanelData
                 //IsReadOnly = true,
                 Protocol          = protocol,
                 PanelNumber       = panelNumber,
+                PanelConfig       = PanelConfigData.InitialisedNew(),
                 LoopConfig        = LoopConfigData.InitialisedNew(),
                 DeviceNamesConfig = DeviceNamesConfigData.InitialisedNew(),
                 ZoneConfig        = ZoneConfigData.InitialisedNew(),
@@ -138,7 +141,8 @@ namespace Xfp.DataTypes.PanelData
              )
                 return false;
 
-            return LoopConfig.Equals(od.LoopConfig)
+            return PanelConfig.Equals(od.PanelConfig)
+                && LoopConfig.Equals(od.LoopConfig)
                 && DeviceNamesConfig.Equals(od.DeviceNamesConfig)
                 && ZoneConfig.Equals(od.ZoneConfig)
                 && ZonePanelConfig.Equals(od.ZonePanelConfig)
@@ -163,29 +167,15 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        //internal static void ErrorsAddUnique(List<ConfigErrorPage> errors, ConfigErrorPage error)
-        //{
-        //    if (!errors.Contains(error))
-        //        errors.Add(error);
-        //}
-
-
-        //internal static void ErrorsAddUnique(List<ConfigErrorPage> errors, List<ConfigErrorPage> newErrors)
-        //{
-        //    foreach (var e in newErrors)
-        //        ErrorsAddUnique(errors, e);
-        //}
-
-
         /// <summary>Current errors or warnings</summary>
         private List<ConfigErrorPage> _errorsAndWarnings = new();
-        //public List<ConfigErrorPage> GetErrorsAndWarnings() => _errorsAndWarnings;
 
 
         public override bool Validate()
         {
             _errorsAndWarnings.Clear();
 
+            if (!PanelConfig.Validate())       _errorsAndWarnings.Add(PanelConfig.GetPageErrorDetails());
             if (!Loop1Config.Validate())       _errorsAndWarnings.Add(Loop1Config.GetPageErrorDetails());
             if (!Loop2Config.Validate())       _errorsAndWarnings.Add(Loop2Config.GetPageErrorDetails());
             if (!DeviceNamesConfig.Validate()) _errorsAndWarnings.Add(DeviceNamesConfig.GetPageErrorDetails());
@@ -200,7 +190,8 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        internal new bool HasErrorsOrWarnings() => Loop1Config.HasErrorsOrWarnings()
+        internal new bool HasErrorsOrWarnings() => PanelConfig.HasErrorsOrWarnings()
+                                                || Loop1Config.HasErrorsOrWarnings()
                                                 || Loop2Config.HasErrorsOrWarnings()
                                                 || DeviceNamesConfig.HasErrorsOrWarnings()
                                                 || ZoneConfig.HasErrorsOrWarnings()
@@ -209,7 +200,8 @@ namespace Xfp.DataTypes.PanelData
                                                 || GroupConfig.HasErrorsOrWarnings()
                                                 || NetworkConfig.HasErrorsOrWarnings();
 
-        internal new bool HasErrors() => Loop1Config.HasErrors()
+        internal new bool HasErrors() => PanelConfig.HasErrors()
+                                      || Loop1Config.HasErrors()
                                       || Loop2Config.HasErrors()
                                       || DeviceNamesConfig.HasErrors()
                                       || ZoneConfig.HasErrors()
@@ -218,7 +210,8 @@ namespace Xfp.DataTypes.PanelData
                                       || GroupConfig.HasErrors()
                                       || NetworkConfig.HasErrors();
 
-        internal new bool HasWarnings() => Loop1Config.HasWarnings()
+        internal new bool HasWarnings() => PanelConfig.HasWarnings()
+                                        || Loop1Config.HasWarnings()
                                         || Loop2Config.HasWarnings()
                                         || DeviceNamesConfig.HasWarnings()
                                         || ZoneConfig.HasWarnings()

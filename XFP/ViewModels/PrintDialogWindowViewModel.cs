@@ -116,6 +116,10 @@ namespace Xfp.ViewModels
         #region print parameters
         public PrintParameters PrintParams { get; set; } = new();
 
+        
+        public bool PrintAllPanels      { get => PrintParams.PrintAllPages;      set { if (PrintParams.PrintAllPages = value) PrintParams.PrintAllPanels = true; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintSelectedPanels { get => PrintParams.PrintSelectedPanels;set { if (PrintParams.PrintSelectedPanels = value) PrintParams.PrintAllPanels = false; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public string PrintPanelRange   { get => PrintParams.PrintPanelRange;    set { PrintParams.PrintPanelRange = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintAllPages       { get => PrintParams.PrintAllPages;      set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintCurrentPage    { get => PrintParams.PrintCurrentPage;   set { if (PrintParams.PrintCurrentPage = value) setCurrentPageToPrint(); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint; set { PrintParams.SelectPagesToPrint = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
@@ -135,7 +139,8 @@ namespace Xfp.ViewModels
         public bool PrintOrderZone      { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByZone;   set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByZone; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderGroup)); } }
 
 
-        public bool CanPrint =>  SelectedPrinter is not null && (PrintAllPages || PrintSiteConfig    || PrintLoopInfo || PrintZones    || PrintGroups ||
+        public bool CanPrint =>  SelectedPrinter is not null && (PrintAllPanels || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||
+                                                                 PrintAllPages || PrintSiteConfig    || PrintLoopInfo || PrintZones    || PrintGroups ||
                                                                  PrintSets     || PrintNetworkConfig || PrintCAndE    || PrintComments || PrintEventLog);
 
         //private void setAllPagesToPrint(bool value) => PrintSiteConfig = PrintLoopInfo      = PrintZones = PrintGroups   = PrintSets 

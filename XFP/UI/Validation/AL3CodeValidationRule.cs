@@ -13,7 +13,7 @@ namespace Xfp.UI.Validation
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value is string code)
-                if (!SiteConfigData.ValidateAccessCode(code))
+                if (!PanelConfigData.ValidateAccessCode(code))
                     return new ValidationResult(false, Cultures.Resources.Error_Invalid_AL3_Code);
 
             return new ValidationResult(true, null);

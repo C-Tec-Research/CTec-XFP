@@ -1047,6 +1047,24 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 3333.
+        /// </summary>
+        public static string Default_AL2String {
+            get {
+                return ResourceManager.GetString("Default_AL2String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4444.
+        /// </summary>
+        public static string Default_AL3String {
+            get {
+                return ResourceManager.GetString("Default_AL3String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Call the Engineer.
         /// </summary>
         public static string Default_Maintenance_String {
@@ -1214,15 +1232,6 @@ namespace Xfp.Cultures {
         public static string Device_Receive {
             get {
                 return ResourceManager.GetString("Device_Receive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Device strings.
-        /// </summary>
-        public static string Device_Strings {
-            get {
-                return ResourceManager.GetString("Device_Strings", resourceCulture);
             }
         }
         
@@ -3679,11 +3688,29 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Site Panel Configuration.
+        /// </summary>
+        public static string Panel_Site_Configuration {
+            get {
+                return ResourceManager.GetString("Panel_Site_Configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Panel sounder {0} belongs to Sounder Group.
         /// </summary>
         public static string Panel_Sounder_x_Belongs_To_Sounder_Group {
             get {
                 return ResourceManager.GetString("Panel_Sounder_x_Belongs_To_Sounder_Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panel strings.
+        /// </summary>
+        public static string Panel_Strings {
+            get {
+                return ResourceManager.GetString("Panel_Strings", resourceCulture);
             }
         }
         

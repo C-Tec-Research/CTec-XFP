@@ -27,7 +27,7 @@ namespace Xfp.DataTypes
 
             SiteConfig      = new(original.SiteConfig);
             Comments        = original.Comments;
-            FirmwareVersion = original.FirmwareVersion;
+            //FirmwareVersion = original.FirmwareVersion;
             ToolsVersion    = original.ToolsVersion;
         }
 
@@ -57,7 +57,7 @@ namespace Xfp.DataTypes
             });
 
             Comments        = original.Comments;
-            FirmwareVersion = original.FirmwareVersion;
+            //FirmwareVersion = original.FirmwareVersion;
             ToolsVersion    = original.ToolsVersion;
         }
 
@@ -86,7 +86,7 @@ namespace Xfp.DataTypes
         public SiteConfigData     SiteConfig { get; set; }
         public string             Comments { get; set; }
 
-        public string FirmwareVersion { get; set; }
+        //public string FirmwareVersion { get; set; }
         public string ToolsVersion { get; set; }
 
         public const int MinPanelNumber = 1;
@@ -134,11 +134,11 @@ namespace Xfp.DataTypes
         }
 
 
-        /// <summary>
-        /// Checks whether the data's FirmwareVersion is the same as the specified version.
-        /// </summary>
-        /// <returns>Null if FirmwareVersion is null</returns>
-        internal bool? FirmwareVersionEquals(string otherFirmwareVersion) => FirmwareVersion is not null ? FirmwareVersion == otherFirmwareVersion : null;
+        ///// <summary>
+        ///// Checks whether the data's FirmwareVersion is the same as the specified version.
+        ///// </summary>
+        ///// <returns>Null if FirmwareVersion is null</returns>
+        //internal bool? FirmwareVersionEquals(string otherFirmwareVersion) => FirmwareVersion is not null ? FirmwareVersion == otherFirmwareVersion : null;
 
         /// <summary>
         /// Checks whether the data's ToolsVersion is the same as the specified version.
@@ -147,11 +147,11 @@ namespace Xfp.DataTypes
         internal bool? ToolsVersionEquals(string otherToolsVersion) => ToolsVersion is not null ? ToolsVersion == otherToolsVersion : null;
 
 
-        /// <summary>
-        /// Compares FirmwareVersion with the specified version number.
-        /// </summary>
-        /// <returns>1, 0 or -1 as per string Compare(), or null if either value is invalid or null</returns>
-        internal int? FirmwareVersionCompare(string otherFirmwareVersion) => CTecUtil.TextProcessing.CompareFirmwareVersion(otherFirmwareVersion, FirmwareVersion);
+        ///// <summary>
+        ///// Compares FirmwareVersion with the specified version number.
+        ///// </summary>
+        ///// <returns>1, 0 or -1 as per string Compare(), or null if either value is invalid or null</returns>
+        //internal int? FirmwareVersionCompare(string otherFirmwareVersion) => CTecUtil.TextProcessing.CompareFirmwareVersion(otherFirmwareVersion, FirmwareVersion);
 
 
         /// <summary>

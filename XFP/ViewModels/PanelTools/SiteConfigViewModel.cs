@@ -44,7 +44,9 @@ namespace Xfp.ViewModels.PanelTools
         private bool _syncPanelTime = true;
 
 
-        public string SystemName             { get => _data?.SiteConfig.SystemName;         set { if (_data != null) { _data.SiteConfig.SystemName = value?.TrimEnd(); SystemNameChanged?.Invoke(value); OnPropertyChanged(); } } }
+        public string SystemName             { get => _data?.SiteConfig.SystemName;                       set { if (_data != null) { _data.SiteConfig.SystemName = value?.TrimEnd(); SystemNameChanged?.Invoke(value); OnPropertyChanged(); } } }
+        public string FirmwareVersion        { get => _data?.CurrentPanel.PanelConfig.FirmwareVersion;    set { if (_data != null) { _data.CurrentPanel.PanelConfig.FirmwareVersion = value; OnPropertyChanged(); } } }
+        
         public string ClientName             { get => _data?.SiteConfig.Client.Name;        set { if (_data != null) { _data.SiteConfig.Client.Name = value; OnPropertyChanged(); } } }
         public List<string> ClientAddress    { get => _data?.SiteConfig.Client.Address;     set { if (_data != null) { _data.SiteConfig.Client.Address = value; OnPropertyChanged(); } } }
         public string ClientPostcode         { get => _data?.SiteConfig.Client.Postcode;    set { if (_data != null) { _data.SiteConfig.Client.Postcode = value; OnPropertyChanged(); } } }
@@ -57,29 +59,28 @@ namespace Xfp.ViewModels.PanelTools
         public string EngineerTelephone      { get => _data?.SiteConfig.InstallerTel;       set { if (_data != null) { _data.SiteConfig.InstallerTel = value; OnPropertyChanged(); } } }
         public string EngineerName           { get => _data?.SiteConfig.EngineerName;       set { if (_data != null) { _data.SiteConfig.EngineerName = value; OnPropertyChanged(); } } }
         public string EngineerNumber         { get => _data?.SiteConfig.EngineerNo;         set { if (_data != null) { _data.SiteConfig.EngineerNo = value; OnPropertyChanged(); } } }
-        public string FirmwareVersion        { get => _data?.FirmwareVersion;               set { if (_data != null) { _data.FirmwareVersion = value; OnPropertyChanged(); } } }
 
-        public string QuiescentString        { get => _data?.SiteConfig.QuiescentString;    set { if (_data is not null) { _data.SiteConfig.QuiescentString = value; OnPropertyChanged(); OnPropertyChanged(nameof(QuiescentStringIsValid)); } } }
-        public string MaintenanceString      { get => _data?.SiteConfig.MaintenanceString;  set { if (_data is not null) { _data.SiteConfig.MaintenanceString = value; OnPropertyChanged(); OnPropertyChanged(nameof(MaintenanceStringIsValid)); } } }
-        public DateTime? MaintenanceDate     { get => _data?.SiteConfig.MaintenanceDate;    set { if (_data is not null) { _data.SiteConfig.MaintenanceDate = value; OnPropertyChanged(); } } }
-        public bool SendMaintToPanel         { get => _sendMaintToPanel;                    set { _sendMaintToPanel = value; OnPropertyChanged(); } }
+        public string QuiescentString        { get => _data?.CurrentPanel.PanelConfig.QuiescentString;         set { if (_data is not null) { _data.CurrentPanel.PanelConfig.QuiescentString = value; OnPropertyChanged(); OnPropertyChanged(nameof(QuiescentStringIsValid)); } } }
+        public string MaintenanceString      { get => _data?.CurrentPanel.PanelConfig.MaintenanceString;       set { if (_data is not null) { _data.CurrentPanel.PanelConfig.MaintenanceString = value; OnPropertyChanged(); OnPropertyChanged(nameof(MaintenanceStringIsValid)); } } }
+        public DateTime? MaintenanceDate     { get => _data?.CurrentPanel.PanelConfig.MaintenanceDate;         set { if (_data is not null) { _data.CurrentPanel.PanelConfig.MaintenanceDate = value; OnPropertyChanged(); } } }
+        public bool SendMaintToPanel         { get => _sendMaintToPanel;                                       set { _sendMaintToPanel = value; OnPropertyChanged(); } }
 
-        public TimeSpan OccupiedBegins       { get => _data?.SiteConfig.OccupiedBegins ?? new(); set { if (_data is not null) { _data.SiteConfig.OccupiedBegins = value; OnPropertyChanged(); } } }
-        public TimeSpan OccupiedEnds         { get => _data?.SiteConfig.OccupiedEnds ?? new();   set { if (_data is not null) { _data.SiteConfig.OccupiedEnds = value; OnPropertyChanged(); } } }
+        public TimeSpan OccupiedBegins       { get => _data?.CurrentPanel.PanelConfig.OccupiedBegins ?? new(); set { if (_data is not null) { _data.CurrentPanel.PanelConfig.OccupiedBegins = value; OnPropertyChanged(); } } }
+        public TimeSpan OccupiedEnds         { get => _data?.CurrentPanel.PanelConfig.OccupiedEnds ?? new();   set { if (_data is not null) { _data.CurrentPanel.PanelConfig.OccupiedEnds = value; OnPropertyChanged(); } } }
 
-        public List<bool> DayStart           { get => _data?.SiteConfig.DayStart;           set { if (_data is not null) { _data.SiteConfig.DayStart  = value; OnPropertyChanged(); } } }
-        public List<bool> NightStart         { get => _data?.SiteConfig.NightStart;         set { if (_data is not null) { _data.SiteConfig.NightStart = value; OnPropertyChanged(); } } }
+        public List<bool> DayStart           { get => _data?.CurrentPanel.PanelConfig.DayStart;                set { if (_data is not null) { _data.CurrentPanel.PanelConfig.DayStart  = value; OnPropertyChanged(); } } }
+        public List<bool> NightStart         { get => _data?.CurrentPanel.PanelConfig.NightStart;              set { if (_data is not null) { _data.CurrentPanel.PanelConfig.NightStart = value; OnPropertyChanged(); } } }
 
-        public string AL2Code                { get => _data.SiteConfig.AL2Code;             set { _data.SiteConfig.AL2Code = value; OnPropertyChanged(); OnPropertyChanged(nameof(AL2CodeIsValid)); } }
-        public string AL3Code                { get => _data.SiteConfig.AL3Code;             set { _data.SiteConfig.AL3Code = value; OnPropertyChanged(); OnPropertyChanged(nameof(AL3CodeIsValid)); } }
+        public string AL2Code                { get => _data.CurrentPanel.PanelConfig.AL2Code;                  set { _data.CurrentPanel.PanelConfig.AL2Code = value; OnPropertyChanged(); OnPropertyChanged(nameof(AL2CodeIsValid)); } }
+        public string AL3Code                { get => _data.CurrentPanel.PanelConfig.AL3Code;                  set { _data.CurrentPanel.PanelConfig.AL3Code = value; OnPropertyChanged(); OnPropertyChanged(nameof(AL3CodeIsValid)); } }
 
         public bool ShowRecalibrationTime => !DeviceTypes.CurrentProtocolIsXfpCast;
-        public TimeSpan RecalibrationTime    { get => _data?.SiteConfig.RecalibrationTime ?? new();   set { if (_data is not null) { _data.SiteConfig.RecalibrationTime = value; OnPropertyChanged(); } } }
-        public bool RealTimeEventOutput      { get => _data?.SiteConfig.RealTimeEventOutput ?? new(); set { if (_data is not null) { _data.SiteConfig.RealTimeEventOutput = value; OnPropertyChanged(); } } }
-        public bool BlinkPollingLED          { get => _data?.SiteConfig.BlinkPollingLED ?? new();     set { if (_data is not null) { _data.SiteConfig.BlinkPollingLED = value; OnPropertyChanged(); } } }
+        public TimeSpan RecalibrationTime    { get => _data?.SiteConfig.RecalibrationTime ?? new();                 set { if (_data is not null) { _data.SiteConfig.RecalibrationTime = value; OnPropertyChanged(); } } }
+        public bool RealTimeEventOutput      { get => _data?.CurrentPanel.PanelConfig.RealTimeEventOutput ?? new(); set { if (_data is not null) { _data.CurrentPanel.PanelConfig.RealTimeEventOutput = value; OnPropertyChanged(); } } }
+        public bool BlinkPollingLED          { get => _data?.CurrentPanel.PanelConfig.BlinkPollingLED ?? new();     set { if (_data is not null) { _data.CurrentPanel.PanelConfig.BlinkPollingLED = value; OnPropertyChanged(); } } }
 
-        public bool SyncPanelTime            { get => _syncPanelTime;                           set { _syncPanelTime = value; OnPropertyChanged(); } }
-        public bool AutoAdjustDST            { get => _data?.SiteConfig.AutoAdjustDST ?? false; set { if (_data is not null) { _data.SiteConfig.AutoAdjustDST = value; OnPropertyChanged(); } } }
+        public bool SyncPanelTime            { get => _syncPanelTime;                                               set { _syncPanelTime = value; OnPropertyChanged(); } }
+        public bool AutoAdjustDST            { get => _data?.CurrentPanel.PanelConfig.AutoAdjustDST ?? false;       set { if (_data is not null) { _data.CurrentPanel.PanelConfig.AutoAdjustDST = value; OnPropertyChanged(); } } }
 
 
         private string _currentTime;
@@ -93,10 +94,10 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        public bool AL2CodeIsValid           => validateAccessCode(AL2Code) && AL2Code.Length == SiteConfigData.AccessCodeLength;
-        public bool AL3CodeIsValid           => validateAccessCode(AL3Code) && AL3Code.Length == SiteConfigData.AccessCodeLength;
-        public bool QuiescentStringIsValid   => QuiescentString?.Length   < SiteConfigData.MaxQuiescentStringLength;
-        public bool MaintenanceStringIsValid => MaintenanceString?.Length < SiteConfigData.MaxMaintenanceStringLength;
+        public bool AL2CodeIsValid           => validateAccessCode(AL2Code) && AL2Code.Length == PanelConfigData.AccessCodeLength;
+        public bool AL3CodeIsValid           => validateAccessCode(AL3Code) && AL3Code.Length == PanelConfigData.AccessCodeLength;
+        public bool QuiescentStringIsValid   => QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
+        public bool MaintenanceStringIsValid => MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
 
 
         #region input validation
@@ -120,7 +121,7 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private InputTextValidator validateAccessCode = new((text) => SiteConfigData.ValidateAccessCodeChars(text));
+        private InputTextValidator validateAccessCode = new((text) => PanelConfigData.ValidateAccessCodeChars(text));
 
         public void AccessCode_PreviewTextInput(TextBox textBox, TextCompositionEventArgs e, AccessLevels level)
         {
@@ -193,6 +194,7 @@ namespace Xfp.ViewModels.PanelTools
 
             OnPropertyChanged(nameof(ShowRecalibrationTime));
             OnPropertyChanged(nameof(SystemName));
+            OnPropertyChanged(nameof(FirmwareVersion));
             OnPropertyChanged(nameof(ClientName));
             OnPropertyChanged(nameof(ClientAddress));
             OnPropertyChanged(nameof(ClientPostcode));
@@ -247,16 +249,16 @@ namespace Xfp.ViewModels.PanelTools
         public void EnqueuePanelUploadCommands(bool allPages)
         {
             PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Site_Information, uploadRequestsCompleted);
-            PanelComms.AddCommandSetQuiescentString(new(QuiescentString, SiteConfigData.MaxQuiescentStringLength), Cultures.Resources.Normal_String);
-            PanelComms.AddCommandSetMaintenanceString(new(MaintenanceString, SiteConfigData.MaxMaintenanceStringLength), Cultures.Resources.Maintenance_String);
+            PanelComms.AddCommandSetQuiescentString(new(QuiescentString, PanelConfigData.MaxQuiescentStringLength), Cultures.Resources.Normal_String);
+            PanelComms.AddCommandSetMaintenanceString(new(MaintenanceString, PanelConfigData.MaxMaintenanceStringLength), Cultures.Resources.Maintenance_String);
             if (SendMaintToPanel && MaintenanceDate is not null)
                 PanelComms.AddCommandSetMaintenanceDate(new((DateTime)MaintenanceDate), Cultures.Resources.Maintenance_Date);
-            PanelComms.AddCommandSetAL2Code(new(AL2Code, SiteConfigData.AccessCodeLength), Cultures.Resources.AL2_Code);
+            PanelComms.AddCommandSetAL2Code(new(AL2Code, PanelConfigData.AccessCodeLength), Cultures.Resources.AL2_Code);
             PanelComms.AddCommandSetAL3Code(new() { AL3Code = AL3Code, 
                                                     BlinkPollingLED = BlinkPollingLED, 
-                                                    DetectorDebounce = _data.SiteConfig.DetectorDebounce, 
-                                                    IODebounce = _data.SiteConfig.IODebounce, 
-                                                    MCPDebounce = _data.SiteConfig.MCPDebounce }, 
+                                                    DetectorDebounce = _data.CurrentPanel.PanelConfig.DetectorDebounce, 
+                                                    IODebounce = _data.CurrentPanel.PanelConfig.IODebounce, 
+                                                    MCPDebounce = _data.CurrentPanel.PanelConfig.MCPDebounce }, 
                                             Cultures.Resources.AL3_Code);
             PanelComms.AddCommandSetDayNight(new() { DayModeStart = OccupiedBegins, 
                                                      NightModeStart = OccupiedEnds, 
@@ -315,14 +317,14 @@ namespace Xfp.ViewModels.PanelTools
 
         private bool al3CodeReceived(object data)
         {
-            if (data is not SiteConfigData.AL3CodeBundle al3Bundle)
+            if (data is not PanelConfigData.AL3CodeBundle al3Bundle)
                 return false;
             CTecUtil.CommsLog.AddReceivedData(Cultures.Resources.AL3_Code);
             AL3Code         = al3Bundle.AL3Code;
             BlinkPollingLED = al3Bundle.BlinkPollingLED;
-            _data.SiteConfig.MCPDebounce      = al3Bundle.MCPDebounce;
-            _data.SiteConfig.IODebounce       = al3Bundle.IODebounce;
-            _data.SiteConfig.DetectorDebounce = al3Bundle.DetectorDebounce;
+            _data.CurrentPanel.PanelConfig.MCPDebounce      = al3Bundle.MCPDebounce;
+            _data.CurrentPanel.PanelConfig.IODebounce       = al3Bundle.IODebounce;
+            _data.CurrentPanel.PanelConfig.DetectorDebounce = al3Bundle.DetectorDebounce;
             return true;
         }
 

@@ -221,8 +221,8 @@ namespace Xfp.ViewModels
             }
         }
 
-        internal bool FirmwareVersionHasChanged => _dataFromFile is not null && _data.FirmwareVersion == ((XfpData)_dataFromFile).FirmwareVersion;
-        internal bool FirmwareVersionisOlder => _dataFromFile is not null && FirmwareVersionHasChanged && _data.FirmwareVersion == ((XfpData)_dataFromFile).FirmwareVersion;
+        internal bool FirmwareVersionHasChanged => _dataFromFile is not null && _data.CurrentPanel.PanelConfig.FirmwareVersion == ((XfpData)_dataFromFile).CurrentPanel.PanelConfig.FirmwareVersion;
+        internal bool FirmwareVersionisOlder => _dataFromFile is not null && FirmwareVersionHasChanged && _data.CurrentPanel.PanelConfig.FirmwareVersion == ((XfpData)_dataFromFile).CurrentPanel.PanelConfig.FirmwareVersion;
 
         internal bool ToolsVersionHasChanged => _dataFromFile is not null && _data.ToolsVersion == ((XfpData)_dataFromFile).ToolsVersion;
 
@@ -1020,14 +1020,14 @@ namespace Xfp.ViewModels
 
                 var msgVersionCheck = new StringBuilder();
 
-                if (_data.FirmwareVersionEquals(newData.FirmwareVersion) == false)
+                if (_data.CurrentPanel.PanelConfig.FirmwareVersionEquals(newData.CurrentPanel.PanelConfig.FirmwareVersion) == false)
                 {
-                    msgVersionCheck.Append(newData.FirmwareVersion == CTecControls.Cultures.Resources.Not_Available
+                    msgVersionCheck.Append(newData.CurrentPanel.PanelConfig.FirmwareVersion == CTecControls.Cultures.Resources.Not_Available
                                             ? Cultures.Resources.File_Data_Is_Unknown_Firmware
-                                            : _data.FirmwareVersionCompare(newData.FirmwareVersion) switch
+                                            : _data.CurrentPanel.PanelConfig.FirmwareVersionCompare(newData.CurrentPanel.PanelConfig.FirmwareVersion) switch
                                             {
-                                                -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, newData.FirmwareVersion),
-                                                1  => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, newData.FirmwareVersion),
+                                                -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
+                                                1  => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
                                                 _  => Cultures.Resources.File_Data_Is_Unknown_Firmware,
                                             });
                 }
@@ -1195,7 +1195,7 @@ namespace Xfp.ViewModels
             else
                 result.Panels.Add(PanelNumber = panelNumber, panelData.Panels[panelNumber]);
 
-            result.FirmwareVersion = panelData.FirmwareVersion;
+            result.CurrentPanel.PanelConfig.FirmwareVersion = panelData.CurrentPanel.PanelConfig.FirmwareVersion;
             result.ToolsVersion = panelData.ToolsVersion;
             result.SiteConfig = new(panelData.SiteConfig);
             result.Comments = panelData.Comments;

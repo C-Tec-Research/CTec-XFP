@@ -54,8 +54,8 @@ namespace Xfp.DataTypes.Printing
                 doc.ColumnGap   = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
-                if (printParams.PrintSiteConfig)
-                    data.SiteConfig.Print(doc);
+                //if (printParams.PrintSiteConfig)
+                //    data.SiteConfig.Print(doc);
 
                 foreach (var p in data.Panels.Values)
                 {

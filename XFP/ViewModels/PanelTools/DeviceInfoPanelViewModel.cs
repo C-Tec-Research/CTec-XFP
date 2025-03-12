@@ -96,9 +96,9 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region alarm verification count
-        public int ManualCallpoints { get => _data?.SiteConfig.MCPDebounce ?? MinManualCallpoints; set { _data.SiteConfig.MCPDebounce = value; OnPropertyChanged(); } }
-        public int InterfaceUnits   { get => _data?.SiteConfig.IODebounce ?? MinInterfaceUnits;    set { _data.SiteConfig.IODebounce = value; OnPropertyChanged(); } }
-        public int Detectors        { get => _data?.SiteConfig.DetectorDebounce ?? MinDetectors;   set { _data.SiteConfig.DetectorDebounce = value; OnPropertyChanged(); } }
+        public int ManualCallpoints { get => _data?.CurrentPanel.PanelConfig.MCPDebounce ?? MinManualCallpoints; set { _data.CurrentPanel.PanelConfig.MCPDebounce = value; OnPropertyChanged(); } }
+        public int InterfaceUnits   { get => _data?.CurrentPanel.PanelConfig.IODebounce ?? MinInterfaceUnits;    set { _data.CurrentPanel.PanelConfig.IODebounce = value; OnPropertyChanged(); } }
+        public int Detectors        { get => _data?.CurrentPanel.PanelConfig.DetectorDebounce ?? MinDetectors;   set { _data.CurrentPanel.PanelConfig.DetectorDebounce = value; OnPropertyChanged(); } }
 
         public int MinManualCallpoints => LoopConfigData.MinManualCallpoints;
         public int MaxManualCallpoints => LoopConfigData.MaxManualCallpoints;
