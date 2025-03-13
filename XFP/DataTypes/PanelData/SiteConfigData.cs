@@ -22,11 +22,11 @@ namespace Xfp.DataTypes.PanelData
                 return;
             SystemName = original.SystemName;
             Client = new NameAndAddressData(original.Client);
-            ClientTel = original.ClientTel;
+            Client.Tel = original.Client.Tel;
             InstallDate = original.InstallDate;
             CommissionDate = original.CommissionDate;
             Installer = new NameAndAddressData(original.Installer);
-            InstallerTel = original.InstallerTel;
+            Installer.Tel = original.Client.Tel;
             EngineerName = original.EngineerName;
         }
 
@@ -36,13 +36,11 @@ namespace Xfp.DataTypes.PanelData
 
         public string SystemName { get; set; }
         public NameAndAddressData Client { get; set; }
-        public string ClientTel { get; set; }
         public DateTime? InstallDate { get; set; }
         public DateTime? CommissionDate { get; set; }
         public NameAndAddressData Installer { get; set; }
         public string EngineerName { get; set; }
         public string EngineerNo { get; set; }
-        public string InstallerTel { get; set; }
         public int FaultLockout { get; set; }
 
         public string FrontPanel { get; set; }
@@ -66,11 +64,11 @@ namespace Xfp.DataTypes.PanelData
                 return false;
             return od.SystemName == SystemName
                 && od.Client.Equals(Client)
-                && od.ClientTel == ClientTel
+                && od.Client.Tel == Client.Tel
                 && od.InstallDate == InstallDate
                 && od.CommissionDate == CommissionDate
                 && od.Installer.Equals(Installer)
-                && od.InstallerTel == InstallerTel
+                && od.Client.Tel == Installer.Tel
                 && od.EngineerName == EngineerName;
         }
 
@@ -88,7 +86,7 @@ namespace Xfp.DataTypes.PanelData
 
             var clientNameErr  = string.IsNullOrWhiteSpace(Client.Name);
             var clientAddrErr  = Client.AddressIsEmpty();
-            var clientTelErr   = string.IsNullOrWhiteSpace(ClientTel);
+            var clientTelErr   = string.IsNullOrWhiteSpace(Client.Tel);
             var installDateErr = InstallDate is null;
             var commissDateErr = CommissionDate is null;
 
@@ -105,7 +103,7 @@ namespace Xfp.DataTypes.PanelData
 
             var installerNameErr = string.IsNullOrWhiteSpace(Installer.Name);
             var installerAddrErr = Installer.AddressIsEmpty();
-            var installerTelErr  = string.IsNullOrWhiteSpace(InstallerTel);
+            var installerTelErr  = string.IsNullOrWhiteSpace(Installer.Tel);
             var engineerNameErr  = string.IsNullOrWhiteSpace(EngineerName);
 
             if (installerNameErr || installerAddrErr || installerTelErr|| engineerNameErr)

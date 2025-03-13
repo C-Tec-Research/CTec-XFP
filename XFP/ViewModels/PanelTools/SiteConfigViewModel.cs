@@ -50,13 +50,13 @@ namespace Xfp.ViewModels.PanelTools
         public string ClientName             { get => _data?.SiteConfig.Client.Name;        set { if (_data != null) { _data.SiteConfig.Client.Name = value; OnPropertyChanged(); } } }
         public List<string> ClientAddress    { get => _data?.SiteConfig.Client.Address;     set { if (_data != null) { _data.SiteConfig.Client.Address = value; OnPropertyChanged(); } } }
         public string ClientPostcode         { get => _data?.SiteConfig.Client.Postcode;    set { if (_data != null) { _data.SiteConfig.Client.Postcode = value; OnPropertyChanged(); } } }
-        public string ClientTelephone        { get => _data?.SiteConfig.ClientTel;          set { if (_data != null) { _data.SiteConfig.ClientTel = value; OnPropertyChanged(); } } }
+        public string ClientTelephone        { get => _data?.SiteConfig.Client.Tel;         set { if (_data != null) { _data.SiteConfig.Client.Tel = value; OnPropertyChanged(); } } }
         public DateTime? InstallDate         { get => _data?.SiteConfig.InstallDate;        set { if (_data != null) { _data.SiteConfig.InstallDate = value; OnPropertyChanged(); } } }
         public DateTime? CommissionDate      { get => _data?.SiteConfig.CommissionDate;     set { if (_data != null) { _data.SiteConfig.CommissionDate = value; OnPropertyChanged(); } } }
         public string InstallerName          { get => _data?.SiteConfig.Installer.Name;     set { if (_data != null) { _data.SiteConfig.Installer.Name = value; OnPropertyChanged(); } } }
         public List<string> InstallerAddress { get => _data?.SiteConfig.Installer.Address;  set { if (_data != null) { _data.SiteConfig.Installer.Address = value; OnPropertyChanged(); } } }
         public string InstallerPostcode      { get => _data?.SiteConfig.Installer.Postcode; set { if (_data != null) { _data.SiteConfig.Installer.Postcode = value; OnPropertyChanged(); } } }
-        public string EngineerTelephone      { get => _data?.SiteConfig.InstallerTel;       set { if (_data != null) { _data.SiteConfig.InstallerTel = value; OnPropertyChanged(); } } }
+        public string EngineerTelephone      { get => _data?.SiteConfig.Installer.Tel;      set { if (_data != null) { _data.SiteConfig.Installer.Tel = value; OnPropertyChanged(); } } }
         public string EngineerName           { get => _data?.SiteConfig.EngineerName;       set { if (_data != null) { _data.SiteConfig.EngineerName = value; OnPropertyChanged(); } } }
         public string EngineerNumber         { get => _data?.SiteConfig.EngineerNo;         set { if (_data != null) { _data.SiteConfig.EngineerNo = value; OnPropertyChanged(); } } }
 

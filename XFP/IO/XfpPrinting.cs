@@ -46,21 +46,22 @@ namespace Xfp.DataTypes.Printing
                 }
 
                 // Create a FlowDocument
-                FlowDocument doc = new FlowDocument(PrintUtil.PageHeader(Cultures.Resources.XFP_Config_Print_Description));
+                FlowDocument doc = new FlowDocument(new BlockUIContainer(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description)));
                 doc.Name        = _printFilePrefix;
                 doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
                 doc.PageWidth   = printParams.PrintHandler.PrintableAreaWidth;
-                doc.PagePadding = new Thickness(50);
+                doc.PagePadding = new Thickness(15);
                 doc.ColumnGap   = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
-                //if (printParams.PrintSiteConfig)
-                //    data.SiteConfig.Print(doc);
+                if (printParams.PrintSiteConfig)
+                    data.SiteConfig.Print(doc);
 
                 foreach (var p in data.Panels.Values)
                 {
-                    doc.Blocks.Add(PrintUtil.DocumentHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber)));
+                    doc.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber))));
 
+                    if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
                     if (printParams.PrintLoopInfo)          
                     {
                         p.Loop1Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices);
@@ -107,50 +108,50 @@ namespace Xfp.DataTypes.Printing
         
         private static void printGroups(FlowDocument doc)
         {
-            var groupsPage = new Section();
-            groupsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration));
+            //var groupsPage = new Section();
+            //groupsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration));
 
-            doc.Blocks.Add(groupsPage);
+            //doc.Blocks.Add(groupsPage);
         }
         
         private static void printSets(FlowDocument doc)
         {
-            var setsPage = new Section();
-            setsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
+            //var setsPage = new Section();
+            //setsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
 
-            doc.Blocks.Add(setsPage);
+            //doc.Blocks.Add(setsPage);
         }
         
         private static void printCAndE(FlowDocument doc)
         {
-            var cePage = new Section();
-            cePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
+            //var cePage = new Section();
+            //cePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
 
-            doc.Blocks.Add(cePage);
+            //doc.Blocks.Add(cePage);
         }
         
         private static void printNetworkConfig(FlowDocument doc)
         {
-            var networkPage = new Section();
-            networkPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Network_Configuration));
+            //var networkPage = new Section();
+            //networkPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Network_Configuration));
 
-            doc.Blocks.Add(networkPage);
+            //doc.Blocks.Add(networkPage);
         }
         
         private static void printEventLog(FlowDocument doc)
         {
-            var eventLogPage = new Section();
-            eventLogPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Event_Log));
+            //var eventLogPage = new Section();
+            //eventLogPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Event_Log));
 
-            doc.Blocks.Add(eventLogPage);
+            //doc.Blocks.Add(eventLogPage);
         }
         
         private static void printComments(FlowDocument doc)
         {
-            var commentsPage = new Section();
-            commentsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Comments));
+            //var commentsPage = new Section();
+            //commentsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Comments));
 
-            doc.Blocks.Add(commentsPage);
+            //doc.Blocks.Add(commentsPage);
         }
 
 

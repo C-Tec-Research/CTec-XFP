@@ -139,8 +139,8 @@ namespace Xfp.ViewModels
         public bool PrintOrderZone      { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByZone;   set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByZone; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderGroup)); } }
 
 
-        public bool CanPrint =>  SelectedPrinter is not null && (PrintAllPanels || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||
-                                                                 PrintAllPages || PrintSiteConfig    || PrintLoopInfo || PrintZones    || PrintGroups ||
+        public bool CanPrint =>  SelectedPrinter is not null //&& (PrintAllPanels/* || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||*/)
+                                                             && (PrintAllPages || PrintSiteConfig    || PrintLoopInfo || PrintZones    || PrintGroups ||
                                                                  PrintSets     || PrintNetworkConfig || PrintCAndE    || PrintComments || PrintEventLog);
 
         //private void setAllPagesToPrint(bool value) => PrintSiteConfig = PrintLoopInfo      = PrintZones = PrintGroups   = PrintSets 

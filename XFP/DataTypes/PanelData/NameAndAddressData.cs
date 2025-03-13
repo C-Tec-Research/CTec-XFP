@@ -19,14 +19,19 @@ namespace Xfp.DataTypes.PanelData
         {
             Name = original.Name;
             foreach (var a in original.Address)
-                Address.Add(a);
+                if (Address.Count < NumAddressLines)
+                    Address.Add(a);
             Postcode = original.Postcode;
+            Tel      = original.Tel;
         }
 
 
-        public string Name { get; set; }
+        public const int NumAddressLines = 4;
+
+        public string       Name { get; set; }
         public List<string> Address { get; set; }
-        public string Postcode { get; set; }
+        public string       Postcode { get; set; }
+        public string       Tel { get; set; }
 
 
         /// <summary>
@@ -39,6 +44,7 @@ namespace Xfp.DataTypes.PanelData
         {
             if (otherData.Name          != Name
              || otherData.Postcode      != Postcode
+             || otherData.Tel           != Tel
              || otherData.Address.Count != Address.Count)
                 return false;
 

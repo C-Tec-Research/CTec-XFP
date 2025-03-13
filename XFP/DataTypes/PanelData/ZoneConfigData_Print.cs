@@ -18,7 +18,7 @@ namespace Xfp.DataTypes.PanelData
             _zonePanelData = panelData.ZonePanelConfig;
 
             var zonesPage = new Section();
-            zonesPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
+            zonesPage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration)));
 
             zonesPage.Blocks.Add(new BlockUIContainer(headerInfo()));
             zonesPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
@@ -69,19 +69,19 @@ namespace Xfp.DataTypes.PanelData
                 
                 grid.Children.Add(PrintUtil.GridCell(z.Number, row, col++, TextAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(z.Name, row, col++));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.SounderDelay, row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay1Delay,  row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay2Delay,  row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.RemoteDelay,  row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellBool(z.Detectors, row, col++, false));
-                grid.Children.Add(PrintUtil.GridCellBool(z.MCPs,      row, col++, false));
-                grid.Children.Add(PrintUtil.GridCellBool(z.EndDelays, row, col++, false));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.SounderDelay, row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay1Delay,  row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay2Delay,  row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.RemoteDelay,  row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellBool(z.Detectors, row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellBool(z.MCPs,      row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellBool(z.EndDelays, row, col++, false, false));
                 grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption), row, col++, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.DetectorReset, row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.AlarmReset,    row, col++, "ms", false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.DetectorReset, row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.AlarmReset,    row, col++, "ms", false, false, TextAlignment.Center));
                 row++;
             }
 
@@ -93,10 +93,10 @@ namespace Xfp.DataTypes.PanelData
                 
                 grid.Children.Add(PrintUtil.GridCell(p.Number, row, col++, TextAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(p.Name, row, col++, TextAlignment.Left));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.SounderDelay, row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.Relay1Delay,  row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.Relay2Delay,  row, col++, "ms", false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.RemoteDelay,  row, col++, "ms", false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.SounderDelay, row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.Relay1Delay,  row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.Relay2Delay,  row, col++, "ms", false, false, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridCellTimeSpan(p.RemoteDelay,  row, col++, "ms", false, false, TextAlignment.Center));
                 row++;
             }
 

@@ -24,7 +24,7 @@ namespace Xfp.DataTypes.PanelData
             _data = panelData;
 
             var groupsPage = new Section();
-            groupsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration));
+            groupsPage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration)));
 
             groupsPage.Blocks.Add(new BlockUIContainer(headerInfo()));
             groupsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
@@ -76,7 +76,7 @@ namespace Xfp.DataTypes.PanelData
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
             result.Children.Add(PrintUtil.GridCell(ReSoundFunction ? CTecControls.Cultures.Resources.Yes : CTecControls.Cultures.Resources.No, 3, 1, 1, 3));
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay), 4, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, TextAlignment.Left));
+            result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, TextAlignment.Left));
 
             return result;
         }

@@ -93,8 +93,12 @@ namespace Xfp.UI.Views
 
         private void setSize()
         {
-            this.Width  = grdOuter.Width  = grdInner.ActualWidth;
-            this.Height = grdOuter.Height = grdInner.ActualHeight;
+            try
+            {
+                this.Width = grdOuter.Width = grdInner.ActualWidth;
+                this.Height = grdOuter.Height = grdInner.ActualHeight;
+            }
+            catch (Exception ex) { }
         }
 
 

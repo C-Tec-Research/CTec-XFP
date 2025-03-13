@@ -2,117 +2,79 @@
 using System.Windows;
 using System.Windows.Documents;
 using CTecUtil.Printing;
+using System.Collections.Generic;
 
 namespace Xfp.DataTypes.PanelData
 {
     public partial class SiteConfigData
     {
-        public void Print(FlowDocument doc, XfpPanelData data)
+        public void Print(FlowDocument doc)
         {
-            _data = data;
-
             var sitePage = new Section();
-            sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));
+            sitePage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration)));
 
-            sitePage.Blocks.Add(new Paragraph(new Run(Cultures.Resources.System_Name + "\t: " + SystemName)));
+            sitePage.Blocks.Add(new BlockUIContainer(systemConfig()));
 
-            sitePage.Blocks.Add(new BlockUIContainer(systemHeader()));
-            sitePage.Blocks.Add(new BlockUIContainer(namesAndAddresses()));
-
-            //sitePage.Blocks.Add(pair(Cultures.Resources.Panel_Location, Loc));
-
-            sitePage.Blocks.Add(new Paragraph(new Run("Blah blah blah")));
-            
             doc.Blocks.Add(sitePage);
         }
 
 
-        XfpPanelData _data;
+        private int _totalRows    = 12;
+        private int _totalColumns = 9;
 
 
-        public Grid systemHeader()
+        public Grid systemConfig()
         {
             var result = new Grid();
 
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            for (int i = 0; i < _totalRows; i++)
+                result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            for (int i = 0; i < _totalColumns; i++)
+                result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.System_Name, 1)), 0, 0));
-            result.Children.Add(PrintUtil.GridCell(SystemName, 0, 1));
-            result.Children.Add(PrintUtil.GridCell(" ", 0, 2));
-            result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Firmware_Version, 1)), 0, 3));
-        //    result.Children.Add(PrintUtil.GridCell(_data.Fir, 0, 1));
+
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.System_Name), 0, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(" ",  1, 0));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Name),       2, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Address),    3, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Name),    2, 3, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Address), 3, 3, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 3, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 3, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(" ",  9, 0));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installed_On),     10, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Commissioned_On),  11, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Name),    10, 3, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Number),  11, 3, TextAlignment.Right));
+            
+            result.Children.Add(PrintUtil.GridCell("\t", 1, 2));
+
+            result.Children.Add(PrintUtil.GridCell(SystemName, 0, 1, 1, 3, true));
+            addAddress(result, Client, 2, 1);
+            addAddress(result, Installer, 2, 4);
+            if (InstallDate is not null)    result.Children.Add(PrintUtil.GridCell(InstallDate.Value.ToString("d"),    10, 1,true));
+            if (CommissionDate is not null) result.Children.Add(PrintUtil.GridCell(CommissionDate.Value.ToString("d"), 11, 1, true));
+            result.Children.Add(PrintUtil.GridCell(EngineerName, 10, 4, true));
+            result.Children.Add(PrintUtil.GridCell(EngineerNo,   11, 4, true));
 
             return result;
         }
 
 
-        public Grid namesAndAddresses()
+        private void addAddress(Grid grid, NameAndAddressData nad, int startRow, int col)
         {
-            var result = new Grid();
-
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-
-            //result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
-            //result.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 0, 2));
-            //result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
-            //result.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 1, 2));
-
-            //result.Children.Add(PrintUtil.GridCell(" ", 0, 3));
-
-            //result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone.ToString()), 0, 4));
-            //result.Children.Add(PrintUtil.GridCell(ContinuousTone, 0, 5));
-            //result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 4));
-            //result.Children.Add(PrintUtil.GridCell(IntermittentTone, 1, 5));
-
-            //result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 2, 0, 1, 2));
-            //result.Children.Add(PrintUtil.GridCell(ReSoundFunction ? CTecControls.Cultures.Resources.Yes : CTecControls.Cultures.Resources.No, 2, 2));
-            //result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay), 3, 0, 1, 2));
-            //result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 3, 2, "ms", true, TextAlignment.Left));
-
-            return result;
-
-            //var result = new Paragraph();
-
-            //result.Inlines.Add(nameValuePair(clientOrInstaller ? Cultures.Resources.Client_Name : Cultures.Resources.Installer_Address, nad.Name));
-            //result.Inlines.Add(new LineBreak());
-
-            //if (nad.Address.Count > 0)
-            //{
-            //    for (int i = 0; i < nad.Address.Count; i++)
-            //    {
-            //        result.Inlines.Add(nameValuePair(i == 0 ? clientOrInstaller ? Cultures.Resources.Client_Address : Cultures.Resources.Installer_Address : "", nad.Address[i]));
-            //    result.Inlines.Add(new LineBreak());
-            //    }
-            //}
-            //else
-            //{
-            //    result.Inlines.Add(nameValuePair(clientOrInstaller ? Cultures.Resources.Client_Address : Cultures.Resources.Installer_Address, ""));
-            //    result.Inlines.Add(new LineBreak());
-            //}
-
-            //result.Inlines.Add(nameValuePair(Cultures.Resources.Postcode, nad.Postcode));
-            //result.Inlines.Add(new LineBreak());
-
-            //return result;
+            grid.Children.Add(PrintUtil.GridCell(nad.Name, startRow++, col, true));
+            for (int i = 0; i < NameAndAddressData.NumAddressLines; i++)
+                grid.Children.Add(PrintUtil.GridCell(addressLine(nad.Address, i), startRow + i, col, true));
+            startRow += NameAndAddressData.NumAddressLines;
+            grid.Children.Add(PrintUtil.GridCell(nad.Postcode, startRow++, col, true));
+            grid.Children.Add(PrintUtil.GridCell(nad.Tel, startRow, col, true));
         }
 
-        public Run nameValuePair(string left, string right)
-        {
-            var result = new Run(left + "\t: " + right);
-            return result;
-        }
+
+        public string addressLine(List<string> address, int index) => index < address.Count ? address[index] : "";
     }
 }
