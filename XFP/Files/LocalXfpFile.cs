@@ -112,6 +112,7 @@ namespace Xfp.Files
 
         private static XfpData normaliseData(XfpData data)
         {
+CHECK FOR EMPTY PANELCONFIG: IF SO, COPY FROM OLD GLOBAL CONFIG SETTINGS
             if (data is not null)
                 foreach (var p in data.Panels.Values)
                     normaliseData(p);

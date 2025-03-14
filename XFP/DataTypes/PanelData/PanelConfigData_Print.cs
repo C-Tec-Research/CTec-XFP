@@ -15,9 +15,9 @@ namespace Xfp.DataTypes.PanelData
             _data = data;
 
             var sitePage = new Section();
-            sitePage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x_Configuration, _data.PanelNumber))));
+            sitePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x_Configuration, _data.PanelNumber)));
 
-            sitePage.Blocks.Add(new BlockUIContainer(systemHeader()));
+            sitePage.Blocks.Add(systemHeader());
 
             doc.Blocks.Add(sitePage);
         }
@@ -26,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
         XfpPanelData _data;
 
 
-        public Grid systemHeader()
+        public BlockUIContainer systemHeader()
         {
             var result = new Grid();
 
@@ -48,18 +48,18 @@ namespace Xfp.DataTypes.PanelData
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Day_Begins_At), 10, 0, TextAlignment.Right));
             result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Night_Begins_At), 11, 0, TextAlignment.Right));
 
-            result.Children.Add(PrintUtil.GridCell(FirmwareVersion, 0, 1, true));
-            result.Children.Add(PrintUtil.GridCell(QuiescentString, 1, 1, true));
-            result.Children.Add(PrintUtil.GridCell(MaintenanceString, 2, 1, true));
+            result.Children.Add(PrintUtil.GridCell(FirmwareVersion, 0, 1, 1, 8, true));
+            result.Children.Add(PrintUtil.GridCell(QuiescentString, 1, 1, 1, 8, true));
+            result.Children.Add(PrintUtil.GridCell(MaintenanceString, 2, 1, 1, 8, true));
             if (MaintenanceDate is not null)
-                result.Children.Add(PrintUtil.GridCell(MaintenanceDate.Value.ToString("d"), 3, 1, true));
-            result.Children.Add(PrintUtil.GridCell(AL2Code, 4, 1, true));
-            result.Children.Add(PrintUtil.GridCell(AL3Code, 5, 1, true));
-            result.Children.Add(PrintUtil.GridCellBool(RealTimeEventOutput, 6, 1, true, true, TextAlignment.Left));
-            result.Children.Add(PrintUtil.GridCellBool(BlinkPollingLED, 7, 1, true, true, TextAlignment.Left));
-            result.Children.Add(PrintUtil.GridCellBool(AutoAdjustDST, 8, 1, true, true, TextAlignment.Left));
+                result.Children.Add(PrintUtil.GridCell(MaintenanceDate.Value.ToString("d"), 3, 1, 1, 8, true));
+            result.Children.Add(PrintUtil.GridCell(AL2Code, 4, 1, 1, 8, true));
+            result.Children.Add(PrintUtil.GridCell(AL3Code, 5, 1, 1, 8, true));
+            result.Children.Add(PrintUtil.GridCellYesNo(RealTimeEventOutput, 6, 1, 1, 8, true, true));
+            result.Children.Add(PrintUtil.GridCellYesNo(BlinkPollingLED, 7, 1, 1, 8, true, true));
+            result.Children.Add(PrintUtil.GridCellYesNo(AutoAdjustDST, 8, 1, 1, 8, true, true));
 
-            result.Children.Add(PrintUtil.GridCell("\t", 0, 2));
+            result.Children.Add(PrintUtil.GridCell(" ", 0, 2));
 
             result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Mon_Abbr, 9, 3, TextAlignment.Center));
             result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Tue_Abbr, 9, 4, TextAlignment.Center));
@@ -72,16 +72,16 @@ namespace Xfp.DataTypes.PanelData
             result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedBegins, 10, 1, "hm", false, true, TextAlignment.Left));
             result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedEnds,   11, 1, "hm", false, true, TextAlignment.Left));
 
-            if (DayStart is not null)   dayNightStarts(result, DayStart,   10);
-            if (NightStart is not null) dayNightStarts(result, NightStart, 11);
+            dayNightStarts(result, DayStart,   10, 3);
+            dayNightStarts(result, NightStart, 11, 3);
 
-            return result;
+            return new(result);
         }
 
-        private void dayNightStarts(Grid grid, List<bool> values, int row)
+        private void dayNightStarts(Grid grid, List<bool> values, int row, int columnStart)
         {
             for (int i = 0; i < 7; i++)
-                grid.Children.Add(PrintUtil.GridCellBool(values[0], 9, 5 + i, true, true));
+                grid.Children.Add(PrintUtil.GridCellBool(values is null ? false : values[i], row, columnStart + i, true, true));
         }
     }
 }

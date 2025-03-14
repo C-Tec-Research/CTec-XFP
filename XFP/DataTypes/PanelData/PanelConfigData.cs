@@ -40,12 +40,15 @@ namespace Xfp.DataTypes.PanelData
             AutoAdjustDST = original.AutoAdjustDST;
             RealTimeEventOutput = original.RealTimeEventOutput;
 
+            DayStart = new();
             if (original.DayStart is not null)
                 foreach (var d in original.DayStart)
-                    DayStart.Append(d);
+                    DayStart.Add(d);
+
+            NightStart = new();
             if (original.NightStart is not null)
                 foreach (var n in original.NightStart)
-                    NightStart.Append(n);
+                    NightStart.Add(n);
         }
 
 

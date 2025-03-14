@@ -2083,4 +2083,7 @@ All of its data will be lost.</value>
     <value>4444</value>
     <comment>Not translated</comment>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
 </root>

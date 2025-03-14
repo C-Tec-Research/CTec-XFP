@@ -24,65 +24,66 @@ namespace Xfp.DataTypes.PanelData
             _data = panelData;
 
             var groupsPage = new Section();
-            groupsPage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration)));
+            groupsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration));
 
-            groupsPage.Blocks.Add(new BlockUIContainer(headerInfo()));
+            groupsPage.Blocks.Add(headerInfo());
             groupsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            groupsPage.Blocks.Add(new BlockUIContainer(groupList()));
+            groupsPage.Blocks.Add(groupList());
 
             doc.Blocks.Add(groupsPage);
         }
         
         
         private XfpPanelData _data;
-        private int totalColumns = NumSounderGroups + 2;
+        private int _totalColumns = NumSounderGroups + 2;
         private static Style _alertIconStyle = (Style)Application.Current.FindResource("AlarmIcon");
         private static Brush _alarmAlertFill = (Brush)Application.Current.FindResource("AlarmAlertBrush");
         private static Brush _alarmEvacFill  = (Brush)Application.Current.FindResource("AlarmEvacBrush");
         private static Brush _alarmOffFill   = (Brush)Application.Current.FindResource("AlarmOffBrush");
 
 
-        private Grid headerInfo()
+        private BlockUIContainer headerInfo()
         {
-            var result = new Grid();
+            var grid = new Grid();
 
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 0, 2));
-            result.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCell(PanelSounder2Group, 1, 2));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
+            grid.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 0, 2, 1, 2));
+            grid.Children.Add(PrintUtil.GridCell(PanelSounder2Group, 1, 2, 1, 2));
 
-            result.Children.Add(PrintUtil.GridCell(" ", 0, 3));
+            grid.Children.Add(PrintUtil.GridCell(" ", 0, 3));
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone.ToString()), 0, 4));
-            result.Children.Add(PrintUtil.GridCell(ContinuousTone, 0, 5));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 4));
-            result.Children.Add(PrintUtil.GridCell(IntermittentTone, 1, 5));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone),  0, 5));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 5));
+            grid.Children.Add(PrintUtil.GridCell(ContinuousTone, 0, 6));
+            grid.Children.Add(PrintUtil.GridCell(IntermittentTone, 1, 6));
 
-            result.Children.Add(PrintUtil.GridCell(" ", 2, 0));
+            grid.Children.Add(PrintUtil.GridCell(" ", 2, 0));
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
-            result.Children.Add(PrintUtil.GridCell(ReSoundFunction ? CTecControls.Cultures.Resources.Yes : CTecControls.Cultures.Resources.No, 3, 1, 1, 3));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay), 4, 0, 1, 2));
-            result.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, TextAlignment.Left));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2));
+            grid.Children.Add(PrintUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, false));
+            grid.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, TextAlignment.Left));
 
-            return result;
+            return new(grid);
         }
 
 
-        public Grid groupList()
+        public BlockUIContainer groupList()
         {
             var grid = columnHeaders();
 
@@ -97,7 +98,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 col = 0;
 
-                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
             
                 grid.Children.Add(PrintUtil.GridCell(z.Number, row, col++, TextAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(z.Name, row, col++));
@@ -112,7 +113,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 col = 0;
                 
-                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
                 grid.Children.Add(PrintUtil.GridCell(p.Number, row, col++, TextAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(p.Name, row, col++));
@@ -123,34 +124,34 @@ namespace Xfp.DataTypes.PanelData
                 row++;
             }
 
-            return grid;
+            return new(grid);
         }
 
 
         private Grid columnHeaders()
         {
-            Grid g = new Grid();
+            Grid grid = new Grid();
 
             //two rows for column headers
-            g.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            g.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            for (int i = 0; i < totalColumns; i++)
-                g.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            for (int i = 0; i < _totalColumns; i++)
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            g.Children.Add(PrintUtil.GridBackground(0, 0, 1, totalColumns, PrintUtil.GridHeaderBackground));
-            g.Children.Add(PrintUtil.GridBackground(1, 0, 1, totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(PrintUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
 
-            g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, totalColumns, TextAlignment.Center));
+            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, _totalColumns, TextAlignment.Center));
             
             int col = 0;
-            g.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone, 1, col++, 1, 2));
+            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone, 1, col++, 1, 2));
             col++;
 
             for (int i = 0; i < NumSounderGroups; i++)
-                g.Children.Add(PrintUtil.GridHeaderCell(i + 1, 1, col++, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridHeaderCell(i + 1, 1, col++, TextAlignment.Center));
 
-            return g;
+            return grid;
         }
 
         

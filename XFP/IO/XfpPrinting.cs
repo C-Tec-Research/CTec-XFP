@@ -46,7 +46,7 @@ namespace Xfp.DataTypes.Printing
                 }
 
                 // Create a FlowDocument
-                FlowDocument doc = new FlowDocument(new BlockUIContainer(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description)));
+                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description));
                 doc.Name        = _printFilePrefix;
                 doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
                 doc.PageWidth   = printParams.PrintHandler.PrintableAreaWidth;
@@ -59,7 +59,7 @@ namespace Xfp.DataTypes.Printing
 
                 foreach (var p in data.Panels.Values)
                 {
-                    doc.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber))));
+                    doc.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber)));
 
                     if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
                     if (printParams.PrintLoopInfo)          

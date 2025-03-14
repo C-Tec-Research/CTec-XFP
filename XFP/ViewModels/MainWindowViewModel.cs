@@ -214,9 +214,9 @@ namespace Xfp.ViewModels
         {
             get
             {
-                if (_dataFromFile is not null) return !_data.Equals((ConfigData)_dataFromFile);
+                if (_dataFromFile is not null)   return !_data.Equals((ConfigData)_dataFromFile);
                 if (_dataFromDevice is not null) return !_data.Equals((ConfigData)_dataFromDevice);
-                if (_savedData is not null) return !_data.Equals((ConfigData)_savedData);
+                if (_savedData is not null)      return !_data.Equals((ConfigData)_savedData);
                 return false;
             }
         }

@@ -18,11 +18,11 @@ namespace Xfp.DataTypes.PanelData
             _zonePanelData = panelData.ZonePanelConfig;
 
             var zonesPage = new Section();
-            zonesPage.Blocks.Add(new BlockUIContainer(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration)));
+            zonesPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
 
-            zonesPage.Blocks.Add(new BlockUIContainer(headerInfo()));
+            zonesPage.Blocks.Add(headerInfo());
             zonesPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            zonesPage.Blocks.Add(new BlockUIContainer(zoneList()));
+            zonesPage.Blocks.Add(zoneList());
 
             doc.Blocks.Add(zonesPage);
         }
@@ -31,26 +31,26 @@ namespace Xfp.DataTypes.PanelData
         ZonePanelConfigData _zonePanelData;
 
 
-        private Grid headerInfo()
+        private BlockUIContainer headerInfo()
         {
-            var result = new Grid();
+            var grid = new Grid();
 
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            result.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Input_Delay), 0, 0));
-            result.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Investigation_Period), 1, 0));
-            result.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Input_Delay), 0, 0));
+            grid.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Investigation_Period), 1, 0));
+            grid.Children.Add(PrintUtil.GridCell(TextProcessing.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
 
-            return result;
+            return new(grid);
         }
 
 
-        private Grid zoneList()
+        private BlockUIContainer zoneList()
         {
             var grid = columnHeaders();
 
@@ -73,9 +73,9 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay1Delay,  row, col++, "ms", false, false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay2Delay,  row, col++, "ms", false, false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.RemoteDelay,  row, col++, "ms", false, false, TextAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellBool(z.Detectors, row, col++, false, false));
-                grid.Children.Add(PrintUtil.GridCellBool(z.MCPs,      row, col++, false, false));
-                grid.Children.Add(PrintUtil.GridCellBool(z.EndDelays, row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellYesNo(z.Detectors, row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellYesNo(z.MCPs,      row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellYesNo(z.EndDelays, row, col++, false, false));
                 grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, TextAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, TextAlignment.Center));
@@ -100,7 +100,7 @@ namespace Xfp.DataTypes.PanelData
                 row++;
             }
 
-            return grid;
+            return new(grid);
         }
 
 
