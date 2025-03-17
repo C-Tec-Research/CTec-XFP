@@ -1004,7 +1004,7 @@ namespace Xfp.ViewModels
                 }
 
                 if (!DataHasChanged || askOverwriteChanges(string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
-                {
+                {                    
                     if (LocalXfpFile.CheckForLegacyXfpFile(TextFile.FilePath))
                     {
                         newData = openLegacyXfpFile(path);
@@ -1067,6 +1067,19 @@ namespace Xfp.ViewModels
         private XfpData openXfp2File(string path)
         {
             XfpData result;
+            
+            CTecDevices.ObjectTypes protocol;
+            int panelNumber;
+            string firmwareVersion;
+            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, out protocol, out panelNumber, out firmwareVersion);
+            
+            if (protocol != CurrentProtocol)
+            {
+                if (!askProtocolChange(Path.GetFileName(path), DeviceTypes.ProtocolName(protocol)))
+                    return null;
+
+                changeProtocol(protocol, false);
+            }
 
             //assume it's a json multi-panel dataset
             result = LocalXfpFile.ReadJsonXfpFile(TextFile.FilePath);

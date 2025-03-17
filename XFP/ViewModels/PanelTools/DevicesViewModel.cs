@@ -40,6 +40,8 @@ namespace Xfp.ViewModels.PanelTools
             _infoPanelViewModel.GetDeviceName = getDeviceName;
             _infoPanelViewModel.SetDeviceName = setDeviceName;
 
+            DeviceConfigData.GetDeviceName = getDeviceName;
+
             _loopNum = loopNum;
             DeviceNameKeyToValueConverter.GetDeviceName = getDeviceName;
         }

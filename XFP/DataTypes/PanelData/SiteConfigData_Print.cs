@@ -34,21 +34,21 @@ namespace Xfp.DataTypes.PanelData
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
 
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.System_Name), 0, 0, TextAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right));
             grid.Children.Add(PrintUtil.GridCell(" ",  1, 0));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Name),       2, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Address),    3, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Name),    2, 3, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Address), 3, 3, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 3, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 3, TextAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Name),       2, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Address),    3, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Name),    2, 3, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Address), 3, 3, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 3, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 3, HorizontalAlignment.Right));
             grid.Children.Add(PrintUtil.GridCell(" ",  9, 0));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installed_On),     10, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Commissioned_On),  11, 0, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Name),    10, 3, TextAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Number),  11, 3, TextAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installed_On),     10, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Commissioned_On),  11, 0, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Name),    10, 3, HorizontalAlignment.Right));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Number),  11, 3, HorizontalAlignment.Right));
             
             grid.Children.Add(PrintUtil.GridCell("\t", 1, 2));
 

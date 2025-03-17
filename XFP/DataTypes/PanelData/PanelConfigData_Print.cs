@@ -36,17 +36,17 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < 10; i++)
                 result.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Firmware_Version), 0, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Normal_String), 1, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Maintenance_String), 2, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Maintenance_Date), 3, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.AL2_Code), 4, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.AL3_Code), 5, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Real_Time_Output_Of_Events), 6, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Blink_Polling_LED), 7, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Auto_Adjust_DST), 8, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Day_Begins_At), 10, 0, TextAlignment.Right));
-            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Night_Begins_At), 11, 0, TextAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Firmware_Version), 0, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Normal_String), 1, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Maintenance_String), 2, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Maintenance_Date), 3, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.AL2_Code), 4, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.AL3_Code), 5, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Real_Time_Output_Of_Events), 6, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Blink_Polling_LED), 7, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Auto_Adjust_DST), 8, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Day_Begins_At), 10, 0, HorizontalAlignment.Right));
+            result.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Night_Begins_At), 11, 0, HorizontalAlignment.Right));
 
             result.Children.Add(PrintUtil.GridCell(FirmwareVersion, 0, 1, 1, 8, true));
             result.Children.Add(PrintUtil.GridCell(QuiescentString, 1, 1, 1, 8, true));
@@ -61,16 +61,16 @@ namespace Xfp.DataTypes.PanelData
 
             result.Children.Add(PrintUtil.GridCell(" ", 0, 2));
 
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Mon_Abbr, 9, 3, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Tue_Abbr, 9, 4, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Wed_Abbr, 9, 5, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Thu_Abbr, 9, 6, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Fri_Abbr, 9, 7, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Sat_Abbr, 9, 8, TextAlignment.Center));
-            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Sun_Abbr, 9, 9, TextAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Mon_Abbr, 9, 3, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Tue_Abbr, 9, 4, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Wed_Abbr, 9, 5, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Thu_Abbr, 9, 6, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Fri_Abbr, 9, 7, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Sat_Abbr, 9, 8, HorizontalAlignment.Center));
+            result.Children.Add(PrintUtil.GridCell(Cultures.Resources.Day_Sun_Abbr, 9, 9, HorizontalAlignment.Center));
 
-            result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedBegins, 10, 1, "hm", false, true, TextAlignment.Left));
-            result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedEnds,   11, 1, "hm", false, true, TextAlignment.Left));
+            result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedBegins, 10, 1, "hm", false, true, HorizontalAlignment.Left));
+            result.Children.Add(PrintUtil.GridCellTimeSpan(OccupiedEnds,   11, 1, "hm", false, true, HorizontalAlignment.Left));
 
             dayNightStarts(result, DayStart,   10, 3);
             dayNightStarts(result, NightStart, 11, 3);

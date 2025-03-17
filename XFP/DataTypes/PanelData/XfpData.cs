@@ -72,7 +72,7 @@ namespace Xfp.DataTypes
         {
             get
             {
-                XfpPanelData result;
+                    XfpPanelData result;
                 if (Panels is not null && Panels.TryGetValue(CurrentPanelNumber, out result))
                     return result;
 
@@ -86,8 +86,11 @@ namespace Xfp.DataTypes
         public SiteConfigData     SiteConfig { get; set; }
         public string             Comments { get; set; }
 
-        //public string FirmwareVersion { get; set; }
         public string ToolsVersion { get; set; }
+
+        //legacy setting from file format with single panel only - retained for backward compatibility with old data files
+        public string FirmwareVersion { get; set; }
+
 
         public const int MinPanelNumber = 1;
         public const int MaxPanelNumber = 8;

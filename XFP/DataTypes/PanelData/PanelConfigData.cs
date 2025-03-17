@@ -21,23 +21,23 @@ namespace Xfp.DataTypes.PanelData
             if (original is null)
                 return;
             
-            FirmwareVersion = original.FirmwareVersion;
-            LoopCount = original.LoopCount;
-            DateEnabled = original.DateEnabled;
-            SoundersPulsed = original.SoundersPulsed;
-            CopyTime = original.CopyTime;
-            MaintenanceString = original.MaintenanceString;
-            QuiescentString = original.QuiescentString;
-            MaintenanceDate = original.MaintenanceDate;
-            AL2Code = original.AL2Code;
-            AL3Code = original.AL3Code;
-            MCPDebounce = original.MCPDebounce;
-            IODebounce = original.IODebounce;
-            DetectorDebounce = original.DetectorDebounce;
-            OccupiedBegins = original.OccupiedBegins;
-            OccupiedEnds = original.OccupiedEnds;
-            BlinkPollingLED = original.BlinkPollingLED;
-            AutoAdjustDST = original.AutoAdjustDST;
+            FirmwareVersion     = original.FirmwareVersion;
+            LoopCount           = original.LoopCount;
+            DateEnabled         = original.DateEnabled;
+            SoundersPulsed      = original.SoundersPulsed;
+            CopyTime            = original.CopyTime;
+            MaintenanceString   = original.MaintenanceString;
+            QuiescentString     = original.QuiescentString;
+            MaintenanceDate     = original.MaintenanceDate;
+            AL2Code             = original.AL2Code;
+            AL3Code             = original.AL3Code;
+            MCPDebounce         = original.MCPDebounce;
+            IODebounce          = original.IODebounce;
+            DetectorDebounce    = original.DetectorDebounce;
+            OccupiedBegins      = original.OccupiedBegins;
+            OccupiedEnds        = original.OccupiedEnds;
+            BlinkPollingLED     = original.BlinkPollingLED;
+            AutoAdjustDST       = original.AutoAdjustDST;
             RealTimeEventOutput = original.RealTimeEventOutput;
 
             DayStart = new();
@@ -49,6 +49,35 @@ namespace Xfp.DataTypes.PanelData
             if (original.NightStart is not null)
                 foreach (var n in original.NightStart)
                     NightStart.Add(n);
+        }
+
+        /// <summary>
+        /// initialise panel data from legacy settings.<br/>
+        /// Provided for backward compatibility with old data file format for single panel; these settings used to be global.
+        /// </summary>
+        /// <param name="data"></param>
+        public PanelConfigData(XfpData data) : this()
+        {
+            FirmwareVersion     = data.FirmwareVersion;
+            LoopCount           = LoopConfigData.MaxLoops;
+            DateEnabled         = data.SiteConfig.DateEnabled;
+            SoundersPulsed      = data.SiteConfig.SoundersPulsed;
+            CopyTime            = data.SiteConfig.CopyTime;
+            MaintenanceString   = data.SiteConfig.MaintenanceString;
+            QuiescentString     = data.SiteConfig.QuiescentString;
+            MaintenanceDate     = data.SiteConfig.MaintenanceDate;
+            AL2Code             = data.SiteConfig.AL2Code;
+            AL3Code             = data.SiteConfig.AL3Code;
+            MCPDebounce         = data.SiteConfig.MCPDebounce;
+            IODebounce          = data.SiteConfig.IODebounce;
+            DetectorDebounce    = data.SiteConfig.DetectorDebounce;
+            OccupiedBegins      = data.SiteConfig.OccupiedBegins;
+            OccupiedEnds        = data.SiteConfig.OccupiedEnds;
+            DayStart            = data.SiteConfig.DayStart;
+            NightStart          = data.SiteConfig.NightStart;
+            BlinkPollingLED     = data.SiteConfig.BlinkPollingLED;
+            AutoAdjustDST       = data.SiteConfig.AutoAdjustDST;
+            RealTimeEventOutput = data.SiteConfig.RealTimeEventOutput;
         }
 
 

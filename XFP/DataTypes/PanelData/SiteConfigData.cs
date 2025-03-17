@@ -29,7 +29,7 @@ namespace Xfp.DataTypes.PanelData
             Installer.Tel = original.Client.Tel;
             EngineerName = original.EngineerName;
             
-            //legacy settings
+            //legacy setting from file format with single panel only
             AL2Code = original.AL2Code;
             AL3Code = original.AL3Code;
         }
@@ -50,7 +50,7 @@ namespace Xfp.DataTypes.PanelData
         public TimeSpan RecalibrationTime { get; set; }
 
 
-        //legacy settings
+        //legacy setting from file format with single panel only - retained for backward compatibility with old data files
         public int LoopCount { get; set; }
         public bool DateEnabled { get; set; }
         public bool SoundersPulsed { get; set; }
@@ -109,7 +109,7 @@ namespace Xfp.DataTypes.PanelData
                 //legacy settings
                 && od.EngineerName == EngineerName
                 && od.AL2Code == AL2Code
-                && od.AL3Code == AL3Code;;
+                && od.AL3Code == AL3Code;
         }
 
 

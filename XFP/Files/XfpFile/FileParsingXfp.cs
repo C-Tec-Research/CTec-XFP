@@ -42,8 +42,8 @@ namespace Xfp.Files.XfpFile
         /// Finds the Protocol within an XFP file
         /// </summary>
         internal static bool ReadDefiningSettings(StreamReader inputStream, ref CTecDevices.ObjectTypes protocol,
-                                                                                  ref int panelNumber, 
-                                                                                  ref string firmwareVersion)
+                                                                            ref int panelNumber, 
+                                                                            ref string firmwareVersion)
         {
             try
             {
@@ -51,7 +51,8 @@ namespace Xfp.Files.XfpFile
                 string currentLine;
                 while ((currentLine = readNext(inputStream, Tags.EndFile)) != null)
                 {
-                    if (ItemName(currentLine) == XfpTags.SystemType)
+                    if (ItemName(currentLine) == XfpTags.SystemType                 // <-- legacy file tag
+                     || ItemName(currentLine) == nameof(XfpPanelData.PanelNumber))  // <-- json file tag
                         gotProt = (protocol = parseProtocol(currentLine)) != CTecDevices.ObjectTypes.NotSet;
                     if (ItemName(currentLine) == XfpTags.PanelNumber)
                         gotPan = (panelNumber = parseInt(currentLine)) != 0;

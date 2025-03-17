@@ -77,7 +77,7 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
             grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2));
             grid.Children.Add(PrintUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, false));
-            grid.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, TextAlignment.Left));
+            grid.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, HorizontalAlignment.Left));
 
             return new(grid);
         }
@@ -100,7 +100,7 @@ namespace Xfp.DataTypes.PanelData
 
                 grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
             
-                grid.Children.Add(PrintUtil.GridCell(z.Number, row, col++, TextAlignment.Right));
+                grid.Children.Add(PrintUtil.GridCell(z.Number, row, col++, HorizontalAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(z.Name, row, col++));
 
                 for (int i = 0; i < NumSounderGroups; i++)
@@ -115,7 +115,7 @@ namespace Xfp.DataTypes.PanelData
                 
                 grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
-                grid.Children.Add(PrintUtil.GridCell(p.Number, row, col++, TextAlignment.Right));
+                grid.Children.Add(PrintUtil.GridCell(p.Number, row, col++, HorizontalAlignment.Right));
                 grid.Children.Add(PrintUtil.GridCell(p.Name, row, col++));
 
                 for (int i = 0; i < NumSounderGroups; i++)
@@ -142,14 +142,14 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
             grid.Children.Add(PrintUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
 
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, _totalColumns, TextAlignment.Center));
+            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, _totalColumns, HorizontalAlignment.Center));
             
             int col = 0;
             grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone, 1, col++, 1, 2));
             col++;
 
             for (int i = 0; i < NumSounderGroups; i++)
-                grid.Children.Add(PrintUtil.GridHeaderCell(i + 1, 1, col++, TextAlignment.Center));
+                grid.Children.Add(PrintUtil.GridHeaderCell(i + 1, 1, col++, HorizontalAlignment.Center));
 
             return grid;
         }
