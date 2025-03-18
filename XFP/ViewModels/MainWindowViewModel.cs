@@ -112,12 +112,6 @@ namespace Xfp.ViewModels
 
             _chChCheckChanges.Elapsed += (s, e) => OnPropertyChanged(nameof(DataHasChanged));
 
-            ////init printing options
-            //PrintAllPages = true;
-            //NumPrintCopies = 1;
-            //PrintAllLoopDevices = true;
-            //LoopPrintOrder = LoopPrintOrder.ByDevice;
-
             startComPortWatcher();
 
             //start listener in case another instance of the app sends data
@@ -468,7 +462,7 @@ namespace Xfp.ViewModels
 
         private bool _mainWindowEnabled  = true;
         private bool _headerPanelEnabled = true;
-        public bool MainWindowEnabled { get => _mainWindowEnabled /*&& !PrintIsOpen*/; set { _mainWindowEnabled = value; OnPropertyChanged(); } }
+        public bool MainWindowEnabled { get => _mainWindowEnabled; set { _mainWindowEnabled = value; OnPropertyChanged(); } }
         public bool HeaderPanelEnabled { get => _headerPanelEnabled; set { _headerPanelEnabled = value; OnPropertyChanged(); OnPropertyChanged(nameof(PanelIsReadOnly)); } }
 
 
@@ -1366,6 +1360,8 @@ namespace Xfp.ViewModels
         #region Print pop-up
         private void showPrintOptions()
         {
+            UIState.SetBusyState();
+
             var printDialog = new PrintDialogWindow(_data, XfpApplicationConfig.Settings, _pages, _currentPage) { Owner = _mainAppWindow };
             bool? result;
 

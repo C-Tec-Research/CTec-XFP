@@ -72,9 +72,9 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay1Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Relay2Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.RemoteDelay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellYesNo(z.Detectors, row, col++, false, false));
-                grid.Children.Add(PrintUtil.GridCellYesNo(z.MCPs,      row, col++, false, false));
-                grid.Children.Add(PrintUtil.GridCellYesNo(z.EndDelays, row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellBool(z.Detectors, row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellBool(z.MCPs,      row, col++, false, false));
+                grid.Children.Add(PrintUtil.GridCellBool(z.EndDelays, row, col++, false, false));
                 grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, HorizontalAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, HorizontalAlignment.Center));

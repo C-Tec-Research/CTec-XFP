@@ -17,25 +17,25 @@ using System.Windows.Media.Media3D;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class GroupConfigData
+    public partial class SetConfigData
     {
         public void Print(FlowDocument doc, XfpPanelData panelData)
         {
             _data = panelData;
 
             var groupsPage = new Section();
-            groupsPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Group_Configuration));
+            groupsPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration));
 
             groupsPage.Blocks.Add(headerInfo());
             groupsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            groupsPage.Blocks.Add(groupList());
+            groupsPage.Blocks.Add(setList());
 
             doc.Blocks.Add(groupsPage);
         }
         
         
         private XfpPanelData _data;
-        private int _totalColumns = NumSounderGroups + 2;
+        private int _totalColumns = NumOutputSetTriggers + NumPanelRelayTriggers + 3;
         private static Style _alertIconStyle = (Style)Application.Current.FindResource("AlarmIcon");
         private static Brush _alarmAlertFill = (Brush)Application.Current.FindResource("AlarmAlertBrush");
         private static Brush _alarmEvacFill  = (Brush)Application.Current.FindResource("AlarmEvacBrush");
@@ -47,43 +47,17 @@ namespace Xfp.DataTypes.PanelData
             var grid = new Grid();
 
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-            grid.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
-            grid.Children.Add(PrintUtil.GridCell(PanelSounder1Group, 0, 2, 1, 2));
-            grid.Children.Add(PrintUtil.GridCell(PanelSounder2Group, 1, 2, 1, 2));
-
-            grid.Children.Add(PrintUtil.GridCell(" ", 0, 3));
-
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone),  0, 5));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 5));
-            grid.Children.Add(PrintUtil.GridCell(ContinuousTone, 0, 6));
-            grid.Children.Add(PrintUtil.GridCell(IntermittentTone, 1, 6));
-
-            grid.Children.Add(PrintUtil.GridCell(" ", 2, 0));
-
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2));
-            grid.Children.Add(PrintUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, false));
-            grid.Children.Add(PrintUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, HorizontalAlignment.Left));
+            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
+            grid.Children.Add(PrintUtil.GridCellTimeSpan(DelayTimer, 0, 1, "ms", true, true, HorizontalAlignment.Left));
 
             return new(grid);
         }
 
 
-        public BlockUIContainer groupList()
+        public BlockUIContainer setList()
         {
             var grid = columnHeaders();
 
@@ -132,7 +106,7 @@ namespace Xfp.DataTypes.PanelData
         {
             Grid grid = new Grid();
 
-            //two rows for column headers
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
@@ -141,8 +115,9 @@ namespace Xfp.DataTypes.PanelData
 
             grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
             grid.Children.Add(PrintUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(PrintUtil.GridBackground(2, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
 
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, _totalColumns, HorizontalAlignment.Center));
+            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, _totalColumns, HorizontalAlignment.Center));
             
             int col = 0;
             grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone, 1, col++, 1, 2));

@@ -35,7 +35,7 @@ namespace Xfp.UI.Views.PanelTools
         public SetsConfig()
         {
             InitializeComponent();
-            DataContext = _context = new SetConfigViewModel(this, grdSetsConfig, txtHeaderText);
+            DataContext = _context = new SetConfigViewModel(this, grdSetsConfig, headerRow1, headerRow2);
             SetTriggerTypeToColourConverter.FindResource = new((r) => FindResource(r)); 
             _context.CultureChanged = new((c) => tpDelay.SetCulture(c));
         }

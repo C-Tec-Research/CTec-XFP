@@ -27,15 +27,17 @@ namespace Xfp.ViewModels.PanelTools
 {
     public class SetConfigViewModel : PanelToolsPageViewModelBase, IPanelToolsViewModel, IConfigToolsPageViewModel
     {
-        public SetConfigViewModel(FrameworkElement parent, Grid grid, TextBlock headerText) : base(parent)
+        public SetConfigViewModel(FrameworkElement parent, Grid grid, StackPanel headerRow1, TextBlock headerRow2) : base(parent)
         {
             _grid = grid;
-            _headerText = headerText;
+            _headerRow1 = headerRow1;
+            _headerRow2 = headerRow2;
         }
 
 
         private Grid _grid;
-        private TextBlock _headerText;
+        private StackPanel _headerRow1;
+        private TextBlock _headerRow2;
 
 
 
@@ -115,7 +117,7 @@ namespace Xfp.ViewModels.PanelTools
                 widthL += _grid.ColumnDefinitions[col].ActualWidth;
 
             HeaderLeftWidth = widthL;
-            GridHeaderPanelHeight = _headerText.ActualHeight;
+            GridHeaderPanelHeight = _headerRow1.ActualHeight + _headerRow2.ActualHeight;
         }
 
 

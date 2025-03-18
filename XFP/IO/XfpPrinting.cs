@@ -59,7 +59,7 @@ namespace Xfp.DataTypes.Printing
 
                 foreach (var p in data.Panels.Values)
                 {
-                    doc.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber)));
+                    //doc.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, p.PanelNumber)));
 
                     if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
                     if (printParams.PrintLoopInfo)          

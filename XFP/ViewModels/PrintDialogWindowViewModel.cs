@@ -41,7 +41,7 @@ namespace Xfp.ViewModels
 
             IsPortrait          = true;
             PrintCurrentPage    = true;
-            PrintAllLoopDevices = true;
+            PrintAllLoopDevices = false;
             PrintOrderDevice    = true;
 
             if (_currentPage.DataContext is DevicesViewModel)
@@ -150,12 +150,7 @@ namespace Xfp.ViewModels
         {
             PrintParams.SetAllPagesToPrint(false);
 
-            if (_currentPage.DataContext is DevicesViewModel)
-            {
-                PrintLoopInfo = true; 
-                if (_currentPage.DataContext is DeviceDetailsViewModel dets)
-                    PrintAllLoopDevices = !dets.ShowOnlyFittedDevices;
-            }
+            if      (_currentPage.DataContext is DevicesViewModel)          PrintLoopInfo = true; 
             else if (_currentPage.DataContext is ZoneConfigViewModel)       PrintZones = true;
             else if (_currentPage.DataContext is GroupConfigViewModel)      PrintGroups = true;
             else if (_currentPage.DataContext is SetConfigViewModel)        PrintSets = true;
