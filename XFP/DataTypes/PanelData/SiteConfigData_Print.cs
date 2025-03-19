@@ -14,7 +14,6 @@ namespace Xfp.DataTypes.PanelData
             sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));
 
             sitePage.Blocks.Add(systemConfig());
-
             doc.Blocks.Add(sitePage);
         }
 

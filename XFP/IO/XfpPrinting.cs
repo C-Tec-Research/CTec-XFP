@@ -69,8 +69,8 @@ namespace Xfp.DataTypes.Printing
                     }
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
-                    if (printParams.PrintSets)          printSets(doc);
-                    if (printParams.PrintCAndE)         printCAndE(doc);
+                    if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
+                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber);
                     if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
                     if (printParams.PrintEventLog)      printEventLog(doc);
                     if (printParams.PrintComments)      printComments(doc);
@@ -97,71 +97,8 @@ namespace Xfp.DataTypes.Printing
             }
         }
 
-
-        //private static void printSite(FlowDocument doc)
-        //{
-        //    var sitePage = new Section();
-        //    sitePage.Blocks.Add(PageHeader(Cultures.Resources.Nav_Site_Configuration));
-
-        //    doc.Blocks.Add(sitePage);
-        //}
-        
-        private static void printGroups(FlowDocument doc)
-        {
-            //var groupsPage = new Section();
-            //groupsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Group_Configuration));
-
-            //doc.Blocks.Add(groupsPage);
-        }
-        
-        private static void printSets(FlowDocument doc)
-        {
-            //var setsPage = new Section();
-            //setsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
-
-            //doc.Blocks.Add(setsPage);
-        }
-        
-        private static void printCAndE(FlowDocument doc)
-        {
-            //var cePage = new Section();
-            //cePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_C_And_E_Configuration));
-
-            //doc.Blocks.Add(cePage);
-        }
-        
-        private static void printNetworkConfig(FlowDocument doc)
-        {
-            //var networkPage = new Section();
-            //networkPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Network_Configuration));
-
-            //doc.Blocks.Add(networkPage);
-        }
-        
-        private static void printEventLog(FlowDocument doc)
-        {
-            //var eventLogPage = new Section();
-            //eventLogPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Event_Log));
-
-            //doc.Blocks.Add(eventLogPage);
-        }
-        
-        private static void printComments(FlowDocument doc)
-        {
-            //var commentsPage = new Section();
-            //commentsPage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Comments));
-
-            //doc.Blocks.Add(commentsPage);
-        }
-
-
-        //internal static Paragraph PageHeader(string header)
-        //{
-        //    var para = new Paragraph();
-        //    var bold = new Bold();
-        //    bold.Inlines.Add(new Run(header));
-        //    para.Inlines.Add(bold);
-        //    return para;
-        //}
+        private static void printNetworkConfig(FlowDocument doc) { }        
+        private static void printEventLog(FlowDocument doc) { }
+        private static void printComments(FlowDocument doc) { }
     }
 }

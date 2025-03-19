@@ -22,7 +22,6 @@ namespace Xfp.DataTypes.PanelData
             zonesPage.Blocks.Add(headerInfo());
             zonesPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
             zonesPage.Blocks.Add(zoneList());
-
             doc.Blocks.Add(zonesPage);
         }
 

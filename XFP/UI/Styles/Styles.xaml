@@ -2,22 +2,24 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <Color x:Key="ColourAlarmOff"            A="#00" R="#00" G="#00" B="#00"/>
-    <Color x:Key="ColourAlarmAlert"          A="#ff" R="#ff" G="#a0" B="#00"/>
-    <Color x:Key="ColourAlarmEvac"           A="#ff" R="#ff" G="#50" B="#50"/>
-    <Color x:Key="ColourTriggerNotTriggered" A="#50" R="#00" G="#00" B="#00"/>
-    <Color x:Key="ColourTriggerPulsed"       A="#ff" R="#ff" G="#c0" B="#50"/>
-    <Color x:Key="ColourTriggerContinuous"   A="#ff" R="#ff" G="#50" B="#50"/>
-    <Color x:Key="ColourTriggerDelayed"      A="#ff" R="#60" G="#80" B="#e0"/>
-    <Color x:Key="ColourPanelRelayHeader"    A="#ff" R="#ff" G="#ff" B="#a0"/>
-    <SolidColorBrush x:Key="AlarmOffBrush"            Color="{StaticResource ColourAlarmOff}"/>
-    <SolidColorBrush x:Key="AlarmAlertBrush"          Color="{StaticResource ColourAlarmAlert}"/>
-    <SolidColorBrush x:Key="AlarmEvacBrush"           Color="{StaticResource ColourAlarmEvac}"/>
-    <SolidColorBrush x:Key="TriggerNotTriggeredBrush" Color="{StaticResource ColourTriggerNotTriggered}"/>
-    <SolidColorBrush x:Key="TriggerPulsedBrush"       Color="{StaticResource ColourTriggerPulsed}"/>
-    <SolidColorBrush x:Key="TriggerContinuousBrush"   Color="{StaticResource ColourTriggerContinuous}"/>
-    <SolidColorBrush x:Key="TriggerDelayedBrush"      Color="{StaticResource ColourTriggerDelayed}"/>
-    <SolidColorBrush x:Key="BrushPanelRelayHeader"    Color="{StaticResource ColourPanelRelayHeader}"/>
+    <Color x:Key="ColourAlarmOff"              A="#00" R="#00" G="#00" B="#00"/>
+    <Color x:Key="ColourAlarmAlert"            A="#ff" R="#ff" G="#a0" B="#00"/>
+    <Color x:Key="ColourAlarmEvac"             A="#ff" R="#ff" G="#50" B="#50"/>
+    <Color x:Key="ColourTriggerNotTriggered"   A="#50" R="#00" G="#00" B="#00"/>
+    <Color x:Key="ColourTriggerPulsed"         A="#ff" R="#ff" G="#c0" B="#50"/>
+    <Color x:Key="ColourTriggerContinuous"     A="#ff" R="#ff" G="#50" B="#50"/>
+    <Color x:Key="ColourTriggerDelayed"        A="#ff" R="#60" G="#80" B="#e0"/>
+    <Color x:Key="ColourPanelRelayHeader"      A="#ff" R="#ff" G="#ff" B="#a0"/>
+    <Color x:Key="ColourPanelRelayPrintHeader" A="#ff" R="#c0" G="#90" B="#00"/>
+    <SolidColorBrush x:Key="AlarmOffBrush"              Color="{StaticResource ColourAlarmOff}"/>
+    <SolidColorBrush x:Key="AlarmAlertBrush"            Color="{StaticResource ColourAlarmAlert}"/>
+    <SolidColorBrush x:Key="AlarmEvacBrush"             Color="{StaticResource ColourAlarmEvac}"/>
+    <SolidColorBrush x:Key="TriggerNotTriggeredBrush"   Color="{StaticResource ColourTriggerNotTriggered}"/>
+    <SolidColorBrush x:Key="TriggerPulsedBrush"         Color="{StaticResource ColourTriggerPulsed}"/>
+    <SolidColorBrush x:Key="TriggerContinuousBrush"     Color="{StaticResource ColourTriggerContinuous}"/>
+    <SolidColorBrush x:Key="TriggerDelayedBrush"        Color="{StaticResource ColourTriggerDelayed}"/>
+    <SolidColorBrush x:Key="BrushPanelRelayHeader"      Color="{StaticResource ColourPanelRelayHeader}"/>
+    <SolidColorBrush x:Key="BrushPanelRelayPrintHeader" Color="{StaticResource ColourPanelRelayPrintHeader}"/>
 
     <Style x:Key="AlarmIcon" TargetType="Path">
         <Setter Property="StrokeThickness" Value="20" />

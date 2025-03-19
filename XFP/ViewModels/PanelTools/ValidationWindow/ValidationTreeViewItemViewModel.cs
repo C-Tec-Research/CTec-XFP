@@ -85,7 +85,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
             {
                 int result = 0;
                 foreach (var c in Children)
-                    result += c.TotalErrors;
+                    result += c?.TotalErrors??0;
                 return result;
             }
         }

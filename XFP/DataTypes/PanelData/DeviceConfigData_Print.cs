@@ -22,7 +22,6 @@ namespace Xfp.DataTypes.PanelData
             devicePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1)));
 
             devicePage.Blocks.Add(deviceList(printAllLoopDevices));
-
             doc.Blocks.Add(devicePage);
         }
 

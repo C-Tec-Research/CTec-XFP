@@ -333,14 +333,17 @@
                                     <TextBlock Text="{Binding Path=Output_Set_Triggered, Source={StaticResource Resources}}" 
                                                Foreground="{StaticResource Brush10}" 
                                                HorizontalAlignment="Center" Margin="0,0,0,0"/>
-                                    <Border BorderThickness="1,1,1,0" BorderBrush="{StaticResource Brush04}" CornerRadius="5,5,0,0" Height="5" Margin="3,5,3,-5"/>
+                                    <Border BorderThickness="1,1,1,0" BorderBrush="{StaticResource Brush07}" CornerRadius="5,5,0,0" Height="5" Margin="4,5,3,-5"/>
                                 </StackPanel>
                                 <TextBlock Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="15" 
-                                           Text="{Binding Path=Panel_Relay_Triggered, Source={StaticResource Resources}}" 
-                                           Foreground="{StaticResource BrushPanelRelayHeader}" 
-                                           HorizontalAlignment="Right" VerticalAlignment="Top" 
-                                           TextWrapping="Wrap" TextAlignment="Right" 
-                                           Width="110" Margin="0,0,5,0"/>
+                                            Text="{Binding Path=Panel_Relay_Triggered, Source={StaticResource Resources}}" 
+                                            Foreground="{StaticResource BrushPanelRelayHeader}" 
+                                            HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                            TextWrapping="Wrap" TextAlignment="Right" 
+                                            Width="110" Margin="0,0,5,0"/>
+                                    <StackPanel Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="2" Orientation="Vertical">
+                                        <Border BorderThickness="1,1,1,0" BorderBrush="{StaticResource BrushPanelRelayHeader}" CornerRadius="5,5,0,0" Height="5" Margin="4,0,3,0"/>
+                                </StackPanel>
 
                                 <!--#region column headings-->
                                 <TextBlock Grid.Row="1" Grid.Column="2" Text="1" x:Name="headerRow2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Brush10}"/>
