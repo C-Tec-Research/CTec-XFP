@@ -124,27 +124,27 @@
             "Index": 6,
             "ActionType": 190,
             "ActionParam": -1,
-            "TriggerType": 110,
-            "TriggerParam": -1,
+            "TriggerType": 60,
+            "TriggerParam": 7,
             "TriggerParam2": -1,
             "TriggerCondition": true,
-            "ResetType": 30,
+            "ResetType": 0,
             "ResetParam": -1,
             "ResetParam2": -1,
-            "ResetCondition": true
+            "ResetCondition": false
           },
           {
             "Index": 7,
             "ActionType": 10,
             "ActionParam": 15,
-            "TriggerType": 70,
-            "TriggerParam": -1,
+            "TriggerType": 80,
+            "TriggerParam": 1,
             "TriggerParam2": -1,
             "TriggerCondition": true,
-            "ResetType": 15,
-            "ResetParam": 13,
+            "ResetType": 0,
+            "ResetParam": -1,
             "ResetParam2": -1,
-            "ResetCondition": true
+            "ResetCondition": false
           },
           {
             "Index": 8,
@@ -161,12 +161,12 @@
           },
           {
             "Index": 9,
-            "ActionType": 0,
-            "ActionParam": -1,
-            "TriggerType": 0,
-            "TriggerParam": -1,
+            "ActionType": 170,
+            "ActionParam": 7,
+            "TriggerType": 5,
+            "TriggerParam": 5,
             "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerCondition": true,
             "ResetType": 0,
             "ResetParam": -1,
             "ResetParam2": -1,
@@ -174,12 +174,12 @@
           },
           {
             "Index": 10,
-            "ActionType": 0,
-            "ActionParam": -1,
-            "TriggerType": 0,
-            "TriggerParam": -1,
+            "ActionType": 40,
+            "ActionParam": 10,
+            "TriggerType": 10,
+            "TriggerParam": 9,
             "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerCondition": true,
             "ResetType": 0,
             "ResetParam": -1,
             "ResetParam2": -1,
@@ -187,12 +187,12 @@
           },
           {
             "Index": 11,
-            "ActionType": 0,
-            "ActionParam": -1,
-            "TriggerType": 0,
+            "ActionType": 90,
+            "ActionParam": 8,
+            "TriggerType": 125,
             "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam2": 9,
+            "TriggerCondition": true,
             "ResetType": 0,
             "ResetParam": -1,
             "ResetParam2": -1,
@@ -252,8 +252,8 @@
           }
         ],
         "TimerEventTimes": [
-          "00:00:00",
-          "00:00:00",
+          "04:05:00",
+          "20:45:00",
           "00:00:00",
           "00:00:00",
           "00:00:00",
@@ -12494,10 +12494,10 @@
           "LoopNum": 1,
           "Devices": [
             {
-              "DeviceType": null,
+              "DeviceType": 52,
               "LoopNum": 1,
               "Index": 0,
-              "Zone": 0,
+              "Zone": 1,
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
@@ -12509,14 +12509,14 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 0,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -12542,10 +12542,10 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": null,
+              "DeviceType": 65,
               "LoopNum": 1,
               "Index": 1,
-              "Zone": 0,
+              "Zone": 1,
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
@@ -12557,21 +12557,21 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 0,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1

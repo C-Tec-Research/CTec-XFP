@@ -115,7 +115,7 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getActions() => _actions;
         private List<string> getTriggers() => _triggers;
         private List<string> getInputs() => _inputs;
-        private List<string> getLoop1Devices() => _loop1Devices;
+        internal List<string> GetLoop1Devices() => _loop1Devices;
         private List<string> getLoop2Devices() => _loop2Devices;
         private List<string> getZones() => _zones;
         private List<string> getZones1() => _zones1;
@@ -131,56 +131,31 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getTimes() => _times;
         private List<string> getTrueOrFalse() => _trueOrFalse;
 
-        private void initComboLists()
+        internal void InitComboLists()
         {
-            _actions = new();
-            foreach (var a in Enum.GetValues(typeof(CEActionTypes)))
-                _actions.Add(Enums.CEActionTypesToString((CEActionTypes)a));
+            _actions = _data.GetCEActionsList();
+            _triggers = _data.GetCETriggersList();
+            _groups = _data.GetGroupsList();
+            _inputs = _data.GetInputsList();
+            _loop1Devices = _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber);
+            _loop2Devices = _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber);
+            _zones = _data.GetZonesList();
+            _zonesPanels = _data.GetZonePanelsList();
+            _sets = _data.GetSetsList();
+            _events = _data.GetEventsList();
+            _relays = _data.GetRelaysList();
+            _setsRelays = _data.GetSetsRelaysList();
+            _times = _data.GetCETimerTList();
 
-            _triggers = new();
-            foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
-                if ((CETriggerTypes)t != CETriggerTypes.None)
-                    _triggers.Add(Enums.CETriggerTypesToString((CETriggerTypes)t));
-
-            _groups = new();
-            for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
-                _groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
-
-            _inputs = new();
-            for (int i = 0; i < 2; i++)
-                _inputs.Add(string.Format(Cultures.Resources.Input_x, i + 1));
-
-            _loop1Devices = new();
-            if (_data is not null)
-                for (int d = 0; d < DeviceConfigData.NumDevices && d < _data.CurrentPanel.Loop1Config.Devices.Count; d++)
-                    _loop1Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(_data.CurrentPanel.Loop1Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
-
-            _loop2Devices = new();
-            if (_data is not null)
-                for (int d = 0; d < DeviceConfigData.NumDevices && d < _data.CurrentPanel.Loop2Config.Devices.Count; d++)
-                    _loop2Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(_data.CurrentPanel.Loop2Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
-
-            _zones = new();
             _zones1 = new();
             _zones2 = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
             {
-                _zones.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+                //_zones.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
                 _zones1.Add((i + 1).ToString());
                 _zones2.Add((i + 1).ToString());
             }
 
-            _zonesPanels = new();
-            for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                _zonesPanels.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
-            for (int i = 0; i < ZoneConfigData.NumPanels; i++)
-                _zonesPanels.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
-
-            _sets = new();
-            for (int i = 0; i < XfpPanelData.NumSets; i++)
-                _sets.Add(string.Format(Cultures.Resources.Set_x, i + 1));
-
-            _events = new();
             _events1 = new();
             _events2 = new();
             for (int i = 0; i < CEConfigData.NumEvents; i++)
@@ -189,20 +164,6 @@ namespace Xfp.ViewModels.PanelTools
                 _events1.Add((i + 1).ToString());
                 _events2.Add((i + 1).ToString());
             }
-
-            _relays = new();
-            for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                _relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-
-            _setsRelays = new();
-            for (int i = 0; i < XfpPanelData.NumSets; i++)
-                _setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
-            for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                _setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-
-            //_times = new();
-            //for (int i = 0; i < CEConfigData.NumEvents; i++)
-            //    _times.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
 
             if (_trueOrFalse is null)
             {
@@ -265,7 +226,7 @@ namespace Xfp.ViewModels.PanelTools
                     c.ActionsMenu      = getActions;
                     c.TriggersMenu     = getTriggers;
                     c.InputsMenu       = getInputs;
-                    c.Loop1DevicesMenu = getLoop1Devices;
+                    c.Loop1DevicesMenu = GetLoop1Devices;
                     c.Loop2DevicesMenu = getLoop2Devices;
                     c.ZonesMenu        = getZones;
                     c.Zones1Menu       = getZones1;
@@ -292,7 +253,7 @@ namespace Xfp.ViewModels.PanelTools
             if (_data is null)
                 return;
 
-            initComboLists();
+            InitComboLists();
 
             //OnPropertyChanged(nameof(TimerEvents));
             OnPropertyChanged(nameof(TimerEvent1));

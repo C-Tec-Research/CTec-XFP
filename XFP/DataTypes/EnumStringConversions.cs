@@ -89,7 +89,7 @@ namespace Xfp.DataTypes
                 CEActionTypes.SetToOccupied       => Cultures.Resources.Action_Set_To_Occupied,
                 CEActionTypes.AbstractEvent       => Cultures.Resources.Action_Abstract_Event,
                 CEActionTypes.MutePanel           => Cultures.Resources.Action_Mute_The_Panel,
-                CEActionTypes.SetToUnoccupied     => Cultures.Resources.Action_Set_To_Occupied,
+                CEActionTypes.SetToUnoccupied     => Cultures.Resources.Action_Set_To_Unoccupied,
                 CEActionTypes.OutputDelaysDisable => Cultures.Resources.Action_Output_Delays_Disable,
                 CEActionTypes.GroupDisable        => Cultures.Resources.Action_Group_Disable,
                 CEActionTypes.Loop1DeviceDisable  => string.Format(Cultures.Resources.Action_Loop_x_Device_Disabled, 1),

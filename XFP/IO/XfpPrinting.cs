@@ -70,7 +70,7 @@ namespace Xfp.DataTypes.Printing
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
                     if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
-                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber);
+                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
                     if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
                     if (printParams.PrintEventLog)      printEventLog(doc);
                     if (printParams.PrintComments)      printComments(doc);

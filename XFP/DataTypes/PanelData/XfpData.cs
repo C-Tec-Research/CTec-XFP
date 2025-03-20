@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using CTecDevices.Protocol;
+using System.Windows;
 using Newtonsoft.Json;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Views.PanelTools;
+using System.Windows.Input;
 
 namespace Xfp.DataTypes
 {
@@ -25,10 +29,10 @@ namespace Xfp.DataTypes
             foreach (var p in original.Panels)
                 Panels.Add(p.Key, new(p.Value));
 
-            SiteConfig      = new(original.SiteConfig);
-            Comments        = original.Comments;
+            SiteConfig = new(original.SiteConfig);
+            Comments = original.Comments;
             //FirmwareVersion = original.FirmwareVersion;
-            ToolsVersion    = original.ToolsVersion;
+            ToolsVersion = original.ToolsVersion;
         }
 
         /// <summary>
@@ -44,21 +48,21 @@ namespace Xfp.DataTypes
 
             Panels.Add(original.PanelNumber, new XfpPanelData()
             {
-                PanelNumber       = original.PanelNumber,
-                Protocol          = original.Protocol,
-                CEConfig          = new(original.CEConfigData),
-                LoopConfig        = new(original.LoopConfig),
+                PanelNumber = original.PanelNumber,
+                Protocol = original.Protocol,
+                CEConfig = new(original.CEConfigData),
+                LoopConfig = new(original.LoopConfig),
                 DeviceNamesConfig = new(original.DeviceNamesConfig),
-                ZoneConfig        = new(original.ZoneConfig),
-                ZonePanelConfig   = new(original.ZonePanelConfig),
-                SetConfig         = new(original.SetConfig),
-                GroupConfig       = new(original.GroupConfig),
-                NetworkConfig     = new(original.NetworkConfig)
+                ZoneConfig = new(original.ZoneConfig),
+                ZonePanelConfig = new(original.ZonePanelConfig),
+                SetConfig = new(original.SetConfig),
+                GroupConfig = new(original.GroupConfig),
+                NetworkConfig = new(original.NetworkConfig)
             });
 
-            Comments        = original.Comments;
+            Comments = original.Comments;
             //FirmwareVersion = original.FirmwareVersion;
-            ToolsVersion    = original.ToolsVersion;
+            ToolsVersion = original.ToolsVersion;
         }
 
 
@@ -72,7 +76,7 @@ namespace Xfp.DataTypes
         {
             get
             {
-                    XfpPanelData result;
+                XfpPanelData result;
                 if (Panels is not null && Panels.TryGetValue(CurrentPanelNumber, out result))
                     return result;
 
@@ -82,9 +86,9 @@ namespace Xfp.DataTypes
             }
         }
 
-        
-        public SiteConfigData     SiteConfig { get; set; }
-        public string             Comments { get; set; }
+
+        public SiteConfigData SiteConfig { get; set; }
+        public string Comments { get; set; }
 
         public string ToolsVersion { get; set; }
 
@@ -97,8 +101,8 @@ namespace Xfp.DataTypes
         public const int EventLogDataLength = 128;
 
 
-//        internal static new XfpData InitialisedNew() => InitialisedNew(CTecDevices.ObjectTypes.XfpCast, CurrentPanelNumber, true);
-        
+        //        internal static new XfpData InitialisedNew() => InitialisedNew(CTecDevices.ObjectTypes.XfpCast, CurrentPanelNumber, true);
+
         internal static XfpData InitialisedNew(CTecDevices.ObjectTypes protocol, int panelNumber, bool setCurrentToThis)
         {
             var data = new XfpData();
@@ -129,11 +133,11 @@ namespace Xfp.DataTypes
             foreach (var p in Panels)
                 if (!p.Value.Equals(od.Panels[p.Key]))
                     return false;
-            
-           return SiteConfig.Equals(od.SiteConfig)
-               //&& FirmwareVersion == od.FirmwareVersion
-               //&& ToolsVersion    == od.ToolsVersion
-               && Comments        == od.Comments;
+
+            return SiteConfig.Equals(od.SiteConfig)
+                //&& FirmwareVersion == od.FirmwareVersion
+                //&& ToolsVersion    == od.ToolsVersion
+                && Comments == od.Comments;
         }
 
 
@@ -202,6 +206,133 @@ namespace Xfp.DataTypes
             foreach (var _ in from p in Panels where p.Value.HasWarnings() select new { })
                 return true;
             return SiteConfig.HasWarnings();
+        }
+
+
+        internal List<string> GetCEActionsList()
+        {
+            var actions = new List<string>();
+            foreach (var a in Enum.GetValues(typeof(CEActionTypes)))
+                actions.Add(Enums.CEActionTypesToString((CEActionTypes)a));
+            return actions;
+        }
+
+        internal List<string> GetCETriggersList()
+        {
+            var triggers = new List<string>();
+            triggers = new();
+            foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
+                if ((CETriggerTypes)t != CETriggerTypes.None)
+                    triggers.Add(Enums.CETriggerTypesToString((CETriggerTypes)t));
+            return triggers;
+        }
+
+        internal List<string> GetGroupsList()
+        {
+            var triggers = new List<string>();
+            triggers = new();
+            for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
+                triggers.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
+            return triggers;
+        }
+
+        internal List<string> GetInputsList()
+        {
+            var inputs = new List<string>();
+            inputs = new();
+            for (int i = 0; i < 2; i++)
+                inputs.Add(string.Format(Cultures.Resources.Input_x, i + 1));
+            return inputs;
+        }
+
+        internal List<string> GetLoop1DeviceList(int panel)
+        {
+            var loop1Devices = new List<string>();
+            for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop1Config.Devices.Count; d++)
+                loop1Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop1Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
+            return loop1Devices;
+        }
+
+        internal List<string> GetLoop2DeviceList(int panel)
+        {
+            var loop2Devices = new List<string>();
+            for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop2Config.Devices.Count; d++)
+                loop2Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop2Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
+            return loop2Devices;
+        }
+  
+        internal List<string> GetZonesList()
+        {
+            var names = new List<string>();
+            for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                names.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+            return names;
+        }
+  
+        internal List<string> GetZoneNamesList(int panel)
+        {
+            var names = new List<string>();
+            for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                names.Add(Panels[panel].ZoneConfig.Zones[i].Name);
+            return names;
+        }
+  
+        internal List<string> GetZonePanelsList()
+        {
+            var names = new List<string>();
+            for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
+                names.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
+            return names;
+        }
+  
+        internal List<string> GetZonePanelNamesList(int panel)
+        {
+            var names = new List<string>();
+            for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
+                names.Add(Panels[panel].ZonePanelConfig.Panels[i].Name);
+            return names;
+        }
+
+        internal List<string> GetSetsList()
+        {
+            var sets = new List<string>();
+            for (int i = 0; i < XfpPanelData.NumSets; i++)
+                sets.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+            return sets;
+        }
+
+        internal List<string> GetEventsList()
+        {
+            var events = new List<string>();
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+                events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
+            return events;
+        }
+
+        internal List<string> GetRelaysList()
+        {
+            var _relays = new List<string>();
+            for (int i = 0; i < XfpPanelData.NumRelays; i++)
+                _relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            return _relays;
+        }
+
+        internal List<string> GetSetsRelaysList()
+        {
+            var _setsRelays = new List<string>();
+            for (int i = 0; i < XfpPanelData.NumSets; i++)
+                _setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+            for (int i = 0; i < XfpPanelData.NumRelays; i++)
+                _setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            return _setsRelays;
+        }
+
+        internal List<string> GetCETimerTList()
+        {
+            var _times = new List<string>();
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+                _times.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
+            return _times;
         }
     }
 }
