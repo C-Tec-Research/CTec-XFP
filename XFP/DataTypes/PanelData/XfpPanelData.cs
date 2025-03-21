@@ -198,6 +198,7 @@ namespace Xfp.DataTypes.PanelData
                                                 || ZonePanelConfig.HasErrorsOrWarnings()
                                                 || SetConfig.HasErrorsOrWarnings()
                                                 || GroupConfig.HasErrorsOrWarnings()
+                                                || CEConfig.HasErrorsOrWarnings()
                                                 || NetworkConfig.HasErrorsOrWarnings();
 
         internal new bool HasErrors() => PanelConfig.HasErrors()
@@ -208,6 +209,7 @@ namespace Xfp.DataTypes.PanelData
                                       || ZonePanelConfig.HasErrors()
                                       || SetConfig.HasErrors()
                                       || GroupConfig.HasErrors()
+                                      || CEConfig.HasErrors()
                                       || NetworkConfig.HasErrors();
 
         internal new bool HasWarnings() => PanelConfig.HasWarnings()
@@ -218,6 +220,7 @@ namespace Xfp.DataTypes.PanelData
                                         || ZonePanelConfig.HasWarnings()
                                         || SetConfig.HasWarnings()
                                         || GroupConfig.HasWarnings()
+                                        || CEConfig.HasWarnings()
                                         || NetworkConfig.HasWarnings();
     }
 }

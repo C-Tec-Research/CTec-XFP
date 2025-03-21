@@ -280,6 +280,8 @@ namespace Xfp.DataTypes
         internal List<string> GetZonePanelsList()
         {
             var names = new List<string>();
+            for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                names.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
             for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
                 names.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
             return names;

@@ -111,12 +111,13 @@ namespace Xfp.Views
             }
             catch { }
 
+            XfpApplicationConfig.Settings.UpdateMainWindowParams(this, true);
             EventLog.WriteInfo("Exiting app");
             _context?.ExitApp();
         }
 
 
-        private void updateWindowParams(bool save = false) { if (_allowSaveWindowState) XfpApplicationConfig.Settings.UpdateMainWindowParams(this, _context.LayoutTransform.ScaleX, save); }
+        private void updateWindowParams() { if (_allowSaveWindowState) XfpApplicationConfig.Settings.UpdateMainWindowParams(this, _context.LayoutTransform.ScaleX); }
 
         private void restoreWindowState()
         {

@@ -116,8 +116,9 @@ namespace Xfp.Files
             {
                 foreach (var p in data.Panels.Values)
                 {
-                    //PanelConfig is null in the old file format that contained
-                    //only 1 panel, so initialise with its global settings
+                    //the old file format contained only 1 panel and its settings were part of the global site.
+                    //so if an old-format file is read is will have a null PanelConfig but the panel settings
+                    //will be in the "legacy" settings in the site config global settings.
                     if (p.PanelConfig is null)
                         p.PanelConfig = new(data);
 

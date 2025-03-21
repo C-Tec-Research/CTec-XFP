@@ -81,7 +81,7 @@ namespace Xfp.ViewModels.PanelTools
         public CausesAndEffectsItemViewModel CEItem14 { get => _ceConfigItems[13]; set { _ceConfigItems[13] = value; OnPropertyChanged(); } }
         public CausesAndEffectsItemViewModel CEItem15 { get => _ceConfigItems[14]; set { _ceConfigItems[14] = value; OnPropertyChanged(); } }
         public CausesAndEffectsItemViewModel CEItem16 { get => _ceConfigItems[15]; set { _ceConfigItems[15] = value; OnPropertyChanged(); } }
-
+        
         private double       _dataGridWidth = 400.0;
         private List<double> _columnWidths = new();
         public double       DataGridWidth { get => _dataGridWidth; set { _dataGridWidth = value; OnPropertyChanged(); } }

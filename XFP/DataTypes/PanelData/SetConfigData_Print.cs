@@ -167,10 +167,10 @@ namespace Xfp.DataTypes.PanelData
 
             //header text
             grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
-            grid.Children.Add(PrintUtil.GridBorder(1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5));
+            PrintUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
 
             grid.Children.Add(PrintUtil.SetForeground(PrintUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
-            grid.Children.Add(PrintUtil.GridBorder(1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5));
+            PrintUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
             
 
             //set numbers

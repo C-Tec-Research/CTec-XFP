@@ -118,6 +118,7 @@
         NetworkEventTriggered = 115,
         AnyDwellingAndCommunal = 120,
         ZoneAnd = 125,
+        NotSet = -1,
     }
 
     public enum AlarmTypes

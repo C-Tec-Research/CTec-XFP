@@ -102,7 +102,7 @@ namespace Xfp.UI.Views
         }
 
 
-        private void updateWindowParams(bool save = false) { if (_isOpen) _context.UpdateWindowParams(save); }
+        private void updateWindowParams() { if (_isOpen) _context.UpdateWindowParams(); }
 
 
         private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }

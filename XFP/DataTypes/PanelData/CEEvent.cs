@@ -147,10 +147,10 @@ namespace Xfp.DataTypes.PanelData
                 {
                     ValidationCodes error = ValidationCodes.Ok;
                     ValidationCodes error2 = ValidationCodes.Ok;
-                    if (TriggerType == CETriggerTypes.None)
+                    if (TriggerType == CETriggerTypes.None || (int)TriggerType < -1)
                     {
                         error = ValidationCodes.CETriggerTypeNotSet;
-                        }
+                    }
                     else if (!NoTriggerParam(TriggerType))
                     {
                         switch (TriggerType)
@@ -163,10 +163,13 @@ namespace Xfp.DataTypes.PanelData
                             case CETriggerTypes.ZoneHasDeviceInAlarm:   if (!isValidZoneOrPanel(TriggerParam))  error = ValidationCodes.CETriggerZoneOrPanelNotSet; break;
                             case CETriggerTypes.PanelInput:             if (!isValidInput(TriggerParam))        error = ValidationCodes.CETriggerPanelInputNotSet; break;
                             case CETriggerTypes.OtherEventTriggered:    if (!isValidEvent(TriggerParam))        error = ValidationCodes.CETriggerEventNotSet; break;;
-                            case CETriggerTypes.EventAnd:               if (!isValidEvent(TriggerParam))        error = ValidationCodes.CETriggerEventNotSet;break;
                             case CETriggerTypes.TimerEventTn:           if (!isValidTimer(TriggerParam))        error = ValidationCodes.CETriggerTimerNotSet; break;
                             case CETriggerTypes.NetworkEventTriggered:  if (!isValidEvent(TriggerParam))        error = ValidationCodes.CETriggerNetworkEventNotSet; break;
-                            case CETriggerTypes.ZoneAnd:                if (!isValidZone(TriggerParam))         error = ValidationCodes.CETriggerZoneNotSet;break;
+                            
+                            case CETriggerTypes.EventAnd:
+                            case CETriggerTypes.ZoneAnd:                if (!isValidZone(TriggerParam2))        error  = ValidationCodes.CEResetZone2NotSet;
+                                                                        if (!isValidZone(TriggerParam))         error2 = ValidationCodes.CEResetZoneNotSet;
+                                                                        break;
                         }
                     }
 
@@ -189,14 +192,6 @@ namespace Xfp.DataTypes.PanelData
                     }
                 }
 
-                if (continueChecking)
-                {
-                    //if (TriggerCondition is null)
-                    //{
-                    //    _errorItems.ValidationCodes.Add(ValidationCodes.CETriggerConditionNotSet);
-                    //    continueChecking = false;
-                    //}
-                }
 
                 if (continueChecking)
                 {
@@ -218,23 +213,14 @@ namespace Xfp.DataTypes.PanelData
                             case CETriggerTypes.ZoneHasDeviceInAlarm:   if (!isValidZoneOrPanel(ResetParam))  error = ValidationCodes.CEResetZoneOrPanelNotSet; break;
                             case CETriggerTypes.PanelInput:             if (!isValidInput(ResetParam))        error = ValidationCodes.CEResetPanelInputNotSet; break;
                             case CETriggerTypes.OtherEventTriggered:    if (!isValidEvent(ResetParam))        error = ValidationCodes.CEResetEventNotSet; break;;
-                            case CETriggerTypes.EventAnd:               if (!isValidEvent(ResetParam))        error = ValidationCodes.CEResetEventNotSet;break;
                             case CETriggerTypes.TimerEventTn:           if (!isValidTimer(ResetParam))        error = ValidationCodes.CEResetTimerNotSet; break;
                             case CETriggerTypes.NetworkEventTriggered:  if (!isValidEvent(ResetParam))        error = ValidationCodes.CEResetNetworkEventNotSet; break;
-                            case CETriggerTypes.ZoneAnd:                if (!isValidZone(ResetParam))         error = ValidationCodes.CEResetZoneNotSet;break;
+                            
+                            case CETriggerTypes.EventAnd:
+                            case CETriggerTypes.ZoneAnd:                if (!isValidZone(ResetParam2))        error  = ValidationCodes.CEResetZone2NotSet;
+                                                                        if (!isValidZone(ResetParam))         error2 = ValidationCodes.CEResetZoneNotSet;
+                                                                        break;
                         }
-                    }
-
-                    switch (ResetType)
-                    {
-                        case CETriggerTypes.EventAnd: if (!isValidEvent(ResetParam2)) error2 = ValidationCodes.CEResetEvent2NotSet; break;
-                        case CETriggerTypes.ZoneAnd:  if (!isValidZone(ResetParam2))  error2 = ValidationCodes.CEResetZone2NotSet; break;
-                    }
-
-                    if (error != ValidationCodes.Ok)
-                    {
-                        _errorItems.ValidationCodes.Add(error);
-                        continueChecking = false;
                     }
 
                     if (error2 != ValidationCodes.Ok)
@@ -242,13 +228,14 @@ namespace Xfp.DataTypes.PanelData
                         _errorItems.ValidationCodes.Add(error2);
                         continueChecking = false;
                     }
+
+                    if (error != ValidationCodes.Ok)
+                    {
+                        _errorItems.ValidationCodes.Add(error);
+                        continueChecking = false;
+                    }
                 }
 
-                //if (continueChecking)
-                //{
-                //    if (ResetCondition is null)
-                //        _errorItems.ValidationCodes.Add(ValidationCodes.CEResetConditionNotSet);
-                //}
             }
             return _errorItems.ValidationCodes.Count == 0;
         }

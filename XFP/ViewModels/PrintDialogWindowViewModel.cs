@@ -63,9 +63,9 @@ namespace Xfp.ViewModels
         internal HotKeyList HotKeys { get => _hotKeys; set => _hotKeys = value; }
 
 
-        public void UpdateWindowParams(bool save = false) => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX, save);
+        public void UpdateWindowParams() => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX);
 
-        public void Close(Window window) { UpdateWindowParams(true); }
+        public void Close(Window window) => UpdateWindowParams();
 
 
         #region printer

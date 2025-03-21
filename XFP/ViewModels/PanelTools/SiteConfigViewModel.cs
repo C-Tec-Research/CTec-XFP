@@ -96,8 +96,8 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool AL2CodeIsValid           => validateAccessCode(AL2Code) && AL2Code.Length == PanelConfigData.AccessCodeLength;
         public bool AL3CodeIsValid           => validateAccessCode(AL3Code) && AL3Code.Length == PanelConfigData.AccessCodeLength;
-        public bool QuiescentStringIsValid   => QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
-        public bool MaintenanceStringIsValid => MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
+        public bool QuiescentStringIsValid   => !string.IsNullOrEmpty(QuiescentString)   && QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
+        public bool MaintenanceStringIsValid => !string.IsNullOrEmpty(MaintenanceString) && MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
 
 
         #region input validation

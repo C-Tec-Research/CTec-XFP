@@ -157,32 +157,32 @@ namespace Xfp.DataTypes.PanelData
             }
 
 
-            //legacy settings
-            var al2CodeErr = !ValidateAccessCode(AL2Code);
-            var al3CodeErr = !ValidateAccessCode(AL3Code);
+            //no need to validate legacy settings
+            //var al2CodeErr = !ValidateAccessCode(AL2Code);
+            //var al3CodeErr = !ValidateAccessCode(AL3Code);
 
-            if (al2CodeErr || al3CodeErr)
-            {
-                ConfigErrorPageItems accessCodeErrs = new(0, Cultures.Resources.Access_Codes);
-                if (al2CodeErr) accessCodeErrs.ValidationCodes.Add(ValidationCodes.SiteConfigAL2CodeError);
-                if (al3CodeErr) accessCodeErrs.ValidationCodes.Add(ValidationCodes.SiteConfigAL3CodeError);
-                _pageErrorOrWarningDetails.Items.Add(accessCodeErrs);
-            }
+            //if (al2CodeErr || al3CodeErr)
+            //{
+            //    ConfigErrorPageItems accessCodeErrs = new(0, Cultures.Resources.Access_Codes);
+            //    if (al2CodeErr) accessCodeErrs.ValidationCodes.Add(ValidationCodes.SiteConfigAL2CodeError);
+            //    if (al3CodeErr) accessCodeErrs.ValidationCodes.Add(ValidationCodes.SiteConfigAL3CodeError);
+            //    _pageErrorOrWarningDetails.Items.Add(accessCodeErrs);
+            //}
 
-            var quiescentStrBlank   = string.IsNullOrWhiteSpace(QuiescentString);
-            var maintStrBlank       = string.IsNullOrWhiteSpace(MaintenanceString);
-            var quiescentStrTooLong = QuiescentString?.Length   > PanelConfigData.MaxQuiescentStringLength;
-            var maintStrTooLong     = MaintenanceString?.Length > PanelConfigData.MaxMaintenanceStringLength;
+            //var quiescentStrBlank   = string.IsNullOrWhiteSpace(QuiescentString);
+            //var maintStrBlank       = string.IsNullOrWhiteSpace(MaintenanceString);
+            //var quiescentStrTooLong = QuiescentString?.Length   > PanelConfigData.MaxQuiescentStringLength;
+            //var maintStrTooLong     = MaintenanceString?.Length > PanelConfigData.MaxMaintenanceStringLength;
 
-            if (quiescentStrBlank || quiescentStrTooLong || maintStrBlank || maintStrTooLong)
-            {
-                ConfigErrorPageItems     deviceStrErrs = new(0, Cultures.Resources.Panel_Strings);
-                if (quiescentStrBlank)   deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigQuiescentStringBlank);
-                if (quiescentStrTooLong) deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigQuiescentStringTooLong);
-                if (maintStrBlank)       deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigMaintenanceStringBlank);
-                if (maintStrTooLong)     deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigMaintenanceStringTooLong);
-                _pageErrorOrWarningDetails.Items.Add(deviceStrErrs);
-            }
+            //if (quiescentStrBlank || quiescentStrTooLong || maintStrBlank || maintStrTooLong)
+            //{
+            //    ConfigErrorPageItems     deviceStrErrs = new(0, Cultures.Resources.Panel_Strings);
+            //    if (quiescentStrBlank)   deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigQuiescentStringBlank);
+            //    if (quiescentStrTooLong) deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigQuiescentStringTooLong);
+            //    if (maintStrBlank)       deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigMaintenanceStringBlank);
+            //    if (maintStrTooLong)     deviceStrErrs.ValidationCodes.Add(ValidationCodes.SiteConfigMaintenanceStringTooLong);
+            //    _pageErrorOrWarningDetails.Items.Add(deviceStrErrs);
+            //}
 
             return _pageErrorOrWarningDetails.Items.Count == 0;
         }
