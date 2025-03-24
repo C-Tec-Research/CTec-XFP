@@ -71,7 +71,7 @@ namespace Xfp.DataTypes.Printing
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
                     if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
                     if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
-                    if (printParams.PrintNetworkConfig) printNetworkConfig(doc);
+                    if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
                     if (printParams.PrintEventLog)      printEventLog(doc);
                     if (printParams.PrintComments)      printComments(doc);
                 }

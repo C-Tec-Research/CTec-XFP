@@ -30,34 +30,34 @@ namespace Xfp.DataTypes.PanelData
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
             for (int i = 0; i < _totalColumns; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto, MinWidth = 40 });
 
 
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(" ",  1, 0));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Name),       2, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Client_Address),    3, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Name),    2, 3, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installer_Address), 3, 3, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Postcode),          7, 3, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Tel),               8, 3, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(" ",  9, 0));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Installed_On),     10, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Commissioned_On),  11, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Name),    10, 3, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Engineer_Number),  11, 3, HorizontalAlignment.Right));
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, " ",  1, 0, false, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Client_Name),       2, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Client_Address),    3, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Postcode),          7, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Tel),               8, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Installer_Name),    2, 3, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Installer_Address), 3, 3, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Postcode),          7, 3, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Tel),               8, 3, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, " ",  9, 0, false, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Installed_On),     10, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Commissioned_On),  11, 0, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Engineer_Name),    10, 3, HorizontalAlignment.Right, false);
+            PrintUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Engineer_Number),  11, 3, HorizontalAlignment.Right, false);
             
-            grid.Children.Add(PrintUtil.GridCell("\t", 1, 2));
+            PrintUtil.AddCellToGrid(grid, "\t", 1, 2, false, false);
 
-            grid.Children.Add(PrintUtil.GridCell(SystemName, 0, 1, 1, 3, true));
+            PrintUtil.AddCellToGrid(grid, SystemName, 0, 1, true, string.IsNullOrWhiteSpace(SystemName));
             addAddress(grid, Client, 2, 1);
             addAddress(grid, Installer, 2, 4);
-            if (InstallDate is not null)    grid.Children.Add(PrintUtil.GridCell(InstallDate.Value.ToString("d"),    10, 1,true));
-            if (CommissionDate is not null) grid.Children.Add(PrintUtil.GridCell(CommissionDate.Value.ToString("d"), 11, 1, true));
-            grid.Children.Add(PrintUtil.GridCell(EngineerName, 10, 4, true));
-            grid.Children.Add(PrintUtil.GridCell(EngineerNo,   11, 4, true));
+            PrintUtil.AddCellToGrid(grid, InstallDate?.ToString("d"),    10, 1, true, InstallDate is null);
+            PrintUtil.AddCellToGrid(grid, CommissionDate?.ToString("d"), 11, 1, true, CommissionDate is null);
+            PrintUtil.AddCellToGrid(grid, EngineerName, 10, 4, true, string.IsNullOrWhiteSpace(EngineerName));
+            PrintUtil.AddCellToGrid(grid, EngineerNo,   11, 4, true, string.IsNullOrWhiteSpace(EngineerNo));
 
             return new(grid);
         }
@@ -65,12 +65,12 @@ namespace Xfp.DataTypes.PanelData
 
         private void addAddress(Grid grid, NameAndAddressData nad, int startRow, int col)
         {
-            grid.Children.Add(PrintUtil.GridCell(nad.Name, startRow++, col, true));
+            PrintUtil.AddCellToGrid(grid, nad.Name, startRow++, col, true, string.IsNullOrWhiteSpace(nad.Name));
             for (int i = 0; i < NameAndAddressData.NumAddressLines; i++)
-                grid.Children.Add(PrintUtil.GridCell(addressLine(nad.Address, i), startRow + i, col, true));
+                PrintUtil.AddCellToGrid(grid, addressLine(nad.Address, i), startRow + i, col, true, i == 0 && string.IsNullOrWhiteSpace(addressLine(nad.Address, i)));
             startRow += NameAndAddressData.NumAddressLines;
-            grid.Children.Add(PrintUtil.GridCell(nad.Postcode, startRow++, col, true));
-            grid.Children.Add(PrintUtil.GridCell(nad.Tel, startRow, col, true));
+            PrintUtil.AddCellToGrid(grid, nad.Postcode, startRow++, col, true, string.IsNullOrWhiteSpace(nad.Postcode));
+            PrintUtil.AddCellToGrid(grid, nad.Tel, startRow, col, true, string.IsNullOrWhiteSpace(nad.Tel));
         }
 
 

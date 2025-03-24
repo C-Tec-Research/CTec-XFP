@@ -47,6 +47,7 @@ namespace Xfp.DataTypes.PanelData
         private const int _totalTimerTimesColumns = 9;
         private const int _totalCEColumns = 15;
         private static SolidColorBrush _timerEventTimesUnderlineBrush = Application.Current.TryFindResource("Brush05") as SolidColorBrush;
+        private static SolidColorBrush _gridDividerBrush = Application.Current.TryFindResource("Brush08") as SolidColorBrush;
         private List<string> _actions;
         private List<string> _triggers;
         private List<string> _inputs;
@@ -125,17 +126,17 @@ namespace Xfp.DataTypes.PanelData
                 int col = 0;
 
                 //line number
-                grid.Children.Add(PrintUtil.GridCell(i + 1, row, col++, HorizontalAlignment.Right));
+                PrintUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
 
                 //action type
-                PrintUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, Events[i].ActionType < 0);
+                PrintUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
                 if (Events[i].ActionType == CEActionTypes.None)
                     continue;
 
                 //action parameter, if any
                 if (actionHasParam(Events[i].ActionType))
                 {
-                    PrintUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, Events[i].ActionParam < 0);
+                    PrintUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
                     if (Events[i].ActionParam < 0)
                         continue;
                 }
@@ -145,7 +146,7 @@ namespace Xfp.DataTypes.PanelData
                 }
                 
                 //action trigger
-                PrintUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
+                PrintUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
                 if (Events[i].TriggerType == CETriggerTypes.None)
                     continue;
 
@@ -155,15 +156,15 @@ namespace Xfp.DataTypes.PanelData
                     if (triggerHasParamPair(Events[i].TriggerType))
                     {
                         PrintUtil.AddCellToGrid(grid, paramDesc(Events[i].TriggerType), row, col++);
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), row, col++, Events[i].TriggerParam2 < 0, new(0,2,0,2));
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), row, col++, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0,2,0,2));
                         PrintUtil.AddCellToGrid(grid, Cultures.Resources.Logical_And, row, col++);
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col++, Events[i].TriggerParam < 0, new(0,2,0,2));
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col++, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0,2,0,2));
                         if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
                             continue;
                     }
                     else
                     {
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, 4, Events[i].TriggerParam < 0);
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, Events[i].TriggerParam < 0);
                         if (Events[i].TriggerParam < 0)
                             continue;
                         col += 4;
@@ -191,15 +192,15 @@ namespace Xfp.DataTypes.PanelData
                     if (triggerHasParamPair(Events[i].ResetType))
                     {
                         PrintUtil.AddCellToGrid(grid, paramDesc(Events[i].ResetType), row, col++);
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), row, col++, Events[i].ResetParam2 < 0, new(0,2,0,2));
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), row, col++, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new Thickness(0,2,0,2));
                         PrintUtil.AddCellToGrid(grid, Cultures.Resources.Logical_And, row, col++);
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col++, Events[i].ResetParam < 0, new(0,2,0,2));
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col++, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new Thickness(0,2,0,2));
                         if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
                             continue;
                     }
                     else
                     {
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, 1, 4, Events[i].ResetParam < 0);
+                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, false, Events[i].ResetParam < 0);
                         if (Events[i].ResetParam < 0)
                             continue;
                         col += 4;
@@ -214,7 +215,6 @@ namespace Xfp.DataTypes.PanelData
                 PrintUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
             }
 
-            var _gridDividerBrush = (SolidColorBrush)Application.Current.FindResource("Brush08");
             PrintUtil.AddBorderToGrid(grid, 1,3, NumEvents, 1, _gridDividerBrush, new(0.5, 0, 0, 0), new CornerRadius(0));
             PrintUtil.AddBorderToGrid(grid, 1,9, NumEvents, 1, _gridDividerBrush, new(0.5, 0, 0, 0), new CornerRadius(0));
             return new(grid);

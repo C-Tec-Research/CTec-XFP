@@ -9,11 +9,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="UI\Views\PanelTools\PanelConfig.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Update="Cultures\Resources.fr-FR.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -30,9 +25,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Views\MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\Views\PanelTools\PanelConfig.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
