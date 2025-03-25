@@ -2222,6 +2222,8 @@ namespace Xfp.ViewModels.PanelTools
                         d.DaySensitivity = d.NightSensitivity = DeviceConfigData.DefaultSensitivityHigh;
                     else if (d.IsSensitivityDevice)
                         d.DaySensitivity = d.NightSensitivity = DeviceConfigData.DefaultSensitivity;
+                    else if (d.IsVolumeDevice)
+                        d.DayVolume = d.NightVolume = DeviceConfigData.DefaultVolume;
 
                     d.RefreshView();
                 }

@@ -59,7 +59,7 @@ namespace Xfp.DataTypes.PanelData
 
             for (int i = 0; i < NetworkRepeaterData.NumRepeaters; i++)
             {
-                NetworkRepeaterItemData repeater = new() { Index = i, Name = String.Format(Cultures.Resources.Panel_x, i) };
+                NetworkRepeaterItemData repeater = new() { Index = i, Name = String.Format(Cultures.Resources.Panel_x, i + 1) };
                 repeater.PanelNameChanged = new((index, name) => result.PanelNameChanged?.Invoke(index, name));
                 result.RepeaterSettings.Repeaters.Add(repeater);
             }

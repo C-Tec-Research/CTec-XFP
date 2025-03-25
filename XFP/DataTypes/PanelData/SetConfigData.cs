@@ -17,9 +17,12 @@ namespace Xfp.DataTypes.PanelData
 
         public SetConfigData(SetConfigData original) : this()
         {
-            foreach (var s in original.Sets)
-                Sets.Add(new SetData(s));
-            DelayTimer = original.DelayTimer;
+            if (original is not null)
+            {
+                foreach (var s in original.Sets)
+                    Sets.Add(new SetData(s));
+                DelayTimer = original.DelayTimer;
+            }
         }
 
 

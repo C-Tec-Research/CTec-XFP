@@ -42,6 +42,7 @@ namespace Xfp.DataTypes.PanelData
         /// </summary>
         internal static int NumDevices = 255;
 
+        internal static int DefaultVolume = 3;
         internal static int MinSensitivity = 1;
         internal static int DefaultSensitivity = 3;
         internal static int MaxSensitivity = 5;

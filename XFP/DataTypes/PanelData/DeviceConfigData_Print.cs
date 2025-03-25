@@ -11,13 +11,16 @@ using System.Windows.Media.Media3D;
 using System.Windows.Media.Imaging;
 using Xfp.UI.ViewHelpers;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Xfp.DataTypes.PanelData
 {
     public partial class DeviceConfigData
     {
-        public void Print(FlowDocument doc, int panelNumber, bool printAllLoopDevices)
+        public void Print(FlowDocument doc, int panelNumber, bool printAllLoopDevices, LoopPrintOrder printOrder)
         {
+            _printOrder = printOrder;
             var devicePage = new Section();
             devicePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1)));
 
@@ -31,8 +34,9 @@ namespace Xfp.DataTypes.PanelData
 
         private int _totalColumns = 14;
         private int _ioSettingsColumns = 5;
-        private static SolidColorBrush _seeIoSettingsForeground = (SolidColorBrush)Application.Current.FindResource("BrushWarn");
-        private static SolidColorBrush _ioSubheaderBrush        = (SolidColorBrush)Application.Current.FindResource("Brush04");
+        private static SolidColorBrush _seeIoSettingsForeground = (SolidColorBrush)Application.Current.TryFindResource("BrushSeeIOPrint");
+        private static SolidColorBrush _ioSubheaderBrush        = (SolidColorBrush)Application.Current.TryFindResource("Brush01");
+        private LoopPrintOrder _printOrder;
 
 
         public BlockUIContainer deviceList(bool printAllLoopDevices)
@@ -43,7 +47,14 @@ namespace Xfp.DataTypes.PanelData
             int col;
             int dataRows = 0;
 
-            foreach (var d in Devices)
+            var deviceSort = new List<DeviceData>(Devices);
+
+            if (_printOrder == LoopPrintOrder.ByGroup)
+                deviceSort.Sort(compareByGroup);
+            else if (_printOrder == LoopPrintOrder.ByZone)
+                deviceSort.Sort(compareByZone);
+
+            foreach (var d in deviceSort)
             {
                 dataRows++;
                 col = 0;
@@ -71,13 +82,29 @@ namespace Xfp.DataTypes.PanelData
                     }
 
                     grid.Children.Add(PrintUtil.GridCell(GetDeviceName?.Invoke(d.NameIndex), row, col++));
-                    grid.Children.Add(PrintUtil.GridCell(d.IsVolumeDevice ? Cultures.Resources.Volume : Cultures.Resources.Sensitivity, row, col++));
-                    grid.Children.Add(PrintUtil.GridCell(string.Format("{0}:{1}", d.DaySensitivity ?? 0, d.NightSensitivity ?? 0), row, col++, HorizontalAlignment.Center));
+                    if (d.IsVolumeDevice)
+                    {
+                        grid.Children.Add(PrintUtil.GridCell(Cultures.Resources.Volume, row, col++));
+                        grid.Children.Add(PrintUtil.GridCell(string.Format("{0}:{1}", d.DayVolume, d.NightVolume ?? 0), row, col++, HorizontalAlignment.Center));
+                    }
+                    else if (d.IsSensitivityDevice)
+                    {
+                        grid.Children.Add(PrintUtil.GridCell(Cultures.Resources.Sensitivity, row, col++));
+                        grid.Children.Add(PrintUtil.GridCell(string.Format("{0}:{1}", d.DaySensitivity ?? 0, d.NightSensitivity ?? 0), row, col++, HorizontalAlignment.Center));
+                    }
+                    else
+                    {
+                        col += 2;
+                    }
 
                     if (DeviceTypes.CurrentProtocolIsXfpApollo)
                     {
                         grid.Children.Add(PrintUtil.GridCellBool(d.RemoteLEDEnabled ?? false, row, col++, false, false));
-                        grid.Children.Add(PrintUtil.GridCell(d.AncillaryBaseSounderGroup is null ? "--" : d.AncillaryBaseSounderGroup.Value.ToString(), row, col++));
+                        grid.Children.Add(PrintUtil.GridCell(d.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, d.AncillaryBaseSounderGroup.Value), row, col++));
+                    }
+                    else
+                    {
+                        col += 2;
                     }
 
                     if (d.IsIODevice)
@@ -103,11 +130,11 @@ namespace Xfp.DataTypes.PanelData
                                 var isGroup = d.IOConfig[i].InputOutput == CTecDevices.IOTypes.Output && d.IsGroupedDevice;
                                 var isSet   = d.IOConfig[i].InputOutput == CTecDevices.IOTypes.Output && !d.IsZonalDevice;
 
-                                grid.Children.Add(PrintUtil.GridCell(d.IOConfig[i].Index + 1,                                               ioRow, ioCol++));
-                                grid.Children.Add(PrintUtil.GridCell(CTecDevices.Enums.IOTypeToString(d.IOConfig[i].InputOutput),           ioRow, ioCol++));
-                                grid.Children.Add(PrintUtil.GridCell((d.IOConfig[i].Channel ?? 0) + 1,                                      ioRow, ioCol++));
+                                grid.Children.Add(PrintUtil.GridCell(d.IOConfig[i].Index + 1, ioRow, ioCol++));
+                                grid.Children.Add(PrintUtil.GridCell(CTecDevices.Enums.IOTypeToString(d.IOConfig[i].InputOutput), ioRow, ioCol++));
+                                grid.Children.Add(PrintUtil.GridCell((d.IOConfig[i].Channel ?? 0) + 1, ioRow, ioCol++));
                                 grid.Children.Add(PrintUtil.GridCell(zgsDescription(true, isGroup, isSet, (int)d.IOConfig[i].ZoneGroupSet), ioRow, ioCol++));
-                                grid.Children.Add(PrintUtil.GridCell(GetDeviceName?.Invoke(d.IOConfig[i].NameIndex),                        ioRow, ioCol++));
+                                grid.Children.Add(PrintUtil.GridCell(GetDeviceName?.Invoke(d.IOConfig[i].NameIndex), ioRow, ioCol++));
                                 ioRow++;
                             }
                         }
@@ -174,6 +201,31 @@ namespace Xfp.DataTypes.PanelData
                 return string.Format(Cultures.Resources.Set_x, value);
 
             return string.Format(Cultures.Resources.Zone_x, value);
+        }
+
+
+        private int compareByGroup(DeviceData d1, DeviceData d2)
+        {
+            var vd1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+            var vd2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+
+            if (!vd1 && !vd2) return 0;
+            if (!vd1) return 1;
+            if (!vd2) return -1;
+
+            return d1.Group.CompareTo(d2.Group);
+        }
+
+        private int c ompareByZone(DeviceData d1, DeviceData d2)
+        {
+            var vd1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+            var vd2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+
+            if (!vd1 && !vd2) return 0;
+            if (!vd1) return 1;
+            if (!vd2) return -1;
+
+            return d1.Zone.CompareTo(d2.Zone);
         }
     }
 }

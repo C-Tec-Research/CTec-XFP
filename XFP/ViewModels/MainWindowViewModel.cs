@@ -1048,7 +1048,7 @@ namespace Xfp.ViewModels
             catch (Exception ex)
             {
                 CTecUtil.Debug.WriteLine(EventLog.WriteError(ex.ToString()));
-                errorOpeningFile(Cultures.Resources.Product_Full_Name, TextFile.FilePath, ex.Message);
+                errorOpeningFile(Cultures.Resources.Product_Full_Name, TextFile.FilePath, ex);
                 PopulateView(savedData);
             }
             return false;
@@ -1644,6 +1644,7 @@ namespace Xfp.ViewModels
         private void errorUnknownFirmware(string version) => CTecMessageBox.ShowOKError(string.Format(Cultures.Resources.Error_Comms_Firmware_Unknown, version), Cultures.Resources.Panel_Comms);
         private void errorFirmwareVersionNotSupported(string version) => CTecMessageBox.ShowOKError(string.Format(Cultures.Resources.Error_Comms_Firmware_x_Not_Supported, version), Cultures.Resources.Panel_Comms);
         private void errorOpeningFile(string component, string filename, string reason = null) => CTecMessageBox.ShowOKError(Cultures.Resources.Error_Opening_File + "\n\n" + (!string.IsNullOrEmpty(reason) ? reason + "\n\n" : "") + filename, component);
+        private void errorOpeningFile(string component, string filename, Exception exception) => CTecMessageBox.ShowException(Cultures.Resources.Error_Opening_File + "\n\n" + filename, component, exception);
         private void errorInvalidData(string message, string type) => CTecMessageBox.ShowOKError(Cultures.Resources.Error_Opening_File + "\n\n" + message, Cultures.Resources.Product_Full_Name);
         private void errorCommsConnection(string message) => CTecMessageBox.ShowOKError(message, Cultures.Resources.Panel_Comms);
         #endregion

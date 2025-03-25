@@ -77,11 +77,11 @@ namespace Xfp.DataTypes.PanelData
         public int Index { get; set; }
         public int Zone { get; set; } = 0;
         public int Group { get; set; } = 0;
-        public int? DaySensitivity { get; set; } = 3;
-        public int? NightSensitivity { get; set; } = 3;
+        public int? DaySensitivity { get; set; }
+        public int? NightSensitivity { get; set; }
         public int DefaultSensitivity => IsSensitivityHighDevice ? DeviceConfigData.DefaultSensitivityHigh : DeviceConfigData.DefaultSensitivity;
-        public int? DayVolume { get; set; } = 3;
-        public int? NightVolume { get; set; } = 3;
+        public int? DayVolume { get; set; }
+        public int? NightVolume { get; set; }
         public int? DayMode { get; set; } = 1;
         public int? NightMode { get; set; } = 1;
         public List<IOSettingData> IOConfig { get; set; } = new();

@@ -89,13 +89,22 @@ namespace Xfp.UI.Views.PanelTools
         private void ctrl_PreviewKeyDown(object sender, KeyEventArgs e)                { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
         private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) { if (e.Command == ApplicationCommands.Paste) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
 
-        private void repeater1_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[0].Name = (sender as TextBox).Text; }
-        private void repeater2_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[1].Name = (sender as TextBox).Text; }
-        private void repeater3_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[2].Name = (sender as TextBox).Text; }
-        private void repeater4_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[3].Name = (sender as TextBox).Text; }
-        private void repeater5_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[4].Name = (sender as TextBox).Text; }
-        private void repeater6_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[5].Name = (sender as TextBox).Text; }
-        private void repeater7_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[6].Name = (sender as TextBox).Text; }
-        private void repeater8_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.Repeaters[7].Name = (sender as TextBox).Text; }
+        private void panelName1_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName2_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName3_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName4_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName5_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName6_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName7_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void panelName8_PreviewKeyDown(object sender, KeyEventArgs e) { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+
+        private void panelName1_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[0].Name = (sender as TextBox).Text;
+        private void panelName2_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[1].Name = (sender as TextBox).Text;
+        private void panelName3_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[2].Name = (sender as TextBox).Text;
+        private void panelName4_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[3].Name = (sender as TextBox).Text;
+        private void panelName5_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[4].Name = (sender as TextBox).Text;
+        private void panelName6_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[5].Name = (sender as TextBox).Text;
+        private void panelName7_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[6].Name = (sender as TextBox).Text;
+        private void panelName8_TextChanged(object sender, TextChangedEventArgs e) => _context.Repeaters[7].Name = (sender as TextBox).Text;
     }
 }

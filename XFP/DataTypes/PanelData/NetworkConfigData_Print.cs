@@ -4,6 +4,7 @@ using System.Windows.Documents;
 using CTecUtil.Printing;
 using System.Collections.Generic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Newtonsoft.Json.Linq;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -48,19 +49,22 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Location,   0, col++));
 
             for (int i = 0; i < NumPanelSettings; i++)
-                PrintUtil.AddCellToGrid(grid, i + 1.ToString(), i, 0, true);
-
-            var row = 1;
-            for (int i = 0; i < _data.Panels.Count; i++)
             {
-                XfpPanelData p;
-                if (_data.Panels.TryGetValue(i + 1, out p))
-                {
-                    PrintUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Name, i + 2, 1, true);
-                    PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(p.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, true, true));
-                    PrintUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, true);
-                }
+                PrintUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0, true);
+                PrintUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1, true);
+                PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, true));
+                PrintUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
             }
+
+            //for (int i = 0; i < _data.Panels.Count; i++)
+            //{
+            //    XfpPanelData p;
+            //    if (_data.Panels.TryGetValue(i + 1, out p))
+            //    {
+            //        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(p.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, false, true));
+            //        PrintUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, true);
+            //    }
+            //}
 
             return new(grid);
         }
@@ -100,10 +104,10 @@ namespace Xfp.DataTypes.PanelData
                 //if (_data.Panels.TryGetValue(i + 1, out p))
                 {
                     int col = i + 1;
-                    if (i == _panelNumber - 1)
+                    if (col == _panelNumber)
                     {
-                        for (row = 2; row < 5; row++)
-                            PrintUtil.AddCellToGrid(grid, "-", row++, col, HorizontalAlignment.Center, true);
+                        for (int j = 0; j < 5; j++)
+                            PrintUtil.AddCellToGrid(grid, "-", j + 2, col, HorizontalAlignment.Center, true);
                     }
                     else
                     {

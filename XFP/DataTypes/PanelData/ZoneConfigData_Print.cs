@@ -74,13 +74,31 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(PrintUtil.GridCellBool(z.Detectors, row, col++, false, false));
                 grid.Children.Add(PrintUtil.GridCellBool(z.MCPs,      row, col++, false, false));
                 grid.Children.Add(PrintUtil.GridCellBool(z.EndDelays, row, col++, false, false));
-                grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption), row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.AlarmReset,    row, col++, "ms", false, false, HorizontalAlignment.Center));
-                row++;
+                grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, HorizontalAlignment.Left));
+
+                if (z.Day.DependencyOption == ZoneDependencyOptions.A)
+                    grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
+                else
+                    grid.Children.Add(PrintUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+
+                if (z.Day.DependencyOption == ZoneDependencyOptions.A || z.Day.DependencyOption == ZoneDependencyOptions.B)
+                    grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, HorizontalAlignment.Center));
+                else
+                    grid.Children.Add(PrintUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+
+                grid.Children.Add(PrintUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption), row, col++, HorizontalAlignment.Left));
+
+                if (z.Night.DependencyOption == ZoneDependencyOptions.A)
+                    grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
+                else
+                    grid.Children.Add(PrintUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+
+                if (z.Night.DependencyOption == ZoneDependencyOptions.A || z.Night.DependencyOption == ZoneDependencyOptions.B)
+                    grid.Children.Add(PrintUtil.GridCellTimeSpan(z.Night.AlarmReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
+                else
+                    grid.Children.Add(PrintUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+
+                    row++;
             }
 
             foreach (var p in _zonePanelData.Panels)

@@ -21,13 +21,16 @@ namespace Xfp.DataTypes.PanelData
 
         public ZoneConfigData(ZoneConfigData original) : this()
         {
-            foreach (var z in original.Zones)
-                Zones.Add(new ZoneData(z));
-            foreach (var o in original.OutputSetIsSilenceable)
-                OutputSetIsSilenceable.Add(o);
-            foreach (var p in original.PanelRelayIsSilenceable)
-                PanelRelayIsSilenceable.Add(p);
-            //DelayTimer = original.DelayTimer;
+            if (original is not null)
+            {
+                foreach (var z in original.Zones)
+                    Zones.Add(new ZoneData(z));
+                foreach (var o in original.OutputSetIsSilenceable)
+                    OutputSetIsSilenceable.Add(o);
+                foreach (var p in original.PanelRelayIsSilenceable)
+                    PanelRelayIsSilenceable.Add(p);
+                //DelayTimer = original.DelayTimer;
+            }
         }
 
 
