@@ -43,7 +43,7 @@ namespace Xfp.DataTypes
 
         public bool PrintAllPanels     { get; set; }
         public bool PrintSelectedPanels{ get; set; }
-        public string PrintPanelRange    { get; set; }
+        public string PrintPanelRange  { get; set; }
         public bool PrintAllPages      { get; set; }
         public bool PrintCurrentPage   { get; set; }
         public bool PrintSiteConfig    { get; set; }

@@ -4076,12 +4076,12 @@ File XFPTools
       End Object
       Object Item( 4 )
         Device Type = 192
-        Zone = 1
+        Zone = 7
         Name = No name allocated
         Hint = 
         Group = 0
         Name Index = 0
-        Has Base Sounder = FALSE
+        Has Base Sounder = TRUE
         Type Changed = FALSE
         Array Shared Data
           Max = 7
@@ -4103,7 +4103,7 @@ File XFPTools
       End Object
       Object Item( 5 )
         Device Type = 28
-        Zone = 1
+        Zone = 2
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4157,7 +4157,7 @@ File XFPTools
       End Object
       Object Item( 7 )
         Device Type = 105
-        Zone = 1
+        Zone = 5
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4189,7 +4189,7 @@ File XFPTools
         Hint = 
         Group = 0
         Name Index = 0
-        Has Base Sounder = FALSE
+        Has Base Sounder = TRUE
         Type Changed = FALSE
         Array Shared Data
           Max = 7
@@ -4211,7 +4211,7 @@ File XFPTools
       End Object
       Object Item( 9 )
         Device Type = 248
-        Zone = 1
+        Zone = 32
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4265,7 +4265,7 @@ File XFPTools
       End Object
       Object Item( 11 )
         Device Type = 28
-        Zone = 1
+        Zone = 0
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4481,7 +4481,7 @@ File XFPTools
       End Object
       Object Item( 19 )
         Device Type = 63
-        Zone = 1
+        Zone = 4
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4616,7 +4616,7 @@ File XFPTools
       End Object
       Object Item( 24 )
         Device Type = 48
-        Zone = 1
+        Zone = 6
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4643,7 +4643,7 @@ File XFPTools
       End Object
       Object Item( 25 )
         Device Type = 49
-        Zone = 1
+        Zone = 16
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4670,7 +4670,7 @@ File XFPTools
       End Object
       Object Item( 26 )
         Device Type = 63
-        Zone = 1
+        Zone = 15
         Name = No name allocated
         Hint = 
         Group = 0
@@ -4697,7 +4697,7 @@ File XFPTools
       End Object
       Object Item( 27 )
         Device Type = 52
-        Zone = 1
+        Zone = 0
         Name = No name allocated
         Hint = 
         Group = 0
@@ -7504,17 +7504,17 @@ File XFPTools
         End Array
       End Object
       Object Item( 131 )
-        Device Type = 254
-        Zone = 10
+        Device Type = 4
+        Zone = 14
         Name = 
         Hint = 
-        Group = 0
+        Group = 1
         Name Index = 0
         Has Base Sounder = FALSE
         Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 138
+          Item( 0 ) = 0
           Item( 1 ) = 0
           Item( 2 ) = 7
           Item( 3 ) = 7
@@ -7612,17 +7612,17 @@ File XFPTools
         End Array
       End Object
       Object Item( 135 )
-        Device Type = 254
-        Zone = 3
-        Name = No name allocated
+        Device Type = 4
+        Zone = 6
+        Name = 
         Hint = 
-        Group = 0
+        Group = 1
         Name Index = 0
         Has Base Sounder = FALSE
         Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 3
+          Item( 0 ) = 0
           Item( 1 ) = 0
           Item( 2 ) = 7
           Item( 3 ) = 7

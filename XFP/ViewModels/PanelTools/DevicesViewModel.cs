@@ -873,7 +873,7 @@ namespace Xfp.ViewModels.PanelTools
             ByZone,
         }
 
-        public override bool PrintPage(XpsDocumentWriter documentWriter) => PrintPage(documentWriter, LoopPrintOrder.ByDevice);
+        public override bool PrintPage(XpsDocumentWriter documentWriter) => PrintPage(documentWriter, LoopPrintOrder.ByDeviceNumber);
         
         public bool PrintPage(XpsDocumentWriter documentWriter, LoopPrintOrder printOrder)
         {

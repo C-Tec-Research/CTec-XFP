@@ -49,6 +49,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
+        internal const int NumIOSettings = 4;
         internal const int NumSubNames = 3;
         internal const int NumIOSubaddresses = 4;
         internal const int NumIOChannels = 3;
@@ -67,7 +68,7 @@ namespace Xfp.DataTypes.PanelData
                 {
                     _deviceType = value;
                     IOConfig = new();
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < NumIOSettings; i++)
                         IOConfig.Add(new(i, value));
                 }
             }

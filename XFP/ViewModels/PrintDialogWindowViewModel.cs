@@ -42,7 +42,7 @@ namespace Xfp.ViewModels
             IsPortrait          = true;
             PrintCurrentPage    = true;
             PrintAllLoopDevices = false;
-            PrintOrderDevice    = true;
+            PrintOrderDeviceNumber    = true;
 
             if (_currentPage.DataContext is DevicesViewModel)
                 setCurrentPageToPrint();
@@ -134,9 +134,9 @@ namespace Xfp.ViewModels
         public bool PrintEventLog       { get => PrintParams.PrintEventLog;      set { PrintParams.PrintEventLog = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
 
         public bool PrintAllLoopDevices { get => PrintParams.PrintAllLoopDevices; set { PrintParams.PrintAllLoopDevices = value; OnPropertyChanged(); } }
-        public bool PrintOrderDevice    { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByDevice; set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByDevice; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderGroup)); OnPropertyChanged(nameof(PrintOrderZone)); } }
-        public bool PrintOrderGroup     { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByGroup;  set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByGroup; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderZone)); } }
-        public bool PrintOrderZone      { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByZone;   set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByZone; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDevice)); OnPropertyChanged(nameof(PrintOrderGroup)); } }
+        public bool PrintOrderDeviceNumber { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByDeviceNumber; set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByDeviceNumber; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDeviceType)); OnPropertyChanged(nameof(PrintOrderGroupZone)); } }
+        public bool PrintOrderDeviceType   { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByDeviceType;  set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByDeviceType; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDeviceNumber)); OnPropertyChanged(nameof(PrintOrderGroupZone)); } }
+        public bool PrintOrderGroupZone    { get => PrintParams.LoopPrintOrder == LoopPrintOrder.ByGroupZone;   set { PrintParams.LoopPrintOrder = LoopPrintOrder.ByGroupZone; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDeviceNumber)); OnPropertyChanged(nameof(PrintOrderDeviceType)); } }
 
 
         public bool CanPrint =>  SelectedPrinter is not null //&& (PrintAllPanels/* || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||*/)

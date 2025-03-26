@@ -177,15 +177,20 @@
                                 BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5" 
                                 IsEnabled="{Binding PrintLoopInfo}"
                                 Opacity="{Binding PrintLoopInfo, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                Margin="0,0,0,0" Padding="10,10,10,5">
+                                Margin="0,0,0,0" Padding="5,3,10,5">
                             <StackPanel Orientation="Vertical">
-                                <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" FontSize="13" Margin="0,0,0,0"/>
-                                <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices, Converter={StaticResource BoolToInverseConverter}}" FontSize="13" Margin="0,0,0,0"/>
-                                <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0.3" Margin="-5,5,-5,5"/>
-                                <TextBlock Text="{Binding Path=Print_Order_By, Source={StaticResource Resources}}"/>
-                                <RadioButton Content="{Binding Path=Print_Order_By_Device, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDevice}" FontSize="13" Margin="0,5,0,0"/>
-                                <RadioButton Content="{Binding Path=Print_Order_By_Group, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderGroup}" FontSize="13" Margin="0,0,0,0"/>
-                                <RadioButton Content="{Binding Path=Print_Order_By_Zone, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderZone}" FontSize="13" Margin="0,0,0,0"/>
+                                <TextBlock Text="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" FontStyle="Italic"/>
+                                <Border BorderBrush="{StaticResource Brush03}" BorderThickness="0,0.5,0,0" Margin="0,2,-5,5"/>
+                                
+                                <StackPanel Orientation="Vertical" Margin="10,7,0,0">
+                                    <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices, Converter={StaticResource BoolToInverseConverter}}" FontSize="13" Margin="0,0,0,0"/>
+                                    <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0.3" Margin="0,5,5,5"/>
+                                    <TextBlock Text="{Binding Path=Print_Order_By, Source={StaticResource Resources}}"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Number, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceNumber}" FontSize="13" Margin="0,5,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Type, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceType}" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Group_Zone_Set, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderGroupZone}" FontSize="13" Margin="0,0,0,0"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                     </WrapPanel>

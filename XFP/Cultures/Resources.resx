@@ -1832,14 +1832,14 @@ What do you want to do with the settings for panel {1}?</value>
   <data name="Print_Order_By" xml:space="preserve">
     <value>Order by:</value>
   </data>
-  <data name="Print_Order_By_Device" xml:space="preserve">
+  <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Device number</value>
   </data>
-  <data name="Print_Order_By_Group" xml:space="preserve">
-    <value>Group</value>
+  <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
+    <value>Group/zone/set</value>
   </data>
-  <data name="Print_Order_By_Zone" xml:space="preserve">
-    <value>Zone</value>
+  <data name="Print_Order_By_Device_Type" xml:space="preserve">
+    <value>Device type</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Properties</value>

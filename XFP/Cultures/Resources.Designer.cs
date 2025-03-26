@@ -3870,27 +3870,27 @@ namespace Xfp.Cultures {
         /// <summary>
         ///   Looks up a localized string similar to Device number.
         /// </summary>
-        public static string Print_Order_By_Device {
+        public static string Print_Order_By_Device_Number {
             get {
-                return ResourceManager.GetString("Print_Order_By_Device", resourceCulture);
+                return ResourceManager.GetString("Print_Order_By_Device_Number", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Group.
+        ///   Looks up a localized string similar to Device type.
         /// </summary>
-        public static string Print_Order_By_Group {
+        public static string Print_Order_By_Device_Type {
             get {
-                return ResourceManager.GetString("Print_Order_By_Group", resourceCulture);
+                return ResourceManager.GetString("Print_Order_By_Device_Type", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zone.
+        ///   Looks up a localized string similar to Group/zone/set.
         /// </summary>
-        public static string Print_Order_By_Zone {
+        public static string Print_Order_By_Group_Zone_Set {
             get {
-                return ResourceManager.GetString("Print_Order_By_Zone", resourceCulture);
+                return ResourceManager.GetString("Print_Order_By_Group_Zone_Set", resourceCulture);
             }
         }
         

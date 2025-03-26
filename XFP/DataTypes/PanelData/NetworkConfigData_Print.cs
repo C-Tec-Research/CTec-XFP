@@ -36,24 +36,24 @@ namespace Xfp.DataTypes.PanelData
             var grid = new Grid();
 
             for (int i = 0; i < NumPanelSettings + 1; i++)
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalTopColumns; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalTopColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalTopColumns, PrintUtil.GridHeaderBackground));
 
             int col = 1;
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Panel_Name, 0, col++));
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Fitted,     0, col++));
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Location,   0, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Name, 0, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Fitted,     0, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Location,   0, col++));
 
             for (int i = 0; i < NumPanelSettings; i++)
             {
-                PrintUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0, true);
-                PrintUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1, true);
-                PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, true));
-                PrintUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
+                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0, true);
+                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1, true);
+                GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, true));
+                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
             }
 
             //for (int i = 0; i < _data.Panels.Count; i++)
@@ -61,8 +61,8 @@ namespace Xfp.DataTypes.PanelData
             //    XfpPanelData p;
             //    if (_data.Panels.TryGetValue(i + 1, out p))
             //    {
-            //        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(p.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, false, true));
-            //        PrintUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, true);
+            //        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(p.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, false, true));
+            //        GridUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, true);
             //    }
             //}
 
@@ -75,28 +75,28 @@ namespace Xfp.DataTypes.PanelData
             var grid = new Grid();
 
             for (int i = 0; i < _totalBottomColumns; i++)
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < NumPanelSettings + 1; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                GridUtil.AddColumnToGrid(grid);
             
-            grid.Children.Add(PrintUtil.GridBackground(0, 0, 2, NumPanelSettings + 1, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 2, NumPanelSettings + 1, PrintUtil.GridHeaderBackground));
 
-            var panelHeader = PrintUtil.GridHeaderCell(string.Format(Cultures.Resources.Panel_x, _data.CurrentPanel.PanelNumber), 0, 0, 2, 1);
+            var panelHeader = GridUtil.GridHeaderCell(string.Format(Cultures.Resources.Panel_x, _data.CurrentPanel.PanelNumber), 0, 0, 2, 1);
             panelHeader.SetValue(Grid.VerticalAlignmentProperty, VerticalAlignment.Center);
             grid.Children.Add(panelHeader);
 
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Accepts_From_Panels, 0, 1, 1, NumPanelSettings));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Accepts_From_Panels, 0, 1, 1, NumPanelSettings));
 
             for (int i = 0; i < NumPanelSettings; i++)
-                PrintUtil.AddCellToGrid(grid, (i + 1).ToString(), 1, i + 1, HorizontalAlignment.Center, false);
+                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), 1, i + 1, HorizontalAlignment.Center, false);
 
             int row = 2;
-            PrintUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Faults,              row++, 0, HorizontalAlignment.Right, false);
-            PrintUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Alarms,              row++, 0, HorizontalAlignment.Right, false);
-            PrintUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Controls,            row++, 0, HorizontalAlignment.Right, false);
-            PrintUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Disablements,        row++, 0, HorizontalAlignment.Right, false);
-            PrintUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Occupied_Unoccupied, row++, 0, HorizontalAlignment.Right, false);
+            GridUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Faults,              row++, 0, HorizontalAlignment.Right, false);
+            GridUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Alarms,              row++, 0, HorizontalAlignment.Right, false);
+            GridUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Controls,            row++, 0, HorizontalAlignment.Right, false);
+            GridUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Disablements,        row++, 0, HorizontalAlignment.Right, false);
+            GridUtil.AddCellToGrid(grid, Cultures.Resources.Accepts_Occupied_Unoccupied, row++, 0, HorizontalAlignment.Right, false);
 
             for (int i = 0; i < NumPanelSettings; i++)
             {
@@ -107,19 +107,21 @@ namespace Xfp.DataTypes.PanelData
                     if (col == _panelNumber)
                     {
                         for (int j = 0; j < 5; j++)
-                            PrintUtil.AddCellToGrid(grid, "-", j + 2, col, HorizontalAlignment.Center, true);
+                            GridUtil.AddCellToGrid(grid, "-", j + 2, col, HorizontalAlignment.Center, true);
                     }
                     else
                     {
                         row = 2;
-                        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptFaults,       row++, col, 1, 1, true, true, HorizontalAlignment.Center));
-                        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptAlarms,       row++, col, 1, 1, true, true, HorizontalAlignment.Center));
-                        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptControls,     row++, col, 1, 1, true, true, HorizontalAlignment.Center));
-                        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptDisablements, row++, col, 1, 1, true, true, HorizontalAlignment.Center));
-                        PrintUtil.AddCellToGrid(grid, PrintUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptOccupied,     row++, col, 1, 1, true, true, HorizontalAlignment.Center));
+                        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptFaults,       row++, col, 1, 1, true, true, HorizontalAlignment.Center));
+                        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptAlarms,       row++, col, 1, 1, true, true, HorizontalAlignment.Center));
+                        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptControls,     row++, col, 1, 1, true, true, HorizontalAlignment.Center));
+                        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptDisablements, row++, col, 1, 1, true, true, HorizontalAlignment.Center));
+                        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.PanelSettings[i].AcceptOccupied,     row++, col, 1, 1, true, true, HorizontalAlignment.Center));
                     }
                 }
             }
+
+            GridUtil.AddRowToGrid(grid, 10);
 
             return new(grid);
         }

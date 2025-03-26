@@ -2097,8 +2097,8 @@ namespace Xfp.ViewModels
         {
             UIState.SetBusyState();
 
-            if (CurrentProtocol != _data?.CurrentPanel?.Protocol)
-                changeProtocol(data.CurrentPanel.Protocol, false);
+            //if (CurrentProtocol != _data?.CurrentPanel?.Protocol)
+            //    changeProtocol(data.CurrentPanel.Protocol, false);
             
             _data = data;
 

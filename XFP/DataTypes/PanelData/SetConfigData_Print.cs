@@ -63,12 +63,12 @@ namespace Xfp.DataTypes.PanelData
         {
             var grid = new Grid();
 
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddColumnToGrid(grid);
+            GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(PrintUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
-            grid.Children.Add(PrintUtil.GridCellTimeSpan(DelayTimer, 0, 1, "ms", true, true, HorizontalAlignment.Left));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
+            grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, "ms", true, true, HorizontalAlignment.Left));
 
             return new(grid);
         }
@@ -80,25 +80,25 @@ namespace Xfp.DataTypes.PanelData
 
             //add the rows for the data
             for (int i = 0; i < _data.ZoneConfig.Zones.Count + _data.ZonePanelConfig.Panels.Count; i++)
-                    grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                    GridUtil.AddRowToGrid(grid);
 
             int row = 4;
 
             //zone & panel names
             for (int z = 0; z < _data.ZoneConfig.Zones.Count; z++)
             {
-                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
 
-                grid.Children.Add(PrintUtil.GridCell(_data.ZoneConfig.Zones[z].Number, row, 0, HorizontalAlignment.Right));
-                grid.Children.Add(PrintUtil.GridCell(_data.ZoneConfig.Zones[z].Name,   row++, 1));
+                grid.Children.Add(GridUtil.GridCell(_data.ZoneConfig.Zones[z].Number, row, 0, HorizontalAlignment.Right));
+                grid.Children.Add(GridUtil.GridCell(_data.ZoneConfig.Zones[z].Name,   row++, 1));
             }
 
             for (int p = 0; p < _data.ZonePanelConfig.Panels.Count; p++)
             {
-                grid.Children.Add(PrintUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
 
-                grid.Children.Add(PrintUtil.GridCell(_data.ZonePanelConfig.Panels[p].Number, row, 0, HorizontalAlignment.Right));
-                grid.Children.Add(PrintUtil.GridCell(_data.ZonePanelConfig.Panels[p].Name,   row++, 1));
+                grid.Children.Add(GridUtil.GridCell(_data.ZonePanelConfig.Panels[p].Number, row, 0, HorizontalAlignment.Right));
+                grid.Children.Add(GridUtil.GridCell(_data.ZonePanelConfig.Panels[p].Name,   row++, 1));
             }
 
 
@@ -107,10 +107,10 @@ namespace Xfp.DataTypes.PanelData
 
             //Silenceable sets
             for (int t = 0; t < NumOutputSetTriggers; t++)
-                grid.Children.Add(PrintUtil.GridCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], row, col++, true, true));
+                grid.Children.Add(GridUtil.GridCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], row, col++, true, true));
             col++;
             for (int t = 0; t < NumPanelRelayTriggers; t++)
-                grid.Children.Add(PrintUtil.GridCellBool(_data.ZoneConfig.PanelRelayIsSilenceable[t], row, col++, true, true));
+                grid.Children.Add(GridUtil.GridCellBool(_data.ZoneConfig.PanelRelayIsSilenceable[t], row, col++, true, true));
 
             row++;
 
@@ -122,13 +122,15 @@ namespace Xfp.DataTypes.PanelData
                 for (int t = 0; t < NumOutputSetTriggers; t++)
                     grid.Children.Add(GridCellTriggerIcon(Sets[s].OutputSetTriggers[t], row, col++));
                 
-                grid.Children.Add(PrintUtil.GridBackground(row, col++, 1, 1, _columnSeparatorBrush));
+                grid.Children.Add(GridUtil.GridBackground(row, col++, 1, 1, _columnSeparatorBrush));
 
                 for (int t = 0; t < NumPanelRelayTriggers; t++)
                     grid.Children.Add(GridCellTriggerIcon(Sets[s].PanelRelayTriggers[t], row, col++));
 
                 row++;
             }
+
+            GridUtil.AddRowToGrid(grid, 10);
 
             return new(grid);
         }
@@ -138,59 +140,59 @@ namespace Xfp.DataTypes.PanelData
         {
             Grid grid = new Grid();
 
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(7) });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddRowToGrid(grid, 7);
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < Sets.Count; i++)
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                GridUtil.AddRowToGrid(grid);
             
             for (int i = 0; i < _setIdColumns; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                GridUtil.AddColumnToGrid(grid);
 
             for (int i = 0; i < NumOutputSetTriggers; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(18) });
+                GridUtil.AddColumnToGrid(grid, 18);
             
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(8) });
+            GridUtil.AddColumnToGrid(grid, 8);
             
             for (int i = 0; i < NumPanelRelayTriggers; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(18) });
-
+                GridUtil.AddColumnToGrid(grid, 18);
+ 
 
             //header backgrounds
-            grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(PrintUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(PrintUtil.GridBackground(2, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(PrintUtil.GridBackground(3, 0, 1, _totalColumns, _silenceableSetsBrush));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(2, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(3, 0, 1, _totalColumns, _silenceableSetsBrush));
 
 
             //header text
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
-            PrintUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
 
-            grid.Children.Add(PrintUtil.SetForeground(PrintUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
-            PrintUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
+            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
             
 
             //set numbers
             int col = _setIdColumns;
             for (int i = 0; i < NumSounderGroups; i++)
-                grid.Children.Add(PrintUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center));
             col++;
             for (int i = 0; i < NumPanelRelayTriggers; i++)
-                grid.Children.Add(PrintUtil.SetForeground(PrintUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center), _panelRelayHeaderBrush));
+                grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center), _panelRelayHeaderBrush));
 
             
             //zone Num and name
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Zone, 3, 0, 1, 2));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone, 3, 0, 1, 2));
             
             
             //Is set silenceable label
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell("← ", 3, _totalColumns, HorizontalAlignment.Left, 16, FontStyles.Normal), new(3,-2,0,0)));
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(Cultures.Resources.Is_Set_Silenceable, 3, _totalColumns + 1), new(0,2,0,2)));
+            GridUtil.AddColumnToGrid(grid);
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell("← ", 3, _totalColumns, HorizontalAlignment.Left, 16, FontStyles.Normal), new(3,-2,0,0)));
+            GridUtil.AddColumnToGrid(grid);
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Is_Set_Silenceable, 3, _totalColumns + 1), new(0,2,0,2)));
 
             return grid;
         }

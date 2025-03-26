@@ -279,9 +279,9 @@
 
     public enum LoopPrintOrder
     {
-        ByDevice, 
-        ByGroup, 
-        ByZone 
+        ByDeviceNumber, 
+        ByDeviceType, 
+        ByGroupZone 
     };
 
 }

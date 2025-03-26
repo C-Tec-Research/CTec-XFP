@@ -82,8 +82,12 @@ namespace Xfp.DataTypes.Printing
                 switch (printAction)
                 {
                     case CTecUtil.PrintActions.Print: 
-                        IDocumentPaginatorSource idpSource = doc;
-                        printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
+                        //IDocumentPaginatorSource idpSource = doc;
+                        //printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
+
+                        DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
+                        paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
+                        printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
                         break;
 
                     case CTecUtil.PrintActions.Preview: 

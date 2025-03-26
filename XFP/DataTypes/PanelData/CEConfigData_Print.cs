@@ -89,24 +89,29 @@ namespace Xfp.DataTypes.PanelData
             var grid = new Grid();
 
             for (int i = 0; i < 7; i++)
-                grid.RowDefinitions.Add(new RowDefinition() { Height = i == 4 ? new GridLength(5) : GridLength.Auto });
+            {
+                if (i == 4)
+                    GridUtil.AddRowToGrid(grid, 5);
+                else
+                    GridUtil.AddRowToGrid(grid);
+            }
 
             for (int i = 0; i < _totalTimerTimesColumns; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(PrintUtil.GridCell(Cultures.Resources.Timer_Event_Times, 0, 0, 1, _totalTimerTimesColumns, true));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Timer_Event_Times, 0, 0, 1, _totalTimerTimesColumns, true));
 
-            PrintUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 0, 0, 0.5), new CornerRadius(0));
+            GridUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 0, 0, 0.5), new CornerRadius(0));
 
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(Cultures.Resources.Timer_Event, 5, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(Cultures.Resources.Occurs_At,   7, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 5, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   7, 0), new(3, 2, 10, 2)));
 
             for (int i = 0; i < 16; i++)
             {
-                grid.Children.Add(PrintUtil.SetMargin(PrintUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, HorizontalAlignment.Center), new(10, 2, 10, 2)));
-                grid.Children.Add(PrintUtil.GridCellTimeSpan(TimerEventTimes[i],                                            3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, HorizontalAlignment.Center), new(10, 2, 10, 2)));
+                grid.Children.Add(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                                            3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
             }
 
             return new(grid);
@@ -120,23 +125,23 @@ namespace Xfp.DataTypes.PanelData
             //add the rows for the data
             for (int i = 0; i < NumEvents; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                GridUtil.AddRowToGrid(grid);
 
                 int row = i + 1;
                 int col = 0;
 
                 //line number
-                PrintUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
+                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
 
                 //action type
-                PrintUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
+                GridUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
                 if (Events[i].ActionType == CEActionTypes.None)
                     continue;
 
                 //action parameter, if any
                 if (actionHasParam(Events[i].ActionType))
                 {
-                    PrintUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
+                    GridUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
                     if (Events[i].ActionParam < 0)
                         continue;
                 }
@@ -146,11 +151,11 @@ namespace Xfp.DataTypes.PanelData
                 }
                 
 
-                grid.Children.Add(PrintUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
+                grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
 
                 //action trigger
-                PrintUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
+                GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
                 if (Events[i].TriggerType == CETriggerTypes.None)
                     continue;
 
@@ -160,23 +165,24 @@ namespace Xfp.DataTypes.PanelData
                     if (triggerHasParamPair(Events[i].TriggerType))
                     {
                         Grid paramGrid = new();
-                        paramGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                        GridUtil.AddRowToGrid(paramGrid);
                         for (int c = 0; c < 4; c++)
-                            paramGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-                        PrintUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
-                        PrintUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
-                        PrintUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                        PrintUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
+                            GridUtil.AddColumnToGrid(paramGrid);
+
+                        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
+                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
+                        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
                         paramGrid.SetValue(Grid.RowProperty, row);
                         paramGrid.SetValue(Grid.ColumnProperty, col++);
-                        PrintUtil.AddCellToGrid(grid, paramGrid);
+                        GridUtil.AddCellToGrid(grid, paramGrid);
 
                         if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
                             continue;
                     }
                     else
                     {
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
+                        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
                         if (Events[i].TriggerParam < 0)
                             continue;
                         col++;
@@ -188,15 +194,15 @@ namespace Xfp.DataTypes.PanelData
                 }
 
                 //trigger condition
-                PrintUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
+                GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
 
 
-                grid.Children.Add(PrintUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
+                grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
                 
                 //reset trigger
                 var noTrigger = Events[i].ResetType == CETriggerTypes.None;
-                PrintUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
+                GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
                 if (noTrigger)
                     continue;
 
@@ -206,22 +212,22 @@ namespace Xfp.DataTypes.PanelData
                     if (triggerHasParamPair(Events[i].ResetType))
                     {
                         Grid paramGrid = new();
-                        paramGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                        GridUtil.AddRowToGrid(paramGrid);
                         for (int c = 0; c < 4; c++)
-                            paramGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-                        PrintUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
-                        PrintUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
-                        PrintUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                        PrintUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
+                            GridUtil.AddColumnToGrid(paramGrid);
+                        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
+                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
+                        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
                         paramGrid.SetValue(Grid.RowProperty, row);
                         paramGrid.SetValue(Grid.ColumnProperty, col++);
-                        PrintUtil.AddCellToGrid(grid, paramGrid);
+                        GridUtil.AddCellToGrid(grid, paramGrid);
                         if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
                             continue;
                     }
                     else
                     {
-                        PrintUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col++, false, Events[i].ResetParam < 0);
+                        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col++, false, Events[i].ResetParam < 0);
                         if (Events[i].ResetParam < 0)
                             continue;
                     }
@@ -232,11 +238,11 @@ namespace Xfp.DataTypes.PanelData
                 }
 
                 //reset condition
-                PrintUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
+                GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
             }
 
-            //PrintUtil.AddBorderToGrid(grid, 1,3, NumEvents, 1, _gridDividerBrush, new(0.5, 0, 0, 0), new CornerRadius(0));
-            //PrintUtil.AddBorderToGrid(grid, 1,9, NumEvents, 1, _gridDividerBrush, new(0.5, 0, 0, 0), new CornerRadius(0));
+            GridUtil.AddRowToGrid(grid, 10);
+
             return new(grid);
         }
 
@@ -245,22 +251,27 @@ namespace Xfp.DataTypes.PanelData
         {
             Grid grid = new Grid();
 
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < CEConfigData.NumEvents; i++)
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalCEColumns; i++)
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = i == 3  || i == 7 ? new GridLength(2) : GridLength.Auto });
+            {
+                if (i == 3  || i == 7)
+                    GridUtil.AddColumnToGrid(grid, 2);
+                else
+                    GridUtil.AddColumnToGrid(grid);
+            }
 
             //header background
-            grid.Children.Add(PrintUtil.GridBackground(0, 0, 1, _totalCEColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalCEColumns, PrintUtil.GridHeaderBackground));
 
             //header text
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Number_Symbol, 0, 0, HorizontalAlignment.Right));
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Action,        0, 1, 1, 2));
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Occurs_When,   0, 3, 1, 3));
-            grid.Children.Add(PrintUtil.GridHeaderCell(Cultures.Resources.Resets_When,   0, 8, 1, 3));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Number_Symbol, 0, 0, HorizontalAlignment.Right));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Action,        0, 1, 1, 2));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Occurs_When,   0, 3, 1, 3));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Resets_When,   0, 8, 1, 3));
 
             return grid;
         }

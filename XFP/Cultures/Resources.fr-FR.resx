@@ -1821,14 +1821,14 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   <data name="Print_Order_By" xml:space="preserve">
     <value>Trier par :</value>
   </data>
-  <data name="Print_Order_By_Device" xml:space="preserve">
+  <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Numéro de l’appareil</value>
   </data>
-  <data name="Print_Order_By_Group" xml:space="preserve">
-    <value>Groupe</value>
+  <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
+    <value>Groupe/zone/ensemble</value>
   </data>
-  <data name="Print_Order_By_Zone" xml:space="preserve">
-    <value>Zone</value>
+  <data name="Print_Order_By_Device_Type" xml:space="preserve">
+    <value>Type d'appareil</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Propriétés</value>
