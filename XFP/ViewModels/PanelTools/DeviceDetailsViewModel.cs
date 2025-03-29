@@ -35,15 +35,18 @@ namespace Xfp.ViewModels.PanelTools
     {
         public DeviceDetailsViewModel(FrameworkElement parent, DeviceInfoPanel infoPanel, DataGrid loop1Grid, DataGrid loop2Grid) : base(parent, infoPanel)
         {
-            _infoPanelViewModel.DisplayShowFittedDevicesOnlyOption = true;
-            _infoPanelViewModel.OnShowFittedDeviceChange = new((show) => { ShowOnlyFittedDevices = show; });
+            if (_infoPanelViewModel is not null)
+            {
+                _infoPanelViewModel.DisplayShowFittedDevicesOnlyOption = true;
+                _infoPanelViewModel.OnShowFittedDeviceChange = new((show) => { ShowOnlyFittedDevices = show; });
+            }
             LoopChanged += changeLoop;
         }
 
 
         private void changeLoop(int loop)
         {
-            _infoPanelViewModel.PopulateView(_data);
+            _infoPanelViewModel?.PopulateView(_data);
         }
 
 
@@ -106,7 +109,8 @@ namespace Xfp.ViewModels.PanelTools
                     UIState.SetBusyState();
                     _loopNum = value;
                     LoopChanged?.Invoke(_loopNum);
-                    _infoPanelViewModel.DeviceList = value == 2 ? _loop2SelectedItems : _loop1SelectedItems;
+                    if (_infoPanelViewModel is not null)
+                        _infoPanelViewModel.DeviceList = value == 2 ? _loop2SelectedItems : _loop1SelectedItems;
                     RefreshView();
                 }
             }
@@ -119,7 +123,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region ConfigToolsPageViewModelBase overrides
-        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) => _infoPanelViewModel.SetChangesAreAllowedChecker(checker);
+        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) => _infoPanelViewModel?.SetChangesAreAllowedChecker(checker);
         #endregion
 
 

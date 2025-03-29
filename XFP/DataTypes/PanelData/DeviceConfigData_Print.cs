@@ -200,7 +200,7 @@ namespace Xfp.DataTypes.PanelData
             if (isGroupedDevice)
                 return string.Format(Cultures.Resources.Group_x, value);
 
-            if (!isIODevice && isSetDevice) 
+            if (isIODevice && isSetDevice) 
                 return string.Format(Cultures.Resources.Set_x, value);
 
             return string.Format(Cultures.Resources.Zone_x, value);
@@ -209,24 +209,24 @@ namespace Xfp.DataTypes.PanelData
 
         private int compareByDeviceType(DeviceData d1, DeviceData d2)
         {
-            var vd1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
-            var vd2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+            var validD1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+            var validD2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
 
-            if (!vd1 && !vd2) return 0;
-            if (!vd1) return 1;
-            if (!vd2) return -1;
+            if (!validD1 && !validD2) return d1.Index.CompareTo(d2.Index);
+            if (!validD1) return 1;
+            if (!validD2) return -1;
 
             return DeviceTypes.DeviceTypeName(d1.DeviceType, DeviceTypes.CurrentProtocolType).CompareTo(DeviceTypes.DeviceTypeName(d2.DeviceType, DeviceTypes.CurrentProtocolType));
         }
 
         private int compareByZoneGroupSet(DeviceData d1, DeviceData d2)
         {
-            var vd1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
-            var vd2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+            var validD1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+            var validD2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
 
-            if (!vd1 && !vd2) return 0;
-            if (!vd1) return 1;
-            if (!vd2) return -1;
+            if (!validD1 && !validD2) return d1.Index.CompareTo(d2.Index);
+            if (!validD1) return 1;
+            if (!validD2) return -1;
 
             if (d1.IsGroupedDevice && d2.IsGroupedDevice) return d1.Group.CompareTo(d2.Group);
             if (d1.IsZonalDevice   && d2.IsZonalDevice)   return d1.Zone.CompareTo(d2.Zone);

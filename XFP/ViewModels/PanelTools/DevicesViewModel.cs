@@ -34,11 +34,13 @@ namespace Xfp.ViewModels.PanelTools
     {
         public DevicesViewModel(FrameworkElement parent, DeviceInfoPanel infoPanel, int loopNum = 1) : base(parent)
         {
-            _infoPanelViewModel = infoPanel.DataContext as DeviceInfoPanelViewModel;
-            _infoPanelViewModel.DisplayShowFittedDevicesOnlyOption = false;
-           // DeviceNames = DeviceNamesConfigData.InitialisedNew();
-            _infoPanelViewModel.GetDeviceName = getDeviceName;
-            _infoPanelViewModel.SetDeviceName = setDeviceName;
+            if (infoPanel is not null)
+            {
+                _infoPanelViewModel = infoPanel.DataContext as DeviceInfoPanelViewModel;
+                _infoPanelViewModel.DisplayShowFittedDevicesOnlyOption = false;
+                _infoPanelViewModel.GetDeviceName = getDeviceName;
+                _infoPanelViewModel.SetDeviceName = setDeviceName;
+            }
 
             DeviceConfigData.GetDeviceName = getDeviceName;
 
@@ -61,7 +63,7 @@ namespace Xfp.ViewModels.PanelTools
         
         //internal DeviceNamesConfigData DeviceNames;
 
-        public override bool DebugMode { get => base.DebugMode; set { base.DebugMode = _infoPanelViewModel.DebugMode = value; } }
+        public override bool DebugMode { get => base.DebugMode; set { base.DebugMode = value; if (_infoPanelViewModel is not null) _infoPanelViewModel.DebugMode = value; } }
 
 
         #region loop
@@ -133,7 +135,8 @@ namespace Xfp.ViewModels.PanelTools
                     if (item is not null)
                         _loop2SelectedItems.Add(item as DeviceItemViewModel);
 
-                _infoPanelViewModel.DeviceList = _loop2SelectedItems;
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = _loop2SelectedItems;
             }
             else
             {
@@ -142,17 +145,19 @@ namespace Xfp.ViewModels.PanelTools
                     if (item is not null)
                         _loop1SelectedItems.Add(item as DeviceItemViewModel);
 
-                _infoPanelViewModel.DeviceList = _loop1SelectedItems;
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = _loop1SelectedItems;
             }
         }
 
 
         public int? DeviceSelectorDeviceType
         {
-            get => _infoPanelViewModel.DeviceSelectorDeviceType;
+            get => _infoPanelViewModel?.DeviceSelectorDeviceType;
             set
             {
-                _infoPanelViewModel.DeviceSelectorDeviceType = value;
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceSelectorDeviceType = value;
                 foreach (var d in Loop1)
                     d.DeviceSelectorDeviceType = value;
                 foreach (var d in Loop2)
@@ -161,8 +166,8 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        public void ChangeDeviceType(int? deviceType) => _infoPanelViewModel.ChangeDeviceType(deviceType);
-        public void DeleteDevices() => _infoPanelViewModel.DeleteDevices();
+        public void ChangeDeviceType(int? deviceType) => _infoPanelViewModel?.ChangeDeviceType(deviceType);
+        public void DeleteDevices() => _infoPanelViewModel?.DeleteDevices();
 
 
         public void MovePrev(ListView list) { if (movePrev() is DeviceItemViewModel z) list.ScrollIntoView(z); }
@@ -182,7 +187,8 @@ namespace Xfp.ViewModels.PanelTools
                                   select d)
                     firstIndex = d.Index;
                 newSelectedDev = Loop1[firstIndex > 0 ? firstIndex - 1 : Loop1.Count - 1];
-                _infoPanelViewModel.DeviceList = new() { newSelectedDev };
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;
             }
             else
@@ -195,7 +201,8 @@ namespace Xfp.ViewModels.PanelTools
                                   select d)
                     firstIndex = d.Index;
                 newSelectedDev = Loop2[firstIndex > 0 ? firstIndex - 1 : Loop2.Count - 1];
-                _infoPanelViewModel.DeviceList = new() { newSelectedDev };
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;
             }
 
@@ -215,7 +222,8 @@ namespace Xfp.ViewModels.PanelTools
                                   select d)
                     lastIndex = d.Index;
                 var newSelectedDev = Loop1[lastIndex < Loop1.Count - 1 ? lastIndex + 1 : 0];
-                _infoPanelViewModel.DeviceList = new() { newSelectedDev };
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;
                 RefreshView();
                 return newSelectedDev;
@@ -230,7 +238,8 @@ namespace Xfp.ViewModels.PanelTools
                                   select d)
                     lastIndex = d.Index;
                 var newSelectedDev = Loop2[lastIndex < Loop2.Count - 1 ? lastIndex + 1 : 0];
-                _infoPanelViewModel.DeviceList = new() { newSelectedDev };
+                if (_infoPanelViewModel is not null)
+                    _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;
                 RefreshView();
                 return newSelectedDev;
@@ -432,13 +441,13 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region ConfigToolsPageViewModelBase overrides
-        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) => _infoPanelViewModel.SetChangesAreAllowedChecker(CheckChangesAreAllowed = checker);
+        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) => _infoPanelViewModel?.SetChangesAreAllowedChecker(CheckChangesAreAllowed = checker);
 
 
         public override bool IsReadOnly
         {
-            get => base.IsReadOnly; 
-            set => _infoPanelViewModel.IsReadOnly = base.IsReadOnly = value;
+            get => base.IsReadOnly;
+            set { if (_infoPanelViewModel is not null) _infoPanelViewModel.IsReadOnly = base.IsReadOnly = value; }
         }
         #endregion
 
@@ -459,7 +468,8 @@ namespace Xfp.ViewModels.PanelTools
                 d.SetCulture(culture);
             foreach (var d in Loop2)
                 d.SetCulture(culture);
-            _infoPanelViewModel.SetCulture(culture);
+            if (_infoPanelViewModel is not null)
+                _infoPanelViewModel.SetCulture(culture);
             InitMenu?.Invoke(DeviceSelectorSettings.Menu);
             CultureChanged?.Invoke(culture);
             //SelectedItem = save;
@@ -523,7 +533,7 @@ namespace Xfp.ViewModels.PanelTools
                 if (LoopNum > NumLoops)
                     LoopNum = NumLoops;
 
-            _infoPanelViewModel.PopulateView(data);
+            _infoPanelViewModel?.PopulateView(data);
 
             RefreshView();
         }
@@ -543,7 +553,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(LoopNumberDesc));
             OnPropertyChanged(nameof(IsReadOnly));
 
-            _infoPanelViewModel.RefreshView();
+            _infoPanelViewModel?.RefreshView();
 
             foreach (var d in CurrentLoop)
                 d.RefreshView();
