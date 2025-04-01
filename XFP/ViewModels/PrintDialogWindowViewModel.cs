@@ -69,7 +69,7 @@ namespace Xfp.ViewModels
 
 
         #region printer
-        private System.Drawing.Printing.PrinterSettings _printerSettings = new();
+        private static System.Drawing.Printing.PrinterSettings _printerSettings = new();
         private bool _printerListIsOpen;
         private bool _printIsOpen;
 
@@ -88,7 +88,8 @@ namespace Xfp.ViewModels
 
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen; set { _printerListIsOpen = value; OnPropertyChanged(); } }
-        public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
+        //public string SelectedPrinter   { get => _printerSettings.PrinterName; set { _printerSettings.PrinterName = value; OnPropertyChanged(); PrinterListIsOpen = false; } }
+        public string SelectedPrinter   { get => PrintParams.PrintQueue.Name; set { PrintParams.SetPrinter(value); OnPropertyChanged(); PrinterListIsOpen = false; } }
 
         public PrintQueueStatus PrinterStatus => new LocalPrintServer().GetPrintQueue(SelectedPrinter).QueueStatus;
 

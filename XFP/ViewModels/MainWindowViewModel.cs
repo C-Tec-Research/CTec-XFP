@@ -1357,7 +1357,7 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        #region Print pop-up
+        #region Print dialog
         private void showPrintOptions()
         {
             UIState.SetBusyState();
@@ -1372,11 +1372,14 @@ namespace Xfp.ViewModels
             }
             finally
             {
-                MainWindowEnabled = true; 
+                MainWindowEnabled = true;
             }
 
             if (result == true)
+            {
+                var p = printDialog.PrintQueue;
                 XfpPrinting.PrintConfig(_data, printDialog.PrintParams, PrintActions.Print);
+            }
         }
 
         internal void PrintPreview() { }

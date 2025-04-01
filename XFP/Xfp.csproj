@@ -68,7 +68,6 @@
     <ProjectReference Include="..\..\CTecDevices\CTecDevices.csproj" />
     <ProjectReference Include="..\..\CTecFtdi\CTecFtdi.csproj" />
     <ProjectReference Include="..\..\CTecUtil\CTecUtil.csproj" />
-    <ProjectReference Include="..\..\SimpleWPFReporting-master\SimpleWPFReporting\SimpleWPFReporting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -50,6 +50,7 @@ namespace Xfp.UI.Views
 
 
         public PrintParameters PrintParams => _context.PrintParams;
+        public PrintQueue      PrintQueue  => _context.Queue;
 
 
         private PrintDialogWindowViewModel _context;
@@ -134,7 +135,7 @@ namespace Xfp.UI.Views
         private void window_Loaded(object sender, RoutedEventArgs e) => _isOpen = true;
 
 
-        private void PreviewButton_Click(object sender, RoutedEventArgs e) => XfpPrinting.PrintConfig2(_data, PrintParams, PrintActions.Preview);
+        private void PreviewButton_Click(object sender, RoutedEventArgs e) => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview);
         private void PrintButton_Click(object sender, RoutedEventArgs e)   => DialogResult = true;
         private void CancelButton_Click(object sender, RoutedEventArgs e)  => Close();
         private void ClosePrint_Click(object sender, EventArgs e)          => Close();
