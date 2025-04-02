@@ -34,7 +34,6 @@ namespace Xfp.DataTypes.Printing
                 return;
             }
             
-            https://www.codeproject.com/Articles/138233/Custom-Data-Grid-Document-Paginator
             try
             {
                 UIState.SetBusyState();
@@ -57,6 +56,8 @@ namespace Xfp.DataTypes.Printing
                 doc.ColumnGap   = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
+                List<List<Grid>> report = new();
+
                 if (printParams.PrintSiteConfig)
                     data.SiteConfig.Print(doc);
 
@@ -65,8 +66,9 @@ namespace Xfp.DataTypes.Printing
                     if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
                     if (printParams.PrintLoopInfo)          
                     {
-                        p.Loop1Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                        p.Loop2Config.Print(doc, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
                     }
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
@@ -82,12 +84,22 @@ namespace Xfp.DataTypes.Printing
                 switch (printAction)
                 {
                     case CTecUtil.PrintActions.Print:
-                        IDocumentPaginatorSource idpSource = doc;
-                        printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
+                        //IDocumentPaginatorSource idpSource = doc;
+                        //printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
 
-                        //DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
-                        //paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
-                        //printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
+                        ////DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
+                        ////paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
+                        ////printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
+
+                        //var pag = new CustomGridDocumentPaginator(new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid, null, "", new(210, 297), new(10));
+                        //printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+
+
+                        foreach (var gg in report)
+                        {
+                            var pag = new CustomGridDocumentPaginator(gg, "", new(210, 297), new(10));
+                            printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+                        }
                         break;
 
                     case CTecUtil.PrintActions.Preview: 

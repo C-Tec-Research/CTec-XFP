@@ -16,6 +16,7 @@ using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.ViewModels.PanelTools;
 using Windows.Graphics.Printing;
+using CTecUtil;
 
 namespace Xfp.DataTypes
 {
@@ -27,18 +28,15 @@ namespace Xfp.DataTypes
         }
 
 
-        public void SetPrinter(string name)
-        {
-            PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(name);
-        }
-
         public PrintDialog PrintHandler;
-        //public CTecUtil.PrinterSettings PrinterSettings { get; set; } = new();
         
         public PageOrientation Orientation { get => PrintHandler.PrintTicket.PageOrientation??PageOrientation.Portrait; set => PrintHandler.PrintTicket.PageOrientation = value; }
-        public int             Copies      { get => PrintHandler.PrintTicket.CopyCount??1; set => PrintHandler.PrintTicket.CopyCount = value; }
-        public PrintQueue      PrintQueue  { get => PrintHandler.PrintQueue; }
-        public PrintTicket     PrintTicket { get => PrintHandler.PrintTicket; }
+        public int             Copies      { get => PrintHandler.PrintTicket.CopyCount??1;                              set => PrintHandler.PrintTicket.CopyCount = value; }
+        public PrintQueue      PrintQueue        => PrintHandler.PrintQueue;
+        public PrintTicket     PrintTicket       => PrintHandler.PrintTicket;
+
+
+        public void SetPrinter(string name) => PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(name);
 
 
         public bool PrintAllPanels     { get; set; }
@@ -61,7 +59,7 @@ namespace Xfp.DataTypes
         public bool PrintOrderZone     { get; set; }
 
         public bool           PrintAllLoopDevices { get; set; }
-        public LoopPrintOrder LoopPrintOrder { get; set; }
+        public SortOrder LoopPrintOrder { get; set; }
 
 
         public void SetAllPagesToPrint(bool print) => PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;

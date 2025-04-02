@@ -84,7 +84,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         private string _currentTime;
-        public string CurrentTime { get => _currentTime; set { _currentTime = value; OnPropertyChanged(nameof(CurrentTime), false); } }
+        public string CurrentTime { get => _currentTime; set { if (_currentTime != value) { _currentTime = value; OnPropertyChanged(nameof(CurrentTime), false); } } }
 
         private async void updateTime()
         {

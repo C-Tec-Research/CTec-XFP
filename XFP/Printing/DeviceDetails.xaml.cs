@@ -52,6 +52,8 @@ namespace Xfp.Printing
             _context.SetCulture(CultureInfo.CurrentCulture);
             _context.PopulateView(data);
             _context.PanelNumber = panelNumber;
+            grdDeviceSummaryLoop1.ItemsSource = _context.Loop1;
+            grdDeviceSummaryLoop2.ItemsSource = _context.Loop2;
         }
 
         private DeviceDetailsViewModel _context;

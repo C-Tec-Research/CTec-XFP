@@ -14,19 +14,31 @@ using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 using System.Linq;
 using System.Collections.Generic;
 using CTecDevices;
+using CTecUtil;
 
 namespace Xfp.DataTypes.PanelData
 {
     public partial class DeviceConfigData
     {
-        public void Print(FlowDocument doc, int panelNumber, bool printAllLoopDevices, LoopPrintOrder printOrder)
+        public void Print(FlowDocument doc, XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder)
         {
             _printOrder = printOrder;
             var devicePage = new Section();
             devicePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1)));
 
-            devicePage.Blocks.Add(deviceList(printAllLoopDevices));
+           // devicePage.Blocks.Add(deviceList(printAllLoopDevices));
             doc.Blocks.Add(devicePage);
+        }
+        public List<Grid> Print2(XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder)
+        {
+            _printOrder = printOrder;
+
+            var result = new List<Grid>();
+
+            result.Add(PrintUtil.PageHeaderGrid(string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1)));
+
+            result.Add(deviceList(printAllLoopDevices));
+            return result;
         }
 
 
@@ -37,10 +49,10 @@ namespace Xfp.DataTypes.PanelData
         private int _ioSettingsColumns = 5;
         private static SolidColorBrush _seeIoSettingsForeground = (SolidColorBrush)Application.Current.TryFindResource("BrushSeeIOPrint");
         private static SolidColorBrush _ioSubheaderBrush        = (SolidColorBrush)Application.Current.TryFindResource("Brush01");
-        private LoopPrintOrder _printOrder;
+        private SortOrder _printOrder;
 
 
-        public BlockUIContainer deviceList(bool printAllLoopDevices)
+        public Grid deviceList(bool printAllLoopDevices)
         {
             var grid = columnHeaders();
 
@@ -50,9 +62,9 @@ namespace Xfp.DataTypes.PanelData
 
             var deviceSort = new List<DeviceData>(Devices);
 
-            if (_printOrder == LoopPrintOrder.ByDeviceType)
+            if (_printOrder == SortOrder.Type)
                 deviceSort.Sort(compareByDeviceType);
-            else if (_printOrder == LoopPrintOrder.ByGroupZone)
+            else if (_printOrder == SortOrder.ZoneGroupSet)
                 deviceSort.Sort(compareByZoneGroupSet);
 
             foreach (var d in deviceSort)
@@ -149,7 +161,7 @@ namespace Xfp.DataTypes.PanelData
 
             GridUtil.AddRowToGrid(grid, 10);
 
-            return new(grid);
+            return grid;
         }
 
 

@@ -24,6 +24,7 @@ using CTecControls.UI.ViewHelpers;
 using System.Reflection;
 using System.Windows.Input;
 using System.Xml.Linq;
+using CTecUtil;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -56,8 +57,8 @@ namespace Xfp.ViewModels.PanelTools
         
         public int NumLoops { get => _numLoops; set { _numLoops = value; OnPropertyChanged(); } }
 
-        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { _loop1 = value; OnPropertyChanged(); } }
-        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { _loop2 = value; OnPropertyChanged(); } }
+        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
+        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
         public ObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; }
         public bool LoopIsFitted => LoopNum <= NumLoops;
         
@@ -89,8 +90,8 @@ namespace Xfp.ViewModels.PanelTools
 
         protected ObservableCollection<DeviceItemViewModel> _loop1SelectedItems = new();
         protected ObservableCollection<DeviceItemViewModel> _loop2SelectedItems = new();
-        public ObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { _loop1SelectedItems = value; OnPropertyChanged(); } }
-        public ObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { _loop2SelectedItems = value; OnPropertyChanged(); } }
+        public ObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { SetValue(ref _loop1SelectedItems, value, nameof(Loop1SelectedItem)); } }
+        public ObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { SetValue(ref _loop2SelectedItems, value, nameof(Loop2SelectedItem)); } }
         public ObservableCollection<DeviceItemViewModel> SelectedItems
         {
             get => IsLoop1 ? _loop1SelectedItems : _loop2SelectedItems;
@@ -876,16 +877,16 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region printing
-        public enum OrderBy
-        {
-            ByDevice,
-            ByGroup,
-            ByZone,
-        }
+        //public enum OrderBy
+        //{
+        //    ByDevice,
+        //    ByGroup,
+        //    ByZone,
+        //}
 
-        public override bool PrintPage(XpsDocumentWriter documentWriter) => PrintPage(documentWriter, LoopPrintOrder.ByDeviceNumber);
+        public override bool PrintPage(XpsDocumentWriter documentWriter) => PrintPage(documentWriter, SortOrder.Number);
         
-        public bool PrintPage(XpsDocumentWriter documentWriter, LoopPrintOrder printOrder)
+        public bool PrintPage(XpsDocumentWriter documentWriter, SortOrder printOrder)
         {
             return true;
         }

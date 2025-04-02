@@ -275,13 +275,4 @@
         Warning,
         Error
     }
-
-
-    public enum LoopPrintOrder
-    {
-        ByDeviceNumber, 
-        ByDeviceType, 
-        ByGroupZone 
-    };
-
 }
