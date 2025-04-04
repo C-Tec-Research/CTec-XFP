@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/CTecControls;Component/UI/Styles/Styles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CTecControls;Component/UI/Styles/ControlStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CTecControls;Component/UI/Styles/CustomControlStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CTecControls;Component/UI/Styles/PrintStyles.xaml"/>
                 <ResourceDictionary Source="UI/Styles/Styles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CTecUtil;Component/Cultures/CultureResourceDictionary.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CTecControls;Component/Cultures/CultureResourceDictionary.xaml"/>

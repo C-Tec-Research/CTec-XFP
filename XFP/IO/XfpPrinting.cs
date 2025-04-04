@@ -48,36 +48,36 @@ namespace Xfp.DataTypes.Printing
 
                 // Create a FlowDocument
                 var systemName = Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
-                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
-                doc.Name        = _printFilePrefix;
-                doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
-                doc.PageWidth   = printParams.PrintHandler.PrintableAreaWidth;
-                doc.PagePadding = new Thickness(15);
-                doc.ColumnGap   = 0;
-                doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
+                //FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
+                //doc.Name        = _printFilePrefix;
+                //doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
+                //doc.PageWidth   = printParams.PrintHandler.PrintableAreaWidth;
+                //doc.PagePadding = new Thickness(15);
+                //doc.ColumnGap   = 0;
+                //doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
                 List<List<Grid>> report = new();
 
-                if (printParams.PrintSiteConfig)
-                    data.SiteConfig.Print(doc);
+                //if (printParams.PrintSiteConfig)
+                //    data.SiteConfig.Print(doc);
 
-                foreach (var p in data.Panels.Values)
-                {
-                    if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
-                    if (printParams.PrintLoopInfo)          
-                    {
-                        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                        report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
-                    }
-                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
-                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
-                    if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
-                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
-                    if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
-                    if (printParams.PrintEventLog)      printEventLog(doc);
-                    if (printParams.PrintComments)      printComments(doc);
-                }
+                //foreach (var p in data.Panels.Values)
+                //{
+                //    //if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
+                //    if (printParams.PrintLoopInfo)          
+                //    {
+                //        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                //        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                //        report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
+                //    }
+                //    //if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
+                //    //if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
+                //    //if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
+                //    //if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
+                //    //if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
+                //    //if (printParams.PrintEventLog)      printEventLog(doc);
+                //    //if (printParams.PrintComments)      printComments(doc);
+                //}
 
                 //print or preview the document
 
@@ -91,19 +91,19 @@ namespace Xfp.DataTypes.Printing
                         ////paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
                         ////printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
 
-                        //var pag = new CustomGridDocumentPaginator(new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid, null, "", new(210, 297), new(10));
-                        //printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+                        var pag = new CustomDataGridDocumentPaginator(new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid, string.Format(Cultures.Resources.Loop_x_Devices, 1), new(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight), new(10));
+                        printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
 
 
-                        foreach (var gg in report)
-                        {
-                            var pag = new CustomGridDocumentPaginator(gg, "", new(210, 297), new(10));
-                            printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
-                        }
+                        //foreach (var gg in report)
+                        //{
+                        //    var pag = new CustomDataGridDocumentPaginator(gg, "", new(210, 297), new(10));
+                        //    printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+                        //}
                         break;
 
                     case CTecUtil.PrintActions.Preview: 
-                        new FlowDocumentViewer(doc, Cultures.Resources.XFP_Config_Print_Description, XfpApplicationConfig.Settings, true).ShowDialog();
+                        //new FlowDocumentViewer(doc, Cultures.Resources.XFP_Config_Print_Description, XfpApplicationConfig.Settings, true).ShowDialog();
                         break;
                 }
 

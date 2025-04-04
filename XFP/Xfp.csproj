@@ -64,13 +64,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CTecControls\CTecControls.csproj" />
-    <ProjectReference Include="..\..\CTecDevices\CTecDevices.csproj" />
-    <ProjectReference Include="..\..\CTecFtdi\CTecFtdi.csproj" />
-    <ProjectReference Include="..\..\CTecUtil\CTecUtil.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Cultures\Resources - Copy %282%29.Designer.cs">
       <DependentUpon>Resources.Designer.cs</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -139,6 +132,10 @@
     <EmbeddedResource Include="Resources\XFP Revision History.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <ProjectReference Include="..\..\CTecControls\CTecControls.csproj" />
+    <ProjectReference Include="..\..\CTecDevices\CTecDevices.csproj" />
+    <ProjectReference Include="..\..\CTecFtdi\CTecFtdi.csproj" />
+    <ProjectReference Include="..\..\CTecUtil\CTecUtil.csproj" />
     <Resource Include="UI\Images\download-all.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
