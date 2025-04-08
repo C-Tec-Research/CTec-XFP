@@ -18,7 +18,7 @@ namespace Xfp.Printing
     /// </summary>
     public partial class DeviceDetails : Page
     {
-        public DeviceDetails(XfpData data, int panelNumber)
+        public DeviceDetails(XfpData data, int panelNumber, bool showOnlyFittedDevices)
         {
             InitializeComponent();
             DataContext = _context = new DeviceDetailsViewModel(this, null, grdDeviceSummaryLoop1, grdDeviceSummaryLoop2);
@@ -29,6 +29,7 @@ namespace Xfp.Printing
             _context.SetCulture(CultureInfo.CurrentCulture);
             _context.PopulateView(data);
             _context.PanelNumber = panelNumber;
+            _context.ShowOnlyFittedDevices = showOnlyFittedDevices;
             grdDeviceSummaryLoop1.ItemsSource = _context.Loop1;
             grdDeviceSummaryLoop2.ItemsSource = _context.Loop2;
         }

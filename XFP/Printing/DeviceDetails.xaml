@@ -41,7 +41,7 @@
 
         <!--#region Loop 1 grid-->
         <DataGrid x:Name="grdDeviceSummaryLoop1"
-                    Style="{StaticResource DataGridPrintHeader}"
+                    Style="{StaticResource PrintDataGridHeader}"
                     ItemsSource="{Binding Loop1}"
                     SelectionMode="Extended"
                     AutoGenerateColumns="False"
@@ -364,12 +364,12 @@
                     
         <!--#region Loop 2 grid-->
         <DataGrid x:Name="grdDeviceSummaryLoop2"
-                    Style="{StaticResource DataGridPrintHeader}"
-                    ItemsSource="{Binding Loop2}"
-                    SelectionMode="Extended"
-                    AutoGenerateColumns="False"
-                    ctce:DataGridListBoxExtender.SelectedItems="{Binding Loop2SelectedItems}" 
-                    Visibility="{Binding IsLoop1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                  Style="{StaticResource PrintDataGridHeader}"
+                  ItemsSource="{Binding Loop2}"
+                  SelectionMode="Extended"
+                  AutoGenerateColumns="False"
+                  ctce:DataGridListBoxExtender.SelectedItems="{Binding Loop2SelectedItems}" 
+                  Visibility="{Binding IsLoop1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
 
             <DataGrid.Columns>
 

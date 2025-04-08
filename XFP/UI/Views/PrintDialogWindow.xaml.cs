@@ -49,7 +49,7 @@ namespace Xfp.UI.Views
         }
 
 
-        public PrintParameters PrintParams => _context.PrintParams;
+        public PrintParameters PrintParams => PrintDialogWindowViewModel.PrintParams;
         public PrintQueue      PrintQueue  => _context.Queue;
 
 

@@ -14,6 +14,7 @@ using CTecControls.UI;
 using System.Windows.Forms;
 using Xfp.Config;
 using System.ComponentModel.Composition.Primitives;
+using Xfp.DataTypes.PanelData;
 
 namespace Xfp.DataTypes.Printing
 {
@@ -48,6 +49,11 @@ namespace Xfp.DataTypes.Printing
 
                 // Create a FlowDocument
                 var systemName = Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
+
+                var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
+                var pageMargin = new Thickness(10);
+                var pageNumber = 1;
+
                 //FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
                 //doc.Name        = _printFilePrefix;
                 //doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
@@ -56,7 +62,7 @@ namespace Xfp.DataTypes.Printing
                 //doc.ColumnGap   = 0;
                 //doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
-                List<List<Grid>> report = new();
+ //               List<List<Grid>> report = new();
 
                 //if (printParams.PrintSiteConfig)
                 //    data.SiteConfig.Print(doc);
@@ -91,9 +97,17 @@ namespace Xfp.DataTypes.Printing
                         ////paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
                         ////printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
 
-                        var pag = new CustomDataGridDocumentPaginator(new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid, string.Format(Cultures.Resources.Loop_x_Devices, 1), new(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight), new(10));
-                        printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+                        for (int loop = 0; loop < LoopConfigData.MaxLoops; loop++)
+                        {
+                            var reportTitle = string.Format(Cultures.Resources.Loop_x_Devices, loop + 1);
+                            var dataGrid = loop == 0 
+                                            ? new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid 
+                                            : new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop2DetailsDataGrid;
 
+                            var report = new CustomDataGridDocumentPaginator(dataGrid, systemName, reportTitle, printArea, pageMargin, pageNumber);
+                            printParams.PrintHandler.PrintDocument(report, Cultures.Resources.XFP_Config_Print_Description);
+                break;
+                        }
 
                         //foreach (var gg in report)
                         //{

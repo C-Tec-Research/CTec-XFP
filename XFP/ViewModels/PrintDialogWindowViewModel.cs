@@ -39,7 +39,7 @@ namespace Xfp.ViewModels
 
             ZoomLevel    = _applicationConfig.PrintParametersWindow.Scale;
 
-            IsPortrait          = true;
+            //IsPortrait          = true;
             PrintCurrentPage    = true;
             PrintAllLoopDevices = false;
             PrintOrderDeviceNumber    = true;
@@ -113,7 +113,7 @@ namespace Xfp.ViewModels
 
 
         #region print parameters
-        public PrintParameters PrintParams { get; set; } = new();
+        public static PrintParameters PrintParams { get; set; } = new();
 
         
         public bool PrintAllPanels      { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.PrintAllPanels = true; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
