@@ -173,9 +173,17 @@
                               SelectionUnit="FullRow"
                               SelectionChanged="grdDeviceDetails_SelectionChanged"
                               KeyUp="grdDeviceDetails_KeyUp">
-                        
-                        <!--  *** don't forget to replicate the column definitions for Loop 2 *** -->
-                        
+
+                        <!--  
+                        ***********************************************************************
+                        ***********************************************************************
+                        ***                                                                 ***
+                        ***  don't forget to replicate these column definitions for Loop 2  ***
+                        ***                                                                 ***
+                        ***********************************************************************
+                        ***********************************************************************
+                        -->
+
                         <DataGrid.Columns>
 
                             <!--#region device number-->

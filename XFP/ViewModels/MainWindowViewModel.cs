@@ -1062,17 +1062,19 @@ namespace Xfp.ViewModels
         {
             XfpData result;
             
-            CTecDevices.ObjectTypes protocol;
-            int panelNumber;
-            string firmwareVersion;
-            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, out protocol, out panelNumber, out firmwareVersion);
+            List<CTecDevices.ObjectTypes> protocols = new();
+            List<int> panelNumbers = new();
+            List<string> firmwareVersions = new();
+            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
             
-            if (protocol != CurrentProtocol)
+            var loop = (_deviceDetailsPage.DataContext as DevicesViewModel).LoopNum - 1;
+
+            if (loop < protocols.Count && protocols[loop] != CurrentProtocol)
             {
-                if (!askProtocolChange(Path.GetFileName(path), DeviceTypes.ProtocolName(protocol)))
+                if (!askProtocolChange(Path.GetFileName(path), DeviceTypes.ProtocolName(protocols[loop])))
                     return null;
 
-                changeProtocol(protocol, false);
+                changeProtocol(protocols[loop], false);
             }
 
             //assume it's a json multi-panel dataset
@@ -1154,10 +1156,16 @@ namespace Xfp.ViewModels
             //read the protocol type(so we know how many devices to initialise)
             //and panel number(so we know where the data is going)
 
-            CTecDevices.ObjectTypes protocol;
-            int panelNumber;
-            string firmwareVersion;
-            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, out protocol, out panelNumber, out firmwareVersion);
+            List<CTecDevices.ObjectTypes> protocols = new();
+            List<int> panelNumbers = new();
+            List<string> firmwareVersions = new();
+
+            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
+
+            //NB: legacy file has only global protocol/panelnumber/firmware, so retrieve them (or defaults)
+            var protocol        = protocols.Count > 0        ? protocols[0]        : CTecDevices.ObjectTypes.XfpCast;
+            var panelNumber     = panelNumbers.Count > 0     ? panelNumbers[0]     : XfpData.MinPanelNumber;
+            var firmwareVersion = firmwareVersions.Count > 0 ? firmwareVersions[0] : CTecControls.Cultures.Resources.Unknown;
 
             var protocolChanged = protocol != CurrentProtocol;
             var keepOtherPanels = true;
@@ -1179,6 +1187,7 @@ namespace Xfp.ViewModels
                 else
                 {
                     if (_data.Panels.Count > 1 || !_data.Panels.ContainsKey(panelNumber))
+                    {
                         switch (askKeepExistingPanelData(panelNumber))
                         {
                             case MessageBoxResult.No:
@@ -1187,6 +1196,7 @@ namespace Xfp.ViewModels
                             case MessageBoxResult.Cancel:
                                 return null;
                         }
+                    }
                 }
             }
 

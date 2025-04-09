@@ -65,7 +65,7 @@ namespace Xfp.UI.Views.PanelTools
         }
 
 
-        private void deviceType_MouseDown(object sender, MouseButtonEventArgs e)      => _context.ChangeDeviceType();
+        private void deviceType_MouseDown(object sender, MouseButtonEventArgs e)       { if (_context.CheckChangesAreAllowed?.Invoke() ?? true) _context.ChangeDeviceType(); }
         private void comboBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)  { if (_context.CheckChangesAreAllowed?.Invoke() ?? true) _context.ShowComboBoxDropdown(sender); }
         private void comboBox_PreviewKeyDown(object sender, KeyEventArgs e)            { if (_context.CheckChangesAreAllowed?.Invoke() ?? true) _context.ShowComboBoxDropdown(sender); }
         private void showComboBoxDropdown(object sender, EventArgs e)                  { if (_context.CheckChangesAreAllowed?.Invoke() ?? true) _context.ShowComboBoxDropdown(sender); }

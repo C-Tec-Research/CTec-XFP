@@ -33,7 +33,7 @@ namespace Xfp.ViewModels.PanelTools
     /// </summary>
     public class DeviceDetailsViewModel : DevicesViewModel
     {
-        public DeviceDetailsViewModel(FrameworkElement parent, DeviceInfoPanel infoPanel, DataGrid loop1Grid, DataGrid loop2Grid) : base(parent, infoPanel)
+        public DeviceDetailsViewModel(FrameworkElement parent, DeviceInfoPanel infoPanel, int loopNum = 1) : base(parent, infoPanel, loopNum)
         {
             if (_infoPanelViewModel is not null)
             {

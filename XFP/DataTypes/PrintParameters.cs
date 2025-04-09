@@ -43,7 +43,7 @@ namespace Xfp.DataTypes
         public bool PrintSelectedPanels{ get; set; }
         public string PrintPanelRange  { get; set; }
         public bool PrintAllPages      { get; set; }
-        public bool PrintCurrentPage   { get; set; }
+        public bool PrintCurrentPage   { get; set; } = true;
         public bool PrintSiteConfig    { get; set; }
         public bool PrintLoopInfo      { get; set; }
         public bool PrintZones         { get; set; }
@@ -58,8 +58,8 @@ namespace Xfp.DataTypes
         public bool PrintOrderGroup    { get; set; }
         public bool PrintOrderZone     { get; set; }
 
-        public bool           PrintAllLoopDevices { get; set; }
-        public SortOrder LoopPrintOrder { get; set; }
+        public bool PrintAllLoopDevices { get; set; } = false;
+        public SortOrder LoopPrintOrder { get; set; } = SortOrder.Number;
 
 
         public void SetAllPagesToPrint(bool print) => PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;

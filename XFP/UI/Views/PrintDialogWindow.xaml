@@ -112,6 +112,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
+                    <!--#region printer-->
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="5,3,0,13">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -135,6 +136,7 @@
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PrinterStatus, Converter={StaticResource PrintQueueStatusToStringConverter}}" Margin="2,2,0,0"/>-->
                         </Grid>
                     </StackPanel>
+                    <!--#endregion-->
 
                     
                     <!--#region data range-->

@@ -50,7 +50,7 @@ namespace Xfp.DataTypes.PanelData
         internal static int DefaultSensitivityHigh = 100;
         internal static int MaxSensitivityHigh = 125;
         internal static int MinVolume = 1;
-        internal static int MaxVolume = DeviceTypes.VolumeSettings.Count;
+        internal static int MaxVolume => DeviceTypes.VolumeSettings.Count;
 
         [JsonIgnore] public int LoopNum { get; set; }
         public List<DeviceData> Devices { get; set; } = new();

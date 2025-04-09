@@ -48,10 +48,10 @@ namespace Xfp.DataTypes.Printing
                 }
 
                 // Create a FlowDocument
-                var systemName = Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
+                var systemName = Cultures.Resources.XFP_Config_Print_Description + " - " + Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
 
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
-                var pageMargin = new Thickness(10);
+                var pageMargin = new Thickness(20);
                 var pageNumber = 1;
 
                 //FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
@@ -99,14 +99,12 @@ namespace Xfp.DataTypes.Printing
 
                         for (int loop = 0; loop < LoopConfigData.MaxLoops; loop++)
                         {
-                            var reportTitle = string.Format(Cultures.Resources.Loop_x_Devices, loop + 1);
-                            var dataGrid = loop == 0 
-                                            ? new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop1DetailsDataGrid 
-                                            : new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber).Loop2DetailsDataGrid;
-
+                            var reportTitle = string.Format("{0}: {1}", string.Format(Cultures.Resources.Panel_x_Configuration, data.CurrentPanel.PanelNumber), string.Format(Cultures.Resources.Loop_x_Devices, loop + 1));
+                            var devicesXaml = new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber, printParams.LoopPrintOrder, !printParams.PrintAllLoopDevices);
+                            var dataGrid    = loop == 1 ? devicesXaml.Loop2DetailsDataGrid : devicesXaml.Loop1DetailsDataGrid;
+                            
                             var report = new CustomDataGridDocumentPaginator(dataGrid, systemName, reportTitle, printArea, pageMargin, pageNumber);
                             printParams.PrintHandler.PrintDocument(report, Cultures.Resources.XFP_Config_Print_Description);
-                break;
                         }
 
                         //foreach (var gg in report)

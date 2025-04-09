@@ -8,8 +8,8 @@
       xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
       xmlns:local="clr-namespace:Xfp.UI.Views.PanelTools"
       xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
-      xmlns:viewmodels="clr-namespace:Xfp.ViewModels.PanelTools" 
-      d:DataContext="{d:DesignInstance Type=viewmodels:DeviceDetailsViewModel}"
+      xmlns:viewmodels="clr-namespace:Xfp.Printing"
+      d:DataContext="{d:DesignInstance Type=viewmodels:DevicesPrintViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="900">
 
@@ -48,14 +48,22 @@
                     ctce:DataGridListBoxExtender.SelectedItems="{Binding Loop1SelectedItems}" 
                     Visibility="{Binding IsLoop1, Converter={StaticResource BoolToVisibilityConverter}}">
                         
-            <!--  *** don't forget to replicate the column definitions for Loop 2 *** -->
+            <!--  
+            ***********************************************************************
+            ***********************************************************************
+            ***                                                                 ***
+            ***  don't forget to replicate these column definitions for Loop 2  ***
+            ***                                                                 ***
+            ***********************************************************************
+            ***********************************************************************
+            -->
                         
             <DataGrid.Columns>
 
                 <!--#region device number-->
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}" TextAlignment="Right" Margin="12,0,0,0"/>
+                        <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}" TextAlignment="Right" Margin="12,0,0,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -73,7 +81,7 @@
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}"/>
+                            <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}"/>
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -96,7 +104,7 @@
                 <!--#region zone/group-->
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}" Margin="5,0,0,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -173,7 +181,7 @@
                 <!--#region device name-->
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="{Binding Path=Device_Name, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}" />
+                        <TextBlock Text="{Binding Path=Device_Name, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -201,7 +209,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Volume_Sensitivity_mode, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                     Margin="10,0,0,0"/>
                     </DataGridTemplateColumn.Header>
@@ -234,7 +242,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Day_Night, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                     Margin="0,0,0,0"/>
                     </DataGridTemplateColumn.Header>
@@ -285,7 +293,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.RemoteLEDColumnVisibility, Source={x:Reference contextProxy}}">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Remote_LED_Header, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     Margin="10,0,8,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -305,7 +313,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.BaseSounderColumnVisibility, Source={x:Reference contextProxy}}">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Base_Sounder_Header, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     Margin="10,0,8,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -376,7 +384,7 @@
                 <!--#region device number-->
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}" TextAlignment="Right" Margin="12,0,0,0"/>
+                        <TextBlock Text="{Binding Path=Number_Symbol, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}" TextAlignment="Right" Margin="12,0,0,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -394,7 +402,7 @@
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}"/>
+                            <TextBlock Text="{Binding Path=Device_Type, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}"/>
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -417,7 +425,7 @@
                 <!--#region zone/group-->
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource GridPrintHeaderText}" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding Path=Zone_Group, Source={StaticResource Resources}}" Foreground="{StaticResource PrintGridHeaderText}" Margin="5,0,0,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -495,7 +503,7 @@
                 <DataGridTemplateColumn Width="Auto" IsReadOnly="True" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Device_Name, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}" />
+                                    Foreground="{StaticResource PrintGridHeaderText}" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -523,7 +531,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Volume_Sensitivity_mode, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                     Margin="10,0,0,0"/>
                     </DataGridTemplateColumn.Header>
@@ -556,7 +564,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Day_Night, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                     Margin="0,0,0,0"/>
                     </DataGridTemplateColumn.Header>
@@ -607,7 +615,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.RemoteLEDColumnVisibility, Source={x:Reference contextProxy}}">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Remote_LED_Header, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     Margin="10,0,8,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -627,7 +635,7 @@
                 <DataGridTemplateColumn Width="Auto" CanUserSort="True" Visibility="{Binding DataContext.BaseSounderColumnVisibility, Source={x:Reference contextProxy}}">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="{Binding Path=Base_Sounder_Header, Source={StaticResource Resources}}"
-                                    Foreground="{StaticResource GridPrintHeaderText}"
+                                    Foreground="{StaticResource PrintGridHeaderText}"
                                     Margin="10,0,8,0"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>

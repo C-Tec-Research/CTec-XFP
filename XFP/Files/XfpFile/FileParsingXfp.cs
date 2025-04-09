@@ -41,30 +41,50 @@ namespace Xfp.Files.XfpFile
         /// <summary>
         /// Finds the Protocol within an XFP file
         /// </summary>
-        internal static bool ReadDefiningSettings(StreamReader inputStream, ref CTecDevices.ObjectTypes protocol,
-                                                                            ref int panelNumber, 
-                                                                            ref string firmwareVersion)
+        internal static void ReadDefiningSettings(StreamReader inputStream, ref List<CTecDevices.ObjectTypes> protocols,
+                                                                            ref List<int> panelNumbers, 
+                                                                            ref List<string> firmwareVersions)
         {
+            protocols        = new();
+            panelNumbers     = new();
+            firmwareVersions = new();
+
             try
             {
                 bool gotProt = false, gotPan = false, gotFw = false;
                 string currentLine;
                 while ((currentLine = readNext(inputStream, Tags.EndFile)) != null)
                 {
-                    if (ItemName(currentLine) == XfpTags.SystemType                 // <-- legacy file tag
-                     || ItemName(currentLine) == nameof(XfpPanelData.PanelNumber))  // <-- json file tag
-                        gotProt = (protocol = parseProtocol(currentLine)) != CTecDevices.ObjectTypes.NotSet;
-                    if (ItemName(currentLine) == XfpTags.PanelNumber)
-                        gotPan = (panelNumber = parseInt(currentLine)) != 0;
-                    if (ItemName(currentLine) == XfpTags.MainVersion)
-                        { firmwareVersion = ParseString(currentLine); gotFw = true; }
+                    var item = ItemName(currentLine);
+
+                    if (item == XfpTags.SystemType)                         // <-- legacy file
+                    {
+                        var p = parseProtocol(currentLine);
+                        if (gotProt = p != CTecDevices.ObjectTypes.NotSet)
+                            protocols.Add(p);
+                    }
+                    else if (item == XfpTags.MainVersion)                   // <-- legacy file
+                    {
+                        var f = ParseString(currentLine);
+                        if (gotFw = !string.IsNullOrWhiteSpace(f))
+                            firmwareVersions.Add(f);
+                    }
+                    else if (item == nameof(XfpPanelData.Protocol))         // <-- json file
+                        protocols.Add(parseProtocol(currentLine));
+                    else if (item == nameof(XfpPanelData.PanelNumber))      // <-- json file
+                        panelNumbers.Add(parseInt(currentLine));
+                    else if (item == nameof(XfpData.FirmwareVersion))       // <-- json file
+                    {
+                        var fw = ParseString(currentLine);
+                        if (!string.IsNullOrWhiteSpace(fw))
+                            firmwareVersions.Add(fw);
+                    }
+
                     if (gotProt && gotPan && gotFw)
-                        return true;
+                        return;
                 }
             }
             catch { }
-
-            return false;
         }
 
 

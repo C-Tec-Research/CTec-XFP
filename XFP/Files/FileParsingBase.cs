@@ -17,10 +17,10 @@ namespace Xfp.Files
         {
             if (!string.IsNullOrWhiteSpace(input))
             {
-                var splitChar = input.Contains("(") ? "(" : "=";
+                var splitChar = input.Contains("(") ? "(" : input.Contains(":") ? ":" : "=";
                 var split = input.Split(splitChar);
                 if (split.Length > 0)
-                    return split[0].Trim();
+                    return split[0].Trim().Trim(new[] { '"', '/' });
             }
             return "";
         }
@@ -69,7 +69,8 @@ namespace Xfp.Files
 
         internal static string ParseString(string input, bool trim = true)
         {
-            var split = input.Split("=");
+            //divider in legacy file is '=', for the case of a json file check for ':'
+            var split = input.Split(input.Contains("=") ? "=" : ":");
             if (split.Length > 1)
             {
                 var tmp = new StringBuilder();
@@ -97,7 +98,8 @@ namespace Xfp.Files
         protected static int parseInt(string input)
         {
             int ret = 0;
-            var split = input.Split("=");
+            //divider in legacy file is '=', for the case of a json file check for ':'
+            var split = input.Split(input.Contains("=") ? "=" : ":");
             if (split.Length > 1)
                 int.TryParse(split[1].Trim(), out ret);
             return ret;
@@ -192,10 +194,9 @@ namespace Xfp.Files
         {
             return ParseString(input) switch
             {
-                Tags.CastProtocol    => CTecDevices.ObjectTypes.XfpCast,
-                Tags.ApolloProtocol  => CTecDevices.ObjectTypes.XfpApollo,
-                //Tags.HochikiProtocol => ProtocolTypes.Hochiki,
-                _                    => CTecDevices.ObjectTypes.NotSet,
+                "1" or Tags.ApolloProtocol => CTecDevices.ObjectTypes.XfpApollo,
+                "2" or Tags.CastProtocol   => CTecDevices.ObjectTypes.XfpCast,
+                _                          => CTecDevices.ObjectTypes.NotSet,
             };
         }        
     }

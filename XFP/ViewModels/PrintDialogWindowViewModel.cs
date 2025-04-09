@@ -39,11 +39,6 @@ namespace Xfp.ViewModels
 
             ZoomLevel    = _applicationConfig.PrintParametersWindow.Scale;
 
-            //IsPortrait          = true;
-            PrintCurrentPage    = true;
-            PrintAllLoopDevices = false;
-            PrintOrderDeviceNumber    = true;
-
             if (_currentPage.DataContext is DevicesViewModel)
                 setCurrentPageToPrint();
 
@@ -147,7 +142,8 @@ namespace Xfp.ViewModels
 
         private void setCurrentPageToPrint()
         {
-            PrintParams.SetAllPagesToPrint(false);
+            //PrintParams.SetAllPagesToPrint(false);
+            PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = false;
 
             if      (_currentPage.DataContext is DevicesViewModel)          PrintLoopInfo = true; 
             else if (_currentPage.DataContext is ZoneConfigViewModel)       PrintZones = true;

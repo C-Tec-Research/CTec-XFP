@@ -46,7 +46,7 @@ namespace Xfp.UI.Views.PanelTools
             //Loop2Context = new(this, ctcInfoPanel);
             //Loop1Context.LoopChanged = loopChanged;
             //Loop2Context.LoopChanged = loopChanged;
-            DataContext = _context = new DeviceDetailsViewModel(this, ctcInfoPanel, grdDeviceSummaryLoop1, grdDeviceSummaryLoop2);
+            DataContext = _context = new DeviceDetailsViewModel(this, ctcInfoPanel);
             (ctcDeviceSelector.DataContext as DeviceSelectorMenuViewModel).MenuOrientation = Orientation.Horizontal;
             ctcDeviceSelector.OnDeviceTypeChanged = new (deviceType => { _context.DeviceSelectorDeviceType = deviceType; });
             ctcDeviceSelector.SetDeviceClick      = new ((int? deviceType) => { _context.ChangeDeviceType(deviceType); });

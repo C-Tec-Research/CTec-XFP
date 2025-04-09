@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Xfp.ViewModels.PanelTools;
 using Xfp.DataTypes;
 
 namespace Xfp.Printing
@@ -18,23 +17,22 @@ namespace Xfp.Printing
     /// </summary>
     public partial class DeviceDetails : Page
     {
-        public DeviceDetails(XfpData data, int panelNumber, bool showOnlyFittedDevices)
+        public DeviceDetails(XfpData data, int panelNumber, CTecUtil.SortOrder sortOrder, bool showOnlyFittedDevices)
         {
             InitializeComponent();
-            DataContext = _context = new DeviceDetailsViewModel(this, null, grdDeviceSummaryLoop1, grdDeviceSummaryLoop2);
+            DataContext = _context = new DevicesPrintViewModel(this, data, panelNumber, sortOrder, showOnlyFittedDevices);
             
-            _context.InitMenu = new((c) => { });
-            _context.LoopChanged = new((l) => { });
+//            _context.InitMenu = new((c) => { });
+//            _context.LoopChanged = new((l) => { });
          
-            _context.SetCulture(CultureInfo.CurrentCulture);
-            _context.PopulateView(data);
-            _context.PanelNumber = panelNumber;
-            _context.ShowOnlyFittedDevices = showOnlyFittedDevices;
+//            _context.SetCulture(CultureInfo.CurrentCulture);
+//            _context.PopulateView(data);
+//            _context.PanelNumber = panelNumber;
             grdDeviceSummaryLoop1.ItemsSource = _context.Loop1;
             grdDeviceSummaryLoop2.ItemsSource = _context.Loop2;
         }
 
-        private DeviceDetailsViewModel _context;
+        private DevicesPrintViewModel _context;
 
 
         public DataGrid Loop1DetailsDataGrid => grdDeviceSummaryLoop1;

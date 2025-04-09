@@ -91,8 +91,8 @@
                                HorizontalAlignment="Left" Margin="30,3,0,5"/>
                 </Border>
 
-                <Grid Margin="30,5,10,5" HorizontalAlignment="Left"
-                      Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">
+                <Grid Margin="30,5,10,5" HorizontalAlignment="Left">
+                    <!--Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -214,8 +214,8 @@
 
                     <!--#region device properties-->
                     <Grid Margin="20,0,0,0" 
-                          Visibility="{Binding NoDeviceDetails, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                          Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">
+                          Visibility="{Binding NoDeviceDetails, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                        <!--Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}">-->
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"
                                     Visibility="{Binding NoDeviceType, Converter={StaticResource InverseBoolToVisibilityConverter}}">

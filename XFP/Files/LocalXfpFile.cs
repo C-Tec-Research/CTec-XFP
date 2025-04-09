@@ -75,17 +75,14 @@ namespace Xfp.Files
         //}
 
 
-        internal static bool ReadDefiningSettings(string path, out CTecDevices.ObjectTypes protocol, out int panelNumber, out string firmwareVersion)
+        internal static void ReadDefiningSettings(string path, ref List<CTecDevices.ObjectTypes> protocols, ref List<int> panelNumbers, ref List<string> firmwareVersions)
         {
-            protocol = CTecDevices.ObjectTypes.XfpCast;
-            panelNumber = XfpData.MinPanelNumber;
-            firmwareVersion = CTecControls.Cultures.Resources.Unknown;
-
             try
             {
                 using (StreamReader strm = new StreamReader(path))
                 {
-                    return XfpFile.FileParsingXfp.ReadDefiningSettings(strm, ref protocol, ref panelNumber, ref firmwareVersion);
+                    XfpFile.FileParsingXfp.ReadDefiningSettings(strm, ref protocols, ref panelNumbers, ref firmwareVersions);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -93,7 +90,7 @@ namespace Xfp.Files
                 CTecUtil.Debug.WriteLine(ex.ToString());
             }
 
-            return false;
+            return;
         }
 
 
