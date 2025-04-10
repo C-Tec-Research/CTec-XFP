@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Forms.Design;
 using System.Windows.Input;
 using System.Windows.Media;
+using CTecUtil.ViewModels;
 using CTecControls.UI;
 using CTecControls.ViewModels;
 using CTecDevices.Protocol;
@@ -25,7 +26,7 @@ using static Xfp.DataTypes.PanelData.CEConfigData;
 
 namespace Xfp.ViewModels.PanelTools
 {
-    class CausesAndEffectsItemViewModel : ViewModelBase
+    class CausesAndEffectsItemViewModel : PageViewModelBase
     {
         public CausesAndEffectsItemViewModel(CEEvent data, int index, LoopConfigData loopConfig)
         {

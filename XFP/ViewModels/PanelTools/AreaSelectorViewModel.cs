@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CTecControls.ViewModels;
+using CTecUtil.ViewModels;
 
 namespace Xfp.ViewModels.PanelTools
 {

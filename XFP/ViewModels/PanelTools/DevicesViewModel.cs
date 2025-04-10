@@ -25,6 +25,7 @@ using System.Reflection;
 using System.Windows.Input;
 using System.Xml.Linq;
 using CTecUtil;
+using CTecUtil.Printing;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -56,16 +57,17 @@ namespace Xfp.ViewModels.PanelTools
 
 
         protected static int _numLoops = LoopConfigData.MaxLoops;
-        protected ObservableCollection<DeviceItemViewModel> _loop1 = new();
-        protected ObservableCollection<DeviceItemViewModel> _loop2 = new();
-        protected List<ObservableCollection<DeviceItemViewModel>> _loops;
+        protected CloneableObservableCollection<DeviceItemViewModel> _loop1 = new();
+        protected CloneableObservableCollection<DeviceItemViewModel> _loop2 = new();
+        protected List<CloneableObservableCollection<DeviceItemViewModel>> _loops;
         public int NumLoops { get => _numLoops; set { _numLoops = value; OnPropertyChanged(); } }
 
-        public List<ObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
+        public List<CloneableObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
 
-        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
-        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
-        public ObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; } }
+
+        public CloneableObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
+        public CloneableObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
+        public CloneableObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; } }
         public bool LoopIsFitted => LoopNum <= NumLoops;
 
         
@@ -95,11 +97,11 @@ namespace Xfp.ViewModels.PanelTools
         #endregion loop
 
 
-        protected ObservableCollection<DeviceItemViewModel> _loop1SelectedItems = new();
-        protected ObservableCollection<DeviceItemViewModel> _loop2SelectedItems = new();
-        public ObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { SetValue(ref _loop1SelectedItems, value, nameof(Loop1SelectedItem)); } }
-        public ObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { SetValue(ref _loop2SelectedItems, value, nameof(Loop2SelectedItem)); } }
-        public ObservableCollection<DeviceItemViewModel> SelectedItems
+        protected CloneableObservableCollection<DeviceItemViewModel> _loop1SelectedItems = new();
+        protected CloneableObservableCollection<DeviceItemViewModel> _loop2SelectedItems = new();
+        public CloneableObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { SetValue(ref _loop1SelectedItems, value, nameof(Loop1SelectedItem)); } }
+        public CloneableObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { SetValue(ref _loop2SelectedItems, value, nameof(Loop2SelectedItem)); } }
+        public CloneableObservableCollection<DeviceItemViewModel> SelectedItems
         {
             get => IsLoop1 ? _loop1SelectedItems : _loop2SelectedItems;
             set

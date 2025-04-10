@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using CTecUtil.ViewModels;
 using CTecControls.ViewModels;
 using Xfp.DataTypes;
 using Xfp.UI.Interfaces;

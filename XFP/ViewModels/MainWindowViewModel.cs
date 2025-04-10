@@ -328,7 +328,7 @@ namespace Xfp.ViewModels
 
             for (int i = 0; i < NavBarItems.Count; i++)
             {
-                NavBarItems[i].MenuText = (NavBarItems[i].Page.DataContext as ViewModelBase).PageHeader;
+                NavBarItems[i].MenuText = (NavBarItems[i].Page.DataContext as PageViewModelBase).PageHeader;
                 NavBarItems[i].RefreshView();
             }
 
@@ -396,7 +396,7 @@ namespace Xfp.ViewModels
                     UIState.SetBusyState();
                     _navBarSelectedIndex = value >= 0 && value < NavBarItems.Count ? value : 0;
                     CurrentPage = NavBarItems[_navBarSelectedIndex].Page;
-                    CurrentFilePath = (CurrentPage.DataContext as ViewModelBase)?.CurrentFilePath;
+                    CurrentFilePath = (CurrentPage.DataContext as PageViewModelBase)?.CurrentFilePath;
                     HeaderPanelEnabled = CurrentPage != _eventLogPage && CurrentPage != _commentsPage;
                     OnPropertyChanged();
                 }
@@ -1032,7 +1032,7 @@ namespace Xfp.ViewModels
 
                 CurrentFilePath = TextFile.FilePath;
                 foreach (var p in _pages)
-                    (p.DataContext as ViewModelBase).CurrentFilePath = CurrentFilePath;
+                    (p.DataContext as PageViewModelBase).CurrentFilePath = CurrentFilePath;
 
                 XfpApplicationConfig.Settings.RecentPanelFiles.Add(TextFile.FilePath);
 
@@ -2159,7 +2159,7 @@ namespace Xfp.ViewModels
             DebugMode = App.DebugMode = !DebugMode;
 
             foreach (var p in _pages)
-                (p.DataContext as ViewModelBase).DebugMode = DebugMode;
+                (p.DataContext as PageViewModelBase).DebugMode = DebugMode;
         }
     }
 }

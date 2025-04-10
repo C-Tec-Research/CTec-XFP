@@ -14,7 +14,7 @@ using System.Windows.Xps;
 
 namespace Xfp.ViewModels.PanelTools
 {
-    public class PanelToolsPageViewModelBase : ViewModelBase
+    public class PanelToolsPageViewModelBase : PageViewModelBase
     {
         public PanelToolsPageViewModelBase(FrameworkElement parent)
         {

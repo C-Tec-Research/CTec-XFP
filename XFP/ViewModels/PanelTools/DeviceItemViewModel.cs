@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
+using CTecUtil.ViewModels;
 using CTecControls;
 using CTecControls.ViewModels;
 using Xfp.DataTypes.PanelData;

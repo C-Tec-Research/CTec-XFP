@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Xfp.Config;
 using System.ComponentModel.Composition.Primitives;
 using Xfp.DataTypes.PanelData;
+using CTecUtil.ViewModels;
 
 namespace Xfp.DataTypes.Printing
 {

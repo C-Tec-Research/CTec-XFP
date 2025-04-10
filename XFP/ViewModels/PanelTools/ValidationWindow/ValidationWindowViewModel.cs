@@ -8,12 +8,11 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using CTecUtil.ViewModels;
 using CTecControls.ViewModels;
-using Windows.Media.Capture.Core;
 using Xfp.Config;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Xfp.ViewModels.PanelTools.ValidationWindow
 {

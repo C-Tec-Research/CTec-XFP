@@ -8,7 +8,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using CTecControls.ViewModels;
+using CTecUtil.ViewModels;
 using CTecUtil.IO;
 using CTecUtil.Config;
 using CTecControls.UI;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CTecUtil.ViewModels;
 using CTecControls.UI;
 using CTecControls.ViewModels;
 using Xfp.DataTypes;

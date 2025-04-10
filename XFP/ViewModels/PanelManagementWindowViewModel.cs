@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using CTecUtil.UI;
+using CTecUtil.ViewModels;
 using CTecControls.UI;
-using System.Windows.Interop;
-using CTecControls.ViewModels;
-using Windows.Media.Capture.Core;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using CTecUtil.UI;
-using Xfp.UI.Views;
-using CTecUtil;
-using System.Globalization;
-using System.Windows.Media;
 
 namespace Xfp.ViewModels
 {
