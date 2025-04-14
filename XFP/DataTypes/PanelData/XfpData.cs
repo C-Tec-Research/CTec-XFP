@@ -31,7 +31,7 @@ namespace Xfp.DataTypes
 
             SiteConfig = new(original.SiteConfig);
             Comments = original.Comments;
-            //FirmwareVersion = original.FirmwareVersion;
+            //FirmwareVersion = Panels[0].PanelConfig.FirmwareVersion;
             ToolsVersion = original.ToolsVersion;
         }
 

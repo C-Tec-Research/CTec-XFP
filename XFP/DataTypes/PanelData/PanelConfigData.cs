@@ -39,6 +39,7 @@ namespace Xfp.DataTypes.PanelData
             BlinkPollingLED     = original.BlinkPollingLED;
             AutoAdjustDST       = original.AutoAdjustDST;
             RealTimeEventOutput = original.RealTimeEventOutput;
+            FirmwareVersion     = original.FirmwareVersion;
 
             DayStart = new();
             if (original.DayStart is not null)

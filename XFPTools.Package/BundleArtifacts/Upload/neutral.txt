@@ -1,6 +1,6 @@
-MainPackage=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0_AnyCPU.msix
-SymbolPackage=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0\XFPTools.Package_8.0.12.0_AnyCPU.appxsym
-ResourcePack=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0_scale-100.msix
-ResourcePack=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0_scale-125.msix
-ResourcePack=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0_scale-150.msix
-ResourcePack=C:\Users\Jamie.Bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.0.12.0_scale-400.msix
+MainPackage=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0_AnyCPU.msix
+SymbolPackage=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0\XFPTools.Package_8.1.0.0_AnyCPU.appxsym
+ResourcePack=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0_scale-100.msix
+ResourcePack=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0_scale-125.msix
+ResourcePack=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0_scale-150.msix
+ResourcePack=C:\Users\jamie.bartleet\Documents\Dev\XFP\XFPTools.Package\bin\AnyCPU\Release\Upload\XFPTools.Package_8.1.0.0_scale-400.msix

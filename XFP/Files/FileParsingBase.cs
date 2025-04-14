@@ -20,7 +20,7 @@ namespace Xfp.Files
                 var splitChar = input.Contains("(") ? "(" : input.Contains(":") ? ":" : "=";
                 var split = input.Split(splitChar);
                 if (split.Length > 0)
-                    return split[0].Trim().Trim(new[] { '"', '/' });
+                    return split[0].Trim().Trim([ '"', '/' ]);
             }
             return "";
         }
@@ -67,10 +67,11 @@ namespace Xfp.Files
             => input?.Substring(0, input.Contains(Tags.Comment) ? input.IndexOf(Tags.Comment) : input.Length);
 
 
-        internal static string ParseString(string input, bool trim = true)
+        internal static string ParseString(string input)
         {
             //divider in legacy file is '=', for the case of a json file check for ':'
-            var split = input.Split(input.Contains("=") ? "=" : ":");
+            var legacyFile = input.Contains("=");
+            var split = input.Split(legacyFile ? "=" : ":");
             if (split.Length > 1)
             {
                 var tmp = new StringBuilder();
@@ -79,7 +80,7 @@ namespace Xfp.Files
                                   select c)
                     tmp.Append(c);
 
-                return trim ? tmp.ToString().Trim() : tmp.ToString();
+                return legacyFile ? tmp.ToString().Trim() : tmp.ToString().Trim().Trim(['\"', ',']);
             }
             return "";
         }

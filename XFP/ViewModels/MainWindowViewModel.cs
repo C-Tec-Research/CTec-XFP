@@ -193,8 +193,10 @@ namespace Xfp.ViewModels
 
             CloseValidationWindow();
 
+            CurrentProtocol = protocol;
+
             if (repopulateView)
-                PopulateView(XfpData.InitialisedNew(CurrentProtocol = protocol, PanelNumber = PanelNumber, true));
+                PopulateView(XfpData.InitialisedNew(CurrentProtocol, PanelNumber = PanelNumber, true));
 
             OnPropertyChanged(nameof(CurrentFileName));
             OnPropertyChanged(nameof(CurrentFilePath));
@@ -1012,23 +1014,23 @@ namespace Xfp.ViewModels
                 if (newData is null)
                     return false;
 
-                var msgVersionCheck = new StringBuilder();
+                //var msgVersionCheck = new StringBuilder();
 
-                if (_data.CurrentPanel.PanelConfig.FirmwareVersionEquals(newData.CurrentPanel.PanelConfig.FirmwareVersion) == false)
-                {
-                    msgVersionCheck.Append(newData.CurrentPanel.PanelConfig.FirmwareVersion == CTecControls.Cultures.Resources.Not_Available
-                                            ? Cultures.Resources.File_Data_Is_Unknown_Firmware
-                                            : _data.CurrentPanel.PanelConfig.FirmwareVersionCompare(newData.CurrentPanel.PanelConfig.FirmwareVersion) switch
-                                            {
-                                                -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
-                                                1  => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
-                                                _  => Cultures.Resources.File_Data_Is_Unknown_Firmware,
-                                            });
-                }
+                //if (_data.CurrentPanel.PanelConfig.FirmwareVersionEquals(newData.CurrentPanel.PanelConfig.FirmwareVersion) == false)
+                //{
+                //    msgVersionCheck.Append(newData.CurrentPanel.PanelConfig.FirmwareVersion == CTecControls.Cultures.Resources.Not_Available
+                //                            ? Cultures.Resources.File_Data_Is_Unknown_Firmware
+                //                            : _data.CurrentPanel.PanelConfig.FirmwareVersionCompare(newData.CurrentPanel.PanelConfig.FirmwareVersion) switch
+                //                            {
+                //                                -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
+                //                                 1 => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, newData.CurrentPanel.PanelConfig.FirmwareVersion),
+                //                                _  => Cultures.Resources.File_Data_Is_Unknown_Firmware,
+                //                            });
+                //}
 
-                if (msgVersionCheck.Length > 0)
-                    if (!askConfirm(msgVersionCheck.ToString(), "Version Check"))
-                        return false;
+                //if (msgVersionCheck.Length > 0)
+                //    if (!askConfirm(msgVersionCheck.ToString(), "Version Check"))
+                //        return false;
 
                 CurrentFilePath = TextFile.FilePath;
                 foreach (var p in _pages)
@@ -1066,6 +1068,33 @@ namespace Xfp.ViewModels
             List<int> panelNumbers = new();
             List<string> firmwareVersions = new();
             LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
+
+
+
+            var msgVersionCheck = new StringBuilder();
+
+            if (panelNumbers?.IndexOf(PanelNumber - 1) is int idx)
+            {
+                if (idx < firmwareVersions.Count)
+                {
+                    if (_data.CurrentPanel.PanelConfig.FirmwareVersionEquals(firmwareVersions[idx]) == false)
+                    {
+                        msgVersionCheck.Append(firmwareVersions[idx] == CTecControls.Cultures.Resources.Not_Available
+                                                ? Cultures.Resources.File_Data_Is_Unknown_Firmware
+                                                : _data.CurrentPanel.PanelConfig.FirmwareVersionCompare(firmwareVersions[idx]) switch
+                                                {
+                                                    -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, firmwareVersions[idx]),
+                                                     1 => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, firmwareVersions[idx]),
+                                                    _  => Cultures.Resources.File_Data_Is_Unknown_Firmware,
+                                                });
+                    }
+
+                    if (msgVersionCheck.Length > 0)
+                        if (!askConfirm(msgVersionCheck.ToString(), "Version Check"))
+                            return null;
+                }
+            }
+
             
             var loop = (_deviceDetailsPage.DataContext as DevicesViewModel).LoopNum - 1;
 
@@ -1886,6 +1915,7 @@ namespace Xfp.ViewModels
         private bool validateFirmwareVersion(byte[] data)
             => validateFirmwareVersion(Text.Parse(data, XfpCommands.ResponseIsFirmwareVersionRequest, XfpCommands.FirmwareRevLength));
 
+
         private bool validateFirmwareVersion(object data)
         {
             try
@@ -1900,8 +1930,8 @@ namespace Xfp.ViewModels
                     if (!isValid && version != _panelFirmwareVersion)
                         Application.Current.Dispatcher.Invoke(new Action(() => { errorFirmwareVersionNotSupported(version); }), DispatcherPriority.ContextIdle);
 
-                    //update the firmware version on the Site Config page
-                    Application.Current.Dispatcher.Invoke(new Action(() => { (_siteConfigPage.DataContext as SiteConfigViewModel).FirmwareVersion = version; }), DispatcherPriority.ContextIdle);
+                    ////update the firmware version on the Site Config page
+                    //Application.Current.Dispatcher.Invoke(new Action(() => { (_siteConfigPage.DataContext as SiteConfigViewModel).FirmwareVersion = version; }), DispatcherPriority.ContextIdle);
 
                     _panelFirmwareVersion = version;
 
@@ -1930,26 +1960,33 @@ namespace Xfp.ViewModels
 
                 commsEnded();
 
-                if (wasCompleted)
+                //if (wasCompleted)
                 {
                     if (_currentPage == _deviceDetailsPage)
                     {
-                        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
                     }
                     else if (_currentPage == _loop1Page)
                     {
-                        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
                     }
                     else if (_currentPage == _loop2Page)
                     {
-                        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
                     }
                     else if (_currentPage == _setsPage)
                     {
                         (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                    }
+                    else if (_currentPage == _siteConfigPage)
+                    {
+                        if (_currentPage.DataContext is SiteConfigViewModel siteConfig)
+                            siteConfig.FirmwareVersion = _panelFirmwareVersion;
                     }
 
                     OnPropertyChanged(nameof(SystemName));
