@@ -437,9 +437,9 @@ namespace Xfp.ViewModels.PanelTools
 
                         CETriggerTypes.TimerEventTn => getListIndex(Times, _triggerParamTimer),
 
-                        CETriggerTypes.EventAnd => getListIndex(Events1, _triggerParamEvent),
+                        CETriggerTypes.EventAnd => getListIndex(EventNumbers, _triggerParamEvent),
 
-                        CETriggerTypes.ZoneAnd => getListIndex(Zones1, _triggerParamZone),
+                        CETriggerTypes.ZoneAnd => getListIndex(ZoneNumbers, _triggerParamZone),
 
                         _ => -1,
                     };
@@ -467,9 +467,9 @@ namespace Xfp.ViewModels.PanelTools
 
                     CETriggerTypes.TimerEventTn => _triggerParamTimer = getListIndex(Times, value),
 
-                    CETriggerTypes.EventAnd => _triggerParamEvent = getListIndex(Events1, value),
+                    CETriggerTypes.EventAnd => _triggerParamEvent = getListIndex(EventNumbers, value),
 
-                    CETriggerTypes.ZoneAnd => _triggerParamZone = getListIndex(Zones1, value),
+                    CETriggerTypes.ZoneAnd => _triggerParamZone = getListIndex(ZoneNumbers, value),
 
                     _ => -1,
                 };
@@ -520,8 +520,8 @@ namespace Xfp.ViewModels.PanelTools
                 {
                     return TriggerType switch
                     {
-                        CETriggerTypes.EventAnd => getListIndex(Events2, _triggerParamEvent2),
-                        CETriggerTypes.ZoneAnd  => getListIndex(Zones2,  _triggerParamZone2),
+                        CETriggerTypes.EventAnd => getListIndex(EventNumbers, _triggerParamEvent2),
+                        CETriggerTypes.ZoneAnd  => getListIndex(ZoneNumbers,  _triggerParamZone2),
                         _ => -1,
                     };
                 }
@@ -532,8 +532,8 @@ namespace Xfp.ViewModels.PanelTools
                 var prev = TriggerParam2;
                 TriggerParam2 = TriggerType switch
                 {
-                    CETriggerTypes.EventAnd => _triggerParamEvent2 = getListIndex(Events2, value),
-                    CETriggerTypes.ZoneAnd  => _triggerParamZone2  = getListIndex(Zones2, value),
+                    CETriggerTypes.EventAnd => _triggerParamEvent2 = getListIndex(EventNumbers, value),
+                    CETriggerTypes.ZoneAnd  => _triggerParamZone2  = getListIndex(ZoneNumbers, value),
                     _ => -1,
                 };
 
@@ -605,9 +605,9 @@ namespace Xfp.ViewModels.PanelTools
 
                         CETriggerTypes.TimerEventTn => getListString(Times, _resetParamTimer),
 
-                        CETriggerTypes.EventAnd => getListString(Events1, _resetParamEvent),
+                        CETriggerTypes.EventAnd => getListString(EventNumbers, _resetParamEvent),
 
-                        CETriggerTypes.ZoneAnd => getListString(Zones1, _resetParamZone),
+                        CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, _resetParamZone),
 
                         _ => "",
                     };
@@ -635,9 +635,9 @@ namespace Xfp.ViewModels.PanelTools
 
                     CETriggerTypes.TimerEventTn => _resetParamTimer = getListIndex(Times, value),
 
-                    CETriggerTypes.EventAnd => _resetParamEvent = getListIndex(Events1, value),
+                    CETriggerTypes.EventAnd => _resetParamEvent = getListIndex(EventNumbers, value),
 
-                    CETriggerTypes.ZoneAnd => _resetParamZone = getListIndex(Zones1, value),
+                    CETriggerTypes.ZoneAnd => _resetParamZone = getListIndex(ZoneNumbers, value),
 
                     _ => -1,
                 };
@@ -656,8 +656,8 @@ namespace Xfp.ViewModels.PanelTools
                 {
                     return ResetType switch
                     {
-                        CETriggerTypes.EventAnd => getListString(Events2, _resetParamEvent2),
-                        CETriggerTypes.ZoneAnd => getListString(Zones2, _resetParamZone2),
+                        CETriggerTypes.EventAnd => getListString(EventNumbers, _resetParamEvent2),
+                        CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, _resetParamZone2),
                         _ => "",
                     };
                 }
@@ -668,8 +668,8 @@ namespace Xfp.ViewModels.PanelTools
                 var prev = ResetParam2;
                 ResetParam2 = ResetType switch
                 {
-                    CETriggerTypes.EventAnd => _resetParamEvent2 = getListIndex(Events2, value),
-                    CETriggerTypes.ZoneAnd  => _resetParamZone2  = getListIndex(Zones2, value),
+                    CETriggerTypes.EventAnd => _resetParamEvent2 = getListIndex(EventNumbers, value),
+                    CETriggerTypes.ZoneAnd  => _resetParamZone2  = getListIndex(ZoneNumbers, value),
                     _ => -1,
                 };
 
@@ -787,7 +787,19 @@ namespace Xfp.ViewModels.PanelTools
 
 
         private void updateSelections()
-        {
+        {   
+            OnPropertyChanged(nameof(CENumber));
+            OnPropertyChanged(nameof(ActionType));
+            OnPropertyChanged(nameof(ActionParam));
+            OnPropertyChanged(nameof(TriggerType));
+            OnPropertyChanged(nameof(TriggerParam));
+            OnPropertyChanged(nameof(TriggerParam2));
+            OnPropertyChanged(nameof(TriggerCondition));
+            OnPropertyChanged(nameof(ResetType));
+            OnPropertyChanged(nameof(ResetParam));
+            OnPropertyChanged(nameof(ResetParam2));
+            OnPropertyChanged(nameof(ResetCondition));
+
             OnPropertyChanged(nameof(SelectedActionType));
             //OnPropertyChanged(nameof(SelectedActionParam));
             OnPropertyChanged(nameof(SelectedActionParamIndex));
@@ -863,14 +875,12 @@ namespace Xfp.ViewModels.PanelTools
         public MenuList Loop1DevicesMenu;
         public MenuList Loop2DevicesMenu;
         public MenuList ZonesMenu;
-        public MenuList Zones1Menu;
-        public MenuList Zones2Menu;
+        public MenuList ZoneNumbersMenu;
         public MenuList ZonesPanelsMenu;
         public MenuList GroupsMenu;
         public MenuList SetsMenu;
         public MenuList EventsMenu;
-        public MenuList Events1Menu;
-        public MenuList Events2Menu;
+        public MenuList EventNumbersMenu;
         public MenuList RelaysMenu;
         public MenuList SetsRelaysMenu;
         public MenuList TimesMenu;
@@ -882,14 +892,12 @@ namespace Xfp.ViewModels.PanelTools
         public List<string> Loop1Devices { get => Loop1DevicesMenu?.Invoke(); }
         public List<string> Loop2Devices { get => Loop2DevicesMenu?.Invoke(); }
         public List<string> Zones        { get => ZonesMenu?.Invoke(); }
-        public List<string> Zones1       { get => Zones1Menu?.Invoke(); }
-        public List<string> Zones2       { get => Zones2Menu?.Invoke(); }
+        public List<string> ZoneNumbers  { get => ZoneNumbersMenu?.Invoke(); }
         public List<string> ZonesPanels  { get => ZonesPanelsMenu?.Invoke(); }
         public List<string> Groups       { get => GroupsMenu?.Invoke(); }
         public List<string> Sets         { get => SetsMenu?.Invoke(); }
         public List<string> Events       { get => EventsMenu?.Invoke(); }
-        public List<string> Events1      { get => Events1Menu?.Invoke(); }
-        public List<string> Events2      { get => Events2Menu?.Invoke(); }
+        public List<string> EventNumbers { get => EventNumbersMenu?.Invoke(); }
         public List<string> Relays       { get => RelaysMenu?.Invoke(); }
         public List<string> SetsRelays   { get => SetsRelaysMenu?.Invoke(); }
         public List<string> Times        { get => TimesMenu?.Invoke(); }
@@ -928,22 +936,8 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region IPanelToolsViewModel implementation
-        public void PopulateView(XfpData data) { }
-
-        public void RefreshView(int errorCode = 0)
+        public void PopulateView(XfpData data)
         {
-            OnPropertyChanged(nameof(CENumber));
-            OnPropertyChanged(nameof(ActionType));
-            OnPropertyChanged(nameof(ActionParam));
-            OnPropertyChanged(nameof(TriggerType));
-            OnPropertyChanged(nameof(TriggerParam));
-            OnPropertyChanged(nameof(TriggerParam2));
-            OnPropertyChanged(nameof(TriggerCondition));
-            OnPropertyChanged(nameof(ResetType));
-            OnPropertyChanged(nameof(ResetParam));
-            OnPropertyChanged(nameof(ResetParam2));
-            OnPropertyChanged(nameof(ResetCondition));
-            
             OnPropertyChanged(nameof(SelectedActionType));
             OnPropertyChanged(nameof(SelectedActionParamIndex));
             OnPropertyChanged(nameof(SelectedTriggerType));
@@ -956,6 +950,34 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(SelectedResetParam2));
             OnPropertyChanged(nameof(SelectedResetConditionIndex));
             OnPropertyChanged(nameof(SelectedResetCondition));
+        }
+
+        public void RefreshView(int errorCode = 0)
+        {
+            //OnPropertyChanged(nameof(CENumber));
+            //OnPropertyChanged(nameof(ActionType));
+            //OnPropertyChanged(nameof(ActionParam));
+            //OnPropertyChanged(nameof(TriggerType));
+            //OnPropertyChanged(nameof(TriggerParam));
+            //OnPropertyChanged(nameof(TriggerParam2));
+            //OnPropertyChanged(nameof(TriggerCondition));
+            //OnPropertyChanged(nameof(ResetType));
+            //OnPropertyChanged(nameof(ResetParam));
+            //OnPropertyChanged(nameof(ResetParam2));
+            //OnPropertyChanged(nameof(ResetCondition));
+            
+            //OnPropertyChanged(nameof(SelectedActionType));
+            //OnPropertyChanged(nameof(SelectedActionParamIndex));
+            //OnPropertyChanged(nameof(SelectedTriggerType));
+            //OnPropertyChanged(nameof(SelectedTriggerParamIndex));
+            //OnPropertyChanged(nameof(SelectedTriggerParam2Index));
+            //OnPropertyChanged(nameof(SelectedTriggerConditionIndex));
+            //OnPropertyChanged(nameof(SelectedTriggerCondition));
+            //OnPropertyChanged(nameof(SelectedResetType));
+            //OnPropertyChanged(nameof(SelectedResetParam));
+            //OnPropertyChanged(nameof(SelectedResetParam2));
+            //OnPropertyChanged(nameof(SelectedResetConditionIndex));
+            //OnPropertyChanged(nameof(SelectedResetCondition));
 
             OnPropertyChanged(nameof(Actions));
             OnPropertyChanged(nameof(Triggers));
@@ -964,31 +986,29 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(Loop1Devices));
             OnPropertyChanged(nameof(Loop2Devices));
             OnPropertyChanged(nameof(Zones));
-            OnPropertyChanged(nameof(Zones1));
-            OnPropertyChanged(nameof(Zones2));
+            OnPropertyChanged(nameof(ZoneNumbers));
             OnPropertyChanged(nameof(ZonesPanels));
             OnPropertyChanged(nameof(Sets));
             OnPropertyChanged(nameof(Events));
-            OnPropertyChanged(nameof(Events1));
-            OnPropertyChanged(nameof(Events2));
+            OnPropertyChanged(nameof(EventNumbers));
             OnPropertyChanged(nameof(Relays));
             OnPropertyChanged(nameof(SetsRelays));
             OnPropertyChanged(nameof(Times));
             OnPropertyChanged(nameof(TrueOrFalse));
 
-            OnPropertyChanged(nameof(ActionParamIsValid));
-            OnPropertyChanged(nameof(ActionTriggerIsValid));
-            OnPropertyChanged(nameof(TriggerParam1IsValid));
-            OnPropertyChanged(nameof(IndicateInvalidTriggerParam2));
-            OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam1));
-            OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam2));
-            OnPropertyChanged(nameof(TriggerConditionIsValid));
-            OnPropertyChanged(nameof(ResetTriggerIsValid));
-            OnPropertyChanged(nameof(ResetParam1IsValid));
-            OnPropertyChanged(nameof(IndicateInvalidResetParam2));
-            OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam1));
-            OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam2));
-            OnPropertyChanged(nameof(ResetConditionIsValid));
+            //OnPropertyChanged(nameof(ActionParamIsValid));
+            //OnPropertyChanged(nameof(ActionTriggerIsValid));
+            //OnPropertyChanged(nameof(TriggerParam1IsValid));
+            //OnPropertyChanged(nameof(IndicateInvalidTriggerParam2));
+            //OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam1));
+            //OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam2));
+            //OnPropertyChanged(nameof(TriggerConditionIsValid));
+            //OnPropertyChanged(nameof(ResetTriggerIsValid));
+            //OnPropertyChanged(nameof(ResetParam1IsValid));
+            //OnPropertyChanged(nameof(IndicateInvalidResetParam2));
+            //OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam1));
+            //OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam2));
+            //OnPropertyChanged(nameof(ResetConditionIsValid));
 
             updateSelections();
         }

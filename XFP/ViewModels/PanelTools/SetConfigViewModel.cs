@@ -380,7 +380,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             PanelComms.ZoneSetReceived = zoneSetReceived;
             PanelComms.InitNewDownloadCommandSubqueue(Cultures.Resources.Comms_Sets, downloadRequestsCompleted);
-            for (int zone = 0; zone < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels; zone++)
+            for (int zone = 0; zone <= ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels; zone++)
                 PanelComms.AddCommandRequestZoneSet(zone, String.Format(Cultures.Resources.Zone_Set_x, zone + 1));
             if (!allPages)
             {

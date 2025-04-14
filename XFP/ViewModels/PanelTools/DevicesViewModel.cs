@@ -557,8 +557,8 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(LoopNum));
             OnPropertyChanged(nameof(LoopIsFitted));
             OnPropertyChanged(nameof(IsLoop1));
-            OnPropertyChanged(nameof(Loop1));
-            OnPropertyChanged(nameof(Loop2));
+            //OnPropertyChanged(nameof(Loop1));
+            //OnPropertyChanged(nameof(Loop2));
             OnPropertyChanged(nameof(CurrentLoop));
             OnPropertyChanged(nameof(LoopNumberDesc));
             OnPropertyChanged(nameof(IsReadOnly));

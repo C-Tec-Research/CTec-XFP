@@ -1930,32 +1930,47 @@ namespace Xfp.ViewModels
 
                 commsEnded();
 
-                //if (wasCompleted)
-                //{
-                //    if (_currentPage == _deviceDetailsPage)
-                //    {
-                //        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //    }
-                //    else if (_currentPage == _loop1Page)
-                //    {
-                //        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //    }
-                //    else if (_currentPage != _loop2Page)
-                //    {
-                //        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                //    }
-                //
+                if (wasCompleted)
+                {
+                    if (_currentPage == _deviceDetailsPage)
+                    {
+                        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                    }
+                    else if (_currentPage == _loop1Page)
+                    {
+                        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                    }
+                    else if (_currentPage == _loop2Page)
+                    {
+                        (_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                    }
+                    else if (_currentPage == _setsPage)
+                    {
+                        (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                    }
+
+                    OnPropertyChanged(nameof(SystemName));
+                    OnPropertyChanged(nameof(PanelNumber));
+                    OnPropertyChanged(nameof(IsReadOnly));
+                    OnPropertyChanged(nameof(PanelNumberSet));
+                    OnPropertyChanged(nameof(NumberOfPanels));
+                    OnPropertyChanged(nameof(PanelNumberToolTip));
+                    OnPropertyChanged(nameof(PanelCount));
+
                 //    Application.Current.Dispatcher.Invoke(new Action(() =>
                 //    {
                 //        if (!_data.Validate())
                 //            ShowValidationWindow(_currentPage.Title);
                 //    }));
-                //}
+                }
 
-                PopulateView(_data);
+                //                PopulateView(_data);
+
+
+                SaveCopyOfCurrentData();
                 SaveCopyOfDataFromFile();
             }
             catch (Exception ex)

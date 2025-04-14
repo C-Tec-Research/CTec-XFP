@@ -227,15 +227,16 @@
                               MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                               Margin="5,3,0,0"/>
 
-                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=Alert_Tone, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="25,0,0,0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=Alert_Tone, Source={StaticResource Resources}}" 
+                               Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}" 
+                               HorizontalAlignment="Right" Margin="25,0,0,0"/>
                     <ComboBox Grid.Row="1" Grid.Column="3" 
                               ItemsSource="{Binding AlertTones}"
                               SelectedIndex="{Binding AlertTone, Mode=TwoWay}"
                               PreviewMouseDown="combo_PreviewMouseDown"
                               PreviewKeyDown="ctrl_PreviewKeyDown"
                               MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                              IsEnabled="{Binding CurrentProtocolIsCast}"
-                              Opacity="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                              Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}"
                               Margin="5,0,0,0"/>
 
                     

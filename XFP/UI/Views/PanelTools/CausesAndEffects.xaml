@@ -715,20 +715,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem1.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem1.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Events1}" SelectedIndex="{Binding CEItem1.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.EventNumbers}" SelectedIndex="{Binding CEItem1.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem1.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Zones1}"  SelectedIndex="{Binding CEItem1.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.ZoneNumbers}"  SelectedIndex="{Binding CEItem1.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem1.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Events2}" SelectedIndex="{Binding CEItem1.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.EventNumbers}" SelectedIndex="{Binding CEItem1.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem1.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Zones2}"  SelectedIndex="{Binding CEItem1.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.ZoneNumbers}"  SelectedIndex="{Binding CEItem1.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -739,20 +739,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem2.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem2.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Events1}" SelectedIndex="{Binding CEItem2.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.EventNumbers}" SelectedIndex="{Binding CEItem2.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem2.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Zones1}"  SelectedIndex="{Binding CEItem2.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.ZoneNumbers}"  SelectedIndex="{Binding CEItem2.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem2.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Events2}" SelectedIndex="{Binding CEItem2.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.EventNumbers}" SelectedIndex="{Binding CEItem2.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem2.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Zones2}"  SelectedIndex="{Binding CEItem2.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.ZoneNumbers}"  SelectedIndex="{Binding CEItem2.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -763,20 +763,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem3.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem3.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Events1}" SelectedIndex="{Binding CEItem3.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.EventNumbers}" SelectedIndex="{Binding CEItem3.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem3.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Zones1}"  SelectedIndex="{Binding CEItem3.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.ZoneNumbers}"  SelectedIndex="{Binding CEItem3.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem3.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Events2}" SelectedIndex="{Binding CEItem3.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.EventNumbers}" SelectedIndex="{Binding CEItem3.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem3.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Zones2}"  SelectedIndex="{Binding CEItem3.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.ZoneNumbers}"  SelectedIndex="{Binding CEItem3.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -787,20 +787,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem4.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem4.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Events1}" SelectedIndex="{Binding CEItem4.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.EventNumbers}" SelectedIndex="{Binding CEItem4.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem4.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Zones1}"  SelectedIndex="{Binding CEItem4.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.ZoneNumbers}"  SelectedIndex="{Binding CEItem4.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem4.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Events2}" SelectedIndex="{Binding CEItem4.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.EventNumbers}" SelectedIndex="{Binding CEItem4.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem4.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Zones2}"  SelectedIndex="{Binding CEItem4.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.ZoneNumbers}"  SelectedIndex="{Binding CEItem4.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -811,20 +811,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem5.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem5.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Events1}" SelectedIndex="{Binding CEItem5.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.EventNumbers}" SelectedIndex="{Binding CEItem5.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem5.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Zones1}"  SelectedIndex="{Binding CEItem5.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.ZoneNumbers}"  SelectedIndex="{Binding CEItem5.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem5.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Events2}" SelectedIndex="{Binding CEItem5.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.EventNumbers}" SelectedIndex="{Binding CEItem5.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem5.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Zones2}"  SelectedIndex="{Binding CEItem5.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.ZoneNumbers}"  SelectedIndex="{Binding CEItem5.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -835,20 +835,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem6.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem6.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Events1}" SelectedIndex="{Binding CEItem6.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.EventNumbers}" SelectedIndex="{Binding CEItem6.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem6.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Zones1}"  SelectedIndex="{Binding CEItem6.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.ZoneNumbers}"  SelectedIndex="{Binding CEItem6.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem6.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Events2}" SelectedIndex="{Binding CEItem6.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.EventNumbers}" SelectedIndex="{Binding CEItem6.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem6.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Zones2}"  SelectedIndex="{Binding CEItem6.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.ZoneNumbers}"  SelectedIndex="{Binding CEItem6.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -859,20 +859,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem7.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem7.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Events1}" SelectedIndex="{Binding CEItem7.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.EventNumbers}" SelectedIndex="{Binding CEItem7.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem7.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Zones1}"  SelectedIndex="{Binding CEItem7.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.ZoneNumbers}"  SelectedIndex="{Binding CEItem7.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem7.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Events2}" SelectedIndex="{Binding CEItem7.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.EventNumbers}" SelectedIndex="{Binding CEItem7.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem7.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Zones2}"  SelectedIndex="{Binding CEItem7.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.ZoneNumbers}"  SelectedIndex="{Binding CEItem7.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -883,20 +883,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem8.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem8.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Events1}" SelectedIndex="{Binding CEItem8.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.EventNumbers}" SelectedIndex="{Binding CEItem8.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem8.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Zones1}"  SelectedIndex="{Binding CEItem8.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.ZoneNumbers}"  SelectedIndex="{Binding CEItem8.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem8.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Events2}" SelectedIndex="{Binding CEItem8.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.EventNumbers}" SelectedIndex="{Binding CEItem8.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem8.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Zones2}"  SelectedIndex="{Binding CEItem8.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.ZoneNumbers}"  SelectedIndex="{Binding CEItem8.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -907,20 +907,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem9.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem9.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Events1}" SelectedIndex="{Binding CEItem9.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.EventNumbers}" SelectedIndex="{Binding CEItem9.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem9.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Zones1}"  SelectedIndex="{Binding CEItem9.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.ZoneNumbers}"  SelectedIndex="{Binding CEItem9.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem9.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Events2}" SelectedIndex="{Binding CEItem9.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.EventNumbers}" SelectedIndex="{Binding CEItem9.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem9.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Zones2}"  SelectedIndex="{Binding CEItem9.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.ZoneNumbers}"  SelectedIndex="{Binding CEItem9.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -931,20 +931,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem10.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem10.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Events1}" SelectedIndex="{Binding CEItem10.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.EventNumbers}" SelectedIndex="{Binding CEItem10.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem10.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Zones1}"  SelectedIndex="{Binding CEItem10.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.ZoneNumbers}"  SelectedIndex="{Binding CEItem10.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem10.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Events2}" SelectedIndex="{Binding CEItem10.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.EventNumbers}" SelectedIndex="{Binding CEItem10.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem10.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Zones2}"  SelectedIndex="{Binding CEItem10.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.ZoneNumbers}"  SelectedIndex="{Binding CEItem10.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -955,20 +955,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem11.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem11.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Events1}" SelectedIndex="{Binding CEItem11.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.EventNumbers}" SelectedIndex="{Binding CEItem11.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem11.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Zones1}"  SelectedIndex="{Binding CEItem11.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.ZoneNumbers}"  SelectedIndex="{Binding CEItem11.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem11.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Events2}" SelectedIndex="{Binding CEItem11.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.EventNumbers}" SelectedIndex="{Binding CEItem11.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem11.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Zones2}"  SelectedIndex="{Binding CEItem11.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.ZoneNumbers}"  SelectedIndex="{Binding CEItem11.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -979,20 +979,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem12.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem12.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Events1}" SelectedIndex="{Binding CEItem12.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.EventNumbers}" SelectedIndex="{Binding CEItem12.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem12.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Zones1}"  SelectedIndex="{Binding CEItem12.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.ZoneNumbers}"  SelectedIndex="{Binding CEItem12.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem12.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Events2}" SelectedIndex="{Binding CEItem12.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.EventNumbers}" SelectedIndex="{Binding CEItem12.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem12.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Zones2}"  SelectedIndex="{Binding CEItem12.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.ZoneNumbers}"  SelectedIndex="{Binding CEItem12.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1003,20 +1003,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem13.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem13.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Events1}" SelectedIndex="{Binding CEItem13.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.EventNumbers}" SelectedIndex="{Binding CEItem13.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem13.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Zones1}"  SelectedIndex="{Binding CEItem13.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.ZoneNumbers}"  SelectedIndex="{Binding CEItem13.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem13.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Events2}" SelectedIndex="{Binding CEItem13.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.EventNumbers}" SelectedIndex="{Binding CEItem13.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem13.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Zones2}"  SelectedIndex="{Binding CEItem13.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.ZoneNumbers}"  SelectedIndex="{Binding CEItem13.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1027,20 +1027,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem14.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem14.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Events1}" SelectedIndex="{Binding CEItem14.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.EventNumbers}" SelectedIndex="{Binding CEItem14.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem14.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Zones1}"  SelectedIndex="{Binding CEItem14.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.ZoneNumbers}"  SelectedIndex="{Binding CEItem14.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem14.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Events2}" SelectedIndex="{Binding CEItem14.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.EventNumbers}" SelectedIndex="{Binding CEItem14.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem14.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Zones2}"  SelectedIndex="{Binding CEItem14.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.ZoneNumbers}"  SelectedIndex="{Binding CEItem14.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1051,20 +1051,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem15.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem15.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Events1}" SelectedIndex="{Binding CEItem15.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.EventNumbers}" SelectedIndex="{Binding CEItem15.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem15.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Zones1}"  SelectedIndex="{Binding CEItem15.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.ZoneNumbers}"  SelectedIndex="{Binding CEItem15.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem15.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Events2}" SelectedIndex="{Binding CEItem15.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.EventNumbers}" SelectedIndex="{Binding CEItem15.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem15.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Zones2}"  SelectedIndex="{Binding CEItem15.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.ZoneNumbers}"  SelectedIndex="{Binding CEItem15.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1075,20 +1075,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem16.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem16.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Events1}" SelectedIndex="{Binding CEItem16.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.EventNumbers}" SelectedIndex="{Binding CEItem16.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem16.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedTriggerParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Zones1}"  SelectedIndex="{Binding CEItem16.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.ZoneNumbers}"  SelectedIndex="{Binding CEItem16.SelectedTriggerParam2Index}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem16.ShowTriggerEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Events2}" SelectedIndex="{Binding CEItem16.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.EventNumbers}" SelectedIndex="{Binding CEItem16.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem16.ShowTriggerZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedTriggerParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Zones2}"  SelectedIndex="{Binding CEItem16.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.ZoneNumbers}"  SelectedIndex="{Binding CEItem16.SelectedTriggerParamIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1483,20 +1483,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem1.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem1.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Events1}" SelectedItem="{Binding CEItem1.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.EventNumbers}" SelectedItem="{Binding CEItem1.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem1.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Zones1}"  SelectedItem="{Binding CEItem1.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.ZoneNumbers}"  SelectedItem="{Binding CEItem1.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem1.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Events2}" SelectedItem="{Binding CEItem1.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.EventNumbers}" SelectedItem="{Binding CEItem1.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem1.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem1.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem1.Zones2}"  SelectedItem="{Binding CEItem1.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem1.ZoneNumbers}"  SelectedItem="{Binding CEItem1.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1507,20 +1507,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem2.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem2.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Events1}" SelectedItem="{Binding CEItem2.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.EventNumbers}" SelectedItem="{Binding CEItem2.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem2.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Zones1}"  SelectedItem="{Binding CEItem2.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.ZoneNumbers}"  SelectedItem="{Binding CEItem2.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem2.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Events2}" SelectedItem="{Binding CEItem2.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.EventNumbers}" SelectedItem="{Binding CEItem2.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem2.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem2.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem2.Zones2}"  SelectedItem="{Binding CEItem2.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem2.ZoneNumbers}"  SelectedItem="{Binding CEItem2.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1531,20 +1531,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem3.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem3.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Events1}" SelectedItem="{Binding CEItem3.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.EventNumbers}" SelectedItem="{Binding CEItem3.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem3.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Zones1}"  SelectedItem="{Binding CEItem3.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.ZoneNumbers}"  SelectedItem="{Binding CEItem3.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem3.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Events2}" SelectedItem="{Binding CEItem3.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.EventNumbers}" SelectedItem="{Binding CEItem3.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem3.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem3.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem3.Zones2}"  SelectedItem="{Binding CEItem3.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem3.ZoneNumbers}"  SelectedItem="{Binding CEItem3.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1555,20 +1555,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem4.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem4.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Events1}" SelectedItem="{Binding CEItem4.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.EventNumbers}" SelectedItem="{Binding CEItem4.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem4.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Zones1}"  SelectedItem="{Binding CEItem4.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.ZoneNumbers}"  SelectedItem="{Binding CEItem4.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem4.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Events2}" SelectedItem="{Binding CEItem4.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.EventNumbers}" SelectedItem="{Binding CEItem4.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem4.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem4.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem4.Zones2}"  SelectedItem="{Binding CEItem4.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem4.ZoneNumbers}"  SelectedItem="{Binding CEItem4.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1579,20 +1579,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem5.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem5.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Events1}" SelectedItem="{Binding CEItem5.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.EventNumbers}" SelectedItem="{Binding CEItem5.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem5.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Zones1}"  SelectedItem="{Binding CEItem5.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.ZoneNumbers}"  SelectedItem="{Binding CEItem5.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem5.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Events2}" SelectedItem="{Binding CEItem5.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.EventNumbers}" SelectedItem="{Binding CEItem5.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem5.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem5.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem5.Zones2}"  SelectedItem="{Binding CEItem5.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem5.ZoneNumbers}"  SelectedItem="{Binding CEItem5.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1603,20 +1603,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem6.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem6.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Events1}" SelectedItem="{Binding CEItem6.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.EventNumbers}" SelectedItem="{Binding CEItem6.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem6.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Zones1}"  SelectedItem="{Binding CEItem6.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.ZoneNumbers}"  SelectedItem="{Binding CEItem6.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem6.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Events2}" SelectedItem="{Binding CEItem6.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.EventNumbers}" SelectedItem="{Binding CEItem6.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem6.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem6.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem6.Zones2}"  SelectedItem="{Binding CEItem6.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem6.ZoneNumbers}"  SelectedItem="{Binding CEItem6.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1627,20 +1627,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem7.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem7.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Events1}" SelectedItem="{Binding CEItem7.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.EventNumbers}" SelectedItem="{Binding CEItem7.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem7.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Zones1}"  SelectedItem="{Binding CEItem7.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.ZoneNumbers}"  SelectedItem="{Binding CEItem7.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem7.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Events2}" SelectedItem="{Binding CEItem7.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.EventNumbers}" SelectedItem="{Binding CEItem7.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem7.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem7.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem7.Zones2}"  SelectedItem="{Binding CEItem7.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem7.ZoneNumbers}"  SelectedItem="{Binding CEItem7.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1651,20 +1651,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem8.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem8.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Events1}" SelectedItem="{Binding CEItem8.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.EventNumbers}" SelectedItem="{Binding CEItem8.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem8.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Zones1}"  SelectedItem="{Binding CEItem8.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.ZoneNumbers}"  SelectedItem="{Binding CEItem8.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem8.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Events2}" SelectedItem="{Binding CEItem8.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.EventNumbers}" SelectedItem="{Binding CEItem8.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem8.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem8.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem8.Zones2}"  SelectedItem="{Binding CEItem8.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem8.ZoneNumbers}"  SelectedItem="{Binding CEItem8.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1675,20 +1675,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem9.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem9.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Events1}" SelectedItem="{Binding CEItem9.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.EventNumbers}" SelectedItem="{Binding CEItem9.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem9.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Zones1}"  SelectedItem="{Binding CEItem9.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.ZoneNumbers}"  SelectedItem="{Binding CEItem9.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem9.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Events2}" SelectedItem="{Binding CEItem9.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.EventNumbers}" SelectedItem="{Binding CEItem9.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem9.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem9.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem9.Zones2}"  SelectedItem="{Binding CEItem9.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem9.ZoneNumbers}"  SelectedItem="{Binding CEItem9.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1699,20 +1699,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem10.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem10.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Events1}" SelectedItem="{Binding CEItem10.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.EventNumbers}" SelectedItem="{Binding CEItem10.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem10.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Zones1}"  SelectedItem="{Binding CEItem10.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.ZoneNumbers}"  SelectedItem="{Binding CEItem10.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem10.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Events2}" SelectedItem="{Binding CEItem10.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.EventNumbers}" SelectedItem="{Binding CEItem10.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem10.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem10.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem10.Zones2}"  SelectedItem="{Binding CEItem10.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem10.ZoneNumbers}"  SelectedItem="{Binding CEItem10.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1723,20 +1723,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem11.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem11.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Events1}" SelectedItem="{Binding CEItem11.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.EventNumbers}" SelectedItem="{Binding CEItem11.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem11.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Zones1}"  SelectedItem="{Binding CEItem11.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.ZoneNumbers}"  SelectedItem="{Binding CEItem11.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem11.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Events2}" SelectedItem="{Binding CEItem11.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.EventNumbers}" SelectedItem="{Binding CEItem11.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem11.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem11.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem11.Zones2}"  SelectedItem="{Binding CEItem11.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem11.ZoneNumbers}"  SelectedItem="{Binding CEItem11.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1747,20 +1747,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem12.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem12.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Events1}" SelectedItem="{Binding CEItem12.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.EventNumbers}" SelectedItem="{Binding CEItem12.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem12.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Zones1}"  SelectedItem="{Binding CEItem12.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.ZoneNumbers}"  SelectedItem="{Binding CEItem12.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem12.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Events2}" SelectedItem="{Binding CEItem12.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.EventNumbers}" SelectedItem="{Binding CEItem12.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem12.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem12.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem12.Zones2}"  SelectedItem="{Binding CEItem12.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem12.ZoneNumbers}"  SelectedItem="{Binding CEItem12.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1771,20 +1771,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem13.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem13.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Events1}" SelectedItem="{Binding CEItem13.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.EventNumbers}" SelectedItem="{Binding CEItem13.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem13.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Zones1}"  SelectedItem="{Binding CEItem13.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.ZoneNumbers}"  SelectedItem="{Binding CEItem13.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem13.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Events2}" SelectedItem="{Binding CEItem13.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.EventNumbers}" SelectedItem="{Binding CEItem13.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem13.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem13.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem13.Zones2}"  SelectedItem="{Binding CEItem13.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem13.ZoneNumbers}"  SelectedItem="{Binding CEItem13.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1795,20 +1795,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem14.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem14.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Events1}" SelectedItem="{Binding CEItem14.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.EventNumbers}" SelectedItem="{Binding CEItem14.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem14.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Zones1}"  SelectedItem="{Binding CEItem14.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.ZoneNumbers}"  SelectedItem="{Binding CEItem14.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem14.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Events2}" SelectedItem="{Binding CEItem14.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.EventNumbers}" SelectedItem="{Binding CEItem14.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem14.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem14.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem14.Zones2}"  SelectedItem="{Binding CEItem14.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem14.ZoneNumbers}"  SelectedItem="{Binding CEItem14.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1819,20 +1819,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem15.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem15.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Events1}" SelectedItem="{Binding CEItem15.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.EventNumbers}" SelectedItem="{Binding CEItem15.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem15.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Zones1}"  SelectedItem="{Binding CEItem15.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.ZoneNumbers}"  SelectedItem="{Binding CEItem15.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem15.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Events2}" SelectedItem="{Binding CEItem15.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.EventNumbers}" SelectedItem="{Binding CEItem15.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem15.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem15.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem15.Zones2}"  SelectedItem="{Binding CEItem15.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem15.ZoneNumbers}"  SelectedItem="{Binding CEItem15.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -1843,20 +1843,20 @@
                                 <TextBlock Text="{Binding Path=Event, Source={StaticResource Resources}}" Visibility="{Binding CEItem16.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem16.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Events1}" SelectedItem="{Binding CEItem16.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.EventNumbers}" SelectedItem="{Binding CEItem16.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem16.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedResetParam2, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Zones1}"  SelectedItem="{Binding CEItem16.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.ZoneNumbers}"  SelectedItem="{Binding CEItem16.SelectedResetParam2}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Logical_And, Source={StaticResource Resources}}" Margin="2,0,2,0"/>
                                 <Border Visibility="{Binding CEItem16.ShowResetEvents2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Events2}" SelectedItem="{Binding CEItem16.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.EventNumbers}" SelectedItem="{Binding CEItem16.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                                 <Border Visibility="{Binding CEItem16.ShowResetZones2, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderBrush="{Binding CEItem16.IndicateInvalidSelectedResetParam1, Converter={StaticResource BoolToErrorColourConverter}}" BorderThickness="1">
-                                    <ComboBox ItemsSource="{Binding CEItem16.Zones2}"  SelectedItem="{Binding CEItem16.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="25"/>
+                                    <ComboBox ItemsSource="{Binding CEItem16.ZoneNumbers}"  SelectedItem="{Binding CEItem16.SelectedResetParam}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="40"/>
                                 </Border>
                             </StackPanel>
                         </Border>
