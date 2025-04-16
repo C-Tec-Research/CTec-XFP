@@ -13,7 +13,7 @@
       Title="NetworkConfig">
 
     <Page.Resources>
-        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <ctcvh:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <ctcvh:IsNot1Converter x:Key="IsNot1Converter"/>
         <ctcvh:IsNot2Converter x:Key="IsNot2Converter"/>
@@ -83,49 +83,49 @@
 
                                 <!--#region panel names-->
                                 <Border Grid.Row="2" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[0].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[0].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[0].Name}" PreviewKeyDown="panelName1_PreviewKeyDown" TextChanged="panelName1_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="3" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[1].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[1].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[1].Name}" PreviewKeyDown="panelName2_PreviewKeyDown" TextChanged="panelName2_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="4" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[2].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[2].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[2].Name}" PreviewKeyDown="panelName3_PreviewKeyDown" TextChanged="panelName3_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="5" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[3].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[3].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[3].Name}" PreviewKeyDown="panelName4_PreviewKeyDown" TextChanged="panelName4_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="6" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[4].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[4].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[4].Name}" PreviewKeyDown="panelName5_PreviewKeyDown" TextChanged="panelName5_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="7" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[5].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[5].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[5].Name}" PreviewKeyDown="panelName6_PreviewKeyDown" TextChanged="panelName6_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="8" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[6].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[6].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[6].Name}" PreviewKeyDown="panelName7_PreviewKeyDown" TextChanged="panelName7_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
                                 </Border>
                                 <Border Grid.Row="9" Grid.Column="1" 
-                                        BorderBrush="{Binding Repeaters[7].NameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        BorderBrush="{Binding Repeaters[7].NameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="0" 
                                         Padding="0" Margin="2,0,0,0">
                                     <TextBox Width="180" Text="{Binding Repeaters[7].Name}" PreviewKeyDown="panelName8_PreviewKeyDown" TextChanged="panelName8_TextChanged" CommandManager.PreviewExecuted="textBox_PreviewExecuted" MaxLength="{Binding Repeaters[0].MaxNameLength}" Margin="2,1,2,0"/>
@@ -140,14 +140,6 @@
                                 <CheckBox Grid.Row="7" Grid.Column="2" IsChecked="{Binding Repeaters[5].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
                                 <CheckBox Grid.Row="8" Grid.Column="2" IsChecked="{Binding Repeaters[6].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
                                 <CheckBox Grid.Row="9" Grid.Column="2" IsChecked="{Binding Repeaters[7].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
-                                <!--<ctcu:Icon Grid.Row="2" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[0].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="3" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[1].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="4" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[2].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="5" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[3].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="6" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[4].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="7" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[5].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="8" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[6].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ctcu:Icon Grid.Row="9" Grid.Column="2" IconType="CheckmarkYes" Foreground="{StaticResource Brush04}" Width="14" Height="14" Visibility="{Binding Repeaters[7].IsFitted, Converter={StaticResource BoolToVisibilityConverter}}" />-->
 
                                 <TextBox Grid.Row="2" Grid.Column="3" Width="180" Text="{Binding Repeaters[0].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" MaxLength="{Binding MaxLocationLength}" Margin="2,1,2,0"/>
                                 <TextBox Grid.Row="3" Grid.Column="3" Width="180" Text="{Binding Repeaters[1].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>

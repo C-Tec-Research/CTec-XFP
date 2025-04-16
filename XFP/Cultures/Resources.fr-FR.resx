@@ -2064,4 +2064,7 @@ Toutes ses données seront perdues.</value>
   <data name="Panel_Site_Configuration" xml:space="preserve">
     <value>Configuration Site du Panneau</value>
   </data>
+  <data name="Validation_Header_Panel_Data" xml:space="preserve">
+    <value>Données du panneau :</value>
+  </data>
 </root>

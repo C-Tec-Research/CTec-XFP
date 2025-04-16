@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System.Windows.Input;
 using Windows.UI.Text;
 using System.Windows.Media.Media3D;
+using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -36,10 +37,10 @@ namespace Xfp.DataTypes.PanelData
         
         private XfpPanelData _data;
         private int _totalColumns = NumSounderGroups + 2;
-        private static Style _alertIconStyle = (Style)Application.Current.FindResource("AlarmIcon");
-        private static Brush _alarmAlertFill = (Brush)Application.Current.FindResource("AlarmAlertBrush");
-        private static Brush _alarmEvacFill  = (Brush)Application.Current.FindResource("AlarmEvacBrush");
-        private static Brush _alarmOffFill   = (Brush)Application.Current.FindResource("AlarmOffBrush");
+        private static Style _alertIconStyle = Styles.AlarmIconStyle;
+        private static Brush _alarmAlertFill = Styles.AlarmAlertBrush;
+        private static Brush _alarmEvacFill  = Styles.AlarmEvacBrush;
+        private static Brush _alarmOffFill   = Styles.AlarmOffBrush;
 
 
         private BlockUIContainer headerInfo()

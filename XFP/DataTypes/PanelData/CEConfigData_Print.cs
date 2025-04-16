@@ -17,6 +17,7 @@ using System.Windows.Media.Media3D;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Data.Common;
+using CTecUtil.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -27,7 +28,7 @@ namespace Xfp.DataTypes.PanelData
             _panelNumber = panelNumber;
             _data = data;
 
-            var svgPathConverter = new SetTriggerTypeToSvgStringConverter();
+            var svgPathConverter = new SetTriggerTypeToSvgPathConverter();
 
             initLists();
 
@@ -46,8 +47,8 @@ namespace Xfp.DataTypes.PanelData
         private XfpData _data;
         private const int _totalTimerTimesColumns = 9;
         private const int _totalCEColumns = 11;
-        private static SolidColorBrush _timerEventTimesUnderlineBrush = Application.Current.TryFindResource("Brush05") as SolidColorBrush;
-        private static SolidColorBrush _gridDividerBrush = Application.Current.TryFindResource("Brush08") as SolidColorBrush;
+        private static SolidColorBrush _timerEventTimesUnderlineBrush = Styles.Brush05;
+        private static SolidColorBrush _gridDividerBrush = Styles.Brush08;
         private List<string> _actions;
         private List<string> _triggers;
         private List<string> _inputs;

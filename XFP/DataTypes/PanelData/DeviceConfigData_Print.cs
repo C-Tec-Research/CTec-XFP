@@ -15,6 +15,7 @@ using System.Linq;
 using System.Collections.Generic;
 using CTecDevices;
 using CTecUtil;
+using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -47,8 +48,8 @@ namespace Xfp.DataTypes.PanelData
 
         private int _totalColumns = 14;
         private int _ioSettingsColumns = 5;
-        private static SolidColorBrush _seeIoSettingsForeground = (SolidColorBrush)Application.Current.TryFindResource("BrushSeeIOPrint");
-        private static SolidColorBrush _ioSubheaderBrush        = (SolidColorBrush)Application.Current.TryFindResource("Brush01");
+        private static SolidColorBrush _seeIoSettingsForeground = Styles.SeeDetailsPrintBrush;
+        private static SolidColorBrush _ioSubheaderBrush        = Styles.Brush01;
         private SortOrder _printOrder;
 
 

@@ -19,7 +19,7 @@
         <ctcvh:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter"/>
         <ctcvh:NonNullToVisibilityConverter x:Key="NonNullToVisibilityConverter"/>
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
-        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
         <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
         <vh:DeviceNameKeyToValueConverter x:Key="DeviceNameKeyToValueConverter"/>
@@ -86,7 +86,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                            <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                     BorderThickness="1" CornerRadius="5" 
                                     Height="42" Padding="0,0,2,0">
                                 <StackPanel Orientation="Horizontal" Margin="0,-2,3,-2" ToolTip="{Binding DeviceTypeToolTip}">
@@ -119,7 +119,7 @@
                                                         
                                             <Border Grid.Row="0"
                                                     Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                    BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="5" 
                                                     Height="26" Padding="0">
                                                 <Grid>
@@ -138,7 +138,7 @@
                                                         
                                             <Border Grid.Row="1"
                                                     Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                    BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="5" 
                                                     Height="26" Padding="0">
                                                 <Grid>
@@ -156,7 +156,7 @@
                                             </Border>
                                         </Grid>
                                                     
-                                        <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="1" CornerRadius="5" 
                                                 Visibility="{Binding IsIODevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                                 Height="26" Padding="0">
@@ -186,7 +186,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -250,7 +250,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center"
                                         Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -261,7 +261,7 @@
                                                     Margin="0"/>
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -272,7 +272,7 @@
                                                     Margin="0"/>
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -319,7 +319,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
                                     <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}">
@@ -408,7 +408,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                            <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                     BorderThickness="1" CornerRadius="5" 
                                     Height="42" Padding="0,0,2,0">
                                 <StackPanel Orientation="Horizontal" Margin="0,-2,3,-2" ToolTip="{Binding DeviceTypeToolTip}">
@@ -441,7 +441,7 @@
 
                                             <Border Grid.Row="0"
                                                     Visibility="{Binding IsZonalDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                    BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="5" 
                                                     Height="26" Padding="0">
                                                 <Grid>
@@ -460,7 +460,7 @@
 
                                             <Border Grid.Row="1"
                                                     Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                    BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                                    BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="5" 
                                                     Height="26" Padding="0">
                                                 <Grid>
@@ -478,7 +478,7 @@
                                             </Border>
                                         </Grid>
 
-                                        <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding IOConfigItemsAreValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="1" CornerRadius="5" 
                                                 Visibility="{Binding IsIODevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                                 Height="26" Padding="0">
@@ -509,7 +509,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding DeviceTypeIsValid, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -573,7 +573,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center"
                                         Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding SensitivityIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsSensitivityDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -584,7 +584,7 @@
                                                     Margin="0"/>
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -595,7 +595,7 @@
                                                     Margin="0"/>
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
@@ -642,7 +642,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                         BorderThickness="1" CornerRadius="5" 
                                         Height="26" Padding="0">
                                     <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}">

@@ -37,7 +37,6 @@ namespace Xfp.UI.Views.PanelTools
         {
             InitializeComponent();
             DataContext = _context = new GroupConfigViewModel(this, grdGroupConfig);
-            AlarmTypeToColourConverter.FindResource = new((r) => FindResource(r)); 
             _context.CultureChanged = new((c) => tpPhasedDelay.SetCulture(c));
         }
 

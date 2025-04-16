@@ -19,7 +19,7 @@
         <ctcvh:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
-        <ctcvh:IsInvalidToErrorColourConverter x:Key="IsInvalidToErrorColourConverter"/>
+        <ctcvh:IsInvalidToErrorBrushConverter x:Key="IsInvalidToErrorBrushConverter"/>
         <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
         
         <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">

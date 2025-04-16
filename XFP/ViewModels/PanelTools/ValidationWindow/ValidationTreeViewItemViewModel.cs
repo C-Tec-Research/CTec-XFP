@@ -97,10 +97,15 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         {
             ErrorLevels e;
             var result = ErrorLevels.OK;
-            if (validationCodes is not null)
-                foreach (var v in validationCodes)
-                    if ((e = ConfigData.GetErrorLevel(v.ValidationCode)) > result)
-                        result = e;
+
+            try
+            {
+                if (validationCodes is not null)
+                    foreach (var v in validationCodes)
+                        if ((e = ConfigData.GetErrorLevel(v.ValidationCode)) > result)
+                            result = e;
+            } catch { }
+
             return result;
         }
 

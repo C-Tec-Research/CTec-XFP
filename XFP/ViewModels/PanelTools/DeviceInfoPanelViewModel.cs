@@ -850,18 +850,18 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region I/O settings
-        public int?   IOInputOutput1   { get => (int?)getInputOutput(0); set => setInputOutput(0, value); }
-        public int?   IOInputOutput2   { get => (int?)getInputOutput(1); set => setInputOutput(1, value); }
-        public int?   IOInputOutput3   { get => (int?)getInputOutput(2); set => setInputOutput(2, value); }
-        public int?   IOInputOutput4   { get => (int?)getInputOutput(3); set => setInputOutput(3, value); }
-        public string IOInputOutputDesc1 { get { var io = getInputOutput(0); return io is not null && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc2 { get { var io = getInputOutput(1); return io is not null && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc3 { get { var io = getInputOutput(2); return io is not null && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc4 { get { var io = getInputOutput(3); return io is not null && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public int?   IOInputChannel1    { get => getIOChannel(0);         set => setChannel(0, value); }
-        public int?   IOInputChannel2    { get => getIOChannel(1);         set => setChannel(1, value); }
-        public int?   IOInputChannel3    { get => getIOChannel(2);         set => setChannel(2, value); }
-        public int?   IOInputChannel4    { get => getIOChannel(3);         set => setChannel(3, value); }
+        public int    IOInputOutput1     { get => (int)getInputOutput(0); set => setInputOutput(0, value); }
+        public int    IOInputOutput2     { get => (int)getInputOutput(1); set => setInputOutput(1, value); }
+        public int    IOInputOutput3     { get => (int)getInputOutput(2); set => setInputOutput(2, value); }
+        public int    IOInputOutput4     { get => (int)getInputOutput(3); set => setInputOutput(3, value); }
+        public string IOInputOutputDesc1 { get { var io = (int)getInputOutput(0); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc2 { get { var io = (int)getInputOutput(1); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc3 { get { var io = (int)getInputOutput(2); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc4 { get { var io = (int)getInputOutput(3); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
+        public int    IOInputChannel1    { get => getIOChannel(0);         set => setChannel(0, value); }
+        public int    IOInputChannel2    { get => getIOChannel(1);         set => setChannel(1, value); }
+        public int    IOInputChannel3    { get => getIOChannel(2);         set => setChannel(2, value); }
+        public int    IOInputChannel4    { get => getIOChannel(3);         set => setChannel(3, value); }
         public int?   IOOutputChannel1   { get => getIOChannel(0);         set => setChannel(0, value); }
         public int?   IOOutputChannel2   { get => getIOChannel(1);         set => setChannel(1, value); }
         public int?   IOOutputChannel3   { get => getIOChannel(2);         set => setChannel(2, value); }
@@ -884,28 +884,28 @@ namespace Xfp.ViewModels.PanelTools
         public bool IOIsInput3 => getInputOutput(2) == IOTypes.Input;
         public bool IOIsInput4 => getInputOutput(3) == IOTypes.Input;
 
-        private IOTypes? getInputOutput(int index)
+        private IOTypes getInputOutput(int index)
         {
             if (NoDeviceDetails)
-                return null;
+                return (IOTypes)(-1);
 
             IOTypes? io = null;
 
             foreach (var d in _deviceList)
             {
                 if (d.DeviceType is null)
-                    return null;
+                    return (IOTypes)(-1);
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
                     if (io is null)
                         io = d.IOConfigItems[index].InputOutput;
                     else if (io != d.IOConfigItems[index].InputOutput)
-                        return null;
+                        return (IOTypes)(-1);
                 }
             }
 
-            return io;
+            return io??(IOTypes)(-1);
         }
 
         private void setInputOutput(int index, int? value)
@@ -965,28 +965,28 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription4));
         }
 
-        private int? getIOChannel(int index)
+        private int getIOChannel(int index)
         {
             if (NoDeviceDetails)
-                return null;
+                return -1;
 
             int? channel = null;
 
             foreach (var d in _deviceList)
             {
                 if (d.DeviceType is null)
-                    return null;
+                    return -1;
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
                     if (channel is null)
                         channel = d.IOConfigItems[index].Channel;
                     else if (channel != d.IOConfigItems[index].Channel)
-                        return null;
+                        return -1;
                 }
             }
 
-            return channel;
+            return channel??-1;
         }
 
         private void setChannel(int index, int? value)
@@ -2113,21 +2113,21 @@ namespace Xfp.ViewModels.PanelTools
         private bool ioInputOutputIsValid(int index)
         {
             if (getInputOutput(index) is IOTypes io)
-                return io >= 0 && (int)io < Enum.GetNames(typeof(IOTypes)).Length;
+                return  (int)io >= (DeviceList.Count > 0 ? -1 : 0) && (int)io < Enum.GetNames(typeof(IOTypes)).Length;
             return true;
         }
 
         private bool ioChannelIsValid(int index)
         {
             if (getIOChannel(index) is int channel)
-                return channel >= 0 && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);
+                return (int)channel >= (DeviceList.Count > 0 ? -1 : 0) && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);
             return true;
         }
 
         private bool ioZoneSetIsValid(int index)
         {
             if (getIOZoneSetIndex(index) is int zs)
-                return zs >= 0 && zs < (getInputOutput(index) == IOTypes.Input ? Zones.Count : Sets.Count);
+                return (int)zs >= (DeviceList.Count > 0 ? -1 : 0) && zs < (getInputOutput(index) == IOTypes.Input ? Zones.Count : Sets.Count);
             return true;
         }
 

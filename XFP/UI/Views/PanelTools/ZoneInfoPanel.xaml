@@ -39,9 +39,9 @@
         <ctcvh:BoolToOpacity100pcConverter x:Key="BoolToOpacity100pcConverter"/>
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
-        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
-        <ctcvh:IsInvalidIndexToErrorColourConverter x:Key="IsInvalidIndexToErrorColourConverter"/>
+        <ctcvh:IsInvalidIndexToErrorBrushConverter x:Key="IsInvalidIndexToErrorBrushConverter"/>
         <ctcvh:IsNullToOpacity40pcConverter x:Key="IsNullToOpacity40pcConverter"/>
         <ctcvh:IsFalseNotNullToOpacity40pcConverter x:Key="IsFalseNotNullToOpacity40pcConverter"/>
         <ctcvh:IsFalseNotNullToVisibilityHiddenConverter x:Key="IsFalseNotNullToVisibilityHiddenConverter"/>
@@ -121,7 +121,7 @@
 
 
                     <WrapPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-                        <Border BorderBrush="{Binding ZoneDescIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding ZoneDescIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1"
                                 PreviewKeyDown="textBox_PreviewKeyDown"
                                 Padding="0" Margin="8,0,0,0">
@@ -142,7 +142,7 @@
                     <!--#region Sounders-->
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Path=Sounders, Source={StaticResource Resources}}" Margin="25,0,0,0" Padding="0" />
                     <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-                        <Border BorderBrush="{Binding SounderDelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding SounderDelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1" Margin="8,0,0,0" Padding="1,0,0,0">
                             <ctc:TimePicker Value="{Binding SounderDelay}"
                                             Format="mmss"
@@ -164,7 +164,7 @@
                     <!--#region Relay 1-->
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Relay_1, Source={StaticResource Resources}}" Margin="25,0,0,0" Padding="0" />
                     <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
-                        <Border BorderBrush="{Binding Relay1DelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding Relay1DelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1" Margin="8,0,0,0" Padding="1,0,0,0">
                             <ctc:TimePicker Grid.Row="3" Grid.Column="1" 
                                             Value="{Binding Relay1Delay}"
@@ -187,7 +187,7 @@
                     <!--#region Relay 2-->
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Relay_2, Source={StaticResource Resources}}" Margin="25,0,0,0" Padding="0" />
                     <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
-                        <Border BorderBrush="{Binding Relay2DelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding Relay2DelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1" Margin="8,0,0,0" Padding="1,0,0,0">
                             <ctc:TimePicker Grid.Row="4" Grid.Column="1" 
                                             Value="{Binding Relay2Delay}"
@@ -210,7 +210,7 @@
                     <!--#region Outputs-->
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Path=Outputs, Source={StaticResource Resources}}" Margin="25,0,0,0" Padding="0" />
                     <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
-                        <Border BorderBrush="{Binding RemoteDelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding RemoteDelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1" Margin="8,0,0,0" Padding="1,0,0,0">
                             <ctc:TimePicker Grid.Row="5" Grid.Column="1" 
                                             Value="{Binding RemoteDelay}"
@@ -405,7 +405,7 @@
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Path=Day, Source={StaticResource Resources}}" Margin="0"/>
 
                             <Border Grid.Row="3" Grid.Column="1" 
-                                    BorderBrush="{Binding DayOptionIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding DayOptionIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="5,0,0,0" Padding="2">
                                 <ComboBox ItemsSource="{Binding DependencyOptions}"
                                           SelectedItem="{Binding DayOption}"
@@ -423,7 +423,7 @@
                                        Foreground="{StaticResource BrushInfo}"/>
 
                             <Border Grid.Row="3" Grid.Column="3" 
-                                    BorderBrush="{Binding DayDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding DayDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="10,0,0,0" Padding="1,0,0,0">
                                 <ctc:TimePicker Value="{Binding DayDetectorReset}"
                                                 ToolTip="{Binding Path=ToolTip_Dependencies_Day_Occupied, Source={StaticResource Resources}}" 
@@ -444,7 +444,7 @@
                                        Foreground="{StaticResource BrushInfo}"/>
 
                             <Border Grid.Row="3" Grid.Column="5" 
-                                    BorderBrush="{Binding DayAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding DayAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="5,0,0,0" Padding="1,0,0,0">
                                 <ctc:TimePicker Grid.Row="3" Grid.Column="5"
                                                 Value="{Binding DayAlarmReset}"
@@ -481,7 +481,7 @@
                             <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Night, Source={StaticResource Resources}}" Margin="0"/>
 
                             <Border Grid.Row="5" Grid.Column="1" 
-                                    BorderBrush="{Binding NightOptionIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding NightOptionIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="5,0,0,0" Padding="1,0,0,0">
                                 <ComboBox Grid.Row="5" Grid.Column="1"
                                           ItemsSource="{Binding DependencyOptions}"
@@ -500,7 +500,7 @@
                                        Foreground="{StaticResource BrushInfo}"/>
                             
                             <Border Grid.Row="5" Grid.Column="3" 
-                                    BorderBrush="{Binding NightDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding NightDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="10,0,0,0" Padding="1,1,0,1">
                                 <ctc:TimePicker Value="{Binding NightDetectorReset}"
                                                 ToolTip="{Binding Path=ToolTip_Dependencies_Night_Unoccupied, Source={StaticResource Resources}}" 
@@ -521,7 +521,7 @@
                                        Foreground="{StaticResource BrushInfo}"/>
 
                             <Border Grid.Row="5" Grid.Column="5" 
-                                    BorderBrush="{Binding NightAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                    BorderBrush="{Binding NightAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                     Margin="5,0,0,0" Padding="1,0,0,0">
                                 <ctc:TimePicker Grid.Row="5" Grid.Column="5"
                                                 Value="{Binding NightAlarmReset}"

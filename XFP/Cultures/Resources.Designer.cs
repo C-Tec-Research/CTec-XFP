@@ -5482,6 +5482,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Panel data:.
+        /// </summary>
+        public static string Validation_Header_Panel_Data {
+            get {
+                return ResourceManager.GetString("Validation_Header_Panel_Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string Version {

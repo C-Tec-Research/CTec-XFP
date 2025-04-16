@@ -15,6 +15,7 @@ using System.Windows.Input;
 using Windows.UI.Text;
 using System.Windows.Media.Media3D;
 using System.Globalization;
+using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -24,7 +25,7 @@ namespace Xfp.DataTypes.PanelData
         {
             _data = panelData;
 
-            var svgPathConverter = new SetTriggerTypeToSvgStringConverter();
+            var svgPathConverter = new SetTriggerTypeToSvgPathConverter();
             _triggerPulsedSvgData       = (string)svgPathConverter.Convert(SetTriggerTypes.Pulsed,       typeof(string), null, null);
             _triggerContinuousSvgData   = (string)svgPathConverter.Convert(SetTriggerTypes.Continuous,   typeof(string), null, null);
             _triggerDelayedSvgData      = (string)svgPathConverter.Convert(SetTriggerTypes.Delayed,      typeof(string), null, null);
@@ -45,14 +46,14 @@ namespace Xfp.DataTypes.PanelData
         private const int _setIdColumns = 2;
         private const int _separatorColumns = 1;
         private const int _totalColumns = NumOutputSetTriggers + NumPanelRelayTriggers + _setIdColumns + _separatorColumns;
-        private static SolidColorBrush _silenceableSetsBrush     = (SolidColorBrush)Application.Current.FindResource("Brush07");
-        private static SolidColorBrush _columnSeparatorBrush     = new SolidColorBrush(Color.FromRgb(0xea, 0xea, 0xea));
-        private static SolidColorBrush _outputSetsBorderBrush    = (SolidColorBrush)Application.Current.FindResource("Brush05");
-        private static SolidColorBrush _panelRelayHeaderBrush    = (SolidColorBrush)Application.Current.FindResource("BrushPanelRelayPrintHeader");
-        private static SolidColorBrush _triggerPulsedBrush       = (SolidColorBrush)Application.Current.FindResource("TriggerPulsedBrush");
-        private static SolidColorBrush _triggerContinuousBrush   = (SolidColorBrush)Application.Current.FindResource("TriggerContinuousBrush");
-        private static SolidColorBrush _triggerDelayedBrush      = (SolidColorBrush)Application.Current.FindResource("TriggerDelayedBrush");
-        private static SolidColorBrush _triggerNotTriggeredBrush = (SolidColorBrush)Application.Current.FindResource("TriggerNotTriggeredBrush");
+        private static SolidColorBrush _silenceableSetsBrush     = Styles.Brush07;
+        private static SolidColorBrush _columnSeparatorBrush     = Styles.ColumnSeparatorBrush;
+        private static SolidColorBrush _outputSetsBorderBrush    = Styles.Brush05;
+        private static SolidColorBrush _panelRelayHeaderBrush    = Styles.PrintPanelRelayHeaderBrush;
+        private static SolidColorBrush _triggerPulsedBrush       = Styles.TriggerPulsedBrush;
+        private static SolidColorBrush _triggerContinuousBrush   = Styles.TriggerContinuousBrush;
+        private static SolidColorBrush _triggerDelayedBrush      = Styles.TriggerDelayedBrush;
+        private static SolidColorBrush _triggerNotTriggeredBrush = Styles.TriggerNotTriggeredBrush;
         private static string _triggerPulsedSvgData;
         private static string _triggerContinuousSvgData;
         private static string _triggerDelayedSvgData;

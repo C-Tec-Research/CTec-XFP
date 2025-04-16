@@ -25,8 +25,8 @@
         <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
         <ctcvh:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter"/>
         <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
-        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
-        <ctcvh:InverseBoolToErrorBgColourConverter x:Key="InverseBoolToErrorBgColourConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
+        <ctcvh:InverseBoolToErrorBgBrushConverter x:Key="InverseBoolToErrorBgBrushConverter"/>
         <ctcvh:GreaterThanOneToVisibilityConverter x:Key="GreaterThanOneToVisibilityConverter"/>
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
@@ -154,7 +154,7 @@
                     <Border Style="{StaticResource InputPanelBorder}" Margin="0,0,0,5" Padding="20,5,20,8" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=Input_Delay, Source={StaticResource Resources}}"/>
-                            <Border BorderThickness="1" CornerRadius="3" BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" Margin="0,0,2,0">
+                            <Border BorderThickness="1" CornerRadius="3" BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" Margin="0,0,2,0">
                                 <ctc:TimePicker x:Name="tpInputDelay" Value="{Binding InputDelay}" Format="mm:ss" SecondsIncrement="30" MaxValue="5:00" PreviewKeyDown="ctrl_PreviewKeyDown" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="0,1,0,0"/>
                             </Border>
                             <TextBlock Text="{Binding Path=Minutes_Short, Source={StaticResource Resources}}" Margin="0,0,20,0"/>
@@ -240,7 +240,7 @@
                                 </DataGridTemplateColumn.HeaderStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{Binding ZoneDescIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding ZoneDescIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="1" CornerRadius="0" 
                                                 Padding="0" Margin="-2,0,-1,0">
                                             <Grid HorizontalAlignment="Left" Margin="0">
@@ -270,10 +270,10 @@
                                 </DataGridTemplateColumn.HeaderStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="1,1,0,1" CornerRadius="3,0,0,3"
                                                 Padding="0" Margin="5,0,-1,0">
-                                            <Border BorderBrush="{Binding SounderDelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                            <Border BorderBrush="{Binding SounderDelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="0" 
                                                     HorizontalAlignment="Center" Padding="2,0,0,0" Margin="-2,0.25,0,0.25">
                                                 <TextBlock Text="{Binding SounderDelayTime}" HorizontalAlignment="Right"/>
@@ -301,10 +301,10 @@
                                 </DataGridTemplateColumn.HeaderStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="0,1,0,1" CornerRadius="0" 
                                                 Padding="0" Margin="-5,0,-1,0">
-                                            <Border BorderBrush="{Binding Relay1DelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                            <Border BorderBrush="{Binding Relay1DelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="0" 
                                                     HorizontalAlignment="Center" Padding="2,0,0,0" Margin="0,0.25,0,0.25">
                                                 <TextBlock Text="{Binding Relay1DelayTime}" HorizontalAlignment="Right"/>
@@ -332,10 +332,10 @@
                                 </DataGridTemplateColumn.HeaderStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="0,1,0,1" CornerRadius="0" 
                                                 Padding="0" Margin="-1,0,-1,0">
-                                            <Border BorderBrush="{Binding Relay2DelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                            <Border BorderBrush="{Binding Relay2DelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="0" 
                                                     HorizontalAlignment="Center" Padding="2,0,0,0" Margin="0,0.25,0,0.25">
                                                 <TextBlock Text="{Binding Relay2DelayTime}" HorizontalAlignment="Right"/>
@@ -363,10 +363,10 @@
                                 </DataGridTemplateColumn.HeaderStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                        <Border BorderBrush="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                 BorderThickness="0,1,1,1" CornerRadius="0,3,3,0" 
                                                 Padding="0" Margin="-3,0,0,0">
-                                            <Border BorderBrush="{Binding RemoteDelayIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                                            <Border BorderBrush="{Binding RemoteDelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="0" 
                                                     HorizontalAlignment="Center" Padding="2,0,0,0" Margin="0,0.25,0,0.25">
                                                 <TextBlock Text="{Binding RemoteDelayTime}" HorizontalAlignment="Right"/>
@@ -481,7 +481,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <Border BorderBrush="{Binding DayDependencyIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                            <Border BorderBrush="{Binding DayDependencyIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                     Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                     Margin="-7,0,0,0" Padding="2">
                                                 <TextBlock Text="{Binding DayDependency}" Margin="3,0,3,0"/>
@@ -513,7 +513,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Border Grid.Row="3" Grid.Column="1" 
-                                                    BorderBrush="{Binding DayDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                                    BorderBrush="{Binding DayDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                     Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                     Margin="0" Padding="2">
                                                 <Grid HorizontalAlignment="Center" Width="34" Margin="0,0,0,0">
@@ -549,7 +549,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Border Grid.Row="3" Grid.Column="1" 
-                                                    BorderBrush="{Binding DayAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                                    BorderBrush="{Binding DayAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                     Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                     Margin="0" Padding="2">
                                                 <Grid HorizontalAlignment="Center" Width="34" Margin="0,0,0,0">
@@ -583,7 +583,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Border Grid.Row="3" Grid.Column="1" 
-                                                    BorderBrush="{Binding NightDependencyIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                                    BorderBrush="{Binding NightDependencyIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                     Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                     Margin="3,0,0,0" Padding="2">
                                                 <TextBlock Text="{Binding NightDependency}" Margin="2,0,2,0"/>
@@ -615,7 +615,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Border Grid.Row="3" Grid.Column="1" 
-                                                    BorderBrush="{Binding NightDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                                    BorderBrush="{Binding NightDetectorResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                     Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                     Margin="0" Padding="2">
                                                 <Grid HorizontalAlignment="Center" Width="34" Margin="0,0,0,0">
@@ -650,7 +650,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Border Grid.Row="3" Grid.Column="1" 
-                                                        BorderBrush="{Binding NightAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" BorderThickness="1"
+                                                        BorderBrush="{Binding NightAlarmResetIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
                                                         Visibility="{Binding IsPanelData, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                         Margin="0" Padding="2">
                                                 <Grid HorizontalAlignment="Center" Width="34" Margin="0,0,0,0">

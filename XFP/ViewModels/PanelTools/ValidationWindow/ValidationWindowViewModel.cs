@@ -76,6 +76,9 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         public void Close() => _refreshTimer.Stop();
 
 
+        public string ValidationTypeHeader => Cultures.Resources.Validation_Header_Panel_Data;
+
+
         public void RefreshView(object source, ElapsedEventArgs eventArgs)
         {
             _refreshTimer.Stop();

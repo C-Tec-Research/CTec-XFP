@@ -39,8 +39,8 @@
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
-        <ctcvh:BoolToErrorColourConverter x:Key="BoolToErrorColourConverter"/>
-        <ctcvh:InverseBoolToErrorColourConverter x:Key="InverseBoolToErrorColourConverter"/>
+        <ctcvh:BoolToErrorBrushConverter x:Key="BoolToErrorBrushConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <vh:IndexToDeviceNameConverter x:Key="IndexToDeviceNameConverter"/>
         <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
         <vh:BaseSounderGroupToStringConverter x:Key="BaseSounderGroupToStringConverter"/>
@@ -163,7 +163,7 @@
 
                     <!--#region device icon & type-->
                     <Grid Grid.Row="0" Grid.Column="0" MouseDown="deviceType_MouseDown" Cursor="Hand" Margin="5,8,0,0">
-                        <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}" 
+                        <Border BorderBrush="{Binding DeviceTypeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                 BorderThickness="1"
                                 Padding="2,0,2,0" Margin="5,0,5,0">
                             <Grid Margin="5" HorizontalAlignment="Left" Height="48">
@@ -246,7 +246,7 @@
                                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal"
                                             Visibility="{Binding IsZonedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                    <Border BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding ZoneIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" 
                                             HorizontalAlignment="Left" 
                                             Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -291,7 +291,7 @@
                                                 Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
                                     
-                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,2">
@@ -327,7 +327,7 @@
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Name, Source={StaticResource Resources}}" Margin="0" Padding="0"/>
                                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
                                             IsEnabled="{Binding DeviceTypesAreAllNull, Converter={StaticResource BoolToInverseConverter}}">
-                                    <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding DeviceNameIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" 
                                             HorizontalAlignment="Left" 
                                             Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -374,7 +374,7 @@
 
                                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                        <Border BorderBrush="{Binding DayModeIsInvalid, Converter={StaticResource BoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding DayModeIsInvalid, Converter={StaticResource BoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -408,7 +408,7 @@
 
                                     <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                        <Border BorderBrush="{Binding NightModeIsInvalid, Converter={StaticResource BoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding NightModeIsInvalid, Converter={StaticResource BoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -503,7 +503,7 @@
 
                                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                        <Border BorderBrush="{Binding DayVolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding DayVolumeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -524,7 +524,7 @@
 
                                     <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                        <Border BorderBrush="{Binding NightVolumeIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding NightVolumeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
@@ -589,7 +589,7 @@
                                                 Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource BoolToVisibilityConverter}}"
                                                 HorizontalAlignment="Left">
                                             <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                            <Border BorderBrush="{Binding DaySensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            <Border BorderBrush="{Binding DaySensitivityIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                     BorderThickness="1" 
                                                     HorizontalAlignment="Left" 
                                                     Margin="7,0,0,0" Padding="2,0,0,0">
@@ -620,7 +620,7 @@
                                                     Visibility="{Binding SensitivitiesHaveSameRange, Converter={StaticResource BoolToVisibilityConverter}}"
                                                     HorizontalAlignment="Left">
                                             <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                            <Border BorderBrush="{Binding NightSensitivityIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                            <Border BorderBrush="{Binding NightSensitivityIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                     BorderThickness="1" 
                                                     HorizontalAlignment="Left" 
                                                     Margin="7,0,0,0"  Padding="2,0,0,0">
@@ -741,7 +741,7 @@
                                                 Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
 
-                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,2,2,2">
@@ -810,7 +810,6 @@
                         </Border>
 
                         <Grid Grid.Row="1"  Grid.ColumnSpan="3"
-                                Opacity="{Binding IsReadOnly, Converter={StaticResource InverseBoolToOpacity40pcConverter}}"
                                 Margin="0,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -851,7 +850,7 @@
                             <!--#region input/outputs-->
                             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding IOInputOutput1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                <Border BorderBrush="{Binding IOInputOutput1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0" Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
                                                 SelectedIndex="{Binding IOInputOutput1}"
@@ -872,7 +871,7 @@
 
                             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding IOInputOutput2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                <Border BorderBrush="{Binding IOInputOutput2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
                                                 SelectedIndex="{Binding IOInputOutput2}"
@@ -893,7 +892,7 @@
 
                             <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding IOInputOutput3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                <Border BorderBrush="{Binding IOInputOutput3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
                                                 SelectedIndex="{Binding IOInputOutput3}"
@@ -914,7 +913,7 @@
 
                             <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Border BorderBrush="{Binding IOInputOutput4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                <Border BorderBrush="{Binding IOInputOutput4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
                                                 SelectedIndex="{Binding IOInputOutput4}"
@@ -939,7 +938,7 @@
                             <Grid Grid.Row="2" Grid.Column="2" Visibility="{Binding IOInUse1, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOChannel1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOChannel1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
@@ -968,7 +967,7 @@
                             <Grid Grid.Row="3" Grid.Column="2" Visibility="{Binding IOInUse2, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOChannel2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOChannel2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
@@ -997,7 +996,7 @@
                             <Grid Grid.Row="4" Grid.Column="2" Visibility="{Binding IOInUse3, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOChannel3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOChannel3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
@@ -1026,7 +1025,7 @@
                             <Grid Grid.Row="5" Grid.Column="2" Visibility="{Binding IOInUse4, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOChannel4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOChannel4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
@@ -1060,7 +1059,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneSet1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding Zones}"
@@ -1097,7 +1096,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneSet2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding Zones}"
@@ -1137,7 +1136,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneSet3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding Zones}"
@@ -1177,7 +1176,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneSet4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding Zones}"
@@ -1219,7 +1218,7 @@
                                     Visibility="{Binding IOInUse1, Converter={StaticResource BoolToVisibilityConverter}}"
                                     Margin="2,0,0,0">
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                    <Border BorderBrush="{Binding IODescription1IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding IODescription1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                         <Grid>
                                             <TextBox Text="{Binding IODescription1}"
@@ -1242,7 +1241,7 @@
                                     Visibility="{Binding IOInUse2, Converter={StaticResource BoolToVisibilityConverter}}"
                                     Margin="2,0,0,0">
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                    <Border BorderBrush="{Binding IODescription2IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding IODescription2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                         <Grid>
                                             <TextBox Text="{Binding IODescription2}"
@@ -1265,7 +1264,7 @@
                                     Visibility="{Binding IOInUse3, Converter={StaticResource BoolToVisibilityConverter}}"
                                     Margin="2,0,0,0">
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                    <Border BorderBrush="{Binding IODescription3IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding IODescription3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                         <Grid>
                                             <TextBox Text="{Binding IODescription3}"
@@ -1287,7 +1286,7 @@
                                     Visibility="{Binding IOInUse4, Converter={StaticResource BoolToVisibilityConverter}}"
                                     Margin="2,0,0,0">
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                    <Border BorderBrush="{Binding IODescription4IsValid, Converter={StaticResource InverseBoolToErrorColourConverter}}"
+                                    <Border BorderBrush="{Binding IODescription4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                             BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                         <Grid>
                                             <TextBox Text="{Binding IODescription4}"

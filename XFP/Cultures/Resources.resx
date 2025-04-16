@@ -2086,4 +2086,7 @@ All of its data will be lost.</value>
   <data name="String1" xml:space="preserve">
     <value />
   </data>
+  <data name="Validation_Header_Panel_Data" xml:space="preserve">
+    <value>Panel data:</value>
+  </data>
 </root>
