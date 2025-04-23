@@ -40,7 +40,7 @@
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
         <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
-        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorBrushConverter x:Key="IsNullOrWhiteSpaceToErrorBrushConverter"/>
         <ctcvh:IsInvalidIndexToErrorBrushConverter x:Key="IsInvalidIndexToErrorBrushConverter"/>
         <ctcvh:IsNullToOpacity40pcConverter x:Key="IsNullToOpacity40pcConverter"/>
         <ctcvh:IsFalseNotNullToOpacity40pcConverter x:Key="IsFalseNotNullToOpacity40pcConverter"/>

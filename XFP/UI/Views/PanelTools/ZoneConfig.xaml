@@ -32,7 +32,7 @@
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToBoolConverter x:Key="IsNullOrWhiteSpaceToBoolConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToOpacityConverter x:Key="IsNullOrWhiteSpaceToOpacityConverter"/>
-        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorBrushConverter x:Key="IsNullOrWhiteSpaceToErrorBrushConverter"/>
         <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToVisibilityConverter x:Key="IsNullOrWhiteSpaceToVisibilityConverter"/>
         <ctcvh:IsNotNullOrWhiteSpaceToVisibilityConverter x:Key="IsNotNullOrWhiteSpaceToVisibilityConverter"/>

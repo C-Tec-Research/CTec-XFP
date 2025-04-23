@@ -29,7 +29,7 @@
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
         <ctcvh:BoolToYesNoConverter x:Key="BoolToYesNoConverter"/>
         <ctcvh:IsInvalidIndexToErrorBrushConverter x:Key="IsInvalidIndexToErrorBrushConverter"/>
-        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorBrushConverter x:Key="IsNullOrWhiteSpaceToErrorBrushConverter"/>
         <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
         <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>

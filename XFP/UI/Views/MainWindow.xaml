@@ -58,7 +58,7 @@
         <ctuvh:ParityConverter x:Key="ParityConverter"/>
         <ctuvh:StopBitsConverter x:Key="StopBitsConverter"/>
         <ctcvh:IsNot1Converter x:Key="IsNot1Converter"/>
-        <ctuvh:ConnectionStatusToColourConverter x:Key="ConnectionStatusToColourConverter"/>
+        <ctuvh:ConnectionStatusToBrushConverter x:Key="ConnectionStatusToBrushConverter"/>
         <ctuvh:ConnectionStatusToStringConverter x:Key="ConnectionStatusToStringConverter"/>
         <ctuvh:PrintQueueStatusToStringConverter x:Key="PrintQueueStatusToStringConverter"/>
         <ctcvh:TrimmedStringConverter x:Key="TrimmedStringConverter"/>
@@ -246,7 +246,7 @@
 
                                     <Border CornerRadius="5" 
                                             Visibility="{Binding PanelIsDisconnected, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                            Background="{Binding CommsStatus, Converter={StaticResource ConnectionStatusToColourConverter}}" 
+                                            Background="{Binding CommsStatus, Converter={StaticResource ConnectionStatusToBrushConverter}}" 
                                             Height="10" Width="10" Margin="7,3,5,0"/>
                                     <ctc:Icon IconType="DisconnectedSerial" 
                                               Visibility="{Binding PanelIsDisconnected, Converter={StaticResource BoolToVisibilityConverter}}"

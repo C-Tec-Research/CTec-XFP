@@ -38,7 +38,7 @@
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
-        <ctcvh:IsNullOrWhiteSpaceToErrorColourConverter x:Key="IsNullOrWhiteSpaceToErrorColourConverter"/>
+        <ctcvh:IsNullOrWhiteSpaceToErrorBrushConverter x:Key="IsNullOrWhiteSpaceToErrorBrushConverter"/>
         <ctcvh:BoolToErrorBrushConverter x:Key="BoolToErrorBrushConverter"/>
         <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <vh:IndexToDeviceNameConverter x:Key="IndexToDeviceNameConverter"/>

@@ -63,7 +63,7 @@ namespace Xfp.Files
 
 
         /// <summary>
-        /// Deserialise json format text into XfpPanelData.
+        /// Deserialise old json format text into XfpPanelData.
         /// </summary>
         internal static XfpData_OldVersion_1 DeserializeVersion1Json(string input) => JsonConvert.DeserializeObject<XfpData_OldVersion_1>(input);
 
