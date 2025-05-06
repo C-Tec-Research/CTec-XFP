@@ -26,6 +26,7 @@ namespace Xfp.IO.Printing
         {
         }
 
+
         private static readonly string _printFilePrefix = "XfpConfig";
 
         public static void PrintConfig(XfpData data, PrintParameters printParams, CTecUtil.PrintActions printAction)
@@ -63,28 +64,28 @@ namespace Xfp.IO.Printing
                 //doc.ColumnGap   = 0;
                 //doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
-//                List<List<Grid>> report = new();
+                List<List<Grid>> report = new();
 
                 //if (printParams.PrintSiteConfig)
                 //    data.SiteConfig.Print(doc);
 
-                //foreach (var p in data.Panels.Values)
-                //{
-                //    //if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
-                //    if (printParams.PrintLoopInfo)
-                //    {
-                //        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                //        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                //        report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
-                //    }
-                //    //if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
-                //    //if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
-                //    //if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
-                //    //if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
-                //    //if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
-                //    //if (printParams.PrintEventLog)      printEventLog(doc);
-                //    //if (printParams.PrintComments)      printComments(doc);
-                //}
+                foreach (var p in data.Panels.Values)
+                {
+                    //if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
+                    if (printParams.PrintLoopInfo)
+                    {
+                        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
+                    }
+                    //if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
+                    //if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
+                    //if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
+                    //if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
+                    //if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
+                    //if (printParams.PrintEventLog)      printEventLog(doc);
+                    //if (printParams.PrintComments)      printComments(doc);
+                }
 
                 //print or preview the document
 
@@ -98,21 +99,28 @@ namespace Xfp.IO.Printing
                         ////paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
                         ////printParams.PrintHandler.PrintDocument(paginator, Cultures.Resources.XFP_Config_Print_Description);
 
-                        for (int loop = 0; loop < LoopConfigData.MaxLoops; loop++)
-                        {
-                            var reportTitle = string.Format("{0}: {1}", string.Format(Cultures.Resources.Panel_x_Configuration, data.CurrentPanel.PanelNumber), string.Format(Cultures.Resources.Loop_x_Devices, loop + 1));
-                            var devicesXaml = new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber, printParams.LoopPrintOrder, !printParams.PrintAllLoopDevices);
-                            var dataGrid    = loop == 1 ? devicesXaml.Loop2DetailsDataGrid : devicesXaml.Loop1DetailsDataGrid;
+                        //for (int loop = 0; loop < LoopConfigData.MaxLoops; loop++)
+                        //{
+                        //    var reportTitle = string.Format("{0}: {1}", string.Format(Cultures.Resources.Panel_x_Configuration, data.CurrentPanel.PanelNumber), string.Format(Cultures.Resources.Loop_x_Devices, loop + 1));
+                        //    var devicesXaml = new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber, printParams.LoopPrintOrder, !printParams.PrintAllLoopDevices);
+                        //    var dataGrid    = loop == 1 ? devicesXaml.Loop2DetailsDataGrid : devicesXaml.Loop1DetailsDataGrid;
 
-                            var report = new CustomDataGridDocumentPaginator(dataGrid, systemName, reportTitle, printArea, pageMargin, pageNumber);
-                            printParams.PrintHandler.PrintDocument(report, Cultures.Resources.XFP_Config_Print_Description);
-                        }
+                        //    var report = new CustomDataGridDocumentPaginator(dataGrid, systemName, reportTitle, printArea, pageMargin, pageNumber);
+                        //    printParams.PrintHandler.PrintDocument(report, Cultures.Resources.XFP_Config_Print_Description);
+                        //}
 
                         //foreach (var gg in report)
                         //{
                         //    var pag = new CustomDataGridDocumentPaginator(gg, "", new(210, 297), new(10));
                         //    printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
                         //}
+                        foreach (var gg in report)
+                        {
+                            var pag = new CustomGridDocumentPaginator(gg, string.Format(Cultures.Resources.Loop_x_Devices, 1), 1,
+                                                                      new(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight),
+                                                                      new(10));
+                            printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
+                        }
                         break;
 
                     case CTecUtil.PrintActions.Preview: 
