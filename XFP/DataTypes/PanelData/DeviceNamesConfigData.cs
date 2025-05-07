@@ -179,7 +179,7 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < od.DeviceNames.Count; i++)
                 try
                 {
-                    if (!od.DeviceNames[i].Equals(DeviceNames[i]))
+                    if (od.DeviceNames[i] != DeviceNames[i])
                         return false;
                 } catch { return false; }
             return true;

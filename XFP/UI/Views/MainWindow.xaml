@@ -754,8 +754,8 @@
                             <ctc:HamburgerMenuSeparator/>
 
                             <!--#region Print option-->
-                            <ctc:HamburgerMenuSubheader x:Name="mnuPrint" IconType="Print" FontSize="18" PreviewMouseDown="Print_MouseDown"/>
-                            <ctc:HamburgerMenuSeparator/>
+                            <!--<ctc:HamburgerMenuSubheader x:Name="mnuPrint" IconType="Print" FontSize="18" PreviewMouseDown="Print_MouseDown"/>
+                            <ctc:HamburgerMenuSeparator/>-->
                             <!--#endregion-->
 
                             <!--#region Settings menu-->

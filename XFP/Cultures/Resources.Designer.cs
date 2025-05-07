@@ -768,7 +768,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loop {0} is not present on the panel, so this loop&apos;s settings will not be uploaded..
+        ///   Looks up a localized string similar to Loop {0} is not present on the panel..
         /// </summary>
         public static string Comms_Upload_Warn_Loop_x_Not_Present {
             get {

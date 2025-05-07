@@ -26,6 +26,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using CTecUtil;
 using CTecUtil.Printing;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -56,11 +57,10 @@ namespace Xfp.ViewModels.PanelTools
 
 
 
-        protected static int _numLoops = LoopConfigData.MaxLoops;
         protected CloneableObservableCollection<DeviceItemViewModel> _loop1 = new();
         protected CloneableObservableCollection<DeviceItemViewModel> _loop2 = new();
         protected List<CloneableObservableCollection<DeviceItemViewModel>> _loops;
-        public int NumLoops { get => _numLoops; set { _numLoops = value; OnPropertyChanged(); } }
+        public int NumLoops { get => _data.CurrentPanel.LoopConfig.NumLoops; set { _data.CurrentPanel.LoopConfig.NumLoops = value; OnPropertyChanged(); } }
 
         public List<CloneableObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
 
@@ -497,11 +497,9 @@ namespace Xfp.ViewModels.PanelTools
  
             Loop1 = new();
             Loop2 = new();
-            int loopCount = 0;
 
             if (data.CurrentPanel.LoopConfig.Loop1.Devices.Count > 0)
             {
-                loopCount++;
                 int j = 0;
                 foreach (var d in data.CurrentPanel.LoopConfig.Loop1.Devices)
                 {
@@ -518,26 +516,26 @@ namespace Xfp.ViewModels.PanelTools
                 }
             }
 
-            if (data.CurrentPanel.LoopConfig.Loop2.Devices.Count > 0)
+            if (NumLoops > 1)
             {
-                loopCount++;
-                int j = 0;
-                foreach (var d in data.CurrentPanel.LoopConfig.Loop2.Devices)
+                if (data.CurrentPanel.LoopConfig.Loop2.Devices.Count > 0)
                 {
-                    DeviceItemViewModel newDev = new()
+                    int j = 0;
+                    foreach (var d in data.CurrentPanel.LoopConfig.Loop2.Devices)
                     {
-                        DeviceData = d,
-                        GetDeviceName = getDeviceName,
-                        SetDeviceName = setDeviceName,
-                        ZoneData = data.CurrentPanel.ZoneConfig,
-                        GroupData = data.CurrentPanel.GroupConfig,
-                        Index = j++
-                    };
-                    Loop2.Add(newDev);
+                        DeviceItemViewModel newDev = new()
+                        {
+                            DeviceData = d,
+                            GetDeviceName = getDeviceName,
+                            SetDeviceName = setDeviceName,
+                            ZoneData = data.CurrentPanel.ZoneConfig,
+                            GroupData = data.CurrentPanel.GroupConfig,
+                            Index = j++
+                        };
+                        Loop2.Add(newDev);
+                    }
                 }
             }
-
-            NumLoops = loopCount;
 
             if (this is DeviceDetailsViewModel)
                 if (LoopNum > NumLoops)
@@ -638,13 +636,16 @@ namespace Xfp.ViewModels.PanelTools
 
         public void EnqueuePanelUploadCommands(bool allPages)
         {
-            //warn if current loop does not exist on the panel
-            if (!allPages && LoopNum > LoopConfigData.DetectedLoops)
+            if (LoopNum > LoopConfigData.DetectedLoops)
             {
-                var messy = string.Format(Cultures.Resources.Comms_Upload_Warn_Loop_x_Not_Present, LoopNum);
-                var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
-                if (CTecMessageBox.ShowOKCancelWarn(messy, tit) != MessageBoxResult.OK)
-                    return;
+                if (!allPages)
+                {
+                    //warn if current loop does not exist on the panel
+                    var messy = string.Format(Cultures.Resources.Comms_Upload_Warn_Loop_x_Not_Present, LoopNum);
+                    var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
+                    CTecMessageBox.ShowOKCancelWarn(messy, tit);
+                }
+                return;
             }
 
 

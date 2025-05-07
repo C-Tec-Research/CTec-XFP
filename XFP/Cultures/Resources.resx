@@ -1685,7 +1685,7 @@ Only one loop has been configured here.</value>
     <value>Loop {0} is not present on the panel.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_x_Not_Present" xml:space="preserve">
-    <value>Loop {0} is not present on the panel, so this loop's settings will not be uploaded.</value>
+    <value>Loop {0} is not present on the panel.</value>
   </data>
   <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
     <value>Base sounder groups</value>

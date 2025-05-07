@@ -141,9 +141,10 @@
 
                                         <StackPanel Grid.Row="0" Orientation="Vertical">
                                             <Image Grid.Row="0" 
-                                               Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
-                                               ToolTip="{Binding DeviceTypeToolTip}" 
-                                               Style="{StaticResource DeviceImage}" >
+                                                   Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
+                                                   ToolTip="{Binding DeviceTypeToolTip}" 
+                                                   Style="{StaticResource DeviceImage}" 
+                                                   Margin="0">
                                             </Image>
                                             <Label Grid.Row="1" 
                                                Content="{Binding DeviceNum}" 
