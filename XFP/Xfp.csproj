@@ -37,7 +37,6 @@
     <None Remove="Resources\Upload_All.png" />
     <None Remove="Resources\Upload_Single.png" />
     <None Remove="Resources\ToolsConfig.json" />
-    <None Remove="Resources\XFP Revision History.docx" />
     <None Remove="Resources\XfpToolsConfigfp.json" />
     <None Remove="UI\Images\menu-file-new.png" />
     <None Remove="UI\Images\menu-file-open.png" />
@@ -129,7 +128,10 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <Resource Include="Resources\print.png" />
-    <EmbeddedResource Include="Resources\XFP Revision History.docx">
+    <EmbeddedResource Include="Resources\XFP Revision History[fr-FR].docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\XFP Revision History[en-GB].docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <ProjectReference Include="..\..\CTecControls\CTecControls.csproj" />
