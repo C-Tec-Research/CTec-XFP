@@ -375,6 +375,9 @@ namespace Xfp.ViewModels.PanelTools
                 _zoneConfigItems[zone.Index].Night.DetectorReset    = zone.NightDetectorResetTime;
                 _zoneConfigItems[zone.Index].Night.AlarmReset       = zone.NightDetectorAlarmTime;
             }
+            
+            ZoneConfigItems[zone.Index].RefreshView();
+
             return true;
         }
 
@@ -385,9 +388,9 @@ namespace Xfp.ViewModels.PanelTools
 
             CTecUtil.CommsLog.AddReceivedData(Cultures.Resources.Zone_Phased_Settings);
 
-            _data.CurrentPanel.GroupConfig.PhasedDelay        = zone.PhasedDelay;
-            _data.CurrentPanel.ZoneConfig.InputDelay          = zone.InputDelay;
-            _data.CurrentPanel.ZoneConfig.InvestigationPeriod = zone.InvestigationPeriod;
+            _data.CurrentPanel.GroupConfig.PhasedDelay = zone.PhasedDelay;
+            InputDelay          = zone.InputDelay;
+            InvestigationPeriod = zone.InvestigationPeriod;
             return true;
         }
 

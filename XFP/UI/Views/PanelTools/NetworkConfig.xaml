@@ -141,14 +141,14 @@
                                 <CheckBox Grid.Row="8" Grid.Column="2" IsChecked="{Binding Repeaters[6].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
                                 <CheckBox Grid.Row="9" Grid.Column="2" IsChecked="{Binding Repeaters[7].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
 
-                                <TextBox Grid.Row="2" Grid.Column="3" Width="180" Text="{Binding Repeaters[0].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" MaxLength="{Binding MaxLocationLength}" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="3" Grid.Column="3" Width="180" Text="{Binding Repeaters[1].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="4" Grid.Column="3" Width="180" Text="{Binding Repeaters[2].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="5" Grid.Column="3" Width="180" Text="{Binding Repeaters[3].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="6" Grid.Column="3" Width="180" Text="{Binding Repeaters[4].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="7" Grid.Column="3" Width="180" Text="{Binding Repeaters[5].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="8" Grid.Column="3" Width="180" Text="{Binding Repeaters[6].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="9" Grid.Column="3" Width="180" Text="{Binding Repeaters[7].Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="2" Grid.Column="3" Width="180" Text="{Binding Repeater1Location}" PreviewKeyDown="ctrl_PreviewKeyDown" MaxLength="{Binding MaxLocationLength}" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="3" Grid.Column="3" Width="180" Text="{Binding Repeater2Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="4" Grid.Column="3" Width="180" Text="{Binding Repeater3Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="5" Grid.Column="3" Width="180" Text="{Binding Repeater4Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="6" Grid.Column="3" Width="180" Text="{Binding Repeater5Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="7" Grid.Column="3" Width="180" Text="{Binding Repeater6Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="8" Grid.Column="3" Width="180" Text="{Binding Repeater7Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <TextBox Grid.Row="9" Grid.Column="3" Width="180" Text="{Binding Repeater8Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
 
                             </Grid>
                         </StackPanel>

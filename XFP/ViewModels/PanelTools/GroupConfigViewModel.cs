@@ -529,7 +529,7 @@ namespace Xfp.ViewModels.PanelTools
             CTecUtil.CommsLog.AddReceivedData(Cultures.Resources.Group_Phased_Settings);
 
             //Note: 0xffff denotes zero phased delay
-            _data.CurrentPanel.GroupConfig.PhasedDelay        = zone.PhasedDelay.TotalSeconds == 0xffff ? new(0, 0, 0) : zone.PhasedDelay;
+            PhasedDelay        = zone.PhasedDelay.TotalSeconds == 0xffff ? new(0, 0, 0) : zone.PhasedDelay;
             _data.CurrentPanel.ZoneConfig.InputDelay          = zone.InputDelay;
             _data.CurrentPanel.ZoneConfig.InvestigationPeriod = zone.InvestigationPeriod;
             return true;

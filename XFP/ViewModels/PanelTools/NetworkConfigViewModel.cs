@@ -1,4 +1,5 @@
 ﻿using CTecUtil.StandardPanelDataTypes;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,7 +27,16 @@ namespace Xfp.ViewModels.PanelTools
         public ObservableCollection<NetworkConfigPanelSettingsViewModel> _panelSettings;
 
 
-        public ObservableCollection<NetworkConfigRepeaterViewModel>      Repeaters     => _repeaters;
+        public ObservableCollection<NetworkConfigRepeaterViewModel> Repeaters => _repeaters;
+        public string Repeater1Location { get => _repeaters[0].Location; set { _repeaters[0].Location = value; OnPropertyChanged(); } }
+        public string Repeater2Location { get => _repeaters[1].Location; set { _repeaters[1].Location = value; OnPropertyChanged(); } }
+        public string Repeater3Location { get => _repeaters[2].Location; set { _repeaters[2].Location = value; OnPropertyChanged(); } }
+        public string Repeater4Location { get => _repeaters[3].Location; set { _repeaters[3].Location = value; OnPropertyChanged(); } }
+        public string Repeater5Location { get => _repeaters[4].Location; set { _repeaters[4].Location = value; OnPropertyChanged(); } }
+        public string Repeater6Location { get => _repeaters[5].Location; set { _repeaters[5].Location = value; OnPropertyChanged(); } }
+        public string Repeater7Location { get => _repeaters[6].Location; set { _repeaters[6].Location = value; OnPropertyChanged(); } }
+        public string Repeater8Location { get => _repeaters[7].Location; set { _repeaters[7].Location = value; OnPropertyChanged(); } }
+
         public ObservableCollection<NetworkConfigPanelSettingsViewModel> PanelSettings => _panelSettings;
 
 
@@ -70,6 +80,14 @@ namespace Xfp.ViewModels.PanelTools
             //Validator.IsValid(Parent);
 
             OnPropertyChanged(nameof(Repeaters));
+            OnPropertyChanged(nameof(Repeater1Location));
+            OnPropertyChanged(nameof(Repeater2Location));
+            OnPropertyChanged(nameof(Repeater3Location));
+            OnPropertyChanged(nameof(Repeater4Location));
+            OnPropertyChanged(nameof(Repeater5Location));
+            OnPropertyChanged(nameof(Repeater6Location));
+            OnPropertyChanged(nameof(Repeater7Location));
+            OnPropertyChanged(nameof(Repeater8Location));
             OnPropertyChanged(nameof(PanelSettings));
         }
         #endregion
