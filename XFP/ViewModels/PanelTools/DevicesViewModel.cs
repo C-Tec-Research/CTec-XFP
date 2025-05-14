@@ -599,7 +599,7 @@ namespace Xfp.ViewModels.PanelTools
             PanelComms.BaseSounderGroupReceived = baseSounderGroupReceived;
 
             //get all loops
-            //NB: DeviceNames list spans all loops, so getting only 1 of 2 loops can result in orphaned names which will get deleted
+            //NB: DeviceNames list spans all loops, so getting only 1 from of a 2-loop panel can result in orphaned names which will get deleted
             for (int loop = 0; loop < LoopConfigData.DetectedLoops; loop++)
             {
                 PanelComms.InitNewDownloadCommandSubqueue(string.Format(Cultures.Resources.Loop_x_Devices, loop + 1), null);
