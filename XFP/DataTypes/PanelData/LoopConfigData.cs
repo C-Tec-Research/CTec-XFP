@@ -9,7 +9,8 @@ using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class LoopConfigData : ConfigData, IConfigData
+    public partial class 
+        LoopConfigData : ConfigData, IConfigData
     {
         internal LoopConfigData()
         {

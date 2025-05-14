@@ -464,8 +464,6 @@ namespace Xfp.ViewModels.PanelTools
 
         public IXfpDevicesViewModel.MenuInitialiser InitMenu;
 
-        //public CultureChangedHandler CultureChanged;
-
 
         #region IAppViewModel implementation
         public virtual void SetCulture(CultureInfo culture)
@@ -648,6 +646,20 @@ namespace Xfp.ViewModels.PanelTools
                 return;
             }
 
+            //blank loop data, to send if panel has more loops than the data
+            LoopConfigData blank = null;
+
+            if (NumLoops > LoopConfigData.DetectedLoops)
+            {
+                //warn if current loop does not exist on the panel
+                var messy = Cultures.Resources.Comms_Upload_Warn_Loop_Count_1_Loop;
+                var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
+                CTecMessageBox.ShowOKInfo(messy, tit);
+            }
+            else if (NumLoops > LoopConfigData.DetectedLoops)
+            {
+                blank = LoopConfigData.InitialisedNew();
+            }
 
             //send the device names
             normaliseDeviceNames();
@@ -662,13 +674,16 @@ namespace Xfp.ViewModels.PanelTools
             PanelComms.AddCommandEndDeviceNameUpload(Cultures.Resources.End_Of_Device_Names);
 
             //send all loops
-            //NB: see note in EnqueuePanelDownloadCommands()
-            for (int loop = 0; loop < NumLoops; loop++)
+            for (int loop = 1; loop <= LoopConfigData.MaxLoops; loop++)
             {
+                if (loop > LoopConfigData.DetectedLoops)
+                    break;
+
                 PanelComms.InitNewUploadCommandSubqueue(string.Format(Cultures.Resources.Loop_x_Devices, loop + 1), null);
                 for (int device = 0; device < DeviceConfigData.NumDevices; device++)
                 {
-                    var dev = _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device];
+
+                    var dev = loop <= NumLoops ? _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device] : blank.Loops[LoopNum - 1].Devices[device];
                     PanelComms.AddCommandSetDevice(dev, string.Format(Cultures.Resources.Loop_x_Device_y_Type_z, dev.LoopNum + 1, dev.Index + 1, 
                                                    DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType)??Cultures.Resources.Not_Fitted));
                 }
