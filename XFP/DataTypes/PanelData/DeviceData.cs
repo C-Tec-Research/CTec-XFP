@@ -80,7 +80,9 @@ namespace Xfp.DataTypes.PanelData
         public int Group { get; set; } = 0;
         public int? DaySensitivity { get; set; }
         public int? NightSensitivity { get; set; }
+        [JsonIgnore]
         public int DefaultSensitivity => IsSensitivityHighDevice ? DeviceConfigData.DefaultSensitivityHigh : DeviceConfigData.DefaultSensitivity;
+        
         public int? DayVolume { get; set; }
         public int? NightVolume { get; set; }
         public int? DayMode { get; set; } = 1;

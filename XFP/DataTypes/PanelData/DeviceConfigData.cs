@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using Xfp.ViewModels;
 using Xfp.UI.Interfaces;
 using System.Net.Sockets;
-using System.Text.Json.Serialization;
 using CTecDevices.Protocol;
+using Newtonsoft.Json;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -27,7 +27,7 @@ namespace Xfp.DataTypes.PanelData
         internal DeviceConfigData(DeviceConfigData original) : this()
         {
             LoopNum     = original.LoopNum;
-            DeviceIndex = original.DeviceIndex;
+            //DeviceIndex = original.DeviceIndex;
             Group       = original.Group;
 
             if (original is not null)
@@ -42,19 +42,19 @@ namespace Xfp.DataTypes.PanelData
         /// </summary>
         internal static int NumDevices = 255;
 
-        internal static int DefaultVolume = 3;
-        internal static int MinSensitivity = 1;
-        internal static int DefaultSensitivity = 3;
-        internal static int MaxSensitivity = 5;
-        internal static int MinSensitivityHigh = 75;
-        internal static int DefaultSensitivityHigh = 100;
-        internal static int MaxSensitivityHigh = 125;
-        internal static int MinVolume = 1;
-        internal static int MaxVolume => DeviceTypes.VolumeSettings.Count;
+        [JsonIgnore]internal const  int DefaultVolume = 3;
+        [JsonIgnore]internal const  int MinSensitivity = 1;
+        [JsonIgnore]internal const  int DefaultSensitivity = 3;
+        [JsonIgnore]internal const  int MaxSensitivity = 5;
+        [JsonIgnore]internal const  int MinSensitivityHigh = 75;
+        [JsonIgnore]internal const  int DefaultSensitivityHigh = 100;
+        [JsonIgnore]internal const  int MaxSensitivityHigh = 125;
+        [JsonIgnore]internal const  int MinVolume = 1;
+        [JsonIgnore]internal static int MaxVolume => DeviceTypes.VolumeSettings.Count;
 
         [JsonIgnore] public int LoopNum { get; set; }
-        public List<DeviceData> Devices { get; set; } = new();
-        public int DeviceIndex { get; set; }
+        public ObservableCollection<DeviceData> Devices { get; set; } = new();
+        //public int DeviceIndex { get; set; }
         public int Group { get; set; }
 
 
@@ -77,8 +77,9 @@ namespace Xfp.DataTypes.PanelData
             if (otherData is not DeviceConfigData od)
                 return false;
 
-            if (DeviceIndex != od.DeviceIndex
-             || Group       != od.Group)
+            //if (DeviceIndex != od.DeviceIndex
+            // || Group       != od.Group)
+            if (Group != od.Group)
                 return false;
 
             if (od.Devices.Count != Devices.Count) 

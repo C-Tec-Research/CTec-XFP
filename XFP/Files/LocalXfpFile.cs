@@ -132,10 +132,14 @@ namespace Xfp.Files
             {
                 //reading from a json file will create the default number
                 //of devices, so we remove any above the protocol's limit
-                if (panelData.Loop1Config.Devices.Count > DeviceConfigData.NumDevices)
-                    panelData.Loop1Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop1Config.Devices.Count - DeviceConfigData.NumDevices);
-                if (panelData.Loop2Config.Devices.Count > DeviceConfigData.NumDevices)
-                    panelData.Loop2Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop2Config.Devices.Count - DeviceConfigData.NumDevices);
+                //if (panelData.Loop1Config.Devices.Count > DeviceConfigData.NumDevices)
+                //    panelData.Loop1Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop1Config.Devices.Count - DeviceConfigData.NumDevices);
+                //if (panelData.Loop2Config.Devices.Count > DeviceConfigData.NumDevices)
+                //    panelData.Loop2Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop2Config.Devices.Count - DeviceConfigData.NumDevices);
+                for (int i = panelData.Loop1Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
+                    panelData.Loop1Config.Devices.RemoveAt(i);
+                for (int i = panelData.Loop2Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
+                    panelData.Loop2Config.Devices.RemoveAt(i);
 
                 //ensure the DeviceNames table contains *something*
                 if (panelData.DeviceNamesConfig.DeviceNames.Count == 0)

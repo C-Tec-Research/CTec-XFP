@@ -27,7 +27,7 @@ namespace Xfp.Files.XfpFile
                 var loop = loopNum > 1 ? result.CurrentPanel.LoopConfig.Loop2 : result.CurrentPanel.LoopConfig.Loop1;
                 switch (ItemName(currentLine))
                 {
-                    case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;
+                    //case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;
                     case XfpTags.LoopGroup:       loop.Group       = parseInt(currentLine); break;
                     case XfpTags.LoopArrayDevice: parseDevices(inputStream, ref result, loopNum); break;
                 }

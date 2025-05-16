@@ -43,10 +43,11 @@ namespace Xfp.ViewModels.PanelTools
         private ZoneConfigData _zoneData;
         private GroupConfigData _groupData;
 
-        internal delegate string DeviceNameGetter(int index);
-        internal delegate int    DeviceNameSetter(int index, string value);
-        internal DeviceNameGetter GetDeviceName;
-        internal DeviceNameSetter SetDeviceName;
+        public delegate string DeviceNameGetter(int index);
+        public delegate int    DeviceNameSetter(int index, string value);
+
+        public DeviceNameGetter GetDeviceName;
+        public DeviceNameSetter SetDeviceName;
 
 
         public int?   DeviceType  { get => _deviceData.DeviceType;   set { _deviceData.DeviceType = value; RefreshView(); OnPropertyChanged(nameof(DeviceTypeIsValid)); } }
@@ -259,6 +260,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool IsSensitivityHighDevice => DeviceTypes.IsSensitivityHighDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         public bool IsVolumeDevice          => DeviceTypes.IsVolumeDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         public bool IsModeDevice            => DeviceTypes.IsModeDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
+        public bool IsSensVolModeDevice     => IsSensitivityDevice || IsSensitivityHighDevice || IsVolumeDevice || IsModeDevice;
 
 
         #region IAppViewModel implementation
@@ -291,8 +293,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOConfigItemsAreValid));
             OnPropertyChanged(nameof(DeviceNameIsValid));
             OnPropertyChanged(nameof(IsSensitivityDevice));
+            OnPropertyChanged(nameof(IsSensitivityHighDevice));
             OnPropertyChanged(nameof(IsVolumeDevice));
             OnPropertyChanged(nameof(IsModeDevice));
+            OnPropertyChanged(nameof(IsSensVolModeDevice));
             OnPropertyChanged(nameof(SensitivityDesc));
             OnPropertyChanged(nameof(VolumeDesc));
             OnPropertyChanged(nameof(ModeDesc));

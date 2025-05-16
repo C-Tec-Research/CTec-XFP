@@ -57,17 +57,17 @@ namespace Xfp.ViewModels.PanelTools
 
 
 
-        protected CloneableObservableCollection<DeviceItemViewModel> _loop1 = new();
-        protected CloneableObservableCollection<DeviceItemViewModel> _loop2 = new();
-        protected List<CloneableObservableCollection<DeviceItemViewModel>> _loops;
+        protected ObservableCollection<DeviceItemViewModel> _loop1 = new();
+        protected ObservableCollection<DeviceItemViewModel> _loop2 = new();
+        protected List<ObservableCollection<DeviceItemViewModel>> _loops;
         public int NumLoops { get => _data.CurrentPanel.LoopConfig.NumLoops; set { _data.CurrentPanel.LoopConfig.NumLoops = value; OnPropertyChanged(); } }
 
-        public List<CloneableObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
+        public List<ObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
 
 
-        public CloneableObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
-        public CloneableObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
-        public CloneableObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; } }
+        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
+        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
+        public ObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; } }
         public bool LoopIsFitted => LoopNum <= NumLoops;
 
         
@@ -97,11 +97,11 @@ namespace Xfp.ViewModels.PanelTools
         #endregion loop
 
 
-        protected CloneableObservableCollection<DeviceItemViewModel> _loop1SelectedItems = new();
-        protected CloneableObservableCollection<DeviceItemViewModel> _loop2SelectedItems = new();
-        public CloneableObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { SetValue(ref _loop1SelectedItems, value, nameof(Loop1SelectedItem)); } }
-        public CloneableObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { SetValue(ref _loop2SelectedItems, value, nameof(Loop2SelectedItem)); } }
-        public CloneableObservableCollection<DeviceItemViewModel> SelectedItems
+        protected ObservableCollection<DeviceItemViewModel> _loop1SelectedItems = new();
+        protected ObservableCollection<DeviceItemViewModel> _loop2SelectedItems = new();
+        public ObservableCollection<DeviceItemViewModel> Loop1SelectedItems { get => _loop1SelectedItems; set { SetValue(ref _loop1SelectedItems, value, nameof(Loop1SelectedItem)); } }
+        public ObservableCollection<DeviceItemViewModel> Loop2SelectedItems { get => _loop2SelectedItems; set { SetValue(ref _loop2SelectedItems, value, nameof(Loop2SelectedItem)); } }
+        public ObservableCollection<DeviceItemViewModel> SelectedItems
         {
             get => IsLoop1 ? _loop1SelectedItems : _loop2SelectedItems;
             set
@@ -632,22 +632,16 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        public void EnqueuePanelUploadCommands(bool allPages)
+        protected bool preUploadCheck(bool allPages, int loopNum)
         {
-            if (LoopNum > LoopConfigData.DetectedLoops)
+            if (!allPages && loopNum > LoopConfigData.DetectedLoops)
             {
-                if (!allPages)
-                {
-                    //warn if current loop does not exist on the panel
-                    var messy = string.Format(Cultures.Resources.Comms_Upload_Warn_Loop_x_Not_Present, LoopNum);
-                    var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
-                    CTecMessageBox.ShowOKCancelWarn(messy, tit);
-                }
-                return;
+                //warn if current loop does not exist on the panel
+                var messy = string.Format(Cultures.Resources.Comms_Upload_Warn_Loop_x_Not_Present, loopNum);
+                var tit   = Cultures.Resources.Comms_Uploading_Page;
+                CTecMessageBox.ShowOKError(messy, tit);
+                return false;
             }
-
-            //blank loop data, to send if panel has more loops than the data
-            LoopConfigData blank = null;
 
             if (NumLoops > LoopConfigData.DetectedLoops)
             {
@@ -656,11 +650,25 @@ namespace Xfp.ViewModels.PanelTools
                 var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
                 CTecMessageBox.ShowOKInfo(messy, tit);
             }
-            else if (NumLoops > LoopConfigData.DetectedLoops)
-            {
-                blank = LoopConfigData.InitialisedNew();
-            }
+            return true;
+        }
 
+
+        public virtual void EnqueuePanelUploadCommands(bool allPages)
+        {
+            if (!preUploadCheck(allPages, LoopNum))
+                return;
+
+            //blank loop data, to send if panel has more loops than the data
+            List<DeviceItemViewModel> blank = null;
+
+            if (NumLoops > LoopConfigData.DetectedLoops)
+            {
+                blank = new();
+                for (int i = 0; i < DeviceConfigData.NumDevices; i++)
+                    blank.Add(new DeviceItemViewModel() { DeviceData = (DeviceData)DeviceData.InitialisedNew(LoopNum) });
+            }
+            
             //send the device names
             normaliseDeviceNames();
             PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Device_Names, null);
@@ -673,8 +681,11 @@ namespace Xfp.ViewModels.PanelTools
             }
             PanelComms.AddCommandEndDeviceNameUpload(Cultures.Resources.End_Of_Device_Names);
 
-            //send all loops
-            for (int loop = 1; loop <= LoopConfigData.MaxLoops; loop++)
+            //send loops
+            var start = allPages ? 1 : LoopNum;
+            var finish = allPages ? LoopConfigData.MaxLoops : LoopNum;
+
+            for (int loop = start; loop <= finish; loop++)
             {
                 if (loop > LoopConfigData.DetectedLoops)
                     break;
@@ -683,20 +694,37 @@ namespace Xfp.ViewModels.PanelTools
                 for (int device = 0; device < DeviceConfigData.NumDevices; device++)
                 {
 
-                    var dev = loop <= NumLoops ? _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device] : blank.Loops[LoopNum - 1].Devices[device];
-                    PanelComms.AddCommandSetDevice(dev, string.Format(Cultures.Resources.Loop_x_Device_y_Type_z, dev.LoopNum + 1, dev.Index + 1, 
+                    //var dev = loop <= NumLoops ? _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device] : blank.Loops[LoopNum - 1].Devices[device];
+                    var dev = loop <= NumLoops ? Loops[LoopNum - 1][device] : blank[device];
+                    PanelComms.AddCommandSetDevice(dev.DeviceData, string.Format(Cultures.Resources.Loop_x_Device_y_Type_z, dev.LoopNum + 1, dev.Index + 1, 
                                                    DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType)??Cultures.Resources.Not_Fitted));
                 }
             }
 
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
-                //send base sounder info for both loops
+                ////send base sounder info for both loops
+                //PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Base_Sounder_Groups, null);
+                //for (int loop = start; loop <= finish; loop++)
+                //    for (int device = 0; device < DeviceConfigData.NumDevices; device++)
+                //    {
+                //        var dev = _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device];
+                //        PanelComms.AddCommandSetBaseSounderGroup(new(loop)
+                //        {
+                //            Index = device + DeviceConfigData.NumDevices + 1,
+                //            DeviceType = (int)(dev.AncillaryBaseSounderGroup > 0 ? XfpApolloDeviceTypeIds.SounderController : XfpApolloDeviceTypeIds.Unknown),
+                //            AncillaryBaseSounderGroup = dev.AncillaryBaseSounderGroup,
+                //            IsRealDevice = false,
+                //        },
+                //        string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, device + 1));
+                //    }
+                
+                //send base sounder info for loop(s)
                 PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Base_Sounder_Groups, null);
-                for (int loop = 0; loop < LoopConfigData.DetectedLoops; loop++)
+                for (int loop = start; loop <= finish; loop++)
                     for (int device = 0; device < DeviceConfigData.NumDevices; device++)
                     {
-                        var dev = _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device];
+                        var dev = loop <= NumLoops ? _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device] : new DeviceData(loop);
                         PanelComms.AddCommandSetBaseSounderGroup(new(loop)
                         {
                             Index = device + DeviceConfigData.NumDevices + 1,
