@@ -2211,7 +2211,10 @@ namespace Xfp.ViewModels.PanelTools
                                  || d.IsZonalDevice   != DeviceTypes.IsZonalDevice(deviceType, DeviceTypes.CurrentProtocolType);
                     d.DeviceType = deviceType.Value;
                     if (resetZGA)
+                    {
                         d.ZoneIndex = 1;
+                        d.GroupIndex = 1;
+                    }
 
                     if (!d.DayModeIsValid)
                         d.DayMode = DeviceTypes.MinValidMode(d.DeviceType);
