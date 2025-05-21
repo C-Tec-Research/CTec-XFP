@@ -364,6 +364,7 @@ namespace Xfp.DataTypes.PanelData
                     }
                 }
             }
+            //CTecUtil.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> device=" + (Index + 1) + "  data=[" + ByteArrayProcessing.ByteArrayToHexString(result) + "]");
             return result;
         }
 
@@ -379,8 +380,8 @@ namespace Xfp.DataTypes.PanelData
 
         internal static byte[] DeviceNameToByteArray(int key, string name)
         {
-            var result = ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(key, 2), ByteArrayProcessing.StringToByteArray(name), new byte[] { 0x00 });
-            CTecUtil.Debug.WriteLine("DeviceNameToByteArray: #" + key + ", " + name + " --> " + ByteArrayProcessing.ByteArrayToHexString(result));
+            var result = ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(key, 2), ByteArrayProcessing.StringToByteArray(name), [0x00]);
+            //CTecUtil.Debug.WriteLine("DeviceNameToByteArray: #" + key + ", " + name + " --> " + ByteArrayProcessing.ByteArrayToHexString(result));
             return result;
         }
 
@@ -388,7 +389,7 @@ namespace Xfp.DataTypes.PanelData
         /// Indicates the end of the device names list
         /// </summary>
         public static byte[] DeviceNameameDataEndToByteArray()
-            => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(999, 2), new byte[] { 0x00 });
+            => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(999, 2), [0x00]);
 
 
         internal static DeviceData Parse(byte[] data, Func<byte[], bool> responseTypeCheck, int? requestedIndex, int? requestedLoop)
@@ -401,6 +402,8 @@ namespace Xfp.DataTypes.PanelData
                 DeviceData result = InitialisedNew(requestedLoop ?? 0);
                 result.Index      = requestedIndex ?? 0;
 
+                //CTecUtil.Debug.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< device=" + (result.Index + 1) + "  data=[" + ByteArrayProcessing.ByteArrayToHexString(data) + "]");
+                              
                 if (DeviceTypes.CurrentProtocolIsXfpApollo && result.Index >= DeviceConfigData.NumDevices)
                 {   
                     result.Index -= DeviceConfigData.NumDevices + 1;
@@ -481,7 +484,7 @@ namespace Xfp.DataTypes.PanelData
 
                     //byte-12 can be remote LED for Apollo or group for CAST Pro
                     if (DeviceTypes.CurrentProtocolIsXfpApollo)
-                        result.RemoteLEDEnabled = data[12] > 0;
+                        result.RemoteLEDEnabled = !result.IsIODevice && data[12] > 0;
                     else if (result.IsZonalDevice && result.IsGroupedDevice)
                         result.Group = data[12] & 0x0f;
                 }

@@ -30,9 +30,9 @@ namespace Xfp.DataTypes.PanelData
 
             public byte[] ToByteArray()
             {
-                var dayNightRecal = ByteArrayProcessing.CombineByteArrays(new byte[] { (byte)DayModeStart.Minutes,   (byte)DayModeStart.Hours },
-                                                                          new byte[] { (byte)NightModeStart.Minutes, (byte)NightModeStart.Hours },
-                                                                          new byte[] { (byte)RecalibrateTime.Hours,  0 });
+                var dayNightRecal = ByteArrayProcessing.CombineByteArrays([(byte)DayModeStart.Minutes,   (byte)DayModeStart.Hours],
+                                                                          [(byte)NightModeStart.Minutes, (byte)NightModeStart.Hours],
+                                                                          [(byte)RecalibrateTime.Hours,  0]);
                 byte dayFlags   = 0;
                 byte nightFlags = 0;
                 byte dstEnabled = (byte)(AutoAdjustDST ? 0x01 : 0x00);
@@ -43,7 +43,7 @@ namespace Xfp.DataTypes.PanelData
                 for (int i = 0; i < NightFlags.Count; i++)
                     nightFlags += (byte)(NightFlags[i] ? 0x01 << i : 0x00);
 
-                return ByteArrayProcessing.CombineByteArrays(dayNightRecal, new byte[] { dayFlags, nightFlags, dstEnabled, rtEvents });
+                return ByteArrayProcessing.CombineByteArrays(dayNightRecal, [dayFlags, nightFlags, dstEnabled, rtEvents]);
             }
 
 

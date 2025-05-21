@@ -26,10 +26,10 @@ namespace Xfp.DataTypes.PanelData
 
 
             public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntStrToByteArray(AL3Code, 2),
-                                                                                 new byte[] { (byte)(BlinkPollingLED ? 0x01 : 0x00),
-                                                                                              (byte)(MCPDebounce - 1),
-                                                                                              (byte)(DetectorDebounce - 1),
-                                                                                              (byte)(IODebounce - 1) });
+                                                                                 [ (byte)(BlinkPollingLED ? 0x01 : 0x00),
+                                                                                   (byte)(MCPDebounce - 1),
+                                                                                   (byte)(DetectorDebounce - 1),
+                                                                                   (byte)(IODebounce - 1) ]);
 
 
             public static AL3CodeBundle Parse(byte[] data, Func<byte[], bool> responseTypeCheck)

@@ -20,7 +20,7 @@ namespace Xfp.DataTypes.PanelData
             public bool AttacksSentGlobally { get; set; }
 
 
-            public byte[] ToByteArray() => new byte[] { (byte)(EmergenciesSentGlobally ? 1 : 0), (byte)(AttacksSentGlobally ? 1 : 0) };
+            public byte[] ToByteArray() => [(byte)(EmergenciesSentGlobally ? 1 : 0), (byte)(AttacksSentGlobally ? 1 : 0)];
 
 
             public static EmergencySettings Parse(byte[] data, Func<byte[], bool> responseTypeCheck)

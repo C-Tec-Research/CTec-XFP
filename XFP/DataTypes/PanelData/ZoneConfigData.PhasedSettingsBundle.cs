@@ -26,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
             public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray((int)PhasedDelay.TotalSeconds, 2),
                                                                                  ByteArrayProcessing.IntToByteArray((int)InputDelay.TotalSeconds, 2),
                                                                                  ByteArrayProcessing.IntToByteArray((int)InvestigationPeriod.TotalSeconds, 2),
-                                                                                 new byte[] { 0x00, 0x00 });
+                                                                                 [0x00, 0x00]);
 
 
             public static PhasedSettingsBundle Parse(byte[] data, Func<byte[], bool> responseTypeCheck, int startOffset = 2)

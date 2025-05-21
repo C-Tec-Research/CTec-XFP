@@ -20,7 +20,7 @@ namespace Xfp.DataTypes.PanelData
             public int DivertTimeout { get; set; }
 
 
-            public byte[] ToByteArray() => new byte[] { (byte)CallAcceptTimeout, (byte)DivertTimeout };
+            public byte[] ToByteArray() => [(byte)CallAcceptTimeout, (byte)DivertTimeout];
 
 
             public static Timeouts Parse(byte[] data, Func<byte[], bool> responseTypeCheck)

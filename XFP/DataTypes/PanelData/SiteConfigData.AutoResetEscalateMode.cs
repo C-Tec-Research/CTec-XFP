@@ -24,7 +24,7 @@ namespace Xfp.DataTypes.PanelData
             public bool AutoResetEnabled { get; set; }
 
 
-            public byte[] ToByteArray() => new byte[] { (byte)(CallEscalateEnabled ? 2 : AutoResetEnabled ? 1 : 0) };
+            public byte[] ToByteArray() => [(byte)(CallEscalateEnabled ? 2 : AutoResetEnabled ? 1 : 0)];
 
 
             public static AutoResetEscalateMode Parse(byte[] data, Func<byte[], bool> responseTypeCheck)

@@ -40,14 +40,14 @@ namespace Xfp.IO
 
 
         #region request panel data
-        internal static byte[] RequestDevice(int loop, int index) => buildCommand(XfpCommandCodes.RequestPData, new byte[] { (byte)(index + 1), (byte)loop });
-        internal static byte[] RequestDeviceName(int index)       => buildCommand(XfpCommandCodes.RequestPointName, new byte[] { (byte)(index) });
+        internal static byte[] RequestDevice(int loop, int index) => buildCommand(XfpCommandCodes.RequestPData, [(byte)(index + 1), (byte)loop]);
+        internal static byte[] RequestDeviceName(int index)       => buildCommand(XfpCommandCodes.RequestPointName, [(byte)(index)]);
 
-        internal static byte[] RequestZoneName(int index)         => buildCommand(XfpCommandCodes.RequestZoneName, new byte[] { (byte)(index + 1) });
-        internal static byte[] RequestZoneTimers(int index)       => buildCommand(XfpCommandCodes.RequestZoneTimers, new byte[] { (byte)(index + 1) });
+        internal static byte[] RequestZoneName(int index)         => buildCommand(XfpCommandCodes.RequestZoneName, [(byte)(index + 1)]);
+        internal static byte[] RequestZoneTimers(int index)       => buildCommand(XfpCommandCodes.RequestZoneTimers, [(byte)(index + 1)]);
         internal static byte[] RequestPhasedSettings()            => buildCommand(XfpCommandCodes.RequestPhasedSettings);
-        internal static byte[] RequestZoneGroup(int index)        => buildCommand(XfpCommandCodes.RequestZGroup, new byte[] { (byte)(index + 1) });
-        internal static byte[] RequestZoneSet(int index)          => buildCommand(XfpCommandCodes.RequestZSet, new byte[] { (byte)(index) });
+        internal static byte[] RequestZoneGroup(int index)        => buildCommand(XfpCommandCodes.RequestZGroup, [(byte)(index + 1)]);
+        internal static byte[] RequestZoneSet(int index)          => buildCommand(XfpCommandCodes.RequestZSet, [(byte)(index)]);
 
         internal static byte[] RequestFirmwareVersion()           => buildCommand(XfpCommandCodes.RequestMainVersion);
         internal static byte[] RequestAL2Code()                   => buildCommand(XfpCommandCodes.RequestAL2Code);
@@ -57,18 +57,18 @@ namespace Xfp.IO
         internal static byte[] RequestMaintenanceDate()           => buildCommand(XfpCommandCodes.RequestMaintDate);
         internal static byte[] RequestDayNight()                  => buildCommand(XfpCommandCodes.RequestDayNight);
 
-        internal static byte[] RequestCEEvent(int index)          => buildCommand(XfpCommandCodes.RequestCEEvent, new byte[] { (byte)(index + 1) });
+        internal static byte[] RequestCEEvent(int index)          => buildCommand(XfpCommandCodes.RequestCEEvent, [(byte)(index + 1)]);
 
-        internal static byte[] RequestRepeaterName(int index)     => buildCommand(XfpCommandCodes.RequestRepeaterName, new byte[] { (byte)(index + 1) });
+        internal static byte[] RequestRepeaterName(int index)     => buildCommand(XfpCommandCodes.RequestRepeaterName, [(byte)(index + 1)]);
         internal static byte[] RequestNetworkPanelData()          => buildCommand(XfpCommandCodes.RequestNetPanelData);
 
         internal static byte[] RequestEventLog(int index, bool delete)
         {
             //var indexBytes = ByteArrayProcessing.IntToByteArray(index, 2);
-            //var jj = indexBytes.Concat(new byte[]{ (byte)1});
-            //return buildCommand(XfpCommandCodes.RequestEvent, (byte[]) ByteArrayProcessing.IntToByteArray(index, 2).Concat(new byte[] { (byte)(delete ? 1 : 0) }));
+            //var jj = indexBytes.Concat([(byte)1]);
+            //return buildCommand(XfpCommandCodes.RequestEvent, (byte[]) ByteArrayProcessing.IntToByteArray(index, 2).Concat([ (byte)(delete ? 1 : 0) ]));
             var indexBytes = ByteArrayProcessing.IntToByteArray(index, 2);
-            return buildCommand(XfpCommandCodes.RequestEvent, new byte[] { indexBytes[0], indexBytes[1], (byte)(delete ? 1 : 0) });
+            return buildCommand(XfpCommandCodes.RequestEvent, [indexBytes[0], indexBytes[1], (byte)(delete ? 1 : 0)]);
         }
         #endregion
 
@@ -132,8 +132,8 @@ namespace Xfp.IO
         {
             if (getPanelNumber is null)
                 throw new NotImplementedException("XfpCommands.GetPanelNumber has not been initialised");
-            byte[] data = new byte[] { XfpCommandCodes.CommandStartByte, (byte)getPanelNumber?.Invoke(), command, 0 };
-            return ByteArrayProcessing.CombineByteArrays(data, new byte[] { SerialComms.CalcChecksum(data, true) });
+            byte[] data = [XfpCommandCodes.CommandStartByte, (byte)getPanelNumber?.Invoke(), command, 0];
+            return ByteArrayProcessing.CombineByteArrays(data, [SerialComms.CalcChecksum(data, true)]);
         }
 
         
@@ -142,7 +142,7 @@ namespace Xfp.IO
         /// </summary>
         /// <param name="command">The command identifier byte, denoting the type of data to send or receive.</param>
         /// <param name="index">Index of data requested (if any)</param>
-        private static byte[] buildCommand(byte command, short index) => buildCommand(command, new byte[] { (byte)((index & 0xff00) >> 8), (byte)(index & 0xff) });
+        private static byte[] buildCommand(byte command, short index) => buildCommand(command, [(byte)((index & 0xff00) >> 8), (byte)(index & 0xff)]);
 
         /// <summary>
         /// Build full command data bytes in the form:<code>[upload/download indicator byte][data type byte][payload length byte][payload......][checksum byte]</code>
@@ -162,7 +162,7 @@ namespace Xfp.IO
 
             var data = payloadLength > 0 ? ByteArrayProcessing.CombineByteArrays(prefix, payload) : prefix;
             var checksum = SerialComms.CalcChecksum(data, true);
-            return ByteArrayProcessing.CombineByteArrays(data, new byte[] { checksum });
+            return ByteArrayProcessing.CombineByteArrays(data, [checksum]);
         }
 
     }

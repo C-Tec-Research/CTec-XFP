@@ -100,7 +100,7 @@ namespace Xfp.DataTypes.PanelData
 
         internal byte[] ToByteArray()
         {
-            return new byte[] { 0 };
+            return [0];
         }
 
 

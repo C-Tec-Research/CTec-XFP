@@ -784,8 +784,7 @@ namespace Xfp.ViewModels.PanelTools
                                                             device.LoopNum + 1, 
                                                             device.Index + 1, 
                                                             DeviceTypes.DeviceTypeName(device.DeviceType, DeviceTypes.CurrentProtocolType)??Cultures.Resources.Not_Fitted));
-if (device.DeviceType is not null)
-    Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>device=" + (device.Index + 1) + "  type=" + device.DeviceType);
+            
             if (device.LoopNum > 0)
             {
                 setDevice(Loop2[device.Index], device);

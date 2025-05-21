@@ -19,7 +19,7 @@ namespace Xfp.DataTypes.PanelData
             public int Period { get; set; }
 
 
-            public byte[] ToByteArray() => new byte[] { (byte)(Period / 10) };
+            public byte[] ToByteArray() => [(byte)(Period / 10)];
 
 
             public static AutoResetEscalatePeriod Parse(byte[] data, Func<byte[], bool> responseTypeCheck)
