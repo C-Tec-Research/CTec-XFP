@@ -349,6 +349,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Loop 2.
+        /// </summary>
+        public static string Add_Loop_2 {
+            get {
+                return ResourceManager.GetString("Add_Loop_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Access level 2 code (AL2).
         /// </summary>
         public static string AL2_Code {
@@ -4003,6 +4012,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a second loop to the configuration?.
+        /// </summary>
+        public static string Query_Add_Second_Loop {
+            get {
+                return ResourceManager.GetString("Query_Add_Second_Loop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change this device to &apos;{0}&apos;?.
         /// </summary>
         public static string Query_Change_Device_Type {
@@ -4900,6 +4918,15 @@ namespace Xfp.Cultures {
         public static string ToolTip_Clear_All {
             get {
                 return ResourceManager.GetString("ToolTip_Clear_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to add a second loop.
+        /// </summary>
+        public static string ToolTip_Click_To_Add_Second_Loop {
+            get {
+                return ResourceManager.GetString("ToolTip_Click_To_Add_Second_Loop", resourceCulture);
             }
         }
         

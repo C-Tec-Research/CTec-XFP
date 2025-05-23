@@ -2067,4 +2067,13 @@ Toutes ses données seront perdues.</value>
   <data name="Validation_Header_Panel_Data" xml:space="preserve">
     <value>Données du panneau :</value>
   </data>
+  <data name="Add_Loop_2" xml:space="preserve">
+    <value>Ajouter la Boucle 2</value>
+  </data>
+  <data name="Query_Add_Second_Loop" xml:space="preserve">
+    <value>Add a second loop to the configuration?</value>
+  </data>
+  <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
+    <value>Tapez pur ajouter une deuxième boucle</value>
+  </data>
 </root>

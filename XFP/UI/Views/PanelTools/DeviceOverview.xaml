@@ -176,11 +176,31 @@
 
                         </ListView>
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0">
-                            <!--<TextBlock Text="{Binding LoopNumberDesc}" FontSize="30" Foreground="{StaticResource Brush06}"/>-->
+                        <StackPanel Orientation="Vertical" 
+                                    Visibility="{Binding LoopIsFitted, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0">
                             <TextBlock Text="{Binding Path=Not_Fitted, Source={StaticResource Resources}}"
-                                       Visibility="{Binding LoopIsFitted, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                                        FontSize="30" Foreground="{StaticResource Brush06}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"
+                                        Style="{StaticResource HeaderButton}"
+                                        Background="Transparent" BorderThickness="0" 
+                                        PreviewMouseDown="AddLoop2_PreviewMouseDown"
+                                        Opacity="0.4"
+                                        Margin="0,15,0,0">
+                                    <Border BorderThickness="2" BorderBrush="{StaticResource BrushAddLoopButton}" CornerRadius="5"
+                                            ToolTip="{Binding Path=ToolTip_Click_To_Add_Second_Loop, Source={StaticResource Resources}}">
+                                        <TextBlock Text="{Binding Path=Add_Loop_2, Source={StaticResource Resources}}"
+                                                   HorizontalAlignment="Center" Foreground="{StaticResource Brush03}"
+                                                   Margin="7,2,7,2"/>
+                                    </Border>
+                                </Button>
+                            </Grid>
                         </StackPanel>
                     </Grid>
 

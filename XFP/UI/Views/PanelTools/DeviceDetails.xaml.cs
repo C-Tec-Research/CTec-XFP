@@ -100,5 +100,7 @@ namespace Xfp.UI.Views.PanelTools
             if (e.Key == Key.A && Keyboard.Modifiers == ModifierKeys.Control)
                 _context.ChangeSelection((sender as DataGrid).SelectedItems);
         }
+
+        private void AddLoop2_PreviewMouseDown(object sender, MouseButtonEventArgs e) { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; else _context.AddLoop2(); }
     }
 }

@@ -123,7 +123,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region ConfigToolsPageViewModelBase overrides
-        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) => _infoPanelViewModel?.SetChangesAreAllowedChecker(checker);
+        public override void SetChangesAreAllowedChecker(ChangesAreAllowedChecker checker) { CheckChangesAreAllowed = checker; base.SetChangesAreAllowedChecker(checker);  }
         #endregion
 
 

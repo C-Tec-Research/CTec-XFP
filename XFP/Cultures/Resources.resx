@@ -2089,4 +2089,13 @@ All of its data will be lost.</value>
   <data name="Validation_Header_Panel_Data" xml:space="preserve">
     <value>Panel data:</value>
   </data>
+  <data name="Add_Loop_2" xml:space="preserve">
+    <value>Add Loop 2</value>
+  </data>
+  <data name="Query_Add_Second_Loop" xml:space="preserve">
+    <value>Add a second loop to the configuration?</value>
+  </data>
+  <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
+    <value>Click to add a second loop</value>
+  </data>
 </root>
