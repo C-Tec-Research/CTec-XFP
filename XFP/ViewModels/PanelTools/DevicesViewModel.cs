@@ -75,9 +75,9 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
-        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; set { SetValue(ref _loop1, value, nameof(Loop1)); } }
-        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; set { SetValue(ref _loop2, value, nameof(Loop2)); } }
-        public ObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; } }
+        public ObservableCollection<DeviceItemViewModel> Loop1       { get => _loop1; /*set { SetValue(ref _loop1, value, nameof(Loop1)); }*/ }
+        public ObservableCollection<DeviceItemViewModel> Loop2       { get => _loop2; /*set { SetValue(ref _loop2, value, nameof(Loop2)); }*/ }
+        public ObservableCollection<DeviceItemViewModel> CurrentLoop { get => LoopNum > 1 ? Loop2 : Loop1; /*set { if (LoopNum > 1) Loop2 = value; else Loop1 = value; }*/ }
         public bool LoopIsFitted => LoopNum <= NumLoops;
         
         //internal DeviceNamesConfigData DeviceNames;
@@ -518,9 +518,9 @@ namespace Xfp.ViewModels.PanelTools
         private void populateLoop(int loop)
         {
             if (loop == 2)
-                Loop2 = new();
+                _loop2.Clear();
             else
-                Loop1 = new();
+                _loop1.Clear();
 
             if (loop <= NumLoops)
             {
@@ -534,15 +534,15 @@ namespace Xfp.ViewModels.PanelTools
                             DeviceData = d,
                             GetDeviceName = getDeviceName,
                             SetDeviceName = setDeviceName,
-                            ZoneData = _data.CurrentPanel.ZoneConfig,
+                            ZoneData  = _data.CurrentPanel.ZoneConfig,
                             GroupData = _data.CurrentPanel.GroupConfig,
                             Index = j++
                         };
 
                         if (loop == 2)
-                            Loop2.Add(newDev);
+                            _loop2.Add(newDev);
                         else
-                            Loop1.Add(newDev);
+                            _loop1.Add(newDev);
                     }
                 }
             }

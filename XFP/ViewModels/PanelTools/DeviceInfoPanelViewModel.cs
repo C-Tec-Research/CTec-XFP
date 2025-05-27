@@ -2086,7 +2086,7 @@ namespace Xfp.ViewModels.PanelTools
                 return false;
             
             if (DeviceList.Count == 1)
-                return !DeviceTypes.ModeIsValid(DeviceList[0].DeviceType, DeviceList[0].DayMode);
+                return !DeviceTypes.ModeIsValid(DeviceList[0]?.DeviceType, DeviceList[0]?.DayMode);
 
             int valid = (from d in DeviceList
                          where DeviceTypes.ModeIsValid(d.DeviceType, d.DayMode)
@@ -2101,7 +2101,7 @@ namespace Xfp.ViewModels.PanelTools
                 return true;
             
             if (DeviceList.Count == 1)
-                return !DeviceTypes.ModeIsValid(DeviceList[0].DeviceType, DeviceList[0].NightMode);
+                return !DeviceTypes.ModeIsValid(DeviceList[0]?.DeviceType, DeviceList[0]?.NightMode);
 
             int valid = (from d in DeviceList
                          where DeviceTypes.ModeIsValid(d.DeviceType, d.NightMode)

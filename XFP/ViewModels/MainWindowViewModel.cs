@@ -1961,22 +1961,15 @@ namespace Xfp.ViewModels
 
                 //if (wasCompleted)
                 {
-                    if (_currentPage == _deviceDetailsPage)
+                    if (_currentPage == _deviceDetailsPage
+                     || _currentPage == _loop1Page
+                     || _currentPage == _loop2Page)
                     {
-                        //(_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                    }
-                    else if (_currentPage == _loop1Page)
-                    {
-                        (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                    }
-                    else if (_currentPage == _loop2Page)
-                    {
-                        (_currentPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_deviceDetailsPage.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_deviceDetailsPage.DataContext as IPanelToolsViewModel).PopulateView(_data);
+                        (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                        //(_loop1Page.DataContext as DevicesViewModel).Loops = (_deviceDetailsPage.DataContext as DevicesViewModel)?.Loops;
+                        //(_loop2Page.DataContext as DevicesViewModel).Loops = (_deviceDetailsPage.DataContext as DevicesViewModel)?.Loops;
                     }
                     else if (_currentPage == _setsPage)
                     {
