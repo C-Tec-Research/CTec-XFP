@@ -1941,10 +1941,10 @@ All of its data will be lost.</value>
     <value>Save these changes?</value>
   </data>
   <data name="Comms_Download_Is_Complete" xml:space="preserve">
-    <value>Download is complete.</value>
+    <value>Complete.</value>
   </data>
   <data name="Comms_Upload_Is_Complete" xml:space="preserve">
-    <value>Upload is complete.</value>
+    <value>Complete.</value>
   </data>
   <data name="Panel_x_Configuration" xml:space="preserve">
     <value>Panel {0} Configuration</value>
@@ -2097,5 +2097,20 @@ All of its data will be lost.</value>
   </data>
   <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
     <value>Click to add a second loop</value>
+  </data>
+  <data name="Comms_Cancelled" xml:space="preserve">
+    <value>Cancelled by user</value>
+  </data>
+  <data name="Comms_Download_Incomplete" xml:space="preserve">
+    <value>The download was not completed.</value>
+  </data>
+  <data name="Comms_Upload_Incomplete" xml:space="preserve">
+    <value>The upload was not completed.</value>
+  </data>
+  <data name="Download_x" xml:space="preserve">
+    <value>Download: {0}</value>
+  </data>
+  <data name="Upload_x" xml:space="preserve">
+    <value>Upload: {0}</value>
   </data>
 </root>

@@ -166,6 +166,7 @@ namespace Xfp.ViewModels.PanelTools
         //        return "";
         //    }
         //}
+
         public string ZoneDesc
         {
             get
@@ -190,6 +191,7 @@ namespace Xfp.ViewModels.PanelTools
                 return null;
             }
         }
+
         public string GroupDesc
         {
             get

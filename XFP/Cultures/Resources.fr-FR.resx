@@ -1930,10 +1930,10 @@ Toutes ses données seront perdues.</value>
     <value>Enregistrer ces modifications ?</value>
   </data>
   <data name="Comms_Download_Is_Complete" xml:space="preserve">
-    <value>Le téléchargement du panneau s’est terminé avec succès.</value>
+    <value>Terminé avec succès.</value>
   </data>
   <data name="Comms_Upload_Is_Complete" xml:space="preserve">
-    <value>Le téléchargement au panneau s’est terminé avec succès.</value>
+    <value>Terminé avec succès.</value>
   </data>
   <data name="Panel_x_Configuration" xml:space="preserve">
     <value>Configuration de Paneau {0}</value>
@@ -2075,5 +2075,20 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
     <value>Tapez pur ajouter une deuxième boucle</value>
+  </data>
+  <data name="Comms_Cancelled" xml:space="preserve">
+    <value>Annulé par l'utilisateur</value>
+  </data>
+  <data name="Comms_Download_Incomplete" xml:space="preserve">
+    <value>Le téléchargement du panneau était incomplet.</value>
+  </data>
+  <data name="Comms_Upload_Incomplete" xml:space="preserve">
+    <value>Le téléchargement au panneau était incomplet.</value>
+  </data>
+  <data name="Download_x" xml:space="preserve">
+    <value>Téléchargement du panneau : {0}</value>
+  </data>
+  <data name="Upload_x" xml:space="preserve">
+    <value>Téléchargement au panneau : {0}</value>
   </data>
 </root>

@@ -769,7 +769,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             //LoopConfigData.DetectedLoops is updated by the panel 'heartbeat'
             //comms, so will reflect what is actually connected
-            if (LoopConfigData.DetectedLoops is not null)
+            if (LoopConfigData.DetectedLoops is not null && NumLoops != LoopConfigData.DetectedLoops)
             {
                 NumLoops = (int)LoopConfigData.DetectedLoops;
                 OnPropertyChanged(nameof(LoopIsFitted));

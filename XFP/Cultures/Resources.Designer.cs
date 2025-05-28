@@ -638,6 +638,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelled by user.
+        /// </summary>
+        public static string Comms_Cancelled {
+            get {
+                return ResourceManager.GetString("Comms_Cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device details.
         /// </summary>
         public static string Comms_Device_Details {
@@ -656,7 +665,16 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download is complete..
+        ///   Looks up a localized string similar to The download was not completed..
+        /// </summary>
+        public static string Comms_Download_Incomplete {
+            get {
+                return ResourceManager.GetString("Comms_Download_Incomplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete..
         /// </summary>
         public static string Comms_Download_Is_Complete {
             get {
@@ -746,7 +764,16 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload is complete..
+        ///   Looks up a localized string similar to The upload was not completed..
+        /// </summary>
+        public static string Comms_Upload_Incomplete {
+            get {
+                return ResourceManager.GetString("Comms_Upload_Incomplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete..
         /// </summary>
         public static string Comms_Upload_Is_Complete {
             get {
@@ -1376,6 +1403,15 @@ namespace Xfp.Cultures {
         public static string Download_System {
             get {
                 return ResourceManager.GetString("Download_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download: {0}.
+        /// </summary>
+        public static string Download_x {
+            get {
+                return ResourceManager.GetString("Download_x", resourceCulture);
             }
         }
         
@@ -5487,6 +5523,15 @@ namespace Xfp.Cultures {
         public static string Upload_System {
             get {
                 return ResourceManager.GetString("Upload_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload: {0}.
+        /// </summary>
+        public static string Upload_x {
+            get {
+                return ResourceManager.GetString("Upload_x", resourceCulture);
             }
         }
         

@@ -36,10 +36,7 @@ namespace Xfp.DataTypes.PanelData
 
         public const int NumZones = 32;
         public const int NumPanels = 8;
-        //public const int NumOutputSetTriggers = 16;
-        //public const int NumPanelRelayTriggers = 2;
         public const int NumDependencies = 6;
-        //public const int DefaultDelayTimerSeconds = 300;
         public const int MaxNameLength = 14;
         public static readonly TimeSpan MaxSounderDelay  = new(0, 10, 0);
         public static readonly TimeSpan MaxRelay1Delay   = new(0, 10, 0);
@@ -53,10 +50,8 @@ namespace Xfp.DataTypes.PanelData
         public List<ZoneData> Zones { get; set; }
         public TimeSpan InputDelay { get; set; }
         public TimeSpan InvestigationPeriod { get; set; }
-        //public TimeSpan SetDelayTime { get; set; }
         public List<bool> OutputSetIsSilenceable { get; set; }
         public List<bool> PanelRelayIsSilenceable { get; set; }
-        //public TimeSpan DelayTimer { get; set; }
 
 
         #region elements in XFP files that we don't use

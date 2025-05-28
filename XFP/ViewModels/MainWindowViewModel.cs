@@ -1776,7 +1776,7 @@ namespace Xfp.ViewModels
                             enqueueDownloadCommandsForPage(p, allPages);
                     }
 
-                    PanelComms.SendCommandQueueToPanel(_mainAppWindow, commsStarting, downloadEnded);
+                    PanelComms.SendCommandQueueToPanel(_mainAppWindow, commsStarting, allPages ? downloadEndedAllPages : downloadEndedThisPage);
                 }
             }
         }
@@ -1819,7 +1819,7 @@ namespace Xfp.ViewModels
                 enqueueUploadCommandsForPage(_currentPage, false);
             }
 
-            PanelComms.SendCommandQueueToPanel(_mainAppWindow, commsStarting, uploadEnded);
+            PanelComms.SendCommandQueueToPanel(_mainAppWindow, commsStarting, allPages ? uploadEndedAllPages : uploadEndedThisPage);
         }
 
 
@@ -1950,26 +1950,31 @@ namespace Xfp.ViewModels
         public bool FirmwareError { get => _firmwareError; set { _firmwareError = value; OnPropertyChanged(); } }
 
 
-        private void downloadEnded(bool wasCompleted)
+        private void downloadEndedAllPages(CommsResult wasCompleted) => downloadEnded(wasCompleted, true);
+        private void downloadEndedThisPage(CommsResult wasCompleted) => downloadEnded(wasCompleted, false);
+        private void uploadEndedAllPages(CommsResult wasCompleted)   => uploadEnded(wasCompleted, true);
+        private void uploadEndedThisPage(CommsResult wasCompleted)   => uploadEnded(wasCompleted, false);
+
+        private void downloadEnded(CommsResult result, bool allPages)
         {
             try
             {
-                //if (wasCompleted)
-                //    Application.Current.Dispatcher.Invoke(new Action(() => Notification.Show(Cultures.Resources.Comms_Download_Is_Complete)));
+                var pageHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
+                var desc = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, pageHeader);
+                AppNotification.Show(desc, downloadResultToString(result));
 
                 commsEnded();
 
                 //if (wasCompleted)
                 {
-                    if (_currentPage == _deviceDetailsPage
+                    if (allPages
+                     || _currentPage == _deviceDetailsPage
                      || _currentPage == _loop1Page
                      || _currentPage == _loop2Page)
                     {
                         (_deviceDetailsPage.DataContext as IPanelToolsViewModel).PopulateView(_data);
                         (_loop1Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
                         (_loop2Page.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                        //(_loop1Page.DataContext as DevicesViewModel).Loops = (_deviceDetailsPage.DataContext as DevicesViewModel)?.Loops;
-                        //(_loop2Page.DataContext as DevicesViewModel).Loops = (_deviceDetailsPage.DataContext as DevicesViewModel)?.Loops;
                     }
                     else if (_currentPage == _setsPage)
                     {
@@ -1988,16 +1993,7 @@ namespace Xfp.ViewModels
                     OnPropertyChanged(nameof(NumberOfPanels));
                     OnPropertyChanged(nameof(PanelNumberToolTip));
                     OnPropertyChanged(nameof(PanelCount));
-
-                //    Application.Current.Dispatcher.Invoke(new Action(() =>
-                //    {
-                //        if (!_data.Validate())
-                //            ShowValidationWindow(_currentPage.Title);
-                //    }));
                 }
-
-                //                PopulateView(_data);
-
 
                 SaveCopyOfCurrentData();
                 SaveCopyOfDataFromFile();
@@ -2018,12 +2014,33 @@ namespace Xfp.ViewModels
         }
 
 
-        private void uploadEnded(bool wasCompleted)
+        private void uploadEnded(CommsResult result, bool allPages)
         {
-            //if (wasCompleted)
-            //    Application.Current.Dispatcher.Invoke(new Action(() => Notification.Show(Cultures.Resources.Comms_Upload_Is_Complete)));
+            var pageHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
+            var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, pageHeader);
+            AppNotification.Show(desc, uploadResultToString(result));
+
             commsEnded();
         }
+
+
+        private static string downloadResultToString(CommsResult? result)
+            => result switch
+            {
+                CommsResult.Ok => Cultures.Resources.Comms_Download_Is_Complete,
+                CommsResult.Failed => Cultures.Resources.Comms_Download_Incomplete,
+                CommsResult.Cancelled => Cultures.Resources.Comms_Cancelled,
+                _ => "",
+            };
+
+        private static string uploadResultToString(CommsResult? result)
+            => result switch
+            {
+                CommsResult.Ok => Cultures.Resources.Comms_Upload_Is_Complete,
+                CommsResult.Failed => Cultures.Resources.Comms_Upload_Incomplete,
+                CommsResult.Cancelled => Cultures.Resources.Comms_Cancelled,
+                _ => "",
+            };
 
 
         private void commsEnded()
