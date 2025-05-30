@@ -26,24 +26,28 @@ using static Xfp.DataTypes.PanelData.CEConfigData;
 
 namespace Xfp.ViewModels.PanelTools
 {
-    class CausesAndEffectsItemViewModel : PageViewModelBase
+    class CausesAndEffectsItemViewModel : ViewModelBase, IPanelToolsViewModel
     {
-        public CausesAndEffectsItemViewModel(CEEvent data, int index, LoopConfigData loopConfig)
+        public CausesAndEffectsItemViewModel(CEEvent data, int index/*, LoopConfigData loopConfig*/)
         {
             _number = index + 1;
             _data = data;
-            _loopConfig = loopConfig;
+            //_loopConfig = loopConfig;
             initData();
             RefreshView();
             
             /// <summary>Add update to Times menu</summary>
-            _chChCheckChanges.Elapsed += new((s, e) => OnPropertyChanged(nameof(Times)));
+            _timesTimer.Elapsed += new((s, e) => OnPropertyChanged(nameof(Times)));
         }
+
+        protected static System.Timers.Timer _timesTimer = new() { AutoReset = true, Enabled = true, Interval = 2000 };
 
 
         private int     _number;
         private CEEvent _data;
-        private LoopConfigData _loopConfig;
+        //private LoopConfigData _loopConfig;
+
+        public CEEvent Data { set { _data = value; initData(); RefreshView(); } }
 
 
         private void initData()
@@ -952,33 +956,9 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(SelectedResetCondition));
         }
 
-        public void RefreshView(int errorCode = 0)
+        //public void RefreshView(int errorCode = 0)
+        public void RefreshView()
         {
-            //OnPropertyChanged(nameof(CENumber));
-            //OnPropertyChanged(nameof(ActionType));
-            //OnPropertyChanged(nameof(ActionParam));
-            //OnPropertyChanged(nameof(TriggerType));
-            //OnPropertyChanged(nameof(TriggerParam));
-            //OnPropertyChanged(nameof(TriggerParam2));
-            //OnPropertyChanged(nameof(TriggerCondition));
-            //OnPropertyChanged(nameof(ResetType));
-            //OnPropertyChanged(nameof(ResetParam));
-            //OnPropertyChanged(nameof(ResetParam2));
-            //OnPropertyChanged(nameof(ResetCondition));
-            
-            //OnPropertyChanged(nameof(SelectedActionType));
-            //OnPropertyChanged(nameof(SelectedActionParamIndex));
-            //OnPropertyChanged(nameof(SelectedTriggerType));
-            //OnPropertyChanged(nameof(SelectedTriggerParamIndex));
-            //OnPropertyChanged(nameof(SelectedTriggerParam2Index));
-            //OnPropertyChanged(nameof(SelectedTriggerConditionIndex));
-            //OnPropertyChanged(nameof(SelectedTriggerCondition));
-            //OnPropertyChanged(nameof(SelectedResetType));
-            //OnPropertyChanged(nameof(SelectedResetParam));
-            //OnPropertyChanged(nameof(SelectedResetParam2));
-            //OnPropertyChanged(nameof(SelectedResetConditionIndex));
-            //OnPropertyChanged(nameof(SelectedResetCondition));
-
             OnPropertyChanged(nameof(Actions));
             OnPropertyChanged(nameof(Triggers));
             OnPropertyChanged(nameof(Groups));
@@ -996,19 +976,44 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(Times));
             OnPropertyChanged(nameof(TrueOrFalse));
 
-            //OnPropertyChanged(nameof(ActionParamIsValid));
-            //OnPropertyChanged(nameof(ActionTriggerIsValid));
-            //OnPropertyChanged(nameof(TriggerParam1IsValid));
-            //OnPropertyChanged(nameof(IndicateInvalidTriggerParam2));
-            //OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam1));
-            //OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam2));
-            //OnPropertyChanged(nameof(TriggerConditionIsValid));
-            //OnPropertyChanged(nameof(ResetTriggerIsValid));
-            //OnPropertyChanged(nameof(ResetParam1IsValid));
-            //OnPropertyChanged(nameof(IndicateInvalidResetParam2));
-            //OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam1));
-            //OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam2));
-            //OnPropertyChanged(nameof(ResetConditionIsValid));
+            OnPropertyChanged(nameof(CENumber));
+            OnPropertyChanged(nameof(ActionType));
+            OnPropertyChanged(nameof(ActionParam));
+            OnPropertyChanged(nameof(TriggerType));
+            OnPropertyChanged(nameof(TriggerParam));
+            OnPropertyChanged(nameof(TriggerParam2));
+            OnPropertyChanged(nameof(TriggerCondition));
+            OnPropertyChanged(nameof(ResetType));
+            OnPropertyChanged(nameof(ResetParam));
+            OnPropertyChanged(nameof(ResetParam2));
+            OnPropertyChanged(nameof(ResetCondition));
+
+            OnPropertyChanged(nameof(SelectedActionType));
+            OnPropertyChanged(nameof(SelectedActionParamIndex));
+            OnPropertyChanged(nameof(SelectedTriggerType));
+            OnPropertyChanged(nameof(SelectedTriggerParamIndex));
+            OnPropertyChanged(nameof(SelectedTriggerParam2Index));
+            OnPropertyChanged(nameof(SelectedTriggerConditionIndex));
+            OnPropertyChanged(nameof(SelectedTriggerCondition));
+            OnPropertyChanged(nameof(SelectedResetType));
+            OnPropertyChanged(nameof(SelectedResetParam));
+            OnPropertyChanged(nameof(SelectedResetParam2));
+            OnPropertyChanged(nameof(SelectedResetConditionIndex));
+            OnPropertyChanged(nameof(SelectedResetCondition));
+
+            OnPropertyChanged(nameof(ActionParamIsValid));
+            OnPropertyChanged(nameof(ActionTriggerIsValid));
+            OnPropertyChanged(nameof(TriggerParam1IsValid));
+            OnPropertyChanged(nameof(IndicateInvalidTriggerParam2));
+            OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam1));
+            OnPropertyChanged(nameof(IndicateInvalidSelectedTriggerParam2));
+            OnPropertyChanged(nameof(TriggerConditionIsValid));
+            OnPropertyChanged(nameof(ResetTriggerIsValid));
+            OnPropertyChanged(nameof(ResetParam1IsValid));
+            OnPropertyChanged(nameof(IndicateInvalidResetParam2));
+            OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam1));
+            OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam2));
+            OnPropertyChanged(nameof(ResetConditionIsValid));
 
             updateSelections();
         }

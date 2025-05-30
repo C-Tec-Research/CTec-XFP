@@ -12,6 +12,7 @@ using CTecUtil.IO;
 using Newtonsoft.Json;
 using static CTecUtil.Pipes.PipeServer;
 using CTecControls.UI;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Xfp
 {
@@ -32,9 +33,27 @@ namespace Xfp
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            #region handle activation from click on an app notification
+            ToastNotificationManagerCompat.OnActivated += toastArgs =>
+            {
+                if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
+                {
+                    //app instance was launched by an app notification 
+                    close();
+                    return;
+                }
+            };
+
+            if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
+            {
+                close();
+                return;
+            }
+            #endregion
+
             CTecUtil.UI.UIState.SetBusyState();
 
-             AnotherInstanceIsRunning = CTecUtil.SingletonApp.CheckForAnotherInstance();
+            AnotherInstanceIsRunning = CTecUtil.SingletonApp.CheckForAnotherInstance();
 
             ////don't start up if an instance of the app is already running
             //if (CTecUtil.SingletonApp.SwitchIfAlreadyRunning())
@@ -49,14 +68,19 @@ namespace Xfp
             //        _pipeClient = null;
             //    }
 
-            //    Aborting = true;
-            //    App.Current.Shutdown();
-            //    CTecUtil.IO.SerialComms.ClosePort();
-            //    Environment.Exit(0);
+            //    close();
             //    return;
             //}
 
             base.OnStartup(e);
+        }
+
+        private void close()
+        {
+            Aborting = true;
+            App.Current.Shutdown();
+            CTecUtil.IO.SerialComms.ClosePort();
+            Environment.Exit(0);
         }
     }
 }

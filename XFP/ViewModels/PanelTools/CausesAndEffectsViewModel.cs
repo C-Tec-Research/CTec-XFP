@@ -23,6 +23,7 @@ using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
 using Xfp.UI.Views;
+using Xfp.UI.Views.PanelTools;
 using static System.Windows.Forms.Design.AxImporter;
 using static Xfp.IO.PanelComms;
 
@@ -35,6 +36,29 @@ namespace Xfp.ViewModels.PanelTools
             _timerHeaders = new();
             for (int i = 0; i < CEConfigData.NumEvents; i++)
                 _timerHeaders.Add(string.Format(Cultures.Resources.Time_T_x, i + 1));
+
+            //init empty events list with all the menu getters
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+            {
+                var c = new CausesAndEffectsItemViewModel(new(), i);
+                c.ActionsMenu      = getActions;
+                c.TriggersMenu     = getTriggers;
+                c.InputsMenu       = getInputs;
+                c.Loop1DevicesMenu = GetLoop1Devices;
+                c.Loop2DevicesMenu = getLoop2Devices;
+                c.ZonesMenu        = getZones;
+                c.ZoneNumbersMenu  = getZoneNumbers;
+                c.ZonesPanelsMenu  = getZonesPanels;
+                c.GroupsMenu       = getGroups;
+                c.SetsMenu         = getSets;
+                c.EventsMenu       = getEvents;
+                c.EventNumbersMenu = getEventNumbers;
+                c.RelaysMenu       = getRelays;
+                c.SetsRelaysMenu   = getSetsRelays;
+                c.TimesMenu        = getTimes;
+                c.TrueOrFalseMenu  = getTrueOrFalse;
+                CEConfigItems.Add(c);
+            }
         }
 
 
@@ -65,22 +89,22 @@ namespace Xfp.ViewModels.PanelTools
 
         private ObservableCollection<CausesAndEffectsItemViewModel> _ceConfigItems = new();
         public ObservableCollection<CausesAndEffectsItemViewModel> CEConfigItems { get => _ceConfigItems; set { _ceConfigItems = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem1  { get => _ceConfigItems[0]; set { _ceConfigItems[0] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem2  { get => _ceConfigItems[1]; set { _ceConfigItems[1] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem3  { get => _ceConfigItems[2]; set { _ceConfigItems[2] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem4  { get => _ceConfigItems[3]; set { _ceConfigItems[3] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem5  { get => _ceConfigItems[4]; set { _ceConfigItems[4] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem6  { get => _ceConfigItems[5]; set { _ceConfigItems[5] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem7  { get => _ceConfigItems[6]; set { _ceConfigItems[6] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem8  { get => _ceConfigItems[7]; set { _ceConfigItems[7] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem9  { get => _ceConfigItems[8]; set { _ceConfigItems[8] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem10 { get => _ceConfigItems[9]; set { _ceConfigItems[9] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem11 { get => _ceConfigItems[10]; set { _ceConfigItems[10] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem12 { get => _ceConfigItems[11]; set { _ceConfigItems[11] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem13 { get => _ceConfigItems[12]; set { _ceConfigItems[12] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem14 { get => _ceConfigItems[13]; set { _ceConfigItems[13] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem15 { get => _ceConfigItems[14]; set { _ceConfigItems[14] = value; OnPropertyChanged(); } }
-        public CausesAndEffectsItemViewModel CEItem16 { get => _ceConfigItems[15]; set { _ceConfigItems[15] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem1  { get => _ceConfigItems[0]; set { _ceConfigItems[0] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem2  { get => _ceConfigItems[1]; set { _ceConfigItems[1] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem3  { get => _ceConfigItems[2]; set { _ceConfigItems[2] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem4  { get => _ceConfigItems[3]; set { _ceConfigItems[3] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem5  { get => _ceConfigItems[4]; set { _ceConfigItems[4] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem6  { get => _ceConfigItems[5]; set { _ceConfigItems[5] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem7  { get => _ceConfigItems[6]; set { _ceConfigItems[6] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem8  { get => _ceConfigItems[7]; set { _ceConfigItems[7] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem9  { get => _ceConfigItems[8]; set { _ceConfigItems[8] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem10 { get => _ceConfigItems[9]; set { _ceConfigItems[9] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem11 { get => _ceConfigItems[10]; set { _ceConfigItems[10] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem12 { get => _ceConfigItems[11]; set { _ceConfigItems[11] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem13 { get => _ceConfigItems[12]; set { _ceConfigItems[12] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem14 { get => _ceConfigItems[13]; set { _ceConfigItems[13] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem15 { get => _ceConfigItems[14]; set { _ceConfigItems[14] = value; OnPropertyChanged(); } }
+        //public CausesAndEffectsItemViewModel CEItem16 { get => _ceConfigItems[15]; set { _ceConfigItems[15] = value; OnPropertyChanged(); } }
         
         private double       _dataGridWidth = 400.0;
         private List<double> _columnWidths = new();
@@ -98,8 +122,8 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> _inputs { get; set; }
         private List<string> _loop1Devices { get; set; }
         private List<string> _loop2Devices { get; set; }
-        private List<string> _zones { get; set; }
-        private List<string> _zones2 { get; set; }
+        private List<string> _zones { get; set; } = new();
+        private List<string> _zones2 { get; set; } = new();
         private List<string> _zonesPanels { get; set; }
         private List<string> _groups { get; set; }
         private List<string> _sets { get; set; }
@@ -129,19 +153,22 @@ namespace Xfp.ViewModels.PanelTools
 
         internal void InitComboLists()
         {
-            _actions = _data.GetCEActionsList();
-            _triggers = _data.GetCETriggersList();
-            _groups = _data.GetGroupsList();
-            _inputs = _data.GetInputsList();
-            _loop1Devices = _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber);
-            _loop2Devices = _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber);
-            _zones = _data.GetZonesList();
-            _zonesPanels = _data.GetZonePanelsList();
-            _sets = _data.GetSetsList();
-            _events = _data.GetEventsList();
-            _relays = _data.GetRelaysList();
-            _setsRelays = _data.GetSetsRelaysList();
-            _times = _data.GetCETimerTList();
+            if (_data is not null)
+            {
+                _actions = _data?.GetCEActionsList();
+                _triggers = _data?.GetCETriggersList();
+                _groups = _data?.GetGroupsList();
+                _inputs = _data?.GetInputsList();
+                _loop1Devices = _data?.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber);
+                _loop2Devices = _data?.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber);
+                _zones = _data?.GetZonesList();
+                _zonesPanels = _data?.GetZonePanelsList();
+                _sets = _data?.GetSetsList();
+                _events = _data?.GetEventsList();
+                _relays = _data?.GetRelaysList();
+                _setsRelays = _data?.GetSetsRelaysList();
+                _times = _data?.GetCETimerTList();
+            }
 
             _zones2 = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
@@ -150,7 +177,7 @@ namespace Xfp.ViewModels.PanelTools
             _events2 = new();
             for (int i = 0; i < CEConfigData.NumEvents; i++)
             {
-                _events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
+                //_events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
                 _events2.Add((i + 1).ToString());
             }
 
@@ -190,6 +217,7 @@ namespace Xfp.ViewModels.PanelTools
         public void SetCulture(CultureInfo culture)
         {
             PageHeader = Cultures.Resources.Nav_C_And_E_Configuration;
+            InitComboLists();
             RefreshView();
 
             CultureChanged?.Invoke(culture);
@@ -205,30 +233,40 @@ namespace Xfp.ViewModels.PanelTools
 
             _data = data;
 
-            _ceConfigItems = new();
-            if (data.CurrentPanel.ZoneConfig.Zones != null)
+            populateView();
+        }
+
+        private void populateView()
+        { 
+            InitComboLists();
+
+//            _ceConfigItems.Clear();
+            if (_data.CurrentPanel.ZoneConfig.Zones != null)
             {
-                for (int i = 0; i < data.CurrentPanel.CEConfig.Events.Count; i++)
+                for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count; i++)
                 {
-                    var c = new CausesAndEffectsItemViewModel(data.CurrentPanel.CEConfig.Events[i], i, data.CurrentPanel.LoopConfig);
-                    c.SetCulture(CultureInfo.CurrentCulture);
-                    c.ActionsMenu      = getActions;
-                    c.TriggersMenu     = getTriggers;
-                    c.InputsMenu       = getInputs;
-                    c.Loop1DevicesMenu = GetLoop1Devices;
-                    c.Loop2DevicesMenu = getLoop2Devices;
-                    c.ZonesMenu        = getZones;
-                    c.ZoneNumbersMenu  = getZoneNumbers;
-                    c.ZonesPanelsMenu  = getZonesPanels;
-                    c.GroupsMenu       = getGroups;
-                    c.SetsMenu         = getSets;
-                    c.EventsMenu       = getEvents;
-                    c.EventNumbersMenu = getEventNumbers;
-                    c.RelaysMenu       = getRelays;
-                    c.SetsRelaysMenu   = getSetsRelays;
-                    c.TimesMenu        = getTimes;
-                    c.TrueOrFalseMenu  = getTrueOrFalse;
-                    _ceConfigItems.Add(c);
+                    //var c = new CausesAndEffectsItemViewModel(data.CurrentPanel.CEConfig.Events[i], i, data.CurrentPanel.LoopConfig);
+                    //c.SetCulture(CultureInfo.CurrentCulture);
+                    //c.ActionsMenu      = getActions;
+                    //c.TriggersMenu     = getTriggers;
+                    //c.InputsMenu       = getInputs;
+                    //c.Loop1DevicesMenu = GetLoop1Devices;
+                    //c.Loop2DevicesMenu = getLoop2Devices;
+                    //c.ZonesMenu        = getZones;
+                    //c.ZoneNumbersMenu  = getZoneNumbers;
+                    //c.ZonesPanelsMenu  = getZonesPanels;
+                    //c.GroupsMenu       = getGroups;
+                    //c.SetsMenu         = getSets;
+                    //c.EventsMenu       = getEvents;
+                    //c.EventNumbersMenu = getEventNumbers;
+                    //c.RelaysMenu       = getRelays;
+                    //c.SetsRelaysMenu   = getSetsRelays;
+                    //c.TimesMenu        = getTimes;
+                    //c.TrueOrFalseMenu  = getTrueOrFalse;
+                    //_ceConfigItems.Add(c);
+
+                    if (i < CEConfigItems.Count)
+                        CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
                 }
             }
             
@@ -240,7 +278,7 @@ namespace Xfp.ViewModels.PanelTools
             if (_data is null)
                 return;
 
-            InitComboLists();
+            //InitComboLists();
 
             //OnPropertyChanged(nameof(TimerEvents));
             OnPropertyChanged(nameof(TimerEvent1));
@@ -261,25 +299,27 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(TimerEvent16));
             OnPropertyChanged(nameof(ColumnWidths));
 
+            //OnPropertyChanged(nameof(CEItem1));
+            //OnPropertyChanged(nameof(CEItem2));
+            //OnPropertyChanged(nameof(CEItem3));
+            //OnPropertyChanged(nameof(CEItem4));
+            //OnPropertyChanged(nameof(CEItem5));
+            //OnPropertyChanged(nameof(CEItem6));
+            //OnPropertyChanged(nameof(CEItem7));
+            //OnPropertyChanged(nameof(CEItem8));
+            //OnPropertyChanged(nameof(CEItem9));
+            //OnPropertyChanged(nameof(CEItem10));
+            //OnPropertyChanged(nameof(CEItem11));
+            //OnPropertyChanged(nameof(CEItem12));
+            //OnPropertyChanged(nameof(CEItem13));
+            //OnPropertyChanged(nameof(CEItem14));
+            //OnPropertyChanged(nameof(CEItem15));
+            //OnPropertyChanged(nameof(CEItem16));
+
+            //OnPropertyChanged(nameof(CEConfigItems));
+
             foreach (var c in CEConfigItems)
                 c.RefreshView();
-
-            OnPropertyChanged(nameof(CEItem1));
-            OnPropertyChanged(nameof(CEItem2));
-            OnPropertyChanged(nameof(CEItem3));
-            OnPropertyChanged(nameof(CEItem4));
-            OnPropertyChanged(nameof(CEItem5));
-            OnPropertyChanged(nameof(CEItem6));
-            OnPropertyChanged(nameof(CEItem7));
-            OnPropertyChanged(nameof(CEItem8));
-            OnPropertyChanged(nameof(CEItem9));
-            OnPropertyChanged(nameof(CEItem10));
-            OnPropertyChanged(nameof(CEItem11));
-            OnPropertyChanged(nameof(CEItem12));
-            OnPropertyChanged(nameof(CEItem13));
-            OnPropertyChanged(nameof(CEItem14));
-            OnPropertyChanged(nameof(CEItem15));
-            OnPropertyChanged(nameof(CEItem16));
         }
         #endregion
 

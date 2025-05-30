@@ -638,15 +638,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelled by user.
-        /// </summary>
-        public static string Comms_Cancelled {
-            get {
-                return ResourceManager.GetString("Comms_Cancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Device details.
         /// </summary>
         public static string Comms_Device_Details {
@@ -661,24 +652,6 @@ namespace Xfp.Cultures {
         public static string Comms_Device_Names {
             get {
                 return ResourceManager.GetString("Comms_Device_Names", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The download was not completed..
-        /// </summary>
-        public static string Comms_Download_Incomplete {
-            get {
-                return ResourceManager.GetString("Comms_Download_Incomplete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Complete..
-        /// </summary>
-        public static string Comms_Download_Is_Complete {
-            get {
-                return ResourceManager.GetString("Comms_Download_Is_Complete", resourceCulture);
             }
         }
         
@@ -760,24 +733,6 @@ namespace Xfp.Cultures {
         public static string Comms_Site_Information {
             get {
                 return ResourceManager.GetString("Comms_Site_Information", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The upload was not completed..
-        /// </summary>
-        public static string Comms_Upload_Incomplete {
-            get {
-                return ResourceManager.GetString("Comms_Upload_Incomplete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Complete..
-        /// </summary>
-        public static string Comms_Upload_Is_Complete {
-            get {
-                return ResourceManager.GetString("Comms_Upload_Is_Complete", resourceCulture);
             }
         }
         

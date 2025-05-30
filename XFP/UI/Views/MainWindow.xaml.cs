@@ -1,26 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using Xfp.DataTypes;
-using Xfp.ViewModels;
-using Xfp.ViewModels.PanelTools;
-using CTecControls.UI;
 using CTecUtil;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Services.Store;
-using Windows.UI.Popups;
-using System.Linq;
-using System.Security.Policy;
-using CTecControls.Util;
 using CTecUtil.UI.Util;
-using CTecUtil.Config;
+using CTecControls.UI;
+using Xfp.ViewModels;
 using Xfp.Config;
-//using Windows.UI.Core;
 
 namespace Xfp.Views
 {
@@ -38,7 +26,7 @@ namespace Xfp.Views
             InitializeComponent();
 
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
-            
+
             _context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
             _context.RecentFilesChanged = recentFilesChanged;
 

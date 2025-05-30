@@ -217,8 +217,9 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
             {
                 IsExpanded = true;
                 foreach (var c in Children)
-                    if (c.ErrorLevel == ErrorLevels.Error)
-                        c.IsExpanded = true;
+                    if (c is not null)
+                        if (c.ErrorLevel == ErrorLevels.Error)
+                            c.IsExpanded = true;
             }
 
             OnPropertyChanged(nameof(TotalErrors));

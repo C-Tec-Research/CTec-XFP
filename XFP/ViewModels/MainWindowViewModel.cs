@@ -1959,9 +1959,9 @@ namespace Xfp.ViewModels
         {
             try
             {
-                var pageHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-                var desc = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, pageHeader);
-                AppNotification.Show(desc, downloadResultToString(result));
+                var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
+                var desc = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, notificationHeader);
+                AppNotification.Show(desc, CTecUtil.Enums.CommsResultDownloadToString(result));
 
                 commsEnded();
 
@@ -2016,31 +2016,12 @@ namespace Xfp.ViewModels
 
         private void uploadEnded(CommsResult result, bool allPages)
         {
-            var pageHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-            var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, pageHeader);
-            AppNotification.Show(desc, uploadResultToString(result));
+            var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
+            var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
+            AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
 
             commsEnded();
         }
-
-
-        private static string downloadResultToString(CommsResult? result)
-            => result switch
-            {
-                CommsResult.Ok => Cultures.Resources.Comms_Download_Is_Complete,
-                CommsResult.Failed => Cultures.Resources.Comms_Download_Incomplete,
-                CommsResult.Cancelled => Cultures.Resources.Comms_Cancelled,
-                _ => "",
-            };
-
-        private static string uploadResultToString(CommsResult? result)
-            => result switch
-            {
-                CommsResult.Ok => Cultures.Resources.Comms_Upload_Is_Complete,
-                CommsResult.Failed => Cultures.Resources.Comms_Upload_Incomplete,
-                CommsResult.Cancelled => Cultures.Resources.Comms_Cancelled,
-                _ => "",
-            };
 
 
         private void commsEnded()
