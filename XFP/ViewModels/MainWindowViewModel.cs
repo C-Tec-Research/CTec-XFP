@@ -2066,7 +2066,7 @@ namespace Xfp.ViewModels
                 _validationWindow = new(_data, PanelNumber, loopNum, spotlightPage);
 
                 s_cts.CancelAfter(2500);
-                await Task.Run(new Action(() => { Application.Current.Dispatcher.Invoke(new Action(() => { try { _validationWindow.Show(); } catch { } }), DispatcherPriority.Normal); }));
+                await Task.Run(new Action(() => { Application.Current.Dispatcher.Invoke(new Action(() => { try { _validationWindow?.Show(); } catch { } }), DispatcherPriority.Normal); }));
             }
             catch (OperationCanceledException)
             {
