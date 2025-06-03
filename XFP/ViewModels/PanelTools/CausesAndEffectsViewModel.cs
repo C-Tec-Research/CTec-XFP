@@ -123,12 +123,12 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> _loop1Devices { get; set; }
         private List<string> _loop2Devices { get; set; }
         private List<string> _zones { get; set; }
-        private List<string> _zones2 { get; set; }
+        private List<string> _zoneNumbers { get; set; }
         private List<string> _zonesPanels { get; set; }
         private List<string> _groups { get; set; }
         private List<string> _sets { get; set; }
         private List<string> _events { get; set; }
-        private List<string> _events2 { get; set; }
+        private List<string> _eventNumbers { get; set; }
         private List<string> _relays { get; set; }
         private List<string> _setsRelays { get; set; }
         private List<string> _times { get; set; }
@@ -140,12 +140,12 @@ namespace Xfp.ViewModels.PanelTools
         internal List<string> GetLoop1Devices() => _loop1Devices;
         private List<string> getLoop2Devices() => _loop2Devices;
         private List<string> getZones() => _zones;
-        private List<string> getZoneNumbers() => _zones2;
+        private List<string> getZoneNumbers() => _zoneNumbers;
         private List<string> getZonesPanels() => _zonesPanels;
         private List<string> getGroups() => _groups;
         private List<string> getSets() => _sets;
         private List<string> getEvents() => _events;
-        private List<string> getEventNumbers() => _events2;
+        private List<string> getEventNumbers() => _eventNumbers;
         private List<string> getRelays() => _relays;
         private List<string> getSetsRelays() => _setsRelays;
         private List<string> getTimes() => _times;
@@ -170,20 +170,20 @@ namespace Xfp.ViewModels.PanelTools
                 if (_times is null)        _times = _data?.GetCETimerTList();
             }
 
-            if (_zones2 is null)
+            if (_zoneNumbers is null)
             {
-                _zones2 = new();
+                _zoneNumbers = new();
                 for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                    _zones2.Add((i + 1).ToString());
+                    _zoneNumbers.Add((i + 1).ToString());
             }
 
-            if (_events2 is null)
+            if (_eventNumbers is null)
             {
-                _events2 = new();
+                _eventNumbers = new();
                 for (int i = 0; i < CEConfigData.NumEvents; i++)
                 {
                     //_events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
-                    _events2.Add((i + 1).ToString());
+                    _eventNumbers.Add((i + 1).ToString());
                 }
             }
 

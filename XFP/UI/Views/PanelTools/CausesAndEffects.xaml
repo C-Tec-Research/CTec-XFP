@@ -707,7 +707,7 @@
                         <!--#endregion-->
 
 
-                        <!--#region trigger params2 ("AND" trigger)-->
+                        <!--#region trigger params ("AND" trigger)-->
                         <Border Grid.Row="1" Grid.Column="6" Visibility="{Binding CEConfigItems[0].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[0].IndicateInvalidTriggerParam2, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
