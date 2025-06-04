@@ -178,7 +178,11 @@ namespace Xfp.DataTypes
 
             foreach (var p in Panels)
                 if (!p.Value.Validate())
-                    _errorsAndWarnings.Add(p.Value.GetPageErrorDetails());
+                {
+                    var e = p.Value.GetErrorItems();
+                    //foreach (var e in p.Value.GetPageErrorDetails().Items)
+                    //    _errorsAndWarnings.Add();
+                }
 
             if (!SiteConfig.Validate())
                 _errorsAndWarnings.Add(SiteConfig.GetPageErrorDetails());
@@ -220,26 +224,23 @@ namespace Xfp.DataTypes
         internal List<string> GetCETriggersList()
         {
             var triggers = new List<string>();
-            triggers = new();
             foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
-                if ((CETriggerTypes)t != CETriggerTypes.None)
+                if ((CETriggerTypes)t != CETriggerTypes.None && (CETriggerTypes)t != CETriggerTypes.NotSet)
                     triggers.Add(Enums.CETriggerTypesToString((CETriggerTypes)t));
             return triggers;
         }
 
         internal List<string> GetGroupsList()
         {
-            var triggers = new List<string>();
-            triggers = new();
+            var groups = new List<string>();
             for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
-                triggers.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
-            return triggers;
+                groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
+            return groups;
         }
 
         internal List<string> GetInputsList()
         {
             var inputs = new List<string>();
-            inputs = new();
             for (int i = 0; i < 2; i++)
                 inputs.Add(string.Format(Cultures.Resources.Input_x, i + 1));
             return inputs;
@@ -313,28 +314,28 @@ namespace Xfp.DataTypes
 
         internal List<string> GetRelaysList()
         {
-            var _relays = new List<string>();
+            var relays = new List<string>();
             for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                _relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-            return _relays;
+                relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            return relays;
         }
 
         internal List<string> GetSetsRelaysList()
         {
-            var _setsRelays = new List<string>();
+            var setsRelays = new List<string>();
             for (int i = 0; i < XfpPanelData.NumSets; i++)
-                _setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+                setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
             for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                _setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-            return _setsRelays;
+                setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            return setsRelays;
         }
 
         internal List<string> GetCETimerTList()
         {
-            var _times = new List<string>();
+            var times = new List<string>();
             for (int i = 0; i < CEConfigData.NumEvents; i++)
-                _times.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
-            return _times;
+                times.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
+            return times;
         }
     }
 }

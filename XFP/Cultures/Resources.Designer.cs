@@ -2158,6 +2158,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The file does not contain valid XFP data or is for an unsupported protocol..
+        /// </summary>
+        public static string Error_Invalid_Xfp_Data {
+            get {
+                return ResourceManager.GetString("Error_Invalid_Xfp_Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid zone/group/area code.
         /// </summary>
         public static string Error_Invalid_Zone_Group_Area_Code {

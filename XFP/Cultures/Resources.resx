@@ -2098,4 +2098,7 @@ All of its data will be lost.</value>
   <data name="Upload_x" xml:space="preserve">
     <value>Upload: {0}</value>
   </data>
+  <data name="Error_Invalid_Xfp_Data" xml:space="preserve">
+    <value>The file does not contain valid XFP data or is for an unsupported protocol.</value>
+  </data>
 </root>

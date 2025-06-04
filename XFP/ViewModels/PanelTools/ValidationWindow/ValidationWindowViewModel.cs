@@ -42,7 +42,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
 
             _siteConfig = new() { new(Cultures.Resources.Nav_Site_Configuration) };
 
-            _refreshTimer = new() { Interval = 10, AutoReset = true };
+            _refreshTimer = new() { Interval = 100, AutoReset = true };
             _refreshTimer.Elapsed += new ElapsedEventHandler(RefreshView);
             _refreshTimer.Start();
         }
@@ -82,7 +82,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         public void RefreshView(object source, ElapsedEventArgs eventArgs)
         {
             _refreshTimer.Stop();
-            _refreshTimer.Interval = 2000;
+            _refreshTimer.Interval = 30000;
 
             try
             {

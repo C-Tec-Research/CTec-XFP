@@ -151,35 +151,49 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getTimes() => _times;
         private List<string> getTrueOrFalse() => _trueOrFalse;
 
+        private List<string> getActionsList()      => _data?.GetCEActionsList();
+        private List<string> getTriggersList()     { List<string> tt = new() { "" }; tt.AddRange(_data?.GetCETriggersList()); return tt; }
+        private List<string> getGroupsList()       { List<string> gg = new() { "" }; gg.AddRange(_data?.GetGroupsList());     return gg; }
+        private List<string> getInputsList()       { List<string> ii = new() { "" }; ii.AddRange(_data?.GetInputsList());     return ii; }
+        private List<string> getLoop1DevicesList() { List<string> dd = new() { "" }; dd.AddRange(_data?.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        private List<string> getLoop2DevicesList() { List<string> dd = new() { "" }; dd.AddRange(_data?.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        private List<string> getZonesList()        { List<string> zz = new() { "" }; zz.AddRange(_data?.GetZonesList());      return zz; }
+        private List<string> getZonePanelsList()   { List<string> zp = new() { "" }; zp.AddRange(_data?.GetZonePanelsList()); return zp; }
+        private List<string> getSetsList()         { List<string> ss = new() { "" }; ss.AddRange(_data?.GetSetsList());       return ss; }
+        private List<string> getEventsList()       { List<string> ee = new() { "" }; ee.AddRange(_data?.GetEventsList());     return ee; }
+        private List<string> getRelaysList()       { List<string> rr = new() { "" }; rr.AddRange(_data?.GetRelaysList());     return rr; }
+        private List<string> getSetsRelaysList()   { List<string> sr = new() { "" }; sr.AddRange(_data?.GetSetsRelaysList()); return sr; }
+        private List<string> getTimersList()       { List<string> tt = new() { "" }; tt.AddRange(_data?.GetCETimerTList());   return tt; }
+
         internal void InitComboLists()
         {
             if (_data is not null)
             {
-                if (_actions is null)      _actions = _data?.GetCEActionsList();
-                if (_triggers is null)     _triggers = _data?.GetCETriggersList();
-                if (_groups is null)       _groups = _data?.GetGroupsList();
-                if (_inputs is null)       _inputs = _data?.GetInputsList();
-                if (_loop1Devices is null) _loop1Devices = _data?.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber);
-                if (_loop2Devices is null) _loop2Devices = _data?.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber);
-                if (_zones is null)        _zones = _data?.GetZonesList();
-                if (_zonesPanels is null)  _zonesPanels = _data?.GetZonePanelsList();
-                if (_sets is null)         _sets = _data?.GetSetsList();
-                if (_events is null)       _events = _data?.GetEventsList();
-                if (_relays is null)       _relays = _data?.GetRelaysList();
-                if (_setsRelays is null)   _setsRelays = _data?.GetSetsRelaysList();
-                if (_times is null)        _times = _data?.GetCETimerTList();
+                if (_actions is null)      _actions = getActionsList();
+                if (_triggers is null)     _triggers = getTriggersList();
+                if (_groups is null)       _groups = getGroupsList();
+                if (_inputs is null)       _inputs = getInputsList();
+                if (_loop1Devices is null) _loop1Devices = getLoop1DevicesList();
+                if (_loop2Devices is null) _loop2Devices = getLoop2DevicesList();
+                if (_zones is null)        _zones = getZonesList();
+                if (_zonesPanels is null)  _zonesPanels = getZonePanelsList();
+                if (_sets is null)         _sets = getSetsList();
+                if (_events is null)       _events = getEventsList();
+                if (_relays is null)       _relays = getRelaysList();
+                if (_setsRelays is null)   _setsRelays = getSetsRelaysList();
+                if (_times is null)        _times = getTimersList();
             }
 
             if (_zoneNumbers is null)
             {
-                _zoneNumbers = new();
+                _zoneNumbers = new() { "" };
                 for (int i = 0; i < ZoneConfigData.NumZones; i++)
                     _zoneNumbers.Add((i + 1).ToString());
             }
 
             if (_eventNumbers is null)
             {
-                _eventNumbers = new();
+                _eventNumbers = new() { "" };
                 for (int i = 0; i < CEConfigData.NumEvents; i++)
                 {
                     //_events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
