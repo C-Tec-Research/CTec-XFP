@@ -163,9 +163,6 @@
     <Resource Include="UI\Images\upload-single.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UI\Images\logo-xfp.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="UI\Views\menu-file-open.png" />
     <Resource Include="UI\Views\menu-file-save.png" />
   </ItemGroup>

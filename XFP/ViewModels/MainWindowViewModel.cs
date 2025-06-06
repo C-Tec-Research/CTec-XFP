@@ -2130,6 +2130,8 @@ namespace Xfp.ViewModels
             XfpApplicationConfig.Settings.Culture = culture.Name;
             CultureResources.ChangeCulture(culture);
 
+            //_data?.ResetLists();
+
             foreach (var p in _pages)
                 (p?.DataContext as IAppViewModel)?.SetCulture(culture);
 

@@ -9,7 +9,7 @@
   <Identity
     Name="C-tecComputionicsLtd.C-TECXFPConfigurationTool"
     Publisher="CN=E2F2D306-9D7D-4B70-B87E-57444DDDB0CD"
-    Version="8.1.0.0" />
+    Version="8.1.2.0" />
 
   <Properties>
     <DisplayName>C-TEC XFP Configuration Tool</DisplayName>
@@ -38,6 +38,19 @@
         <uap:SplashScreen Image="Images\SplashScreen.png" BackgroundColor="transparent"/>
         <!--<uap:LockScreen BadgeLogo="Images\BadgeLogo.png" Notification="badge"/>-->
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="xfpconfigurationfiles">
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="text/json">.xfp</uap:FileType>
+              <uap:FileType ContentType="text/json">.xfp2</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>XFP configuration file</uap:DisplayName>
+            <uap:InfoTip>Configuration file for C-Tec XFP Tools</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 

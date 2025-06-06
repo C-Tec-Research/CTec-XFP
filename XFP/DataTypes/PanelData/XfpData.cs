@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Views.PanelTools;
 using System.Windows.Input;
+using Windows.Devices.SmartCards;
 
 namespace Xfp.DataTypes
 {
@@ -212,130 +213,211 @@ namespace Xfp.DataTypes
             return SiteConfig.HasWarnings();
         }
 
+        
+
+        private List<string> _ceActions;
+        private List<string> _ceTriggers;
+        private List<string> _groups;
+        private List<string> _inputs;
+        private List<string> _loop1Devices;
+        private List<string> _loop2Devices;
+        private List<string> _zones;
+        private List<string> _zoneNames;
+        private List<string> _zonesPanels;
+        private List<string> _zonePanelNames;
+        private List<string> _sets;
+        private List<string> _events;
+        private List<string> _relays;
+        private List<string> _setsRelays;
+        private List<string> _ceTimerTs;
+
+        public void ResetLists()
+        {
+            _ceActions = null;
+            _ceTriggers = null;
+            _groups = null;
+            _inputs = null;
+            _loop1Devices = null;
+            _loop2Devices = null;
+            _zones = null;
+            _zoneNames = null;
+            _zonesPanels = null;
+            _zonePanelNames = null;
+            _sets = null;
+            _events = null;
+            _relays = null;
+            _setsRelays = null;
+            _ceTimerTs = null;
+        }
 
         internal List<string> GetCEActionsList()
         {
-            var actions = new List<string>();
-            foreach (var a in Enum.GetValues(typeof(CEActionTypes)))
-                actions.Add(Enums.CEActionTypesToString((CEActionTypes)a));
-            return actions;
+            if (_ceActions is null)
+            {
+                _ceActions = new();
+                foreach (var a in Enum.GetValues(typeof(CEActionTypes)))
+                    _ceActions.Add(Enums.CEActionTypesToString((CEActionTypes)a));
+            }
+            return _ceActions;
         }
 
         internal List<string> GetCETriggersList()
         {
-            var triggers = new List<string>();
-            foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
-                if ((CETriggerTypes)t != CETriggerTypes.None && (CETriggerTypes)t != CETriggerTypes.NotSet)
-                    triggers.Add(Enums.CETriggerTypesToString((CETriggerTypes)t));
-            return triggers;
+            if (_ceTriggers is null)
+            {
+                _ceTriggers = new();
+                foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
+                    if ((CETriggerTypes)t != CETriggerTypes.None && (CETriggerTypes)t != CETriggerTypes.NotSet)
+                        _ceTriggers.Add(Enums.CETriggerTypesToString((CETriggerTypes)t));
+            }
+            return _ceTriggers;
         }
 
         internal List<string> GetGroupsList()
         {
-            var groups = new List<string>();
-            for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
-                groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
-            return groups;
+            if (_groups is null)
+            {
+                _groups = new();
+                for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
+                    _groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
+            }
+            return _groups;
         }
 
         internal List<string> GetInputsList()
         {
-            var inputs = new List<string>();
-            for (int i = 0; i < 2; i++)
-                inputs.Add(string.Format(Cultures.Resources.Input_x, i + 1));
-            return inputs;
+            if (_inputs is null)
+            {
+                _inputs = new();
+                for (int i = 0; i < 2; i++)
+                    _inputs.Add(string.Format(Cultures.Resources.Input_x, i + 1));
+            }
+            return _inputs;
         }
 
         internal List<string> GetLoop1DeviceList(int panel)
         {
-            var loop1Devices = new List<string>();
-            for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop1Config.Devices.Count; d++)
-                loop1Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop1Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
-            return loop1Devices;
+            if (_loop1Devices is null)
+            {
+                _loop1Devices = new();
+                for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop1Config.Devices.Count; d++)
+                    _loop1Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop1Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
+            }
+            return _loop1Devices;
         }
 
         internal List<string> GetLoop2DeviceList(int panel)
         {
-            var loop2Devices = new List<string>();
-            for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop2Config.Devices.Count; d++)
-                loop2Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop2Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
-            return loop2Devices;
+            if (_loop2Devices is null)
+            {
+                _loop2Devices = new();
+                for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop2Config.Devices.Count; d++)
+                    _loop2Devices.Add(string.Format(Cultures.Resources.Device_x_Type_y, d + 1, (DeviceTypes.DeviceTypeName(Panels[panel].Loop2Config.Devices[d].DeviceType, DeviceTypes.CurrentProtocolType) ?? Cultures.Resources.No_Device)));
+            }
+            return _loop2Devices;
         }
   
         internal List<string> GetZonesList()
         {
-            var names = new List<string>();
-            for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                names.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
-            return names;
+            if (_zones is null)
+            {
+                _zones = new();
+                for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                    _zones.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+            }
+            return _zones;
         }
   
         internal List<string> GetZoneNamesList(int panel)
         {
-            var names = new List<string>();
-            for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                names.Add(Panels[panel].ZoneConfig.Zones[i].Name);
-            return names;
+            if (_zoneNames is null)
+            {
+                _zoneNames = new();
+                for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                    _zoneNames.Add(Panels[panel].ZoneConfig.Zones[i].Name);
+            }
+            return _zoneNames;
         }
   
         internal List<string> GetZonePanelsList()
         {
-            var names = new List<string>();
-            for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                names.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
-            for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
-                names.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
-            return names;
+            if (_zonesPanels is null)
+            {
+                _zonesPanels = new();
+                for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                    _zonesPanels.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+                for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
+                    _zonesPanels.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
+            }
+            return _zonesPanels;
         }
   
         internal List<string> GetZonePanelNamesList(int panel)
         {
-            var names = new List<string>();
-            for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
-                names.Add(Panels[panel].ZonePanelConfig.Panels[i].Name);
-            return names;
+            if (_zonesPanels is null)
+            {
+                _zonePanelNames = new();
+                for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
+                    _zonePanelNames.Add(Panels[panel].ZonePanelConfig.Panels[i].Name);
+            }
+            return _zonePanelNames;
         }
 
         internal List<string> GetSetsList()
         {
-            var sets = new List<string>();
-            for (int i = 0; i < XfpPanelData.NumSets; i++)
-                sets.Add(string.Format(Cultures.Resources.Set_x, i + 1));
-            return sets;
+            if (_sets is null)
+            {
+                _sets = new();
+                for (int i = 0; i < XfpPanelData.NumSets; i++)
+                    _sets.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+            }
+            return _sets;
         }
 
         internal List<string> GetEventsList()
         {
-            var events = new List<string>();
-            for (int i = 0; i < CEConfigData.NumEvents; i++)
-                events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
-            return events;
+            if (_events is null)
+            {
+                _events = new();
+                for (int i = 0; i < CEConfigData.NumEvents; i++)
+                    _events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
+            }
+            return _events;
         }
 
         internal List<string> GetRelaysList()
         {
-            var relays = new List<string>();
-            for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-            return relays;
+            if (_relays is null)
+            {
+                _relays = new();
+                for (int i = 0; i < XfpPanelData.NumRelays; i++)
+                    _relays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            }
+            return _relays;
         }
 
         internal List<string> GetSetsRelaysList()
         {
-            var setsRelays = new List<string>();
-            for (int i = 0; i < XfpPanelData.NumSets; i++)
-                setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
-            for (int i = 0; i < XfpPanelData.NumRelays; i++)
-                setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
-            return setsRelays;
+            if (_setsRelays is null)
+            {
+                _setsRelays = new List<string>();
+                for (int i = 0; i < XfpPanelData.NumSets; i++)
+                    _setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+                for (int i = 0; i < XfpPanelData.NumRelays; i++)
+                    _setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
+            }
+            return _setsRelays;
         }
 
         internal List<string> GetCETimerTList()
         {
-            var times = new List<string>();
-            for (int i = 0; i < CEConfigData.NumEvents; i++)
-                times.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
-            return times;
+            if (_ceTimerTs is null)
+            {
+                _ceTimerTs = new();
+                for (int i = 0; i < CEConfigData.NumEvents; i++)
+                    _ceTimerTs.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
+            }
+            return _ceTimerTs;
         }
     }
 }

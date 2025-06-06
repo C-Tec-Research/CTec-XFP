@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using static CTecUtil.Pipes.PipeServer;
 using CTecControls.UI;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.ApplicationModel.Activation;
 
 namespace Xfp
 {
@@ -33,7 +34,7 @@ namespace Xfp
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            #region handle activation from click on an app notification
+            #region prevent starting up from a click on an app notification
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
                 if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
