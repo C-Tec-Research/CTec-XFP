@@ -52,6 +52,7 @@ namespace Xfp.ViewModels.PanelTools
 
         private void initData()
         {
+            #region stuff
             /*_actionParamLoop1Device = _actionParamLoop2Device =*/ /*_actionParamGroup =*/ /*_actionParamZone =*/ /*_actionParamSet =*/ /*_actionParamRelay =*/ /*_actionParamSetRelay =*/ /*_actionParamEvent = -1;*/
             /*_triggerParamLoop1Device = _triggerParamLoop2Device =*/ /*_triggerParamInput =*/ /*_triggerParamZonePanel =*/ /*_triggerParamEvent =*/ /*_triggerParamTimer =*/ /*_triggerParamEvent =*/ /*_triggerParamEvent2 =*/ /*_triggerParamZone = _triggerParamZone2 =*/ /*-1;*/
             /*_resetParamLoop1Device =*/ /*_resetParamLoop2Device =*/ /*_resetParamInput =*/ /*_resetParamZonePanel =*/ /*_resetParamEvent =*/ /*_resetParamTimer =*/ /*_resetParamEvent =*/ /*_resetParamEvent2 = *//*_resetParamZone =*/ /*_resetParamZone2 =*/ /*-1;*/
@@ -126,6 +127,7 @@ namespace Xfp.ViewModels.PanelTools
 
             //    //case CETriggerTypes.ZoneAnd: _resetParamZone = _data.ResetParam; _resetParamZone2 = _data.ResetParam2; break;
             //}
+            #endregion
 
             _triggerType = _data.TriggerType != CETriggerTypes.None ? (int)_data.TriggerType : -1;
             _resetType   = _data.ResetType   != CETriggerTypes.None ? (int)_data.ResetType   : -1;
@@ -151,6 +153,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool ResetCondition         { get => _data.ResetCondition;                    set { _data.ResetCondition = value; OnPropertyChanged(); updateSelections(); } }
 
 
+        #region stuff
         //private int _actionParamLoop1Device = -1;
         //private int _actionParamLoop2Device = -1;
         //private int _actionParamRelay = -1;
@@ -179,6 +182,7 @@ namespace Xfp.ViewModels.PanelTools
         //private int _resetParamEvent2 = -1;
         //private int _resetParamZone = -1;
         //private int _resetParamZone2 = -1;
+        #endregion
 
         public string SelectedActionType
         {
@@ -717,39 +721,72 @@ namespace Xfp.ViewModels.PanelTools
         /// </summary>
         public delegate List<string> MenuList();
 
-        public MenuList ActionsMenu;
-        public MenuList TriggersMenu;
-        public MenuList InputsMenu;
-        public MenuList Loop1DevicesMenu;
-        public MenuList Loop2DevicesMenu;
-        public MenuList ZonesMenu;
-        public MenuList ZoneNumbersMenu;
-        public MenuList ZonesPanelsMenu;
-        public MenuList GroupsMenu;
-        public MenuList SetsMenu;
-        public MenuList EventsMenu;
-        public MenuList EventNumbersMenu;
-        public MenuList RelaysMenu;
-        public MenuList SetsRelaysMenu;
-        public MenuList TimesMenu;
-        public MenuList TrueOrFalseMenu;
+        //public MenuList ActionsMenu;
+        //public MenuList TriggersMenu;
+        //public MenuList InputsMenu;
+        //public MenuList Loop1DevicesMenu;
+        //public MenuList Loop2DevicesMenu;
+        //public MenuList ZonesMenu;
+        //public MenuList ZoneNumbersMenu;
+        //public MenuList ZonesPanelsMenu;
+        //public MenuList GroupsMenu;
+        //public MenuList SetsMenu;
+        //public MenuList EventsMenu;
+        //public MenuList EventNumbersMenu;
+        //public MenuList RelaysMenu;
+        //public MenuList SetsRelaysMenu;
+        //public MenuList TimesMenu;
+        //public MenuList TrueOrFalseMenu;
 
-        public List<string> Actions      { get => ActionsMenu?.Invoke(); }
-        public List<string> Triggers     { get => TriggersMenu?.Invoke(); }
-        public List<string> Inputs       { get => InputsMenu?.Invoke(); }
-        public List<string> Loop1Devices { get => Loop1DevicesMenu?.Invoke(); }
-        public List<string> Loop2Devices { get => Loop2DevicesMenu?.Invoke(); }
-        public List<string> Zones        { get => ZonesMenu?.Invoke(); }
-        public List<string> ZoneNumbers  { get => ZoneNumbersMenu?.Invoke(); }
-        public List<string> ZonesPanels  { get => ZonesPanelsMenu?.Invoke(); }
-        public List<string> Groups       { get => GroupsMenu?.Invoke(); }
-        public List<string> Sets         { get => SetsMenu?.Invoke(); }
-        public List<string> Events       { get => EventsMenu?.Invoke(); }
-        public List<string> EventNumbers { get => EventNumbersMenu?.Invoke(); }
-        public List<string> Relays       { get => RelaysMenu?.Invoke(); }
-        public List<string> SetsRelays   { get => SetsRelaysMenu?.Invoke(); }
-        public List<string> Times        { get => TimesMenu?.Invoke(); }
-        public List<string> TrueOrFalse  { get => TrueOrFalseMenu?.Invoke(); }
+        private List<string> _actions;
+        private List<string> _triggers;
+        private List<string> _inputs;
+        private List<string> _loop1Devices;
+        private List<string> _loop2Devices;
+        private List<string> _zones;
+        private List<string> _zoneNumbers;
+        private List<string> _zonesPanels;
+        private List<string> _groups;
+        private List<string> _sets;
+        private List<string> _events;
+        private List<string> _eventNumbers;
+        private List<string> _relays;
+        private List<string> _setsRelays;
+        private List<string> _times;
+        private List<string> _trueOrFalse;
+
+        //public List<string> Actions      { get => ActionsMenu?.Invoke(); }
+        //public List<string> Triggers     { get => TriggersMenu?.Invoke(); }
+        //public List<string> Inputs       { get => InputsMenu?.Invoke(); }
+        //public List<string> Loop1Devices { get => Loop1DevicesMenu?.Invoke(); }
+        //public List<string> Loop2Devices { get => Loop2DevicesMenu?.Invoke(); }
+        //public List<string> Zones        { get => ZonesMenu?.Invoke(); }
+        //public List<string> ZoneNumbers  { get => ZoneNumbersMenu?.Invoke(); }
+        //public List<string> ZonesPanels  { get => ZonesPanelsMenu?.Invoke(); }
+        //public List<string> Groups       { get => GroupsMenu?.Invoke(); }
+        //public List<string> Sets         { get => SetsMenu?.Invoke(); }
+        //public List<string> Events       { get => EventsMenu?.Invoke(); }
+        //public List<string> EventNumbers { get => EventNumbersMenu?.Invoke(); }
+        //public List<string> Relays       { get => RelaysMenu?.Invoke(); }
+        //public List<string> SetsRelays   { get => SetsRelaysMenu?.Invoke(); }
+        //public List<string> Times        { get => TimesMenu?.Invoke(); }
+        //public List<string> TrueOrFalse  { get => TrueOrFalseMenu?.Invoke(); }
+        public List<string> Actions      { get => _actions;      set { _actions = value; OnPropertyChanged(); } }
+        public List<string> Triggers     { get => _triggers;     set { _triggers = value; OnPropertyChanged(); } }
+        public List<string> Inputs       { get => _inputs;       set { _inputs = value; OnPropertyChanged(); } }
+        public List<string> Loop1Devices { get => _loop1Devices; set { _loop1Devices = value; OnPropertyChanged(); } }
+        public List<string> Loop2Devices { get => _loop2Devices; set { _loop2Devices = value; OnPropertyChanged(); } }
+        public List<string> Zones        { get => _zones;        set { _zones = value; OnPropertyChanged(); } }
+        public List<string> ZoneNumbers  { get => _zoneNumbers;  set { _zoneNumbers = value; OnPropertyChanged(); } }
+        public List<string> ZonesPanels  { get => _zonesPanels;  set { _zonesPanels = value; OnPropertyChanged(); } }
+        public List<string> Groups       { get => _groups;       set { _groups = value; OnPropertyChanged(); } }
+        public List<string> Sets         { get => _sets;         set { _sets = value; OnPropertyChanged(); } }
+        public List<string> Events       { get => _events;       set { _events = value; OnPropertyChanged(); } }
+        public List<string> EventNumbers { get => _eventNumbers; set { _eventNumbers = value; OnPropertyChanged(); } }
+        public List<string> Relays       { get => _relays;       set { _relays = value; OnPropertyChanged(); } }
+        public List<string> SetsRelays   { get => _setsRelays;   set { _setsRelays = value; OnPropertyChanged(); } }
+        public List<string> Times        { get => _times;        set { _times = value; OnPropertyChanged(); } }
+        public List<string> TrueOrFalse  { get => _trueOrFalse;  set { _trueOrFalse = value; OnPropertyChanged(); } }
 
 
         private int getListIndex(List<string> list, string item)
@@ -762,7 +799,7 @@ namespace Xfp.ViewModels.PanelTools
 
         private string getListString(List<string> list, int? index)
         {
-            if (index is not null && index >= 0 && index < list.Count)
+            if (list is not null && index >= 0 && index < list.Count)
                 return list[(int)index];
             return "";
         }

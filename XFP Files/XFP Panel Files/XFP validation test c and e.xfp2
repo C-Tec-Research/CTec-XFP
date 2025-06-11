@@ -44,32 +44,6 @@
         "Events": [
           {
             "Index": 0,
-            "ActionType": 50,
-            "ActionParam": 3,
-            "TriggerType": 55,
-            "TriggerParam": 1,
-            "TriggerParam2": 0,
-            "TriggerCondition": true,
-            "ResetType": 65,
-            "ResetParam": 2,
-            "ResetParam2": 4,
-            "ResetCondition": false
-          },
-          {
-            "Index": 1,
-            "ActionType": 40,
-            "ActionParam": 13,
-            "TriggerType": 115,
-            "TriggerParam": 0,
-            "TriggerParam2": 0,
-            "TriggerCondition": true,
-            "ResetType": 125,
-            "ResetParam": 31,
-            "ResetParam2": 1,
-            "ResetCondition": false
-          },
-          {
-            "Index": 2,
             "ActionType": 100,
             "ActionParam": 1,
             "TriggerType": 5,
@@ -82,7 +56,7 @@
             "ResetCondition": false
           },
           {
-            "Index": 3,
+            "Index": 1,
             "ActionType": 40,
             "ActionParam": 10,
             "TriggerType": 10,
@@ -90,8 +64,34 @@
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 10,
-            "ResetParam": 1,
+            "ResetParam": 5,
             "ResetParam2": 0,
+            "ResetCondition": false
+          },
+          {
+            "Index": 2,
+            "ActionType": 50,
+            "ActionParam": 3,
+            "TriggerType": 55,
+            "TriggerParam": 1,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
+            "ResetType": 65,
+            "ResetParam": 2,
+            "ResetParam2": 4,
+            "ResetCondition": false
+          },
+          {
+            "Index": 3,
+            "ActionType": 40,
+            "ActionParam": 13,
+            "TriggerType": 115,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
+            "ResetType": 125,
+            "ResetParam": 31,
+            "ResetParam2": 1,
             "ResetCondition": false
           },
           {
@@ -150,9 +150,9 @@
             "Index": 8,
             "ActionType": 20,
             "ActionParam": 1,
-            "TriggerType": 65,
-            "TriggerParam": 3,
-            "TriggerParam2": 7,
+            "TriggerType": 20,
+            "TriggerParam": -1,
+            "TriggerParam2": -1,
             "TriggerCondition": true,
             "ResetType": 85,
             "ResetParam": 5,
