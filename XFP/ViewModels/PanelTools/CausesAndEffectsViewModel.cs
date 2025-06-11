@@ -41,26 +41,26 @@ namespace Xfp.ViewModels.PanelTools
             for (int i = 0; i < CEConfigData.NumEvents; i++)
             {
                 var c = new CausesAndEffectsItemViewModel(new(), i);
-                //c.ActionsMenu      = getActions;
-                //c.TriggersMenu     = getTriggers;
-                //c.InputsMenu       = getInputs;
-                //c.Loop1DevicesMenu = GetLoop1Devices;
-                //c.Loop2DevicesMenu = getLoop2Devices;
-                //c.ZonesMenu        = getZones;
+                c.ActionsMenu      = getActions;
+                c.TriggersMenu     = getTriggers;
+                c.InputsMenu       = getInputs;
+                c.Loop1DevicesMenu = GetLoop1Devices;
+                c.Loop2DevicesMenu = getLoop2Devices;
+                c.ZonesMenu        = getZones;
                 //c.ZoneNumbersMenu  = getZoneNumbers;
-                //c.ZonesPanelsMenu  = getZonesPanels;
-                //c.GroupsMenu       = getGroups;
-                //c.SetsMenu         = getSets;
-                //c.EventsMenu       = getEvents;
+                c.ZonesPanelsMenu  = getZonesPanels;
+                c.GroupsMenu       = getGroups;
+                c.SetsMenu         = getSets;
+                c.EventsMenu       = getEvents;
                 //c.EventNumbersMenu = getEventNumbers;
-                //c.RelaysMenu       = getRelays;
-                //c.SetsRelaysMenu   = getSetsRelays;
-                //c.TimesMenu        = getTimes;
-                //c.TrueOrFalseMenu  = getTrueOrFalse;
+                c.RelaysMenu       = getRelays;
+                c.SetsRelaysMenu   = getSetsRelays;
+                c.TimesMenu        = getTimes;
+                c.TrueOrFalseMenu  = getTrueOrFalse;
                 CEConfigItems.Add(c);
             }
 
-            InitFixedComboLists();
+            //InitFixedComboLists();
         }
 
 
@@ -139,15 +139,15 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getActions() => _actions;
         private List<string> getTriggers() => _triggers;
         private List<string> getInputs() => _inputs;
-        internal List<string> GetLoop1Devices() => _loop1Devices;
+        internal List<string> GetLoop1Devices() => getLoop1DevicesList();
         private List<string> getLoop2Devices() => _loop2Devices;
         private List<string> getZones() => _zones;
-        private List<string> getZoneNumbers() => _zoneNumbers;
+        //private List<string> getZoneNumbers() => _zoneNumbers;
         private List<string> getZonesPanels() => _zonesPanels;
         private List<string> getGroups() => _groups;
         private List<string> getSets() => _sets;
         private List<string> getEvents() => _events;
-        private List<string> getEventNumbers() => _eventNumbers;
+        //private List<string> getEventNumbers() => _eventNumbers;
         private List<string> getRelays() => _relays;
         private List<string> getSetsRelays() => _setsRelays;
         private List<string> getTimes() => _times;
@@ -184,6 +184,8 @@ namespace Xfp.ViewModels.PanelTools
                 //if (_relays is null)       _relays = getRelaysList();
                 //if (_setsRelays is null)   _setsRelays = getSetsRelaysList();
                 //if (_times is null)        _times = getTimersList();
+
+                //_data.ResetLists();
 
                 _actions      = getActionsList();
                 _triggers     = getTriggersList();
@@ -236,48 +238,48 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var ce in _ceConfigItems)
             {
-                ce.Actions = _actions;
-                ce.Triggers = _triggers;
-                ce.Groups = _groups;
-                ce.Inputs = _inputs;
-                ce.Loop1Devices = _loop1Devices;
-                ce.Loop2Devices = _loop2Devices;
-                ce.Zones = _zones;
-                ce.ZonesPanels = _zonesPanels;
-                ce.ZoneNumbers = _zoneNumbers;
-                ce.Sets = _sets;
-                ce.Events = _events;
-                ce.EventNumbers = _eventNumbers;
-                ce.Relays = _relays;
-                ce.SetsRelays = _setsRelays;
-                ce.TrueOrFalse = _trueOrFalse;
-                ce.Times = _times;
-            //    ce.RefreshView();
+                //ce.Actions = _actions;
+                //ce.Triggers = _triggers;
+                //ce.Groups = _groups;
+                //ce.Inputs = _inputs;
+                //ce.Loop1Devices = _loop1Devices;
+                //ce.Loop2Devices = _loop2Devices;
+                //ce.Zones = _zones;
+                //ce.ZonesPanels = _zonesPanels;
+                //ce.ZoneNumbers = _zoneNumbers;
+                //ce.Sets = _sets;
+                //ce.Events = _events;
+                //ce.EventNumbers = _eventNumbers;
+                //ce.Relays = _relays;
+                //ce.SetsRelays = _setsRelays;
+                //ce.TrueOrFalse = _trueOrFalse;
+                //ce.Times = _times;
+                ce.RefreshView();
             }
         }
 
-        internal void InitFixedComboLists()
-        {
-            if (_zoneNumbers is null)
-            {
-                _zoneNumbers = new() { "" };
-                for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                    _zoneNumbers.Add((i + 1).ToString());
-            }
+        //internal void InitFixedComboLists()
+        //{
+        //    //if (_zoneNumbers is null)
+        //    //{
+        //    //    _zoneNumbers = new() { "" };
+        //    //    for (int i = 0; i < ZoneConfigData.NumZones; i++)
+        //    //        _zoneNumbers.Add((i + 1).ToString());
+        //    //}
 
-            if (_eventNumbers is null)
-            {
-                _eventNumbers = new() { "" };
-                for (int i = 0; i < CEConfigData.NumEvents; i++)
-                    _eventNumbers.Add((i + 1).ToString());
-            }
+        //    //if (_eventNumbers is null)
+        //    //{
+        //    //    _eventNumbers = new() { "" };
+        //    //    for (int i = 0; i < CEConfigData.NumEvents; i++)
+        //    //        _eventNumbers.Add((i + 1).ToString());
+        //    //}
 
-            foreach (var ce in _ceConfigItems)
-            {
-                ce.ZoneNumbers = _zoneNumbers;
-                ce.EventNumbers = _eventNumbers;
-            }
-        }
+        //    //foreach (var ce in _ceConfigItems)
+        //    //{
+        //    //    ce.ZoneNumbers = _zoneNumbers;
+        //    //    ce.EventNumbers = _eventNumbers;
+        //    //}
+        //}
 
         //private void initTimersList()
         //{
@@ -323,12 +325,12 @@ namespace Xfp.ViewModels.PanelTools
 
         private void populateView()
         { 
-            //InitComboLists();
+            InitComboLists();
 
 //            _ceConfigItems.Clear();
-            if (_data.CurrentPanel.ZoneConfig.Zones != null)
+            if (_data.CurrentPanel.CEConfig.Events is not null)
             {
-                for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count; i++)
+                for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count && i < CEConfigItems.Count; i++)
                 {
                     //var c = new CausesAndEffectsItemViewModel(data.CurrentPanel.CEConfig.Events[i], i, data.CurrentPanel.LoopConfig);
                     //c.SetCulture(CultureInfo.CurrentCulture);
@@ -350,20 +352,23 @@ namespace Xfp.ViewModels.PanelTools
                     //c.TrueOrFalseMenu  = getTrueOrFalse;
                     //_ceConfigItems.Add(c);
 
-                    if (i < CEConfigItems.Count)
-                        CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
+                    CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
                 }
             }
             
-            RefreshView();
+            refreshView(false);
         }
 
-        public void RefreshView()
+
+        public void RefreshView() => refreshView(true);
+
+        private void refreshView(bool initComboLists)
         {
             if (_data is null)
                 return;
 
-            InitComboLists();
+            if (initComboLists)
+                InitComboLists();
 
             //OnPropertyChanged(nameof(TimerEvents));
             OnPropertyChanged(nameof(TimerEvent1));
@@ -426,16 +431,16 @@ namespace Xfp.ViewModels.PanelTools
             PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_C_And_E, uploadRequestsCompleted);
             for (int ce = 0; ce < CEConfigData.NumEvents; ce++)
                 PanelComms.AddCommandSetCEEvent(new() { Index = ce,
-                                                        ActionType       = CEConfigItems[ce].ActionType,
-                                                        ActionParam      = CEConfigItems[ce].ActionParam,
-                                                        TriggerType      = CEConfigItems[ce].TriggerType??CETriggerTypes.None,
-                                                        TriggerParam     = CEConfigItems[ce].TriggerParam,
-                                                        TriggerParam2    = CEConfigItems[ce].TriggerParam2,
-                                                        TriggerCondition = CEConfigItems[ce].TriggerCondition,
-                                                        ResetType        = CEConfigItems[ce].ResetType??CETriggerTypes.None,
-                                                        ResetParam       = CEConfigItems[ce].ResetParam,
-                                                        ResetParam2      = CEConfigItems[ce].ResetParam2,
-                                                        ResetCondition   = CEConfigItems[ce].ResetCondition,
+                                                        ActionType       = CEConfigItems[ce].Data.ActionType,
+                                                        ActionParam      = CEConfigItems[ce].Data.ActionParam,
+                                                        TriggerType      = CEConfigItems[ce].Data.TriggerType,
+                                                        TriggerParam     = CEConfigItems[ce].Data.TriggerParam,
+                                                        TriggerParam2    = CEConfigItems[ce].Data.TriggerParam2,
+                                                        TriggerCondition = CEConfigItems[ce].Data.TriggerCondition,
+                                                        ResetType        = CEConfigItems[ce].Data.ResetType,
+                                                        ResetParam       = CEConfigItems[ce].Data.ResetParam,
+                                                        ResetParam2      = CEConfigItems[ce].Data.ResetParam2,
+                                                        ResetCondition   = CEConfigItems[ce].Data.ResetCondition,
                                                         TimerEventTime   = TimerEvents[ce]                    
                                                     },
                                                 string.Format(Cultures.Resources.C_And_E_Event_x, ce + 1));
@@ -461,16 +466,16 @@ namespace Xfp.ViewModels.PanelTools
 
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.C_And_E_Event_x, ce.Index + 1));
 
-            CEConfigItems[ce.Index].ActionType = ce.ActionType;
-            CEConfigItems[ce.Index].ActionParam = ce.ActionParam;
-            CEConfigItems[ce.Index].TriggerType = ce.TriggerType;
-            CEConfigItems[ce.Index].TriggerParam = ce.TriggerParam;
-            CEConfigItems[ce.Index].TriggerParam2 = ce.TriggerParam2;
-            CEConfigItems[ce.Index].TriggerCondition = ce.TriggerCondition;
-            CEConfigItems[ce.Index].ResetType = ce.ResetType;
-            CEConfigItems[ce.Index].ResetParam = ce.ResetParam;
-            CEConfigItems[ce.Index].ResetParam2 = ce.ResetParam2;
-            CEConfigItems[ce.Index].ResetCondition = ce.ResetCondition;
+            CEConfigItems[ce.Index].Data.ActionType = ce.ActionType;
+            CEConfigItems[ce.Index].Data.ActionParam = ce.ActionParam;
+            CEConfigItems[ce.Index].Data.TriggerType = ce.TriggerType;
+            CEConfigItems[ce.Index].Data.TriggerParam = ce.TriggerParam;
+            CEConfigItems[ce.Index].Data.TriggerParam2 = ce.TriggerParam2;
+            CEConfigItems[ce.Index].Data.TriggerCondition = ce.TriggerCondition;
+            CEConfigItems[ce.Index].Data.ResetType = ce.ResetType;
+            CEConfigItems[ce.Index].Data.ResetParam = ce.ResetParam;
+            CEConfigItems[ce.Index].Data.ResetParam2 = ce.ResetParam2;
+            CEConfigItems[ce.Index].Data.ResetCondition = ce.ResetCondition;
 
             TimerEvents[ce.Index] = ce.TimerEventTime;
 

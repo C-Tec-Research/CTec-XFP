@@ -233,26 +233,26 @@ namespace Xfp.DataTypes
 
         public void ResetLists()
         {
-            _ceActions = null;
-            _ceTriggers = null;
-            _groups = null;
-            _inputs = null;
-            _loop1Devices = null;
-            _loop2Devices = null;
-            _zones = null;
-            _zoneNames = null;
-            _zonesPanels = null;
-            _zonePanelNames = null;
-            _sets = null;
-            _events = null;
-            _relays = null;
-            _setsRelays = null;
-            _ceTimerTs = null;
+            //_ceActions = null;
+            //_ceTriggers = null;
+            //_groups = null;
+            //_inputs = null;
+            //_loop1Devices = null;
+            //_loop2Devices = null;
+            //_zones = null;
+            //_zoneNames = null;
+            //_zonesPanels = null;
+            //_zonePanelNames = null;
+            //_sets = null;
+            //_events = null;
+            //_relays = null;
+            //_setsRelays = null;
+            //_ceTimerTs = null;
         }
 
         internal List<string> GetCEActionsList()
         {
-            if (_ceActions is null)
+            //if (_ceActions is null)
             {
                 _ceActions = new();
                 foreach (var a in Enum.GetValues(typeof(CEActionTypes)))
@@ -263,7 +263,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetCETriggersList()
         {
-            if (_ceTriggers is null)
+            //if (_ceTriggers is null)
             {
                 _ceTriggers = new();
                 foreach (var t in Enum.GetValues(typeof(CETriggerTypes)))
@@ -275,7 +275,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetGroupsList()
         {
-            if (_groups is null)
+            //if (_groups is null)
             {
                 _groups = new();
                 for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
@@ -286,7 +286,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetInputsList()
         {
-            if (_inputs is null)
+            //if (_inputs is null)
             {
                 _inputs = new();
                 for (int i = 0; i < 2; i++)
@@ -297,7 +297,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetLoop1DeviceList(int panel)
         {
-            if (_loop1Devices is null)
+            //if (_loop1Devices is null)
             {
                 _loop1Devices = new();
                 for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop1Config.Devices.Count; d++)
@@ -308,7 +308,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetLoop2DeviceList(int panel)
         {
-            if (_loop2Devices is null)
+            //if (_loop2Devices is null)
             {
                 _loop2Devices = new();
                 for (int d = 0; d < DeviceConfigData.NumDevices && d < Panels[panel].Loop2Config.Devices.Count; d++)
@@ -319,7 +319,7 @@ namespace Xfp.DataTypes
   
         internal List<string> GetZonesList()
         {
-            if (_zones is null)
+            //if (_zones is null)
             {
                 _zones = new();
                 for (int i = 0; i < ZoneConfigData.NumZones; i++)
@@ -330,7 +330,7 @@ namespace Xfp.DataTypes
   
         internal List<string> GetZoneNamesList(int panel)
         {
-            if (_zoneNames is null)
+            //if (_zoneNames is null)
             {
                 _zoneNames = new();
                 for (int i = 0; i < ZoneConfigData.NumZones; i++)
@@ -341,7 +341,7 @@ namespace Xfp.DataTypes
   
         internal List<string> GetZonePanelsList()
         {
-            if (_zonesPanels is null)
+            //if (_zonesPanels is null)
             {
                 _zonesPanels = new();
                 for (int i = 0; i < ZoneConfigData.NumZones; i++)
@@ -354,7 +354,7 @@ namespace Xfp.DataTypes
   
         internal List<string> GetZonePanelNamesList(int panel)
         {
-            if (_zonesPanels is null)
+            //if (_zonesPanels is null)
             {
                 _zonePanelNames = new();
                 for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
@@ -365,7 +365,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetSetsList()
         {
-            if (_sets is null)
+            //if (_sets is null)
             {
                 _sets = new();
                 for (int i = 0; i < XfpPanelData.NumSets; i++)
@@ -376,7 +376,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetEventsList()
         {
-            if (_events is null)
+            //if (_events is null)
             {
                 _events = new();
                 for (int i = 0; i < CEConfigData.NumEvents; i++)
@@ -387,7 +387,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetRelaysList()
         {
-            if (_relays is null)
+            //if (_relays is null)
             {
                 _relays = new();
                 for (int i = 0; i < XfpPanelData.NumRelays; i++)
@@ -398,7 +398,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetSetsRelaysList()
         {
-            if (_setsRelays is null)
+            //if (_setsRelays is null)
             {
                 _setsRelays = new List<string>();
                 for (int i = 0; i < XfpPanelData.NumSets; i++)
@@ -411,7 +411,7 @@ namespace Xfp.DataTypes
 
         internal List<string> GetCETimerTList()
         {
-            if (_ceTimerTs is null)
+            //if (_ceTimerTs is null)
             {
                 _ceTimerTs = new();
                 for (int i = 0; i < CEConfigData.NumEvents; i++)

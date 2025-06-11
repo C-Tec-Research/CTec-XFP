@@ -2120,14 +2120,18 @@ namespace Xfp.ViewModels.PanelTools
         private bool ioChannelIsValid(int index)
         {
             if (getIOChannel(index) is int channel)
-                return (int)channel >= (DeviceList.Count > 0 ? -1 : 0) && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);
+                //return channel >= (DeviceList.Count > 0 ? -1 : 0) && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);
+                if (DeviceList.Count > 0)
+                    return channel >= 0 && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);
             return true;
         }
 
         private bool ioZoneSetIsValid(int index)
         {
             if (getIOZoneSetIndex(index) is int zs)
-                return (int)zs >= (DeviceList.Count > 0 ? -1 : 0) && zs < (getInputOutput(index) == IOTypes.Input ? Zones.Count : Sets.Count);
+                //return zs >= (DeviceList.Count > 0 ? -1 : 0) && zs < (getInputOutput(index) == IOTypes.Input ? Zones.Count : Sets.Count);
+                if (DeviceList.Count > 0)
+                    return zs >= 0 && zs < (getInputOutput(index) == IOTypes.Input ? Zones.Count : Sets.Count);
             return true;
         }
 

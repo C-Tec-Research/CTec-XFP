@@ -33,6 +33,7 @@ namespace Xfp.ViewModels.PanelTools
             _number = index + 1;
             _data = data;
             //_loopConfig = loopConfig;
+            InitFixedComboLists();
             initData();
             RefreshView();
             
@@ -47,7 +48,7 @@ namespace Xfp.ViewModels.PanelTools
         private CEEvent _data;
         //private LoopConfigData _loopConfig;
 
-        public CEEvent Data { set { _data = value; initData(); RefreshView(); } }
+        public CEEvent Data { get => _data; set { _data = value; initData(); RefreshView(); } }
 
 
         private void initData()
@@ -135,22 +136,22 @@ namespace Xfp.ViewModels.PanelTools
             //_triggerCondition = _data.TriggerParam >= 0 ? _data.TriggerCondition == true ? 0 : 1 : -1;
             //_resetCondition   = _data.ResetParam   >= 0 ? _data.ResetCondition   == true ? 0 : 1 : -1;
 
-            TriggerCondition = _data.TriggerCondition;            
-            ResetCondition   = _data.ResetCondition;            
+            //TriggerCondition = _data.TriggerCondition;            
+            //ResetCondition   = _data.ResetCondition;            
         }
 
 
         public int CENumber => _number;
-        public CEActionTypes ActionType    { get => _data?.ActionType ?? CEActionTypes.None; set { if (_data is not null) _data.ActionType = value; initData(); OnPropertyChanged(); updateSelections(); } }
-        public int ActionParam             { get => _data.ActionParam;                       set { _data.ActionParam = value; OnPropertyChanged(); updateSelections(); } }
-        public CETriggerTypes? TriggerType { get => _data.TriggerType;                       set { _triggerType = (int)value; _data.TriggerType = value??CETriggerTypes.None; initData(); OnPropertyChanged(); updateSelections(); } }
-        public int TriggerParam            { get => _data.TriggerParam;                      set { _data.TriggerParam = value; OnPropertyChanged(); updateSelections(); } }
-        public int TriggerParam2           { get => _data.TriggerParam2;                     set { _data.TriggerParam2 = value; OnPropertyChanged(); updateSelections(); } }
-        public bool TriggerCondition       { get => _data.TriggerCondition;                  set { _data.TriggerCondition = value; OnPropertyChanged(); updateSelections(); } }
-        public CETriggerTypes? ResetType   { get => _data.ResetType;                         set { _resetType = (int)value; _data.ResetType = value??CETriggerTypes.None; initData(); OnPropertyChanged(); updateSelections(); } }
-        public int ResetParam              { get => _data.ResetParam;                        set { _data.ResetParam = value; OnPropertyChanged(); updateSelections(); } }
-        public int ResetParam2             { get => _data.ResetParam2;                       set { _data.ResetParam2 = value; OnPropertyChanged(); updateSelections(); } }
-        public bool ResetCondition         { get => _data.ResetCondition;                    set { _data.ResetCondition = value; OnPropertyChanged(); updateSelections(); } }
+        //public CEActionTypes ActionType    { get => _data?.ActionType ?? CEActionTypes.None; set { if (_data is not null) _data.ActionType = value; initData(); OnPropertyChanged(); updateSelections(); } }
+        //public int ActionParam             { get => _data.ActionParam;                       set { _data.ActionParam = value; OnPropertyChanged(); updateSelections(); } }
+        //public CETriggerTypes? TriggerType { get => _data.TriggerType;                       set { _triggerType = (int)value; _data.TriggerType = value??CETriggerTypes.None; initData(); OnPropertyChanged(); updateSelections(); } }
+        //public int TriggerParam            { get => _data.TriggerParam;                      set { _data.TriggerParam = value; OnPropertyChanged(); updateSelections(); } }
+        //public int TriggerParam2           { get => _data.TriggerParam2;                     set { _data.TriggerParam2 = value; OnPropertyChanged(); updateSelections(); } }
+        //public bool TriggerCondition       { get => _data.TriggerCondition;                  set { _data.TriggerCondition = value; OnPropertyChanged(); updateSelections(); } }
+        //public CETriggerTypes? ResetType   { get => _data.ResetType;                         set { _resetType = (int)value; _data.ResetType = value??CETriggerTypes.None; initData(); OnPropertyChanged(); updateSelections(); } }
+        //public int ResetParam              { get => _data.ResetParam;                        set { _data.ResetParam = value; OnPropertyChanged(); updateSelections(); } }
+        //public int ResetParam2             { get => _data.ResetParam2;                       set { _data.ResetParam2 = value; OnPropertyChanged(); updateSelections(); } }
+        //public bool ResetCondition         { get => _data.ResetCondition;                    set { _data.ResetCondition = value; OnPropertyChanged(); updateSelections(); } }
 
 
         #region stuff
@@ -184,26 +185,14 @@ namespace Xfp.ViewModels.PanelTools
         //private int _resetParamZone2 = -1;
         #endregion
 
-        public string SelectedActionType
-        {
-            get => Enums.CEActionTypesToString(ActionType);
-            set
-            {
-                var prev = ActionType;
-                ActionType = Enums.StringToCEActionTypes(value);
-                if (ActionType != prev)
-                    clearDependants(ClearLevel.ActionType);
-                updateSelections();
-            }
-        }
 
-        public string SelectedActionParam
+        private string actionParamString
         {
             get
             {
                 try
                 {
-                    return ActionType switch
+                    return _data.ActionType switch
                     {
                         CEActionTypes.TriggerLoop1Device or
                         CEActionTypes.Loop1DeviceDisable => getListString(Loop1Devices, _data.ActionParam + 1),
@@ -230,12 +219,97 @@ namespace Xfp.ViewModels.PanelTools
                         _ => "",
                     };
                 }
-                catch { return "";  }
+                catch { return ""; }
+            }
+        }
+
+        public string getTriggerParamString(int index)
+        {
+            try
+            {
+                return _data.TriggerType switch
+                {
+                    CETriggerTypes.Loop1DevicePrealarm or
+                    CETriggerTypes.Loop1DeviceTriggered => getListString(Loop1Devices, index),
+
+                    CETriggerTypes.Loop2DevicePrealarm or
+                    CETriggerTypes.Loop2DeviceTriggered => getListString(Loop2Devices, index),
+
+                    CETriggerTypes.ZoneOrPanelInFire or
+                    CETriggerTypes.ZoneHasDeviceInAlarm => getListString(ZonesPanels, index),
+
+                    CETriggerTypes.OtherEventTriggered or
+                    CETriggerTypes.NetworkEventTriggered => getListString(Events, index),
+
+                    CETriggerTypes.PanelInput => getListString(Inputs, index),
+
+                    CETriggerTypes.TimerEventTn => getListString(Times, index),
+
+                    CETriggerTypes.EventAnd => getListString(EventNumbers, index),
+
+                    CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, index),
+
+                    _ => "",
+                };
+            }
+            catch { return ""; }
+        }
+
+
+        public string SelectedActionType
+        {
+            get => Enums.CEActionTypesToString(_data.ActionType);
+            set
+            {
+                var prev = _data.ActionType;
+                _data.ActionType = Enums.StringToCEActionTypes(value);
+                if (_data.ActionType != prev)
+                    clearDependants(ClearLevel.ActionType);
+                updateSelections();
+            }
+        }
+
+        public string SelectedActionParam
+        {
+            get
+            {
+                //try
+                //{
+                //    //return ActionType switch
+                //    //{
+                //    //    CEActionTypes.TriggerLoop1Device or
+                //    //    CEActionTypes.Loop1DeviceDisable => getListString(Loop1Devices, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.TriggerLoop2Device or
+                //    //    CEActionTypes.Loop2DeviceDisable => getListString(Loop2Devices, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.PanelRelay => getListString(Relays, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.SounderAlert or
+                //    //    CEActionTypes.SounderEvac or
+                //    //    CEActionTypes.GroupDisable or
+                //    //    CEActionTypes.TriggerBeacons => getListString(Groups, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.ZoneDisable or
+                //    //    CEActionTypes.PutZoneIntoAlarm => getListString(Zones, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.TriggerOutputSet => getListString(Sets, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.OutputDisable => getListString(SetsRelays, _data.ActionParam + 1),
+
+                //    //    CEActionTypes.TriggerNetworkEvent => getListString(Events, _data.ActionParam + 1),
+
+                //    //    _ => "",
+                //    //};
+                //}
+                //catch { return "";  }
+
+                return actionParamString;
             }
             set
             {
-                var prev = ActionParam;
-                ActionParam = ActionType switch
+                var prev = _data.ActionParam;
+                _data.ActionParam = _data.ActionType switch
                 {
                     CEActionTypes.TriggerLoop1Device or
                     CEActionTypes.Loop1DeviceDisable => _data.ActionParam = getListIndex(Loop1Devices, value) - 1,
@@ -262,7 +336,7 @@ namespace Xfp.ViewModels.PanelTools
                     _ => -1,
                 };
 
-                if (ActionParam != prev)
+                if (_data.ActionParam != prev)
                     clearDependants(ClearLevel.ActionParam);
                 updateSelections();
             }
@@ -270,12 +344,12 @@ namespace Xfp.ViewModels.PanelTools
 
         public string SelectedTriggerType
         {
-            get => Enums.CETriggerTypesToString((CETriggerTypes)TriggerType);
+            get => Enums.CETriggerTypesToString((CETriggerTypes)_data.TriggerType);
             set
             {
-                var prev = TriggerType;
-                TriggerType = Enums.StringToCETriggerTypes(value); 
-                if (TriggerType != prev)
+                var prev = _data.TriggerType;
+                _data.TriggerType = Enums.StringToCETriggerTypes(value); 
+                if (_data.TriggerType != prev)
                     clearDependants(ClearLevel.TriggerType);
                 updateSelections();
             }
@@ -285,39 +359,41 @@ namespace Xfp.ViewModels.PanelTools
         {
             get
             {
-                try
-                {
-                    return TriggerType switch
-                    {
-                        CETriggerTypes.Loop1DevicePrealarm or
-                        CETriggerTypes.Loop1DeviceTriggered => getListString(Loop1Devices, _data.TriggerParam + 1),
+                //try
+                //{
+                //    return TriggerType switch
+                //    {
+                //        CETriggerTypes.Loop1DevicePrealarm or
+                //        CETriggerTypes.Loop1DeviceTriggered => getListString(Loop1Devices, _data.TriggerParam + 1),
 
-                        CETriggerTypes.Loop2DevicePrealarm or
-                        CETriggerTypes.Loop2DeviceTriggered => getListString(Loop2Devices, _data.TriggerParam + 1),
+                //        CETriggerTypes.Loop2DevicePrealarm or
+                //        CETriggerTypes.Loop2DeviceTriggered => getListString(Loop2Devices, _data.TriggerParam + 1),
 
-                        CETriggerTypes.ZoneOrPanelInFire or
-                        CETriggerTypes.ZoneHasDeviceInAlarm => getListString(ZonesPanels, _data.TriggerParam + 1),
+                //        CETriggerTypes.ZoneOrPanelInFire or
+                //        CETriggerTypes.ZoneHasDeviceInAlarm => getListString(ZonesPanels, _data.TriggerParam + 1),
 
-                        CETriggerTypes.OtherEventTriggered or
-                        CETriggerTypes.NetworkEventTriggered => getListString(Events, _data.TriggerParam + 1),
+                //        CETriggerTypes.OtherEventTriggered or
+                //        CETriggerTypes.NetworkEventTriggered => getListString(Events, _data.TriggerParam + 1),
 
-                        CETriggerTypes.PanelInput => getListString(Inputs, _data.TriggerParam + 1),
+                //        CETriggerTypes.PanelInput => getListString(Inputs, _data.TriggerParam + 1),
 
-                        CETriggerTypes.TimerEventTn => getListString(Times, _data.TriggerParam + 1),
+                //        CETriggerTypes.TimerEventTn => getListString(Times, _data.TriggerParam + 1),
 
-                        CETriggerTypes.EventAnd => getListString(EventNumbers, _data.TriggerParam + 1),
+                //        CETriggerTypes.EventAnd => getListString(EventNumbers, _data.TriggerParam + 1),
 
-                        CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, _data.TriggerParam + 1),
+                //        CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, _data.TriggerParam + 1),
 
-                        _ => "",
-                    };
-                }
-                catch { return ""; }
+                //        _ => "",
+                //    };
+                //}
+                //catch { return ""; }
+
+                return getTriggerParamString(_data.TriggerParam + 1);
             }
             set
             {
-                var prev = TriggerParam;
-                TriggerParam = TriggerType switch
+                var prev = _data.TriggerParam;
+                _data.TriggerParam = _data.TriggerType switch
                 {
                     CETriggerTypes.Loop1DevicePrealarm or
                     CETriggerTypes.Loop1DeviceTriggered => _data.TriggerParam = getListIndex(Loop1Devices, value) - 1,
@@ -342,7 +418,21 @@ namespace Xfp.ViewModels.PanelTools
                     _ => -1,
                 };
 
-                if (TriggerParam != prev)
+                if (_data.TriggerParam != prev)
+                    clearDependants(ClearLevel.TriggerParam);
+                updateSelections();
+            }
+        }
+
+        public int SelectedTriggerParamIndex
+        {
+            get => _data.TriggerParam + 1;
+            set
+            {
+                var prev = _data.TriggerParam;
+                _data.TriggerParam = _data.TriggerParam = value - 1;
+
+                if (_data.TriggerParam != prev)
                     clearDependants(ClearLevel.TriggerParam);
                 updateSelections();
             }
@@ -354,7 +444,7 @@ namespace Xfp.ViewModels.PanelTools
             {
                 try
                 {   
-                    return TriggerType switch
+                    return _data.TriggerType switch
                     {
                         CETriggerTypes.EventAnd => getListString(EventNumbers, _data.TriggerParam2 + 1),
                         CETriggerTypes.ZoneAnd  => getListString(ZoneNumbers, _data.TriggerParam2 + 1),
@@ -365,15 +455,15 @@ namespace Xfp.ViewModels.PanelTools
             }
             set
             {
-                var prev = TriggerParam2;
-                TriggerParam2 = TriggerType switch
+                var prev = _data.TriggerParam2;
+                _data.TriggerParam2 = _data.TriggerType switch
                 {
                     CETriggerTypes.EventAnd => _data.TriggerParam2 = getListIndex(EventNumbers, value) - 1,
-                    CETriggerTypes.ZoneAnd  => _data.TriggerParam2  = getListIndex(ZoneNumbers, value) - 1,
+                    CETriggerTypes.ZoneAnd  => _data.TriggerParam2 = getListIndex(ZoneNumbers, value) - 1,
                     _ => -1,
                 };
 
-                if (TriggerParam2 != prev)
+                if (_data.TriggerParam2 != prev)
                     clearDependants(ClearLevel.TriggerParam);
                 updateSelections();
             }
@@ -393,12 +483,12 @@ namespace Xfp.ViewModels.PanelTools
 
         public string SelectedResetType
         { 
-            get => Enums.CETriggerTypesToString((CETriggerTypes)ResetType);
+            get => Enums.CETriggerTypesToString((CETriggerTypes)_data.ResetType);
             set
             {
-                var prev = ResetType;
-                ResetType = Enums.StringToCETriggerTypes(value);
-                if (ResetType != prev)
+                var prev = _data.ResetType;
+                _data.ResetType = Enums.StringToCETriggerTypes(value);
+                if (_data.ResetType != prev)
                     clearDependants(ClearLevel.ResetType);
                 updateSelections();
             }
@@ -410,7 +500,7 @@ namespace Xfp.ViewModels.PanelTools
             {
                 try
                 {
-                    return ResetType switch
+                    return _data.ResetType switch
                     {
                         CETriggerTypes.Loop1DevicePrealarm or
                         CETriggerTypes.Loop1DeviceTriggered => getListString(Loop1Devices, _data.ResetParam + 1),
@@ -439,8 +529,8 @@ namespace Xfp.ViewModels.PanelTools
             }
             set
             {
-                var prev = ResetParam;
-                ResetParam = ResetType switch
+                var prev = _data.ResetParam;
+                _data.ResetParam = _data.ResetType switch
                 {
                     CETriggerTypes.Loop1DevicePrealarm or
                     CETriggerTypes.Loop1DeviceTriggered => _data.ResetParam = getListIndex(Loop1Devices, value) - 1,
@@ -465,7 +555,7 @@ namespace Xfp.ViewModels.PanelTools
                     _ => -1,
                 };
 
-                if (ResetParam != prev)
+                if (_data.ResetParam != prev)
                     clearDependants(ClearLevel.ResetParam);
                 updateSelections();
             }
@@ -477,7 +567,7 @@ namespace Xfp.ViewModels.PanelTools
             {
                 try
                 {
-                    return ResetType switch
+                    return _data.ResetType switch
                     {
                         CETriggerTypes.EventAnd => getListString(EventNumbers, _data.ResetParam2 + 1),
                         CETriggerTypes.ZoneAnd => getListString(ZoneNumbers, _data.ResetParam2 + 1),
@@ -488,15 +578,15 @@ namespace Xfp.ViewModels.PanelTools
             }
             set
             {
-                var prev = ResetParam2;
-                ResetParam2 = ResetType switch
+                var prev = _data.ResetParam2;
+                _data.ResetParam2 = _data.ResetType switch
                 {
                     CETriggerTypes.EventAnd => _data.ResetParam2 = getListIndex(EventNumbers, value) - 1,
                     CETriggerTypes.ZoneAnd  => _data.ResetParam2  = getListIndex(ZoneNumbers, value) - 1,
                     _ => -1,
                 };
 
-                if (ResetParam2 != prev)
+                if (_data.ResetParam2 != prev)
                     clearDependants(ClearLevel.ResetParam);
                 updateSelections();
             }
@@ -549,87 +639,79 @@ namespace Xfp.ViewModels.PanelTools
 
             if      (level <= ClearLevel.ActionType)       { SelectedActionParam = ""; }
             else if (level <= ClearLevel.ActionParam)      { SelectedTriggerType = ""; }
-            else if (level <= ClearLevel.TriggerType)      { SelectedTriggerParam = SelectedTriggerParam2 = ""; }
+            //else if (level <= ClearLevel.TriggerType)      { SelectedTriggerParam = SelectedTriggerParam2 = ""; }
+            else if (level <= ClearLevel.TriggerType)      { SelectedTriggerParamIndex = -1; SelectedTriggerParam2 = ""; }
             else if (level <= ClearLevel.TriggerParam)     { SelectedTriggerCondition = TrueOrFalse[0]; }
             else if (level <= ClearLevel.TriggerCondition) { SelectedResetType = ""; }
             else if (level <= ClearLevel.ResetType)        { SelectedResetParam = SelectedResetParam2 = ""; }
-            else if (level <= ClearLevel.ResetParam)       { ResetCondition = false; SelectedResetCondition = TrueOrFalse[1]; }
+            else if (level <= ClearLevel.ResetParam)       { _data.ResetCondition = false; SelectedResetCondition = TrueOrFalse[1]; }
         }
 
 
         #region option visibilities
 
         #region action
-        public bool ShowActionParam => !_data.NoActionParam(ActionType);
-        public bool ShowActionLoop1Devices => ActionType switch { CEActionTypes.TriggerLoop1Device or CEActionTypes.Loop1DeviceDisable => true, _ => false };
-        public bool ShowActionLoop2Devices => ActionType switch { CEActionTypes.TriggerLoop2Device or CEActionTypes.Loop2DeviceDisable => true, _ => false };
-        public bool ShowActionRelays => ActionType switch { CEActionTypes.PanelRelay => true, _ => false };
-        public bool ShowActionGroups => ActionType switch { CEActionTypes.SounderAlert or CEActionTypes.SounderEvac or CEActionTypes.GroupDisable or CEActionTypes.TriggerBeacons => true, _ => false };
-        public bool ShowActionZones => ActionType switch { CEActionTypes.ZoneDisable or CEActionTypes.PutZoneIntoAlarm => true, _ => false };
-        public bool ShowActionSets => ActionType switch { CEActionTypes.TriggerOutputSet => true, _ => false };
-        public bool ShowActionSetsAndRelays => ActionType switch { CEActionTypes.OutputDisable => true, _ => false };
-        public bool ShowActionEvents => ActionType switch { CEActionTypes.TriggerNetworkEvent => true, _ => false };
+        public bool ShowActionParam => !_data.NoActionParam(_data.ActionType);
+        public bool ShowActionLoop1Devices => _data.ActionType switch { CEActionTypes.TriggerLoop1Device or CEActionTypes.Loop1DeviceDisable => true, _ => false };
+        public bool ShowActionLoop2Devices => _data.ActionType switch { CEActionTypes.TriggerLoop2Device or CEActionTypes.Loop2DeviceDisable => true, _ => false };
+        public bool ShowActionRelays => _data.ActionType switch { CEActionTypes.PanelRelay => true, _ => false };
+        public bool ShowActionGroups => _data.ActionType switch { CEActionTypes.SounderAlert or CEActionTypes.SounderEvac or CEActionTypes.GroupDisable or CEActionTypes.TriggerBeacons => true, _ => false };
+        public bool ShowActionZones => _data.ActionType switch { CEActionTypes.ZoneDisable or CEActionTypes.PutZoneIntoAlarm => true, _ => false };
+        public bool ShowActionSets => _data.ActionType switch { CEActionTypes.TriggerOutputSet => true, _ => false };
+        public bool ShowActionSetsAndRelays => _data.ActionType switch { CEActionTypes.OutputDisable => true, _ => false };
+        public bool ShowActionEvents => _data.ActionType switch { CEActionTypes.TriggerNetworkEvent => true, _ => false };
         #endregion
 
         #region trigger
         //public bool ShowTrigger => ActionType != CEActionTypes.None && (!ShowActionParam || SelectedActionParamIndex > -1);
-        public bool ShowTrigger => ActionType != CEActionTypes.None && (!ShowActionParam || SelectedActionParam != "");
-        public bool ShowTriggerParam => ShowTrigger && !ShowTriggerParam2 && !_data.NoTriggerParam(TriggerType);
-        public bool ShowTriggerParam2 => ShowTrigger && (TriggerType == CETriggerTypes.EventAnd || TriggerType == CETriggerTypes.ZoneAnd);
-        public bool ShowTriggerLoop1Devices => ShowTriggerParam && TriggerType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
-        public bool ShowTriggerLoop2Devices => ShowTriggerParam && TriggerType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };
-        public bool ShowTriggerZones => ShowTriggerParam && TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
-        public bool ShowTriggerZones2 => ShowTriggerParam2 && TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
-        public bool ShowTriggerZonesAndPanels => ShowTriggerParam && TriggerType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
-        public bool ShowTriggerEvents => ShowTriggerParam && TriggerType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
-        public bool ShowTriggerEvents2 => ShowTriggerParam2 && TriggerType switch { CETriggerTypes.EventAnd => true, _ => false };
-        public bool ShowTriggerTimes => ShowTriggerParam && TriggerType switch { CETriggerTypes.TimerEventTn => true, _ => false };
-        public bool ShowTriggerInputs => ShowTriggerParam && TriggerType switch { CETriggerTypes.PanelInput => true, _ => false };
-        public bool ShowTriggerCondition => (ShowTriggerParam && TriggerParam >= 0) || (ShowTriggerParam2 && SelectedTriggerParam != "" && SelectedTriggerParam2 != "" || _data.NoTriggerParam(TriggerType) && TriggerType != CETriggerTypes.None);
+        public bool ShowTrigger => _data.ActionType != CEActionTypes.None && (!ShowActionParam || SelectedActionParam != "");
+        public bool ShowTriggerParam => ShowTrigger && !ShowTriggerParam2 && !_data.NoTriggerParam(_data.TriggerType);
+        public bool ShowTriggerParam2 => ShowTrigger && (_data.TriggerType == CETriggerTypes.EventAnd || _data.TriggerType == CETriggerTypes.ZoneAnd);
+        public bool ShowTriggerLoop1Devices => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
+        public bool ShowTriggerLoop2Devices => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };
+        public bool ShowTriggerZones => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
+        public bool ShowTriggerZones2 => ShowTriggerParam2 && _data.TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
+        public bool ShowTriggerZonesAndPanels => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
+        public bool ShowTriggerEvents => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
+        public bool ShowTriggerEvents2 => ShowTriggerParam2 && _data.TriggerType switch { CETriggerTypes.EventAnd => true, _ => false };
+        public bool ShowTriggerTimes => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.TimerEventTn => true, _ => false };
+        public bool ShowTriggerInputs => ShowTriggerParam && _data.TriggerType switch { CETriggerTypes.PanelInput => true, _ => false };
+        public bool ShowTriggerCondition => (ShowTriggerParam && _data.TriggerParam >= 0) || (ShowTriggerParam2 && SelectedTriggerParam != "" && SelectedTriggerParam2 != "" || _data.NoTriggerParam(_data.TriggerType) && _data.TriggerType != CETriggerTypes.None);
         #endregion
 
         #region reset
         public bool ShowReset => ShowTriggerCondition /*&& _data.TriggerCondition is not null*/;
-        public bool ShowResetParam => ShowReset && !ShowResetParam2 && !_data.NoTriggerParam(ResetType);
-        public bool ShowResetParam2 => ShowReset && (ResetType == CETriggerTypes.EventAnd || ResetType == CETriggerTypes.ZoneAnd);
-        public bool ShowResetLoop1Devices => ShowResetParam && ResetType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
-        public bool ShowResetLoop2Devices => ShowResetParam && ResetType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };
-        public bool ShowResetZones => ShowResetParam && ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
-        public bool ShowResetZones2 => ShowResetParam2 && ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
-        public bool ShowResetZonesAndPanels => ShowResetParam && ResetType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
-        public bool ShowResetEvents => ShowResetParam && ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };//ShowResetParam && ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd or CETriggerTypes.NetworkEventTriggered => true, _ => false };
-        public bool ShowResetEvents2 => ShowResetParam2 && ResetType switch { CETriggerTypes.EventAnd => true, _ => false };
-        public bool ShowResetTimes => ShowResetParam && ResetType switch { CETriggerTypes.TimerEventTn => true, _ => false };
-        public bool ShowResetInputs => ShowResetParam && ResetType switch { CETriggerTypes.PanelInput => true, _ => false };
-        public bool ShowResetCondition => ShowResetParam && ResetParam >= 0 || ShowResetParam2 && ResetParam >= 0 && ResetParam2 >= 0 || _data.NoTriggerParam(ResetType) && ResetType != CETriggerTypes.None;
+        public bool ShowResetParam => ShowReset && !ShowResetParam2 && !_data.NoTriggerParam(_data.ResetType);
+        public bool ShowResetParam2 => ShowReset && (_data.ResetType == CETriggerTypes.EventAnd || _data.ResetType == CETriggerTypes.ZoneAnd);
+        public bool ShowResetLoop1Devices => ShowResetParam && _data.ResetType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
+        public bool ShowResetLoop2Devices => ShowResetParam && _data.ResetType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };
+        public bool ShowResetZones => ShowResetParam && _data.ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
+        public bool ShowResetZones2 => ShowResetParam2 && _data.ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
+        public bool ShowResetZonesAndPanels => ShowResetParam && _data.ResetType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
+        public bool ShowResetEvents => ShowResetParam && _data.ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };//ShowResetParam && ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd or CETriggerTypes.NetworkEventTriggered => true, _ => false };
+        public bool ShowResetEvents2 => ShowResetParam2 && _data.ResetType switch { CETriggerTypes.EventAnd => true, _ => false };
+        public bool ShowResetTimes => ShowResetParam && _data.ResetType switch { CETriggerTypes.TimerEventTn => true, _ => false };
+        public bool ShowResetInputs => ShowResetParam && _data.ResetType switch { CETriggerTypes.PanelInput => true, _ => false };
+        public bool ShowResetCondition => ShowResetParam && _data.ResetParam >= 0 || ShowResetParam2 && _data.ResetParam >= 0 && _data.ResetParam2 >= 0 || _data.NoTriggerParam(_data.ResetType) && _data.ResetType != CETriggerTypes.None;
         #endregion
 
         #endregion
 
         #region option validation
-        //public bool ActionParamIsValid => !ShowActionParam || SelectedActionParamIndex >  -1;
         public bool ActionParamIsValid => !ShowActionParam || SelectedActionParam != "";
         public bool ActionTriggerIsValid => !ShowTrigger || SelectedTriggerType != "";
-
-        //public bool TriggerParam1IsValid => !ShowTriggerParam || SelectedTriggerParamIndex > -1 || TriggerType == CETriggerTypes.None;
-        //public bool IndicateInvalidTriggerParam2 => !(!ShowTriggerParam2 || !(!ShowTriggerParam2 || SelectedTriggerParamIndex < 0 && SelectedTriggerParam2Index < 0));
-        //public bool IndicateInvalidSelectedTriggerParam1 => !((!ShowTriggerEvents2 || SelectedTriggerParamIndex > -1 || SelectedTriggerParam2Index < 0) && (!ShowTriggerZones2 || SelectedTriggerParamIndex > -1 || SelectedTriggerParam2Index < 0));
-        //public bool IndicateInvalidSelectedTriggerParam2 => !((!ShowTriggerEvents2 || SelectedTriggerParam2Index > -1 || SelectedTriggerParamIndex < 0) && (!ShowTriggerZones2 || SelectedTriggerParam2Index > -1 || SelectedTriggerParamIndex < 0));
-        //public bool TriggerConditionIsValid => !ShowTriggerCondition || SelectedTriggerConditionIndex != -1;
-        public bool TriggerParam1IsValid => !ShowTriggerParam || SelectedTriggerParam != "" || TriggerType == CETriggerTypes.None;
+        //public bool TriggerParam1IsValid => !ShowTriggerParam || SelectedTriggerParam != "" || TriggerType == CETriggerTypes.None;
+        public bool TriggerParam1IsValid => !ShowTriggerParam || SelectedTriggerParamIndex > -1 || _data.TriggerType == CETriggerTypes.None;
         public bool IndicateInvalidTriggerParam2 => !(!ShowTriggerParam2 || !(!ShowTriggerParam2 || SelectedTriggerParam == "" && SelectedTriggerParam2 == ""));//!(!ShowTriggerParam2 || !(!ShowTriggerParam2 || SelectedTriggerParam != "" && SelectedTriggerParam2 != ""));
-        //public bool IndicateInvalidSelectedTriggerParam1 => ShowTriggerParam2 && (ShowTriggerEvents2 && SelectedTriggerParam == "" || ShowTriggerZones2 && SelectedTriggerParam == "");// !((!ShowTriggerEvents2 || SelectedTriggerParam != "") && (!ShowTriggerZones || SelectedTriggerParam != ""));
         public bool IndicateInvalidSelectedTriggerParam1 =>  !((!ShowTriggerEvents2 || SelectedTriggerParam != "" || SelectedTriggerParam2 == "") && (!ShowTriggerZones2 || SelectedTriggerParam != "" || SelectedTriggerParam2 == ""));
-        //public bool IndicateInvalidSelectedTriggerParam2 => ShowTriggerParam2 && (ShowTriggerEvents2 && SelectedTriggerParam2 == "" || ShowTriggerZones2 && SelectedTriggerParam2 == "");//!((!ShowTriggerEvents2 || SelectedTriggerParam2 != "") && (!ShowTriggerZones2 || SelectedTriggerParam2 != ""));
         public bool IndicateInvalidSelectedTriggerParam2 => !((!ShowTriggerEvents2 || SelectedTriggerParam2 != "" || SelectedTriggerParam == "") && (!ShowTriggerZones2 || SelectedTriggerParam2 != "" || SelectedTriggerParam == ""));
         public bool TriggerConditionIsValid => !ShowTriggerCondition || SelectedTriggerCondition != "";
 
         public bool ResetTriggerIsValid => !ShowReset || SelectedResetType != "";
-        public bool ResetParam1IsValid => !ShowResetParam || SelectedResetParam != "" || ResetType == CETriggerTypes.None;
+        public bool ResetParam1IsValid => !ShowResetParam || SelectedResetParam != "" || _data.ResetType == CETriggerTypes.None;
         public bool IndicateInvalidResetParam2 => !(!ShowResetParam2 || !(!ShowResetParam2 || SelectedResetParam == "" && SelectedResetParam2 == ""));
         public bool IndicateInvalidSelectedResetParam1 => !((!ShowResetEvents2 || SelectedResetParam != "" || SelectedResetParam2 == "") && (!ShowResetZones2 || SelectedResetParam != "" || SelectedResetParam2 == ""));
         public bool IndicateInvalidSelectedResetParam2 => !((!ShowResetEvents2 || SelectedResetParam2 != "" || SelectedResetParam == "") && (!ShowResetZones2 || SelectedResetParam2 != "" || SelectedResetParam == ""));
-        //public bool ResetConditionIsValid => !ShowResetCondition || SelectedResetConditionIndex != -1;
         public bool ResetConditionIsValid => !ShowResetCondition || SelectedResetCondition != "";
         #endregion
 
@@ -637,16 +719,16 @@ namespace Xfp.ViewModels.PanelTools
         private void updateSelections()
         {   
             OnPropertyChanged(nameof(CENumber));
-            OnPropertyChanged(nameof(ActionType));
-            OnPropertyChanged(nameof(ActionParam));
-            OnPropertyChanged(nameof(TriggerType));
-            OnPropertyChanged(nameof(TriggerParam));
-            OnPropertyChanged(nameof(TriggerParam2));
-            OnPropertyChanged(nameof(TriggerCondition));
-            OnPropertyChanged(nameof(ResetType));
-            OnPropertyChanged(nameof(ResetParam));
-            OnPropertyChanged(nameof(ResetParam2));
-            OnPropertyChanged(nameof(ResetCondition));
+            //OnPropertyChanged(nameof(ActionType));
+            //OnPropertyChanged(nameof(ActionParam));
+            //OnPropertyChanged(nameof(TriggerType));
+            //OnPropertyChanged(nameof(TriggerParam));
+            //OnPropertyChanged(nameof(TriggerParam2));
+            //OnPropertyChanged(nameof(TriggerCondition));
+            //OnPropertyChanged(nameof(ResetType));
+            //OnPropertyChanged(nameof(ResetParam));
+            //OnPropertyChanged(nameof(ResetParam2));
+            //OnPropertyChanged(nameof(ResetCondition));
 
             OnPropertyChanged(nameof(SelectedActionType));
             OnPropertyChanged(nameof(SelectedActionParam));
@@ -654,7 +736,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(SelectedTriggerType));
             OnPropertyChanged(nameof(SelectedTriggerParam));
             OnPropertyChanged(nameof(SelectedTriggerParam2));
-            //OnPropertyChanged(nameof(SelectedTriggerParamIndex));
+            OnPropertyChanged(nameof(SelectedTriggerParamIndex));
             //OnPropertyChanged(nameof(SelectedTriggerParam2Index));
             OnPropertyChanged(nameof(SelectedResetType));
             OnPropertyChanged(nameof(SelectedResetParam));
@@ -721,22 +803,22 @@ namespace Xfp.ViewModels.PanelTools
         /// </summary>
         public delegate List<string> MenuList();
 
-        //public MenuList ActionsMenu;
-        //public MenuList TriggersMenu;
-        //public MenuList InputsMenu;
-        //public MenuList Loop1DevicesMenu;
-        //public MenuList Loop2DevicesMenu;
-        //public MenuList ZonesMenu;
+        public MenuList ActionsMenu;
+        public MenuList TriggersMenu;
+        public MenuList InputsMenu;
+        public MenuList Loop1DevicesMenu;
+        public MenuList Loop2DevicesMenu;
+        public MenuList ZonesMenu;
         //public MenuList ZoneNumbersMenu;
-        //public MenuList ZonesPanelsMenu;
-        //public MenuList GroupsMenu;
-        //public MenuList SetsMenu;
-        //public MenuList EventsMenu;
+        public MenuList ZonesPanelsMenu;
+        public MenuList GroupsMenu;
+        public MenuList SetsMenu;
+        public MenuList EventsMenu;
         //public MenuList EventNumbersMenu;
-        //public MenuList RelaysMenu;
-        //public MenuList SetsRelaysMenu;
-        //public MenuList TimesMenu;
-        //public MenuList TrueOrFalseMenu;
+        public MenuList RelaysMenu;
+        public MenuList SetsRelaysMenu;
+        public MenuList TimesMenu;
+        public MenuList TrueOrFalseMenu;
 
         private List<string> _actions;
         private List<string> _triggers;
@@ -755,38 +837,40 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> _times;
         private List<string> _trueOrFalse;
 
-        //public List<string> Actions      { get => ActionsMenu?.Invoke(); }
-        //public List<string> Triggers     { get => TriggersMenu?.Invoke(); }
-        //public List<string> Inputs       { get => InputsMenu?.Invoke(); }
-        //public List<string> Loop1Devices { get => Loop1DevicesMenu?.Invoke(); }
-        //public List<string> Loop2Devices { get => Loop2DevicesMenu?.Invoke(); }
-        //public List<string> Zones        { get => ZonesMenu?.Invoke(); }
-        //public List<string> ZoneNumbers  { get => ZoneNumbersMenu?.Invoke(); }
-        //public List<string> ZonesPanels  { get => ZonesPanelsMenu?.Invoke(); }
-        //public List<string> Groups       { get => GroupsMenu?.Invoke(); }
-        //public List<string> Sets         { get => SetsMenu?.Invoke(); }
-        //public List<string> Events       { get => EventsMenu?.Invoke(); }
+        public List<string> Actions { get => ActionsMenu?.Invoke(); }
+        public List<string> Triggers { get => TriggersMenu?.Invoke(); }
+        public List<string> Inputs { get => InputsMenu?.Invoke(); }
+        public List<string> Loop1Devices { get => Loop1DevicesMenu?.Invoke(); }
+        public List<string> Loop2Devices { get => Loop2DevicesMenu?.Invoke(); }
+        public List<string> Zones { get => ZonesMenu?.Invoke(); }
+        //public List<string> ZoneNumbers { get => ZoneNumbersMenu?.Invoke(); }
+        public List<string> ZoneNumbers { get => _zoneNumbers; }
+        public List<string> ZonesPanels { get => ZonesPanelsMenu?.Invoke(); }
+        public List<string> Groups { get => GroupsMenu?.Invoke(); }
+        public List<string> Sets { get => SetsMenu?.Invoke(); }
+        public List<string> Events { get => EventsMenu?.Invoke(); }
         //public List<string> EventNumbers { get => EventNumbersMenu?.Invoke(); }
-        //public List<string> Relays       { get => RelaysMenu?.Invoke(); }
-        //public List<string> SetsRelays   { get => SetsRelaysMenu?.Invoke(); }
-        //public List<string> Times        { get => TimesMenu?.Invoke(); }
-        //public List<string> TrueOrFalse  { get => TrueOrFalseMenu?.Invoke(); }
-        public List<string> Actions      { get => _actions;      set { _actions = value; OnPropertyChanged(); } }
-        public List<string> Triggers     { get => _triggers;     set { _triggers = value; OnPropertyChanged(); } }
-        public List<string> Inputs       { get => _inputs;       set { _inputs = value; OnPropertyChanged(); } }
-        public List<string> Loop1Devices { get => _loop1Devices; set { _loop1Devices = value; OnPropertyChanged(); } }
-        public List<string> Loop2Devices { get => _loop2Devices; set { _loop2Devices = value; OnPropertyChanged(); } }
-        public List<string> Zones        { get => _zones;        set { _zones = value; OnPropertyChanged(); } }
-        public List<string> ZoneNumbers  { get => _zoneNumbers;  set { _zoneNumbers = value; OnPropertyChanged(); } }
-        public List<string> ZonesPanels  { get => _zonesPanels;  set { _zonesPanels = value; OnPropertyChanged(); } }
-        public List<string> Groups       { get => _groups;       set { _groups = value; OnPropertyChanged(); } }
-        public List<string> Sets         { get => _sets;         set { _sets = value; OnPropertyChanged(); } }
-        public List<string> Events       { get => _events;       set { _events = value; OnPropertyChanged(); } }
-        public List<string> EventNumbers { get => _eventNumbers; set { _eventNumbers = value; OnPropertyChanged(); } }
-        public List<string> Relays       { get => _relays;       set { _relays = value; OnPropertyChanged(); } }
-        public List<string> SetsRelays   { get => _setsRelays;   set { _setsRelays = value; OnPropertyChanged(); } }
-        public List<string> Times        { get => _times;        set { _times = value; OnPropertyChanged(); } }
-        public List<string> TrueOrFalse  { get => _trueOrFalse;  set { _trueOrFalse = value; OnPropertyChanged(); } }
+        public List<string> EventNumbers { get => _eventNumbers; }
+        public List<string> Relays { get => RelaysMenu?.Invoke(); }
+        public List<string> SetsRelays { get => SetsRelaysMenu?.Invoke(); }
+        public List<string> Times { get => TimesMenu?.Invoke(); }
+        public List<string> TrueOrFalse { get => TrueOrFalseMenu?.Invoke(); }
+        //public List<string> Actions      { get => _actions;      set { _actions = value; OnPropertyChanged(); } }
+        //public List<string> Triggers     { get => _triggers;     set { _triggers = value; OnPropertyChanged(); } }
+        //public List<string> Inputs       { get => _inputs;       set { _inputs = value; OnPropertyChanged(); } }
+        //public List<string> Loop1Devices { get => _loop1Devices; set { _loop1Devices = value; OnPropertyChanged(); } }
+        //public List<string> Loop2Devices { get => _loop2Devices; set { _loop2Devices = value; OnPropertyChanged(); } }
+        //public List<string> Zones        { get => _zones;        set { _zones = value; OnPropertyChanged(); } }
+        //public List<string> ZoneNumbers  { get => _zoneNumbers;  set { _zoneNumbers = value; OnPropertyChanged(); } }
+        //public List<string> ZonesPanels  { get => _zonesPanels;  set { _zonesPanels = value; OnPropertyChanged(); } }
+        //public List<string> Groups       { get => _groups;       set { _groups = value; OnPropertyChanged(); } }
+        //public List<string> Sets         { get => _sets;         set { _sets = value; OnPropertyChanged(); } }
+        //public List<string> Events       { get => _events;       set { _events = value; OnPropertyChanged(); } }
+        //public List<string> EventNumbers { get => _eventNumbers; set { _eventNumbers = value; OnPropertyChanged(); } }
+        //public List<string> Relays       { get => _relays;       set { _relays = value; OnPropertyChanged(); } }
+        //public List<string> SetsRelays   { get => _setsRelays;   set { _setsRelays = value; OnPropertyChanged(); } }
+        //public List<string> Times        { get => _times;        set { _times = value; OnPropertyChanged(); } }
+        //public List<string> TrueOrFalse  { get => _trueOrFalse;  set { _trueOrFalse = value; OnPropertyChanged(); } }
 
 
         private int getListIndex(List<string> list, string item)
@@ -808,6 +892,21 @@ namespace Xfp.ViewModels.PanelTools
             if (index is not null && index >= 0 && index < list.Count)
                 return (int)index;
             return -1;
+        }
+        
+
+        internal void InitFixedComboLists()
+        {
+            _zoneNumbers = new() { "" };
+            for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                _zoneNumbers.Add((i + 1).ToString());
+
+            _eventNumbers = new() { "" };
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+                _eventNumbers.Add((i + 1).ToString());
+
+            OnPropertyChanged(nameof(ZoneNumbers));
+            OnPropertyChanged(nameof(EventNumbers));
         }
         #endregion
 
@@ -838,11 +937,17 @@ namespace Xfp.ViewModels.PanelTools
             //OnPropertyChanged(nameof(SelectedResetParam2));
             ////OnPropertyChanged(nameof(SelectedResetConditionIndex));
             //OnPropertyChanged(nameof(SelectedResetCondition));
+
+            //InitFixedComboLists();
         }
 
         //public void RefreshView(int errorCode = 0)
         public void RefreshView()
         {
+            //InitFixedComboLists();
+
+            var tp = SelectedTriggerParamIndex;
+
             OnPropertyChanged(nameof(Actions));
             OnPropertyChanged(nameof(Triggers));
             OnPropertyChanged(nameof(Groups));
@@ -861,24 +966,24 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(TrueOrFalse));
 
             OnPropertyChanged(nameof(CENumber));
-            OnPropertyChanged(nameof(ActionType));
-            OnPropertyChanged(nameof(ActionParam));
-            OnPropertyChanged(nameof(TriggerType));
-            OnPropertyChanged(nameof(TriggerParam));
-            OnPropertyChanged(nameof(TriggerParam2));
-            OnPropertyChanged(nameof(TriggerCondition));
-            OnPropertyChanged(nameof(ResetType));
-            OnPropertyChanged(nameof(ResetParam));
-            OnPropertyChanged(nameof(ResetParam2));
-            OnPropertyChanged(nameof(ResetCondition));
+            //OnPropertyChanged(nameof(ActionType));
+            //OnPropertyChanged(nameof(ActionParam));
+            //OnPropertyChanged(nameof(TriggerType));
+            //OnPropertyChanged(nameof(TriggerParam));
+            //OnPropertyChanged(nameof(TriggerParam2));
+            //OnPropertyChanged(nameof(TriggerCondition));
+            //OnPropertyChanged(nameof(ResetType));
+            //OnPropertyChanged(nameof(ResetParam));
+            //OnPropertyChanged(nameof(ResetParam2));
+            //OnPropertyChanged(nameof(ResetCondition));
 
             OnPropertyChanged(nameof(SelectedActionType));
             OnPropertyChanged(nameof(SelectedActionParam));
             //OnPropertyChanged(nameof(SelectedActionParamIndex));
             OnPropertyChanged(nameof(SelectedTriggerType));
-            OnPropertyChanged(nameof(SelectedTriggerParam));
+            //OnPropertyChanged(nameof(SelectedTriggerParam));
             OnPropertyChanged(nameof(SelectedTriggerParam2));
-            //OnPropertyChanged(nameof(SelectedTriggerParamIndex));
+            OnPropertyChanged(nameof(SelectedTriggerParamIndex));
             //OnPropertyChanged(nameof(SelectedTriggerParam2Index));
             //OnPropertyChanged(nameof(SelectedTriggerConditionIndex));
             OnPropertyChanged(nameof(SelectedTriggerCondition));
@@ -901,6 +1006,8 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam1));
             OnPropertyChanged(nameof(IndicateInvalidSelectedResetParam2));
             OnPropertyChanged(nameof(ResetConditionIsValid));
+
+            SelectedTriggerParam = getTriggerParamString(tp);
 
             updateSelections();
         }
