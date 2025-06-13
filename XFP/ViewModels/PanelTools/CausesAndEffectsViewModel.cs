@@ -154,18 +154,18 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getTrueOrFalse() => _trueOrFalse;
 
         private List<string> getActionsList()      => _data?.GetCEActionsList();
-        private List<string> getTriggersList()     { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data?.GetCETriggersList()); return tt; }
-        private List<string> getGroupsList()       { List<string> gg = new() { "" }; if (_data is not null) gg.AddRange(_data?.GetGroupsList());     return gg; }
-        private List<string> getInputsList()       { List<string> ii = new() { "" }; if (_data is not null) ii.AddRange(_data?.GetInputsList());     return ii; }
-        private List<string> getLoop1DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data?.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
-        private List<string> getLoop2DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data?.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
-        private List<string> getZonesList()        { List<string> zz = new() { "" }; if (_data is not null) zz.AddRange(_data?.GetZonesList());      return zz; }
-        private List<string> getZonePanelsList()   { List<string> zp = new() { "" }; if (_data is not null) zp.AddRange(_data?.GetZonePanelsList()); return zp; }
-        private List<string> getSetsList()         { List<string> ss = new() { "" }; if (_data is not null) ss.AddRange(_data?.GetSetsList());       return ss; }
-        private List<string> getEventsList()       { List<string> ee = new() { "" }; if (_data is not null) ee.AddRange(_data?.GetEventsList());     return ee; }
-        private List<string> getRelaysList()       { List<string> rr = new() { "" }; if (_data is not null) rr.AddRange(_data?.GetRelaysList());     return rr; }
-        private List<string> getSetsRelaysList()   { List<string> sr = new() { "" }; if (_data is not null) sr.AddRange(_data?.GetSetsRelaysList()); return sr; }
-        private List<string> getTimersList()       { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data?.GetCETimerTList());   return tt; }
+        private List<string> getTriggersList()     { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETriggersList()); return tt; }
+        private List<string> getGroupsList()       { List<string> gg = new() { "" }; if (_data is not null) gg.AddRange(_data.GetGroupsList());     return gg; }
+        private List<string> getInputsList()       { List<string> ii = new() { "" }; if (_data is not null) ii.AddRange(_data.GetInputsList());     return ii; }
+        private List<string> getLoop1DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        private List<string> getLoop2DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        private List<string> getZonesList()        { List<string> zz = new() { "" }; if (_data is not null) zz.AddRange(_data.GetZonesList());      return zz; }
+        private List<string> getZonePanelsList()   { List<string> zp = new() { "" }; if (_data is not null) zp.AddRange(_data.GetZonePanelsList()); return zp; }
+        private List<string> getSetsList()         { List<string> ss = new() { "" }; if (_data is not null) ss.AddRange(_data.GetSetsList());       return ss; }
+        private List<string> getEventsList()       { List<string> ee = new() { "" }; if (_data is not null) ee.AddRange(_data.GetEventsList());     return ee; }
+        private List<string> getRelaysList()       { List<string> rr = new() { "" }; if (_data is not null) rr.AddRange(_data.GetRelaysList());     return rr; }
+        private List<string> getSetsRelaysList()   { List<string> sr = new() { "" }; if (_data is not null) sr.AddRange(_data.GetSetsRelaysList()); return sr; }
+        private List<string> getTimersList()       { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETimerTList());   return tt; }
 
         internal void InitComboLists()
         {

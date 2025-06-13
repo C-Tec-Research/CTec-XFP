@@ -1052,12 +1052,12 @@ namespace Xfp.ViewModels.PanelTools
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
-                    var zg = d.IOConfigItems[index].ZoneGroupSet is null ? ""
-                                                                         : d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
-                                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Input ? _zones[(int)d.IOConfigItems[index].ZoneGroupSet]
-                                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Output ? 
-                                                                           d.IsGroupedDevice ? _groups[(int)d.IOConfigItems[index].ZoneGroupSet] 
-                                                                                             : _sets[(int)d.IOConfigItems[index].ZoneGroupSet] : null;
+                    var zg = d.IOConfigItems[index].ZoneGroupSet is null || (int)d.IOConfigItems[index].ZoneGroupSet < 0 ? ""
+                                : d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
+                                : d.IOConfigItems[index].InputOutput == IOTypes.Input ? _zones[(int)d.IOConfigItems[index].ZoneGroupSet]
+                                : d.IOConfigItems[index].InputOutput == IOTypes.Output ? 
+                                    d.IsGroupedDevice ? _groups[(int)d.IOConfigItems[index].ZoneGroupSet] 
+                                                      : _sets[(int)d.IOConfigItems[index].ZoneGroupSet] : null;
                     if (zoneGroup is null)
                         zoneGroup = zg;
                     else if (zoneGroup != zg)
