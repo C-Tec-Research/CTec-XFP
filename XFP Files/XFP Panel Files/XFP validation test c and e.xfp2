@@ -47,12 +47,12 @@
             "ActionType": 100,
             "ActionParam": 1,
             "TriggerType": 5,
-            "TriggerParam": 0,
+            "TriggerParam": 2,
             "TriggerParam2": 0,
             "TriggerCondition": true,
-            "ResetType": 70,
-            "ResetParam": 0,
-            "ResetParam2": 0,
+            "ResetType": 5,
+            "ResetParam": 1,
+            "ResetParam2": -1,
             "ResetCondition": false
           },
           {

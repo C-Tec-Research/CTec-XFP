@@ -44,7 +44,7 @@ namespace Xfp.ViewModels.PanelTools
                 c.ActionsMenu      = getActions;
                 c.TriggersMenu     = getTriggers;
                 c.InputsMenu       = getInputs;
-                c.Loop1DevicesMenu = GetLoop1Devices;
+                c.Loop1DevicesMenu = getLoop1Devices;
                 c.Loop2DevicesMenu = getLoop2Devices;
                 c.ZonesMenu        = getZones;
                 //c.ZoneNumbersMenu  = getZoneNumbers;
@@ -125,12 +125,10 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> _loop1Devices { get; set; }
         private List<string> _loop2Devices { get; set; }
         private List<string> _zones { get; set; }
-        private List<string> _zoneNumbers { get; set; }
         private List<string> _zonesPanels { get; set; }
         private List<string> _groups { get; set; }
         private List<string> _sets { get; set; }
         private List<string> _events { get; set; }
-        private List<string> _eventNumbers { get; set; }
         private List<string> _relays { get; set; }
         private List<string> _setsRelays { get; set; }
         private List<string> _times { get; set; }
@@ -139,15 +137,13 @@ namespace Xfp.ViewModels.PanelTools
         private List<string> getActions() => _actions;
         private List<string> getTriggers() => _triggers;
         private List<string> getInputs() => _inputs;
-        internal List<string> GetLoop1Devices() => getLoop1DevicesList();
-        private List<string> getLoop2Devices() => _loop2Devices;
+        private List<string> getLoop1Devices() => getLoop1DevicesList();
+        private List<string> getLoop2Devices() => getLoop2DevicesList();
         private List<string> getZones() => _zones;
-        //private List<string> getZoneNumbers() => _zoneNumbers;
         private List<string> getZonesPanels() => _zonesPanels;
         private List<string> getGroups() => _groups;
         private List<string> getSets() => _sets;
         private List<string> getEvents() => _events;
-        //private List<string> getEventNumbers() => _eventNumbers;
         private List<string> getRelays() => _relays;
         private List<string> getSetsRelays() => _setsRelays;
         private List<string> getTimes() => _times;
@@ -171,22 +167,6 @@ namespace Xfp.ViewModels.PanelTools
         {
             if (_data is not null)
             {
-                //if (_actions is null)      _actions = getActionsList();
-                //if (_triggers is null)     _triggers = getTriggersList();
-                //if (_groups is null)       _groups = getGroupsList();
-                //if (_inputs is null)       _inputs = getInputsList();
-                //if (_loop1Devices is null) _loop1Devices = getLoop1DevicesList();
-                //if (_loop2Devices is null) _loop2Devices = getLoop2DevicesList();
-                //if (_zones is null)        _zones = getZonesList();
-                //if (_zonesPanels is null)  _zonesPanels = getZonePanelsList();
-                //if (_sets is null)         _sets = getSetsList();
-                //if (_events is null)       _events = getEventsList();
-                //if (_relays is null)       _relays = getRelaysList();
-                //if (_setsRelays is null)   _setsRelays = getSetsRelaysList();
-                //if (_times is null)        _times = getTimersList();
-
-                //_data.ResetLists();
-
                 _actions      = getActionsList();
                 _triggers     = getTriggersList();
                 _groups       = getGroupsList();
@@ -202,34 +182,17 @@ namespace Xfp.ViewModels.PanelTools
                 _times        = getTimersList();
             }
 
-            //if (_zoneNumbers is null)
-            //{
-            //    _zoneNumbers = new() { "" };
-            //    for (int i = 0; i < ZoneConfigData.NumZones; i++)
-            //        _zoneNumbers.Add((i + 1).ToString());
-            //}
-
-            //if (_eventNumbers is null)
-            //{
-            //    _eventNumbers = new() { "" };
-            //    for (int i = 0; i < CEConfigData.NumEvents; i++)
-            //    {
-            //        //_events.Add(string.Format(Cultures.Resources.Event_x, i + 1));
-            //        _eventNumbers.Add((i + 1).ToString());
-            //    }
-            //}
 
             if (_trueOrFalse is null)
             {
-                _trueOrFalse = new() { Cultures.Resources.True, Cultures.Resources.False };
+                _trueOrFalse = new() { "", Cultures.Resources.True, Cultures.Resources.False };
             }
             else
             {
-                _trueOrFalse[0] = Cultures.Resources.True;
-                _trueOrFalse[1] = Cultures.Resources.False;
+                _trueOrFalse[1] = Cultures.Resources.True;
+                _trueOrFalse[2] = Cultures.Resources.False;
             }
 
-            //initTimersList();
 
             _times = new() { "" };
             int t = 1;
@@ -237,57 +200,9 @@ namespace Xfp.ViewModels.PanelTools
                 _times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
 
             foreach (var ce in _ceConfigItems)
-            {
-                //ce.Actions = _actions;
-                //ce.Triggers = _triggers;
-                //ce.Groups = _groups;
-                //ce.Inputs = _inputs;
-                //ce.Loop1Devices = _loop1Devices;
-                //ce.Loop2Devices = _loop2Devices;
-                //ce.Zones = _zones;
-                //ce.ZonesPanels = _zonesPanels;
-                //ce.ZoneNumbers = _zoneNumbers;
-                //ce.Sets = _sets;
-                //ce.Events = _events;
-                //ce.EventNumbers = _eventNumbers;
-                //ce.Relays = _relays;
-                //ce.SetsRelays = _setsRelays;
-                //ce.TrueOrFalse = _trueOrFalse;
-                //ce.Times = _times;
-                ce.RefreshView();
-            }
+                ce.RefreshComboLists();
         }
 
-        //internal void InitFixedComboLists()
-        //{
-        //    //if (_zoneNumbers is null)
-        //    //{
-        //    //    _zoneNumbers = new() { "" };
-        //    //    for (int i = 0; i < ZoneConfigData.NumZones; i++)
-        //    //        _zoneNumbers.Add((i + 1).ToString());
-        //    //}
-
-        //    //if (_eventNumbers is null)
-        //    //{
-        //    //    _eventNumbers = new() { "" };
-        //    //    for (int i = 0; i < CEConfigData.NumEvents; i++)
-        //    //        _eventNumbers.Add((i + 1).ToString());
-        //    //}
-
-        //    //foreach (var ce in _ceConfigItems)
-        //    //{
-        //    //    ce.ZoneNumbers = _zoneNumbers;
-        //    //    ce.EventNumbers = _eventNumbers;
-        //    //}
-        //}
-
-        //private void initTimersList()
-        //{
-        //    _times = new();
-        //    int t = 1;
-        //    foreach (var time in TimerEvents)
-        //        _times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
-        //}
 
         private void updateTimersList()
         {
@@ -295,7 +210,7 @@ namespace Xfp.ViewModels.PanelTools
                 _times[i] = string.Format(Cultures.Resources.Time_T_x, i + 1) + ": " + TimerEvents[i].ToString(@"hh\:mm");
             
             foreach (var c in _ceConfigItems)
-                c.RefreshView();
+                c.RefreshComboLists();
         }
         #endregion
 
@@ -327,34 +242,9 @@ namespace Xfp.ViewModels.PanelTools
         { 
             InitComboLists();
 
-//            _ceConfigItems.Clear();
             if (_data.CurrentPanel.CEConfig.Events is not null)
-            {
                 for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count && i < CEConfigItems.Count; i++)
-                {
-                    //var c = new CausesAndEffectsItemViewModel(data.CurrentPanel.CEConfig.Events[i], i, data.CurrentPanel.LoopConfig);
-                    //c.SetCulture(CultureInfo.CurrentCulture);
-                    //c.ActionsMenu      = getActions;
-                    //c.TriggersMenu     = getTriggers;
-                    //c.InputsMenu       = getInputs;
-                    //c.Loop1DevicesMenu = GetLoop1Devices;
-                    //c.Loop2DevicesMenu = getLoop2Devices;
-                    //c.ZonesMenu        = getZones;
-                    //c.ZoneNumbersMenu  = getZoneNumbers;
-                    //c.ZonesPanelsMenu  = getZonesPanels;
-                    //c.GroupsMenu       = getGroups;
-                    //c.SetsMenu         = getSets;
-                    //c.EventsMenu       = getEvents;
-                    //c.EventNumbersMenu = getEventNumbers;
-                    //c.RelaysMenu       = getRelays;
-                    //c.SetsRelaysMenu   = getSetsRelays;
-                    //c.TimesMenu        = getTimes;
-                    //c.TrueOrFalseMenu  = getTrueOrFalse;
-                    //_ceConfigItems.Add(c);
-
                     CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
-                }
-            }
             
             refreshView(false);
         }
@@ -370,7 +260,6 @@ namespace Xfp.ViewModels.PanelTools
             if (initComboLists)
                 InitComboLists();
 
-            //OnPropertyChanged(nameof(TimerEvents));
             OnPropertyChanged(nameof(TimerEvent1));
             OnPropertyChanged(nameof(TimerEvent2));
             OnPropertyChanged(nameof(TimerEvent3));
@@ -388,25 +277,6 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(TimerEvent15));
             OnPropertyChanged(nameof(TimerEvent16));
             OnPropertyChanged(nameof(ColumnWidths));
-
-            //OnPropertyChanged(nameof(CEItem1));
-            //OnPropertyChanged(nameof(CEItem2));
-            //OnPropertyChanged(nameof(CEItem3));
-            //OnPropertyChanged(nameof(CEItem4));
-            //OnPropertyChanged(nameof(CEItem5));
-            //OnPropertyChanged(nameof(CEItem6));
-            //OnPropertyChanged(nameof(CEItem7));
-            //OnPropertyChanged(nameof(CEItem8));
-            //OnPropertyChanged(nameof(CEItem9));
-            //OnPropertyChanged(nameof(CEItem10));
-            //OnPropertyChanged(nameof(CEItem11));
-            //OnPropertyChanged(nameof(CEItem12));
-            //OnPropertyChanged(nameof(CEItem13));
-            //OnPropertyChanged(nameof(CEItem14));
-            //OnPropertyChanged(nameof(CEItem15));
-            //OnPropertyChanged(nameof(CEItem16));
-
-            //OnPropertyChanged(nameof(CEConfigItems));
 
             foreach (var c in CEConfigItems)
                 c.RefreshView();

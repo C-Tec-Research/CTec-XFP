@@ -60,10 +60,7 @@ namespace Xfp.DataTypes.PanelData
         /// <summary>
         /// Returns an initialised GroupData object.
         /// </summary>
-        internal static new CEEvent InitialisedNew()
-        {
-            return new();
-        }
+        internal static new CEEvent InitialisedNew() => new();
 
 
         public override bool Equals(ConfigData otherData)

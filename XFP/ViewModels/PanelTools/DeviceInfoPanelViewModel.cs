@@ -317,7 +317,8 @@ namespace Xfp.ViewModels.PanelTools
                         _groupIndex = -1;
                         return null;
                     }
-                    return Groups[_groupIndex??0];
+
+                    return _groupIndex == -1 ? null : Groups[_groupIndex??0];
                 }
 
                 _groupIndex = null;

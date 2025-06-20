@@ -102,8 +102,9 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
             {
                 if (validationCodes is not null)
                     foreach (var v in validationCodes)
-                        if ((e = ConfigData.GetErrorLevel(v.ValidationCode)) > result)
-                            result = e;
+                        if (v is not null)
+                            if ((e = ConfigData.GetErrorLevel(v.ValidationCode)) > result)
+                                result = e;
             } catch { }
 
             return result;
@@ -191,23 +192,30 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 if (i is null)
                     continue;
 
-                elv = i.GetHighestErrorLevel();
-                if (elv > ErrorLevel)
-                    ErrorLevel = elv;
-
-                ErrorLevels elv2 = ErrorLevels.OK;
-                if (i.ValidationCodes is not null)
+                try
                 {
-                    foreach (var j in i.ValidationCodes)
-                    {
-                        var el3 = j.ErrorLevel = ConfigData.GetErrorLevel(j.ValidationCode);
-                        if (el3 > elv2)
-                            elv2 = el3;
-                    }
-                }
+                    elv = i.GetHighestErrorLevel();
+                    if (elv > ErrorLevel)
+                        ErrorLevel = elv;
 
-                if (elv2 > ErrorLevel)
-                    ErrorLevel = elv2;
+                    ErrorLevels elv2 = ErrorLevels.OK;
+                    if (i.ValidationCodes is not null)
+                    {
+                        foreach (var j in i.ValidationCodes)
+                        {
+                            if (j is not null)
+                            {
+                                var el3 = j.ErrorLevel = ConfigData.GetErrorLevel(j.ValidationCode);
+                                if (el3 > elv2)
+                                    elv2 = el3;
+                            }
+                        }
+                    }
+
+                    if (elv2 > ErrorLevel)
+                        ErrorLevel = elv2;
+                }
+                catch { }
             }
 
 
