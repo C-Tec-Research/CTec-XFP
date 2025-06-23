@@ -412,9 +412,9 @@ namespace Xfp.ViewModels
             set
             {
                 //refresh previous page first to make sure the bindings are up-to-date when we refresh the new page
-                if (value == _ceConfigPage)
-                    ((_currentPage = value).DataContext as IPanelToolsViewModel)?.PopulateView(_data);
-                else
+                //if (value == _ceConfigPage)
+                //    ((_currentPage = value).DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                //else
                     ((_currentPage = value)?.DataContext as IPanelToolsViewModel)?.RefreshView();
 
                 //if (_currentPage == _eventLogPage)

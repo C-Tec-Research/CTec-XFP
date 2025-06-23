@@ -41,22 +41,22 @@ namespace Xfp.ViewModels.PanelTools
             for (int i = 0; i < CEConfigData.NumEvents; i++)
             {
                 var c = new CausesAndEffectsItemViewModel(new(), i);
-                c.ActionsMenu      = getActions;
-                c.TriggersMenu     = getTriggers;
-                c.InputsMenu       = getInputs;
-                c.Loop1DevicesMenu = getLoop1Devices;
-                c.Loop2DevicesMenu = getLoop2Devices;
-                c.ZonesMenu        = getZones;
-                //c.ZoneNumbersMenu  = getZoneNumbers;
-                c.ZonesPanelsMenu  = getZonesPanels;
-                c.GroupsMenu       = getGroups;
-                c.SetsMenu         = getSets;
-                c.EventsMenu       = getEvents;
-                //c.EventNumbersMenu = getEventNumbers;
-                c.RelaysMenu       = getRelays;
-                c.SetsRelaysMenu   = getSetsRelays;
-                c.TimesMenu        = getTimes;
-                c.TrueOrFalseMenu  = getTrueOrFalse;
+                //c.ActionsMenu      = getActions;
+                //c.TriggersMenu     = getTriggers;
+                //c.InputsMenu       = getInputs;
+                //c.Loop1DevicesMenu = getLoop1Devices;
+                //c.Loop2DevicesMenu = getLoop2Devices;
+                //c.ZonesMenu        = getZones;
+                ////c.ZoneNumbersMenu  = getZoneNumbers;
+                //c.ZonesPanelsMenu  = getZonesPanels;
+                //c.GroupsMenu       = getGroups;
+                //c.SetsMenu         = getSets;
+                //c.EventsMenu       = getEvents;
+                ////c.EventNumbersMenu = getEventNumbers;
+                //c.RelaysMenu       = getRelays;
+                //c.SetsRelaysMenu   = getSetsRelays;
+                //c.TimesMenu        = getTimes;
+                //c.TrueOrFalseMenu  = getTrueOrFalse;
                 CEConfigItems.Add(c);
             }
 
@@ -200,7 +200,23 @@ namespace Xfp.ViewModels.PanelTools
                 _times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
 
             foreach (var ce in _ceConfigItems)
-                ce.RefreshComboLists();
+            {
+                //ce.RefreshComboLists();
+                ce.Actions      = _actions;
+                ce.Triggers     = _triggers;
+                ce.Groups       = _groups;
+                ce.Inputs       = _inputs;
+                ce.Loop1Devices = _loop1Devices;
+                ce.Loop2Devices = _loop2Devices;
+                ce.Zones        = _zones;
+                ce.ZonesPanels  = _zonesPanels;
+                ce.Sets         = _sets;
+                ce.Events       = _events;
+                ce.Relays       = _relays;
+                ce.SetsRelays   = _setsRelays;
+                ce.Times        = _times;
+                ce.TrueOrFalse  = _trueOrFalse;
+            }
         }
 
 
@@ -210,7 +226,7 @@ namespace Xfp.ViewModels.PanelTools
                 _times[i] = string.Format(Cultures.Resources.Time_T_x, i + 1) + ": " + TimerEvents[i].ToString(@"hh\:mm");
             
             foreach (var c in _ceConfigItems)
-                c.RefreshComboLists();
+                c.RefreshTimesList();
         }
         #endregion
 
