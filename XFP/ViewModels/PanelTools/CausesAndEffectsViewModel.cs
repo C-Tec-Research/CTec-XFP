@@ -1,31 +1,12 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using CTecControls.UI;
-using CTecControls.ViewModels;
-using CTecDevices.Protocol;
-using CTecUtil.UI;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views;
-using Xfp.UI.Views.PanelTools;
-using static System.Windows.Forms.Design.AxImporter;
-using static Xfp.IO.PanelComms;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -37,76 +18,37 @@ namespace Xfp.ViewModels.PanelTools
             for (int i = 0; i < CEConfigData.NumEvents; i++)
                 _timerHeaders.Add(string.Format(Cultures.Resources.Time_T_x, i + 1));
 
-            //init empty events list with all the menu getters
-            for (int i = 0; i < CEConfigData.NumEvents; i++)
-            {
-                var c = new CausesAndEffectsItemViewModel(new(), i);
-                //c.ActionsMenu      = getActions;
-                //c.TriggersMenu     = getTriggers;
-                //c.InputsMenu       = getInputs;
-                //c.Loop1DevicesMenu = getLoop1Devices;
-                //c.Loop2DevicesMenu = getLoop2Devices;
-                //c.ZonesMenu        = getZones;
-                ////c.ZoneNumbersMenu  = getZoneNumbers;
-                //c.ZonesPanelsMenu  = getZonesPanels;
-                //c.GroupsMenu       = getGroups;
-                //c.SetsMenu         = getSets;
-                //c.EventsMenu       = getEvents;
-                ////c.EventNumbersMenu = getEventNumbers;
-                //c.RelaysMenu       = getRelays;
-                //c.SetsRelaysMenu   = getSetsRelays;
-                //c.TimesMenu        = getTimes;
-                //c.TrueOrFalseMenu  = getTrueOrFalse;
-                CEConfigItems.Add(c);
-            }
+            initFixedComboLists();
 
-            //InitFixedComboLists();
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+                CEConfigItems.Add(new CausesAndEffectsItemViewModel(new(), i));
         }
 
 
         private List<string> _timerHeaders;
 
-        //public delegate void SystemNameChangedHandler(string siteName);
-        //public SystemNameChangedHandler OnSystemNameChanged;
-
 
         public List<string>   TimerHeaders { get => _timerHeaders; }
         private List<TimeSpan> TimerEvents  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes??new(); }
-        public TimeSpan TimerEvent1  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent2  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent3  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent4  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent5  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent6  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent7  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent8  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent9  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); updateTimersList(); } }
-        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); updateTimersList(); } }
+        public TimeSpan TimerEvent1  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); updateTimersList(0); } }
+        public TimeSpan TimerEvent2  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); updateTimersList(1); } }
+        public TimeSpan TimerEvent3  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); updateTimersList(2); } }
+        public TimeSpan TimerEvent4  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); updateTimersList(3); } }
+        public TimeSpan TimerEvent5  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); updateTimersList(4); } }
+        public TimeSpan TimerEvent6  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); updateTimersList(5); } }
+        public TimeSpan TimerEvent7  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); updateTimersList(6); } }
+        public TimeSpan TimerEvent8  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); updateTimersList(7); } }
+        public TimeSpan TimerEvent9  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); updateTimersList(8); } }
+        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); updateTimersList(9); } }
+        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); updateTimersList(10); } }
+        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); updateTimersList(11); } }
+        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); updateTimersList(12); } }
+        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); updateTimersList(13); } }
+        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); updateTimersList(14); } }
+        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); updateTimersList(15); } }
 
         private ObservableCollection<CausesAndEffectsItemViewModel> _ceConfigItems = new();
         public ObservableCollection<CausesAndEffectsItemViewModel> CEConfigItems { get => _ceConfigItems; set { _ceConfigItems = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem1  { get => _ceConfigItems[0]; set { _ceConfigItems[0] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem2  { get => _ceConfigItems[1]; set { _ceConfigItems[1] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem3  { get => _ceConfigItems[2]; set { _ceConfigItems[2] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem4  { get => _ceConfigItems[3]; set { _ceConfigItems[3] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem5  { get => _ceConfigItems[4]; set { _ceConfigItems[4] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem6  { get => _ceConfigItems[5]; set { _ceConfigItems[5] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem7  { get => _ceConfigItems[6]; set { _ceConfigItems[6] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem8  { get => _ceConfigItems[7]; set { _ceConfigItems[7] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem9  { get => _ceConfigItems[8]; set { _ceConfigItems[8] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem10 { get => _ceConfigItems[9]; set { _ceConfigItems[9] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem11 { get => _ceConfigItems[10]; set { _ceConfigItems[10] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem12 { get => _ceConfigItems[11]; set { _ceConfigItems[11] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem13 { get => _ceConfigItems[12]; set { _ceConfigItems[12] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem14 { get => _ceConfigItems[13]; set { _ceConfigItems[13] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem15 { get => _ceConfigItems[14]; set { _ceConfigItems[14] = value; OnPropertyChanged(); } }
-        //public CausesAndEffectsItemViewModel CEItem16 { get => _ceConfigItems[15]; set { _ceConfigItems[15] = value; OnPropertyChanged(); } }
         
         private double       _dataGridWidth = 400.0;
         private List<double> _columnWidths = new();
@@ -119,114 +61,285 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region comboboxes
-        private List<string> _actions { get; set; }
-        private List<string> _triggers { get; set; }
-        private List<string> _inputs { get; set; }
-        private List<string> _loop1Devices { get; set; }
-        private List<string> _loop2Devices { get; set; }
-        private List<string> _zones { get; set; }
-        private List<string> _zonesPanels { get; set; }
-        private List<string> _groups { get; set; }
-        private List<string> _sets { get; set; }
-        private List<string> _events { get; set; }
-        private List<string> _relays { get; set; }
-        private List<string> _setsRelays { get; set; }
-        private List<string> _times { get; set; }
-        private List<string> _trueOrFalse { get; set; }
+        public List<string> Actions { get; set; }
+        public List<string> Triggers { get; set; }
+        public List<string> Inputs { get; set; }
+        public List<string> Loop1Devices { get; set; }
+        public List<string> Loop2Devices { get; set; }
+        public List<string> Zones { get; set; }
+        public List<string> ZonesPanels { get; set; }
+        public List<string> Groups { get; set; }
+        public List<string> Sets { get; set; }
+        public List<string> Events { get; set; }
+        public List<string> Relays { get; set; }
+        public List<string> SetsRelays { get; set; }
+        public List<string> Times { get; set; }
+        public List<string> TrueOrFalse { get; set; }
+        public List<string> ZoneNumbers { get; set; }
+        public List<string> EventNumbers { get; set; }
 
-        private List<string> getActions() => _actions;
-        private List<string> getTriggers() => _triggers;
-        private List<string> getInputs() => _inputs;
-        private List<string> getLoop1Devices() => getLoop1DevicesList();
-        private List<string> getLoop2Devices() => getLoop2DevicesList();
-        private List<string> getZones() => _zones;
-        private List<string> getZonesPanels() => _zonesPanels;
-        private List<string> getGroups() => _groups;
-        private List<string> getSets() => _sets;
-        private List<string> getEvents() => _events;
-        private List<string> getRelays() => _relays;
-        private List<string> getSetsRelays() => _setsRelays;
-        private List<string> getTimes() => _times;
-        private List<string> getTrueOrFalse() => _trueOrFalse;
-
-        private List<string> getActionsList()      => _data?.GetCEActionsList();
-        private List<string> getTriggersList()     { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETriggersList()); return tt; }
-        private List<string> getGroupsList()       { List<string> gg = new() { "" }; if (_data is not null) gg.AddRange(_data.GetGroupsList());     return gg; }
-        private List<string> getInputsList()       { List<string> ii = new() { "" }; if (_data is not null) ii.AddRange(_data.GetInputsList());     return ii; }
-        private List<string> getLoop1DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
-        private List<string> getLoop2DevicesList() { List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
-        private List<string> getZonesList()        { List<string> zz = new() { "" }; if (_data is not null) zz.AddRange(_data.GetZonesList());      return zz; }
-        private List<string> getZonePanelsList()   { List<string> zp = new() { "" }; if (_data is not null) zp.AddRange(_data.GetZonePanelsList()); return zp; }
-        private List<string> getSetsList()         { List<string> ss = new() { "" }; if (_data is not null) ss.AddRange(_data.GetSetsList());       return ss; }
-        private List<string> getEventsList()       { List<string> ee = new() { "" }; if (_data is not null) ee.AddRange(_data.GetEventsList());     return ee; }
-        private List<string> getRelaysList()       { List<string> rr = new() { "" }; if (_data is not null) rr.AddRange(_data.GetRelaysList());     return rr; }
-        private List<string> getSetsRelaysList()   { List<string> sr = new() { "" }; if (_data is not null) sr.AddRange(_data.GetSetsRelaysList()); return sr; }
-        private List<string> getTimersList()       { List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETimerTList());   return tt; }
-
-        internal void InitComboLists()
+        private void getActionsList()
         {
-            if (_data is not null)
+            if (Actions is null)
             {
-                _actions      = getActionsList();
-                _triggers     = getTriggersList();
-                _groups       = getGroupsList();
-                _inputs       = getInputsList();
-                _loop1Devices = getLoop1DevicesList();
-                _loop2Devices = getLoop2DevicesList();
-                _zones        = getZonesList();
-                _zonesPanels  = getZonePanelsList();
-                _sets         = getSetsList();
-                _events       = getEventsList();
-                _relays       = getRelaysList();
-                _setsRelays   = getSetsRelaysList();
-                _times        = getTimersList();
-            }
-
-
-            if (_trueOrFalse is null)
-            {
-                _trueOrFalse = new() { "", Cultures.Resources.True, Cultures.Resources.False };
+                Actions = _data.GetCEActionsList();
             }
             else
             {
-                _trueOrFalse[1] = Cultures.Resources.True;
-                _trueOrFalse[2] = Cultures.Resources.False;
-            }
-
-
-            _times = new() { "" };
-            int t = 1;
-            foreach (var time in TimerEvents)
-                _times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
-
-            foreach (var ce in _ceConfigItems)
-            {
-                //ce.RefreshComboLists();
-                ce.Actions      = _actions;
-                ce.Triggers     = _triggers;
-                ce.Groups       = _groups;
-                ce.Inputs       = _inputs;
-                ce.Loop1Devices = _loop1Devices;
-                ce.Loop2Devices = _loop2Devices;
-                ce.Zones        = _zones;
-                ce.ZonesPanels  = _zonesPanels;
-                ce.Sets         = _sets;
-                ce.Events       = _events;
-                ce.Relays       = _relays;
-                ce.SetsRelays   = _setsRelays;
-                ce.Times        = _times;
-                ce.TrueOrFalse  = _trueOrFalse;
+                int i = 0;
+                foreach (var a in _data.GetCEActionsList())
+                    Actions[i++] = a;
             }
         }
 
-
-        private void updateTimersList()
+        private void getTriggersList()
+        //{ List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETriggersList()); return tt; }
         {
-            for (int i = 0; i < TimerEvents.Count; i++)
-                _times[i] = string.Format(Cultures.Resources.Time_T_x, i + 1) + ": " + TimerEvents[i].ToString(@"hh\:mm");
-            
-            foreach (var c in _ceConfigItems)
-                c.RefreshTimesList();
+            if (Triggers is null)
+            {
+                Triggers = ["", .. _data.GetCETriggersList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var t in _data.GetCETriggersList())
+                    Triggers[i++] = t;
+            }
+        }
+
+        private void getGroupsList()
+        //{ List<string> gg = new() { "" }; if (_data is not null) gg.AddRange(_data.GetGroupsList());     return gg; }
+        {
+            if (Groups is null)
+            {
+                Groups = ["", .. _data.GetGroupsList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var g in _data.GetGroupsList())
+                    Groups[i++] = g;
+            }
+        }
+
+        private void getInputsList()
+        //{ List<string> ii = new() { "" }; if (_data is not null) ii.AddRange(_data.GetInputsList());     return ii; }
+        {
+            if (Inputs is null)
+            {
+                Inputs = ["", .. _data.GetInputsList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var n in _data.GetInputsList())
+                    Inputs[i++] = n;
+            }
+        }
+        
+        private void getLoop1DevicesList()
+        //{ List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        {
+            if (Loop1Devices is null)
+            {
+                Loop1Devices = ["", .. _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var d in _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber))
+                    Loop1Devices[i++] = d;
+            }
+            OnPropertyChanged(nameof(Loop1Devices));
+        }
+
+        private void getLoop2DevicesList()
+        //{ List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
+        {
+            if (Loop2Devices is null)
+            {
+                Loop2Devices = ["", .. _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var d in _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber))
+                    Loop2Devices[i++] = d;
+            }
+        }
+
+        private void getZonesList()        
+        //{ List<string> zz = new() { "" }; if (_data is not null) zz.AddRange(_data.GetZonesList());      return zz; }
+        {
+            if (Zones is null)
+            {
+                Zones = ["", .. _data.GetZonesList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var z in _data.GetZonesList())
+                    Zones[i++] = z;
+            }
+        }
+
+        private void getZonePanelsList()
+        //{ List<string> zp = new() { "" }; if (_data is not null) zp.AddRange(_data.GetZonePanelsList()); return zp; }
+        {
+            if (ZonesPanels is null)
+            {
+                ZonesPanels = ["", .. _data.GetZonePanelsList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var z in _data.GetZonePanelsList())
+                    ZonesPanels[i++] = z;
+            }
+        }
+
+        private void getSetsList()
+        {
+//{ List<string> ss = new() { "" }; if (_data is not null) ss.AddRange(_data.GetSetsList());       return ss; }
+            if (Sets is null)
+            {
+                Sets = ["", .. _data.GetSetsList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var s in _data.GetSetsList())
+                    Sets[i++] = s;
+            }
+        }
+
+        private void getEventsList()
+        //{ List<string> ee = new() { "" }; if (_data is not null) ee.AddRange(_data.GetEventsList());     return ee; }
+        {
+            if (Events is null)
+            {
+                Events = ["", .. _data.GetEventsList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var e in _data.GetEventsList())
+                    Events[i++] = e;
+            }
+        }
+
+        private void getRelaysList()
+        //{ List<string> rr = new() { "" }; if (_data is not null) rr.AddRange(_data.GetRelaysList());     return rr; }
+        {
+            if (Relays is null)
+            {
+                Relays = ["", .. _data.GetRelaysList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var s in _data.GetRelaysList())
+                    Relays[i++] = s;
+            }
+        }
+
+        private void getSetsRelaysList()   
+        //{ List<string> sr = new() { "" }; if (_data is not null) sr.AddRange(_data.GetSetsRelaysList()); return sr; }
+        {
+            if (SetsRelays is null)
+            {
+                SetsRelays = ["", .. _data.GetSetsRelaysList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var s in _data.GetSetsRelaysList())
+                    SetsRelays[i++] = s;
+            }
+        }
+
+        private void getTimesList()
+        //{ List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETimerTList());   return tt; }
+        {
+            if (Times is null)
+            {
+                Times = ["", .. _data.GetCETimerTList()];
+            }
+            else
+            {
+                int i = 1;
+                foreach (var t in _data.GetCETimerTList())
+                    Times[i++] = t;
+            }
+        }
+
+        
+        /// <summary>
+        /// Initialise the Zone and Group number lists (i.e. numerals-only list)
+        /// </summary>
+        private void initFixedComboLists()
+        {
+            ZoneNumbers = new() { "" };
+            for (int i = 0; i < ZoneConfigData.NumZones; i++)
+                ZoneNumbers.Add((i + 1).ToString());
+
+            EventNumbers = new() { "" };
+            for (int i = 0; i < CEConfigData.NumEvents; i++)
+                EventNumbers.Add((i + 1).ToString());
+
+            OnPropertyChanged(nameof(ZoneNumbers));
+            OnPropertyChanged(nameof(EventNumbers));
+        }
+
+        internal void InitComboLists()
+        {
+            foreach (var ce in CEConfigItems)
+                ce.SaveIndices();
+
+            if (_data is not null)
+            {
+                getActionsList();
+                getTriggersList();
+                getGroupsList();
+                getInputsList();
+                getLoop1DevicesList();
+                getLoop2DevicesList();
+                getZonesList();
+                getZonePanelsList();
+                getSetsList();
+                getEventsList();
+                getRelaysList();
+                getSetsRelaysList();
+                getTimesList();
+            }
+
+
+            if (TrueOrFalse is null)
+            {
+                TrueOrFalse = new() { "", Cultures.Resources.True, Cultures.Resources.False };
+            }
+            else
+            {
+                TrueOrFalse[1] = Cultures.Resources.True;
+                TrueOrFalse[2] = Cultures.Resources.False;
+            }
+
+
+            //Times = new() { "" };
+            //int t = 1;
+            //foreach (var time in TimerEvents)
+            //    Times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
+
+            foreach (var ce in CEConfigItems)
+                ce.RestoreIndices();
+        }
+
+
+        private void updateTimersList(int index)
+        {
+            //for (int i = 0; i < TimerEvents.Count; i++)
+            //    Times[i] = string.Format(Cultures.Resources.Time_T_x, i + 1) + ": " + TimerEvents[i].ToString(@"hh\:mm");
+            Times[index] = string.Format(Cultures.Resources.Time_T_x, index + 1) + ": " + TimerEvents[index].ToString(@"hh\:mm");
         }
         #endregion
 
@@ -236,6 +349,10 @@ namespace Xfp.ViewModels.PanelTools
         {
             PageHeader = Cultures.Resources.Nav_C_And_E_Configuration;
             InitComboLists();
+            
+            foreach (var ce in _ceConfigItems)
+                ce.SetCulture(culture);
+
             RefreshView();
 
             CultureChanged?.Invoke(culture);
@@ -262,7 +379,7 @@ namespace Xfp.ViewModels.PanelTools
                 for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count && i < CEConfigItems.Count; i++)
                     CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
             
-            refreshView(false);
+            //refreshView(true);
         }
 
 
@@ -294,6 +411,21 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(TimerEvent16));
             OnPropertyChanged(nameof(ColumnWidths));
 
+            OnPropertyChanged(nameof(Actions));
+            OnPropertyChanged(nameof(Triggers));
+            OnPropertyChanged(nameof(Inputs));
+            OnPropertyChanged(nameof(Loop1Devices));
+            OnPropertyChanged(nameof(Loop2Devices));
+            OnPropertyChanged(nameof(Zones));
+            OnPropertyChanged(nameof(ZonesPanels));
+            OnPropertyChanged(nameof(Groups));
+            OnPropertyChanged(nameof(Sets));
+            OnPropertyChanged(nameof(Events));
+            OnPropertyChanged(nameof(Relays));
+            OnPropertyChanged(nameof(SetsRelays));
+            OnPropertyChanged(nameof(Times));
+            OnPropertyChanged(nameof(TrueOrFalse));
+            
             foreach (var c in CEConfigItems)
                 c.RefreshView();
         }
@@ -352,6 +484,8 @@ namespace Xfp.ViewModels.PanelTools
 
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.C_And_E_Event_x, ce.Index + 1));
 
+            CEConfigItems[ce.Index].SaveIndices();
+
             CEConfigItems[ce.Index].Data.ActionType = ce.ActionType;
             CEConfigItems[ce.Index].Data.ActionParam = ce.ActionParam;
             CEConfigItems[ce.Index].Data.TriggerType = ce.TriggerType;
@@ -363,7 +497,11 @@ namespace Xfp.ViewModels.PanelTools
             CEConfigItems[ce.Index].Data.ResetParam2 = ce.ResetParam2;
             CEConfigItems[ce.Index].Data.ResetCondition = ce.ResetCondition;
 
+            CEConfigItems[ce.Index].RefreshView();
+
             TimerEvents[ce.Index] = ce.TimerEventTime;
+
+            CEConfigItems[ce.Index].RestoreIndices();
 
             return true;
         }
