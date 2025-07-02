@@ -90,10 +90,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var a in _data.GetCEActionsList())
                     Actions[i++] = a;
             }
+
+            foreach (var c in CEConfigItems)
+                c.ActionTypesMenuCount = Actions.Count;
         }
 
         private void getTriggersList()
-        //{ List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETriggersList()); return tt; }
         {
             if (Triggers is null)
             {
@@ -105,10 +107,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var t in _data.GetCETriggersList())
                     Triggers[i++] = t;
             }
+
+            foreach (var c in CEConfigItems)
+                c.TriggerTypesMenuCount = Triggers.Count;
         }
 
         private void getGroupsList()
-        //{ List<string> gg = new() { "" }; if (_data is not null) gg.AddRange(_data.GetGroupsList());     return gg; }
         {
             if (Groups is null)
             {
@@ -120,10 +124,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var g in _data.GetGroupsList())
                     Groups[i++] = g;
             }
+
+            foreach (var c in CEConfigItems)
+                c.GroupsMenuCount = Groups.Count;
         }
 
         private void getInputsList()
-        //{ List<string> ii = new() { "" }; if (_data is not null) ii.AddRange(_data.GetInputsList());     return ii; }
         {
             if (Inputs is null)
             {
@@ -135,10 +141,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var n in _data.GetInputsList())
                     Inputs[i++] = n;
             }
+
+            foreach (var c in CEConfigItems)
+                c.InputsMenuCount = Inputs.Count;
         }
-        
+
         private void getLoop1DevicesList()
-        //{ List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
         {
             if (Loop1Devices is null)
             {
@@ -150,11 +158,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var d in _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber))
                     Loop1Devices[i++] = d;
             }
-            OnPropertyChanged(nameof(Loop1Devices));
+
+            foreach (var c in CEConfigItems)
+                c.Loop1DevicesMenuCount = Loop1Devices.Count;
         }
 
         private void getLoop2DevicesList()
-        //{ List<string> dd = new() { "" }; if (_data is not null) dd.AddRange(_data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber)); return dd; }
         {
             if (Loop2Devices is null)
             {
@@ -166,10 +175,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var d in _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber))
                     Loop2Devices[i++] = d;
             }
+
+            foreach (var c in CEConfigItems)
+                c.Loop2DevicesMenuCount = Loop2Devices.Count;
         }
 
         private void getZonesList()        
-        //{ List<string> zz = new() { "" }; if (_data is not null) zz.AddRange(_data.GetZonesList());      return zz; }
         {
             if (Zones is null)
             {
@@ -181,10 +192,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var z in _data.GetZonesList())
                     Zones[i++] = z;
             }
+
+            foreach (var c in CEConfigItems)
+                c.ZonesMenuCount = Zones.Count;
         }
 
         private void getZonePanelsList()
-        //{ List<string> zp = new() { "" }; if (_data is not null) zp.AddRange(_data.GetZonePanelsList()); return zp; }
         {
             if (ZonesPanels is null)
             {
@@ -196,11 +209,13 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var z in _data.GetZonePanelsList())
                     ZonesPanels[i++] = z;
             }
+
+            foreach (var c in CEConfigItems)
+                c.ZonePanelsMenuCount = ZonesPanels.Count;
         }
 
         private void getSetsList()
         {
-//{ List<string> ss = new() { "" }; if (_data is not null) ss.AddRange(_data.GetSetsList());       return ss; }
             if (Sets is null)
             {
                 Sets = ["", .. _data.GetSetsList()];
@@ -211,10 +226,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var s in _data.GetSetsList())
                     Sets[i++] = s;
             }
+
+            foreach (var c in CEConfigItems)
+                c.SetsMenuCount = Sets.Count;
         }
 
         private void getEventsList()
-        //{ List<string> ee = new() { "" }; if (_data is not null) ee.AddRange(_data.GetEventsList());     return ee; }
         {
             if (Events is null)
             {
@@ -226,10 +243,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var e in _data.GetEventsList())
                     Events[i++] = e;
             }
+
+            foreach (var c in CEConfigItems)
+                c.EventsMenuCount = Events.Count;
         }
 
         private void getRelaysList()
-        //{ List<string> rr = new() { "" }; if (_data is not null) rr.AddRange(_data.GetRelaysList());     return rr; }
         {
             if (Relays is null)
             {
@@ -241,10 +260,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var s in _data.GetRelaysList())
                     Relays[i++] = s;
             }
+
+            foreach (var c in CEConfigItems)
+                c.RelaysMenuCount = Relays.Count;
         }
 
         private void getSetsRelaysList()   
-        //{ List<string> sr = new() { "" }; if (_data is not null) sr.AddRange(_data.GetSetsRelaysList()); return sr; }
         {
             if (SetsRelays is null)
             {
@@ -256,10 +277,12 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var s in _data.GetSetsRelaysList())
                     SetsRelays[i++] = s;
             }
+
+            foreach (var c in CEConfigItems)
+                c.SetsRelaysMenuCount = SetsRelays.Count;
         }
 
         private void getTimesList()
-        //{ List<string> tt = new() { "" }; if (_data is not null) tt.AddRange(_data.GetCETimerTList());   return tt; }
         {
             if (Times is null)
             {
@@ -271,6 +294,9 @@ namespace Xfp.ViewModels.PanelTools
                 foreach (var t in _data.GetCETimerTList())
                     Times[i++] = t;
             }
+
+            foreach (var c in CEConfigItems)
+                c.TimesMenuCount = Times.Count;
         }
 
         
@@ -322,6 +348,13 @@ namespace Xfp.ViewModels.PanelTools
             {
                 TrueOrFalse[1] = Cultures.Resources.True;
                 TrueOrFalse[2] = Cultures.Resources.False;
+            }
+
+            foreach (var c in CEConfigItems)
+            {
+                c.ZoneNumbersMenuCount  = ZoneNumbers.Count;
+                c.EventNumbersMenuCount = EventNumbers.Count;
+                c.ConditionsMenuCount = TrueOrFalse.Count;
             }
 
 
@@ -484,8 +517,6 @@ namespace Xfp.ViewModels.PanelTools
 
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.C_And_E_Event_x, ce.Index + 1));
 
-            CEConfigItems[ce.Index].SaveIndices();
-
             CEConfigItems[ce.Index].Data.ActionType = ce.ActionType;
             CEConfigItems[ce.Index].Data.ActionParam = ce.ActionParam;
             CEConfigItems[ce.Index].Data.TriggerType = ce.TriggerType;
@@ -500,8 +531,6 @@ namespace Xfp.ViewModels.PanelTools
             CEConfigItems[ce.Index].RefreshView();
 
             TimerEvents[ce.Index] = ce.TimerEventTime;
-
-            CEConfigItems[ce.Index].RestoreIndices();
 
             return true;
         }

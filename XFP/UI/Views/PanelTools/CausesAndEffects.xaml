@@ -708,7 +708,7 @@
 
 
                         <!--#region trigger params ("AND" trigger)-->
-                        <Border Grid.Row="1" Grid.Column="6" Visibility="{Binding CEConfigItems[0].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="1" Grid.Column="6" Visibility="{Binding CEConfigItems[0].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[0].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[0].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -732,7 +732,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="2" Grid.Column="6" Visibility="{Binding CEConfigItems[1].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="2" Grid.Column="6" Visibility="{Binding CEConfigItems[1].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[1].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[1].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -756,7 +756,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="3" Grid.Column="6" Visibility="{Binding CEConfigItems[2].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="3" Grid.Column="6" Visibility="{Binding CEConfigItems[2].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[2].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[2].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -780,7 +780,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="4" Grid.Column="6" Visibility="{Binding CEConfigItems[3].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="4" Grid.Column="6" Visibility="{Binding CEConfigItems[3].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[3].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[3].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -804,7 +804,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="5" Grid.Column="6" Visibility="{Binding CEConfigItems[4].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="5" Grid.Column="6" Visibility="{Binding CEConfigItems[4].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[4].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[4].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -828,7 +828,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="6" Grid.Column="6" Visibility="{Binding CEConfigItems[5].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="6" Grid.Column="6" Visibility="{Binding CEConfigItems[5].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[5].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[5].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -852,7 +852,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="7" Grid.Column="6" Visibility="{Binding CEConfigItems[6].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="7" Grid.Column="6" Visibility="{Binding CEConfigItems[6].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[6].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[6].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -876,7 +876,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="8" Grid.Column="6" Visibility="{Binding CEConfigItems[7].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="8" Grid.Column="6" Visibility="{Binding CEConfigItems[7].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[7].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[7].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -900,7 +900,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="9" Grid.Column="6" Visibility="{Binding CEConfigItems[8].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="9" Grid.Column="6" Visibility="{Binding CEConfigItems[8].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[8].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[8].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -924,7 +924,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="10" Grid.Column="6" Visibility="{Binding CEConfigItems[9].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="10" Grid.Column="6" Visibility="{Binding CEConfigItems[9].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[9].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[9].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -948,7 +948,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="11" Grid.Column="6" Visibility="{Binding CEConfigItems[10].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="11" Grid.Column="6" Visibility="{Binding CEConfigItems[10].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[10].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[10].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -972,7 +972,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="12" Grid.Column="6" Visibility="{Binding CEConfigItems[11].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="12" Grid.Column="6" Visibility="{Binding CEConfigItems[11].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[11].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[11].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -996,7 +996,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="13" Grid.Column="6" Visibility="{Binding CEConfigItems[12].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="13" Grid.Column="6" Visibility="{Binding CEConfigItems[12].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[12].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[12].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1020,7 +1020,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="14" Grid.Column="6" Visibility="{Binding CEConfigItems[13].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="14" Grid.Column="6" Visibility="{Binding CEConfigItems[13].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[13].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[13].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1044,7 +1044,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="15" Grid.Column="6" Visibility="{Binding CEConfigItems[14].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="15" Grid.Column="6" Visibility="{Binding CEConfigItems[14].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[14].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[14].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1068,7 +1068,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="16" Grid.Column="6" Visibility="{Binding CEConfigItems[15].ShowTriggerParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="16" Grid.Column="6" Visibility="{Binding CEConfigItems[15].ShowTriggerParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[15].IndicateInvalidANDTriggerParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[15].ShowTriggerZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1476,7 +1476,7 @@
 
 
                         <!--#region reset params2 ("AND" trigger-->
-                        <Border Grid.Row="1" Grid.Column="10" Visibility="{Binding CEConfigItems[0].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="1" Grid.Column="10" Visibility="{Binding CEConfigItems[0].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[0].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[0].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1500,7 +1500,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="2" Grid.Column="10" Visibility="{Binding CEConfigItems[1].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="2" Grid.Column="10" Visibility="{Binding CEConfigItems[1].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[1].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[1].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1524,7 +1524,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="3" Grid.Column="10" Visibility="{Binding CEConfigItems[2].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="3" Grid.Column="10" Visibility="{Binding CEConfigItems[2].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[2].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[2].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1548,7 +1548,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="4" Grid.Column="10" Visibility="{Binding CEConfigItems[3].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="4" Grid.Column="10" Visibility="{Binding CEConfigItems[3].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[3].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[3].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1572,7 +1572,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="5" Grid.Column="10" Visibility="{Binding CEConfigItems[4].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="5" Grid.Column="10" Visibility="{Binding CEConfigItems[4].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[4].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[4].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1596,7 +1596,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="6" Grid.Column="10" Visibility="{Binding CEConfigItems[5].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="6" Grid.Column="10" Visibility="{Binding CEConfigItems[5].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[5].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[5].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1620,7 +1620,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="7" Grid.Column="10" Visibility="{Binding CEConfigItems[6].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="7" Grid.Column="10" Visibility="{Binding CEConfigItems[6].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[6].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[6].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1644,7 +1644,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="8" Grid.Column="10" Visibility="{Binding CEConfigItems[7].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="8" Grid.Column="10" Visibility="{Binding CEConfigItems[7].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[7].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[7].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1668,7 +1668,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="9" Grid.Column="10" Visibility="{Binding CEConfigItems[8].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="9" Grid.Column="10" Visibility="{Binding CEConfigItems[8].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[8].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[8].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1692,7 +1692,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="10" Grid.Column="10" Visibility="{Binding CEConfigItems[9].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="10" Grid.Column="10" Visibility="{Binding CEConfigItems[9].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[9].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[9].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1716,7 +1716,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="11" Grid.Column="10" Visibility="{Binding CEConfigItems[10].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="11" Grid.Column="10" Visibility="{Binding CEConfigItems[10].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[10].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[10].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1740,7 +1740,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="12" Grid.Column="10" Visibility="{Binding CEConfigItems[11].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="12" Grid.Column="10" Visibility="{Binding CEConfigItems[11].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[11].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[11].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1764,7 +1764,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="13" Grid.Column="10" Visibility="{Binding CEConfigItems[12].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="13" Grid.Column="10" Visibility="{Binding CEConfigItems[12].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[12].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[12].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1788,7 +1788,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="14" Grid.Column="10" Visibility="{Binding CEConfigItems[13].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="14" Grid.Column="10" Visibility="{Binding CEConfigItems[13].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[13].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[13].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1812,7 +1812,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="15" Grid.Column="10" Visibility="{Binding CEConfigItems[14].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="15" Grid.Column="10" Visibility="{Binding CEConfigItems[14].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[14].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[14].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
@@ -1836,7 +1836,7 @@
                                 </Border>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="16" Grid.Column="10" Visibility="{Binding CEConfigItems[15].ShowResetParam2, Converter={StaticResource BoolToVisibilityConverter}}"
+                        <Border Grid.Row="16" Grid.Column="10" Visibility="{Binding CEConfigItems[15].ShowResetParamAND, Converter={StaticResource BoolToVisibilityConverter}}"
                                 BorderBrush="{Binding CEConfigItems[15].IndicateInvalidANDResetParams, Converter={StaticResource BoolToErrorBrushConverter}}" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=Zone,  Source={StaticResource Resources}}" Visibility="{Binding CEConfigItems[15].ShowResetZones2,  Converter={StaticResource BoolToVisibilityConverter}}" Margin="2,0,2,0"/>
