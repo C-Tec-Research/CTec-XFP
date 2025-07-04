@@ -29,23 +29,24 @@ namespace Xfp.ViewModels.PanelTools
 
 
         public List<string>   TimerHeaders { get => _timerHeaders; }
-        private List<TimeSpan> TimerEvents  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes??new(); }
-        public TimeSpan TimerEvent1  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); updateTimersList(0); } }
-        public TimeSpan TimerEvent2  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); updateTimersList(1); } }
-        public TimeSpan TimerEvent3  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); updateTimersList(2); } }
-        public TimeSpan TimerEvent4  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); updateTimersList(3); } }
-        public TimeSpan TimerEvent5  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); updateTimersList(4); } }
-        public TimeSpan TimerEvent6  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); updateTimersList(5); } }
-        public TimeSpan TimerEvent7  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); updateTimersList(6); } }
-        public TimeSpan TimerEvent8  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); updateTimersList(7); } }
-        public TimeSpan TimerEvent9  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); updateTimersList(8); } }
-        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); updateTimersList(9); } }
-        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); updateTimersList(10); } }
-        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); updateTimersList(11); } }
-        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); updateTimersList(12); } }
-        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); updateTimersList(13); } }
-        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); updateTimersList(14); } }
-        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); updateTimersList(15); } }
+        private List<TimeSpan> _timerEvents => _data?.CurrentPanel.CEConfig.TimerEventTimes??new();
+        public List<TimeSpan> TimerEvents => _data?.CurrentPanel.CEConfig.TimerEventTimes??new();
+        public TimeSpan TimerEvent1   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent2   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent3   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent4   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent5   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent6   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent7   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent8   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent9   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); } }
 
         private ObservableCollection<CausesAndEffectsItemViewModel> _ceConfigItems = new();
         public ObservableCollection<CausesAndEffectsItemViewModel> CEConfigItems { get => _ceConfigItems; set { _ceConfigItems = value; OnPropertyChanged(); } }
@@ -299,7 +300,24 @@ namespace Xfp.ViewModels.PanelTools
                 c.TimesMenuCount = Times.Count;
         }
 
+        private void getTrueFalseList()
+        {
+            //if (TrueOrFalse is null)
+            //{
+                TrueOrFalse = new() { "", Cultures.Resources.True, Cultures.Resources.False };
+            //}
+            //else
+            //{
+            //    TrueOrFalse[1] = Cultures.Resources.True;
+            //    TrueOrFalse[2] = Cultures.Resources.False;
+            //    OnPropertyChanged(nameof(TrueOrFalse));
+            //}
+
+            foreach (var c in CEConfigItems)
+                c.ConditionsMenuCount = TrueOrFalse.Count;
+        }
         
+
         /// <summary>
         /// Initialise the Zone and Group number lists (i.e. numerals-only list)
         /// </summary>
@@ -337,42 +355,76 @@ namespace Xfp.ViewModels.PanelTools
                 getRelaysList();
                 getSetsRelaysList();
                 getTimesList();
-            }
-
-
-            if (TrueOrFalse is null)
-            {
-                TrueOrFalse = new() { "", Cultures.Resources.True, Cultures.Resources.False };
-            }
-            else
-            {
-                TrueOrFalse[1] = Cultures.Resources.True;
-                TrueOrFalse[2] = Cultures.Resources.False;
+                getTrueFalseList();
             }
 
             foreach (var c in CEConfigItems)
             {
                 c.ZoneNumbersMenuCount  = ZoneNumbers.Count;
                 c.EventNumbersMenuCount = EventNumbers.Count;
-                c.ConditionsMenuCount = TrueOrFalse.Count;
             }
-
-
-            //Times = new() { "" };
-            //int t = 1;
-            //foreach (var time in TimerEvents)
-            //    Times.Add(string.Format(Cultures.Resources.Time_T_x, t++) + ": " + time.ToString(@"hh\:mm"));
 
             foreach (var ce in CEConfigItems)
                 ce.RestoreIndices();
         }
+        #endregion
 
 
-        private void updateTimersList(int index)
+        #region save/restore indices
+        private List<int> _savedActionTypeIndex;
+        private List<int> _savedActionParamIndex;
+        private List<int> _savedTriggerTypeIndex;
+        private List<int> _savedTriggerParam1Index;
+        private List<int> _savedTriggerParam2Index;
+        private List<int> _savedTriggerConditionIndex;
+        private List<int> _savedResetTypeIndex;
+        private List<int> _savedResetParam1Index;
+        private List<int> _savedResetParam2Index;
+        private List<int> _savedResetConditionIndex;
+
+        public void SaveItemIndices()
         {
-            //for (int i = 0; i < TimerEvents.Count; i++)
-            //    Times[i] = string.Format(Cultures.Resources.Time_T_x, i + 1) + ": " + TimerEvents[i].ToString(@"hh\:mm");
-            Times[index] = string.Format(Cultures.Resources.Time_T_x, index + 1) + ": " + TimerEvents[index].ToString(@"hh\:mm");
+            _savedActionTypeIndex       = new();
+            _savedActionParamIndex      = new();
+            _savedTriggerTypeIndex      = new();
+            _savedTriggerParam1Index    = new();
+            _savedTriggerParam2Index    = new();
+            _savedTriggerConditionIndex = new();
+            _savedResetTypeIndex        = new();
+            _savedResetParam1Index      = new();
+            _savedResetParam2Index      = new();
+            _savedResetConditionIndex   = new();
+
+            foreach (var c in CEConfigItems)
+            {
+                _savedActionTypeIndex.Add(c.SelectedActionTypeIndex);
+                _savedActionParamIndex.Add(c.SelectedActionParamIndex);
+                _savedTriggerTypeIndex.Add(c.SelectedTriggerTypeIndex);
+                _savedTriggerParam1Index.Add(c.SelectedTriggerParamIndex);
+                _savedTriggerParam2Index.Add(c.SelectedTriggerParam2Index);
+                _savedTriggerConditionIndex.Add(c.SelectedTriggerConditionIndex);
+                _savedResetTypeIndex.Add(c.SelectedResetTypeIndex);
+                _savedResetParam1Index.Add(c.SelectedResetParamIndex);
+                _savedResetParam2Index.Add(c.SelectedResetParam2Index);
+                _savedResetConditionIndex.Add(c.SelectedResetConditionIndex);
+            }
+        }
+
+        public void RestoreItemIndices()
+        {
+            for (int i = 0; i < CEConfigItems.Count; i++)
+            {
+                CEConfigItems[i].SelectedActionTypeIndex       = _savedActionTypeIndex[i];
+                CEConfigItems[i].SelectedActionParamIndex      = _savedActionParamIndex[i];
+                CEConfigItems[i].SelectedTriggerTypeIndex      = _savedTriggerTypeIndex[i];
+                CEConfigItems[i].SelectedTriggerParamIndex     = _savedTriggerParam1Index[i];
+                CEConfigItems[i].SelectedTriggerParam2Index    = _savedTriggerParam2Index[i];
+                CEConfigItems[i].SelectedTriggerConditionIndex = _savedTriggerConditionIndex[i];
+                CEConfigItems[i].SelectedResetTypeIndex        = _savedResetTypeIndex[i];
+                CEConfigItems[i].SelectedResetParamIndex       = _savedResetParam1Index[i];
+                CEConfigItems[i].SelectedResetParam2Index      = _savedResetParam2Index[i];
+                CEConfigItems[i].SelectedResetConditionIndex   = _savedResetConditionIndex[i];
+            }
         }
         #endregion
 
@@ -381,6 +433,10 @@ namespace Xfp.ViewModels.PanelTools
         public void SetCulture(CultureInfo culture)
         {
             PageHeader = Cultures.Resources.Nav_C_And_E_Configuration;
+            
+            //fudge to save
+            SaveItemIndices();
+
             InitComboLists();
             
             foreach (var ce in _ceConfigItems)
@@ -389,6 +445,8 @@ namespace Xfp.ViewModels.PanelTools
             RefreshView();
 
             CultureChanged?.Invoke(culture);
+
+            RestoreItemIndices();
         }
         #endregion
 
@@ -401,47 +459,25 @@ namespace Xfp.ViewModels.PanelTools
 
             _data = data;
 
-            populateView();
-        }
-
-        private void populateView()
-        { 
             InitComboLists();
 
             if (_data.CurrentPanel.CEConfig.Events is not null)
                 for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count && i < CEConfigItems.Count; i++)
                     CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
             
-            //refreshView(true);
+            RefreshView();
         }
 
 
-        public void RefreshView() => refreshView(true);
-
-        private void refreshView(bool initComboLists)
+        public void RefreshView()
         {
             if (_data is null)
                 return;
 
-            if (initComboLists)
-                InitComboLists();
+            InitComboLists();
 
-            OnPropertyChanged(nameof(TimerEvent1));
-            OnPropertyChanged(nameof(TimerEvent2));
-            OnPropertyChanged(nameof(TimerEvent3));
-            OnPropertyChanged(nameof(TimerEvent4));
-            OnPropertyChanged(nameof(TimerEvent5));
-            OnPropertyChanged(nameof(TimerEvent6));
-            OnPropertyChanged(nameof(TimerEvent7));
-            OnPropertyChanged(nameof(TimerEvent8));
-            OnPropertyChanged(nameof(TimerEvent9));
-            OnPropertyChanged(nameof(TimerEvent10));
-            OnPropertyChanged(nameof(TimerEvent11));
-            OnPropertyChanged(nameof(TimerEvent12));
-            OnPropertyChanged(nameof(TimerEvent13));
-            OnPropertyChanged(nameof(TimerEvent14));
-            OnPropertyChanged(nameof(TimerEvent15));
-            OnPropertyChanged(nameof(TimerEvent16));
+            refreshTimes();
+            
             OnPropertyChanged(nameof(ColumnWidths));
 
             OnPropertyChanged(nameof(Actions));
@@ -459,8 +495,30 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(Times));
             OnPropertyChanged(nameof(TrueOrFalse));
             
-            foreach (var c in CEConfigItems)
-                c.RefreshView();
+            //foreach (var c in CEConfigItems)
+            //    c.RefreshView();
+        }
+
+        private void refreshTimes()
+        {
+            OnPropertyChanged(nameof(TimerEvents));
+            
+            //OnPropertyChanged(nameof(TimerEvent1));
+            //OnPropertyChanged(nameof(TimerEvent2));
+            //OnPropertyChanged(nameof(TimerEvent3));
+            //OnPropertyChanged(nameof(TimerEvent4));
+            //OnPropertyChanged(nameof(TimerEvent5));
+            //OnPropertyChanged(nameof(TimerEvent6));
+            //OnPropertyChanged(nameof(TimerEvent7));
+            //OnPropertyChanged(nameof(TimerEvent8));
+            //OnPropertyChanged(nameof(TimerEvent9));
+            //OnPropertyChanged(nameof(TimerEvent10));
+            //OnPropertyChanged(nameof(TimerEvent11));
+            //OnPropertyChanged(nameof(TimerEvent12));
+            //OnPropertyChanged(nameof(TimerEvent13));
+            //OnPropertyChanged(nameof(TimerEvent14));
+            //OnPropertyChanged(nameof(TimerEvent15));
+            //OnPropertyChanged(nameof(TimerEvent16));
         }
         #endregion
 
@@ -492,7 +550,7 @@ namespace Xfp.ViewModels.PanelTools
                                                         ResetParam       = CEConfigItems[ce].Data.ResetParam,
                                                         ResetParam2      = CEConfigItems[ce].Data.ResetParam2,
                                                         ResetCondition   = CEConfigItems[ce].Data.ResetCondition,
-                                                        TimerEventTime   = TimerEvents[ce]                    
+                                                        TimerEventTime   = _timerEvents[ce]                    
                                                     },
                                                 string.Format(Cultures.Resources.C_And_E_Event_x, ce + 1));
         }
@@ -530,7 +588,7 @@ namespace Xfp.ViewModels.PanelTools
 
             CEConfigItems[ce.Index].RefreshView();
 
-            TimerEvents[ce.Index] = ce.TimerEventTime;
+            _timerEvents[ce.Index] = ce.TimerEventTime;
 
             return true;
         }

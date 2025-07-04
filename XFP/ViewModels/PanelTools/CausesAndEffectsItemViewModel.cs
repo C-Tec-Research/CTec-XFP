@@ -40,7 +40,9 @@ namespace Xfp.ViewModels.PanelTools
 
         private int     _number;
         private CEEvent _data = new();
-        private object _dataLock = new();
+        private bool?   _triggerCondition;
+        private bool?   _resetCondition;
+        private object  _dataLock = new();
 
 
         public CEEvent Data
@@ -51,6 +53,8 @@ namespace Xfp.ViewModels.PanelTools
                 lock (_dataLock)
                 {
                     _data = value;
+                    _triggerCondition = _data.TriggerCondition;
+                    _resetCondition   = _data.ResetCondition;
                     RefreshView();
                 }
             }
@@ -84,7 +88,6 @@ namespace Xfp.ViewModels.PanelTools
         private int resetParam2MenuCount   => ShowResetEvents2   ? EventNumbersMenuCount : ShowResetZones2   ? ZoneNumbersMenuCount : 0;
         #endregion
 
-DefaultAttribute the trigger condition to True
 
         #region selected indices
         public int SelectedActionTypeIndex
@@ -96,7 +99,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0) value = 0;
                     _data.ActionType = (CEActionTypes)(Enum.GetValues(_data.ActionType.GetType())).GetValue(value);
-                    refreshView(CEValue.ActionType);
+                    RefreshView();
                 }
             }
         }
@@ -110,7 +113,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= actionParamMenuCount) value = 0;
                     _data.ActionParam = value - 1;
-                    refreshView(CEValue.ActionParam);
+                    RefreshView();
                 }
             }
         }
@@ -124,7 +127,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= TriggerTypesMenuCount) value = 0;
                     _data.TriggerType = (CETriggerTypes)(Enum.GetValues(_data.TriggerType.GetType())).GetValue(value);
-                    refreshView(CEValue.TriggerType);
+                    RefreshView();
                 }
             }
         }
@@ -138,7 +141,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= triggerParamMenuCount) value = 0;
                     _data.TriggerParam = value - 1;
-                    refreshView(CEValue.TriggerParam);
+                    RefreshView();
                 }
             }
         }
@@ -152,21 +155,32 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= triggerParam2MenuCount) value = 0;
                     _data.TriggerParam2 = value - 1;
-                    refreshView(CEValue.TriggerParam);
+                    RefreshView();
                 }
             }
         }
 
         public int SelectedTriggerConditionIndex
         {
-            get => _data.TriggerCondition switch { true => 1, false => 2, };
+            //get => _data.TriggerCondition switch { true => 1, false => 2, };
+            //set
+            //{
+            //    if (value != SelectedTriggerConditionIndex)
+            //    {
+            //        if (value < 0 || value >= ConditionsMenuCount) value = 0;
+            //        _data.TriggerCondition = value == 1;
+            //        refreshView(CEValue.TriggerCondition);
+            //    }
+            //}
+            get => _triggerCondition switch { true => 1, false => 2, _ => 0 };
             set
             {
                 if (value != SelectedTriggerConditionIndex)
                 {
                     if (value < 0 || value >= ConditionsMenuCount) value = 0;
+                    _triggerCondition = value switch { 1 => true, 2 => false, _ => null };
                     _data.TriggerCondition = value == 1;
-                    refreshView(CEValue.TriggerCondition);
+                    RefreshView();
                 }
             }
         }
@@ -180,7 +194,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= TriggerTypesMenuCount) value = 0;
                     _data.ResetType = (CETriggerTypes)(Enum.GetValues(_data.ResetType.GetType())).GetValue(value);
-                    refreshView(CEValue.ResetType);
+                    RefreshView();
                 }
             }
         }
@@ -194,7 +208,7 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= resetParamMenuCount) value = 0;
                     _data.ResetParam = _data.ResetParam = value - 1;
-                    refreshView(CEValue.ResetParam);
+                    RefreshView();
                 }
             }
         }
@@ -208,23 +222,35 @@ DefaultAttribute the trigger condition to True
                 {
                     if (value < 0 || value >= resetParam2MenuCount) value = 0;
                     _data.ResetParam2 = value - 1;
-                    refreshView(CEValue.ResetParam);
+                    RefreshView();
                 }
             }
         }
 
         public int SelectedResetConditionIndex
         {
-            get => _data.ResetCondition switch { true => 1, false => 2, };
+            //get => _data.ResetCondition switch { true => 1, false => 2, };
+            //set
+            //{
+            //    if (value != SelectedResetConditionIndex)
+            //    {
+            //        if (value < 0 || value >= ConditionsMenuCount) value = 0;
+            //        _data.ResetCondition = value == 1;
+            //        RefreshView();
+            //    }
+            //}
+            get => _resetCondition switch { true => 1, false => 2, _ => 0 };
             set
             {
                 if (value != SelectedResetConditionIndex)
                 {
                     if (value < 0 || value >= ConditionsMenuCount) value = 0;
+                    _resetCondition = value switch { 1 => true, 2 => false, _ => null };
                     _data.ResetCondition = value == 1;
-                    refreshView(CEValue.ResetCondition);
+                    RefreshView();
                 }
             }
+
         }
         #endregion
 
@@ -256,8 +282,11 @@ DefaultAttribute the trigger condition to True
 
             //set all to zero so that the screen is forced to update when RestoreIndices() is called
             SelectedActionTypeIndex = SelectedActionParamIndex   = SelectedTriggerTypeIndex      = SelectedTriggerParamIndex 
-                                    = SelectedTriggerParam2Index = SelectedTriggerConditionIndex = SelectedResetTypeIndex 
-                                    = SelectedResetParamIndex    = SelectedResetParam2Index      = SelectedResetConditionIndex = 0;
+                                    = SelectedTriggerParam2Index = SelectedResetTypeIndex 
+                                    = SelectedResetParamIndex    = SelectedResetParam2Index = 0;
+            //SelectedTriggerConditionIndex = SelectedTriggerConditionIndex % 2 + 1;
+            //SelectedResetConditionIndex = SelectedResetConditionIndex % 2 + 1;
+            SelectedTriggerConditionIndex = SelectedResetConditionIndex = 0;
         }
 
         public void RestoreIndices()
@@ -267,10 +296,12 @@ DefaultAttribute the trigger condition to True
             SelectedTriggerTypeIndex      = _savedTriggerTypeIndex;
             SelectedTriggerParamIndex     = _savedTriggerParam1Index;
             SelectedTriggerParam2Index    = _savedTriggerParam2Index;
-            SelectedTriggerConditionIndex = _savedTriggerConditionIndex;
             SelectedResetTypeIndex        = _savedResetTypeIndex;
             SelectedResetParamIndex       = _savedResetParam1Index;
             SelectedResetParam2Index      = _savedResetParam2Index;
+            //SelectedTriggerConditionIndex = SelectedTriggerConditionIndex % 2 + 1;
+            //SelectedResetConditionIndex   = SelectedResetConditionIndex   % 2 + 1;
+            SelectedTriggerConditionIndex = _savedTriggerConditionIndex;
             SelectedResetConditionIndex   = _savedResetConditionIndex;
         }
         #endregion
@@ -299,11 +330,11 @@ DefaultAttribute the trigger condition to True
         public bool ShowTriggerZones          => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
         public bool ShowTriggerZones2         => ShowTriggerParamAND && _data.TriggerType switch { CETriggerTypes.ZoneAnd => true, _ => false };
         public bool ShowTriggerZonesAndPanels => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
-        public bool ShowTriggerEvents         => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
+        public bool ShowTriggerEvents         => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.NetworkEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
         public bool ShowTriggerEvents2        => ShowTriggerParamAND && _data.TriggerType switch { CETriggerTypes.EventAnd => true, _ => false };
         public bool ShowTriggerTimes          => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.TimerEventTn => true, _ => false };
         public bool ShowTriggerInputs         => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.PanelInput => true, _ => false };
-        public bool ShowTriggerCondition      => ShowTriggerParam || ShowTriggerParamAND;
+        public bool ShowTriggerCondition      => ShowTriggerType && (!ShowTriggerParam || ShowTriggerParam && SelectedTriggerParamIndex > 0 || ShowTriggerParamAND && SelectedTriggerParam2Index > 0);
         #endregion
 
         #region reset
@@ -315,11 +346,11 @@ DefaultAttribute the trigger condition to True
         public bool ShowResetZones          => ShowResetParam  && _data.ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
         public bool ShowResetZones2         => ShowResetParamAND && _data.ResetType switch { CETriggerTypes.ZoneAnd => true, _ => false };
         public bool ShowResetZonesAndPanels => ShowResetParam  && _data.ResetType switch { CETriggerTypes.ZoneOrPanelInFire or CETriggerTypes.ZoneHasDeviceInAlarm => true, _ => false };
-        public bool ShowResetEvents         => ShowResetParam  && _data.ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
+        public bool ShowResetEvents         => ShowResetParam  && _data.ResetType switch { CETriggerTypes.OtherEventTriggered or CETriggerTypes.NetworkEventTriggered or CETriggerTypes.EventAnd => true, _ => false };
         public bool ShowResetEvents2        => ShowResetParamAND && _data.ResetType switch { CETriggerTypes.EventAnd => true, _ => false };
         public bool ShowResetTimes          => ShowResetParam  && _data.ResetType switch { CETriggerTypes.TimerEventTn => true, _ => false };
         public bool ShowResetInputs         => ShowResetParam  && _data.ResetType switch { CETriggerTypes.PanelInput => true, _ => false };
-        public bool ShowResetCondition      => ShowResetParam || ShowResetParamAND;
+        public bool ShowResetCondition      => ShowResetType && (!ShowResetParam || ShowResetParam && SelectedResetParamIndex > 0 || ShowResetParamAND && SelectedResetParam2Index > 0);
         #endregion
 
         #endregion
@@ -338,8 +369,8 @@ DefaultAttribute the trigger condition to True
 
         public bool ResetTypeIsValid                     => !ShowResetType || (SelectedResetTypeIndex > 0 && SelectedResetTypeIndex < TriggerTypesMenuCount);
         public bool ResetParam1IsValid                   => !ShowResetParam || (SelectedResetParamIndex > 0 && SelectedResetParamIndex < resetParamMenuCount) || _data.ResetType == CETriggerTypes.None;
-        public bool IndicateInvalidANDResetParams        => ShowResetParamAND && (ShowResetEvents2 || ShowResetZones2) && (SelectedResetParamIndex  <= 0 || SelectedResetParamIndex  >= triggerParamMenuCount)
-                                                                                                                       && (SelectedResetParam2Index <= 0 || SelectedResetParam2Index >= triggerParam2MenuCount);
+        public bool IndicateInvalidANDResetParams        => ShowResetParamAND && (ShowResetEvents2 || ShowResetZones2) && (SelectedResetParamIndex  <= 0 || SelectedResetParamIndex  >= resetParamMenuCount)
+                                                                                                                       && (SelectedResetParam2Index <= 0 || SelectedResetParam2Index >= resetParam2MenuCount);
         public bool IndicateInvalidSelectedResetParam1   => !IndicateInvalidANDResetParams && (ShowResetEvents2 || ShowResetZones2) && SelectedResetParamIndex <= 0 && SelectedResetParamIndex < resetParamMenuCount;
         public bool IndicateInvalidSelectedResetParam2   => !IndicateInvalidANDResetParams && (!ShowResetEvents2 || !ShowResetZones2) && SelectedResetParam2Index <= 0 && SelectedResetParam2Index < resetParam2MenuCount;
         public bool ResetConditionIsValid                => !ShowResetCondition || (SelectedResetConditionIndex > 0 && SelectedResetConditionIndex < ConditionsMenuCount);
@@ -354,8 +385,7 @@ DefaultAttribute the trigger condition to True
         #region IPanelToolsViewModel implementation
         public void PopulateView(XfpData data) { }
 
-        public void RefreshView() => refreshView(null);
-        private void refreshView(CEValue? level)
+        public void RefreshView()
         {
             OnPropertyChanged(nameof(CENumber));
 

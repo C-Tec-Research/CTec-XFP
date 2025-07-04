@@ -60,7 +60,12 @@ namespace Xfp.DataTypes.PanelData
         /// <summary>
         /// Returns an initialised GroupData object.
         /// </summary>
-        internal static new CEEvent InitialisedNew() => new();
+        internal static new CEEvent InitialisedNew()
+        {
+            var result = new CEEvent();
+            result.TriggerCondition = true;
+            return result;
+        }
 
 
         public override bool Equals(ConfigData otherData)
@@ -94,12 +99,11 @@ namespace Xfp.DataTypes.PanelData
         internal bool NoTriggerParam(CETriggerTypes? triggerType) 
             => triggerType switch
             {
-                CETriggerTypes.AnyDeviceInAlarm      or CETriggerTypes.AnyDisablement   or CETriggerTypes.AnyDwellingAndCommunal or 
-                CETriggerTypes.AnyFault              or CETriggerTypes.AnyPrealarm      or CETriggerTypes.AnyRemotePanelInFire or 
-                CETriggerTypes.AnyZoneInFire         or CETriggerTypes.MoreThanOneAlarm or CETriggerTypes.MoreThanOneZoneInAlarm or 
-                CETriggerTypes.NetworkEventTriggered or CETriggerTypes.None             or
-                CETriggerTypes.PanelSilenced         or CETriggerTypes.PanelOccupied    or CETriggerTypes.PanelReset or
-                CETriggerTypes.PanelUnoccupied  
+                CETriggerTypes.AnyDeviceInAlarm or CETriggerTypes.AnyDisablement   or CETriggerTypes.AnyDwellingAndCommunal or 
+                CETriggerTypes.AnyFault         or CETriggerTypes.AnyPrealarm      or CETriggerTypes.AnyRemotePanelInFire or 
+                CETriggerTypes.AnyZoneInFire    or CETriggerTypes.MoreThanOneAlarm or CETriggerTypes.MoreThanOneZoneInAlarm or 
+                CETriggerTypes.None             or CETriggerTypes.PanelSilenced    or CETriggerTypes.PanelOccupied or 
+                CETriggerTypes.PanelReset       or CETriggerTypes.PanelUnoccupied  
                   => true, 
                 _ => false
             };

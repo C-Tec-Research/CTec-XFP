@@ -3,16 +3,16 @@
     "1": {
       "PanelNumber": 1,
       "PanelConfig": {
-        "FirmwareVersion": null,
+        "FirmwareVersion": "13A27",
         "LoopCount": 0,
         "DateEnabled": false,
         "SoundersPulsed": false,
         "CopyTime": false,
-        "MaintenanceString": "",
-        "QuiescentString": "",
-        "MaintenanceDate": null,
-        "AL2Code": "",
-        "AL3Code": "",
+        "MaintenanceString": "Call the Engineer",
+        "QuiescentString": "XFP Fire Panel",
+        "MaintenanceDate": "2099-01-01T00:00:00",
+        "AL2Code": "3333",
+        "AL3Code": "4444",
         "MCPDebounce": 1,
         "IODebounce": 1,
         "DetectorDebounce": 1,
@@ -28,7 +28,7 @@
           false
         ],
         "NightStart": [
-          true,
+          false,
           false,
           false,
           false,
@@ -49,7 +49,7 @@
             "TriggerType": 5,
             "TriggerParam": 1,
             "TriggerParam2": 0,
-            "TriggerCondition": false,
+            "TriggerCondition": true,
             "ResetType": 5,
             "ResetParam": 3,
             "ResetParam2": -1,
@@ -62,7 +62,7 @@
             "TriggerType": 10,
             "TriggerParam": 5,
             "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerCondition": true,
             "ResetType": 10,
             "ResetParam": 1,
             "ResetParam2": -1,
@@ -261,13 +261,13 @@
           "00:00:00",
           "00:00:00",
           "00:10:00",
-          "04:01:00",
+          "20:59:00",
           "00:00:00",
           "00:00:00",
           "00:00:00",
           "00:00:00",
-          "00:00:00",
-          "00:00:00"
+          "21:59:00",
+          "01:00:00"
         ]
       },
       "LoopConfig": {

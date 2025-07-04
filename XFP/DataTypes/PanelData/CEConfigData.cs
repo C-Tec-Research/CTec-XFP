@@ -55,7 +55,7 @@ namespace Xfp.DataTypes.PanelData
         internal new static CEConfigData InitialisedNew()
         {
             var result = new CEConfigData();
-            
+
             result.Events = new();
             for (int i = 0; i < NumEvents; i++)
                 result.Events.Add(new() { Index = i });
@@ -68,7 +68,6 @@ namespace Xfp.DataTypes.PanelData
             result.Events[0].ActionParam = 0;
             result.Events[0].TriggerType = CETriggerTypes.PanelInput;
             result.Events[0].TriggerParam = 0;
-            result.Events[0].TriggerCondition = true;
             result.Events[0].ResetType = CETriggerTypes.PanelInput;
             result.Events[0].ResetParam = 0;
             result.Events[0].ResetCondition = false;
@@ -77,10 +76,14 @@ namespace Xfp.DataTypes.PanelData
             result.Events[1].ActionParam = 0;
             result.Events[1].TriggerType = CETriggerTypes.PanelInput;
             result.Events[1].TriggerParam = 1;
-            result.Events[1].TriggerCondition = true;
             result.Events[1].ResetType = CETriggerTypes.PanelInput;
             result.Events[1].ResetParam = 1;
             result.Events[1].ResetCondition = false;
+
+            //default all the trigger conditions to True
+            foreach (var e in result.Events)
+                e.TriggerCondition = true;
+
             return result;
         }
 
