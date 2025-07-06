@@ -30,7 +30,6 @@ namespace Xfp.ViewModels.PanelTools
 
         public List<string>   TimerHeaders { get => _timerHeaders; }
         private List<TimeSpan> _timerEvents => _data?.CurrentPanel.CEConfig.TimerEventTimes??new();
-        public List<TimeSpan> TimerEvents => _data?.CurrentPanel.CEConfig.TimerEventTimes??new();
         public TimeSpan TimerEvent1   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); } }
         public TimeSpan TimerEvent2   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); } }
         public TimeSpan TimerEvent3   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); } }
@@ -442,7 +441,7 @@ namespace Xfp.ViewModels.PanelTools
             foreach (var ce in _ceConfigItems)
                 ce.SetCulture(culture);
 
-            RefreshView();
+            refreshView(false);
 
             CultureChanged?.Invoke(culture);
 
@@ -465,16 +464,18 @@ namespace Xfp.ViewModels.PanelTools
                 for (int i = 0; i < _data.CurrentPanel.CEConfig.Events.Count && i < CEConfigItems.Count; i++)
                     CEConfigItems[i].Data = _data.CurrentPanel.CEConfig.Events[i];
             
-            RefreshView();
+            refreshView(false);
         }
 
 
-        public void RefreshView()
+        public void RefreshView() => refreshView(true);
+        private void refreshView(bool initComboLists)
         {
             if (_data is null)
                 return;
 
-            InitComboLists();
+            if (initComboLists)
+                InitComboLists();
 
             refreshTimes();
             
@@ -501,24 +502,22 @@ namespace Xfp.ViewModels.PanelTools
 
         private void refreshTimes()
         {
-            OnPropertyChanged(nameof(TimerEvents));
-            
-            //OnPropertyChanged(nameof(TimerEvent1));
-            //OnPropertyChanged(nameof(TimerEvent2));
-            //OnPropertyChanged(nameof(TimerEvent3));
-            //OnPropertyChanged(nameof(TimerEvent4));
-            //OnPropertyChanged(nameof(TimerEvent5));
-            //OnPropertyChanged(nameof(TimerEvent6));
-            //OnPropertyChanged(nameof(TimerEvent7));
-            //OnPropertyChanged(nameof(TimerEvent8));
-            //OnPropertyChanged(nameof(TimerEvent9));
-            //OnPropertyChanged(nameof(TimerEvent10));
-            //OnPropertyChanged(nameof(TimerEvent11));
-            //OnPropertyChanged(nameof(TimerEvent12));
-            //OnPropertyChanged(nameof(TimerEvent13));
-            //OnPropertyChanged(nameof(TimerEvent14));
-            //OnPropertyChanged(nameof(TimerEvent15));
-            //OnPropertyChanged(nameof(TimerEvent16));
+            OnPropertyChanged(nameof(TimerEvent1));
+            OnPropertyChanged(nameof(TimerEvent2));
+            OnPropertyChanged(nameof(TimerEvent3));
+            OnPropertyChanged(nameof(TimerEvent4));
+            OnPropertyChanged(nameof(TimerEvent5));
+            OnPropertyChanged(nameof(TimerEvent6));
+            OnPropertyChanged(nameof(TimerEvent7));
+            OnPropertyChanged(nameof(TimerEvent8));
+            OnPropertyChanged(nameof(TimerEvent9));
+            OnPropertyChanged(nameof(TimerEvent10));
+            OnPropertyChanged(nameof(TimerEvent11));
+            OnPropertyChanged(nameof(TimerEvent12));
+            OnPropertyChanged(nameof(TimerEvent13));
+            OnPropertyChanged(nameof(TimerEvent14));
+            OnPropertyChanged(nameof(TimerEvent15));
+            OnPropertyChanged(nameof(TimerEvent16));
         }
         #endregion
 

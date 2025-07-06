@@ -281,12 +281,9 @@ namespace Xfp.ViewModels.PanelTools
             _savedResetConditionIndex   = SelectedResetConditionIndex;
 
             //set all to zero so that the screen is forced to update when RestoreIndices() is called
-            SelectedActionTypeIndex = SelectedActionParamIndex   = SelectedTriggerTypeIndex      = SelectedTriggerParamIndex 
-                                    = SelectedTriggerParam2Index = SelectedResetTypeIndex 
-                                    = SelectedResetParamIndex    = SelectedResetParam2Index = 0;
-            //SelectedTriggerConditionIndex = SelectedTriggerConditionIndex % 2 + 1;
-            //SelectedResetConditionIndex = SelectedResetConditionIndex % 2 + 1;
-            SelectedTriggerConditionIndex = SelectedResetConditionIndex = 0;
+            SelectedActionTypeIndex = SelectedActionParamIndex   
+                                    = SelectedTriggerTypeIndex = SelectedTriggerParamIndex = SelectedTriggerParam2Index = SelectedTriggerConditionIndex 
+                                    = SelectedResetTypeIndex   = SelectedResetParamIndex   = SelectedResetParam2Index   = SelectedResetConditionIndex = 0;
         }
 
         public void RestoreIndices()
@@ -296,12 +293,10 @@ namespace Xfp.ViewModels.PanelTools
             SelectedTriggerTypeIndex      = _savedTriggerTypeIndex;
             SelectedTriggerParamIndex     = _savedTriggerParam1Index;
             SelectedTriggerParam2Index    = _savedTriggerParam2Index;
+            SelectedTriggerConditionIndex = _savedTriggerConditionIndex;
             SelectedResetTypeIndex        = _savedResetTypeIndex;
             SelectedResetParamIndex       = _savedResetParam1Index;
             SelectedResetParam2Index      = _savedResetParam2Index;
-            //SelectedTriggerConditionIndex = SelectedTriggerConditionIndex % 2 + 1;
-            //SelectedResetConditionIndex   = SelectedResetConditionIndex   % 2 + 1;
-            SelectedTriggerConditionIndex = _savedTriggerConditionIndex;
             SelectedResetConditionIndex   = _savedResetConditionIndex;
         }
         #endregion
