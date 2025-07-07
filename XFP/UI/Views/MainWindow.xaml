@@ -10,7 +10,7 @@
         xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
         xmlns:Content="clr-namespace:Xfp.UI.Views" 
         xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
-        xmlns:viewmodels="clr-namespace:Xfp.ViewModels" 
+        xmlns:viewmodels="clr-namespace:Xfp.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         x:Class="Xfp.Views.MainWindow"
         mc:Ignorable="d" 
