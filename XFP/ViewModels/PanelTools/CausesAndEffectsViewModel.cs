@@ -7,6 +7,7 @@ using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
+using System.Linq;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -140,6 +141,8 @@ namespace Xfp.ViewModels.PanelTools
                 int i = 1;
                 foreach (var n in _data.GetInputsList())
                     Inputs[i++] = n;
+
+                OnPropertyChanged(nameof(Inputs));
             }
 
             foreach (var c in CEConfigItems)
@@ -157,6 +160,8 @@ namespace Xfp.ViewModels.PanelTools
                 int i = 1;
                 foreach (var d in _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber))
                     Loop1Devices[i++] = d;
+
+                OnPropertyChanged(nameof(Loop1Devices));
             }
 
             foreach (var c in CEConfigItems)
@@ -174,6 +179,8 @@ namespace Xfp.ViewModels.PanelTools
                 int i = 1;
                 foreach (var d in _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber))
                     Loop2Devices[i++] = d;
+
+                OnPropertyChanged(nameof(Loop2Devices));
             }
 
             foreach (var c in CEConfigItems)
@@ -297,7 +304,7 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var c in CEConfigItems)
                 c.TimesMenuCount = Times.Count;
-        }
+        } 
 
         private void getTrueFalseList()
         {
@@ -381,35 +388,21 @@ namespace Xfp.ViewModels.PanelTools
         private List<int> _savedResetParam2Index;
         private List<int> _savedResetConditionIndex;
 
-        public void SaveItemIndices()
+        private void saveItemIndices()
         {
-            _savedActionTypeIndex       = new();
-            _savedActionParamIndex      = new();
-            _savedTriggerTypeIndex      = new();
-            _savedTriggerParam1Index    = new();
-            _savedTriggerParam2Index    = new();
-            _savedTriggerConditionIndex = new();
-            _savedResetTypeIndex        = new();
-            _savedResetParam1Index      = new();
-            _savedResetParam2Index      = new();
-            _savedResetConditionIndex   = new();
-
-            foreach (var c in CEConfigItems)
-            {
-                _savedActionTypeIndex.Add(c.SelectedActionTypeIndex);
-                _savedActionParamIndex.Add(c.SelectedActionParamIndex);
-                _savedTriggerTypeIndex.Add(c.SelectedTriggerTypeIndex);
-                _savedTriggerParam1Index.Add(c.SelectedTriggerParamIndex);
-                _savedTriggerParam2Index.Add(c.SelectedTriggerParam2Index);
-                _savedTriggerConditionIndex.Add(c.SelectedTriggerConditionIndex);
-                _savedResetTypeIndex.Add(c.SelectedResetTypeIndex);
-                _savedResetParam1Index.Add(c.SelectedResetParamIndex);
-                _savedResetParam2Index.Add(c.SelectedResetParam2Index);
-                _savedResetConditionIndex.Add(c.SelectedResetConditionIndex);
-            }
+            _savedActionTypeIndex       = [.. from c in CEConfigItems select c.SelectedActionTypeIndex];
+            _savedActionParamIndex      = [.. from c in CEConfigItems select c.SelectedActionParamIndex];
+            _savedTriggerTypeIndex      = [.. from c in CEConfigItems select c.SelectedTriggerTypeIndex];
+            _savedTriggerParam1Index    = [.. from c in CEConfigItems select c.SelectedTriggerParamIndex];
+            _savedTriggerParam2Index    = [.. from c in CEConfigItems select c.SelectedTriggerParam2Index];
+            _savedTriggerConditionIndex = [.. from c in CEConfigItems select c.SelectedTriggerConditionIndex];
+            _savedResetTypeIndex        = [.. from c in CEConfigItems select c.SelectedResetTypeIndex];
+            _savedResetParam1Index      = [.. from c in CEConfigItems select c.SelectedResetParamIndex];
+            _savedResetParam2Index      = [.. from c in CEConfigItems select c.SelectedResetParam2Index];
+            _savedResetConditionIndex   = [.. from c in CEConfigItems select c.SelectedResetConditionIndex];
         }
 
-        public void RestoreItemIndices()
+        private void restoreItemIndices()
         {
             for (int i = 0; i < CEConfigItems.Count; i++)
             {
@@ -433,8 +426,22 @@ namespace Xfp.ViewModels.PanelTools
         {
             PageHeader = Cultures.Resources.Nav_C_And_E_Configuration;
             
-            //fudge to save
-            SaveItemIndices();
+            saveItemIndices();
+            
+            Actions = null;
+            Triggers = null;
+            Inputs = null;
+            Loop1Devices = null;
+            Loop2Devices = null;
+            Zones = null;
+            ZonesPanels = null;
+            Groups = null;
+            Sets = null;
+            Events = null;
+            Relays = null;
+            SetsRelays = null;
+            Times = null;
+            TrueOrFalse = null;
 
             InitComboLists();
             
@@ -445,7 +452,7 @@ namespace Xfp.ViewModels.PanelTools
 
             CultureChanged?.Invoke(culture);
 
-            RestoreItemIndices();
+            restoreItemIndices();
         }
         #endregion
 
@@ -495,7 +502,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(SetsRelays));
             OnPropertyChanged(nameof(Times));
             OnPropertyChanged(nameof(TrueOrFalse));
-            
+
             //foreach (var c in CEConfigItems)
             //    c.RefreshView();
         }
