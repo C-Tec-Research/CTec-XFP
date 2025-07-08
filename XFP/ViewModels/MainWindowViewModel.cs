@@ -1705,7 +1705,6 @@ namespace Xfp.ViewModels
                 System.Timers.Timer killer = new(3000) { AutoReset = false, Enabled = true };
                 killer.Elapsed += (s, e) => Environment.Exit(0);
 
-                //XfpApplicationConfig.SaveSettings();
                 CTecUtil.IO.SerialComms.ClosePort();
                 Thread closePort = new Thread(new ThreadStart(CloseSerialPort));
                 Environment.Exit(0);
@@ -2132,8 +2131,6 @@ namespace Xfp.ViewModels
 
             XfpApplicationConfig.Settings.Culture = culture.Name;
             CultureResources.ChangeCulture(culture);
-
-            //_data?.ResetLists();
 
             foreach (var p in _pages)
                 (p?.DataContext as IAppViewModel)?.SetCulture(culture);

@@ -259,7 +259,7 @@ namespace Xfp.ViewModels.PanelTools
                         _zoneIndex = -1;
                         return null;
                     }
-                    return Zones[_zoneIndex??0];
+                    return _zoneIndex == -1 || _zoneIndex >= Zones.Count ? null : Zones[_zoneIndex??0];
                 }
 
                 _zoneIndex = null;
@@ -318,7 +318,7 @@ namespace Xfp.ViewModels.PanelTools
                         return null;
                     }
 
-                    return _groupIndex == -1 ? null : Groups[_groupIndex??0];
+                    return _groupIndex == -1 || _groupIndex >= Groups.Count ? null : Groups[_groupIndex??0];
                 }
 
                 _groupIndex = null;
@@ -855,10 +855,10 @@ namespace Xfp.ViewModels.PanelTools
         public int    IOInputOutput2     { get => (int)getInputOutput(1); set => setInputOutput(1, value); }
         public int    IOInputOutput3     { get => (int)getInputOutput(2); set => setInputOutput(2, value); }
         public int    IOInputOutput4     { get => (int)getInputOutput(3); set => setInputOutput(3, value); }
-        public string IOInputOutputDesc1 { get { var io = (int)getInputOutput(0); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc2 { get { var io = (int)getInputOutput(1); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc3 { get { var io = (int)getInputOutput(2); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
-        public string IOInputOutputDesc4 { get { var io = (int)getInputOutput(3); return io > -1 && io >= 0 ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc1 { get { var io = (int)getInputOutput(0); return io > -1 && io >= 0 && io < InputOutputs.Count ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc2 { get { var io = (int)getInputOutput(1); return io > -1 && io >= 0 && io < InputOutputs.Count ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc3 { get { var io = (int)getInputOutput(2); return io > -1 && io >= 0 && io < InputOutputs.Count ? InputOutputs[(int)io] : ""; } }
+        public string IOInputOutputDesc4 { get { var io = (int)getInputOutput(3); return io > -1 && io >= 0 && io < InputOutputs.Count ? InputOutputs[(int)io] : ""; } }
         public int    IOInputChannel1    { get => getIOChannel(0);         set => setChannel(0, value); }
         public int    IOInputChannel2    { get => getIOChannel(1);         set => setChannel(1, value); }
         public int    IOInputChannel3    { get => getIOChannel(2);         set => setChannel(2, value); }
@@ -1057,8 +1057,8 @@ namespace Xfp.ViewModels.PanelTools
                                 : d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
                                 : d.IOConfigItems[index].InputOutput == IOTypes.Input ? _zones[(int)d.IOConfigItems[index].ZoneGroupSet]
                                 : d.IOConfigItems[index].InputOutput == IOTypes.Output ? 
-                                    d.IsGroupedDevice ? _groups[(int)d.IOConfigItems[index].ZoneGroupSet] 
-                                                      : _sets[(int)d.IOConfigItems[index].ZoneGroupSet] : null;
+                                    d.IsGroupedDevice ? (int)d.IOConfigItems[index].ZoneGroupSet < _groups.Count ? _groups[(int)d.IOConfigItems[index].ZoneGroupSet] : null
+                                                      : (int)d.IOConfigItems[index].ZoneGroupSet < _sets.Count   ? _sets[(int)d.IOConfigItems[index].ZoneGroupSet] : null : null;
                     if (zoneGroup is null)
                         zoneGroup = zg;
                     else if (zoneGroup != zg)

@@ -278,21 +278,21 @@
               "DeviceType": 16,
               "LoopNum": 0,
               "Index": 0,
-              "Zone": 1,
-              "Group": 1,
+              "Zone": 100,
+              "Group": 100,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 3,
+              "DayVolume": 13,
               "NightVolume": 3,
               "DayMode": 9,
               "NightMode": 9,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "InputOutput": 11,
+                  "Channel": 10,
+                  "ZoneGroupSet": 100,
+                  "NameIndex": 999
                 },
                 {
                   "Index": 1,
@@ -322,13 +322,13 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 160,
               "LoopNum": 0,
               "Index": 1,
               "Zone": 1,
               "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
+              "DaySensitivity": 3,
+              "NightSensitivity": 3,
               "DayVolume": null,
               "NightVolume": null,
               "DayMode": 9,
@@ -336,14 +336,14 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -369,7 +369,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 31,
               "LoopNum": 0,
               "Index": 2,
               "Zone": 1,
@@ -383,14 +383,14 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -416,28 +416,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 32,
               "LoopNum": 0,
               "Index": 3,
               "Zone": 1,
               "Group": 1,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": 3,
-              "NightVolume": 3,
+              "DayVolume": 13,
+              "NightVolume": 13,
               "DayMode": 9,
               "NightMode": 9,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -463,28 +463,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 187,
               "LoopNum": 0,
               "Index": 4,
               "Zone": 1,
               "Group": 1,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayVolume": 13,
+              "NightVolume": 13,
+              "DayMode": 15,
+              "NightMode": 11,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1

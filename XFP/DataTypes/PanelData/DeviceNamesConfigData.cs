@@ -1,4 +1,5 @@
 ﻿using CTecDevices.Protocol;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -145,6 +146,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
         
+        [JsonIgnore]
         public string TotalNamesUsedText
         {
             get
@@ -156,6 +158,8 @@ namespace Xfp.DataTypes.PanelData
                 return result.ToString();
             }
         }
+
+        [JsonIgnore]
         public int BytesUsed
         {
             get
@@ -167,6 +171,8 @@ namespace Xfp.DataTypes.PanelData
                 return result;
             }
         }
+
+        [JsonIgnore]
         public int BytesRemaining => 0x2000 - BytesUsed;
 
 

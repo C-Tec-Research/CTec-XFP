@@ -86,6 +86,7 @@ namespace Xfp.Views
 
         private void exitApp(System.ComponentModel.CancelEventArgs e = null)
         {
+            XfpApplicationConfig.Settings.UpdateMainWindowParams(this, true);
             _context?.ClosePopups();
 
             try
@@ -99,7 +100,6 @@ namespace Xfp.Views
             }
             catch { }
 
-            XfpApplicationConfig.Settings.UpdateMainWindowParams(this, true);
             EventLog.WriteInfo("Exiting app");
             _context?.ExitApp();
         }
