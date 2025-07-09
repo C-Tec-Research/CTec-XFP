@@ -233,7 +233,7 @@ namespace Xfp.DataTypes.PanelData
                             if (!c.Validate())
                             {
                                 var io = c.GetErrorItems();
-                                var p = new ConfigErrorPageItems(1, string.Format(Cultures.Resources.Subaddress_x, c.Index));
+                                var p = new ConfigErrorPageItems(Index, string.Format(Cultures.Resources.Subaddress_x, c.Index));
                                 foreach (var e in io.ValidationCodes)
                                     p.ValidationCodes.Add(e);
                                 _errorItems.ValidationCodes.AddRange(p.ValidationCodes);

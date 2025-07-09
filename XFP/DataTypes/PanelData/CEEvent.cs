@@ -122,19 +122,19 @@ namespace Xfp.DataTypes.PanelData
                     switch (ActionType)
                     {
                         case CEActionTypes.TriggerLoop1Device:
-                        case CEActionTypes.Loop1DeviceDisable: if (!isValidDevice(ActionParam))       error = ValidationCodes.CEActionLoop1DeviceNotSet; break;
+                        case CEActionTypes.Loop1DeviceDisable: if (!isValidDevice(ActionParam))   error = ValidationCodes.CEActionLoop1DeviceNotSet; break;
                         case CEActionTypes.TriggerLoop2Device:
-                        case CEActionTypes.Loop2DeviceDisable: if (!isValidDevice(ActionParam))       error = ValidationCodes.CEActionLoop2DeviceNotSet; break;
-                        case CEActionTypes.PanelRelay:         if (!isValidRelay(ActionParam))        error = ValidationCodes.CEActionPanelRelayNotSet; break;
+                        case CEActionTypes.Loop2DeviceDisable: if (!isValidDevice(ActionParam))   error = ValidationCodes.CEActionLoop2DeviceNotSet; break;
+                        case CEActionTypes.PanelRelay:         if (!isValidRelay(ActionParam))    error = ValidationCodes.CEActionPanelRelayNotSet; break;
                         case CEActionTypes.SounderAlert:       
-                        case CEActionTypes.SounderEvac:        if (!isValidGroup(ActionParam))        error = ValidationCodes.CEActionSounderGroupNotSet; break;
+                        case CEActionTypes.SounderEvac:        if (!isValidGroup(ActionParam))    error = ValidationCodes.CEActionSounderGroupNotSet; break;
                         case CEActionTypes.ZoneDisable:  
-                        case CEActionTypes.PutZoneIntoAlarm:   if (!isValidZone(ActionParam))         error = ValidationCodes.CEActionZoneNotSet; break;
-                        case CEActionTypes.OutputDisable:      
-                        case CEActionTypes.TriggerOutputSet:   if (!isValidSet(ActionParam))          error = ValidationCodes.CEActionOutputSetNotSet; break;
-                        case CEActionTypes.GroupDisable:       if (!isValidGroup(ActionParam))        error = ValidationCodes.CEActionGroupNotSet; break;
-                        case CEActionTypes.TriggerNetworkEvent:if (!isValidEvent(ActionParam)) error = ValidationCodes.CEActionNetworkEventNotSet; break;
-                        case CEActionTypes.TriggerBeacons:     if (!isValidGroup(ActionParam))        error = ValidationCodes.CEActionBeaconGroupNotSet; break;
+                        case CEActionTypes.PutZoneIntoAlarm:   if (!isValidZone(ActionParam))     error = ValidationCodes.CEActionZoneNotSet; break;
+                        case CEActionTypes.OutputDisable:      if (!isValidSetRelay(ActionParam)) error = ValidationCodes.CEActionOutputSetNotSet; break;
+                        case CEActionTypes.TriggerOutputSet:   if (!isValidSet(ActionParam))      error = ValidationCodes.CEActionOutputSetNotSet; break;
+                        case CEActionTypes.GroupDisable:       if (!isValidGroup(ActionParam))    error = ValidationCodes.CEActionGroupNotSet; break;
+                        case CEActionTypes.TriggerNetworkEvent:if (!isValidEvent(ActionParam))    error = ValidationCodes.CEActionNetworkEventNotSet; break;
+                        case CEActionTypes.TriggerBeacons:     if (!isValidGroup(ActionParam))    error = ValidationCodes.CEActionBeaconGroupNotSet; break;
                     }
 
                     if (error != ValidationCodes.Ok)
@@ -242,12 +242,13 @@ namespace Xfp.DataTypes.PanelData
         }
 
         private bool isValidDevice(int device)     => device >= 0 && device < DeviceConfigData.NumDevices;
-        private bool isValidGroup(int group)       => group >= 0 && group < GroupConfigData.NumSounderGroups;
+        private bool isValidGroup(int group)       => group >= 0 && group <= GroupConfigData.NumSounderGroups;      // NB. the All Groups option
         private bool isValidInput(int input)       => input >= 0 && input < XfpPanelData.NumPanelInputs;
         private bool isValidEvent(int evnt)        => evnt >= 0 && evnt < CEConfigData.NumEvents;
         private bool isValidPanel(int panel)       => panel >= 0 && ActionParam < NetworkConfigData.NumPanelSettings;
         private bool isValidRelay(int relay)       => relay >= 0 && relay < XfpPanelData.NumRelays;
         private bool isValidSet(int set)           => set >= 0 && set < SetConfigData.NumOutputSetTriggers;
+        private bool isValidSetRelay(int relay)    => relay >= 0 && relay < SetConfigData.NumOutputSetTriggers + XfpPanelData.NumRelays;
         private bool isValidTimer(int timer)       => timer >= 0 && timer < CEConfigData. NumEvents;
         private bool isValidZone(int zone)         => zone >= 0 && zone < ZoneConfigData.NumZones;
         private bool isValidZoneOrPanel(int zopa)  => zopa >= 0 && zopa < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels;

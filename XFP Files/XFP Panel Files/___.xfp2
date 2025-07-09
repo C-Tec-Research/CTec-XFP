@@ -289,7 +289,7 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 11,
+                  "InputOutput": 1,
                   "Channel": 10,
                   "ZoneGroupSet": 100,
                   "NameIndex": 999
@@ -24256,10 +24256,7 @@
       "DeviceNamesConfig": {
         "DeviceNames": [
           "No name allocated"
-        ],
-        "TotalNamesUsedText": "1",
-        "BytesUsed": 18,
-        "BytesRemaining": 8174
+        ]
       },
       "ZoneConfig": {
         "Zones": [

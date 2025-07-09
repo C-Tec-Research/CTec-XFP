@@ -214,11 +214,11 @@
                                            Maximum="{Binding MaxSounderGroup}"
                                            PreviewMouseDown="ctrl_PreviewEvent"
                                            PreviewMouseWheel="ctrl_PreviewMouseWheel" 
-                                           Margin="5,3,0,0"/>
+                                           Margin="5,0,0,0"/>
                     </StackPanel>
 
 
-                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=Evac_Tone, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="25,0,0,0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=Evac_Tone, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="25,2,0,0"/>
                     <ComboBox Grid.Row="0" Grid.Column="3" 
                               ItemsSource="{Binding EvacTones}"
                               SelectedIndex="{Binding EvacTone}"
@@ -237,7 +237,7 @@
                               PreviewKeyDown="ctrl_PreviewKeyDown"
                               MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                               Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}"
-                              Margin="5,0,0,0"/>
+                              Margin="5,2,0,0"/>
 
                     
                     <CheckBox Grid.Row="0" Grid.Column="4" Content="{Binding Path=New_Fire_Causes_Resound, Source={StaticResource Resources}}"
@@ -252,6 +252,7 @@
                         <TextBlock Text="{Binding Path=Phased_Delay, Source={StaticResource Resources}}" Margin="30,0,0,0"/>
                         <ctc:TimePicker x:Name="tpPhasedDelay"
                                         Value="{Binding PhasedDelay}" Format="mmss" MaxValue="10:00" SecondsIncrement="30" MinutesIncrement="1" 
+                                        AllowMidnight="False"
                                         PreviewMouseDown="ctrl_PreviewEvent"
                                         PreviewMouseWheel="ctrl_PreviewMouseWheel"
                                         Margin="3,3,3,0"/>

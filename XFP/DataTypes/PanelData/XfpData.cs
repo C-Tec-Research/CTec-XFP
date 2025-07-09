@@ -180,7 +180,7 @@ namespace Xfp.DataTypes
             foreach (var p in Panels)
                 if (!p.Value.Validate())
                 {
-                    var e = p.Value.Get Error Items();
+                    var e = p.Value.GetErrorItems();
                     //foreach (var e in p.Value.GetPageErrorDetails().Items)
                     //    _errorsAndWarnings.Add();
                 }

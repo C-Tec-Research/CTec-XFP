@@ -45,6 +45,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         public void RefreshView(object source, ElapsedEventArgs eventArgs, int currentPanel, int currentLoop, string currentPage)
         {
             ValidationTreeViewItemViewModel page;
+            //ValidationPageViewModel page;
 
             if (currentPanel == PanelNumber)
                 IsExpanded = true;
@@ -74,7 +75,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 page.SetChildren(pageErrors, page, currentPanel == PanelNumber && (currentPage?.Equals(page.Name) ?? false));
             }
 
-            if ((page = FindInChildren(Pages, string.Format(Cultures.Resources.Comms_Device_Names, 2))) is not null)
+            if ((page = FindInChildren(Pages, Cultures.Resources.Comms_Device_Names)) is not null)
             {
                 allPageErrors.AddRange(pageErrors = _panelData.DeviceNamesConfig.GetPageErrorDetails().Items);
                 expand = currentPanel == PanelNumber && (currentPage?.Equals(page.Name) ?? false);

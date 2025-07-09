@@ -213,7 +213,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     }
 
                     if (elv2 > ErrorLevel)
-                        ErrorLevel = elv2;
+                        i.ErrorLevel = elv2;
                 }
                 catch { }
             }

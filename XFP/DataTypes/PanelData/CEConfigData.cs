@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CTecUtil.StandardPanelDataTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace Xfp.DataTypes.PanelData
                 if (original is not null)
                     TimerEventTimes.Add(new(original.TimerEventTimes[i].Hours, original.TimerEventTimes[i].Minutes, original.TimerEventTimes[i].Seconds));
                 else
-                    TimerEventTimes.Add(new(0, 0, 0));
+                    TimerEventTimes.Add(TimeOfDay.Midnight);
             }
         }
 
@@ -62,7 +63,7 @@ namespace Xfp.DataTypes.PanelData
 
             result.TimerEventTimes = new();
             for (int i = 0; i < NumEvents; i++)
-                result.TimerEventTimes.Add(new(0, 0, 0));
+                result.TimerEventTimes.Add(TimeOfDay.Midnight);
 
             result.Events[0].ActionType = CEActionTypes.SounderEvac;
             result.Events[0].ActionParam = 0;

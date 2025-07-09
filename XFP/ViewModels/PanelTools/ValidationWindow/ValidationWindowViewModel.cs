@@ -117,6 +117,8 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     }
                     //var pan = ValidationTreeViewItemViewModel.FindInChildren(p, p.Name);
                     pageErrors = _data.Panels[p.PanelNumber].GetPageErrorDetails()?.Items;
+                    var erw = _data.Panels[p.PanelNumber].GetErrorsAndWarnings();
+                    
                     if (pageErrors is not null)
                         allPageErrors.AddRange(pageErrors);
                 }

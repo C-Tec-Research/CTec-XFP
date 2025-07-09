@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -7,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
-using CTecUtil.ViewModels;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
@@ -42,11 +43,11 @@ namespace Xfp.ViewModels.PanelTools
                         if (z.ZoneNum                != _zoneNum)              _zoneNum            = null; 
                         if (z.ZoneDesc               != _zoneName)             _zoneName           = null;
                         if (z.Day.DependencyOption   != _dayOption)            _dayOption          = null;
-                        if (z.Day.DetectorReset      != _dayDetectorReset)   { _dayDetectorReset   = new(0, 0, 0); DayDetectorResetIsNull = true; }
-                        if (z.Day.AlarmReset         != _dayAlarmReset)      { _dayAlarmReset      = new(0, 0, 0); DayAlarmResetIsNull    = true; }
+                        if (z.Day.DetectorReset      != _dayDetectorReset)   { _dayDetectorReset   = TimeOfDay.Midnight; DayDetectorResetIsNull = true; }
+                        if (z.Day.AlarmReset         != _dayAlarmReset)      { _dayAlarmReset      = TimeOfDay.Midnight; DayAlarmResetIsNull    = true; }
                         if (z.Night.DependencyOption != _nightOption)          _nightOption        = null;
-                        if (z.Night.DetectorReset    != _nightDetectorReset) { _nightDetectorReset = new(0, 0, 0); NightDetectorResetIsNull = true; }
-                        if (z.Night.AlarmReset       != _nightAlarmReset)    { _nightAlarmReset    = new(0, 0, 0); NightAlarmResetIsNull    = true; }
+                        if (z.Night.DetectorReset    != _nightDetectorReset) { _nightDetectorReset = TimeOfDay.Midnight; NightDetectorResetIsNull = true; }
+                        if (z.Night.AlarmReset       != _nightAlarmReset)    { _nightAlarmReset    = TimeOfDay.Midnight; NightAlarmResetIsNull    = true; }
                     }
                 }
             }

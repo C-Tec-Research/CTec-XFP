@@ -82,20 +82,20 @@
                             </StackPanel>
 
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Timer_Event, Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,-1"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Occurs_At, Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,3"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Occurs_At,   Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,3"/>
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Timer_Event, Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,2,3,-1"/>
-                            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Occurs_At, Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,3"/>
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Occurs_At,   Source={StaticResource Resources}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,3,3"/>
 
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TimerHeaders[0]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding TimerHeaders[1]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding TimerHeaders[2]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding TimerHeaders[3]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding TimerHeaders[4]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="6" Text="{Binding TimerHeaders[5]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding TimerHeaders[6]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" Grid.Column="8" Text="{Binding TimerHeaders[7]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding TimerHeaders[8]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding TimerHeaders[9]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TimerHeaders[0]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding TimerHeaders[1]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding TimerHeaders[2]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding TimerHeaders[3]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding TimerHeaders[4]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="6" Text="{Binding TimerHeaders[5]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding TimerHeaders[6]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" Grid.Column="8" Text="{Binding TimerHeaders[7]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding TimerHeaders[8]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding TimerHeaders[9]}"  HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding TimerHeaders[10]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding TimerHeaders[11]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="4" Grid.Column="5" Text="{Binding TimerHeaders[12]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
@@ -103,15 +103,15 @@
                             <TextBlock Grid.Row="4" Grid.Column="7" Text="{Binding TimerHeaders[14]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="4" Grid.Column="8" Text="{Binding TimerHeaders[15]}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="1" x:Name="tp1" Value="{Binding TimerEvent1}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="0,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="2" x:Name="tp2" Value="{Binding TimerEvent2}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="3" x:Name="tp3" Value="{Binding TimerEvent3}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="4" x:Name="tp4" Value="{Binding TimerEvent4}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="5" x:Name="tp5" Value="{Binding TimerEvent5}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="6" x:Name="tp6" Value="{Binding TimerEvent6}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="7" x:Name="tp7" Value="{Binding TimerEvent7}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="2" Grid.Column="8" x:Name="tp8" Value="{Binding TimerEvent8}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
-                            <ctc:TimePicker Grid.Row="5" Grid.Column="1" x:Name="tp9" Value="{Binding TimerEvent9}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="1" x:Name="tp1"  Value="{Binding TimerEvent1}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="0,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="2" x:Name="tp2"  Value="{Binding TimerEvent2}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="3" x:Name="tp3"  Value="{Binding TimerEvent3}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="4" x:Name="tp4"  Value="{Binding TimerEvent4}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="5" x:Name="tp5"  Value="{Binding TimerEvent5}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="6" x:Name="tp6"  Value="{Binding TimerEvent6}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="7" x:Name="tp7"  Value="{Binding TimerEvent7}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="2" Grid.Column="8" x:Name="tp8"  Value="{Binding TimerEvent8}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
+                            <ctc:TimePicker Grid.Row="5" Grid.Column="1" x:Name="tp9"  Value="{Binding TimerEvent9}"  Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
                             <ctc:TimePicker Grid.Row="5" Grid.Column="2" x:Name="tp10" Value="{Binding TimerEvent10}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
                             <ctc:TimePicker Grid.Row="5" Grid.Column="3" x:Name="tp11" Value="{Binding TimerEvent11}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>
                             <ctc:TimePicker Grid.Row="5" Grid.Column="4" x:Name="tp12" Value="{Binding TimerEvent12}" Format="HH:mm" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel" Margin="3,-2,0,0"/>

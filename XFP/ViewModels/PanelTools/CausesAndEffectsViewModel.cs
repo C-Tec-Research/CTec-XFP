@@ -1,13 +1,14 @@
-﻿using System;
+﻿using CTecUtil.StandardPanelDataTypes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using System.Linq;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -31,22 +32,22 @@ namespace Xfp.ViewModels.PanelTools
 
         public List<string>   TimerHeaders { get => _timerHeaders; }
         private List<TimeSpan> _timerEvents => _data?.CurrentPanel.CEConfig.TimerEventTimes??new();
-        public TimeSpan TimerEvent1   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent2   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent3   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent4   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent5   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent6   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent7   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent8   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent9   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??new(0, 0, 0);  set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); } }
-        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??new(0, 0, 0); set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent1   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[0]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[0] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent2   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[1]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[1] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent3   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[2]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[2] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent4   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[3]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[3] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent5   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[4]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[4] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent6   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[5]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[5] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent7   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[6]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[6] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent8   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[7]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[7] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent9   { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[8]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[8] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent10  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[9]??TimeOfDay.Midnight;  set { _data.CurrentPanel.CEConfig.TimerEventTimes[9] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent11  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[10]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[10] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent12  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[11]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[11] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent13  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[12]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[12] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent14  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[13]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[13] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent15  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[14]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[14] = value; OnPropertyChanged(); } }
+        public TimeSpan TimerEvent16  { get => _data?.CurrentPanel.CEConfig.TimerEventTimes[15]??TimeOfDay.Midnight; set { _data.CurrentPanel.CEConfig.TimerEventTimes[15] = value; OnPropertyChanged(); } }
 
         private ObservableCollection<CausesAndEffectsItemViewModel> _ceConfigItems = new();
         public ObservableCollection<CausesAndEffectsItemViewModel> CEConfigItems { get => _ceConfigItems; set { _ceConfigItems = value; OnPropertyChanged(); } }

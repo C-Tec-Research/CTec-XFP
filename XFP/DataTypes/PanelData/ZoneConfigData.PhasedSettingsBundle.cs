@@ -21,9 +21,9 @@ namespace Xfp.DataTypes.PanelData
             public TimeSpan PhasedDelay { get; set; }
             public TimeSpan InputDelay { get; set; }
             public TimeSpan InvestigationPeriod { get; set; }
-        
 
-            public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray((int)PhasedDelay.TotalSeconds, 2),
+
+            public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(PhasedDelay == TimeOfDay.Midnight ? [0xff, 0xff] : ByteArrayProcessing.IntToByteArray((int)PhasedDelay.TotalSeconds, 2),
                                                                                  ByteArrayProcessing.IntToByteArray((int)InputDelay.TotalSeconds, 2),
                                                                                  ByteArrayProcessing.IntToByteArray((int)InvestigationPeriod.TotalSeconds, 2),
                                                                                  [0x00, 0x00]);
@@ -38,7 +38,11 @@ namespace Xfp.DataTypes.PanelData
                 {
                     var result = new PhasedSettingsBundle();
                     
-                    result.PhasedDelay         = new TimeSpan(0, 0, Integer.Parse(data, null, 2, startOffset).Value);
+                    if (data[2] == 0xff && data[3] == 0xff)
+                        result.PhasedDelay     = new TimeSpan(0, 0, 0);
+                    else
+                        result.PhasedDelay     = new TimeSpan(0, 0, Integer.Parse(data, null, 2, startOffset).Value);
+                    
                     result.InputDelay          = new TimeSpan(0, 0, Integer.Parse(data, null, 2, startOffset + 2).Value);
                     result.InvestigationPeriod = new TimeSpan(0, 0, Integer.Parse(data, null, 2, startOffset + 4).Value);
                     return result;

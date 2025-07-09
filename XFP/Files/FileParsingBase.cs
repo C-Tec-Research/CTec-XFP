@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CTecUtil.StandardPanelDataTypes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -153,7 +154,7 @@ namespace Xfp.Files
                     if (zeroValue is not null)
                     {
                         if (time == zeroValue.Value)
-                            return new(0, 0, 0);
+                            return TimeOfDay.Midnight;
                     }
                     return new(time / 3600, time / 60 % 60, time % 60);
                 }

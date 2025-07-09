@@ -167,6 +167,8 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
+        public List<ConfigErrorPage> GetErrorsAndWarnings() => _errorsAndWarnings;
+
         /// <summary>Current errors or warnings</summary>
         private List<ConfigErrorPage> _errorsAndWarnings = new();
 

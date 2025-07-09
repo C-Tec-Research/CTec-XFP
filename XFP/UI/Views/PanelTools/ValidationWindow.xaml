@@ -394,9 +394,9 @@
                                               Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush02}" FontWeight="DemiBold"/>
-                                    <TextBlock Text="[" Foreground="Blue" Opacity="0.8" FontSize="9" Margin="0"/>
-                                    <TextBlock Text="{Binding TotalErrors}" Foreground="Blue" FontSize="9" Margin="0"/>
-                                    <TextBlock Text="]" Foreground="Blue" Opacity="0.8" FontSize="9"/>
+                                    <TextBlock Text="[" Foreground="Blue" Opacity="0.8" Margin="0"/>
+                                    <TextBlock Text="{Binding TotalErrors}" Foreground="Blue" Margin="0"/>
+                                    <TextBlock Text="]" Foreground="Blue" Opacity="0.8" />
                                 </StackPanel>
                             </HierarchicalDataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:ValidationCodeViewModel}">

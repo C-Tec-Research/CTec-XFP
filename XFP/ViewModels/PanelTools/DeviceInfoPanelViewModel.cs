@@ -2430,12 +2430,7 @@ namespace Xfp.ViewModels.PanelTools
 
             if (_inputOutputs is null)
             {
-                _inputOutputs = new()
-                {
-                    Cultures.Resources.N_A,
-                    Cultures.Resources.Input,
-                    Cultures.Resources.Output,
-                };
+                _inputOutputs = [ Cultures.Resources.N_A, Cultures.Resources.Input, Cultures.Resources.Output, ];
             }
             else
             {

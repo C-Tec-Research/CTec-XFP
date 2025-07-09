@@ -24256,10 +24256,7 @@
       "DeviceNamesConfig": {
         "DeviceNames": [
           "No name allocated"
-        ],
-        "TotalNamesUsedText": "1",
-        "BytesUsed": 18,
-        "BytesRemaining": 8174
+        ]
       },
       "ZoneConfig": {
         "Zones": [

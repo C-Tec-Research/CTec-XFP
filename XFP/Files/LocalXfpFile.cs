@@ -1,12 +1,14 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecDevices.Protocol;
+using CTecUtil;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using CTecControls.UI;
-using CTecUtil;
 using Windows.Storage.Streams;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
@@ -132,14 +134,17 @@ namespace Xfp.Files
             {
                 //reading from a json file will create the default number
                 //of devices, so we remove any above the protocol's limit
-                //if (panelData.Loop1Config.Devices.Count > DeviceConfigData.NumDevices)
-                //    panelData.Loop1Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop1Config.Devices.Count - DeviceConfigData.NumDevices);
-                //if (panelData.Loop2Config.Devices.Count > DeviceConfigData.NumDevices)
-                //    panelData.Loop2Config.Devices.RemoveRange(DeviceConfigData.NumDevices, panelData.Loop2Config.Devices.Count - DeviceConfigData.NumDevices);
                 for (int i = panelData.Loop1Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
                     panelData.Loop1Config.Devices.RemoveAt(i);
                 for (int i = panelData.Loop2Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
                     panelData.Loop2Config.Devices.RemoveAt(i);
+
+                //ensure IO devices have valid InputOutput value
+                foreach (var d in panelData.Loop1Config.Devices)
+                    if (d.IsIODevice)
+                        foreach (var io in d.IOConfig)
+                            if ((int)io.InputOutput < 0 || (int)io.InputOutput > 2)
+                                io.InputOutput = DeviceTypes.DefaultIOOutputType(d.DeviceType, io.Index, DeviceTypes.CurrentProtocolType);
 
                 //ensure the DeviceNames table contains *something*
                 if (panelData.DeviceNamesConfig.DeviceNames.Count == 0)
