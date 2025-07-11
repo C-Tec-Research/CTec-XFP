@@ -75,7 +75,7 @@ namespace Xfp.DataTypes
         public static string CEActionTypesToString(CEActionTypes actionType)
             => actionType switch
             {
-                CEActionTypes.None                => "",//Cultures.Resources.Action_No_Events,
+                CEActionTypes.None                => Cultures.Resources.Action_No_Events,
                 CEActionTypes.TriggerLoop1Device  => string.Format(Cultures.Resources.Action_Trigger_Loop_x_Device, 1),
                 CEActionTypes.TriggerLoop2Device  => string.Format(Cultures.Resources.Action_Trigger_Loop_x_Device, 2),
                 CEActionTypes.PanelRelay          => Cultures.Resources.Action_Panel_Relay,

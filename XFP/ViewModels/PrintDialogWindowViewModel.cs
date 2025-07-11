@@ -36,7 +36,10 @@ namespace Xfp.ViewModels
             _pages       = pages;
             _currentPage = currentPage;
 
-            ZoomLevel    = _applicationConfig.PrintParametersWindow.Scale;
+            ZoomLevel = _applicationConfig.PrintParametersWindow.Scale;
+            
+            var printer = _applicationConfig.LastPrinter;
+            SelectedPrinter = !string.IsNullOrEmpty(printer) ? printer : new LocalPrintServer().DefaultPrintQueue.Name;
 
             if (_currentPage.DataContext is DevicesViewModel)
                 setCurrentPageToPrint();

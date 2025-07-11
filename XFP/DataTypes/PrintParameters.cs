@@ -17,6 +17,8 @@ using Xfp.DataTypes.PanelData;
 using Xfp.ViewModels.PanelTools;
 using Windows.Graphics.Printing;
 using CTecUtil;
+using CTecUtil.Config;
+using Xfp.Config;
 
 namespace Xfp.DataTypes
 {
@@ -36,8 +38,7 @@ namespace Xfp.DataTypes
         public PrintTicket     PrintTicket       => PrintHandler.PrintTicket;
 
 
-        public void SetPrinter(string name) => PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(name);
-
+        public void SetPrinter(string name) => PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(XfpApplicationConfig.Settings.LastPrinter = name);
 
         public bool PrintAllPanels     { get; set; }
         public bool PrintSelectedPanels{ get; set; }

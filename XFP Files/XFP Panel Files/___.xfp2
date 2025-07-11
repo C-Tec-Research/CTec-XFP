@@ -16,11 +16,11 @@
         "MCPDebounce": 1,
         "IODebounce": 1,
         "DetectorDebounce": 1,
-        "OccupiedBegins": "00:00:00",
-        "OccupiedEnds": "00:00:00",
+        "OccupiedBegins": "06:00:00",
+        "OccupiedEnds": "20:00:00",
         "DayStart": [
           false,
-          false,
+          true,
           false,
           false,
           false,
@@ -30,9 +30,9 @@
         "NightStart": [
           false,
           false,
-          false,
-          false,
-          false,
+          true,
+          true,
+          true,
           false,
           false
         ],
@@ -27238,31 +27238,31 @@
   "SiteConfig": {
     "SystemName": "XFP",
     "Client": {
-      "Name": null,
+      "Name": "C-Tec",
       "Address": [
-        "",
-        "",
+        "Dark Lane",
+        "Mawdesley",
         "",
         ""
       ],
-      "Postcode": null,
-      "Tel": null
+      "Postcode": "LA",
+      "Tel": ""
     },
-    "InstallDate": null,
-    "CommissionDate": null,
+    "InstallDate": "2025-07-07T00:00:00",
+    "CommissionDate": "2025-07-09T00:00:00",
     "Installer": {
-      "Name": null,
+      "Name": "JJB",
       "Address": [
-        "",
-        "",
+        "84 St George's Rd",
+        "New Mills",
         "",
         ""
       ],
-      "Postcode": null,
-      "Tel": null
+      "Postcode": "SK22 4JT",
+      "Tel": "07918027882"
     },
-    "EngineerName": null,
-    "EngineerNo": null,
+    "EngineerName": "Jamie",
+    "EngineerNo": "07918027882",
     "FaultLockout": 0,
     "FrontPanel": null,
     "RecalibrationTime": "04:00:00",

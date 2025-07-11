@@ -138,13 +138,13 @@ namespace Xfp.Files
                     panelData.Loop1Config.Devices.RemoveAt(i);
                 for (int i = panelData.Loop2Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
                     panelData.Loop2Config.Devices.RemoveAt(i);
+                foreach (var (d, io) in
 
                 //ensure IO devices have valid InputOutput value
-                foreach (var d in panelData.Loop1Config.Devices)
-                    if (d.IsIODevice)
-                        foreach (var io in d.IOConfig)
-                            if ((int)io.InputOutput < 0 || (int)io.InputOutput > 2)
-                                io.InputOutput = DeviceTypes.DefaultIOOutputType(d.DeviceType, io.Index, DeviceTypes.CurrentProtocolType);
+                from d in panelData.Loop1Config.Devices where d.IsIODevice
+                    from io in d.IOConfig where (int)io.InputOutput < 0 || (int)io.InputOutput > 2
+                        select (d, io))
+                            io.InputOutput = DeviceTypes.DefaultIOOutputType(d.DeviceType, io.Index, DeviceTypes.CurrentProtocolType);
 
                 //ensure the DeviceNames table contains *something*
                 if (panelData.DeviceNamesConfig.DeviceNames.Count == 0)

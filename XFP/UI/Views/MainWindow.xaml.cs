@@ -285,11 +285,11 @@ namespace Xfp.Views
         private void FileSave_MouseDown(object sender, MouseButtonEventArgs e) => _context.FileSaveCommand.Execute(null);
         private void FileSaveAs_MouseDown(object sender, MouseButtonEventArgs e) => _context.FileSaveAsCommand.Execute(null);
         private void Print_MouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
-        //private void Print_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
+        private void Print_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
         //private void PrintReport_Click(object sender, RoutedEventArgs e) => _context.PrintDocument();
         //private void PrintProperties_Click(object sender, RoutedEventArgs e) => _context.PrinterProperties();
-        //private void ClosePrint_Click(object sender, EventArgs e) { }// => _context.ClosePrintOption();
-        //private void CancelPrint_Click(object sender, RoutedEventArgs e) { }// => _context.ClosePrintOption();
+        private void ClosePrint_Click(object sender, EventArgs e) { }// => _context.ClosePrintOption();
+        private void CancelPrint_Click(object sender, RoutedEventArgs e) { }// => _context.ClosePrintOption();
         private void ConnectSerial_MouseDown(object sender, MouseButtonEventArgs e) => _context.ConnectSerialCommand.Execute(null);
         private void DisconnectSerial_MouseDown(object sender, MouseButtonEventArgs e) => _context.DisconnectSerialCommand.Execute(null);
         private void SelectLanguage_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.SelectLanguageCommand.Execute(null);
@@ -317,9 +317,9 @@ namespace Xfp.Views
                 _context.HighlightProtocolsMenu(mnuProtocol, mnuProtocols, mnuExit);
         }
 
-        //private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;
+        //private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = true;
         //private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
-        //private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)           => _context.PrinterListIsOpen = false;
+        //private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
 
     }
 }

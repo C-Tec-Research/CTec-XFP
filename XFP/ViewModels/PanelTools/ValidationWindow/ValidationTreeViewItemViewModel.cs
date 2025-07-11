@@ -133,23 +133,21 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         }
 
 
-        public ValidationTreeViewItemViewModel Parent
-        {
-            get { return _parent; }
-        }
+        public ValidationTreeViewItemViewModel Parent => _parent;
 
 
         public void SetChildren(List<ConfigErrorPageItems> items, ValidationTreeViewItemViewModel parentPage, bool expandThisBranch)
         {
-            /*** 1. remove any errors that have been corrected ***/
-            List<string> errorsToBeRemoved = new();
-            foreach (var c in parentPage.Children)
+            try
             {
-                if (c is null)
-                    continue;
+                /*** 1. remove any errors that have been corrected ***/
 
-                try
+                List<string> errorsToBeRemoved = new();
+                foreach (var c in parentPage.Children)
                 {
+                    if (c is null)
+                        continue;
+
                     bool isStillAnError = false;
 
                     if (items is not null)
@@ -168,32 +166,43 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                         if (!errorsToBeRemoved.Contains(c.Name))
                             errorsToBeRemoved.Add(c.Name);
                 }
-                catch { }
-            }
 
-            foreach (var f in errorsToBeRemoved)
-                parentPage.Remove(f);
+                foreach (var f in errorsToBeRemoved)
+                    parentPage.Remove(f);
 
 
-            /*** 2. update new errors ***/
+                /*** 2. update any new errors ***/
 
-            if (items is not null)
-                foreach (var s in items)
-                    parentPage.Add(new ValidationPageItemViewModel(s, parentPage));
-
-
-            /*** 3. set the error level on this branch and its children according to the highest condition (OK<Warning<Error) on the level below ***/
-
-            ErrorLevels elv;
-            ErrorLevel = ErrorLevels.OK;
-
-            foreach (var i in Children)
-            {
-                if (i is null)
-                    continue;
-
-                try
+                if (items is not null)
                 {
+                    foreach (var s in items)
+                    {
+                        var found = false;
+                        foreach (var c in parentPage.Children)
+                        {
+                            if (s.Name == c.Name)
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if (!found)
+                            parentPage.Children.Add(new ValidationPageItemViewModel(s, parentPage));
+                    }
+                }
+
+
+                /*** 3. set the error level on this branch and its children according to the highest condition (OK<Warning<Error) on the level below ***/
+
+                ErrorLevels elv;
+                ErrorLevel = ErrorLevels.OK;
+
+                foreach (var i in Children)
+                {
+                    if (i is null)
+                        continue;
+
                     elv = i.GetHighestErrorLevel();
                     if (elv > ErrorLevel)
                         ErrorLevel = elv;
@@ -215,22 +224,22 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     if (elv2 > ErrorLevel)
                         i.ErrorLevel = elv2;
                 }
-                catch { }
+
+
+                /*** 4. ensure desired branch is expanded fully ***/
+
+                if (expandThisBranch)
+                {
+                    IsExpanded = true;
+                    foreach (var c in Children)
+                        if (c is not null)
+                            if (c.ErrorLevel == ErrorLevels.Error)
+                                c.IsExpanded = true;
+                }
+
+                OnPropertyChanged(nameof(TotalErrors));
             }
-
-
-            /*** 4. ensure desired branch is expanded fully ***/
-
-            if (expandThisBranch)
-            {
-                IsExpanded = true;
-                foreach (var c in Children)
-                    if (c is not null)
-                        if (c.ErrorLevel == ErrorLevels.Error)
-                            c.IsExpanded = true;
-            }
-
-            OnPropertyChanged(nameof(TotalErrors));
+            catch { }
         }
 
 
