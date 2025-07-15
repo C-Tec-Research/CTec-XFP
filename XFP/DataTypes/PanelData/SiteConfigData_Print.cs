@@ -53,10 +53,10 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddCellToGrid(grid, SystemName, 0, 1, true, string.IsNullOrWhiteSpace(SystemName));
             addAddress(grid, Client, 2, 1);
             addAddress(grid, Installer, 2, 4);
-            GridUtil.AddCellToGrid(grid, InstallDate?.ToString("d"),    10, 1, true, InstallDate is null);
-            GridUtil.AddCellToGrid(grid, CommissionDate?.ToString("d"), 11, 1, true, CommissionDate is null);
-            GridUtil.AddCellToGrid(grid, EngineerName, 10, 4, true, string.IsNullOrWhiteSpace(EngineerName));
-            GridUtil.AddCellToGrid(grid, EngineerNo,   11, 4, true, string.IsNullOrWhiteSpace(EngineerNo));
+            GridUtil.AddCellToGrid(grid, InstallDate?.ToString("d"),    10, 1, true, false);//InstallDate is null);
+            GridUtil.AddCellToGrid(grid, CommissionDate?.ToString("d"), 11, 1, true, false);//CommissionDate is null);
+            GridUtil.AddCellToGrid(grid, EngineerName, 10, 4, true, false);//string.IsNullOrWhiteSpace(EngineerName));
+            GridUtil.AddCellToGrid(grid, EngineerNo,   11, 4, true, false);//string.IsNullOrWhiteSpace(EngineerNo));
 
             GridUtil.AddRowToGrid(grid, 10);
 
@@ -70,8 +70,8 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < NameAndAddressData.NumAddressLines; i++)
                 GridUtil.AddCellToGrid(grid, addressLine(nad.Address, i), startRow + i, col, true, i == 0 && string.IsNullOrWhiteSpace(addressLine(nad.Address, i)));
             startRow += NameAndAddressData.NumAddressLines;
-            GridUtil.AddCellToGrid(grid, nad.Postcode, startRow++, col, true, string.IsNullOrWhiteSpace(nad.Postcode));
-            GridUtil.AddCellToGrid(grid, nad.Tel, startRow, col, true, string.IsNullOrWhiteSpace(nad.Tel));
+            GridUtil.AddCellToGrid(grid, nad.Postcode, startRow++, col, true, false);//string.IsNullOrWhiteSpace(nad.Postcode));
+            GridUtil.AddCellToGrid(grid, nad.Tel, startRow, col, true, false);//string.IsNullOrWhiteSpace(nad.Tel));
         }
 
 

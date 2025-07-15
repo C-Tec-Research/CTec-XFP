@@ -48,6 +48,7 @@
         <ctuvh:PrintQueueStatusToStringConverter x:Key="PrintQueueStatusToStringConverter"/>
         <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
+        <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:BoolToOpacity80pcConverter x:Key="BoolToOpacity80pcConverter"/>
         <ctcvh:ErrorLevelOKToVisibilityConverter x:Key="ErrorLevelOKToVisibilityConverter"/>
         <ctcvh:ErrorLevelWarningToVisibilityConverter x:Key="ErrorLevelWarningToVisibilityConverter"/>
@@ -56,6 +57,8 @@
         <ctcvh:ErrorLevelToBrushConverter x:Key="ErrorLevelToBrushConverter"/>
         <ctcvh:ErrorLevelToSvgPathDataConverter x:Key="ErrorLevelToSvgPathDataConverter"/>
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
+        <ctcvh:GreaterThanOneConverter x:Key="GreaterThanOneConverter"/>
+        <ctcvh:EqualsOneToOpacity40Converter x:Key="EqualsOneToOpacity40Converter"/>
         <ctcvh:IsNullOrWhiteSpaceToBoolConverter x:Key="IsNullOrWhiteSpaceToBoolConverter"/>
         <ctcvh:NonNullToBoolConverter x:Key="NonNullToBoolConverter"/>
         <ctcvh:IsNullToOpacity40pcConverter x:Key="IsNullToOpacity40pcConverter"/>
@@ -110,51 +113,73 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <!--#region printer-->
-                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" Margin="5,3,0,13">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,3,0,13">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Select_Printer, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
-                            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboPrinter"
-                                      ItemsSource="{Binding Printers}"
-                                      SelectedItem="{Binding SelectedPrinter}"
-                                      PreviewMouseDown="cboPrinter_PreviewMouseDown"
-                                      MinWidth="150"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Select_Printer, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboPrinter"
+                                    ItemsSource="{Binding Printers}"
+                                    SelectedItem="{Binding SelectedPrinter}"
+                                    PreviewMouseDown="cboPrinter_PreviewMouseDown"
+                                    MinWidth="150"/>
 
-                            <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Printer_Status, Source={StaticResource Resources}}" Margin="0,2,8,0"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PrinterStatus, Converter={StaticResource PrintQueueStatusToStringConverter}}" Margin="2,2,0,0"/>-->
-                        </Grid>
-                    </StackPanel>
+                        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Printer_Status, Source={StaticResource Resources}}" Margin="0,2,8,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PrinterStatus, Converter={StaticResource PrintQueueStatusToStringConverter}}" Margin="2,2,0,0"/>-->
+
+                        <StackPanel Grid.Column="3" Orientation="Horizontal" IsEnabled="{Binding CanPrint}" HorizontalAlignment="Right" Margin="0,-1,0,0">
+                            <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
+                            <ctc:NumberSpinner Value="{Binding NumCopies}" Minimum="1" Maximum="10"/>
+                        </StackPanel>
+                    </Grid>
                     <!--#endregion-->
 
-                    
+                    <!--<StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Visibility="{Binding Loop}" Margin="25,0,0,0">
+                        <CheckBox IsChecked="{Binding Print_All_Panels}" Content="{Binding Path=All_Panels, Source={StaticResource Resources}}" Margin="0,0,0,5"/>
+                        <ListView FlowDirection="LeftToRight" Margin="15,0,0,0">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="1"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>-->
+
                     <!--#region data range-->
-                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical" Margin="5,0,0,0">
 
-                        <!--<RadioButton Content="All panels" GroupName="grpPanels" IsChecked="{Binding PrintAllPanels}" FontSize="13" Margin="0,0,0,0"/>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Vertical">
-                                <RadioButton Content="Select panels:" GroupName="grpPanels" IsChecked="{Binding PrintSelectedPanels}" FontSize="13" Margin="0,0,0,0"/>
-                                <TextBlock Text="e.g. 1-3,5" FontSize="10" Style="{StaticResource StandardTextBlock}" Opacity="0.5" Margin="30,-10,0,0"/>
-                            </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0,0,10">
+                        <TextBlock Text="{Binding Path=Print_Panels, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
+                        <RadioButton Content="{Binding Path=Print_Current_Panel, Source={StaticResource Resources}}" GroupName="grpPanels" 
+                                     IsChecked="{Binding PrintSelectedPanel}" 
+                                     FontSize="13" Margin="0,3,0,0"/>
+                        <RadioButton Content="{Binding Path=Print_All_Panels, Source={StaticResource Resources}}" GroupName="grpPanels" 
+                                     IsChecked="{Binding PrintAllPanels}" 
+                                     IsEnabled="{Binding PanelCount, Converter={StaticResource GreaterThanOneConverter}}" 
+                                     Opacity="{Binding PanelCount, Converter={StaticResource EqualsOneToOpacity40Converter}}" 
+                                     FontSize="13" Margin="5,3,0,0"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical" Margin="5,0,0,0">
 
-                            <TextBox Text="{Binding PrintPanelRange}"
-                                     IsEnabled="{Binding PrintSelectedPanels}"
-                                     VerticalAlignment="Top" Width="60" Margin="0,-2,0,3"/>
-                        </StackPanel>-->
-
-                        <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintAllPages}" FontSize="13" Margin="0,10,0,0"/>
+                        <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintAllPages}" FontSize="13" Margin="0,0,0,0"/>
                         <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintCurrentPage}" FontSize="13" Margin="0,2,0,0"/>
                         <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding SelectPagesToPrint}" FontSize="13" Margin="0,10,0,0"/>
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
@@ -174,7 +199,7 @@
 
                     
                     <!--#region loops-->
-                    <WrapPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
+                    <WrapPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
                         <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"
                                 BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5" 
                                 IsEnabled="{Binding PrintLoopInfo}"
@@ -200,7 +225,7 @@
 
 
                     <!--#region print format-->
-                    <Border Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"
+                    <!--<Border Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"
                             BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5"
                             IsEnabled="{Binding CanPrint}"
                             Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
@@ -224,11 +249,11 @@
                                 <ctc:NumberSpinner Value="{Binding NumCopies}" Minimum="1" Maximum="10"/>
                             </StackPanel>
                         </StackPanel>
-                    </Border>
+                    </Border>-->
                     <!--#endregion-->
                     
 
-                    <Grid x:Name="grdButtons" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" Margin="0,0,0,10">
+                    <Grid x:Name="grdButtons" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" Margin="0,0,0,10">
                         
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>

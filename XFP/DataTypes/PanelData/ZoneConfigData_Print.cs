@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using CTecControls.UI.ViewHelpers;
 using CTecUtil;
+using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -27,6 +28,7 @@ namespace Xfp.DataTypes.PanelData
 
 
         ZonePanelConfigData _zonePanelData;
+        private static SolidColorBrush  _headerBorderBrush = Styles.Brush05;
 
 
         private BlockUIContainer headerInfo()
@@ -39,9 +41,9 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddColumnToGrid(grid);
             GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Input_Delay), 0, 0));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Input_Delay, 0, 0));
             grid.Children.Add(GridUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Investigation_Period), 1, 0));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Investigation_Period, 1, 0));
             grid.Children.Add(GridUtil.GridCell(TextProcessing.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
 
             return new(grid);
@@ -56,7 +58,7 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < Zones.Count + _zonePanelData.Panels.Count; i++)
                 GridUtil.AddRowToGrid(grid);
                 
-            int row = 2;
+            int row = 3;
             int col = 0;
 
             foreach (var z in Zones)
@@ -113,6 +115,15 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.Relay1Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.Relay2Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.RemoteDelay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("    --", row, col++, HorizontalAlignment.Left));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("    --", row, col++, HorizontalAlignment.Left));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
                 row++;
             }
 
@@ -140,29 +151,36 @@ namespace Xfp.DataTypes.PanelData
 
             grid.Children.Add(GridUtil.GridBackground(0, 0, 1, 15, PrintUtil.GridHeaderBackground));
             grid.Children.Add(GridUtil.GridBackground(1, 0, 1, 15, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(2, 0, 1, 15, PrintUtil.GridHeaderBackground));
 
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Delays_Mins,         0,  2, 1, 4, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell("→",                                           0,  2, 1, 4, HorizontalAlignment.Right));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Functioning_With,           0,  6, 1, 2, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Multiple_Alarms_End_Delays, 0,  8, 2, 1, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Multiple_Alarms_End_Delays, 0,  8, 3, 1, HorizontalAlignment.Center));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Day_Dependencies,           0,  9, 1, 3, HorizontalAlignment.Center));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Night_Dependencies,         0, 12, 1, 3, HorizontalAlignment.Center));
             
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+
             int col = 0;
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone,      1, col++, 1, 2));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone,      2, col++, 1, 2));
             col++;
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Sounders,  1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Relay_1,   1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Relay_2,   1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Outputs,   1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detectors, 1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.MCPs,      1, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Sounders,  2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Relay_1,   2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Relay_2,   2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Outputs,   2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detectors, 2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.MCPs,      2, col++, HorizontalAlignment.Center));
             col++;
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Option,    1, col++));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detector,  1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Alarm,     1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Option,    1, col++));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detector,  1, col++, HorizontalAlignment.Center));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Alarm,     1, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Option,    2, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detector,  2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Alarm,     2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Option,    2, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Detector,  2, col++, HorizontalAlignment.Center));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Alarm,     2, col++, HorizontalAlignment.Center));
 
             return grid;
         }

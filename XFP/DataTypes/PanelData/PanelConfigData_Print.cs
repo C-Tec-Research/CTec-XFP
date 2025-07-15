@@ -14,12 +14,12 @@ namespace Xfp.DataTypes.PanelData
         {
             _data = data;
 
-            var sitePage = new Section();
-            sitePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x_Configuration, _data.PanelNumber)));
+            var panelPage = new Section();
+            panelPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x_Settings, _data.PanelNumber)));
 
-            sitePage.Blocks.Add(systemHeader());
+            panelPage.Blocks.Add(systemHeader());
 
-            doc.Blocks.Add(sitePage);
+            doc.Blocks.Add(panelPage);
         }
 
 

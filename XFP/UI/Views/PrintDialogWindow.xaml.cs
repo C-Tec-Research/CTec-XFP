@@ -38,7 +38,7 @@ namespace Xfp.UI.Views
 
             _data = data;
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, btnPrint, btnPreview);
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, btnPrint, btnPreview);
             
             addShortcutKey(btnPrint);
             addShortcutKey(btnPreview);

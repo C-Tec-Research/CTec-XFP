@@ -1053,12 +1053,18 @@ namespace Xfp.ViewModels.PanelTools
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
-                    var zg = d.IOConfigItems[index].ZoneGroupSet is null || (int)d.IOConfigItems[index].ZoneGroupSet < 0 ? ""
-                                : d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
-                                : d.IOConfigItems[index].InputOutput == IOTypes.Input ? _zones[(int)d.IOConfigItems[index].ZoneGroupSet]
-                                : d.IOConfigItems[index].InputOutput == IOTypes.Output ? 
-                                    d.IsGroupedDevice ? (int)d.IOConfigItems[index].ZoneGroupSet < _groups.Count ? _groups[(int)d.IOConfigItems[index].ZoneGroupSet] : null
-                                                      : (int)d.IOConfigItems[index].ZoneGroupSet < _sets.Count   ? _sets[(int)d.IOConfigItems[index].ZoneGroupSet] : null : null;
+                    var zgsi = (int)d.IOConfigItems[index].ZoneGroupSet;
+
+                    string zg;
+
+                    if (d.IOConfigItems[index].ZoneGroupSet is null || zgsi < 0)
+                        zg = "";
+                    else
+                        zg = d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
+                           : d.IOConfigItems[index].InputOutput == IOTypes.Input ? zgsi < _zones.Count ? _zones[zgsi] : null
+                           : d.IOConfigItems[index].InputOutput == IOTypes.Output ?
+                               d.IsGroupedDevice ? zgsi < _groups.Count ? _groups[zgsi] : null
+                                                   : zgsi < _sets.Count   ? _sets[zgsi] : null : null;
                     if (zoneGroup is null)
                         zoneGroup = zg;
                     else if (zoneGroup != zg)

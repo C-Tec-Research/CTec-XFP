@@ -41,10 +41,10 @@ namespace Xfp.DataTypes
         public void SetPrinter(string name) => PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(XfpApplicationConfig.Settings.LastPrinter = name);
 
         public bool PrintAllPanels     { get; set; }
-        public bool PrintSelectedPanels{ get; set; }
-        public string PrintPanelRange  { get; set; }
+        //public bool PrintSelectedPanel { get; set; }
+        //public string PrintPanelRange  { get; set; }
         public bool PrintAllPages      { get; set; }
-        public bool PrintCurrentPage   { get; set; } = true;
+        //public bool PrintCurrentPage   { get; set; } = true;
         public bool PrintSiteConfig    { get; set; }
         public bool PrintLoopInfo      { get; set; }
         public bool PrintZones         { get; set; }

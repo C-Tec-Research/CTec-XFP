@@ -30,19 +30,20 @@ namespace Xfp.ViewModels
 {
     public class PrintDialogWindowViewModel : ViewModelBase
     {
-        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, Button printButton, Button previewButton)
+        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Button printButton, Button previewButton)
         {
             _applicationConfig = applicationConfig;
             _pages       = pages;
             _currentPage = currentPage;
+            _panelCount  = panelCount;
 
             ZoomLevel = _applicationConfig.PrintParametersWindow.Scale;
             
             var printer = _applicationConfig.LastPrinter;
             SelectedPrinter = !string.IsNullOrEmpty(printer) ? printer : new LocalPrintServer().DefaultPrintQueue.Name;
+            PrintSelectedPanel = true;
 
-            if (_currentPage.DataContext is DevicesViewModel)
-                setCurrentPageToPrint();
+            setCurrentPageToPrint();
 
             refreshPrinterStatus();
         }
@@ -53,6 +54,7 @@ namespace Xfp.ViewModels
 
         private ObservableCollection<Page> _pages = new();
         private Page _currentPage;
+        private int _panelCount;
 
         private ApplicationConfig _applicationConfig { get; }
 
@@ -112,12 +114,11 @@ namespace Xfp.ViewModels
         #region print parameters
         public static PrintParameters PrintParams { get; set; } = new();
 
-        
-        public bool PrintAllPanels      { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.PrintAllPanels = true; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintSelectedPanels { get => PrintParams.PrintSelectedPanels; set { if (PrintParams.PrintSelectedPanels = value) PrintParams.PrintAllPanels = false; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public string PrintPanelRange   { get => PrintParams.PrintPanelRange;     set { PrintParams.PrintPanelRange = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public int  PanelCount                => _panelCount;
+        public bool PrintAllPanels      { get => PrintParams.PrintAllPages;       set { PrintParams.PrintAllPages = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintSelectedPanel  { get => !PrintParams.PrintAllPanels;     set { PrintParams.PrintAllPanels = !value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintCurrentPage    { get => PrintParams.PrintCurrentPage;    set { if (PrintParams.PrintCurrentPage = value) setCurrentPageToPrint(); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintCurrentPage    { get => PrintParams.PrintAllPages;       set { if (!(PrintParams.PrintAllPanels = !value)) setCurrentPageToPrint(); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint;  set { PrintParams.SelectPagesToPrint = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSiteConfig     { get => PrintParams.PrintSiteConfig;     set { PrintParams.PrintSiteConfig = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo;       set { PrintParams.PrintLoopInfo = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }

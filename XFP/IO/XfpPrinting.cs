@@ -17,6 +17,7 @@ using Xfp.DataTypes;
 using System.ComponentModel.Composition.Primitives;
 using Xfp.DataTypes.PanelData;
 using CTecUtil.ViewModels;
+using Xfp.UI.ViewHelpers;
 
 namespace Xfp.IO.Printing
 {
@@ -35,11 +36,11 @@ namespace Xfp.IO.Printing
                 CTecMessageBox.ShowOKError(Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
                 return;
             }
-            
+
             try
             {
                 UIState.SetBusyState();
-            
+
                 var printQueue = new PrintServer().GetPrintQueues().FirstOrDefault(p => p.Name == printParams.PrintQueue.Name);
 
                 if (printQueue == null)
@@ -56,25 +57,36 @@ namespace Xfp.IO.Printing
                 var pageNumber = 1;
 
                 FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
-                doc.Name        = _printFilePrefix;
-                doc.PageHeight  = printParams.PrintHandler.PrintableAreaHeight;
-                doc.PageWidth   = printParams.PrintHandler.PrintableAreaWidth;
+                doc.Name = _printFilePrefix;
+                doc.PageHeight = printParams.PrintHandler.PrintableAreaHeight;
+                doc.PageWidth = printParams.PrintHandler.PrintableAreaWidth;
                 doc.PagePadding = new Thickness(15);
-                doc.ColumnGap   = 0;
+                doc.ColumnGap = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
                 List<List<Grid>> report = new();
 
-                if (printParams.PrintSiteConfig) data.SiteConfig.Print(doc);
+                List<int> panelList = printParams.PrintAllPanels ? [..(from k in data.Panels.Keys select k)] : new() { data.CurrentPanel.PanelNumber };
 
-                foreach (var p in data.Panels.Values)
+                if (printParams.PrintSiteConfig)
                 {
-                    //if (printParams.PrintSiteConfig) p.PanelConfig.Print(doc, p);
+                    data.SiteConfig.Print(doc);
+
+                    foreach (var i in panelList)
+                    {
+                        var p = data.Panels[i];
+                        p.PanelConfig.Print(doc, p);
+                    }
+                }
+
+                foreach (var i in panelList)
+                {
+                    var p = data.Panels[i];
+            
                     if (printParams.PrintLoopInfo)
                     {
-                        //p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                        //p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                            report.Add(p.Loop1Config.Print2(data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder));
+                        p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
                     }
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);

@@ -2085,4 +2085,16 @@ Toutes ses données seront perdues.</value>
   <data name="Error_Invalid_Xfp_Data" xml:space="preserve">
     <value>Le fichier ne contient pas de données XFP valides ou est destiné à un protocole non pris en charge.</value>
   </data>
+  <data name="Panel_x_Settings" xml:space="preserve">
+    <value>Paramètres du panneau {0}</value>
+  </data>
+  <data name="Print_All_Panels" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="Print_Current_Panel" xml:space="preserve">
+    <value>Actuel</value>
+  </data>
+  <data name="Print_Panels" xml:space="preserve">
+    <value>Panneaux :</value>
+  </data>
 </root>

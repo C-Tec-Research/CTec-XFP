@@ -3742,6 +3742,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Panel {0} Settings.
+        /// </summary>
+        public static string Panel_x_Settings {
+            get {
+                return ResourceManager.GetString("Panel_x_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Panels.
         /// </summary>
         public static string Panels {
@@ -3823,11 +3832,29 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All panels.
+        /// </summary>
+        public static string Print_All_Panels {
+            get {
+                return ResourceManager.GetString("Print_All_Panels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current page.
         /// </summary>
         public static string Print_Current_Page {
             get {
                 return ResourceManager.GetString("Print_Current_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current panel.
+        /// </summary>
+        public static string Print_Current_Panel {
+            get {
+                return ResourceManager.GetString("Print_Current_Panel", resourceCulture);
             }
         }
         
@@ -3927,6 +3954,15 @@ namespace Xfp.Cultures {
         public static string Print_Orientation_Portrait {
             get {
                 return ResourceManager.GetString("Print_Orientation_Portrait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panels:.
+        /// </summary>
+        public static string Print_Panels {
+            get {
+                return ResourceManager.GetString("Print_Panels", resourceCulture);
             }
         }
         
