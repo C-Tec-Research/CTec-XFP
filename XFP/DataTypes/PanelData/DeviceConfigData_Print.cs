@@ -1,21 +1,25 @@
-﻿using System.Windows.Controls;
+﻿using CTecDevices;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using CTecUtil;
+using CTecUtil.Printing;
+using CTecUtil.UI.Util;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Printing;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using CTecDevices.Protocol;
-using CTecUtil.Printing;
-using System;
-using Newtonsoft.Json.Linq;
-using System.Drawing.Printing;
-using System.Windows.Media.Media3D;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
+using Windows.Devices.Sms;
+using Xfp.UI;
 using Xfp.UI.ViewHelpers;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
-using System.Linq;
-using System.Collections.Generic;
-using CTecDevices;
-using CTecUtil;
-using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -50,10 +54,10 @@ namespace Xfp.DataTypes.PanelData
         private int _ioSettingsColumns = 5;
         private static SolidColorBrush _seeIoSettingsForeground = Styles.SeeDetailsPrintBrush;
         private static SolidColorBrush _ioBorderBrush           = Styles.Brush05;
-        private static SolidColorBrush _ioSubheaderBrush        = Styles.Brush01;
+        private static SolidColorBrush _ioSubheaderBrush        = Styles.Brush02;
         private SortOrder _printOrder;
 
-
+        
         public BlockUIContainer deviceList(bool printAllLoopDevices)
         {
             var grid = columnHeaders();
@@ -125,6 +129,14 @@ namespace Xfp.DataTypes.PanelData
 
                     if (d.IsIODevice)
                     {
+                        //measure these
+                        List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && d.DeviceType == (int)XfpCastDeviceTypeIds.HS2 
+                            ? new() { Cultures.Resources.Subaddress_Hush_0, 
+                                      Cultures.Resources.Subaddress_Hush_1, 
+                                      Cultures.Resources.Subaddress_Hush_2, 
+                                      Cultures.Resources.Subaddress_Hush_3 }
+                            : new() { "0", "1", "2", "3" };
+
                         //grid.Children.Add(ioSettings(d, row, col++));
 
                         int ioRow = row;
@@ -145,8 +157,12 @@ namespace Xfp.DataTypes.PanelData
 
                                 var isGroup = d.IOConfig[i].InputOutput == CTecDevices.IOTypes.Output && d.IsGroupedDevice;
                                 var isSet   = d.IOConfig[i].InputOutput == CTecDevices.IOTypes.Output && !d.IsZonalDevice;
-                                
-                                grid.Children.Add(GridUtil.GridCell(d.IOConfig[i].Index + 1, ioRow, ioCol++));
+                    
+                                if (d.IOConfig[i].Index >= 0 && d.IOConfig[i].Index < subaddressNames.Count)
+                                    grid.Children.Add(GridUtil.GridCell(subaddressNames[d.IOConfig[i].Index], ioRow, ioCol++));
+                                else
+                                    ioCol++;
+
                                 grid.Children.Add(GridUtil.GridCell(CTecDevices.Enums.IOTypeToString(d.IOConfig[i].InputOutput), ioRow, ioCol++));
                                 grid.Children.Add(GridUtil.GridCell((d.IOConfig[i].Channel ?? 0) + 1, ioRow, ioCol++));
                                 grid.Children.Add(GridUtil.GridCell(zgsDescription(true, isGroup, isSet, (int)d.IOConfig[i].ZoneGroupSet), ioRow, ioCol++));
@@ -176,8 +192,19 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
 
+            var wIn  = (int)FontUtil.MeasureText(Cultures.Resources.Input,  new(PrintUtil.PrintDefaultFont), PrintUtil.PrintDefaultFontSize, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal).Width + 1;
+            var wOut = (int)FontUtil.MeasureText(Cultures.Resources.Output, new(PrintUtil.PrintDefaultFont), PrintUtil.PrintDefaultFontSize, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal).Width + 1;
+            var ioWidth = Math.Max(wIn, wOut) + 15;
+
             for (int i = 0; i < _totalColumns; i++)
-                GridUtil.AddColumnToGrid(grid);
+            {
+                if (i == _totalColumns - 6)
+                    GridUtil.AddColumnToGrid(grid, 12);
+                else if (i == _totalColumns - 5)
+                    GridUtil.AddColumnToGrid(grid, ioWidth);
+                else
+                    GridUtil.AddColumnToGrid(grid);
+            }
 
             grid.Children.Add(GridUtil.GridBackground(0, 0, 3, _totalColumns, PrintUtil.GridHeaderBackground));
 
@@ -197,10 +224,9 @@ namespace Xfp.DataTypes.PanelData
             }
 
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.IO_Configuration,        0, col, 1, _ioSettingsColumns));
-            GridUtil.AddBorderToGrid(grid, 1, col++, 1, 6, _ioBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
-            
+            GridUtil.AddBorderToGrid(grid, 1, col++, 1, 6, _ioBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0));
 
-            col++;
+            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Subaddress,     2, col++, 1, 2, false, HorizontalAlignment.Left, 7, FontStyles.Italic, PrintUtil.PrintDefaultFont, VerticalAlignment.Bottom), _ioSubheaderBrush));
             grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.I_O,            2, col++, 1, 2, false, HorizontalAlignment.Left, 7, FontStyles.Italic, PrintUtil.PrintDefaultFont, VerticalAlignment.Bottom), _ioSubheaderBrush));
             grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Channel_Abbr,   2, col++, 1, 1, false, HorizontalAlignment.Left, 7, FontStyles.Italic, PrintUtil.PrintDefaultFont, VerticalAlignment.Bottom), _ioSubheaderBrush));
             grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Zone_Group_Set, 2, col++, 1, 1, false, HorizontalAlignment.Left, 7, FontStyles.Italic, PrintUtil.PrintDefaultFont, VerticalAlignment.Bottom), _ioSubheaderBrush));
