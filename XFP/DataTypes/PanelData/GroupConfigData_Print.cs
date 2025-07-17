@@ -20,8 +20,11 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class GroupConfigData
     {
-        public void Print(FlowDocument doc, XfpPanelData panelData)
+        public void Print(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+
             _data = panelData;
 
             var groupsPage = new Section();
@@ -162,7 +165,7 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new Grid();
 
-            var vb = new Viewbox() { Width = 12, Height = 12, HorizontalAlignment = HorizontalAlignment.Center };
+            var vb = new Viewbox() { Width = 18, Height = 14, HorizontalAlignment = HorizontalAlignment.Center };
 
             var colour = value switch
             {
@@ -172,6 +175,7 @@ namespace Xfp.DataTypes.PanelData
             };
 
             var p = new System.Windows.Shapes.Path() { Fill = colour, Style = _alertIconStyle };
+            p.Margin = PrintUtil.DefaultGridMargin;
             vb.Child = p;
 
             result.SetValue(Grid.RowProperty, row);

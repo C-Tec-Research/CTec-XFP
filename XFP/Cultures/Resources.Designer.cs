@@ -3859,6 +3859,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ** system name not set **.
+        /// </summary>
+        public static string Print_Error_System_Name_Not_Set {
+            get {
+                return ResourceManager.GetString("Print_Error_System_Name_Not_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Event Log.
         /// </summary>
         public static string Print_Event_Log {
@@ -4774,6 +4783,15 @@ namespace Xfp.Cultures {
         public static string Subaddress {
             get {
                 return ResourceManager.GetString("Subaddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub..
+        /// </summary>
+        public static string Subaddress_Abbr {
+            get {
+                return ResourceManager.GetString("Subaddress_Abbr", resourceCulture);
             }
         }
         
@@ -5726,7 +5744,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to XFP Configuration.
+        ///   Looks up a localized string similar to XFP Configuration:.
         /// </summary>
         public static string XFP_Config_Print_Description {
             get {

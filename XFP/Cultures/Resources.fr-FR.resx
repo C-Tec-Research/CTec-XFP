@@ -2050,7 +2050,7 @@ Toutes ses données seront perdues.</value>
     <value>Pré_voir</value>
   </data>
   <data name="XFP_Config_Print_Description" xml:space="preserve">
-    <value>Configuration XFP</value>
+    <value>Configuration XFP :</value>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Numéro d’ingénieur</value>
@@ -2096,5 +2096,11 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="Print_Panels" xml:space="preserve">
     <value>Panneaux :</value>
+  </data>
+  <data name="Subaddress_Abbr" xml:space="preserve">
+    <value>S.Addr</value>
+  </data>
+  <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
+    <value>** nom du système non défini **</value>
   </data>
 </root>

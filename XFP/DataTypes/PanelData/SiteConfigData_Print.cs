@@ -12,7 +12,6 @@ namespace Xfp.DataTypes.PanelData
         {
             var sitePage = new Section();
             sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));
-
             sitePage.Blocks.Add(systemConfig());
             doc.Blocks.Add(sitePage);
         }
@@ -30,7 +29,7 @@ namespace Xfp.DataTypes.PanelData
                 GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalColumns; i++)
-                GridUtil.AddColumnToGridMinWidth(grid, 40);
+                GridUtil.AddColumnToGrid(grid);
 
             GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right, false);
             GridUtil.AddCellToGrid(grid, " ",  1, 0, false, false);
@@ -58,7 +57,7 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddCellToGrid(grid, EngineerName, 10, 4, true, false);//string.IsNullOrWhiteSpace(EngineerName));
             GridUtil.AddCellToGrid(grid, EngineerNo,   11, 4, true, false);//string.IsNullOrWhiteSpace(EngineerNo));
 
-            GridUtil.AddRowToGrid(grid, 10);
+            GridUtil.AddRowToGrid(grid, 20);
 
             return new(grid);
         }

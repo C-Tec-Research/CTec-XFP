@@ -13,8 +13,11 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class ZoneConfigData
     {
-        public void Print(FlowDocument doc, XfpPanelData panelData)
+        public void Print(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+
             _zonePanelData = panelData.ZonePanelConfig;
 
             var zonesPage = new Section();
@@ -107,7 +110,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 col = 0;
                 
-                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
                 grid.Children.Add(GridUtil.GridCell(p.Number, row, col++, HorizontalAlignment.Right));
                 grid.Children.Add(GridUtil.GridCell(p.Name, row, col++, HorizontalAlignment.Left));
@@ -160,10 +163,10 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Day_Dependencies,           0,  9, 1, 3, HorizontalAlignment.Center));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Night_Dependencies,         0, 12, 1, 3, HorizontalAlignment.Center));
             
-            GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
 
             int col = 0;
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone,      2, col++, 1, 2));

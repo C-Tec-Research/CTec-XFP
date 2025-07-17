@@ -23,8 +23,11 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class CEConfigData
     {
-        public void Print(FlowDocument doc, int panelNumber, XfpData data)
+        public void Print(FlowDocument doc, int panelNumber, XfpData data, ref int pageNumber)
         {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+
             _panelNumber = panelNumber;
             _data = data;
 
@@ -130,6 +133,8 @@ namespace Xfp.DataTypes.PanelData
 
                 int row = i + 1;
                 int col = 0;
+
+                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
 
                 //line number
                 GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);

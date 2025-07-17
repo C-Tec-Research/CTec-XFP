@@ -21,8 +21,11 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class SetConfigData
     {
-        public void Print(FlowDocument doc, XfpPanelData panelData)
+        public void Print(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+
             _data = panelData;
 
             var svgPathConverter = new SetTriggerTypeToSvgPathConverter();
@@ -170,10 +173,10 @@ namespace Xfp.DataTypes.PanelData
 
             //header text
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
-            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 2);
 
             grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
-            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(5, 5, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 2);
             
 
             //set numbers

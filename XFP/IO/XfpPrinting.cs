@@ -50,13 +50,15 @@ namespace Xfp.IO.Printing
                 }
 
                 // Create a FlowDocument
-                var systemName = Cultures.Resources.XFP_Config_Print_Description + " - " + Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
+                //var systemName = Cultures.Resources.XFP_Config_Print_Description + " - " + Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
 
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
                 var pageMargin = new Thickness(20);
                 var pageNumber = 1;
 
-                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, systemName));
+                var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
+                var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
+                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName));
                 doc.Name = _printFilePrefix;
                 doc.PageHeight = printParams.PrintHandler.PrintableAreaHeight;
                 doc.PageWidth = printParams.PrintHandler.PrintableAreaWidth;
@@ -75,7 +77,7 @@ namespace Xfp.IO.Printing
                     foreach (var i in panelList)
                     {
                         var p = data.Panels[i];
-                        p.PanelConfig.Print(doc, p);
+                        p.PanelConfig.Print(doc, p, ref pageNumber);
                     }
                 }
 
@@ -85,46 +87,25 @@ namespace Xfp.IO.Printing
             
                     if (printParams.PrintLoopInfo)
                     {
-                        p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
+                        p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
+                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
                     }
-                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p);
-                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p);
-                    if (printParams.PrintSets)          p.SetConfig.Print(doc, p);
-                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data);
-                    if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber);
+                    if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p, ref pageNumber);
+                    if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p, ref pageNumber);
+                    if (printParams.PrintSets)          p.SetConfig.Print(doc, p, ref pageNumber);
+                    if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data, ref pageNumber);
+                    if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
                 }
 
-                if (printParams.PrintEventLog) printEventLog(doc);
-                if (printParams.PrintComments) printComments(doc);
+                if (printParams.PrintEventLog) printEventLog(doc, ref pageNumber);
+                if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
                 //print or preview the document
-
                 switch (printAction)
                 {
                     case CTecUtil.PrintActions.Print:
                         IDocumentPaginatorSource idpSource = doc;
                         printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
-
-                        //DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
-                        //paginator = new DocumentPaginatorWrapper(paginator, new Size(doc.PageHeight, doc.PageWidth), new Size(0, 20), Cultures.Resources.System_Name + ": " + systemName);
-                        //printParams.PrintHandler.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
-
-                        //for (int loop = 0; loop < LoopConfigData.MaxLoops; loop++)
-                        //{
-                        //    var reportTitle = string.Format("{0}: {1}", string.Format(Cultures.Resources.Panel_x_Configuration, data.CurrentPanel.PanelNumber), string.Format(Cultures.Resources.Loop_x_Devices, loop + 1));
-                        //    var devicesXaml = new Xfp.Printing.DeviceDetails(data, data.CurrentPanel.PanelNumber, printParams.LoopPrintOrder, !printParams.PrintAllLoopDevices);
-                        //    var dataGrid    = loop == 1 ? devicesXaml.Loop2DetailsDataGrid : devicesXaml.Loop1DetailsDataGrid;
-
-                        //    var report = new CustomDataGridDocumentPaginator(dataGrid, systemName, reportTitle, printArea, pageMargin, pageNumber);
-                        //    printParams.PrintHandler.PrintDocument(report, Cultures.Resources.XFP_Config_Print_Description);
-                        //}
-
-                        //foreach (var gg in report)
-                        //{
-                        //    var pag = new CustomDataGridDocumentPaginator(gg, "", new(210, 297), new(10));
-                        //    printParams.PrintHandler.PrintDocument(pag, Cultures.Resources.XFP_Config_Print_Description);
-                        //}
                         break;
 
                     case CTecUtil.PrintActions.Preview: 
@@ -140,8 +121,22 @@ namespace Xfp.IO.Printing
         }
 
 
-        private static void printNetworkConfig(FlowDocument doc) { }        
-        private static void printEventLog(FlowDocument doc) { }
-        private static void printComments(FlowDocument doc) { }
+        private static void printNetworkConfig(FlowDocument doc, ref int pageNumber)
+        {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+        }
+        
+        private static void printEventLog(FlowDocument doc, ref int pageNumber)
+        {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+        }
+
+        private static void printComments(FlowDocument doc, ref int pageNumber)
+        {
+            if (pageNumber++ > 1)
+                PrintUtil.InsertPageBreak(doc);
+        }
     }
 }
