@@ -194,7 +194,7 @@ namespace Xfp.DataTypes.PanelData
             
             //Is set silenceable label
             GridUtil.AddColumnToGrid(grid);
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell("← ", 3, _totalColumns, HorizontalAlignment.Left, 16, FontStyles.Normal), new(3,-2,0,0)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell("← ", 3, _totalColumns, false, 16), new(3,-2,0,0)));
             GridUtil.AddColumnToGrid(grid);
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Is_Set_Silenceable, 3, _totalColumns + 1), new(0,2,0,2)));
 

@@ -2103,4 +2103,10 @@ Toutes ses données seront perdues.</value>
   <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
     <value>** nom du système non défini **</value>
   </data>
+  <data name="See_IO_Configuration_Abbr" xml:space="preserve">
+    <value>Voir E/S  ►</value>
+  </data>
+  <data name="Subaddress_Short" xml:space="preserve">
+    <value>S.Addr</value>
+  </data>
 </root>

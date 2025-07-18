@@ -1053,7 +1053,7 @@ namespace Xfp.ViewModels.PanelTools
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
-                    var zgsi = (int)d.IOConfigItems[index].ZoneGroupSet;
+                    var zgsi = (int)((d.IOConfigItems[index].ZoneGroupSet)??1);
 
                     string zg;
 

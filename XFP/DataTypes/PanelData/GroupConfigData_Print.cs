@@ -78,8 +78,8 @@ namespace Xfp.DataTypes.PanelData
 
             grid.Children.Add(GridUtil.GridCell(" ", 2, 0));
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0));
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0, false));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2, false));
             grid.Children.Add(GridUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, false));
             grid.Children.Add(GridUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, false, HorizontalAlignment.Left));
 

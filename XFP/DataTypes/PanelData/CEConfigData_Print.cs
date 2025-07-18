@@ -114,8 +114,8 @@ namespace Xfp.DataTypes.PanelData
 
             for (int i = 0; i < 16; i++)
             {
-                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, HorizontalAlignment.Center), new(10, 2, 10, 2)));
-                grid.Children.Add(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                                            3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, false, HorizontalAlignment.Center), new(10, 2, 10, 2)));
+                grid.Children.Add(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                                           3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
             }
 
             return new(grid);

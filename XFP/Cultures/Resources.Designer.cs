@@ -4346,6 +4346,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to See I/O  ►.
+        /// </summary>
+        public static string See_IO_Configuration_Abbr {
+            get {
+                return ResourceManager.GetString("See_IO_Configuration_Abbr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a device to show details.
         /// </summary>
         public static string Select_A_Device_To_Show_Details {
@@ -4828,6 +4837,15 @@ namespace Xfp.Cultures {
         public static string Subaddress_Hush_3 {
             get {
                 return ResourceManager.GetString("Subaddress_Hush_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subaddr..
+        /// </summary>
+        public static string Subaddress_Short {
+            get {
+                return ResourceManager.GetString("Subaddress_Short", resourceCulture);
             }
         }
         

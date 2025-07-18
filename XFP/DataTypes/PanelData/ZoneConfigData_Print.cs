@@ -79,29 +79,29 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(GridUtil.GridCellBool(z.Detectors, row, col++, false, false));
                 grid.Children.Add(GridUtil.GridCellBool(z.MCPs,      row, col++, false, false));
                 grid.Children.Add(GridUtil.GridCellBool(z.EndDelays, row, col++, false, false));
-                grid.Children.Add(GridUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++, HorizontalAlignment.Left));
+                grid.Children.Add(GridUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption), row, col++));
 
                 if (z.Day.DependencyOption == ZoneDependencyOptions.A)
                     grid.Children.Add(GridUtil.GridCellTimeSpan(z.Day.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
                 else
-                    grid.Children.Add(GridUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+                    grid.Children.Add(GridUtil.GridCell("-", row, col++, false, HorizontalAlignment.Center));
 
                 if (z.Day.DependencyOption == ZoneDependencyOptions.A || z.Day.DependencyOption == ZoneDependencyOptions.B)
                     grid.Children.Add(GridUtil.GridCellTimeSpan(z.Day.AlarmReset,    row, col++, "ms", false, false, HorizontalAlignment.Center));
                 else
-                    grid.Children.Add(GridUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+                    grid.Children.Add(GridUtil.GridCell("-", row, col++, false, HorizontalAlignment.Center));
 
-                grid.Children.Add(GridUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption), row, col++, HorizontalAlignment.Left));
+                grid.Children.Add(GridUtil.GridCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption), row, col++));
 
                 if (z.Night.DependencyOption == ZoneDependencyOptions.A)
                     grid.Children.Add(GridUtil.GridCellTimeSpan(z.Night.DetectorReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
                 else
-                    grid.Children.Add(GridUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+                    grid.Children.Add(GridUtil.GridCell("-", row, col++, false, HorizontalAlignment.Center));
 
                 if (z.Night.DependencyOption == ZoneDependencyOptions.A || z.Night.DependencyOption == ZoneDependencyOptions.B)
                     grid.Children.Add(GridUtil.GridCellTimeSpan(z.Night.AlarmReset, row, col++, "ms", false, false, HorizontalAlignment.Center));
                 else
-                    grid.Children.Add(GridUtil.GridCell("-", row, col++, HorizontalAlignment.Center));
+                    grid.Children.Add(GridUtil.GridCell("-", row, col++, false, HorizontalAlignment.Center));
 
                     row++;
             }
@@ -113,20 +113,20 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
                 
                 grid.Children.Add(GridUtil.GridCell(p.Number, row, col++, HorizontalAlignment.Right));
-                grid.Children.Add(GridUtil.GridCell(p.Name, row, col++, HorizontalAlignment.Left));
+                grid.Children.Add(GridUtil.GridCell(p.Name, row, col++));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.SounderDelay, row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.Relay1Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.Relay2Delay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
                 grid.Children.Add(GridUtil.GridCellTimeSpan(p.RemoteDelay,  row, col++, "ms", false, false, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("    --", row, col++, HorizontalAlignment.Left));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("    --", row, col++, HorizontalAlignment.Left));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
-                grid.Children.Add(GridUtil.GridCell("-",      row, col++, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("    --", row, col++));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("    --", row, col++));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
                 row++;
             }
 

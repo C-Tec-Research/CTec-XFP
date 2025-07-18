@@ -2119,4 +2119,10 @@ All of its data will be lost.</value>
   <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
     <value>** system name not set **</value>
   </data>
+  <data name="See_IO_Configuration_Abbr" xml:space="preserve">
+    <value>See I/O  ►</value>
+  </data>
+  <data name="Subaddress_Short" xml:space="preserve">
+    <value>Subaddr.</value>
+  </data>
 </root>
