@@ -26,7 +26,7 @@ using CTecControls.UI;
 using CTecUtil;
 using System.Globalization;
 using Xfp.Config;
-using Xfp.IO.Printing;
+using Xfp.Printing;
 
 namespace Xfp.UI.Views
 {

@@ -2055,7 +2055,7 @@ All of its data will be lost.</value>
     <value>Add</value>
   </data>
   <data name="XFP_Config_Print_Description" xml:space="preserve">
-    <value>XFP Configuration:</value>
+    <value>XFP Configuration</value>
   </data>
   <data name="Option_Preview" xml:space="preserve">
     <value>Pre_view</value>

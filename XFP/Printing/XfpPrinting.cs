@@ -19,7 +19,7 @@ using Xfp.DataTypes.PanelData;
 using CTecUtil.ViewModels;
 using Xfp.UI.ViewHelpers;
 
-namespace Xfp.IO.Printing
+namespace Xfp.Printing
 {
     public class XfpPrinting
     {

@@ -5762,7 +5762,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to XFP Configuration:.
+        ///   Looks up a localized string similar to XFP Configuration.
         /// </summary>
         public static string XFP_Config_Print_Description {
             get {

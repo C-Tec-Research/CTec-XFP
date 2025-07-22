@@ -38,7 +38,7 @@ using Xfp.UI.Views;
 using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
-using Xfp.IO.Printing;
+using Xfp.Printing;
 
 namespace Xfp.ViewModels
 {

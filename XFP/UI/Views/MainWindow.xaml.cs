@@ -112,7 +112,11 @@ namespace Xfp.Views
             if (App.AnotherInstanceIsRunning)
                 XfpApplicationConfig.Settings.OffsetMainWindowPosition();
 
-            _context.ChangeWindowState(this.WindowState = WindowUtil.SetWindowDimensions(this, XfpApplicationConfig.Settings.MainWindow));
+            if (XfpApplicationConfig.Settings.MainWindow.Location is null)
+                this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            else
+                _context.ChangeWindowState(this.WindowState = WindowUtil.SetWindowDimensions(this, XfpApplicationConfig.Settings.MainWindow));
+
             this.BringIntoView();
         }
 
