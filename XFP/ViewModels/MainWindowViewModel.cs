@@ -503,22 +503,8 @@ namespace Xfp.ViewModels
                 if (DeviceTypes.CurrentProtocolType != value)
                 {
                     CTecUtil.UI.UIState.SetBusyState();
-                    //ApplicationCfg.Protocol = CTecDevices.Enums.ObjectTypeName(_data.CurrentPanel.Protocol = DeviceTypes.CurrentProtocolType = value);
 
-                    //while (_data.CurrentPanel.Loop1Config.Devices.Count < DeviceConfigData.NumDevices)
-                    //    _data.CurrentPanel.Loop1Config.Devices.Add(DeviceData.InitialisedNew(null, 0, _data.CurrentPanel.Loop1Config.Devices.Count));
-                    //while (_data.CurrentPanel.Loop2Config.Devices.Count < DeviceConfigData.NumDevices)
-                    //    _data.CurrentPanel.Loop2Config.Devices.Add(DeviceData.InitialisedNew(null, 1, _data.CurrentPanel.Loop2Config.Devices.Count));
-
-                    //while (_data.CurrentPanel.Loop1Config.Devices.Count > DeviceConfigData.NumDevices)
-                    //    _data.CurrentPanel.Loop1Config.Devices.RemoveAt(_data.CurrentPanel.Loop1Config.Devices.Count - 1);
-                    //while (_data.CurrentPanel.Loop2Config.Devices.Count > DeviceConfigData.NumDevices)
-                    //    _data.CurrentPanel.Loop2Config.Devices.RemoveAt(_data.CurrentPanel.Loop2Config.Devices.Count - 1);
-
-                    //PopulateView(_data);
-
-                    XfpApplicationConfig.Settings.Protocol = CTecDevices.Enums.ObjectTypeName(DeviceTypes.CurrentProtocolType = value);
-                    //PopulateView(_data = XfpData.InitialisedNew(value, XfpData.MinPanelNumber, true));
+                    XfpApplicationConfig.Settings.Protocol = CTecDevices.Enums.ObjectTypeName(_data.CurrentPanel.Protocol = DeviceTypes.CurrentProtocolType = value);
 
                     SetDeviceSelectorMenus();
                     OnPropertyChanged();
@@ -556,7 +542,7 @@ namespace Xfp.ViewModels
                 //CurrentProtocol = newProtocol;
                 ClosePopups();
                 //if (askConfirm)
-                    InitNewDataset(newProtocol, false, true);
+                    InitNewDataset(newProtocol, false, askConfirm);
             }
 
             return true;
@@ -1809,7 +1795,7 @@ namespace Xfp.ViewModels
             if (allPages)
             {
                 foreach (var p in _pages)
-                    if (p != _loop1Page)
+                    if (p != _loop1Page && p != _loop2Page)
                         enqueueUploadCommandsForPage(p, true);
             }
             else

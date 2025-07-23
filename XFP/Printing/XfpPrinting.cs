@@ -97,7 +97,6 @@ namespace Xfp.Printing
                     if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
                 }
 
-                if (printParams.PrintEventLog) printEventLog(doc, ref pageNumber);
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
                 //print or preview the document
@@ -121,22 +120,10 @@ namespace Xfp.Printing
         }
 
 
-        private static void printNetworkConfig(FlowDocument doc, ref int pageNumber)
-        {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
-        }
-        
-        private static void printEventLog(FlowDocument doc, ref int pageNumber)
-        {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
-        }
-
         private static void printComments(FlowDocument doc, ref int pageNumber)
         {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
+            //if (pageNumber++ > 1)
+            //    PrintUtil.InsertPageBreak(doc);
         }
     }
 }

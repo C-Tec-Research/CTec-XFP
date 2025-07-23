@@ -1619,7 +1619,7 @@ Mode</value>
     <value>Causes et Effets</value>
   </data>
   <data name="Comms_Sets" xml:space="preserve">
-    <value>Sets</value>
+    <value>Paramètres Ensembles</value>
   </data>
   <data name="Default_Maintenance_String" xml:space="preserve">
     <value>Appeler l’ingénieur</value>
@@ -2104,9 +2104,15 @@ Toutes ses données seront perdues.</value>
     <value>** nom du système non défini **</value>
   </data>
   <data name="See_IO_Configuration_Abbr" xml:space="preserve">
-    <value>Voir E/S  ►</value>
+    <value>Voir E/S  →</value>
   </data>
   <data name="Subaddress_Short" xml:space="preserve">
     <value>S.Addr</value>
+  </data>
+  <data name="Comms_Alarm_Verification_Counts" xml:space="preserve">
+    <value>Comptes de vérification</value>
+  </data>
+  <data name="ToolTip_Print_Event_Log" xml:space="preserve">
+    <value>Imprimer le Journal des Événements</value>
   </data>
 </root>

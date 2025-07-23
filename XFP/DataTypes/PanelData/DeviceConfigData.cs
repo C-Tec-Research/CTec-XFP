@@ -38,9 +38,21 @@ namespace Xfp.DataTypes.PanelData
 
         /// <summary>
         /// Number of devices in the data<br/>
-        /// NB: not a constant: it is set at runtime according to the current protocol
+        /// NB: not a constant: it is dependent on the current protocol
         /// </summary>
-        internal static int NumDevices = 255;
+        internal static int NumDevices
+        {
+            get => DeviceTypes.CurrentProtocolType switch
+            {
+                CTecDevices.ObjectTypes.XfpApollo => CTecDevices.Protocol.XfpApollo.NumDevices,
+                _                                 => CTecDevices.Protocol.XfpCast.NumDevices,
+            };
+        }
+
+
+        private static CTecDevices.ObjectTypes _protocol = CTecDevices.ObjectTypes.XfpCast;
+        public static void SetDeviceProtocol(CTecDevices.ObjectTypes protocol) => _protocol = protocol;
+        
 
         [JsonIgnore]internal const  int DefaultVolume = 3;
         [JsonIgnore]internal const  int MinSensitivity = 1;

@@ -133,6 +133,18 @@
                         <ctc:Icon IconType="OpenFile" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
                     </Button>
 
+                    <!--open-->
+                    <Button Background="Transparent" BorderThickness="0" 
+                            WindowChrome.IsHitTestVisibleInChrome="True"
+                            Click="buttonPrint_Click"
+                            IsEnabled="{Binding IsClearAvailable}"
+                            Opacity="{Binding IsClearAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
+                            ToolTip="{Binding Path=ToolTip_Print_Event_Log, Source={StaticResource Resources}}"
+                            Style="{StaticResource HeaderButton}" 
+                            VerticalAlignment="Center" Margin="10,2,0,2">
+                        <ctc:Icon IconType="Print" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                    </Button>
+
                 </StackPanel>
             </Grid>
 

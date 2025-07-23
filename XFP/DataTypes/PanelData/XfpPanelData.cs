@@ -66,17 +66,17 @@ namespace Xfp.DataTypes.PanelData
 
 
         private CTecDevices.ObjectTypes _protocol;
+
         public CTecDevices.ObjectTypes Protocol
         {
             get => _protocol;
             set
             {
-                _protocol = value; 
-                DeviceConfigData.NumDevices = _protocol switch
-                                            {
-                                                CTecDevices.ObjectTypes.XfpApollo  => CTecDevices.Protocol.XfpApollo.NumDevices,
-                                                _                                    => CTecDevices.Protocol.XfpCast.NumDevices,
-                                            };
+                if (_protocol != value)
+                {
+                    _protocol = value;
+                    LoopConfig?.NormaliseLoops();
+                }
             }
         }
 

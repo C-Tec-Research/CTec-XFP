@@ -2120,9 +2120,15 @@ All of its data will be lost.</value>
     <value>** system name not set **</value>
   </data>
   <data name="See_IO_Configuration_Abbr" xml:space="preserve">
-    <value>See I/O  ►</value>
+    <value>See I/O  →</value>
   </data>
   <data name="Subaddress_Short" xml:space="preserve">
     <value>Subaddr.</value>
+  </data>
+  <data name="Comms_Alarm_Verification_Counts" xml:space="preserve">
+    <value>Verification counts</value>
+  </data>
+  <data name="ToolTip_Print_Event_Log" xml:space="preserve">
+    <value>Print the Event Log</value>
   </data>
 </root>

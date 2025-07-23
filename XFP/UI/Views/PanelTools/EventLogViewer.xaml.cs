@@ -49,9 +49,9 @@ namespace Xfp.UI.Views.PanelTools
         private void buttonPause_Click(object sender, RoutedEventArgs e) => _context.Pause();
         private void buttonResume_Click(object sender, RoutedEventArgs e) => _context.Resume();
         private void buttonStop_Click(object sender, RoutedEventArgs e) => _context.Stop();
-        //private void buttonReset_Click(object sender, RoutedEventArgs e)  => _context.ResetIndex();
         private void buttonSave_Click(object sender, RoutedEventArgs e)  => _context.SaveToFile();
         private void buttonOpen_Click(object sender, RoutedEventArgs e)  => _context.OpenFromFile();
+        private void buttonPrint_Click(object sender, RoutedEventArgs e)  => _context.Print();
         private void buttonClear_Click(object sender, RoutedEventArgs e) => _context.Clear();
     }
 }

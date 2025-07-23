@@ -158,8 +158,13 @@ namespace Xfp.ViewModels.PanelTools
             }
             else
             {
+                var deviceList = _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber);
+
+                //ensure number of devices in list is correct (including blank first entry)
+                setListLength(Loop1Devices, deviceList.Count + 1);
+
                 int i = 1;
-                foreach (var d in _data.GetLoop1DeviceList(_data.CurrentPanel.PanelNumber))
+                foreach (var d in deviceList)
                     Loop1Devices[i++] = d;
 
                 OnPropertyChanged(nameof(Loop1Devices));
@@ -177,15 +182,28 @@ namespace Xfp.ViewModels.PanelTools
             }
             else
             {
+                var deviceList = _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber);
+
+                //ensure number of devices in list is correct (including blank first entry)
+                setListLength(Loop2Devices, deviceList.Count + 1);
+
                 int i = 1;
-                foreach (var d in _data.GetLoop2DeviceList(_data.CurrentPanel.PanelNumber))
+                foreach (var d in deviceList)
                     Loop2Devices[i++] = d;
 
-                OnPropertyChanged(nameof(Loop2Devices));
+             OnPropertyChanged(nameof(Loop2Devices));
             }
 
             foreach (var c in CEConfigItems)
                 c.Loop2DevicesMenuCount = Loop2Devices.Count;
+        }
+
+        private void setListLength(List<string> list, int length)
+        {
+            while (list.Count < length)
+                list.Add("");
+            while (list.Count > length)
+                list.RemoveAt(length - 1);
         }
 
         private void getZonesList()        

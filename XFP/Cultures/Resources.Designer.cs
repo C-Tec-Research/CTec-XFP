@@ -620,6 +620,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verification counts.
+        /// </summary>
+        public static string Comms_Alarm_Verification_Counts {
+            get {
+                return ResourceManager.GetString("Comms_Alarm_Verification_Counts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base sounder groups.
         /// </summary>
         public static string Comms_Base_Sounder_Groups {
@@ -4346,7 +4355,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See I/O  ►.
+        ///   Looks up a localized string similar to See I/O  →.
         /// </summary>
         public static string See_IO_Configuration_Abbr {
             get {
@@ -5225,6 +5234,15 @@ namespace Xfp.Cultures {
         public static string ToolTip_Previous_Zone {
             get {
                 return ResourceManager.GetString("ToolTip_Previous_Zone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print the Event Log.
+        /// </summary>
+        public static string ToolTip_Print_Event_Log {
+            get {
+                return ResourceManager.GetString("ToolTip_Print_Event_Log", resourceCulture);
             }
         }
         

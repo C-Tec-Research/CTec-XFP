@@ -116,8 +116,8 @@ namespace Xfp.Files
                 foreach (var p in data.Panels.Values)
                 {
                     //the old file format contained only 1 panel and its settings were part of the global site.
-                    //so if an old-format file is read is will have a null PanelConfig but the panel settings
-                    //will be in the "legacy" settings in the site config global settings.
+                    //If an old-format file is read it will have a null PanelConfig and the panel settings will be in
+                    //the "legacy" settings in the site config global settings, so we copy it over to the new location
                     if (p.PanelConfig is null)
                         p.PanelConfig = new(data);
 
@@ -132,19 +132,15 @@ namespace Xfp.Files
         {
             if (panelData is not null)
             {
-                //reading from a json file will create the default number
-                //of devices, so we remove any above the protocol's limit
-                for (int i = panelData.Loop1Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
-                    panelData.Loop1Config.Devices.RemoveAt(i);
-                for (int i = panelData.Loop2Config.Devices.Count - 1; i >= DeviceConfigData.NumDevices; i--)
-                    panelData.Loop2Config.Devices.RemoveAt(i);
-                foreach (var (d, io) in
+                //ensure Loops have correct device count (reading from a json file will create the default number of devices)
+                panelData.LoopConfig.NormaliseLoops();
 
                 //ensure IO devices have valid InputOutput value
-                from d in panelData.Loop1Config.Devices where d.IsIODevice
-                    from io in d.IOConfig where (int)io.InputOutput < 0 || (int)io.InputOutput > 2
-                        select (d, io))
-                            io.InputOutput = DeviceTypes.DefaultIOOutputType(d.DeviceType, io.Index, DeviceTypes.CurrentProtocolType);
+                foreach (var (d, io) in
+                         from d in panelData.Loop1Config.Devices where d.IsIODevice
+                         from io in d.IOConfig where (int)io.InputOutput < 0 || (int)io.InputOutput > 2
+                         select (d, io))
+                    io.InputOutput = DeviceTypes.DefaultIOOutputType(d.DeviceType, io.Index, DeviceTypes.CurrentProtocolType);
 
                 //ensure the DeviceNames table contains *something*
                 if (panelData.DeviceNamesConfig.DeviceNames.Count == 0)

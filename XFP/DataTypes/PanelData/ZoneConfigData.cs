@@ -34,7 +34,11 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        public const int NumZones = 32;
+        /// <summary>
+        /// The number of zones<br/>
+        /// NB: a "16-zone" panel just means it only has 16 LEDs (it still works if 32 zones are sent to it)
+        /// </summary>
+        public const int NumZones = 32;     
         public const int NumPanels = 8;
         public const int NumDependencies = 6;
         public const int MaxNameLength = 14;

@@ -115,11 +115,11 @@ namespace Xfp.ViewModels
         public static PrintParameters PrintParams { get; set; } = new();
 
         public int  PanelCount                => _panelCount;
-        public bool PrintAllPanels      { get => PrintParams.PrintAllPages;       set { PrintParams.PrintAllPages = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintAllPanels      { get => PrintParams.PrintAllPanels;      set { PrintParams.PrintAllPanels = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSelectedPanel  { get => !PrintParams.PrintAllPanels;     set { PrintParams.PrintAllPanels = !value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintCurrentPage    { get => PrintParams.PrintAllPages;       set { if (!(PrintParams.PrintAllPanels = !value)) setCurrentPageToPrint(); OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint;  set { PrintParams.SelectPagesToPrint = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(PrintCurrentPage)); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintCurrentPage    { get => !PrintParams.PrintAllPages && !PrintParams.SelectPagesToPrint; set { if (value) { PrintParams.PrintAllPages = PrintParams.SelectPagesToPrint = false; setCurrentPageToPrint(); } OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint;  set { if (PrintParams.SelectPagesToPrint = value) PrintAllPages = false; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSiteConfig     { get => PrintParams.PrintSiteConfig;     set { PrintParams.PrintSiteConfig = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo;       set { PrintParams.PrintLoopInfo = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintZones          { get => PrintParams.PrintZones;          set { PrintParams.PrintZones = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }

@@ -620,6 +620,11 @@ namespace Xfp.ViewModels.PanelTools
                     for (int dev = 0; dev < DeviceConfigData.NumDevices; dev++)
                         PanelComms.AddCommandRequestBaseSounderGroup(loop, dev, String.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, dev + 1));
             }
+
+            //send the alarm verification counts
+            PanelComms.AL3CodeReceived = al3CodeReceived;
+            PanelComms.InitNewDownloadCommandSubqueue(Cultures.Resources.Comms_Alarm_Verification_Counts, downloadRequestsCompleted);
+            PanelComms.AddCommandRequestAL3Code(Cultures.Resources.AL3_Code);
             
             if (!allPages)
             {
@@ -628,11 +633,6 @@ namespace Xfp.ViewModels.PanelTools
                 PanelComms.InitNewDownloadCommandSubqueue(Cultures.Resources.Comms_Zone_Names, null);
                 for (int zone = 0; zone < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels; zone++)
                     PanelComms.AddCommandRequestZoneName(zone, String.Format(Cultures.Resources.Zone_Name_x, zone + 1));
-
-                //...and the alarm verification counts
-                PanelComms.AL3CodeReceived = al3CodeReceived;
-                PanelComms.InitNewDownloadCommandSubqueue(Cultures.Resources.Comms_Site_Information, downloadRequestsCompleted);
-                PanelComms.AddCommandRequestAL3Code(Cultures.Resources.AL3_Code);
             }
         }
 
@@ -681,26 +681,10 @@ namespace Xfp.ViewModels.PanelTools
 
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
-                ////send base sounder info for both loops
-                
-                //PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Base_Sounder_Groups, null);
-                //for (int loop = start; loop <= finish; loop++)
-                //    for (int device = 0; device < DeviceConfigData.NumDevices; device++)
-                //    {
-                //        var dev = _data.CurrentPanel.LoopConfig.Loops[LoopNum - 1].Devices[device];
-                //        PanelComms.AddCommandSetBaseSounderGroup(new(loop)
-                //        {
-                //            Index = device + DeviceConfigData.NumDevices + 1,
-                //            DeviceType = (int)(dev.AncillaryBaseSounderGroup > 0 ? XfpApolloDeviceTypeIds.SounderController : XfpApolloDeviceTypeIds.Unknown),
-                //            AncillaryBaseSounderGroup = dev.AncillaryBaseSounderGroup,
-                //            IsRealDevice = false,
-                //        },
-                //        string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, device + 1));
-                //    }
-                
                 //send base sounder info for loop(s)
                 PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Base_Sounder_Groups, null);
                 for (int loop = 0; loop < LoopConfigData.DetectedLoops; loop++)
+                {
                     for (int device = 0; device < DeviceConfigData.NumDevices; device++)
                     {
                         var dev = loop < NumLoops ? _data.CurrentPanel.LoopConfig.Loops[loop].Devices[device] : new DeviceData(loop);
@@ -713,10 +697,11 @@ namespace Xfp.ViewModels.PanelTools
                         },
                         string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, device + 1));
                     }
+                }
             }
 
             //also send the alarm verification counts
-            PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Site_Information, uploadRequestsCompleted);
+            PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Alarm_Verification_Counts, uploadRequestsCompleted);
             PanelComms.AddCommandSetAL3Code(new() {
                                                 AL3Code = _data.CurrentPanel.PanelConfig.AL3Code, 
                                                 BlinkPollingLED = _data.CurrentPanel.PanelConfig.BlinkPollingLED, 

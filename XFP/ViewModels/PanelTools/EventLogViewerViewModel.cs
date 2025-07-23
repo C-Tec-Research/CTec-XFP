@@ -161,6 +161,10 @@ namespace Xfp.ViewModels.PanelTools
             CurrentFolder = System.IO.Path.GetDirectoryName(TextFile.FilePath);
         }
 
+        public void Print()
+        {
+        }
+
 
         private int _eventLogIndex = 0;
 

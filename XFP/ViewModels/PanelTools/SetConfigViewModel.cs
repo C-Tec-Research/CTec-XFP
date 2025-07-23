@@ -392,7 +392,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public void EnqueuePanelUploadCommands(bool allPages)
         {
-            PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Groups, uploadRequestsCompleted);
+            PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Sets, uploadRequestsCompleted);
 
             for (int zone = 0; zone <= ZoneConfigData.NumZones + NetworkConfigData.NumPanelSettings; zone++)
             {

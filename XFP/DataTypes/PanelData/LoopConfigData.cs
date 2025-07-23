@@ -9,8 +9,7 @@ using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class 
-        LoopConfigData : ConfigData, IConfigData
+    public partial class LoopConfigData : ConfigData, IConfigData
     {
         internal LoopConfigData()
         {
@@ -43,6 +42,30 @@ namespace Xfp.DataTypes.PanelData
         public DeviceConfigData Loop1 { get; set; } = new(0);
         public DeviceConfigData Loop2 { get; set; } = new(1);
         [JsonIgnore] public List<DeviceConfigData> Loops => new() { Loop1, Loop2 };
+
+
+        public void NormaliseLoops()
+        {
+            //ensure Loop #1 has correct device count
+            while (Loop1.Devices.Count < DeviceConfigData.NumDevices)
+                Loop1.Devices.Add(DeviceData.InitialisedNew(null, 0, Loop1.Devices.Count));
+            while (Loop1.Devices.Count > DeviceConfigData.NumDevices)
+                Loop1.Devices.RemoveAt(Loop1.Devices.Count - 1);
+
+            if (NumLoops > 1)
+            {
+                //ensure Loop #2 has correct device count
+                while (Loop2.Devices.Count < DeviceConfigData.NumDevices)
+                    Loop2.Devices.Add(DeviceData.InitialisedNew(null, 1, Loop2.Devices.Count));
+                while (Loop2.Devices.Count > DeviceConfigData.NumDevices)
+                    Loop2.Devices.RemoveAt(Loop2.Devices.Count - 1);
+            }
+            else
+            {
+                //no loop #2
+                Loop2.Devices.Clear();
+            }
+        }
 
 
         /// <summary>

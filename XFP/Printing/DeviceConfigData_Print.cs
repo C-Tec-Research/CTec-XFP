@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using Windows.Devices.Sms;
+using Windows.Web.Http.Headers;
 using Xfp.UI;
 using Xfp.UI.ViewHelpers;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
@@ -76,6 +78,9 @@ namespace Xfp.DataTypes.PanelData
         
         public BlockUIContainer deviceList(bool printAllLoopDevices)
         {
+            PrintUtil.SetFontSmallerSize();
+            PrintUtil.SetFontNarrowWidth();
+
             var grid = columnHeaders();
 
             int row = grid.RowDefinitions.Count;
@@ -90,8 +95,6 @@ namespace Xfp.DataTypes.PanelData
                     deviceSort.Sort(compareByDeviceType);
                 else if (_printOrder == SortOrder.ZoneGroupSet)
                     deviceSort.Sort(compareByZoneGroupSet);
-
-                PrintUtil.NarrowFont(true);
 
                 foreach (var d in deviceSort)
                 {
@@ -182,6 +185,7 @@ namespace Xfp.DataTypes.PanelData
                                 grid.Children.Add(GridUtil.GridCell(d.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, d.AncillaryBaseSounderGroup.Value), row, col++));
                             }
 
+                            // I/O config
                             if (d.IsIODevice)
                             {
                                 List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && d.DeviceType == (int)XfpCastDeviceTypeIds.HS2
@@ -235,7 +239,7 @@ namespace Xfp.DataTypes.PanelData
             catch (Exception ex) { }
             finally
             {
-                PrintUtil.NarrowFont(false);
+                PrintUtil.ResetFont();
             }
 
             return new(grid);
@@ -271,23 +275,34 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
 
+
+            var typW = 160;
+            var zgsW = 100;
+            var namW = 100;
+            if (DeviceTypes.CurrentProtocolIsXfpApollo)
+            {
+                typW = 140;
+                zgsW = 80;
+                namW = 80;
+            }
+
             _totalColumns = 0;
-            GridUtil.AddColumnToGrid(grid);             _totalColumns++;        // num
-            GridUtil.AddColumnToGrid(grid);             _totalColumns++;        // icon
-            GridUtil.AddColumnToGrid(grid, 140);        _totalColumns++;        // type name
-            GridUtil.AddColumnToGrid(grid, 100);        _totalColumns++;        // z/g/s
-            GridUtil.AddColumnToGrid(grid);             _totalColumns++;        // name
-            GridUtil.AddColumnToGrid(grid);             _totalColumns++;        // v/s/m
-            GridUtil.AddColumnToGrid(grid);             _totalColumns++;        // day:night
+            GridUtil.AddColumnToGrid(grid);          _totalColumns++;           // num
+            GridUtil.AddColumnToGrid(grid);          _totalColumns++;           // icon
+            GridUtil.AddColumnToGridMax(grid, typW); _totalColumns++;           // type name
+            GridUtil.AddColumnToGridMax(grid, zgsW); _totalColumns++;           // z/g/s
+            GridUtil.AddColumnToGridMax(grid, namW); _totalColumns++;           // name
+            GridUtil.AddColumnToGrid(grid);          _totalColumns++;           // v/s/m
+            GridUtil.AddColumnToGrid(grid);          _totalColumns++;           // day:night
             if (DeviceTypes.CurrentProtocolIsXfpApollo) 
             {
-                GridUtil.AddColumnToGrid(grid);         _totalColumns++;        // remote LED
-                GridUtil.AddColumnToGrid(grid);         _totalColumns++;        // base sounder grp
+                GridUtil.AddColumnToGrid(grid);      _totalColumns++;           // remote LED
+                GridUtil.AddColumnToGrid(grid);      _totalColumns++;           // base sounder grp
             }
             GridUtil.AddColumnToGrid(grid, subaddressWidth); _totalColumns++;   // subaddress
             GridUtil.AddColumnToGrid(grid, ioWidth);         _totalColumns++;   // i/o
             GridUtil.AddColumnToGrid(grid);                  _totalColumns++;   // chan
-            GridUtil.AddColumnToGrid(grid, 80);              _totalColumns++;   // z/g/s
+            GridUtil.AddColumnToGridMax(grid, zgsW);         _totalColumns++;   // z/g/s
             GridUtil.AddColumnToGrid(grid);                  _totalColumns++;   // name
 
 
