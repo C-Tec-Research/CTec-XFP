@@ -92,25 +92,21 @@ namespace Xfp.DataTypes.PanelData
         {
             var grid = new Grid();
 
-            for (int i = 0; i < 7; i++)
-            {
-                if (i == 4)
-                    GridUtil.AddRowToGrid(grid, 5);
-                else
-                    GridUtil.AddRowToGrid(grid);
-            }
+            for (int i = 0; i < 8; i++)
+                GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalTimerTimesColumns; i++)
                 GridUtil.AddColumnToGrid(grid);
 
             grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Timer_Event_Times, 0, 0, 1, _totalTimerTimesColumns, true));
 
-            GridUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 0, 0, 0.5), new CornerRadius(0));
-
+            GridUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 1, 0, 0));
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 2)));
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 2, 10, 2)));
+            GridUtil.AddBorderToGrid(grid, 4, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 5, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   7, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   6, 0), new(3, 2, 10, 2)));
+            GridUtil.AddBorderToGrid(grid, 7, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
 
             for (int i = 0; i < 16; i++)
             {

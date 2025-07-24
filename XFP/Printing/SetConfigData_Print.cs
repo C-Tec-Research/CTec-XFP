@@ -51,7 +51,7 @@ namespace Xfp.DataTypes.PanelData
         private const int _totalColumns = NumOutputSetTriggers + NumPanelRelayTriggers + _setIdColumns + _separatorColumns;
         private static SolidColorBrush _silenceableSetsBrush     = Styles.Brush07;
         private static SolidColorBrush _columnSeparatorBrush     = Styles.ColumnSeparatorBrush;
-        private static SolidColorBrush _outputSetsBorderBrush    = Styles.Brush05;
+        private static SolidColorBrush _outputSetsBorderBrush    = Styles.Brush06;
         private static SolidColorBrush _panelRelayHeaderBrush    = Styles.PrintPanelRelayHeaderBrush;
         private static SolidColorBrush _triggerPulsedBrush       = Styles.TriggerPulsedBrush;
         private static SolidColorBrush _triggerContinuousBrush   = Styles.TriggerContinuousBrush;
@@ -173,10 +173,10 @@ namespace Xfp.DataTypes.PanelData
 
             //header text
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
-            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 2);
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
 
             grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
-            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 2);
+            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
             
 
             //set numbers

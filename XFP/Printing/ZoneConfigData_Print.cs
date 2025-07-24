@@ -31,7 +31,7 @@ namespace Xfp.DataTypes.PanelData
 
 
         ZonePanelConfigData _zonePanelData;
-        private static SolidColorBrush  _headerBorderBrush = Styles.Brush05;
+        private static SolidColorBrush  _headerBorderBrush = Styles.Brush06;
 
 
         private BlockUIContainer headerInfo()
@@ -163,10 +163,10 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Day_Dependencies,           0,  9, 1, 3, HorizontalAlignment.Center));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Night_Dependencies,         0, 12, 1, 3, HorizontalAlignment.Center));
             
-            GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
-            GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(0, 1, 0, 0), new CornerRadius(0, 0, 0, 0), 5);
+            GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
+            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
+            GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
+            GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
 
             int col = 0;
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone,      2, col++, 1, 2));

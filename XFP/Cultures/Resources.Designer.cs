@@ -5653,7 +5653,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vol/Sens
+        ///   Looks up a localized string similar to Vol/Sens/
         ///Mode.
         /// </summary>
         public static string Volume_Sensitivity_mode {
