@@ -120,130 +120,138 @@ namespace Xfp.DataTypes.PanelData
 
         public BlockUIContainer ceList()
         {
+            //PrintUtil.SetFontSmallerSize();
+            PrintUtil.SetFontNarrowWidth();
+
             var grid = columnHeaders();
 
-            //add the rows for the data
-            for (int i = 0; i < NumEvents; i++)
+            try
             {
-                GridUtil.AddRowToGrid(grid);
-
-                int row = i + 1;
-                int col = 0;
-
-                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
-
-                //line number
-                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
-
-                //action type
-                GridUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
-                if (Events[i].ActionType == CEActionTypes.None)
-                    continue;
-
-                //action parameter, if any
-                if (actionHasParam(Events[i].ActionType))
+                //add the rows for the data
+                for (int i = 0; i < NumEvents; i++)
                 {
-                    GridUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
-                    if (Events[i].ActionParam < 0)
+                    GridUtil.AddRowToGrid(grid);
+
+                    int row = i + 1;
+                    int col = 0;
+
+                    grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+
+                    //line number
+                    GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
+
+                    //action type
+                    GridUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
+                    if (Events[i].ActionType == CEActionTypes.None)
                         continue;
-                }
-                else
-                {
-                    col++;
-                }
-                
 
-                grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
-
-
-                //action trigger
-                GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
-                if (Events[i].TriggerType == CETriggerTypes.None)
-                    continue;
-
-                //trigger parameters
-                if (triggerHasParam(Events[i].TriggerType))
-                {
-                    if (triggerHasParamPair(Events[i].TriggerType))
+                    //action parameter, if any
+                    if (!Events[i].HasActionParam())
                     {
-                        Grid paramGrid = new();
-                        GridUtil.AddRowToGrid(paramGrid);
-                        for (int c = 0; c < 4; c++)
-                            GridUtil.AddColumnToGrid(paramGrid);
-
-                        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
-                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
-                        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
-                        paramGrid.SetValue(Grid.RowProperty, row);
-                        paramGrid.SetValue(Grid.ColumnProperty, col++);
-                        GridUtil.AddCellToGrid(grid, paramGrid);
-
-                        if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
+                        GridUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
+                        if (Events[i].ActionParam < 0)
                             continue;
                     }
                     else
                     {
-                        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
-                        if (Events[i].TriggerParam < 0)
-                            continue;
                         col++;
                     }
-                }
-                else
-                {
-                    col += 2;
-                }
+                
 
-                //trigger condition
-                GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
+                    grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
 
-                grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
+                    //action trigger
+                    GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
+                    //if (Events[i].TriggerType == CETriggerTypes.None)
+                    if (Events[i].HasActionParam())
+                        continue;
+
+                    //trigger parameters
+                    //if (triggerHasParam(Events[i].TriggerType))
+                    if (Events[i].HasTriggerParam())
+                    {
+                        if (Events[i].TriggerTypeHasParamPair())
+                        {
+                            Grid paramGrid = new();
+                            GridUtil.AddRowToGrid(paramGrid);
+                            for (int c = 0; c < 4; c++)
+                                GridUtil.AddColumnToGrid(paramGrid);
+
+                            GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
+                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
+                            GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
+                            paramGrid.SetValue(Grid.RowProperty, row);
+                            paramGrid.SetValue(Grid.ColumnProperty, col);
+                            GridUtil.AddCellToGrid(grid, paramGrid);
+
+                            if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
+                                continue;
+                        }
+                        else
+                        {
+                            GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
+                            if (Events[i].TriggerParam < 0)
+                                continue;
+                        }
+                    }
+                
+                    col ++;
+
+                    //trigger condition
+                    GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
+
+
+                    grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
                 
-                //reset trigger
-                var noTrigger = Events[i].ResetType == CETriggerTypes.None;
-                GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
-                if (noTrigger)
-                    continue;
+                    //reset trigger
+                    var noTrigger = Events[i].ResetType == CETriggerTypes.None;
+                    GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
+                    if (noTrigger)
+                        continue;
 
-                //reset parameters
-                if (triggerHasParam(Events[i].ResetType))
-                {
-                    if (triggerHasParamPair(Events[i].ResetType))
+                    //reset parameters
+                    if (Events[i].HasResetParam())
                     {
-                        Grid paramGrid = new();
-                        GridUtil.AddRowToGrid(paramGrid);
-                        for (int c = 0; c < 4; c++)
-                            GridUtil.AddColumnToGrid(paramGrid);
-                        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
-                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
-                        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
-                        paramGrid.SetValue(Grid.RowProperty, row);
-                        paramGrid.SetValue(Grid.ColumnProperty, col++);
-                        GridUtil.AddCellToGrid(grid, paramGrid);
-                        if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
-                            continue;
+                        if (Events[i].ResetTypeHasParamPair())
+                        {
+                            Grid paramGrid = new();
+                            GridUtil.AddRowToGrid(paramGrid);
+                            for (int c = 0; c < 4; c++)
+                                GridUtil.AddColumnToGrid(paramGrid);
+                            GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
+                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
+                            GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
+                            paramGrid.SetValue(Grid.RowProperty, row);
+                            paramGrid.SetValue(Grid.ColumnProperty, col);
+                            GridUtil.AddCellToGrid(grid, paramGrid);
+                            if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
+                                continue;
+                        }
+                        else
+                        {
+                            GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, false, Events[i].ResetParam < 0);
+                            if (Events[i].ResetParam < 0)
+                                continue;
+                        }
                     }
-                    else
-                    {
-                        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col++, false, Events[i].ResetParam < 0);
-                        if (Events[i].ResetParam < 0)
-                            continue;
-                    }
-                }
-                else
-                {
-                    col += 4;
+                 
+                    col++;
+
+                    //reset condition
+                    GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
                 }
 
-                //reset condition
-                GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
+                GridUtil.AddRowToGrid(grid, 10);
             }
-
-            GridUtil.AddRowToGrid(grid, 10);
+            catch (Exception ex) { }
+            finally
+            {
+                PrintUtil.ResetFont();
+            }
 
             return new(grid);
         }
@@ -279,44 +287,6 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private bool actionHasParam(CEActionTypes actionType)
-            => actionType switch
-            {
-                CEActionTypes.SilencePanel or
-                CEActionTypes.ResetPanel or
-                CEActionTypes.SetToOccupied or
-                CEActionTypes.AbstractEvent or
-                CEActionTypes.MutePanel or
-                CEActionTypes.SetToUnoccupied or
-                CEActionTypes.OutputDelaysDisable or
-                CEActionTypes.EndPhasedEvacuation or
-                CEActionTypes.EndZoneDelays => false,
-                _ => true,
-            };
-
-
-        private bool triggerHasParam(CETriggerTypes triggerType)
-            => triggerType switch
-            {
-                CETriggerTypes.AnyDeviceInAlarm or
-                CETriggerTypes.AnyDisablement or
-                CETriggerTypes.AnyDwellingAndCommunal or
-                CETriggerTypes.AnyFault or
-                CETriggerTypes.AnyPrealarm or
-                CETriggerTypes.AnyRemotePanelInFire or
-                CETriggerTypes.AnyZoneInFire or
-                CETriggerTypes.MoreThanOneAlarm or
-                CETriggerTypes.MoreThanOneZoneInAlarm or
-                CETriggerTypes.NetworkEventTriggered or
-                CETriggerTypes.PanelOccupied or
-                CETriggerTypes.PanelReset or
-                CETriggerTypes.PanelSilenced or
-                CETriggerTypes.PanelUnoccupied => false,
-                _ => true,
-            };
-
-
-        private bool triggerHasParamPair(CETriggerTypes triggerType) => triggerType == CETriggerTypes.EventAnd || triggerType == CETriggerTypes.ZoneAnd;
         private string paramDesc(CETriggerTypes triggerType) => triggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone;
         private string isTrueOrFalse(bool condition) => string.Format("{0} {1}", Cultures.Resources.Trigger_Condition_Is, condition ? Cultures.Resources.True : Cultures.Resources.False);
 

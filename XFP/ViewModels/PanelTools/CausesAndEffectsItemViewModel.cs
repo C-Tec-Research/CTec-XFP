@@ -305,7 +305,7 @@ namespace Xfp.ViewModels.PanelTools
         #region option visibilities
 
         #region action
-        public bool ShowActionParam         => !_data.NoActionParam(_data.ActionType);
+        public bool ShowActionParam         => _data.HasActionParam();
         public bool ShowActionLoop1Devices  => _data.ActionType switch { CEActionTypes.TriggerLoop1Device or CEActionTypes.Loop1DeviceDisable => true, _ => false };
         public bool ShowActionLoop2Devices  => _data.ActionType switch { CEActionTypes.TriggerLoop2Device or CEActionTypes.Loop2DeviceDisable => true, _ => false };
         public bool ShowActionRelays        => _data.ActionType switch { CEActionTypes.PanelRelay => true, _ => false };
@@ -318,7 +318,7 @@ namespace Xfp.ViewModels.PanelTools
 
         #region trigger
         public bool ShowTriggerType           => _data.ActionType != CEActionTypes.None && (!ShowActionParam || SelectedActionParamIndex > -1);
-        public bool ShowTriggerParam          => ShowTriggerType   && !ShowTriggerParamAND && !_data.NoTriggerParam(_data.TriggerType);
+        public bool ShowTriggerParam          => ShowTriggerType   && !ShowTriggerParamAND && _data.HasTriggerParam();
         public bool ShowTriggerParamAND       => ShowTriggerType   && (_data.TriggerType == CETriggerTypes.EventAnd || _data.TriggerType == CETriggerTypes.ZoneAnd);
         public bool ShowTriggerLoop1Devices   => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
         public bool ShowTriggerLoop2Devices   => ShowTriggerParam  && _data.TriggerType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };
@@ -334,7 +334,7 @@ namespace Xfp.ViewModels.PanelTools
 
         #region reset
         public bool ShowResetType           => ShowTriggerCondition;
-        public bool ShowResetParam          => ShowResetType   && !ShowResetParamAND && !_data.NoTriggerParam(_data.ResetType);
+        public bool ShowResetParam          => ShowResetType   && !ShowResetParamAND && _data.HasResetParam();
         public bool ShowResetParamAND       => ShowResetType   && (_data.ResetType == CETriggerTypes.EventAnd || _data.ResetType == CETriggerTypes.ZoneAnd);
         public bool ShowResetLoop1Devices   => ShowResetParam  && _data.ResetType switch { CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop1DevicePrealarm => true, _ => false };
         public bool ShowResetLoop2Devices   => ShowResetParam  && _data.ResetType switch { CETriggerTypes.Loop2DeviceTriggered or CETriggerTypes.Loop2DevicePrealarm => true, _ => false };

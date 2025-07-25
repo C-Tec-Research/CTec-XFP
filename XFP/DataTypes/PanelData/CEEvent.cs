@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -85,28 +86,37 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        internal bool NoActionParam(CEActionTypes actionType)
-            => ActionType switch
+        internal bool HasActionParam()          => HasActionParam(ActionType);
+        internal bool HasTriggerParam()         => HasTriggerParam(TriggerType); 
+        internal bool HasResetParam()           => HasTriggerParam(ResetType); 
+        internal bool TriggerTypeHasParamPair() => TriggerHasParamPair(TriggerType);
+        internal bool ResetTypeHasParamPair()   => TriggerHasParamPair(ResetType);
+
+
+        internal static bool HasActionParam(CEActionTypes actionType) 
+            => actionType switch
             {
-                CEActionTypes.None            or CEActionTypes.SilencePanel        or CEActionTypes.ResetPanel or 
-                CEActionTypes.SetToOccupied   or CEActionTypes.AbstractEvent       or CEActionTypes.MutePanel or 
-                CEActionTypes.SetToUnoccupied or CEActionTypes.OutputDelaysDisable or CEActionTypes.EndPhasedEvacuation or 
-                CEActionTypes.EndZoneDelays
-                  => true, 
-                _ => false
+                CEActionTypes.GroupDisable       or CEActionTypes.Loop1DeviceDisable or CEActionTypes.Loop2DeviceDisable or
+                CEActionTypes.OutputDisable      or CEActionTypes.PanelRelay         or CEActionTypes.PutZoneIntoAlarm or
+                CEActionTypes.SounderAlert       or CEActionTypes.SounderEvac        or CEActionTypes.TriggerBeacons or
+                CEActionTypes.TriggerLoop1Device or CEActionTypes.TriggerLoop2Device or CEActionTypes.TriggerNetworkEvent or
+                CEActionTypes.TriggerOutputSet   or CEActionTypes.ZoneDisable
+                    => true,
+                _   => false,
             };
 
-        internal bool NoTriggerParam(CETriggerTypes? triggerType) 
+        internal static bool HasTriggerParam(CETriggerTypes? triggerType) 
             => triggerType switch
             {
-                CETriggerTypes.AnyDeviceInAlarm or CETriggerTypes.AnyDisablement   or CETriggerTypes.AnyDwellingAndCommunal or 
-                CETriggerTypes.AnyFault         or CETriggerTypes.AnyPrealarm      or CETriggerTypes.AnyRemotePanelInFire or 
-                CETriggerTypes.AnyZoneInFire    or CETriggerTypes.MoreThanOneAlarm or CETriggerTypes.MoreThanOneZoneInAlarm or 
-                CETriggerTypes.None             or CETriggerTypes.PanelSilenced    or CETriggerTypes.PanelOccupied or 
-                CETriggerTypes.PanelReset       or CETriggerTypes.PanelUnoccupied  
-                  => true, 
-                _ => false
-            };
+                CETriggerTypes.Loop1DeviceTriggered or CETriggerTypes.Loop2DeviceTriggered  or CETriggerTypes.ZoneOrPanelInFire or
+                CETriggerTypes.Loop1DevicePrealarm  or CETriggerTypes.Loop2DevicePrealarm   or CETriggerTypes.PanelInput or
+                CETriggerTypes.OtherEventTriggered  or CETriggerTypes.EventAnd              or CETriggerTypes.TimerEventTn or
+                CETriggerTypes.ZoneHasDeviceInAlarm or CETriggerTypes.NetworkEventTriggered or CETriggerTypes.ZoneAnd 
+                    => true, 
+                _   => false
+            };  
+
+        internal bool TriggerHasParamPair(CETriggerTypes triggerType) => triggerType == CETriggerTypes.EventAnd || triggerType == CETriggerTypes.ZoneAnd;
 
 
         public override bool Validate()
@@ -116,7 +126,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 bool continueChecking = true;
 
-                if (!NoActionParam(ActionType))
+                if (HasActionParam())
                 {
                     ValidationCodes error = ValidationCodes.Ok;
                     switch (ActionType)
@@ -152,7 +162,7 @@ namespace Xfp.DataTypes.PanelData
                     {
                         error = ValidationCodes.CETriggerTypeNotSet;
                     }
-                    else if (!NoTriggerParam(TriggerType))
+                    else if (HasTriggerParam())
                     {
                         switch (TriggerType)
                         {
@@ -202,7 +212,7 @@ namespace Xfp.DataTypes.PanelData
                     {
                         error = ValidationCodes.CEResetTypeNotSet;
                     }
-                    else if (!NoTriggerParam(ResetType))
+                    else if (HasTriggerParam())
                     {
                         switch (ResetType)
                         {
