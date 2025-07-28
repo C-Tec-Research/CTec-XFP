@@ -10,7 +10,7 @@
     <Color x:Key="ColourTriggerContinuous"     A="#ff" R="#ff" G="#50" B="#50"/>
     <Color x:Key="ColourTriggerDelayed"        A="#ff" R="#60" G="#80" B="#e0"/>
     <Color x:Key="ColourPanelRelayHeader"      A="#ff" R="#ff" G="#ff" B="#a0"/>
-    <Color x:Key="ColourAddLoopButton"         A="#ff" R="#00" G="#d0" B="#ff"/>
+    <Color x:Key="ColourAddLoopButton"         A="#ff" R="#00" G="#a0" B="#b0"/>
     <SolidColorBrush x:Key="AlarmOffBrush"              Color="{StaticResource ColourAlarmOff}"/>
     <SolidColorBrush x:Key="AlarmAlertBrush"            Color="{StaticResource ColourAlarmAlert}"/>
     <SolidColorBrush x:Key="AlarmEvacBrush"             Color="{StaticResource ColourAlarmEvac}"/>

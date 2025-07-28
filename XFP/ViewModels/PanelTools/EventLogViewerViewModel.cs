@@ -163,6 +163,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public void Print()
         {
+            CTecMessageBox.Show("Printing the Event Log is not yet implemented.", Cultures.Resources.Nav_Event_Log, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 
