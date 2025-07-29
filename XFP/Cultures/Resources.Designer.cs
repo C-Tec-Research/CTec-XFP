@@ -485,6 +485,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build date:.
+        /// </summary>
+        public static string Build_Date {
+            get {
+                return ResourceManager.GetString("Build_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cause &amp; Effect Event #{0}.
         /// </summary>
         public static string C_And_E_Event_x {
@@ -4288,6 +4297,15 @@ namespace Xfp.Cultures {
         public static string Resets_When {
             get {
                 return ResourceManager.GetString("Resets_When", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revision history.
+        /// </summary>
+        public static string Revision_History {
+            get {
+                return ResourceManager.GetString("Revision_History", resourceCulture);
             }
         }
         

@@ -2131,4 +2131,10 @@ All of its data will be lost.</value>
   <data name="ToolTip_Print_Event_Log" xml:space="preserve">
     <value>Print the Event Log</value>
   </data>
+  <data name="Build_Date" xml:space="preserve">
+    <value>Build date:</value>
+  </data>
+  <data name="Revision_History" xml:space="preserve">
+    <value>Revision history</value>
+  </data>
 </root>

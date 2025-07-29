@@ -29,6 +29,7 @@ namespace Xfp.Views
 
             _context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
             _context.RecentFilesChanged = recentFilesChanged;
+            _context.AboutHeaderTextBlock = txtAboutHeader;
 
             recentFilesChanged();
 
@@ -321,6 +322,9 @@ namespace Xfp.Views
                 _context.HighlightProtocolsMenu(mnuProtocol, mnuProtocols, mnuExit);
         }
 
+        private void History_Click(object sender, RoutedEventArgs e) => _context.ShowRevisionHistoryWindow();
+
+        
         //private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = true;
         //private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
         //private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;

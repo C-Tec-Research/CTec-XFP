@@ -2115,4 +2115,10 @@ Toutes ses données seront perdues.</value>
   <data name="ToolTip_Print_Event_Log" xml:space="preserve">
     <value>Imprimer le Journal des Événements</value>
   </data>
+  <data name="Build_Date" xml:space="preserve">
+    <value>Daté :</value>
+  </data>
+  <data name="Revision_History" xml:space="preserve">
+    <value>Historique des révisions</value>
+  </data>
 </root>

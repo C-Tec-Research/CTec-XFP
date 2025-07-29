@@ -134,7 +134,7 @@
                     </Button>
 
                     <!--print-->
-                    <!--<Button Background="Transparent" BorderThickness="0" 
+                    <Button Background="Transparent" BorderThickness="0" 
                             WindowChrome.IsHitTestVisibleInChrome="True"
                             Click="buttonPrint_Click"
                             IsEnabled="{Binding IsClearAvailable}"
@@ -143,7 +143,7 @@
                             Style="{StaticResource HeaderButton}" 
                             VerticalAlignment="Center" Margin="10,2,0,2">
                         <ctc:Icon IconType="Print" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
-                    </Button>-->
+                    </Button>
 
                 </StackPanel>
             </Grid>

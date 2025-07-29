@@ -39,6 +39,7 @@ using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.Printing;
+using CTecUtil.UI.Util;
 
 namespace Xfp.ViewModels
 {
@@ -1575,14 +1576,19 @@ namespace Xfp.ViewModels
 
         public bool CloseAboutPopup()
         {
-            bool closedIt = AboutIsOpen;
-            AboutIsOpen = false;
-            return closedIt;
+            //bool closedIt = AboutIsOpen;
+            //AboutIsOpen = false;
+            //return closedIt;
+            return true;
         }
 
 
         private bool _aboutIsOpen;
-        public bool AboutIsOpen { get => _aboutIsOpen; set { _aboutIsOpen = value; OnPropertyChanged(); } }
+        public bool AboutIsOpen { get => _aboutIsOpen; set { _aboutIsOpen = value; OnPropertyChanged(); OnPropertyChanged(nameof(AboutHeaderWidth)); } }
+
+        public TextBlock AboutHeaderTextBlock { get; set; }
+        public string AboutHeader      => Cultures.Resources.Product_Full_Name;
+        public double AboutHeaderWidth => FontUtil.MeasureText(AboutHeader, AboutHeaderTextBlock.FontFamily, AboutHeaderTextBlock.FontSize, AboutHeaderTextBlock.FontStyle, AboutHeaderTextBlock.FontWeight, AboutHeaderTextBlock.FontStretch).Width;
 
 
         public string   PartNumber       { get => "QT???"; }
