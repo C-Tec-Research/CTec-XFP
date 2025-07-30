@@ -55,7 +55,7 @@ namespace Xfp.ViewModels
 
             //ShowRegistrationWindow(true);
 
-            CTecUtil.UI.UIState.SetBusyState();
+            UIState.SetBusyState();
 
             XfpCommands.Initialise(new(() => PanelNumber));
             PanelComms.InitialisePingCommands();
@@ -918,7 +918,7 @@ namespace Xfp.ViewModels
         public ICommand CastProtocolCommand { get => new DelegateCommand(() => { ClosePopups(); setProtocol(CTecDevices.ObjectTypes.XfpCast); }); }
         public ICommand ZoomCommand { get => new DelegateCommand(() => { ClosePopups(); showZoomControl(); }); }
         public ICommand DataCommand { get => new DelegateCommand(() => { ClosePopups(); showDataPopup(); }); }
-        public ICommand CommsLogCommand { get => new DelegateCommand(() => { CloseCommsLog(); ShowCommsLog(false); }); }
+        public ICommand CommsLogCommand { get => new DelegateCommand(() => { ClosePopups(); ShowCommsLog(false); }); }
         public ICommand AboutCommand { get => new DelegateCommand(() => { ClosePopups(); ShowAboutPopup(); }); }
         public ICommand SwitchDebugModeCommand { get => new DelegateCommand(() => { ClosePopups(); ToggleDebugMode(); }); }
         #endregion
@@ -1538,6 +1538,7 @@ namespace Xfp.ViewModels
         
         public void ShowCommsLog(bool scrollToEnd)
         {
+            UIState.SetBusyState();
             CloseCommsLog();
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
                                                      {
@@ -1576,10 +1577,9 @@ namespace Xfp.ViewModels
 
         public bool CloseAboutPopup()
         {
-            //bool closedIt = AboutIsOpen;
-            //AboutIsOpen = false;
-            //return closedIt;
-            return true;
+            bool closedIt = AboutIsOpen;
+            AboutIsOpen = false;
+            return closedIt;
         }
 
 
@@ -1591,7 +1591,6 @@ namespace Xfp.ViewModels
         public double AboutHeaderWidth => FontUtil.MeasureText(AboutHeader, AboutHeaderTextBlock.FontFamily, AboutHeaderTextBlock.FontSize, AboutHeaderTextBlock.FontStyle, AboutHeaderTextBlock.FontWeight, AboutHeaderTextBlock.FontStretch).Width;
 
 
-        public string   PartNumber       { get => "QT???"; }
         public string   ExeVersion       { get => string.Format(Cultures.Resources.Version_x_Abbr, BuildInfo.Details.Version); }
         public DateTime ExeDate          { get => BuildInfo.Details.BuildDate.Value; }
         public string   ControlsVersion  { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecControls.BuildInfo.Details.Version); }
@@ -1608,6 +1607,7 @@ namespace Xfp.ViewModels
         #region Revision History & Registration
         public void ShowRevisionHistoryWindow()
         {
+            UIState.SetBusyState();
             try
             {
                 MainWindowEnabled = false;
@@ -1625,7 +1625,7 @@ namespace Xfp.ViewModels
                                   || string.IsNullOrEmpty(XfpApplicationConfig.Settings.RegistrationDetails.Email) &&
                                      XfpApplicationConfig.Settings.RegistrationDetails.LastPrompted?.Date.Add(new TimeSpan(7, 0, 0, 0)).Date < DateTime.Now.Date)
             {
-                CTecUtil.UI.UIState.SetBusyState();
+                UIState.SetBusyState();
                 try
                 {
                     MainWindowEnabled = false;
@@ -1642,6 +1642,8 @@ namespace Xfp.ViewModels
 
         public bool ClosePopups(bool excludingZoomPopup)
         {
+            UIState.SetBusyState();
+
             //var closedPrinters   = ClosePrinterList();
             //var closedPrint      = ClosePrintOption();
             var closedLang       = CloseLanguageSelector();
@@ -2010,22 +2012,36 @@ namespace Xfp.ViewModels
 
         private void uploadEnded(CommsResult result, bool allPages)
         {
-            var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-            var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
-            AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
-
-            commsEnded();
+            try
+            {
+                var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase)?.PageHeader;
+                if (notificationHeader is not null)
+                {
+                    var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
+                    AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
+                }
+            }
+            finally
+            {
+                commsEnded();
+            }
         }
 
 
         private void commsEnded()
         {
-            CTecUtil.Debug.WriteLine("commsEnded()");
-            normaliseData();
-            //HeaderPanelEnabled = true;
-            MainWindowEnabled = true;
-            IsReadOnly = true;
-            //(_currentPage.DataContext as IPanelToolsViewModel)?.RefreshView();
+            try
+            {
+                CTecUtil.Debug.WriteLine("commsEnded()");
+                normaliseData();
+            }
+            finally
+            {
+                //HeaderPanelEnabled = true;
+                MainWindowEnabled = true;
+                IsReadOnly = true;
+                //(_currentPage.DataContext as IPanelToolsViewModel)?.RefreshView();
+            }
         }
 
 

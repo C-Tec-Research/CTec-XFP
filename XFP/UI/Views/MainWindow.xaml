@@ -754,8 +754,8 @@
                             <ctc:HamburgerMenuSeparator/>
 
                             <!--#region Print option-->
-                            <ctc:HamburgerMenuSubheader x:Name="mnuPrint" IconType="Print" FontSize="18" PreviewMouseDown="Print_MouseDown"/>
-                            <ctc:HamburgerMenuSeparator/>
+                            <!--<ctc:HamburgerMenuSubheader x:Name="mnuPrint" IconType="Print" FontSize="18" PreviewMouseDown="Print_MouseDown"/>
+                            <ctc:HamburgerMenuSeparator/>-->
                             <!--#endregion-->
 
                             <!--#region Settings menu-->
@@ -907,7 +907,7 @@
                                     <!-- NB: must put this single submenu item in a container else it won't be found when changing culture -->
                                     <StackPanel Orientation="Vertical">
                                         <ctc:HamburgerMenuOption IconType="About" PreviewMouseDown="About_PreviewMouseDown"/>
-                                        <ctc:HamburgerMenuOption IconType="History" PreviewMouseDown="History_PreviewMouseDown"/>
+                                        <!--<ctc:HamburgerMenuOption IconType="History" PreviewMouseDown="History_PreviewMouseDown"/>-->
                                         <!--<ctc:HamburgerMenuOption IconType="Register" PreviewMouseDown="Register_PreviewMouseDown"/>-->
                                     </StackPanel>
                                 </ctc:HamburgerMenu.Content>
