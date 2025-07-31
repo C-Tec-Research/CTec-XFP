@@ -148,6 +148,20 @@
                 </StackPanel>
             </Grid>
 
+            <!--<Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0">
+                <Grid Margin="-4,2,1,-8" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <RichTextBox x:Name="rtb" Grid.Row="0" Background="{StaticResource Brush09}" FontFamily="Lucida Console" BorderThickness="0" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                </Grid>
+
+            </Border>-->
+
             <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0">
                 <Grid Margin="-4,2,1,-8" >
                     <Grid.ColumnDefinitions>
@@ -160,7 +174,8 @@
                     <RichTextBox x:Name="rtb" Grid.Row="0" Background="{StaticResource Brush09}" FontFamily="Lucida Console" BorderThickness="0" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                 </Grid>
 
-            </Border>
+            </Border>            
+            
         </Grid>
     </Grid>
 </Page>
