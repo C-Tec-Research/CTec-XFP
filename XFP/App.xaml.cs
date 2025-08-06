@@ -37,9 +37,10 @@ namespace Xfp
             #region prevent starting up from a click on an app notification
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
+                Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
+                
                 if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
                 {
-                    //app instance was launched by an app notification 
                     close();
                     return;
                 }
@@ -47,6 +48,7 @@ namespace Xfp
 
             if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
             {
+                Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
                 close();
                 return;
             }
