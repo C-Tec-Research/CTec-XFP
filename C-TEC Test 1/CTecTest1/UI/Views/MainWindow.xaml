@@ -1,0 +1,295 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:ctc="clr-namespace:CTecControls.UI;assembly=CTecControls"
+        xmlns:ctuvh="clr-namespace:CTecUtil.UI.ViewHelpers;assembly=CTecUtil"
+        xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
+        xmlns:viewmodels="clr-namespace:Xfp.ViewModels"
+        x:Class="Xfp.Views.MainWindow"
+        mc:Ignorable="d" 
+        x:Name="wndMain"
+        Title="{Binding Product_Full_Name, Source={StaticResource Resources}}"
+        ResizeMode="CanResize"
+        WindowStyle="None"
+        Height="260" Width="200"
+        MinHeight="260" MinWidth="200"
+        Loaded="window_Loaded"
+        SizeChanged="window_SizeChanged"
+        StateChanged="window_StateChanged"
+        LocationChanged="window_LocationChanged"
+        Closing="window_Closing">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="20"
+                            CornerRadius="0"
+                            GlassFrameThickness="0"
+                            NonClientFrameEdges="Bottom"
+                            ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+    </shell:WindowChrome.WindowChrome>
+
+    <Window.Effect>
+        <!-- not needed for (or overridden by) Windows 11? -->
+        <DropShadowEffect Color="Black"
+                          Opacity="0.7"
+                          Direction="70"
+                          BlurRadius="40"
+                          ShadowDepth="3"/>
+    </Window.Effect>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+
+        <Style x:Key="ContextMenuItemStyle" TargetType="Grid">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource BrushOkHi}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--<Style x:Key="PanelManagementGridHeader" TargetType="DataGridColumnHeader" BasedOn="{StaticResource PopupGridHeader}">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>-->
+
+    </Window.Resources>
+
+
+    <Grid x:Name="mainPanel"
+          LayoutTransform="{Binding LayoutTransform}" 
+          Background="{StaticResource Brush10}"
+          Margin="0,0,0,1.5">
+
+        <Border BorderBrush="{StaticResource Brush03}" BorderThickness="0,0,1,1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+                <!--#region header panel -->
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" MouseLeftButtonDown="mouseLeftButtonDown_DragMove">
+
+                    <Border BorderBrush="{StaticResource Brush03}" BorderThickness="0,1,0,0" VerticalAlignment="Top"/>
+
+                    <Grid Background="{StaticResource Brush07}" MinHeight="18">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Dev Test App" FontWeight="Bold" Margin="10,0,0,0"/>
+                    </Grid>
+
+                    <Border BorderBrush="{StaticResource Brush07}" Background="{StaticResource Brush10}" BorderThickness="0,0,0,2" Height="4" VerticalAlignment="Top"/>
+
+                </StackPanel>
+                <!--#endregion-->
+
+
+                <!--#region main content + bottom bar-->
+                <DockPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" LastChildFill="True">
+                    <Border Background="Transparent" BorderBrush="{StaticResource Brush02}" BorderThickness="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--#region main content-->
+                            <!--<Button Content="Test" 
+                                    Grid.Row="0"
+                                    Margin="0,10,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Width="50"
+                                    Height="30"
+                                    Click="Button_Click"/>-->
+
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Content="Information" Click="Info_Click" Width="100" Margin="5"/>
+                                <Button Content="Success" Click="Success_Click" Width="100" Margin="5"/>
+                                <Button Content="Warning" Click="Warn_Click" Width="100" Margin="5"/>
+                                <Button Content="Error" Click="Error_Click" Width="100" Margin="5"/>
+                            </StackPanel>
+                            <!--#endregion-->
+
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                <!--#endregion-->
+
+
+                <!--#region control buttons -->
+                <Grid Grid.Column="1" Grid.RowSpan="2"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Background="Transparent" 
+                        Height="18" Margin="0,1,-0.5,0">
+                    <Grid.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Border.IsMouseOver" Value="False">
+                                    <Setter Property="Border.Opacity" Value="0" />
+                                </Trigger>
+                                <Trigger Property="Border.IsMouseOver" Value="true">
+                                    <Setter Property="Border.Opacity" Value="1" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid Background="{StaticResource Brush07}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0"
+                                Width="30" Margin="0" 
+                                BorderBrush="Transparent"
+                                ToolTip="{Binding Path=Control_Button_Minimise, Source={StaticResource Resources}}"
+                                Click="btnMinimise_Click">
+                            <TextBlock Text="🗕" Margin="0,1,5,5" FontSize="13" Foreground="{StaticResource Brush03}"/>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource Brush09}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BrushControlButtonPressed}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Grid.Column="1" 
+                                Width="30" Margin="0"
+                                BorderBrush="Transparent"
+                                ToolTip="{Binding Path=Control_Button_Maximise, Source={StaticResource Resources}}"
+                                Visibility="{Binding WindowIsMaximised, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                Click="btnMaximise_Click">
+                            <TextBlock Text="🗖" Margin="0,1,5,5" FontSize="13" Foreground="{StaticResource Brush03}"/>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource Brush09}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BrushControlButtonPressed}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Grid.Column="1"
+                                Width="30" Margin="0" 
+                                BorderBrush="Transparent"
+                                ToolTip="{Binding Path=Control_Button_Restore, Source={StaticResource Resources}}"
+                                Visibility="{Binding WindowIsMaximised, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Click="btnRestore_Click" >
+                            <TextBlock Text="🗗" Margin="0,1,5,5" FontSize="13" Foreground="{StaticResource Brush03}"/>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource Brush09}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BrushControlButtonPressed}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Grid.Column="2" 
+                                Width="30" Margin="0" 
+                                BorderBrush="Transparent" 
+                                ToolTip="{Binding Path=Control_Button_Close, Source={StaticResource Resources}}"
+                                Click="btnExit_Click">
+                            <TextBlock Text="🗙" Margin="0,1,5,5" FontSize="13" Foreground="{StaticResource Brush03}"/>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BrushClose}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource Brush10}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource BrushControlButtonPressed}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </Grid>
+                <!--#endregion-->
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
