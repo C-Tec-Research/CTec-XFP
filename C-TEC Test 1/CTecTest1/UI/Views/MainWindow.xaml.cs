@@ -103,32 +103,11 @@ namespace Xfp.Views
 
 
         #region notification.wpf
-        //private void Info_Click(object sender, RoutedEventArgs e) => _context.ShowInfoNotification();
-        //private void Success_Click(object sender, RoutedEventArgs e) => _context.ShowSuccessNotification();
-        //private void Warn_Click(object sender, RoutedEventArgs e) => _context.ShowWarningNotification();
-        //private void Error_Click(object sender, RoutedEventArgs e) => _context.ShowErrorNotification();
-
-
-        private void Info_Click(object sender, RoutedEventArgs e)    => ShowMessage(_context.ShowInformation, "Information");
-        private void Success_Click(object sender, RoutedEventArgs e) => ShowMessage(_context.ShowSuccess, "Success");
-        private void Warn_Click(object sender, RoutedEventArgs e)    => ShowMessage(_context.ShowWarning, "Warning");
-        private void Error_Click(object sender, RoutedEventArgs e)   => ShowMessage(_context.ShowError, "Error");
-
-
-        void ShowMessage(Action<string, MessageOptions> action, string message)
-        {
-            MessageOptions opts = new MessageOptions
-            {
-                //CloseClickAction = CloseAction,
-                //Tag = $"[This is Tag Value ({++_count})]",
-                FreezeOnMouseEnter = true,
-                UnfreezeOnMouseLeave = true,
-                ShowCloseButton = true,
-            };
-            //_lastMessage = $"{_count} {name}";
-            action(message, opts);
-            //bClearLast.IsEnabled = true;
-        }
+        private void Info_Click(object sender, RoutedEventArgs e)    => Notifications.ShowInformation("Information");
+        private void Success_Click(object sender, RoutedEventArgs e) => Notifications.ShowSuccess("Ok");
+        private void Warn_Click(object sender, RoutedEventArgs e)    => Notifications.ShowWarning("Warning");
+        private void Error_Click(object sender, RoutedEventArgs e)   => Notifications.ShowError("Error");
+        private void Clear_Click(object sender, RoutedEventArgs e)   => Notifications.ClearAll();
 
 
         #endregion

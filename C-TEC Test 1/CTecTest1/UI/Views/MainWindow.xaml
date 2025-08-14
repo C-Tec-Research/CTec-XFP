@@ -15,7 +15,7 @@
         Title="{Binding Product_Full_Name, Source={StaticResource Resources}}"
         ResizeMode="CanResize"
         WindowStyle="None"
-        Height="260" Width="200"
+        Height="400" Width="500"
         MinHeight="260" MinWidth="200"
         Loaded="window_Loaded"
         SizeChanged="window_SizeChanged"
@@ -106,7 +106,7 @@
                     <Border Background="Transparent" BorderBrush="{StaticResource Brush02}" BorderThickness="0">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -115,21 +115,120 @@
                             </Grid.ColumnDefinitions>
 
                             <!--#region main content-->
-                            <!--<Button Content="Test" 
-                                    Grid.Row="0"
-                                    Margin="0,10,0,0"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    Width="50"
-                                    Height="30"
-                                    Click="Button_Click"/>-->
-
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,20">
                                 <Button Content="Information" Click="Info_Click" Width="100" Margin="5"/>
                                 <Button Content="Success" Click="Success_Click" Width="100" Margin="5"/>
                                 <Button Content="Warning" Click="Warn_Click" Width="100" Margin="5"/>
                                 <Button Content="Error" Click="Error_Click" Width="100" Margin="5"/>
+                                <Button Content="Clear" Click="Clear_Click" Width="100" Margin="5,20,5,5"/>
                             </StackPanel>
+                            <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                                <ctc:Icon IconType="Close" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Error" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="About" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Add" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CheckForUpdates" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CheckmarkNo" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CheckmarkUnspecified" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CheckmarkYes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CommsLog" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="ConnectSerial" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Copy" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="CopyTo" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DebugMode" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Decisions" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Delete" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DeviceDetails" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DeviceSummary" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DisconnectedSerial" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DisconnectSerial" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="DocumentViewer" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Download" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Edit" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Exit" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="ExternalLink" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="File" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Filters" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Find" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="GoDown" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="GoToBottom" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="GoToTop" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="GoUp" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="GroupActions" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Groups" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Help" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="History" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="IDs" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Info" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="InputGroups" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="InputSupergroups" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Language" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Locked" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Logs" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Loop" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="LoopsAndZones" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="MenuHamburger" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Modes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Names" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Network" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="NewFile" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Next" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Node" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Nodes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Notes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="OpenFile" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Options" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="OutputGroups" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="OutputSupergroups" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Paging" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Panel" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Pause" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Play" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PointDown" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PointLeft" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PointRight" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PointUp" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PortName" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Previous" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Print" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Properties" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Protocol" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="PulsePatterns" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="RecentFiles" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Register" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Remove" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Restart" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Resume" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SaveFile" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SaveFileAs" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Sequences" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SerialPort" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Sets" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Settings" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SiteDetails" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SounderContinuous" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SounderDelayed" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SounderNone" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SounderPulsed" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Stethoscope" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Stop" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SubmenuIsClosed" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="SubmenuIsOpen" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Subtract" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="System" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="ThreeDotsHorizontal" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="ThreeDotsVertical" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Tones" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Tools" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Unlocked" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Upload" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="View" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Warning" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Web" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Zones" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="ZoomLevel" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+
+                            </WrapPanel>
                             <!--#endregion-->
 
                         </Grid>

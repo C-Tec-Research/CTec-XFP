@@ -1,4 +1,5 @@
-﻿using CTecDevices.Protocol;
+﻿using CTecControls.UI;
+using CTecDevices.Protocol;
 using CTecUtil;
 using CTecUtil.IO;
 using CTecUtil.UI;
@@ -97,21 +98,11 @@ namespace Xfp.ViewModels
 
 
         #region nofications
-        //public void ShowInfoNotification()    => CTecControls.UI.Notifications.ShowInformation("Info");
-        //public void ShowSuccessNotification() => CTecControls.UI.Notifications.ShowInformation("Success");
-        //public void ShowWarningNotification() => CTecControls.UI.Notifications.ShowInformation("Warning");
-        //public void ShowErrorNotification()   => CTecControls.UI.Notifications.ShowInformation("Error");
-
-        //public void ShowInformation(string message)                      => _notifier.ShowInformation(message);
-        public void ShowInformation(string message)    => CTecControls.UI.Notifications.ShowInformation("Info");
-        public void ShowInformation(string message, MessageOptions opts) => CTecControls.UI.Notifications.ShowInformation(message);
-        public void ShowSuccess(string message)                          => _notifier.ShowSuccess(message);
-        public void ShowSuccess(string message, MessageOptions opts)     => _notifier.ShowSuccess(message, opts);
-        public void ShowWarning(string message, MessageOptions opts)     => _notifier.ShowWarning(message, opts);
-        public void ShowError(string message)                            => _notifier.ShowError(message);
-        public void ShowError(string message, MessageOptions opts)       => _notifier.ShowError(message, opts);
-        internal void ClearMessages(string msg)                          => _notifier.ClearMessages(new ClearByMessage(msg));
-        public void ClearAll()                                           => _notifier.ClearMessages(new ClearAll());
+        public void ShowInformation(string message) => Notifications.ShowInformation(message);
+        public void ShowOk(string message)          => Notifications.ShowSuccess(message);
+        public void ShowWarning(string message)     => Notifications.ShowWarning(message);
+        public void ShowError(string message)       => Notifications.ShowError(message);
+        public void ClearAll()                      => Notifications.ClearAll();
         #endregion
 
 
