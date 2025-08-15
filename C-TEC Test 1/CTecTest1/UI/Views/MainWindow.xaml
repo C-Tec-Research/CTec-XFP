@@ -123,20 +123,20 @@
                                 <Button Content="Clear" Click="Clear_Click" Width="100" Margin="5,20,5,5"/>
                             </StackPanel>
                             <WrapPanel Grid.Row="1" Orientation="Horizontal">
-                                <ctc:Icon IconType="Close" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
-                                <ctc:Icon IconType="Error" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconSvgPathData="" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="About" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Add" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CheckForUpdates" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CheckmarkNo" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CheckmarkUnspecified" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CheckmarkYes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Close" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CommsLog" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="ConnectSerial" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Copy" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="CopyTo" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="DebugMode" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
-                                <ctc:Icon IconType="Decisions" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Decisions" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/> 
                                 <ctc:Icon IconType="Delete" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="DeviceDetails" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="DeviceSummary" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
@@ -145,6 +145,7 @@
                                 <ctc:Icon IconType="DocumentViewer" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Download" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Edit" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Error" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Exit" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="ExternalLink" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="File" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
@@ -173,6 +174,7 @@
                                 <ctc:Icon IconType="Network" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="NewFile" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Next" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="No" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Node" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Nodes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Notes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
@@ -225,6 +227,7 @@
                                 <ctc:Icon IconType="View" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Warning" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Web" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
+                                <ctc:Icon IconType="Yes" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="Zones" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
                                 <ctc:Icon IconType="ZoomLevel" Width="20" Height="20" Foreground="Green" Margin="5,0,0,0"/>
 

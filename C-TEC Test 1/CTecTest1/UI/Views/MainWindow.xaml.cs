@@ -103,11 +103,11 @@ namespace Xfp.Views
 
 
         #region notification.wpf
-        private void Info_Click(object sender, RoutedEventArgs e)    => Notifications.ShowInformation("Information");
-        private void Success_Click(object sender, RoutedEventArgs e) => Notifications.ShowSuccess("Ok");
-        private void Warn_Click(object sender, RoutedEventArgs e)    => Notifications.ShowWarning("Warning");
-        private void Error_Click(object sender, RoutedEventArgs e)   => Notifications.ShowError("Error");
-        private void Clear_Click(object sender, RoutedEventArgs e)   => Notifications.ClearAll();
+        private void Info_Click(object sender, RoutedEventArgs e)    => _context.ShowInformation("Information");
+        private void Success_Click(object sender, RoutedEventArgs e) => _context.ShowOk("Ok");
+        private void Warn_Click(object sender, RoutedEventArgs e)    => _context.ShowWarning("Warning");
+        private void Error_Click(object sender, RoutedEventArgs e)   => _context.ShowError("Error");
+        private void Clear_Click(object sender, RoutedEventArgs e)   => _context.ClearAll();
 
 
         #endregion

@@ -40,6 +40,7 @@ using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.Printing;
 using CTecUtil.UI.Util;
+using ToastNotifications.Lifetime;
 
 namespace Xfp.ViewModels
 {
@@ -1953,8 +1954,8 @@ namespace Xfp.ViewModels
             {
                 var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
                 var desc = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, notificationHeader);
-                AppNotification.Show(desc, CTecUtil.Enums.CommsResultDownloadToString(result));
-
+                //AppNotification.Show(desc, CTecUtil.Enums.CommsResultDownloadToString(result));
+                showNotification(CommsDirection.Download, result, desc);
                 commsEnded();
 
                 //if (wasCompleted)
@@ -2018,7 +2019,8 @@ namespace Xfp.ViewModels
                 if (notificationHeader is not null)
                 {
                     var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
-                    AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
+                    //AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
+                    showNotification(CommsDirection.Upload, result, desc);
                 }
             }
             finally
@@ -2044,6 +2046,24 @@ namespace Xfp.ViewModels
             }
         }
 
+
+        private void showNotification(CommsDirection direction, CommsResult result, string message)
+        {
+            var description = direction switch
+            {
+                CommsDirection.Upload   => CTecUtil.Enums.CommsResultUploadToString(result),
+                CommsDirection.Download => CTecUtil.Enums.CommsResultDownloadToString(result),
+                _ => ""
+            };
+
+            switch (result)
+            {
+                case CommsResult.Ok:        Notifications.ShowSuccess(message); break;
+                case CommsResult.Failed:    Notifications.ShowError(message); break;
+                case CommsResult.Cancelled: Notifications.ShowWarning(message); break;
+                default:                    Notifications.ShowInformation(message); break;
+            }
+        }
 
         private void normaliseData()
         {      

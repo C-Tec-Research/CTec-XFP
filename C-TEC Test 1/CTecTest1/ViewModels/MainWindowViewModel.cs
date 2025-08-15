@@ -102,7 +102,7 @@ namespace Xfp.ViewModels
         public void ShowOk(string message)          => Notifications.ShowSuccess(message);
         public void ShowWarning(string message)     => Notifications.ShowWarning(message);
         public void ShowError(string message)       => Notifications.ShowError(message);
-        public void ClearAll()                      => Notifications.ClearAll();
+        public void ClearAll() { }// => Notifications.ClearAll();
         #endregion
 
 
