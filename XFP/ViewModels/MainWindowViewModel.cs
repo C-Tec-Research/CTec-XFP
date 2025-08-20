@@ -1953,9 +1953,9 @@ namespace Xfp.ViewModels
             try
             {
                 var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-                var desc = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, notificationHeader);
+                var title = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, notificationHeader);
                 //AppNotification.Show(desc, CTecUtil.Enums.CommsResultDownloadToString(result));
-                showNotification(CommsDirection.Download, result, desc);
+                showNotification(CommsDirection.Download, result, "", title);
                 commsEnded();
 
                 //if (wasCompleted)
@@ -2000,9 +2000,10 @@ namespace Xfp.ViewModels
                 CTecUtil.CommsLog.AddException(Cultures.Resources.Error_After_Download_End, ex, true);
             }
 
-            //if (CTecUtil.CommsLog.Failed)
-            //    ShowCommsLog(true);
-        
+            if (DebugMode)
+                if (CTecUtil.CommsLog.Failed)
+                    ShowCommsLog(true);
+
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 if (!_data.Validate())
@@ -2020,7 +2021,7 @@ namespace Xfp.ViewModels
                 {
                     var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
                     //AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
-                    showNotification(CommsDirection.Upload, result, desc);
+                    showNotification(CommsDirection.Upload, result, "", desc);
                 }
             }
             finally
@@ -2047,7 +2048,7 @@ namespace Xfp.ViewModels
         }
 
 
-        private void showNotification(CommsDirection direction, CommsResult result, string message)
+        private void showNotification(CommsDirection direction, CommsResult result, string message, string title)
         {
             var description = direction switch
             {
@@ -2058,10 +2059,10 @@ namespace Xfp.ViewModels
 
             switch (result)
             {
-                case CommsResult.Ok:        Notifications.ShowSuccess(message); break;
-                case CommsResult.Failed:    Notifications.ShowError(message); break;
-                case CommsResult.Cancelled: Notifications.ShowWarning(message); break;
-                default:                    Notifications.ShowInformation(message); break;
+                case CommsResult.Ok:        Notifications.ShowSuccess(message, title); break;
+                case CommsResult.Failed:    Notifications.ShowError(message, title); break;
+                case CommsResult.Cancelled: Notifications.ShowWarning(message, title); break;
+                default:                    Notifications.ShowInformation(message, title); break;
             }
         }
 
