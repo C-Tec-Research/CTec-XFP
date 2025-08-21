@@ -12,7 +12,7 @@ using CTecUtil.IO;
 using Newtonsoft.Json;
 using static CTecUtil.Pipes.PipeServer;
 using CTecControls.UI;
-using Microsoft.Toolkit.Uwp.Notifications;
+//using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.ApplicationModel.Activation;
 
 namespace Xfp
@@ -35,23 +35,23 @@ namespace Xfp
         protected override void OnStartup(StartupEventArgs e)
         {
             #region prevent starting up from a click on an app notification
-            ToastNotificationManagerCompat.OnActivated += toastArgs =>
-            {
-                Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
+            //ToastNotificationManagerCompat.OnActivated += toastArgs =>
+            //{
+            //    Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
                 
-                if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
-                {
-                    close();
-                    return;
-                }
-            };
+            //    if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
+            //    {
+            //        close();
+            //        return;
+            //    }
+            //};
 
-            if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
-            {
-                Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
-                close();
-                return;
-            }
+            //if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
+            //{
+            //    Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.MainWindow.Activate()));
+            //    close();
+            //    return;
+            //}
             #endregion
 
             CTecUtil.UI.UIState.SetBusyState();

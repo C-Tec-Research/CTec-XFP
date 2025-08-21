@@ -40,7 +40,6 @@ using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.Printing;
 using CTecUtil.UI.Util;
-using ToastNotifications.Lifetime;
 
 namespace Xfp.ViewModels
 {
@@ -1952,10 +1951,9 @@ namespace Xfp.ViewModels
         {
             try
             {
-                var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-                var title = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, notificationHeader);
-                //AppNotification.Show(desc, CTecUtil.Enums.CommsResultDownloadToString(result));
-                showNotification(CommsDirection.Download, result, "", title);
+                var download = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
+                var title = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, download);
+                showNotification(CommsDirection.Download, result, title);
                 commsEnded();
 
                 //if (wasCompleted)
@@ -2016,12 +2014,12 @@ namespace Xfp.ViewModels
         {
             try
             {
-                var notificationHeader = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase)?.PageHeader;
-                if (notificationHeader is not null)
+                var upload = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase)?.PageHeader;
+                if (upload is not null)
                 {
-                    var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, notificationHeader);
+                    var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, upload);
                     //AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
-                    showNotification(CommsDirection.Upload, result, "", desc);
+                    showNotification(CommsDirection.Upload, result, desc);
                 }
             }
             finally
@@ -2048,9 +2046,10 @@ namespace Xfp.ViewModels
         }
 
 
-        private void showNotification(CommsDirection direction, CommsResult result, string message, string title)
+        private void showNotification(CommsDirection direction, CommsResult result, string title)
         {
-            var description = direction switch
+
+            var message = direction switch
             {
                 CommsDirection.Upload   => CTecUtil.Enums.CommsResultUploadToString(result),
                 CommsDirection.Download => CTecUtil.Enums.CommsResultDownloadToString(result),
@@ -2062,7 +2061,7 @@ namespace Xfp.ViewModels
                 case CommsResult.Ok:        Notifications.ShowSuccess(message, title); break;
                 case CommsResult.Failed:    Notifications.ShowError(message, title); break;
                 case CommsResult.Cancelled: Notifications.ShowWarning(message, title); break;
-                default:                    Notifications.ShowInformation(message, title); break;
+                default:                    Notifications.Show(message, title); break;
             }
         }
 
