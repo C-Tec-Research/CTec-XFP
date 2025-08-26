@@ -1954,6 +1954,7 @@ namespace Xfp.ViewModels
                 var download = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
                 var title = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, download);
                 showNotification(CommsDirection.Download, result, title);
+
                 commsEnded();
 
                 //if (wasCompleted)
@@ -2048,7 +2049,6 @@ namespace Xfp.ViewModels
 
         private void showNotification(CommsDirection direction, CommsResult result, string title)
         {
-
             var message = direction switch
             {
                 CommsDirection.Upload   => CTecUtil.Enums.CommsResultUploadToString(result),
