@@ -2137,4 +2137,7 @@ All of its data will be lost.</value>
   <data name="Revision_History" xml:space="preserve">
     <value>Revision history</value>
   </data>
+  <data name="Title_App_x_Comms_y" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
 </root>

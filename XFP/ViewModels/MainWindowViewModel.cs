@@ -40,6 +40,7 @@ using Xfp.ViewModels.PanelTools;
 using Xfp.Config;
 using Xfp.Printing;
 using CTecUtil.UI.Util;
+using CTecUtil.Config;
 
 namespace Xfp.ViewModels
 {
@@ -1952,8 +1953,8 @@ namespace Xfp.ViewModels
             try
             {
                 var download = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase).PageHeader;
-                var title = allPages ? Cultures.Resources.Download_System : string.Format(Cultures.Resources.Download_x, download);
-                showNotification(CommsDirection.Download, result, title);
+                var header = string.Format(Cultures.Resources.Title_App_x_Comms_y, ApplicationConfig.ProductFamily, allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, download));
+                showNotification(CommsDirection.Download, result, header);
 
                 commsEnded();
 
@@ -2018,9 +2019,8 @@ namespace Xfp.ViewModels
                 var upload = ((CurrentPage == _loop1Page || CurrentPage == _loop2Page ? _deviceDetailsPage.DataContext : CurrentPage.DataContext) as PageViewModelBase)?.PageHeader;
                 if (upload is not null)
                 {
-                    var desc = allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, upload);
-                    //AppNotification.Show(desc, CTecUtil.Enums.CommsResultUploadToString(result));
-                    showNotification(CommsDirection.Upload, result, desc);
+                    var header = string.Format(Cultures.Resources.Title_App_x_Comms_y, ApplicationConfig.ProductFamily, (allPages ? Cultures.Resources.Upload_System : string.Format(Cultures.Resources.Upload_x, upload)));
+                    showNotification(CommsDirection.Upload, result, header);
                 }
             }
             finally

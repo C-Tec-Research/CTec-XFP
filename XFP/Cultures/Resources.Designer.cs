@@ -4967,6 +4967,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}: {1}.
+        /// </summary>
+        public static string Title_App_x_Comms_y {
+            get {
+                return ResourceManager.GetString("Title_App_x_Comms_y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device: {0}.
         /// </summary>
         public static string Title_Device_Type {
