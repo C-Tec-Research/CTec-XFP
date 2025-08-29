@@ -12,6 +12,8 @@
 	<FileVersion>8.1.8</FileVersion>
 	<PlatformTarget>AnyCPU</PlatformTarget>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
+	<SignAssembly>True</SignAssembly>
+	<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
