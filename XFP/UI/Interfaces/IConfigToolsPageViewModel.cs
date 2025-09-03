@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CTecControls.ViewModels;
-using Xfp.DataTypes;
+﻿using Xfp.DataTypes;
 
 namespace Xfp.UI.Interfaces
 {

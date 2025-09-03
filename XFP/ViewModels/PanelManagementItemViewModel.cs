@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 using CTecUtil.ViewModels;
-using CTecControls.ViewModels;
 using Xfp.DataTypes;
 using Xfp.UI.Interfaces;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Xfp.ViewModels
 {

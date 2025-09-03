@@ -1,13 +1,6 @@
-﻿using CTecUtil;
+﻿using System;
 using CTecUtil.StandardPanelDataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.Intrinsics.Arm;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -38,16 +31,16 @@ namespace Xfp.DataTypes.PanelData
             public bool EndDelays { get; set; }
 
 
-            public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays([(byte)(Index + 1)],
-                                                                                 ByteArrayProcessing.IntToByteArray((int)SounderDelay.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)Relay1Delay.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)Relay2Delay.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)OutputDelay.TotalSeconds, 2),
+            public byte[] ToByteArray() => ByteArrayUtil.CombineByteArrays([(byte)(Index + 1)],
+                                                                                 ByteArrayUtil.IntToByteArray((int)SounderDelay.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)Relay1Delay.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)Relay2Delay.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)OutputDelay.TotalSeconds, 2),
                                                                                  [EnumConversions.ZoneDependencyOptionToByte(DayDependency), EnumConversions.ZoneDependencyOptionToByte(NightDependency)],
-                                                                                 ByteArrayProcessing.IntToByteArray((int)DayDetectorAlarmTime.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)DayDetectorResetTime.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)NightDetectorAlarmTime.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)NightDetectorResetTime.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)DayDetectorAlarmTime.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)DayDetectorResetTime.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)NightDetectorAlarmTime.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)NightDetectorResetTime.TotalSeconds, 2),
                                                                                  [(byte)((Detectors ? 0x01 : 0x00) | (MCPs ? 0x02 : 0x00) | (EndDelays ? 0x04 : 0x00))]);
 
 

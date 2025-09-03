@@ -1,10 +1,5 @@
-﻿using CTecDevices.Protocol;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData

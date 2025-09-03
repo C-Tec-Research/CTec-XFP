@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using CTecDevices.Protocol;
-using System.Windows;
 using Newtonsoft.Json;
+using CTecDevices.Protocol;
+using CTecUtil.Utils;
 using Xfp.DataTypes.PanelData;
-using Xfp.UI.Views.PanelTools;
-using System.Windows.Input;
-using Windows.Devices.SmartCards;
 
 namespace Xfp.DataTypes
 {
@@ -166,7 +160,7 @@ namespace Xfp.DataTypes
         /// Compares ToolsVersion with the specified version number.
         /// </summary>
         /// <returns>1, 0 or -1 as per string Compare(), or null if either value is invalid or null</returns>
-        internal int? ToolsVersionCompare(string otherToolsVersion) => CTecUtil.TextProcessing.CompareSoftwareVersion(otherToolsVersion, ToolsVersion);
+        internal int? ToolsVersionCompare(string otherToolsVersion) => TextUtil.CompareSoftwareVersion(otherToolsVersion, ToolsVersion);
 
 
         /// <summary>Current errors or warnings</summary>

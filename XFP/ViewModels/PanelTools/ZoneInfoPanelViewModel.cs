@@ -1,35 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CTecControls.UI;
-using CTecControls.UI.DeviceSelector;
-using CTecControls.ViewModels;
 using Xfp.DataTypes.PanelData;
-using CTecDevices.Protocol;
 using Xfp.UI.Interfaces;
-using CTecUtil;
-using System.Windows.Controls;
 using Xfp.DataTypes;
-using Windows.Graphics.Printing;
-using Windows.UI.ViewManagement;
-using System.Windows.Markup;
-using Xfp.UI.Views.PanelTools;
-using System.Windows.Threading;
 
 namespace Xfp.ViewModels.PanelTools
 {

@@ -5,14 +5,14 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using CTecControls.UI;
-using Xfp.DataTypes.PanelData;
-using CTecDevices.Protocol;
-using Xfp.UI.Interfaces;
-using Xfp.DataTypes;
-using CTecDevices.DeviceTypes;
-using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 using CTecDevices;
 using CTecDevices.DataTypes;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using Xfp.DataTypes;
+using Xfp.DataTypes.PanelData;
+using Xfp.UI.Interfaces;
+using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 
 namespace Xfp.ViewModels.PanelTools
 {

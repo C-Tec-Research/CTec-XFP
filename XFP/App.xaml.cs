@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Pipes;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Markup;
-using CTecUtil;
 using CTecUtil.Pipes;
-using CTecUtil.IO;
-using Newtonsoft.Json;
-using static CTecUtil.Pipes.PipeServer;
-using CTecControls.UI;
-//using Microsoft.Toolkit.Uwp.Notifications;
-using Windows.ApplicationModel.Activation;
 
 namespace Xfp
 {

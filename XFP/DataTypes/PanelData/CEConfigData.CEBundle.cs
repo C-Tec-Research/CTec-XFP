@@ -1,10 +1,6 @@
-﻿using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
+﻿using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -35,7 +31,7 @@ namespace Xfp.DataTypes.PanelData
 
                 result[0] = (byte)(Index + 1);
                 result[1] = (byte)ActionType;
-                var ap = ByteArrayProcessing.IntToByteArray(ActionParam, 2);
+                var ap = ByteArrayUtil.IntToByteArray(ActionParam, 2);
                 result[2] = ap[0];
                 result[3] = ap[1];
                 result[4] = (byte)TriggerType;

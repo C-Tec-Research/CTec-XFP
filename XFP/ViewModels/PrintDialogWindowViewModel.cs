@@ -2,29 +2,19 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using CTecUtil.ViewModels;
-using CTecUtil.IO;
 using CTecUtil.Config;
 using CTecControls.UI;
 using CTecUtil;
-using System.Drawing.Printing;
 using System.Printing;
 using Xfp.DataTypes;
 using Xfp.ViewModels.PanelTools;
-using System.Windows.Documents;
-using System.Reflection;
-using System.Security.Permissions;
-using Windows.Graphics.Printing;
-using CTecControls.Util;
-using System.Globalization;
-using System.Diagnostics.Eventing.Reader;
 using System.Windows.Input;
+using CTecUtil.Utils;
 
 namespace Xfp.ViewModels
 {
@@ -169,7 +159,7 @@ namespace Xfp.ViewModels
         {
             var alt = (e.KeyboardDevice.Modifiers & ModifierKeys.Alt) == ModifierKeys.Alt;
 
-            var keyStr = TextProcessing.KeyToString(e);
+            var keyStr = TextUtil.KeyToString(e);
 
             HotKeyList.KeyProperties hotKey = new(keyStr, false, false, alt);
 

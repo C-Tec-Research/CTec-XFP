@@ -1,11 +1,7 @@
-﻿using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
+using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -30,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
 
             public byte[] ToByteArray()
             {
-                var dayNightRecal = ByteArrayProcessing.CombineByteArrays([(byte)DayModeStart.Minutes,   (byte)DayModeStart.Hours],
+                var dayNightRecal = ByteArrayUtil.CombineByteArrays([(byte)DayModeStart.Minutes,   (byte)DayModeStart.Hours],
                                                                           [(byte)NightModeStart.Minutes, (byte)NightModeStart.Hours],
                                                                           [(byte)RecalibrateTime.Hours,  0]);
                 byte dayFlags   = 0;
@@ -43,7 +39,7 @@ namespace Xfp.DataTypes.PanelData
                 for (int i = 0; i < NightFlags.Count; i++)
                     nightFlags += (byte)(NightFlags[i] ? 0x01 << i : 0x00);
 
-                return ByteArrayProcessing.CombineByteArrays(dayNightRecal, [dayFlags, nightFlags, dstEnabled, rtEvents]);
+                return ByteArrayUtil.CombineByteArrays(dayNightRecal, [dayFlags, nightFlags, dstEnabled, rtEvents]);
             }
 
 

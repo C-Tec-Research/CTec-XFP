@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 using CTecUtil.ViewModels;
 using CTecControls.UI;
-using CTecControls.ViewModels;
-using Xfp.Cultures;
-using Xfp.DataTypes.PanelData;
-using Xfp.UI.Interfaces;
 
 namespace Xfp.ViewModels
 {

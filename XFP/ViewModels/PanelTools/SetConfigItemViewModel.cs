@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Globalization;
 using System.Windows.Controls.Primitives;
 using CTecUtil.ViewModels;
-using CTecControls.UI;
 using Xfp.DataTypes;
-using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.ViewModels.PanelTools

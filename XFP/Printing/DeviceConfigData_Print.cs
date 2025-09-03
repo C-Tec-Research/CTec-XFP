@@ -1,26 +1,16 @@
-﻿using CTecDevices;
-using CTecDevices.DeviceTypes;
-using CTecDevices.Protocol;
-using CTecUtil;
-using CTecUtil.Printing;
-using CTecUtil.UI.Util;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using Windows.Devices.Sms;
-using Windows.Web.Http.Headers;
+using CTecDevices;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using CTecUtil;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 using Xfp.UI;
-using Xfp.UI.ViewHelpers;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 
 namespace Xfp.DataTypes.PanelData

@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
+using CTecDevices.Protocol;
 using CTecUtil.ViewModels;
-using CTecControls;
-using CTecControls.ViewModels;
+using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
-using System.Collections.ObjectModel;
-using CTecControls.UI;
-using CTecDevices.Protocol;
-using System.Security.Policy;
-using Xfp.DataTypes;
 
 namespace Xfp.ViewModels.PanelTools
 {

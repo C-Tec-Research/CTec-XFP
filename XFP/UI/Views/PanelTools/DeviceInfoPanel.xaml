@@ -181,7 +181,7 @@
                                            IsEnabled="{Binding DeviceSelectorDeviceType, Converter={StaticResource NonNullToBoolConverter}}"
                                            Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}"/>
                                     <Border Width="32" Height="32" Padding="0">
-                                        <ctc:Icon IconType="ThreeDotsHorizontal"
+                                        <ctc:Icon IconType="MenuDotsHorizontal"
                                                   Foreground="{StaticResource Brush04}"
                                                   HorizontalAlignment="Left" 
                                                   IsEnabled="False"

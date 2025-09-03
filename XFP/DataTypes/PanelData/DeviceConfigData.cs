@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xfp.ViewModels;
+﻿using System.Collections.ObjectModel;
 using Xfp.UI.Interfaces;
-using System.Net.Sockets;
 using CTecDevices.Protocol;
 using Newtonsoft.Json;
 

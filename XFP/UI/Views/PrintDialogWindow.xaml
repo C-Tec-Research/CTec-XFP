@@ -55,7 +55,7 @@
         <ctcvh:ErrorLevelErrorToVisibilityConverter x:Key="ErrorLevelErrorToVisibilityConverter"/>
         <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
         <ctcvh:ErrorLevelToBrushConverter x:Key="ErrorLevelToBrushConverter"/>
-        <ctcvh:ErrorLevelToSvgPathDataConverter x:Key="ErrorLevelToSvgPathDataConverter"/>
+        <ctcvh:ValidationErrorLevelToSvgPathDataConverter x:Key="ValidationErrorLevelToSvgPathDataConverter"/>
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
         <ctcvh:GreaterThanOneConverter x:Key="GreaterThanOneConverter"/>
         <ctcvh:EqualsOneToOpacity40Converter x:Key="EqualsOneToOpacity40Converter"/>

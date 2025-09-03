@@ -1,10 +1,4 @@
-﻿using CTecUtil.UI.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 
 namespace Xfp.UI
 {
@@ -16,6 +10,6 @@ namespace Xfp.UI
         /// </summary>
         /// <param name="imageName"></param>
         /// <returns></returns>
-        internal static BitmapImage GetBitmap(string imageName) => CTecUtil.UI.Util.Bitmaps.GetBitmap("XfpTools", "UI/Images", imageName);
+        internal static BitmapImage GetBitmap(string imageName) => CTecUtil.Utils.BitmapUtil.GetBitmap("XfpTools", "UI/Images", imageName);
     }
 }

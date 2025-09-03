@@ -1,11 +1,5 @@
 ﻿using CTecControls.Config;
-using CTecDevices.DeviceTypes;
 using CTecDevices.Protocol;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XFP.Config
 {

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Xfp.DataTypes;
-using Xfp.DataTypes.PanelData;
 
 namespace Xfp.ViewModels.PanelTools.ValidationWindow
 {

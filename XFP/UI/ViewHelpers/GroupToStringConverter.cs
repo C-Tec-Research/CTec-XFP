@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
-using Windows.Security.Authentication.OnlineId;
+using CTecUtil.Utils;
 
 namespace Xfp.UI.ViewHelpers
 {
@@ -22,7 +18,7 @@ namespace Xfp.UI.ViewHelpers
                 if (string.IsNullOrEmpty(val) || val == Cultures.Resources.Unassigned)
                     return null;
                 
-                return CTecUtil.TextProcessing.ExtractIntFromFormattedText(val, Cultures.Resources.Use_In_Special_C_And_E);
+                return TextUtil.ExtractIntFromFormattedText(val, Cultures.Resources.Use_In_Special_C_And_E);
             }
             return null;
         }

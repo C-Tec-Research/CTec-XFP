@@ -1,21 +1,6 @@
-﻿using CTecDevices.Protocol;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
-using System.Xml.Linq;
-using Windows.UI.Composition.Interactions;
-using Xfp.IO;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views.PanelTools;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static Xfp.DataTypes.PanelData.XfpPanelData;
 
 namespace Xfp.DataTypes.PanelData
 {

@@ -1,10 +1,6 @@
-﻿using CTecUtil;
+﻿using System;
 using CTecUtil.StandardPanelDataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -23,9 +19,9 @@ namespace Xfp.DataTypes.PanelData
             public TimeSpan InvestigationPeriod { get; set; }
 
 
-            public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(PhasedDelay == TimeOfDay.Midnight ? [0xff, 0xff] : ByteArrayProcessing.IntToByteArray((int)PhasedDelay.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)InputDelay.TotalSeconds, 2),
-                                                                                 ByteArrayProcessing.IntToByteArray((int)InvestigationPeriod.TotalSeconds, 2),
+            public byte[] ToByteArray() => ByteArrayUtil.CombineByteArrays(PhasedDelay == TimeOfDay.Midnight ? [0xff, 0xff] : ByteArrayUtil.IntToByteArray((int)PhasedDelay.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)InputDelay.TotalSeconds, 2),
+                                                                                 ByteArrayUtil.IntToByteArray((int)InvestigationPeriod.TotalSeconds, 2),
                                                                                  [0x00, 0x00]);
 
 

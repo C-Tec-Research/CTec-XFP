@@ -1,15 +1,8 @@
-﻿using CTecControls.UI;
-using CTecDevices.Protocol;
-using CTecUtil;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage.Streams;
+using CTecDevices.Protocol;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 

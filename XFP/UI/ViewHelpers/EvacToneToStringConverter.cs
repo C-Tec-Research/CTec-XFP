@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
+using CTecUtil.Utils;
 
 namespace Xfp.UI.ViewHelpers
 {
@@ -17,7 +13,7 @@ namespace Xfp.UI.ViewHelpers
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is string val)
-                return CTecUtil.TextProcessing.ExtractIntFromFormattedText(val, Cultures.Resources.Tone_Message_Pair_x_Secondary);
+                return TextUtil.ExtractIntFromFormattedText(val, Cultures.Resources.Tone_Message_Pair_x_Secondary);
             return null;
         }
     }

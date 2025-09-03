@@ -39,7 +39,7 @@
         <ctcvh:ErrorLevelErrorToVisibilityConverter x:Key="ErrorLevelErrorToVisibilityConverter"/>
         <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
         <ctcvh:ErrorLevelToBrushConverter x:Key="ErrorLevelToBrushConverter"/>
-        <ctcvh:ErrorLevelToSvgPathDataConverter x:Key="ErrorLevelToSvgPathDataConverter"/>
+        <ctcvh:ValidationErrorLevelToSvgPathDataConverter x:Key="ValidationErrorLevelToSvgPathDataConverter"/>
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
         <vh:ValidationCodeToStringConverter x:Key="ValidationCodeToStringConverter"/>
     </Window.Resources>
@@ -292,7 +292,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,2">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush00}" FontWeight="DemiBold"/>
                                     <StackPanel Orientation="Horizontal" Visibility="{Binding Children.Count, Converter={StaticResource NonZeroToVisibilityConverter}}">
@@ -306,7 +306,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,2">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush00}" FontWeight="DemiBold"/>
                                     <StackPanel Orientation="Horizontal" Visibility="{Binding Children.Count, Converter={StaticResource NonZeroToVisibilityConverter}}">
@@ -320,7 +320,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush02}" FontWeight="DemiBold"/>
                                     <TextBlock Text="[" Foreground="Blue" Opacity="0.8" FontSize="9" Margin="0"/>
@@ -332,7 +332,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,0,5,0">
                                     <Viewbox Width="20" Height="20">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding ValidationCode, Converter={StaticResource ValidationCodeToStringConverter}}" Foreground="{StaticResource Brush00}" FontStyle="Italic" Margin="5,0,0,0"/>
                                 </StackPanel>
@@ -363,7 +363,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,2">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush00}" FontWeight="DemiBold"/>
                                     <StackPanel Orientation="Horizontal" Visibility="{Binding TotalErrors, Converter={StaticResource NonZeroToVisibilityConverter}}">
@@ -377,7 +377,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,2">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush00}" FontWeight="DemiBold"/>
                                     <StackPanel Orientation="Horizontal" Visibility="{Binding Children.Count, Converter={StaticResource NonZeroToVisibilityConverter}}">
@@ -391,7 +391,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Viewbox Width="20" Height="20" Margin="0,0,5,0">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding Name}" Foreground="{StaticResource Brush02}" FontWeight="DemiBold"/>
                                     <TextBlock Text="[" Foreground="Blue" Opacity="0.8" Margin="0"/>
@@ -403,7 +403,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,0,5,0">
                                     <Viewbox Width="20" Height="20">
                                         <Path Fill="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToBrushConverter}}"
-                                              Data="{Binding ErrorLevel, Converter={StaticResource ErrorLevelToSvgPathDataConverter}}"/>
+                                              Data="{Binding ErrorLevel, Converter={StaticResource ValidationErrorLevelToSvgPathDataConverter}}"/>
                                     </Viewbox>
                                     <TextBlock Text="{Binding ValidationCode, Converter={StaticResource ValidationCodeToStringConverter}}" Foreground="{StaticResource Brush00}" FontStyle="Italic" Margin="5,0,0,0"/>
                                 </StackPanel>

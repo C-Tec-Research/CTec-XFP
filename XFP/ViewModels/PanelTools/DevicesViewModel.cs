@@ -6,27 +6,20 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using System.Windows.Xps;
 using CTecControls.UI;
+using CTecDevices;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using CTecUtil;
+using CTecUtil.StandardPanelDataTypes;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using CTecDevices.Protocol;
 using Xfp.UI.Views.PanelTools;
 using XFP.Config;
-using static Xfp.DataTypes.PanelData.XfpPanelData;
 using Xfp.UI.ViewHelpers;
-using CTecDevices;
-using CTecDevices.DeviceTypes;
-using System.Windows.Xps;
-using CTecUtil.StandardPanelDataTypes;
-using CTecControls.UI.ViewHelpers;
-using System.Reflection;
-using System.Windows.Input;
-using System.Xml.Linq;
-using CTecUtil;
-using CTecUtil.Printing;
-using System.Diagnostics.Eventing.Reader;
 
 namespace Xfp.ViewModels.PanelTools
 {

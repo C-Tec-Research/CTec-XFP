@@ -58,8 +58,6 @@
     <None Remove="UI\Images\nav-sounder-tones-config.png" />
     <None Remove="UI\Images\nav-zone-config.png" />
     <None Remove="UI\Images\panels.png" />
-    <None Remove="UI\Views\menu-file-open.png" />
-    <None Remove="UI\Views\menu-file-save.png" />
     <None Remove="upload-single.png" />
     <None Remove="Upload_All.png" />
   </ItemGroup>
@@ -165,8 +163,6 @@
     <Resource Include="UI\Images\upload-single.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="UI\Views\menu-file-open.png" />
-    <Resource Include="UI\Views\menu-file-save.png" />
   </ItemGroup>
 
   <ItemGroup>

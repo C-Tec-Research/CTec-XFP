@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
-using Microsoft.Win32;
 using Newtonsoft.Json;
-using CTecUtil;
-using CTecUtil.IO;
-using Xfp.DataTypes;
 using CTecControls.UI;
+using Xfp.DataTypes;
 
 namespace Xfp.Files
 {

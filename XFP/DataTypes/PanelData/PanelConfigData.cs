@@ -1,14 +1,10 @@
-﻿using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Validation;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -182,7 +178,7 @@ namespace Xfp.DataTypes.PanelData
         /// Compares FirmwareVersion with the specified version number.
         /// </summary>
         /// <returns>1, 0 or -1 as per string Compare(), or null if either value is invalid or null</returns>
-        internal int? FirmwareVersionCompare(string otherFirmwareVersion) => CTecUtil.TextProcessing.CompareFirmwareVersion(otherFirmwareVersion, FirmwareVersion);
+        internal int? FirmwareVersionCompare(string otherFirmwareVersion) => TextUtil.CompareFirmwareVersion(otherFirmwareVersion, FirmwareVersion);
 
 
         public override bool Validate()
@@ -227,14 +223,14 @@ namespace Xfp.DataTypes.PanelData
         public static bool ValidateAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == AccessCodeLength;
 
 
-        internal byte[] AL2CodeToByteArray() => ByteArrayProcessing.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
+        internal byte[] AL2CodeToByteArray() => ByteArrayUtil.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
         
         
         public static string ParseAL2Code(byte[] data, Func<byte[], bool> responseTypeCheck)
         {
             try
             {
-                return TextProcessing.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, AccessCodeLength);
+                return TextUtil.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, AccessCodeLength);
             }
             catch (Exception ex)
             {

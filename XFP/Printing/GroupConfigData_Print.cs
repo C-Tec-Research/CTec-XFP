@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Windows.Documents;
-using CTecDevices.Protocol;
-using System.Windows.Media;
-using CTecUtil.Printing;
-using static Xfp.DataTypes.PanelData.GroupConfigData;
-using Xfp.UI.ViewHelpers;
-using System.Windows;
-using Xfp.UI.Views.PanelTools;
-using CTecUtil;
 using System.Windows.Controls;
-using System.Security.Policy;
-using Newtonsoft.Json.Linq;
-using System.Windows.Input;
-using Windows.UI.Text;
-using System.Windows.Media.Media3D;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData

@@ -1,14 +1,9 @@
-﻿using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Validation;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -196,14 +191,14 @@ namespace Xfp.DataTypes.PanelData
         public static bool ValidateAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == PanelConfigData.AccessCodeLength;
 
 
-        internal byte[] AL2CodeToByteArray() => ByteArrayProcessing.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
+        internal byte[] AL2CodeToByteArray() => ByteArrayUtil.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
         
         
         public static string ParseAL2Code(byte[] data, Func<byte[], bool> responseTypeCheck)
         {
             try
             {
-                return TextProcessing.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, PanelConfigData.AccessCodeLength);
+                return TextUtil.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, PanelConfigData.AccessCodeLength);
             }
             catch (Exception ex)
             {

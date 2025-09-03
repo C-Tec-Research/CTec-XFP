@@ -1,26 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CTecUtil.Config;
-using CTecUtil.UI.Util;
-using Newtonsoft.Json.Linq;
+using CTecUtil.Utils;
 using Xfp.Config;
 using Xfp.DataTypes;
-using Xfp.DataTypes.PanelData;
-using Xfp.UI.Interfaces;
-using Xfp.ViewModels;
 using Xfp.ViewModels.PanelTools.ValidationWindow;
 
 namespace Xfp.UI.Views.PanelTools

@@ -1,13 +1,4 @@
 ﻿using CTecDevices;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Printing;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.DataFormats;
 
 namespace Xfp.DataTypes
 {

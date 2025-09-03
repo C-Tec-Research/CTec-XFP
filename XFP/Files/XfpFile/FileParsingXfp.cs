@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using System.Text;
-using System.Windows;
-using Microsoft.Win32;
-using CTecUtil;
+using CTecControls.UI;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
-using CTecControls.UI;
-using System.Linq.Expressions;
 
 namespace Xfp.Files.XfpFile
 {

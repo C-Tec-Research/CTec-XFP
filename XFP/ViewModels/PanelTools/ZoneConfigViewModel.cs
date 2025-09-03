@@ -4,25 +4,15 @@ using System.Collections.ObjectModel;
 using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using CTecControls.UI;
-using CTecControls.ViewModels;
 using CTecUtil.StandardPanelDataTypes;
-using Windows.ApplicationModel.Chat;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views;
 using Xfp.UI.Views.PanelTools;
-using static Xfp.IO.PanelComms;
 
 namespace Xfp.ViewModels.PanelTools
 {

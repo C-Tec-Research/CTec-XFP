@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Xps.Packaging;
-using System.Windows.Xps;
+using CTecControls.UI;
 using CTecUtil.Printing;
 using CTecUtil.UI;
-using CTecControls.UI;
-using System.Windows.Forms;
-using Xfp.Config;
 using Xfp.DataTypes;
-using System.ComponentModel.Composition.Primitives;
-using Xfp.DataTypes.PanelData;
-using CTecUtil.ViewModels;
-using Xfp.UI.ViewHelpers;
 
 namespace Xfp.Printing
 {

@@ -1,16 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Markup;
-using System.Xml.Linq;
-using WinRT;
-using Xfp.UI.Interfaces;
-using static Xfp.DataTypes.PanelData.GroupConfigData;
 
 namespace Xfp.DataTypes.PanelData
 {

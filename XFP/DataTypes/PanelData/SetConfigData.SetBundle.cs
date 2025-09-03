@@ -1,11 +1,7 @@
-﻿using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -39,7 +35,7 @@ namespace Xfp.DataTypes.PanelData
                 for (int i = 0; i < NumOutputSetTriggers; i++)
                     result[offset++] = EnumConversions.SetTriggerTypeToByte(OutputSetTriggers[i]);
 
-                var dt = ByteArrayProcessing.IntToByteArray((int)DelayTimer.TotalSeconds, 2);
+                var dt = ByteArrayUtil.IntToByteArray((int)DelayTimer.TotalSeconds, 2);
                 result[offset++] = dt[0];
                 result[offset++] = dt[1];
 

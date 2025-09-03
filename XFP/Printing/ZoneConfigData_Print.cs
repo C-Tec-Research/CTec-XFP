@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Windows.Documents;
-using CTecDevices.Protocol;
-using System.Windows.Media;
-using CTecUtil.Printing;
 using System.Windows;
 using System.Windows.Controls;
-using CTecControls.UI.ViewHelpers;
-using CTecUtil;
+using System.Windows.Documents;
+using System.Windows.Media;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 using Xfp.UI;
 
 namespace Xfp.DataTypes.PanelData
@@ -45,9 +43,9 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddColumnToGrid(grid);
 
             grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Input_Delay, 0, 0));
-            grid.Children.Add(GridUtil.GridCell(TextProcessing.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
+            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
             grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Investigation_Period, 1, 0));
-            grid.Children.Add(GridUtil.GridCell(TextProcessing.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
+            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
 
             return new(grid);
         }

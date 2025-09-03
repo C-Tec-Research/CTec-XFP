@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CTecUtil;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -25,7 +20,7 @@ namespace Xfp.DataTypes.PanelData
             public int    IODebounce { get; set; }
 
 
-            public byte[] ToByteArray() => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntStrToByteArray(AL3Code, 2),
+            public byte[] ToByteArray() => ByteArrayUtil.CombineByteArrays(ByteArrayUtil.IntStrToByteArray(AL3Code, 2),
                                                                                  [ (byte)(BlinkPollingLED ? 0x01 : 0x00),
                                                                                    (byte)(MCPDebounce - 1),
                                                                                    (byte)(DetectorDebounce - 1),
@@ -39,7 +34,7 @@ namespace Xfp.DataTypes.PanelData
 
                 var result = new AL3CodeBundle();
 
-                result.AL3Code = TextProcessing.IntToZeroPaddedString(data[2] + (data[3] << 8), AccessCodeLength);
+                result.AL3Code = TextUtil.IntToZeroPaddedString(data[2] + (data[3] << 8), AccessCodeLength);
                 result.BlinkPollingLED  = data[4] > 0;
                 result.MCPDebounce      = data[5] + 1;
                 result.DetectorDebounce = data[6] + 1;

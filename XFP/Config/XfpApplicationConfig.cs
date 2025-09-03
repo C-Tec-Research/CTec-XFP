@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
 using CTecUtil;
 using CTecUtil.Config;
-using CTecUtil.IO;
 using Newtonsoft.Json;
 
 namespace Xfp.Config

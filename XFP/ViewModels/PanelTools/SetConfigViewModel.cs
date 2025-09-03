@@ -1,27 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using CTecControls.UI;
-using CTecControls.ViewModels;
 using CTecUtil.StandardPanelDataTypes;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views.PanelTools;
-using static Xfp.IO.PanelComms;
 
 namespace Xfp.ViewModels.PanelTools
 {

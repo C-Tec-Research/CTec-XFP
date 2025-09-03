@@ -1,29 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.Globalization;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Forms.Design;
-using System.Windows.Input;
-using System.Windows.Media;
 using CTecUtil.ViewModels;
-using CTecControls.UI;
-using CTecControls.ViewModels;
-using CTecDevices.Protocol;
-using Newtonsoft.Json.Linq;
-using Windows.Security.Authentication.Web.Core;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views.PanelTools;
-using static Xfp.DataTypes.PanelData.CEConfigData;
-using Windows.Foundation.Metadata;
 
 namespace Xfp.ViewModels.PanelTools
 {

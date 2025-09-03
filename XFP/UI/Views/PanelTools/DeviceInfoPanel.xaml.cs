@@ -1,24 +1,8 @@
-﻿using CTecControls.Util;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WinRT;
-using Xfp.DataTypes.PanelData;
-using Xfp.UI.Interfaces;
-using Xfp.ViewModels;
+using CTecUtil.Utils;
 using Xfp.ViewModels.PanelTools;
 
 namespace Xfp.UI.Views.PanelTools
@@ -73,7 +57,7 @@ namespace Xfp.UI.Views.PanelTools
         private void spinner_PreviewKeyDown(object sender, KeyEventArgs e)             { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void checkBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)  { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void checkBox_PreviewKeyDown(object sender, KeyEventArgs e)            { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
-        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)             { if (CTecUtil.TextProcessing.KeyEventArgsIsAlphaNumeric(e)) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
+        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)             { if (TextUtil.KeyEventArgsIsAlphaNumeric(e)) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) { if (e.Command == ApplicationCommands.Paste) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         
         private void infoPanel_KeyDown(object sender, KeyEventArgs e) { }

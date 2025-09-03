@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CTecDevices;
-using Newtonsoft.Json;
+﻿using CTecDevices;
 using Xfp.DataTypes.PanelData;
-using Xfp.UI.Views.PanelTools;
 
 namespace Xfp.DataTypes
 {
+    /// <summary>
+    /// Early XFP data format, retained for reading from old config files only.
+    /// </summary>
     public class XfpData_OldVersion_1 : ConfigData
     {
         internal XfpData_OldVersion_1()

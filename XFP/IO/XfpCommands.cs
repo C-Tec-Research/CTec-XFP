@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using CTecUtil;
 using CTecUtil.IO;
 using CTecUtil.StandardPanelDataTypes;
-using Windows.ApplicationModel.VoiceCommands;
+using CTecUtil.Utils;
 using Xfp.DataTypes.PanelData;
-using static CTecUtil.IO.SerialComms;
-using static Xfp.DataTypes.PanelData.XfpPanelData;
 
 namespace Xfp.IO
 {
@@ -67,7 +59,7 @@ namespace Xfp.IO
             //var indexBytes = ByteArrayProcessing.IntToByteArray(index, 2);
             //var jj = indexBytes.Concat([(byte)1]);
             //return buildCommand(XfpCommandCodes.RequestEvent, (byte[]) ByteArrayProcessing.IntToByteArray(index, 2).Concat([ (byte)(delete ? 1 : 0) ]));
-            var indexBytes = ByteArrayProcessing.IntToByteArray(index, 2);
+            var indexBytes = ByteArrayUtil.IntToByteArray(index, 2);
             return buildCommand(XfpCommandCodes.RequestEvent, [indexBytes[0], indexBytes[1], (byte)(delete ? 1 : 0)]);
         }
         #endregion
@@ -84,7 +76,7 @@ namespace Xfp.IO
         internal static byte[] SetZoneGroup(GroupConfigData.GroupBundle group)                     => buildCommand(XfpCommandCodes.SetZGroup, group.ToByteArray());
         internal static byte[] SetZoneSet(SetConfigData.SetBundle set)                             => buildCommand(XfpCommandCodes.SetZSet, set.ToByteArray());
 
-        internal static byte[] SetAL2Code(Text al2Code)                                  => buildCommand(XfpCommandCodes.SetAL2Code, ByteArrayProcessing.IntStrToByteArray(al2Code.Value, 2));
+        internal static byte[] SetAL2Code(Text al2Code)                                  => buildCommand(XfpCommandCodes.SetAL2Code, ByteArrayUtil.IntStrToByteArray(al2Code.Value, 2));
         internal static byte[] SetAL3Code(PanelConfigData.AL3CodeBundle al3Code)     => buildCommand(XfpCommandCodes.SetAL3Code, al3Code.ToByteArray());
         internal static byte[] SetQuiescentString(Text text)                             => buildCommand(XfpCommandCodes.SetQuiescentName, text.ToByteArray());
         internal static byte[] SetMaintenanceString(Text text)                           => buildCommand(XfpCommandCodes.SetMaintName, text.ToByteArray());
@@ -133,7 +125,7 @@ namespace Xfp.IO
             if (getPanelNumber is null)
                 throw new NotImplementedException("XfpCommands.GetPanelNumber has not been initialised");
             byte[] data = [XfpCommandCodes.CommandStartByte, (byte)getPanelNumber?.Invoke(), command, 0];
-            return ByteArrayProcessing.CombineByteArrays(data, [SerialComms.CalcChecksum(data, true)]);
+            return ByteArrayUtil.CombineByteArrays(data, [SerialComms.CalcChecksum(data, true)]);
         }
 
         
@@ -160,9 +152,9 @@ namespace Xfp.IO
             prefix[2] = command;
             prefix[3] = (byte)payloadLength;
 
-            var data = payloadLength > 0 ? ByteArrayProcessing.CombineByteArrays(prefix, payload) : prefix;
+            var data = payloadLength > 0 ? ByteArrayUtil.CombineByteArrays(prefix, payload) : prefix;
             var checksum = SerialComms.CalcChecksum(data, true);
-            return ByteArrayProcessing.CombineByteArrays(data, [checksum]);
+            return ByteArrayUtil.CombineByteArrays(data, [checksum]);
         }
 
     }

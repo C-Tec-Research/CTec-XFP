@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using CTecUtil;
-using CTecUtil.IO;
-using CTecDevices.Protocol;
-using System.Windows.Markup;
-using Newtonsoft.Json;
-using System.Reflection;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using Xfp.UI.ViewHelpers;
-using static Xfp.DataTypes.PanelData.XfpPanelData;
-using Xfp.IO;
 using CTecDevices;
-using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
+using Newtonsoft.Json;
+using Xfp.IO;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -380,7 +370,7 @@ namespace Xfp.DataTypes.PanelData
 
         internal static byte[] DeviceNameToByteArray(int key, string name)
         {
-            var result = ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(key, 2), ByteArrayProcessing.StringToByteArray(name), [0x00]);
+            var result = ByteArrayUtil.CombineByteArrays(ByteArrayUtil.IntToByteArray(key, 2), ByteArrayUtil.StringToByteArray(name), [0x00]);
             //CTecUtil.Debug.WriteLine("DeviceNameToByteArray: #" + key + ", " + name + " --> " + ByteArrayProcessing.ByteArrayToHexString(result));
             return result;
         }
@@ -389,7 +379,7 @@ namespace Xfp.DataTypes.PanelData
         /// Indicates the end of the device names list
         /// </summary>
         public static byte[] DeviceNameameDataEndToByteArray()
-            => ByteArrayProcessing.CombineByteArrays(ByteArrayProcessing.IntToByteArray(999, 2), [0x00]);
+            => ByteArrayUtil.CombineByteArrays(ByteArrayUtil.IntToByteArray(999, 2), [0x00]);
 
 
         internal static DeviceData Parse(byte[] data, Func<byte[], bool> responseTypeCheck, int? requestedIndex, int? requestedLoop)

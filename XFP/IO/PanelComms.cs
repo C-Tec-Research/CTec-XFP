@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using CTecUtil.IO;
 using CTecControls.UI;
-using Xfp.DataTypes.PanelData;
-using Xfp.DataTypes;
-using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using static Xfp.DataTypes.PanelData.XfpPanelData;
-using CTecUtil.StandardPanelDataTypes;
-using System.Windows.Input.Manipulations;
 using CTecDevices.Protocol;
-using System.Security.Policy;
 using CTecUtil;
+using CTecUtil.IO;
+using CTecUtil.StandardPanelDataTypes;
+using Xfp.DataTypes;
+using Xfp.DataTypes.PanelData;
 
 namespace Xfp.IO
 {

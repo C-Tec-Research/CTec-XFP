@@ -1,8 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using CTecUtil.Printing;
-using System.Collections.Generic;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {

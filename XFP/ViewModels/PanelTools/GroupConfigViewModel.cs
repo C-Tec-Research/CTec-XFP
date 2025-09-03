@@ -1,33 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing.Drawing2D;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media;
 using CTecControls.UI;
-using CTecControls.UI.ViewHelpers;
-using CTecControls.ViewModels;
 using CTecDevices.Protocol;
-using CTecUtil;
 using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.Utils;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
+using static Xfp.DataTypes.PanelData.GroupConfigData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views.PanelTools;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static Xfp.DataTypes.PanelData.GroupConfigData;
-using static Xfp.IO.PanelComms;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -61,12 +48,12 @@ namespace Xfp.ViewModels.PanelTools
         public string EvacToneDesc
         {
             get => string.Format(Cultures.Resources.Tone_Message_Pair_x_Primary,   _data.CurrentPanel.GroupConfig.ContinuousTone);
-            set { _data.CurrentPanel.GroupConfig.ContinuousTone = (int)TextProcessing.ExtractIntFromFormattedText(value, Cultures.Resources.Tone_Message_Pair_x_Primary) - 1; OnPropertyChanged(); }
+            set { _data.CurrentPanel.GroupConfig.ContinuousTone = (int)TextUtil.ExtractIntFromFormattedText(value, Cultures.Resources.Tone_Message_Pair_x_Primary) - 1; OnPropertyChanged(); }
         }
         public string AlertToneDesc
         {
             get => string.Format(Cultures.Resources.Tone_Message_Pair_x_Secondary, _data.CurrentPanel.GroupConfig.IntermittentTone);
-            set { _data.CurrentPanel.GroupConfig.IntermittentTone = (int)TextProcessing.ExtractIntFromFormattedText(value, Cultures.Resources.Tone_Message_Pair_x_Secondary) - 1; OnPropertyChanged(); }
+            set { _data.CurrentPanel.GroupConfig.IntermittentTone = (int)TextUtil.ExtractIntFromFormattedText(value, Cultures.Resources.Tone_Message_Pair_x_Secondary) - 1; OnPropertyChanged(); }
         }
         
         private ObservableCollection<string> _alertTones;

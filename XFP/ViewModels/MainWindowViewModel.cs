@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Newtonsoft.Json;
 using CTecUtil;
+using CTecUtil.Config;
+using CTecUtil.Utils;
 using CTecUtil.IO;
 using static CTecUtil.IO.SerialComms;
 using CTecUtil.Pipes;
@@ -28,19 +30,17 @@ using CTecControls.UI.Interfaces;
 using CTecControls.Util;
 using CTecControls.ViewModels;
 using CTecDevices.Protocol;
+using Xfp.Config;
 using Xfp.Cultures;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.Files;
 using Xfp.IO;
+using Xfp.Printing;
 using Xfp.UI.Interfaces;
 using Xfp.UI.Views;
 using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
-using Xfp.Config;
-using Xfp.Printing;
-using CTecUtil.UI.Util;
-using CTecUtil.Config;
 
 namespace Xfp.ViewModels
 {
@@ -709,7 +709,7 @@ namespace Xfp.ViewModels
             var shift = (e.KeyboardDevice.Modifiers & ModifierKeys.Shift)   == ModifierKeys.Shift;
             var alt   = (e.KeyboardDevice.Modifiers & ModifierKeys.Alt)     == ModifierKeys.Alt;
 
-            var keyStr = TextProcessing.KeyToString(e);
+            var keyStr = TextUtil.KeyToString(e);
 
             HotKeyList.KeyProperties hotKey = new(keyStr, ctrl, shift, alt);
 
@@ -728,7 +728,7 @@ namespace Xfp.ViewModels
         /// </summary>
         public bool CheckKey(KeyEventArgs e, MenuItem menu)
         {
-            var keyStr = TextProcessing.KeyToString(e);
+            var keyStr = TextUtil.KeyToString(e);
             if (string.IsNullOrEmpty(keyStr))
                 return false;
 
@@ -782,7 +782,7 @@ namespace Xfp.ViewModels
                                     }
 
                                     //recent files' numeric shortcuts
-                                    if (TextProcessing.CharIsNumeric(shortcutKey) && menuItem.Tag is string path)
+                                    if (TextUtil.CharIsNumeric(shortcutKey) && menuItem.Tag is string path)
                                     {
                                         FileOpen(path);
                                         return true;

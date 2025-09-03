@@ -5,10 +5,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using CTecUtil;
-using CTecUtil.UI.Util;
 using CTecControls.UI;
 using Xfp.ViewModels;
 using Xfp.Config;
+using CTecUtil.Utils;
 
 namespace Xfp.Views
 {
@@ -158,7 +158,7 @@ namespace Xfp.Views
             else
             {
                 if (((Keyboard.Modifiers & (ModifierKeys.Control | ModifierKeys.Shift | ModifierKeys.Alt)) != ModifierKeys.None)
-                 && TextProcessing.KeyEventArgsIsPossibleMenuOption(e)
+                 && TextUtil.KeyEventArgsIsPossibleMenuOption(e)
                  && _context.CheckHotKeys(e))
                 {
                     e.Handled = true;
@@ -199,7 +199,7 @@ namespace Xfp.Views
         private void navBar_PreviewKeyDown(object sender, KeyEventArgs e) { if (e.Key is Key.Up or Key.Down) { _context.ChangeNavBarSelection(e.Key); e.Handled = true; } }
 
 
-        private void numericValue_PreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = TextProcessing.StringIsNumeric(e.Text);
+        private void numericValue_PreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = TextUtil.StringIsNumeric(e.Text);
 
         private void closeZoomControl(object sender, EventArgs e) => _context.CloseZoomControl();
         private void zoomOut_MouseDown(object sender, MouseButtonEventArgs e) => _context.ZoomOut();
@@ -233,9 +233,9 @@ namespace Xfp.Views
 
             if (_context.RecentFilesListAvailable && mnuRecentFilesSubmenu.IsOpen)
             {
-                if (TextProcessing.KeyEventArgsIsNumeric(e))
+                if (TextUtil.KeyEventArgsIsNumeric(e))
                 {
-                    _context.OpenRecentFile((int.Parse(TextProcessing.KeyToString(e)) + 9) % 10);
+                    _context.OpenRecentFile((int.Parse(TextUtil.KeyToString(e)) + 9) % 10);
                     e.Handled = true;
                 }
             }

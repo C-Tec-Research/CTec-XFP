@@ -1,10 +1,10 @@
-﻿using CTecUtil.StandardPanelDataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
+using CTecUtil.StandardPanelDataTypes;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;

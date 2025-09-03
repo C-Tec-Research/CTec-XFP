@@ -229,7 +229,7 @@
 //        private EquationParseResult parseIntEquation(string stringValue, IList<int> validValues)
 //        {
 //            //semantic check of the text
-//            List<RangeValue> rangeList;
+//            List<RangeUtil.RangeValue> rangeList;
 //            var result = parseIntList(stringValue, out rangeList);
 
 //            //if the text makes sense check its values are valid
@@ -254,7 +254,7 @@
 //        private EquationParseResult parseCharEquation(string stringValue, IList<char> validValues)
 //        {
 //            //semantic check of the text
-//            List<RangeValue> rangeList;
+//            List<RangeUtil.RangeValue> rangeList;
 //            var result = parseCharList(stringValue, out rangeList);
 
 //            //if the text makes sense check its values are valid
@@ -286,7 +286,7 @@
 //        /// <param name="stringValue"></param>
 //        /// <param name="rangeList">A list of integer ranges included in the equation</param>
 //        /// <returns></returns>
-//        private EquationParseResult parseIntList(string stringValue, out List<RangeValue> rangeList)
+//        private EquationParseResult parseIntList(string stringValue, out List<RangeUtil.RangeValue> rangeList)
 //        {
 //            rangeList = new();
 
@@ -354,7 +354,7 @@
 //        /// <param name="stringValue"></param>          
 //        /// <param name="rangeList">A list of char ranges included in the equation</param>
 //        /// <returns></returns>
-//        private EquationParseResult parseCharList(string stringValue, out List<RangeValue> rangeList)
+//        private EquationParseResult parseCharList(string stringValue, out List<RangeUtil.RangeValue> rangeList)
 //        {
 //            rangeList = new();
 //            Equation = new();

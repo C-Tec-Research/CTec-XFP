@@ -1,23 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Windows;
+﻿using System.Printing;
 using System.Windows.Controls;
-using CTecUtil.UI;
-using CTecControls.UI;
-using CTecControls.ViewModels;
-using Xfp.DataTypes;
-using Xfp.DataTypes.PanelData;
-using Xfp.ViewModels.PanelTools;
-using Windows.Graphics.Printing;
 using CTecUtil;
-using CTecUtil.Config;
 using Xfp.Config;
 
 namespace Xfp.DataTypes

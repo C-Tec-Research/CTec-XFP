@@ -1,15 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Authentication;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Windows.ApplicationModel.Activation;
-using Xfp.DataTypes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Xfp.DataTypes.PanelData
 {

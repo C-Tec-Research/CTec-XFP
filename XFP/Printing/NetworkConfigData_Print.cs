@@ -1,10 +1,8 @@
-﻿using System.Windows.Controls;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using CTecUtil.Printing;
-using System.Collections.Generic;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Newtonsoft.Json.Linq;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {

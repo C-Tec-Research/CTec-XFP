@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using CTecUtil.ViewModels;
-using CTecControls.UI;
-using CTecControls.ViewModels;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
-using Xfp.UI.Views.PanelTools;
 using static Xfp.ViewModels.PanelTools.SetConfigItemViewModel;
 
 namespace Xfp.ViewModels.PanelTools
