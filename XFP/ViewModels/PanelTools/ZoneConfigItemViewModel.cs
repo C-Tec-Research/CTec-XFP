@@ -63,7 +63,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool     Relay1DelayIsValid        => Relay1Delay.CompareTo(ZoneConfigData.MaxRelay1Delay) <= 0;
         public bool     Relay2DelayIsValid        => Relay2Delay.CompareTo(ZoneConfigData.MaxRelay2Delay) <= 0;
         public bool     RemoteDelayIsValid        => RemoteDelay.CompareTo(ZoneConfigData.MaxRemoteDelay) <= 0;
-        public bool     DelayTotalIsValid         => DelayTotal.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0;
+        public bool     DelayTotalIsValid         => true;//RemoteDelay.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0;
         public bool     ZoneDescIsValid           => string.IsNullOrEmpty(ZoneDesc) || ZoneDesc.Length <= ZoneConfigData.MaxNameLength;
         public bool     DayDependencyIsValid      => !_data.IsPanelData ? (int)Day.DependencyOption   >= 0 && (int)Day.DependencyOption   < Enum.GetNames(typeof(ZoneDependencyOptions)).Length : true;
         public bool     NightDependencyIsValid    => !_data.IsPanelData ? (int)Night.DependencyOption >= 0 && (int)Night.DependencyOption < Enum.GetNames(typeof(ZoneDependencyOptions)).Length : true;

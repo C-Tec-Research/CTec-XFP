@@ -741,7 +741,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool   Relay1DelayIsValid         => Relay1Delay is null || Relay1Delay?.CompareTo(ZoneConfigData.MaxRelay1Delay) <= 0;
         public bool   Relay2DelayIsValid         => Relay2Delay is null || Relay2Delay?.CompareTo(ZoneConfigData.MaxRelay2Delay) <= 0;
         public bool   RemoteDelayIsValid         => RemoteDelay is null || RemoteDelay?.CompareTo(ZoneConfigData.MaxRemoteDelay) <= 0;
-        public bool   DelayTotalIsValid           { get { var result = DelayTotal.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0; return result; } }
+        public bool   DelayTotalIsValid          => true;//DelayTotal.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0;
         public bool   DayOptionIsValid           => _dayOptionIndex is null || _dayOptionIndex >= 0 && _dayOptionIndex < DependencyOptions.Count;
         public bool   NightOptionIsValid         => _nightOptionIndex is null || _nightOptionIndex >= 0 && _nightOptionIndex < DependencyOptions.Count;
         public bool   DayDetectorResetIsValid    => !ShowDayDetectorReset || DayDetectorReset is null || DayDetectorReset?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
