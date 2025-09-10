@@ -1,13 +1,15 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecUtil.Printing;
+using CTecUtil.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Printing;
+using System.Reflection.Metadata;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using CTecControls.UI;
-using CTecUtil.Printing;
-using CTecUtil.UI;
+using Xfp.Config;
 using Xfp.DataTypes;
 
 namespace Xfp.Printing
@@ -20,7 +22,7 @@ namespace Xfp.Printing
 
         private static readonly string _printFilePrefix = "XfpConfig";
 
-        public static void PrintConfig(XfpData data, PrintParameters printParams, CTecUtil.PrintActions printAction)
+        public static void PrintConfig(XfpData data, XfpPrintParameters printParams, CTecUtil.PrintActions printAction)
         {
             if (printParams.PrintQueue == null)
             {
@@ -79,7 +81,7 @@ namespace Xfp.Printing
                     if (printParams.PrintLoopInfo)
                     {
                         p.Loop1Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
-                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
+ //                       p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
                     }
                     if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p, ref pageNumber);
                     if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p, ref pageNumber);
@@ -90,19 +92,7 @@ namespace Xfp.Printing
 
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
-                //print or preview the document
-                switch (printAction)
-                {
-                    case CTecUtil.PrintActions.Print:
-                        IDocumentPaginatorSource idpSource = doc;
-                        printParams.PrintHandler.PrintDocument(idpSource.DocumentPaginator, Cultures.Resources.XFP_Config_Print_Description);
-                        break;
-
-                    case CTecUtil.PrintActions.Preview: 
-                        //new FlowDocumentViewer(doc, Cultures.Resources.XFP_Config_Print_Description, XfpApplicationConfig.Settings, true).ShowDialog();
-                        break;
-                }
-
+                PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
             }
             catch (Exception ex)
             {

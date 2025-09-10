@@ -102,7 +102,7 @@ namespace Xfp.ViewModels
 
 
         #region print parameters
-        public static PrintParameters PrintParams { get; set; } = new();
+        public static XfpPrintParameters PrintParams { get; set; } = new();
 
         public int  PanelCount                => _panelCount;
         public bool PrintAllPanels      { get => PrintParams.PrintAllPanels;      set { PrintParams.PrintAllPanels = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }

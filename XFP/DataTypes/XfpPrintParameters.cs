@@ -1,27 +1,20 @@
 ﻿using System.Printing;
 using System.Windows.Controls;
 using CTecUtil;
+using CTecUtil.Printing;
 using Xfp.Config;
 
 namespace Xfp.DataTypes
 {
-    public class PrintParameters
+    public class XfpPrintParameters : PrintParameters
     {
-        public PrintParameters()
+        public XfpPrintParameters()
         {
-            PrintHandler = new PrintDialog() { CurrentPageEnabled = false, SelectedPagesEnabled = false, UserPageRangeEnabled = false };
         }
 
 
-        public PrintDialog PrintHandler;
-        
-        public PageOrientation Orientation { get => PrintHandler.PrintTicket.PageOrientation??PageOrientation.Portrait; set => PrintHandler.PrintTicket.PageOrientation = value; }
-        public int             Copies      { get => PrintHandler.PrintTicket.CopyCount??1;                              set => PrintHandler.PrintTicket.CopyCount = value; }
-        public PrintQueue      PrintQueue        => PrintHandler.PrintQueue;
-        public PrintTicket     PrintTicket       => PrintHandler.PrintTicket;
+        public override void SetPrinter(string name) => base.SetPrinter(XfpApplicationConfig.Settings.LastPrinter = name);
 
-
-        public void SetPrinter(string name) => PrintHandler.PrintQueue = new LocalPrintServer().GetPrintQueue(XfpApplicationConfig.Settings.LastPrinter = name);
 
         public bool PrintAllPanels     { get; set; }
         //public bool PrintSelectedPanel { get; set; }

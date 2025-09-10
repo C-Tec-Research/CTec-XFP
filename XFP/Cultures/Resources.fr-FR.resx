@@ -145,7 +145,7 @@
     <value>Mis en service</value>
   </data>
   <data name="Comms_Device_Details" xml:space="preserve">
-    <value>Détails des appareils</value>
+    <value>Détails des dispositifs</value>
   </data>
   <data name="Comms_Downloading_Page" xml:space="preserve">
     <value>Téléchargement de cette page du panneau...</value>
@@ -208,13 +208,13 @@
     <value>Apareil</value>
   </data>
   <data name="Device_Name" xml:space="preserve">
-    <value>Nom d'Appareil</value>
+    <value>Nom du Dispositif</value>
   </data>
   <data name="Device_Program" xml:space="preserve">
-    <value>Programmer l'appareil</value>
+    <value>Programmer le dispositif</value>
   </data>
   <data name="Device_Read" xml:space="preserve">
-    <value>Lire l'appareil</value>
+    <value>Lire le dispositif</value>
   </data>
   <data name="Device_Ready" xml:space="preserve">
     <value>Prêt</value>
@@ -226,10 +226,10 @@
     <value>Tx</value>
   </data>
   <data name="Device_Type" xml:space="preserve">
-    <value>Type d'Appareil</value>
+    <value>Type du Dispositif</value>
   </data>
   <data name="Device_x" xml:space="preserve">
-    <value>Appareil #{0}</value>
+    <value>Dispositif #{0}</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Désactivée</value>
@@ -290,10 +290,10 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Les données n’ont pas pu être lues.</value>
   </data>
   <data name="Error_Device_Page_Not_Opened" xml:space="preserve">
-    <value>La page de cet appareil n’a pas pu être ouverte</value>
+    <value>La page de ce dispositif n’a pas pu être ouverte</value>
   </data>
   <data name="Error_File_Data_Is_Not_Device_Data" xml:space="preserve">
-    <value>Le fichier ne contient pas de paramètres d'appareil valides.</value>
+    <value>Le fichier ne contient pas de paramètres de dispositif valides.</value>
   </data>
   <data name="Error_File_Data_Is_Not_Panel_Data" xml:space="preserve">
     <value>Le fichier ne contient pas de paramètres de panneau valides.</value>
@@ -305,7 +305,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Code d’accès niveau 3 (AL3) non valide</value>
   </data>
   <data name="Error_Invalid_Device_Type" xml:space="preserve">
-    <value>Type d'appareil non valide</value>
+    <value>Type de dispositif non valide</value>
   </data>
   <data name="Error_Invalid_Group_Num" xml:space="preserve">
     <value>Numéro de groupe non valide</value>
@@ -398,7 +398,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Lieu</value>
   </data>
   <data name="Loop_x_Devices" xml:space="preserve">
-    <value>Appareils Boucle {0}</value>
+    <value>Dispositifs Boucle {0}</value>
   </data>
   <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
     <value>Les paramètres du panneau ont été modifiés.
@@ -427,7 +427,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Commentaires</value>
   </data>
   <data name="Nav_Device_Details" xml:space="preserve">
-    <value>Détails des Appareils</value>
+    <value>Détails des Dispositifs</value>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
     <value>Boucle {0}</value>
@@ -481,7 +481,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Non Installé</value>
   </data>
   <data name="No_Device" xml:space="preserve">
-    <value>** Aucun appareil **</value>
+    <value>** Aucun dispositif **</value>
   </data>
   <data name="No_Errors_Found" xml:space="preserve">
     <value>Aucune erreur détectée.</value>
@@ -535,10 +535,10 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Fichiers journaux XFP</value>
   </data>
   <data name="Query_Change_Device_Type" xml:space="preserve">
-    <value>Changer cet appareil à «{0}» ?</value>
+    <value>Changer ce dispositif à «{0}» ?</value>
   </data>
   <data name="Query_Delete_Device" xml:space="preserve">
-    <value>Supprimer cet appareil ?</value>
+    <value>Supprimer ce dispositif ?</value>
   </data>
   <data name="Query_Enable_Changes" xml:space="preserve">
     <value>Voulez-vous permettre les modifications ?</value>
@@ -556,7 +556,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Sélectionnez un Secteur</value>
   </data>
   <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
-    <value>Sélectionnez un appareil pour afficher les détails</value>
+    <value>Sélectionnez un dispositif pour afficher les détails</value>
   </data>
   <data name="Select_Baud_Rate" xml:space="preserve">
     <value>Sélectionnez les Bauds</value>
@@ -640,7 +640,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Délai d’expiration de l’écriture</value>
   </data>
   <data name="Show_Fitted_Devices_Only" xml:space="preserve">
-    <value>Afficher uniquement les appareils montés</value>
+    <value>Afficher uniquement les dispositifs montés</value>
   </data>
   <data name="Switching_To_x_Protocol" xml:space="preserve">
     <value>Échange du protocole {0}</value>
@@ -655,32 +655,32 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Tél</value>
   </data>
   <data name="Title_Device_Type" xml:space="preserve">
-    <value>Appareil : {0}</value>
+    <value>Dispositif : {0}</value>
   </data>
   <data name="Title_Open_File" xml:space="preserve">
     <value>Open File</value>
   </data>
   <data name="ToolTip_Click_To_Change_Device_Type" xml:space="preserve">
-    <value>Cliquez pour modifier le type d’appareil</value>
+    <value>Cliquez pour modifier le type du dispositif</value>
   </data>
   <data name="ToolTip_Click_To_Edit_Name" xml:space="preserve">
     <value>Cliquez pour modifier le nom</value>
   </data>
   <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
-    <value>Cliquez pour afficher les détails de l’appareil</value>
+    <value>Cliquez pour afficher les détails du dispositif</value>
   </data>
   <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
-    <value>Sélectionnez un type d’appareil, puis cliquez sur la liste des appareils pour définir
-ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</value>
+    <value>Sélectionnez un type de dispositif, puis cliquez sur la liste des dispositifs pour définir
+ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</value>
   </data>
   <data name="ToolTip_Next_Area" xml:space="preserve">
     <value>Selectioner le secteur suivant</value>
   </data>
   <data name="ToolTip_Next_Device" xml:space="preserve">
-    <value>Selectioner l'appareil suivant</value>
+    <value>Selectioner le dispositif suivant</value>
   </data>
   <data name="ToolTip_Previous_Device" xml:space="preserve">
-    <value>Selectioner l'appareil précédant</value>
+    <value>Selectioner le dispositif précédant</value>
   </data>
   <data name="ToolTip_Select_Protocol" xml:space="preserve">
     <value>Selectionnez le protocole</value>
@@ -831,7 +831,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
     <value>Désactiver le groupe</value>
   </data>
   <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
-    <value>désactivation d'appareil en boucle {0}</value>
+    <value>désactivation du dispositif en boucle {0}</value>
   </data>
   <data name="Action_Mute_The_Panel" xml:space="preserve">
     <value>Couper le son du panneau</value>
@@ -873,7 +873,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
     <value>Déclencher des phares</value>
   </data>
   <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
-    <value>Déclencher appareil boucle {0}</value>
+    <value>Déclencher dispositif boucle {0}</value>
   </data>
   <data name="Action_Trigger_Network_Event" xml:space="preserve">
     <value>Déclencher un événement réseau</value>
@@ -990,7 +990,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
     <value>Groupes de Sondeurs des Déclencheurs</value>
   </data>
   <data name="Trigger_Any_Device_In_Alarm" xml:space="preserve">
-    <value>Tout appareil en état «Alarm»</value>
+    <value>Tout dispositif en état «Alarm»</value>
   </data>
   <data name="Trigger_Any_Disablement" xml:space="preserve">
     <value>Toute désactivation</value>
@@ -1014,10 +1014,10 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
     <value>Événements : ET</value>
   </data>
   <data name="Trigger_Loop_x_Device_Triggered" xml:space="preserve">
-    <value>Appareil boucle {0} déclenché</value>
+    <value>Dispositif boucle {0} déclenché</value>
   </data>
   <data name="Trigger_Loop_x_Device_Pre_Alarm" xml:space="preserve">
-    <value>Pré-alarme de l’appareil en boucle {0}</value>
+    <value>Pré-alarme du dispositif en boucle {0}</value>
   </data>
   <data name="Trigger_More_Than_One_Alarm" xml:space="preserve">
     <value>Plus d’une alarme</value>
@@ -1053,7 +1053,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un appareil</val
     <value>Zones : ET</value>
   </data>
   <data name="Trigger_Zone_Has_Device_In_Alarm" xml:space="preserve">
-    <value>Zone a un appareil en état «Alarm»</value>
+    <value>Zone a un dispositif en état «Alarm»</value>
   </data>
   <data name="Trigger_Zone_Or_Panel_In_Fire" xml:space="preserve">
     <value>Zone ou panneau en état «Feu»</value>
@@ -1109,19 +1109,19 @@ Enregistrer quand même ?</value>
     <value>Voir configuration E/S</value>
   </data>
   <data name="Query_Change_Device_Type1" xml:space="preserve">
-    <value>Changer cet appareil à «{0}» ?</value>
+    <value>Changer ce dispositif à «{0}» ?</value>
   </data>
   <data name="Query_Change_Device_Types" xml:space="preserve">
-    <value>Changer {0} appareils à «{1}» ?</value>
+    <value>Changer {0} dispositifs à «{1}» ?</value>
   </data>
   <data name="Query_Delete_1_Device" xml:space="preserve">
-    <value>Supprimer 1 appareil?</value>
+    <value>Supprimer 1 dispositif?</value>
   </data>
   <data name="Query_Delete_Device1" xml:space="preserve">
-    <value>Supprimer cet appareil ?</value>
+    <value>Supprimer ce dispositif ?</value>
   </data>
   <data name="Query_Delete_Devices" xml:space="preserve">
-    <value>Supprimer {0} appareils?</value>
+    <value>Supprimer {0} dispositifs?</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
@@ -1130,7 +1130,7 @@ Enregistrer quand même ?</value>
     <value>*</value>
   </data>
   <data name="Multiple_Device_Types" xml:space="preserve">
-    <value>Divers types d’appareils</value>
+    <value>Divers types de dispositifs</value>
   </data>
   <data name="Multiple_Values" xml:space="preserve">
     <value>Des valeurs diverses</value>
@@ -1465,16 +1465,16 @@ Voulez-vous le remplacer?</value>
     <value>Groupe de phares de l’action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Device_Unassigned" xml:space="preserve">
-    <value>Appareil de l’action n’est pas attribué</value>
+    <value>Dispositif de l’action n’est pas attribué</value>
   </data>
   <data name="Error_CE_Action_Group_Not_Set" xml:space="preserve">
     <value>Groupe de l’action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 1 de l'action n’est pas défini</value>
+    <value>Dispositif boucle 1 de l'action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 2 de l’action n’est pas défini</value>
+    <value>Dispositif boucle 2 de l’action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau de l’action n’est pas défini</value>
@@ -1495,7 +1495,7 @@ Voulez-vous le remplacer?</value>
     <value>La condition de déclenchement de réinitialisation n’est pas définie</value>
   </data>
   <data name="Error_CE_Reset_Device_Unassigned" xml:space="preserve">
-    <value>Appareil du déclencheur de réinitialisation n’est pas attribué</value>
+    <value>Dispositif du déclencheur de réinitialisation n’est pas attribué</value>
   </data>
   <data name="Error_CE_Reset_Event_2_Not_Set" xml:space="preserve">
     <value>Deuxième événement du déclencheur de réinitialisation n’est pas défini</value>
@@ -1504,10 +1504,10 @@ Voulez-vous le remplacer?</value>
     <value>Evénement du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 1 du déclencheur de réinitialisation n’est pas défini</value>
+    <value>Dispositif boucle 1 du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 2 du déclencheur de réinitialisation n’est pas défini</value>
+    <value>Dispositif boucle 2 du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau du déclencheur de réinitialisation n’est pas défini</value>
@@ -1534,7 +1534,7 @@ Voulez-vous le remplacer?</value>
     <value>La condition de déclenchement n’est pas définie</value>
   </data>
   <data name="Error_CE_Trigger_Device_Unassigned" xml:space="preserve">
-    <value>Appareil du déclencheur n’est pas attribué</value>
+    <value>Dispositif du déclencheur n’est pas attribué</value>
   </data>
   <data name="Error_CE_Trigger_Event_2_Not_Set" xml:space="preserve">
     <value>Deuxième événement du déclencheur n’est pas défini</value>
@@ -1543,10 +1543,10 @@ Voulez-vous le remplacer?</value>
     <value>Evénement du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 1 du déclencheur n’est pas défini</value>
+    <value>Dispositif boucle 1 du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Appareil boucle 2 du déclencheur n’est pas défini</value>
+    <value>Dispositif boucle 2 du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau du déclencheur n’est pas défini</value>
@@ -1579,7 +1579,7 @@ Voulez-vous le remplacer?</value>
     <value>Le protocole des paramètres ({1}) ne correspond pas à celui du panneau ({0})</value>
   </data>
   <data name="Comms_Device_Names" xml:space="preserve">
-    <value>Noms des appareils</value>
+    <value>Noms des dispositifs</value>
   </data>
   <data name="Error_Device_Name_Blank" xml:space="preserve">
     <value>Le nom/la description est vide</value>
@@ -1665,7 +1665,7 @@ Les paramètres de la boucle 2 configurés ici ne seront pas téléchargés dans
 Un seul boucle a été configuré ici.</value>
   </data>
   <data name="Error_Name_Limit_Exceeded" xml:space="preserve">
-    <value>Le nom n’a pas été mis à jour car la limite de stockage du panneau pour les noms des appareils a été dépassée.</value>
+    <value>Le nom n’a pas été mis à jour car la limite de stockage du panneau pour les noms des dispositifs a été dépassée.</value>
   </data>
   <data name="Device_x_Type_y" xml:space="preserve">
     <value>{0} :  {1}</value>
@@ -1683,7 +1683,7 @@ Un seul boucle a été configuré ici.</value>
     <value>Groupes des sonneurs à bases</value>
   </data>
   <data name="Sensitivities_For_The_Selected_Devices_Have_Different_Ranges" xml:space="preserve">
-    <value>Les sensibilités des appareils sélectionnés ont des gammes différentes</value>
+    <value>Les sensibilités des dispositifs sélectionnés ont des gammes différentes</value>
   </data>
   <data name="Data_Info_Bytes_Remaining" xml:space="preserve">
     <value>Restante :</value>
@@ -1692,16 +1692,16 @@ Un seul boucle a été configuré ici.</value>
     <value>Nombre total d’octets :</value>
   </data>
   <data name="Data_Info_Device_Names" xml:space="preserve">
-    <value>Noms d'appareils :</value>
+    <value>Noms des dispositifs :</value>
   </data>
   <data name="Data_Info_Loops_Detected" xml:space="preserve">
     <value>Boucles détectées :</value>
   </data>
   <data name="Device_Names_Data_Limit" xml:space="preserve">
-    <value>Limite de données des noms d’appareils</value>
+    <value>Limite de données des noms des dispositifs</value>
   </data>
   <data name="Error_Device_Name_Bytes_Exceeded" xml:space="preserve">
-    <value>La taille totale des données Noms d’Appareils est trop grande
+    <value>La taille totale des données Noms des Dispositifs est trop grande
 (voir «Affichage / Afficher l’utilisation des données»).</value>
   </data>
   <data name="Information" xml:space="preserve">
@@ -1719,7 +1719,7 @@ Retirer de la liste ?</value>
     <value>Mode</value>
   </data>
   <data name="Warn_Modes_Not_Available_For_Selected_Devices" xml:space="preserve">
-    <value>Certains modes ne sont pas disponibles pour les appareils sélectionnés</value>
+    <value>Certains modes ne sont pas disponibles pour les dispositifs sélectionnés</value>
   </data>
   <data name="Error_Invalid_Day_Mode" xml:space="preserve">
     <value>Mode jour non valide</value>
@@ -1740,7 +1740,7 @@ Retirer de la liste ?</value>
     <value>Volume nuit non valide</value>
   </data>
   <data name="Warn_No_Modes_Available_For_Selected_Devices" xml:space="preserve">
-    <value>Il n’y a aucun mode valide commun à tous les appareils sélectionnés</value>
+    <value>Il n’y a aucun mode valide commun à tous les dispositifs sélectionnés</value>
   </data>
   <data name="Panel_Number" xml:space="preserve">
     <value>Numéro de panneau</value>
@@ -1772,7 +1772,7 @@ Que voulez-vous faire avec les paramètres des autres panneaux?</value>
     <value>La chaîne normale manque</value>
   </data>
   <data name="Warn_File_Protocol_x" xml:space="preserve">
-    <value>Le fichier contient les paramètres des appareils {0}.</value>
+    <value>Le fichier contient les paramètres des dispositifs {0}.</value>
   </data>
   <data name="Query_Keep_Other_Panel_Settings_Single_x" xml:space="preserve">
     <value>Le fichier contient les paramètres du panneau {0}.
@@ -1804,7 +1804,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
     <value>_Imprimer</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
-    <value>Imprimer tous les appareils de boucle</value>
+    <value>Imprimer tous les dispositifs de boucle</value>
   </data>
   <data name="Print_All_Pages" xml:space="preserve">
     <value>Toutes les pages</value>
@@ -1816,19 +1816,19 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
     <value>Exemplaires :</value>
   </data>
   <data name="Print_Only_Fitted_Devices" xml:space="preserve">
-    <value>Imprimer uniquement les appareils présents</value>
+    <value>Imprimer uniquement les dispositifs présents</value>
   </data>
   <data name="Print_Order_By" xml:space="preserve">
     <value>Trier par :</value>
   </data>
   <data name="Print_Order_By_Device_Number" xml:space="preserve">
-    <value>Numéro de l’appareil</value>
+    <value>Numéro du dispositif</value>
   </data>
   <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
     <value>Groupe/zone/ensemble</value>
   </data>
   <data name="Print_Order_By_Device_Type" xml:space="preserve">
-    <value>Type d'appareil</value>
+    <value>Type du dispositif</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Propriétés</value>
@@ -1893,7 +1893,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
 Enregistrer quand même ?</value>
   </data>
   <data name="Warn_Modes_Not_Available_For_Selected_Device" xml:space="preserve">
-    <value>Certains modes ne sont pas disponibles pour l'appareil sélectionné</value>
+    <value>Certains modes ne sont pas disponibles pour le dispositif sélectionné</value>
   </data>
   <data name="Erase_Event_Log_After_Reading" xml:space="preserve">
     <value>Supprimer des événements du panneau après la lecture ?</value>
@@ -1936,7 +1936,7 @@ Toutes ses données seront perdues.</value>
     <value>Configuration de Paneau {0}</value>
   </data>
   <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
-    <value>Boucle {0} appareil {1} : {2}</value>
+    <value>Boucle {0} dispositif {1} : {2}</value>
   </data>
   <data name="C_And_E_Event_x" xml:space="preserve">
     <value>Evénement Causes et Effets #{0}</value>
@@ -1972,10 +1972,10 @@ Toutes ses données seront perdues.</value>
     <value>Nombre de vérifications d’alarmes</value>
   </data>
   <data name="Device_x_Name_y" xml:space="preserve">
-    <value>Nom d'appareil {0} : {1}</value>
+    <value>Nom du dispositif {0} : {1}</value>
   </data>
   <data name="End_Of_Device_Names" xml:space="preserve">
-    <value>[fin de la liste des noms d’appareils]</value>
+    <value>[fin de la liste des noms des dispositifs]</value>
   </data>
   <data name="Zone_Group_Settings_x" xml:space="preserve">
     <value>Paramètres du groupe zone {0}</value>
@@ -1993,13 +1993,13 @@ Toutes ses données seront perdues.</value>
     <value>Le protocole du panneau n’a pas été identifié.</value>
   </data>
   <data name="Device_Name_x" xml:space="preserve">
-    <value>Nom d'appareil #{0}</value>
+    <value>Nom du dispositif #{0}</value>
   </data>
   <data name="Device_Name_x_Value_y" xml:space="preserve">
-    <value>Nom d'appareil #{0} : {1}</value>
+    <value>Nom du dispositif #{0} : {1}</value>
   </data>
   <data name="Loop_x_Device_y" xml:space="preserve">
-    <value>Boucle {0} appareil #{1}</value>
+    <value>Boucle {0} dispositif #{1}</value>
   </data>
   <data name="Panel_Name_x_Value_y" xml:space="preserve">
     <value>Nom de panneau #{0}: '{1}'</value>
