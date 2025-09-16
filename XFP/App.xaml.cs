@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CTecUtil.Pipes;
+using System;
 using System.Windows;
-using CTecUtil.Pipes;
 
 namespace Xfp
 {
