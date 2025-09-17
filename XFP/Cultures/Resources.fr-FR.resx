@@ -2124,4 +2124,10 @@ Toutes ses données seront perdues.</value>
   <data name="Title_App_x_Comms_y" xml:space="preserve">
     <value>{0} : {1}</value>
   </data>
+  <data name="Description_Abbr" xml:space="preserve">
+    <value>Desc.</value>
+  </data>
+  <data name="Zone_Group_Set_Abbr" xml:space="preserve">
+    <value>Z/G/E</value>
+  </data>
 </root>

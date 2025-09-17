@@ -1146,6 +1146,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desc..
+        /// </summary>
+        public static string Description_Abbr {
+            get {
+                return ResourceManager.GetString("Description_Abbr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detector.
         /// </summary>
         public static string Detector {
@@ -5920,6 +5929,15 @@ namespace Xfp.Cultures {
         public static string Zone_Group_Set {
             get {
                 return ResourceManager.GetString("Zone_Group_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Z/G/S.
+        /// </summary>
+        public static string Zone_Group_Set_Abbr {
+            get {
+                return ResourceManager.GetString("Zone_Group_Set_Abbr", resourceCulture);
             }
         }
         
