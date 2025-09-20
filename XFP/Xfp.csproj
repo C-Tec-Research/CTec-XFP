@@ -126,7 +126,6 @@
     <Resource Include="Cultures\Flags\flag-fr.png" />
     <Resource Include="Resources\info.png" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
-    <PackageReference Include="SimpleWPFReporting" Version="1.1.0" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <Resource Include="Resources\print.png" />
     <EmbeddedResource Include="Resources\XFP Revision History[fr-FR].docx">

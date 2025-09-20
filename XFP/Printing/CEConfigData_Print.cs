@@ -111,7 +111,7 @@ namespace Xfp.DataTypes.PanelData
         public BlockUIContainer ceList()
         {
             //PrintUtil.SetFontSmallerSize();
-            PrintUtil.SetFontNarrowWidth();
+            //PrintUtil.SetFontNarrowWidth();
 
             var grid = columnHeaders();
 

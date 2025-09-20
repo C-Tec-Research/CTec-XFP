@@ -22,6 +22,7 @@ namespace Xfp.DataTypes.PanelData
         public void Print(FlowDocument doc, XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder, ref int pageNumber)
         {
             _doc = doc;
+            _data = data;
 
             //if (pageNumber++ > 1)
             //    PrintUtil.InsertPageBreak(doc);
@@ -41,13 +42,21 @@ namespace Xfp.DataTypes.PanelData
 
 
 
+        private XfpData _data;
         internal static DeviceNameGetter GetDeviceName;
 
 
         private SortOrder _printOrder;
         private int       _totalColumns;
         private int       _ioSettingsColumns = 5;
-        private const int _ioSubheaderFontSize = 8;
+        
+        private Brush       _fg  = PrintUtil.TextForeground;
+        private double      _fsz = PrintUtil.PrintSmallerFontSize-2;
+        private const int   _ish = 8;
+        private FontStretch _str = PrintUtil.FontNarrowWidth;
+        private FontStyle   _ita = FontStyles.Italic;
+        private FontFamily  _ff  = new FontFamily(PrintUtil.PrintDefaultFont);
+        private Thickness   _pdg = PrintUtil.DefaultGridMargin;
 
         private FlowDocument _doc;
         private double       _pageHeight;
@@ -67,22 +76,21 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnHeaders(Table table)
         {
-            var fontSize = PrintUtil.PrintSmallerFontSize-2;
 
             //measure required column widths for subaddress and IO headers
             var cellMargins      = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
             
             var subaddressHeader = Cultures.Resources.Subaddress_Abbr;
-            var subaddressWidth  = (int)FontUtil.MeasureText(subaddressHeader, new(PrintUtil.PrintDefaultFont), _ioSubheaderFontSize, FontStyles.Italic, FontWeights.Normal, FontStretches.Normal).Width + 1;
+            var subaddressWidth  = (int)FontUtil.MeasureText(subaddressHeader, _ff, _ish, _ita, FontWeights.Normal, _str).Width + 1;
             foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
             {
-                var wSub = (int)FontUtil.MeasureText(s, new(PrintUtil.PrintDefaultFont), fontSize, FontStyles.Italic, FontWeights.Normal, FontStretches.Normal).Width + 1;
+                var wSub = (int)FontUtil.MeasureText(s, _ff, _fsz, _ita, FontWeights.Normal, _str).Width + 1;
                 if (wSub > subaddressWidth) subaddressWidth = wSub;
             }
             subaddressWidth += cellMargins;
 
-            var wIn  = (int)FontUtil.MeasureText(Cultures.Resources.Input,  new(PrintUtil.PrintDefaultFont), fontSize, FontStyles.Normal, FontWeights.Normal, PrintUtil.FontStretch).Width + 1;
-            var wOut = (int)FontUtil.MeasureText(Cultures.Resources.Output, new(PrintUtil.PrintDefaultFont), fontSize, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal).Width + 1;
+            var wIn  = (int)FontUtil.MeasureText(Cultures.Resources.Input,  _ff, _fsz, FontStyles.Normal, FontWeights.Normal, _str).Width + 1;
+            var wOut = (int)FontUtil.MeasureText(Cultures.Resources.Output, _ff, _fsz, FontStyles.Normal, FontWeights.Normal, _str).Width + 1;
             var ioWidth = Math.Max(wIn, wOut);
             ioWidth += cellMargins;
 
@@ -125,33 +133,32 @@ namespace Xfp.DataTypes.PanelData
             var headerRow3 = new TableRow();
 
             headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
-
+            //headerRow1.Foreground  = headerRow2.Foreground  = headerRow3.Foreground  = PrintUtil.TextForeground;
+            //headerRow1.FontSize    = headerRow2.FontSize    = headerRow3.FontSize    = fontSize;
+            //headerRow1.FontStretch = headerRow2.FontStretch = headerRow3.FontStretch = PrintUtil.FontNarrowWidth;
+            //headerRow1.FontFamily  = headerRow2.FontFamily  = headerRow3.FontFamily  = new(PrintUtil.PrintDefaultFont);
             
-            headerRow1.Foreground = headerRow2.Foreground = headerRow3.Foreground = PrintUtil.TextForeground;
-            headerRow1.FontSize   = headerRow2.FontSize   = headerRow3.FontSize   = fontSize;
-            headerRow1.FontFamily = headerRow2.FontFamily = headerRow3.FontFamily = new(PrintUtil.PrintDefaultFont);
-            
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Number_Symbol)))           { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Right,   Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Device_Type)))             { ColumnSpan = 2, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Zone_Group)))              { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Device_Name)))             { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Volume_Sensitivity_mode))) { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Day_Night)))               { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Center,  Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Number_Symbol)))           { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Right,   Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Device_Type)))             { ColumnSpan = 2, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Zone_Group)))              { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Device_Name)))             { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Volume_Sensitivity_mode))) { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Day_Night)))               { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Center,  Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
-                headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Remote_LED_Header)))   { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Center,  Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
-                headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Base_Sounder_Header))) { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
+                headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Remote_LED_Header)))   { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Center,  Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
+                headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Base_Sounder_Header))) { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
             }
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.IO_Configuration)))        { ColumnSpan = _ioSettingsColumns, RowSpan = 1, TextAlignment = TextAlignment.Center, Padding = PrintUtil.DefaultGridMargin, FontWeight = FontWeights.Bold });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.IO_Configuration)))        { ColumnSpan = _ioSettingsColumns, RowSpan = 1, TextAlignment = TextAlignment.Center, Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
             
             //headerRow2.Cells.Add(new TableCell(new Paragraph(new Run("")))                                         { LineHeight = 0.1 });
 
             headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(""))) { ColumnSpan = leftColumns });
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(subaddressHeader)))                           { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontStyle = FontStyles.Italic, FontSize = _ioSubheaderFontSize, Foreground = _ioSubheaderBrush });
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.I_O)))                     { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontStyle = FontStyles.Italic, FontSize = _ioSubheaderFontSize, Foreground = _ioSubheaderBrush });
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Channel_Abbr)))            { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontStyle = FontStyles.Italic, FontSize = _ioSubheaderFontSize, Foreground = _ioSubheaderBrush });
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Zone_Group_Set_Abbr)))     { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontStyle = FontStyles.Italic, FontSize = _ioSubheaderFontSize, Foreground = _ioSubheaderBrush });
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Description_Abbr)))        { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = PrintUtil.DefaultGridMargin, FontStyle = FontStyles.Italic, FontSize = _ioSubheaderFontSize, Foreground = _ioSubheaderBrush });
+            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(subaddressHeader)))                           { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
+            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.I_O)))                     { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
+            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Channel_Abbr)))            { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
+            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Zone_Group_Set_Abbr)))     { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
+            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Description_Abbr)))        { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
             
             headerGroup.Rows.Add(headerRow1);
             headerGroup.Rows.Add(headerRow2);
@@ -193,18 +200,18 @@ namespace Xfp.DataTypes.PanelData
 
         public void deviceList(Table table, bool printAllLoopDevices)
         {
-            PrintUtil.SetFontSmallerSize();
-            PrintUtil.SetFontNarrowWidth();
 
+            var fontSize = PrintUtil.PrintSmallerFontSize-2;
+            
             //var grid = columnHeaders();
 
-            //int row = grid.RowDefinitions.Count;
+            int row = 0;
             int col;
             int dataRows = 0;
 
             try
             {
-                var deviceSort = new List<DeviceData>(Devices);
+                var deviceSort = new List<DeviceData>(_data.Panels[1].Loop1Config.Devices);
 
                 if (_printOrder == SortOrder.Type)
                     deviceSort.Sort(compareByDeviceType);
@@ -267,125 +274,132 @@ namespace Xfp.DataTypes.PanelData
                         //rows required depends on the above
                         var numRows = Math.Max(ioRows, vsmRows);
 
-                        for (int i = 0; i < numRows; i++)
-                        {
-                            //GridUtil.AddRowToGrid(grid);
-                            TableRow tRow = new TableRow();
-                            tRow.Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground;
-                            tRow.Foreground = PrintUtil.TextForeground;
-                            tRow.FontSize   = PrintUtil.PrintSmallerFontSize - 2;
-                            tRow.FontFamily = new(PrintUtil.PrintDefaultFont);
-                            bodyGroup.Rows.Add(tRow);
-                        }
+                        //for (int i = 0; i < numRows; i++)
+                        //{
+                        //    //GridUtil.AddRowToGrid(grid);
+                        //    TableRow tRow = new TableRow();
+                        //    tRow.Background  = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground;
+                        //    tRow.Foreground  = PrintUtil.TextForeground;
+                        //    tRow.FontSize    = fontSize;
+                        //    tRow.FontStretch = PrintUtil.FontNarrowWidth;
+                        //    tRow.FontFamily  = new(PrintUtil.PrintDefaultFont);
+                        //    bodyGroup.Rows.Add(tRow);
+                        //}
 
                         var tableRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
 
-                        //number
-                        tableRow.Cells.Add(new TableCell(new Paragraph(new Run((d.Index + 1).ToString()))) { RowSpan = numRows, ColumnSpan = _totalColumns });
+                        //var tableRow = bodyGroup.Rows[row];
+
+                        //device number
+                        tableRow.Cells.Add(new TableCell(new Paragraph(new Run((d.Index + 1).ToString()))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });
 
 
                         if (DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
                         {
-                            //icon & type name
+                            //device icon
                             //tableRow.Cells.Add(new TableCell(new Paragraph(new DeviceTypes.DeviceIcon(d.DeviceType, DeviceTypes.CurrentProtocolType), row, col++, numRows, 1, 18, 18));
-                            tableRow.Cells.Add(new TableCell(new Paragraph(new Run(""))));
-                            grid.Children.Add(GridUtil.GridCell(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType), row, col++, numRows, 1));
+                            tableRow.Cells.Add(new TableCell(new Paragraph(new Run(""))) { RowSpan = numRows, ColumnSpan = 1 });
+                            
+                            //device type name
+                            tableRow.Cells.Add(new TableCell(new Paragraph(new Run(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });
 
                             //zone/group/set
                             if (d.IsIODevice)
-                                grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, row, col++, numRows, 1, false, FontStyles.Italic), _seeIoSettingsForeground));
+                                tableRow.Cells.Add(new TableCell(new Paragraph(new Run("  " + Cultures.Resources.See_IO_Configuration_Abbr))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _seeIoSettingsForeground, FontFamily = _ff, FontSize = _fsz, FontStretch = _str, FontStyle = _ita });
                             else
-                                grid.Children.Add(GridUtil.GridCell(zgsDescription(false, d.IsGroupedDevice, false, d.IsGroupedDevice ? d.Group : d.Zone), row, col++, numRows, 1));
+                                tableRow.Cells.Add(new TableCell(new Paragraph(new Run(zgsDescription(false, d.IsGroupedDevice, false, d.IsGroupedDevice ? d.Group : d.Zone)))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });
 
-                            //name
-                            grid.Children.Add(GridUtil.GridCell(GetDeviceName?.Invoke(d.NameIndex), row, col++));
+                            ////name
+                            //grid.Children.Add(GridUtil.GridCell(GetDeviceName?.Invoke(d.NameIndex), row, col++));
 
-                            //volume/sensitivity/mode & day:night values
-                            if (d.IsModeDevice || d.IsVolumeDevice || d.IsSensitivityDevice)
-                            {
-                                int rowOffset = 0;
+                            ////volume/sensitivity/mode & day:night values
+                            //if (d.IsModeDevice || d.IsVolumeDevice || d.IsSensitivityDevice)
+                            //{
+                            //    int rowOffset = 0;
 
-                                if (d.IsModeDevice)
-                                {
-                                    grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Mode, row, col));
-                                    grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DayMode, d.NightMode ?? 0), row, col + 1, false, HorizontalAlignment.Center));
-                                    rowOffset++;
-                                }
+                            //    if (d.IsModeDevice)
+                            //    {
+                            //        grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Mode, row, col));
+                            //        grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DayMode, d.NightMode ?? 0), row, col + 1, false, HorizontalAlignment.Center));
+                            //        rowOffset++;
+                            //    }
 
-                                if (d.IsVolumeDevice)
-                                {
-                                    grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Volume, row + rowOffset, col));
-                                    grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DayVolume, d.NightVolume ?? 0), row + rowOffset, col + 1, false, HorizontalAlignment.Center));
-                                    rowOffset++;
-                                }
+                            //    if (d.IsVolumeDevice)
+                            //    {
+                            //        grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Volume, row + rowOffset, col));
+                            //        grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DayVolume, d.NightVolume ?? 0), row + rowOffset, col + 1, false, HorizontalAlignment.Center));
+                            //        rowOffset++;
+                            //    }
 
-                                if (d.IsSensitivityDevice)
-                                {
-                                    grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Sensitivity, row + rowOffset, col));
-                                    grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DaySensitivity ?? 0, d.NightSensitivity ?? 0), row + rowOffset, col + 1, false, HorizontalAlignment.Center));
-                                }
-                            }
-                            else
-                            {
-                                grid.Children.Add(GridUtil.GridCell("--", row, col, numRows, 1));
-                                grid.Children.Add(GridUtil.GridCell("--", row, col + 1, numRows, 1, false, HorizontalAlignment.Center));
-                            }
+                            //    if (d.IsSensitivityDevice)
+                            //    {
+                            //        grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Sensitivity, row + rowOffset, col));
+                            //        grid.Children.Add(GridUtil.GridCell(string.Format("{0}:{1}", d.DaySensitivity ?? 0, d.NightSensitivity ?? 0), row + rowOffset, col + 1, false, HorizontalAlignment.Center));
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    grid.Children.Add(GridUtil.GridCell("--", row, col, numRows, 1));
+                            //    grid.Children.Add(GridUtil.GridCell("--", row, col + 1, numRows, 1, false, HorizontalAlignment.Center));
+                            //}
 
-                            col += 2;
+                            //col += 2;
 
-                            if (DeviceTypes.CurrentProtocolIsXfpApollo)
-                            {
-                                //remote LED
-                                grid.Children.Add(GridUtil.GridCellBool(d.RemoteLEDEnabled ?? false, row, col++, numRows, 1, false, false, HorizontalAlignment.Center, VerticalAlignment.Top));
+                            //if (DeviceTypes.CurrentProtocolIsXfpApollo)
+                            //{
+                            //    //remote LED
+                            //    grid.Children.Add(GridUtil.GridCellBool(d.RemoteLEDEnabled ?? false, row, col++, numRows, 1, false, false, HorizontalAlignment.Center, VerticalAlignment.Top));
 
-                                //base sounder group
-                                grid.Children.Add(GridUtil.GridCell(d.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, d.AncillaryBaseSounderGroup.Value), row, col++, numRows, 1));
-                            }
+                            //    //base sounder group
+                            //    grid.Children.Add(GridUtil.GridCell(d.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, d.AncillaryBaseSounderGroup.Value), row, col++, numRows, 1));
+                            //}
 
-                            // I/O config
-                            if (d.IsIODevice)
-                            {
-                                List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && d.DeviceType == (int)XfpCastDeviceTypeIds.HS2
-                                                            ? _xfpHushSubaddressNames
-                                                            : _defaultSubaddressNames;
+                            //// I/O config
+                            //if (d.IsIODevice)
+                            //{
+                            //    List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && d.DeviceType == (int)XfpCastDeviceTypeIds.HS2
+                            //                                ? _xfpHushSubaddressNames
+                            //                                : _defaultSubaddressNames;
 
-                                int ioRow = row;
-                                int newRows = 0;
+                            //    int ioRow = row;
+                            //    int newRows = 0;
 
-                                for (int i = 0; i < d.IOConfig.Count; i++)
-                                {
-                                    if (d.IOConfig[i].InputOutput != IOTypes.NotUsed)
-                                    {
-                                        int ioCol = col;
+                            //    for (int i = 0; i < d.IOConfig.Count; i++)
+                            //    {
+                            //        if (d.IOConfig[i].InputOutput != IOTypes.NotUsed)
+                            //        {
+                            //            int ioCol = col;
 
-                                        if (ioRow > row)
-                                        {
-                                            //GridUtil.AddRowToGrid(grid);
-                                            //grid.Children.Add(GridUtil.GridBackground(ioRow, 0, 1, _totalColumns, Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
-                                            newRows++;
-                                        }
+                            //            if (ioRow > row)
+                            //            {
+                            //                //GridUtil.AddRowToGrid(grid);
+                            //                //grid.Children.Add(GridUtil.GridBackground(ioRow, 0, 1, _totalColumns, Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                            //                newRows++;
+                            //            }
 
-                                        var isGroup = d.IOConfig[i].InputOutput == IOTypes.Output && d.IsGroupedDevice;
-                                        var isSet   = d.IOConfig[i].InputOutput == IOTypes.Output && !d.IsZonalDevice;
+                            //            var isGroup = d.IOConfig[i].InputOutput == IOTypes.Output && d.IsGroupedDevice;
+                            //            var isSet   = d.IOConfig[i].InputOutput == IOTypes.Output && !d.IsZonalDevice;
 
-                                        if (d.IOConfig[i].Index >= 0 && d.IOConfig[i].Index < subaddressNames.Count)
-                                            grid.Children.Add(GridUtil.GridCell(subaddressNames[d.IOConfig[i].Index], ioRow, ioCol, false, HorizontalAlignment.Left, VerticalAlignment.Top));
+                            //            if (d.IOConfig[i].Index >= 0 && d.IOConfig[i].Index < subaddressNames.Count)
+                            //                grid.Children.Add(GridUtil.GridCell(subaddressNames[d.IOConfig[i].Index], ioRow, ioCol, false, HorizontalAlignment.Left, VerticalAlignment.Top));
 
-                                        ioCol++;
+                            //            ioCol++;
 
-                                        grid.Children.Add(GridUtil.GridCell(CTecDevices.Enums.IOTypeToString(d.IOConfig[i].InputOutput), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
-                                        grid.Children.Add(GridUtil.GridCell(((d.IOConfig[i].Channel ?? 0) + 1).ToString(), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
-                                        grid.Children.Add(GridUtil.GridCell(zgsDescription(true, isGroup, isSet, (int)d.IOConfig[i].ZoneGroupSet), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
-                                        grid.Children.Add(GridUtil.GridCell(GetDeviceName?.Invoke(d.IOConfig[i].NameIndex), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
-                                        ioRow++;
-                                    }
-                                }
+                            //            grid.Children.Add(GridUtil.GridCell(CTecDevices.Enums.IOTypeToString(d.IOConfig[i].InputOutput), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
+                            //            grid.Children.Add(GridUtil.GridCell(((d.IOConfig[i].Channel ?? 0) + 1).ToString(), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
+                            //            grid.Children.Add(GridUtil.GridCell(zgsDescription(true, isGroup, isSet, (int)d.IOConfig[i].ZoneGroupSet), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
+                            //            grid.Children.Add(GridUtil.GridCell(GetDeviceName?.Invoke(d.IOConfig[i].NameIndex), ioRow, ioCol++, false, HorizontalAlignment.Left, VerticalAlignment.Top));
+                            //            ioRow++;
+                            //        }
+                            //    }
 
-                                //         row += newRows;
-                            }
+                            //    //         row += newRows;
+                            //}
+
+                            bodyGroup.Rows.Add(tableRow);
                         }
 
-                        row += numRows - 1;
+                        row += numRows;
                     }
 
                     row++;
