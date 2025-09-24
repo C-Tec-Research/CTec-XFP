@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Xfp.UI;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 
@@ -43,7 +44,7 @@ namespace Xfp.DataTypes.PanelData
 
 
         private XfpData _data;
-        internal static DeviceNameGetter GetDeviceName;
+        internal static DeviceNamesEntryGetter GetDeviceName;
 
 
         private SortOrder _printOrder;
@@ -105,13 +106,13 @@ namespace Xfp.DataTypes.PanelData
 
             //define table's columns
             _totalColumns = 0;
-            table.Columns.Add(new TableColumn() { Width = new GridLength(24) });                _totalColumns++;    // num
+            table.Columns.Add(new TableColumn() { Width = new GridLength(14) });                _totalColumns++;    // num
             table.Columns.Add(new TableColumn() { Width = new GridLength(30) });                _totalColumns++;    // icon
             table.Columns.Add(new TableColumn() { Width = new GridLength(typW) });              _totalColumns++;    // type name
             table.Columns.Add(new TableColumn() { Width = new GridLength(zgsW) });              _totalColumns++;    // z/g/s
             table.Columns.Add(new TableColumn() { Width = new GridLength(namW) });              _totalColumns++;    // name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });                _totalColumns++;    // v/s/m
-            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });                _totalColumns++;    // day:night
+            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });                _totalColumns++;    // v/s/m
+            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });                _totalColumns++;    // day:night
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
                 table.Columns.Add(new TableColumn() { Width = new GridLength(50) });            _totalColumns++;    // remote LED
@@ -149,11 +150,11 @@ namespace Xfp.DataTypes.PanelData
                 headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Remote_LED_Header)))   { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Center,  Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
                 headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Base_Sounder_Header))) { ColumnSpan = 1, RowSpan = 3, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
             }
-            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.IO_Configuration)))        { ColumnSpan = _ioSettingsColumns, RowSpan = 1, TextAlignment = TextAlignment.Center, Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
+            headerRow1.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.IO_Configuration)))        { ColumnSpan = _ioSettingsColumns, RowSpan = 1, TextAlignment = TextAlignment.Left, Padding = _pdg, FontFamily = _ff, FontSize = _fsz, FontWeight = FontWeights.Bold, Foreground = _fg  });
             
             //headerRow2.Cells.Add(new TableCell(new Paragraph(new Run("")))                                         { LineHeight = 0.1 });
 
-            headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(""))) { ColumnSpan = leftColumns });
+            //headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(""))) { ColumnSpan = leftColumns });
             headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(subaddressHeader)))                           { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
             headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.I_O)))                     { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
             headerRow3.Cells.Add(new TableCell(new Paragraph(new Run(Cultures.Resources.Channel_Abbr)))            { LineHeight = 10, ColumnSpan = 1, RowSpan = 1, TextAlignment = TextAlignment.Left,    Padding = _pdg, FontFamily = _ff, FontSize = _ish, FontStyle = _ita, Foreground = _ioSubheaderBrush });
@@ -164,37 +165,6 @@ namespace Xfp.DataTypes.PanelData
             headerGroup.Rows.Add(headerRow2);
             headerGroup.Rows.Add(headerRow3);
             table.RowGroups.Add(headerGroup);
-
-//            Grid grid = new Grid();
-
-//            grid.Children.Add(GridUtil.GridBackground(0, 0, 3, _totalColumns, PrintUtil.GridHeaderBackground));
-
-//            int col = 0;
-                       
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Number_Symbol,           0, col++, 3, 1, HorizontalAlignment.Right, VerticalAlignment.Bottom));
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Device_Type,             0, col++, 3, 2, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-//            col++;
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone_Group,              0, col++, 3, 1, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Device_Name,             0, col++, 3, 1, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Volume_Sensitivity_mode, 0, col++, 3, 1, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Day_Night,               0, col++, 3, 1, HorizontalAlignment.Center, VerticalAlignment.Bottom));
-
-//            if (DeviceTypes.CurrentProtocolIsXfpApollo)
-//            {
-//                grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Remote_LED_Header,   0, col++, 3, 1, HorizontalAlignment.Center, VerticalAlignment.Bottom));
-//                grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Base_Sounder_Header, 0, col++, 3, 1, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-//            }
-
-//            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.IO_Configuration,        0, col, 1, _ioSettingsColumns, HorizontalAlignment.Center, VerticalAlignment.Bottom));
-//            GridUtil.AddBorderToGrid(grid, 1, col, 1, 6, _ioBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, 0, 3, -4), 3);
-
-//            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(subaddressHeader,                  2, col++, 1, 2, false, _ioSubheaderFontSize, FontStyles.Italic, PrintUtil.PrintDefaultFont, HorizontalAlignment.Left, VerticalAlignment.Bottom), _ioSubheaderBrush));
-//            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.I_O,            2, col++, 1, 2, false, _ioSubheaderFontSize, FontStyles.Italic, PrintUtil.PrintDefaultFont, HorizontalAlignment.Left, VerticalAlignment.Bottom), _ioSubheaderBrush));
-//            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Channel_Abbr,   2, col++, 1, 1, false, _ioSubheaderFontSize, FontStyles.Italic, PrintUtil.PrintDefaultFont, HorizontalAlignment.Left, VerticalAlignment.Bottom), _ioSubheaderBrush));
-//            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Zone_Group_Set, 2, col++, 1, 1, false, _ioSubheaderFontSize, FontStyles.Italic, PrintUtil.PrintDefaultFont, HorizontalAlignment.Left, VerticalAlignment.Bottom), _ioSubheaderBrush));
-//            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridCell(Cultures.Resources.Description,    2, col++, 1, 1, false, _ioSubheaderFontSize, FontStyles.Italic, PrintUtil.PrintDefaultFont, HorizontalAlignment.Left, VerticalAlignment.Bottom), _ioSubheaderBrush));
-
-//            return grid;
         }
         
 
@@ -291,14 +261,16 @@ namespace Xfp.DataTypes.PanelData
                         //var tableRow = bodyGroup.Rows[row];
 
                         //device number
-                        tableRow.Cells.Add(new TableCell(new Paragraph(new Run((d.Index + 1).ToString()))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });
+                        tableRow.Cells.Add(new TableCell(new Paragraph(new Run((d.Index + 1).ToString()))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str, TextAlignment = TextAlignment.Right });
 
 
                         if (DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
                         {
                             //device icon
-                            //tableRow.Cells.Add(new TableCell(new Paragraph(new DeviceTypes.DeviceIcon(d.DeviceType, DeviceTypes.CurrentProtocolType), row, col++, numRows, 1, 18, 18));
-                            tableRow.Cells.Add(new TableCell(new Paragraph(new Run(""))) { RowSpan = numRows, ColumnSpan = 1 });
+                            var cell = new TableCell();
+                            tableRow.Cells.Add(cell);
+                            var image = new Image() { Source = DeviceTypes.DeviceIcon(d.DeviceType, DeviceTypes.CurrentProtocolType), Width = 14, Height = 14 };
+                            cell.Blocks.Add(new BlockUIContainer(image));
                             
                             //device type name
                             tableRow.Cells.Add(new TableCell(new Paragraph(new Run(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });

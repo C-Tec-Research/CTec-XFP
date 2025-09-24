@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Windows;
-using CTecControls.UI;
+﻿using CTecControls.UI;
 using CTecDevices;
 using CTecDevices.DataTypes;
 using CTecDevices.DeviceTypes;
 using CTecDevices.Protocol;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using System.Windows;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
@@ -32,8 +33,8 @@ namespace Xfp.ViewModels.PanelTools
         public Collection<DeviceItemViewModel> DeviceList { get => _deviceList; set { _deviceList = value; updateModesList(); RefreshView(); } }
 
 
-        internal DeviceNameGetter GetDeviceName;
-        internal DeviceNameSetter SetDeviceName;
+        internal DeviceNamesEntryGetter GetDeviceNamesEntry;
+        internal DeviceNamesEntrySetter SetDeviceNamesEntry;
 
 
         private bool _displayShowFittedDeviceOnlyOption = true;
@@ -77,7 +78,7 @@ namespace Xfp.ViewModels.PanelTools
 
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (d.DeviceType is not null)
@@ -140,7 +141,7 @@ namespace Xfp.ViewModels.PanelTools
                 int? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result is null)
@@ -173,7 +174,7 @@ namespace Xfp.ViewModels.PanelTools
                 string result = "";
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result == "")
@@ -221,7 +222,7 @@ namespace Xfp.ViewModels.PanelTools
 
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (isGroup is null)
@@ -265,7 +266,7 @@ namespace Xfp.ViewModels.PanelTools
                 _zoneIndex = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (_zoneIndex is null)
@@ -324,7 +325,7 @@ namespace Xfp.ViewModels.PanelTools
                 _groupIndex = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (_groupIndex is null)
@@ -374,7 +375,7 @@ namespace Xfp.ViewModels.PanelTools
                 _ancillaryBaseSounderGroupIndex = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (_ancillaryBaseSounderGroupIndex is null)
@@ -506,7 +507,7 @@ namespace Xfp.ViewModels.PanelTools
                 int? dayVolIdx = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (dayVolIdx is null)
@@ -551,7 +552,7 @@ namespace Xfp.ViewModels.PanelTools
                 int? nightVolIdx = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (nightVolIdx is null)
@@ -608,7 +609,7 @@ namespace Xfp.ViewModels.PanelTools
                 int? mode = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (mode is null)
@@ -662,7 +663,7 @@ namespace Xfp.ViewModels.PanelTools
                 int? mode = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (mode is null)
@@ -733,7 +734,7 @@ namespace Xfp.ViewModels.PanelTools
                 string result = "";
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result == "")
@@ -749,7 +750,7 @@ namespace Xfp.ViewModels.PanelTools
                 {
                     foreach (var d in _deviceList)
                     {
-                        if (d.DeviceType is null)
+                        if (d?.DeviceType is null)
                             continue;
 
                         d.DeviceName = value;
@@ -768,31 +769,31 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private bool setDeviceName(string value)
-        {
-            if (!checkNameMemoryLimit(value))
-                return false;
+        //private bool setDeviceName(string value)
+        //{
+        //    if (!checkNameMemoryLimit(value))
+        //        return false;
 
-            foreach (var d in _deviceList)
-            {
-                if (d.DeviceType is null)
-                    continue;
+        //    foreach (var d in _deviceList)
+        //    {
+        //        if (d?.DeviceType is null)
+        //            continue;
 
-                d.DeviceName = value;
-                d.RefreshView();
+        //        d.DeviceName = value;
+        //        d.RefreshView();
 
-                if (validIOIndex(0, d))
-                    //setIODescription(0, value);
-                    d.IOConfigItems[0].NameIndex = d.DeviceData.NameIndex;
-            }
+        //        if (validIOIndex(0, d))
+        //            //setIODescription(0, value);
+        //            d.IOConfigItems[0].NameIndex = d.DeviceData.NameIndex;
+        //    }
         
-            OnPropertyChanged();
-            OnPropertyChanged(nameof(DeviceNameIsValid));
-            OnPropertyChanged(nameof(DevicesHaveCommonDeviceName));
-            OnPropertyChanged(nameof(IndicateMultipleValues));
-            updateDebugInfo();
-            return true;
-        }
+        //    OnPropertyChanged();
+        //    OnPropertyChanged(nameof(DeviceNameIsValid));
+        //    OnPropertyChanged(nameof(DevicesHaveCommonDeviceName));
+        //    OnPropertyChanged(nameof(IndicateMultipleValues));
+        //    updateDebugInfo();
+        //    return true;
+        //}
 
 
         /// <summary>
@@ -820,7 +821,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? rle = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsSensitivityDevice)
@@ -894,7 +895,7 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                if (d.DeviceType is null)
+                if (d?.DeviceType is null)
                     return (IOTypes)(-1);
 
                 if (d.IsIODevice && validIOIndex(index, d))
@@ -975,7 +976,7 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                if (d.DeviceType is null)
+                if (d?.DeviceType is null)
                     return -1;
 
                 if (d.IsIODevice && validIOIndex(index, d))
@@ -1024,7 +1025,7 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                if (d.DeviceType is null)
+                if (d?.DeviceType is null)
                     return null;
 
                 if (d.IsIODevice && validIOIndex(index, d))
@@ -1048,7 +1049,7 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                if (d.DeviceType is null)
+                if (d?.DeviceType is null)
                     return null;
 
                 if (d.IsIODevice && validIOIndex(index, d))
@@ -1106,12 +1107,12 @@ namespace Xfp.ViewModels.PanelTools
             string result = "";
             foreach (var d in _deviceList)
             {
-                if (d.DeviceType is null)
+                if (d?.DeviceType is null)
                     continue;
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
-                    var name = index == 0 ? d.DeviceName : GetDeviceName?.Invoke(d.IOConfigItems[index].NameIndex);
+                    var name = index == 0 ? d.DeviceName : GetDeviceNamesEntry?.Invoke(d.IOConfigItems[index].NameIndex);
 
                     if (result == "")
                         result = name;
@@ -1124,45 +1125,43 @@ namespace Xfp.ViewModels.PanelTools
 
         private bool setIODescription(int ioIndex, string value)
         {
-            //if (value is not null)
+            if (!checkIONameMemoryLimit(ioIndex, value))
+                return false;
+
+            foreach (var d in _deviceList)
             {
-                if (!checkIONameMemoryLimit(ioIndex, value))
-                    return false;
-
-                foreach (var d in _deviceList)
-                {
-                    if (d.DeviceType is null)
-                        continue;
-
-                    d.IOConfigItems[ioIndex].NameIndex = _data.CurrentPanel.DeviceNamesConfig.Update(d.IOConfigItems[ioIndex].NameIndex, value);
-                    d.RefreshView();
-                }
-
-                OnPropertyChanged(nameof(DeviceName));
-                OnPropertyChanged(nameof(DeviceNameIsValid));
-                OnPropertyChanged(nameof(IODescription1));
-                OnPropertyChanged(nameof(IODescription2));
-                OnPropertyChanged(nameof(IODescription3));
-                OnPropertyChanged(nameof(IODescription4));
-                OnPropertyChanged(nameof(IODescription1IsValid));
-                OnPropertyChanged(nameof(IODescription2IsValid));
-                OnPropertyChanged(nameof(IODescription3IsValid));
-                OnPropertyChanged(nameof(IODescription4IsValid));
-                OnPropertyChanged(nameof(DevicesHaveCommonIODescription1));
-                OnPropertyChanged(nameof(DevicesHaveCommonIODescription2));
-                OnPropertyChanged(nameof(DevicesHaveCommonIODescription3));
-                OnPropertyChanged(nameof(DevicesHaveCommonIODescription4));
+                if (d is null || d.DeviceType is null)
+                    continue;
+                
+                //d.IOConfigItems[ioIndex].NameIndex = _data.CurrentPanel.DeviceNamesConfig.Update(d.IOConfigItems[ioIndex].NameIndex, value);
+                d.IOConfigItems[ioIndex].NameIndex = SetDeviceNamesEntry?.Invoke(1, value) ?? 0;
+                d.RefreshView();
             }
+
+            OnPropertyChanged(nameof(DeviceName));
+            OnPropertyChanged(nameof(DeviceNameIsValid));
+            OnPropertyChanged(nameof(IODescription1));
+            OnPropertyChanged(nameof(IODescription2));
+            OnPropertyChanged(nameof(IODescription3));
+            OnPropertyChanged(nameof(IODescription4));
+            OnPropertyChanged(nameof(IODescription1IsValid));
+            OnPropertyChanged(nameof(IODescription2IsValid));
+            OnPropertyChanged(nameof(IODescription3IsValid));
+            OnPropertyChanged(nameof(IODescription4IsValid));
+            OnPropertyChanged(nameof(DevicesHaveCommonIODescription1));
+            OnPropertyChanged(nameof(DevicesHaveCommonIODescription2));
+            OnPropertyChanged(nameof(DevicesHaveCommonIODescription3));
+            OnPropertyChanged(nameof(DevicesHaveCommonIODescription4));
 
             return true;
         }
 
 
-        private void setIODescription(System.Windows.Controls.TextBox textBox)
-        {
-        }
+        //private void setIODescription(System.Windows.Controls.TextBox textBox)
+        //{
+        //}
 
-        private bool validIOIndex(int index, DeviceItemViewModel device) => index >= 0 && index < (device.IOConfigItems?.Count??0);
+        private bool validIOIndex(int index, DeviceItemViewModel device) => index >= 0 && index < (device?.IOConfigItems?.Count??0);
         #endregion
 
 
@@ -1175,10 +1174,13 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                var oldName = GetDeviceName?.Invoke(d.DeviceNameIndex);
-                bytesNeeded += value.Length - oldName.Length;
-                if (string.IsNullOrEmpty(oldName))
-                    bytesNeeded++;
+                var oldName = GetDeviceNamesEntry?.Invoke(d.DeviceNameIndex);
+                if (oldName is not null)
+                {
+                    bytesNeeded += value.Length - oldName.Length;
+                    if (string.IsNullOrEmpty(oldName))
+                        bytesNeeded++;
+                }
             }
 
             OnPropertyChanged(nameof(DebugNameBytesUsed));
@@ -1198,10 +1200,13 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
-                var oldName = GetDeviceName?.Invoke(d.IOConfigItems[ioIndex].NameIndex);
-                bytesNeeded += value.Length - oldName.Length;
-                if (string.IsNullOrEmpty(oldName))
-                    bytesNeeded++;
+                var oldName = GetDeviceNamesEntry?.Invoke(d.IOConfigItems[ioIndex].NameIndex);
+                if (oldName is not null)
+                {
+                    bytesNeeded += value.Length - oldName.Length;
+                    if (string.IsNullOrEmpty(oldName))
+                        bytesNeeded++;
+                }
             }
 
             if (DebugNameBytesRemaining - bytesNeeded > 0)
@@ -1222,7 +1227,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result is null)
@@ -1244,7 +1249,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result is null)
@@ -1268,7 +1273,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result is null)
@@ -1290,7 +1295,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsIODevice)
@@ -1319,7 +1324,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (result is null)
@@ -1341,7 +1346,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsSensitivityDevice)
@@ -1369,7 +1374,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsSensitivityHighDevice)
@@ -1397,7 +1402,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsVolumeDevice)
@@ -1425,7 +1430,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (!d.IsModeDevice)
@@ -1496,7 +1501,7 @@ namespace Xfp.ViewModels.PanelTools
                     int? z = null;
                     foreach (var d in _deviceList)
                     {
-                        if (d.DeviceType is null)
+                        if (d?.DeviceType is null)
                             continue;
 
                         if (z is not null && z != d.Zone)
@@ -1525,7 +1530,7 @@ namespace Xfp.ViewModels.PanelTools
                     int? g = null;
                     foreach (var d in _deviceList)
                     {
-                        if (d.DeviceType is null)
+                        if (d?.DeviceType is null)
                             continue;
 
                         if (g is not null && g != d.Group)
@@ -1554,7 +1559,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (name is not null && name != d.DeviceName)
@@ -1584,7 +1589,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (canHave is not null && canHave == false && canHave != d.CanHaveAncillaryBaseSounder || absg != _noBaseSounderGroup && absg != d.AncillaryBaseSounderGroup)
@@ -1611,7 +1616,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
                     
                     if (canHave is not null && canHave != d.CanHaveAncillaryBaseSounder)
@@ -1643,7 +1648,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (sens is not null && sens != d.DaySensitivity)
@@ -1675,7 +1680,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (sens is not null && sens != d.NightSensitivity)
@@ -1704,7 +1709,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (mode is not null && mode != d.DayMode)
@@ -1733,7 +1738,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (mode is not null && mode != d.NightMode)
@@ -1762,7 +1767,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (led is not null && led != d.RemoteLEDEnabled)
@@ -1792,7 +1797,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (vol is not null && vol != d.DayVolume)
@@ -1821,7 +1826,7 @@ namespace Xfp.ViewModels.PanelTools
                 int dCount = 0;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     if (vol is not null && vol != d.NightVolume)
@@ -1870,11 +1875,11 @@ namespace Xfp.ViewModels.PanelTools
             int dCount = 0;
             foreach (var d in _deviceList)
             {
+                if (d?.DeviceType is null)
+                    continue;
+
                 if (!d.IsIODevice)
                     return true;
-
-                if (d.DeviceType is null)
-                    continue;
 
                 if (io is not null && io != d.IOConfigItems[index].InputOutput)
                     return false;
@@ -1900,11 +1905,11 @@ namespace Xfp.ViewModels.PanelTools
             int dCount = 0;
             foreach (var d in _deviceList)
             {
+                if (d?.DeviceType is null)
+                    continue;
+
                 if (!d.IsIODevice)
                     return true;
-
-                if (d.DeviceType is null)
-                    continue;
 
                 if (channel is not null && channel != d.IOConfigItems[index].Channel)
                     return false;
@@ -1930,11 +1935,11 @@ namespace Xfp.ViewModels.PanelTools
             int dCount = 0;
             foreach (var d in _deviceList)
             {
+                if (d?.DeviceType is null)
+                    continue;
+
                 if (!d.IsIODevice)
                     return true;
-
-                if (d.DeviceType is null)
-                    continue;
 
                 if (zoneSet is not null && zoneSet != d.IOConfigItems[index].ZoneGroupSet)
                     return false;
@@ -1961,11 +1966,11 @@ namespace Xfp.ViewModels.PanelTools
 
             foreach (var d in _deviceList)
             {
+                if (d?.DeviceType is null)
+                    continue;
+
                 if (!d.IsIODevice)
                     return true;
-
-                if (d.DeviceType is null)
-                    continue;
 
                 if (desc is not null && desc != d.IOConfigItems[index].NameIndex)
                     return false;
@@ -2003,7 +2008,7 @@ namespace Xfp.ViewModels.PanelTools
                 bool? isHS2 = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d.DeviceType is null)
+                    if (d?.DeviceType is null)
                         continue;
 
                     bool tmp = deviceIsHush2(d.DeviceType);
@@ -2033,7 +2038,7 @@ namespace Xfp.ViewModels.PanelTools
             get
             {
                 foreach (var _ in from d in _deviceList
-                                  where d.DeviceType is null
+                                  where d?.DeviceType is null
                                   select new { })
                     return true;
 
@@ -2183,7 +2188,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             var typeChangeCount = 0;
             foreach (var d in _deviceList)
-                if (((!ignoreNulls && d.DeviceType is null) || d.DeviceType == 0 || DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
+                if (((!ignoreNulls && d?.DeviceType is null) || d.DeviceType == 0 || DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
                  && d.DeviceType != DeviceSelectorDeviceType)
                     typeChangeCount++;
             return typeChangeCount;

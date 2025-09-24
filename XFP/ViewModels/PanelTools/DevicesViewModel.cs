@@ -38,14 +38,14 @@ namespace Xfp.ViewModels.PanelTools
             {
                 _infoPanelViewModel = infoPanel.DataContext as DeviceInfoPanelViewModel;
                 _infoPanelViewModel.DisplayShowFittedDevicesOnlyOption = false;
-                _infoPanelViewModel.GetDeviceName = getDeviceName;
-                _infoPanelViewModel.SetDeviceName = setDeviceName;
+                _infoPanelViewModel.GetDeviceNamesEntry = getDeviceNamesEntry;
+                _infoPanelViewModel.SetDeviceNamesEntry = setDeviceNamesEntry;
             }
 
-            DeviceConfigData.GetDeviceName = getDeviceName;
+            DeviceConfigData.GetDeviceName = getDeviceNamesEntry;
 
             _loopNum = loopNum;
-            DeviceNameKeyToValueConverter.GetDeviceName = getDeviceName;
+            DeviceNameKeyToValueConverter.GetDeviceName = getDeviceNamesEntry;
         }
 
 
@@ -259,16 +259,16 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private string getDeviceName(int index) => _data.CurrentPanel?.DeviceNamesConfig.GetName(index);
+        private string getDeviceNamesEntry(int index) => _data.CurrentPanel?.DeviceNamesConfig.GetName(index);
 
 
-        private int setDeviceName(int index, string name)
+        private int setDeviceNamesEntry(int index, string name)
         {
             //has name been deleted?
             if (string.IsNullOrEmpty(name))
             {
                 //delete from names if it was unique
-                if (countOccurrencesOfDeviceNameIndex(index) == 1)
+                if (_data.CountOccurrencesOfDeviceNameIndex(index) == 1)
                     _data.CurrentPanel.DeviceNamesConfig.Remove(index);
                 return 0;
             }
@@ -279,7 +279,7 @@ namespace Xfp.ViewModels.PanelTools
             {
                 newIdx = _data.CurrentPanel.DeviceNamesConfig.DeviceNames.IndexOf(name);
             }
-            else if (index == 0 || countOccurrencesOfDeviceNameIndex(index) > 1 && _data.CurrentPanel.DeviceNamesConfig.GetName(index) != name)
+            else if (index == 0 || _data.CountOccurrencesOfDeviceNameIndex(index) > 1 && _data.CurrentPanel.DeviceNamesConfig.GetName(index) != name)
             {
                 //name has changed and same NameIndex is in use by other device(s)
                 return _data.CurrentPanel.DeviceNamesConfig.Add(name);
@@ -291,7 +291,43 @@ namespace Xfp.ViewModels.PanelTools
             }
 
             //delete old name if it's no longer in use
-            if (newIdx != index && countOccurrencesOfDeviceNameIndex(index) == 1)
+            if (newIdx != index && _data.CountOccurrencesOfDeviceNameIndex(index) == 1)
+                _data.CurrentPanel.DeviceNamesConfig.Remove(index);
+
+            return newIdx;
+        }
+
+
+        private int setIODescription(int index, string name)
+        {
+            //has name been deleted?
+            if (string.IsNullOrEmpty(name))
+            {
+                //delete from names if it was unique
+                if (_data.CountOccurrencesOfDeviceNameIndex(index) == 1)
+                    _data.CurrentPanel.DeviceNamesConfig.Remove(index);
+                return 0;
+            }
+
+            int newIdx;
+
+            if (_data.CurrentPanel.DeviceNamesConfig.ContainsValue(name))
+            {
+                newIdx = _data.CurrentPanel.DeviceNamesConfig.DeviceNames.IndexOf(name);
+            }
+            else if (index == 0 || _data.CountOccurrencesOfDeviceNameIndex(index) > 1 && _data.CurrentPanel.DeviceNamesConfig.GetName(index) != name)
+            {
+                //name has changed and same NameIndex is in use by other device(s)
+                return _data.CurrentPanel.DeviceNamesConfig.Add(name);
+            }
+            else
+            {
+                //name has changed
+                newIdx = _data.CurrentPanel.DeviceNamesConfig.Update(index, name);
+            }
+
+            //delete old name if it's no longer in use
+            if (newIdx != index && _data.CountOccurrencesOfDeviceNameIndex(index) == 1)
                 _data.CurrentPanel.DeviceNamesConfig.Remove(index);
 
             return newIdx;
@@ -309,7 +345,7 @@ namespace Xfp.ViewModels.PanelTools
             //delete any device names that are not attached to a device
             for (int i = 1; i < _data.CurrentPanel.DeviceNamesConfig.DeviceNames.Count; i++)
                 if (!string.IsNullOrEmpty(_data.CurrentPanel.DeviceNamesConfig.DeviceNames[i]))
-                    if (countOccurrencesOfDeviceNameIndex(i) == 0)
+                    if (_data.CountOccurrencesOfDeviceNameIndex(i) == 0)
                         _data.CurrentPanel.DeviceNamesConfig.Remove(i);
 
             //close any gaps in the list (null/empty names)
@@ -375,33 +411,36 @@ namespace Xfp.ViewModels.PanelTools
         }
         
 
-        /// <summary>
-        /// Returns a count of the number of times the given name index is referenced.<br/>
-        /// NB: the index may be referenced in both the main name and in IOSettings' names.
-        /// </summary>
-        private int countOccurrencesOfDeviceNameIndex(int index)
-        {
-            var result = 0;
+        ///// <summary>
+        ///// Returns a count of the number of times the given name index is referenced.<br/>
+        ///// NB: the index may be referenced in both the main name and in IOSettings' names.
+        ///// </summary>
+        //private int countOccurrencesOfDeviceNameIndex(int index)
+        //{
+        //    var result = 0;
 
-            foreach (var l in _data.CurrentPanel.LoopConfig.Loops)
-            {
-                foreach (var d in l.Devices)
-                {
-                    if (DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
-                    {
-                        if (d.NameIndex == index)
-                            result++;
+        //    foreach (var p in _data.Panels)
+        //    {
+        //        foreach (var l in p.Value.LoopConfig.Loops)
+        //        {
+        //            foreach (var d in l.Devices)
+        //            {
+        //                if (DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
+        //                {
+        //                    if (d.NameIndex == index)
+        //                        result++;
 
-                        if (d.IsIODevice)
-                            for (int io = 1; io < d.IOConfig.Count; io++)
-                                if (d.IOConfig[io].InputOutput != IOTypes.NotUsed && d.IOConfig[io].NameIndex == index)
-                                    result++;
-                    }
-                }
-            }
+        //                    if (d.IsIODevice)
+        //                        for (int io = 1; io < d.IOConfig.Count; io++)
+        //                            if (d.IOConfig[io].InputOutput != IOTypes.NotUsed && d.IOConfig[io].NameIndex == index)
+        //                                result++;
+        //                }
+        //            }
+        //        }
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
 
         /// <summary>
@@ -525,8 +564,8 @@ namespace Xfp.ViewModels.PanelTools
                         DeviceItemViewModel newDev = new()
                         {
                             DeviceData = d,
-                            GetDeviceName = getDeviceName,
-                            SetDeviceName = setDeviceName,
+                            GetDeviceNamesEntry = getDeviceNamesEntry,
+                            SetDeviceNamesEntry = setDeviceNamesEntry,
                             ZoneData  = _data.CurrentPanel.ZoneConfig,
                             GroupData = _data.CurrentPanel.GroupConfig,
                             Index = j++

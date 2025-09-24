@@ -12,6 +12,6 @@ namespace Xfp.UI.ViewHelpers
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => null;
 
-        internal static Xfp.ViewModels.PanelTools.DeviceItemViewModel.DeviceNameGetter GetDeviceName;
+        internal static Xfp.ViewModels.PanelTools.DeviceItemViewModel.DeviceNamesEntryGetter GetDeviceName;
     }
 }

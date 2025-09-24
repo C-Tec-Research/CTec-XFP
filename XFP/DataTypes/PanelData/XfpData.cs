@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using CTecDevices.Protocol;
 using CTecUtil.Utils;
 using Xfp.DataTypes.PanelData;
+using CTecDevices;
 
 namespace Xfp.DataTypes
 {
@@ -348,6 +349,42 @@ namespace Xfp.DataTypes
             for (int i = 0; i < CEConfigData.NumEvents; i++)
                 _ceTimerTs.Add(string.Format(Cultures.Resources.Time_x, string.Format(Cultures.Resources.Time_T_x, i + 1)));
             return _ceTimerTs;
+        }
+        
+        
+
+        /// <summary>
+        /// Returns a count of the number of times the given name index is referenced.<br/>
+        /// NB: the index may be referenced in both the main name and in IOSettings' names.
+        /// </summary>
+        internal int CountOccurrencesOfDeviceNameIndex(int index)
+        {
+            if (index <= 0)
+                return 0;
+
+            var result = 0;
+
+            foreach (var p in Panels)
+            {
+                foreach (var l in p.Value.LoopConfig.Loops)
+                {
+                    foreach (var d in l.Devices)
+                    {
+                        if (DeviceTypes.IsValidDeviceType(d.DeviceType, DeviceTypes.CurrentProtocolType))
+                        {
+                            if (d.NameIndex == index)
+                                result++;
+
+                            if (d.IsIODevice)
+                                for (int io = 1; io < d.IOConfig.Count; io++)
+                                    if (d.IOConfig[io].InputOutput != IOTypes.NotUsed && d.IOConfig[io].NameIndex == index)
+                                        result++;
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

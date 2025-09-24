@@ -40,6 +40,7 @@
     <None Remove="Resources\Upload_Single.png" />
     <None Remove="Resources\ToolsConfig.json" />
     <None Remove="Resources\XfpToolsConfigfp.json" />
+    <None Remove="UI\Images\c-tec.gif" />
     <None Remove="UI\Images\menu-file-new.png" />
     <None Remove="UI\Images\menu-file-open.png" />
     <None Remove="UI\Images\menu-file-save-as.png" />
@@ -138,6 +139,7 @@
     <ProjectReference Include="..\..\CTecDevices\CTecDevices.csproj" />
     <ProjectReference Include="..\..\CTecFtdi\CTecFtdi.csproj" />
     <ProjectReference Include="..\..\CTecUtil\CTecUtil.csproj" />
+    <Resource Include="UI\Images\c-tec.gif" />
     <Resource Include="UI\Images\download-all.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

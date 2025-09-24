@@ -31,16 +31,16 @@ namespace Xfp.ViewModels.PanelTools
         private ZoneConfigData _zoneData;
         private GroupConfigData _groupData;
 
-        public delegate string DeviceNameGetter(int index);
-        public delegate int    DeviceNameSetter(int index, string value);
+        public delegate string DeviceNamesEntryGetter(int index);
+        public delegate int    DeviceNamesEntrySetter(int index, string value);
 
-        public DeviceNameGetter GetDeviceName;
-        public DeviceNameSetter SetDeviceName;
+        public DeviceNamesEntryGetter GetDeviceNamesEntry;
+        public DeviceNamesEntrySetter SetDeviceNamesEntry;
 
 
-        public int?   DeviceType  { get => _deviceData.DeviceType;   set { _deviceData.DeviceType = value; RefreshView(); OnPropertyChanged(nameof(DeviceTypeIsValid)); } }
-        public int    Zone        { get => _deviceData.Zone; set { _deviceData.Zone = value; RefreshView(); OnPropertyChanged(nameof(ZoneIsValid)); } }
-        public int    Group       { get => _deviceData.Group;        set { _deviceData.Group = value; RefreshView(); OnPropertyChanged(nameof(GroupIsValid)); } }
+        public int?   DeviceType { get => _deviceData.DeviceType;  set { _deviceData.DeviceType = value; RefreshView(); OnPropertyChanged(nameof(DeviceTypeIsValid)); } }
+        public int    Zone       { get => _deviceData.Zone;        set { _deviceData.Zone = value; RefreshView(); OnPropertyChanged(nameof(ZoneIsValid)); } }
+        public int    Group      { get => _deviceData.Group;       set { _deviceData.Group = value; RefreshView(); OnPropertyChanged(nameof(GroupIsValid)); } }
         
         public int DeviceNameIndex
         {
@@ -55,12 +55,12 @@ namespace Xfp.ViewModels.PanelTools
         
         public string DeviceName
         {
-            get => GetDeviceName?.Invoke(_deviceData.NameIndex);    //_deviceNamesData?.DeviceNames[_deviceData.NameIndex].Name;
+            get => GetDeviceNamesEntry?.Invoke(_deviceData.NameIndex);    //_deviceNamesData?.DeviceNames[_deviceData.NameIndex].Name;
             set
             {
-                if (SetDeviceName is not null)
+                if (SetDeviceNamesEntry is not null)
                 {
-                    var newIdx = SetDeviceName.Invoke(_deviceData.NameIndex, value);
+                    var newIdx = SetDeviceNamesEntry.Invoke(_deviceData.NameIndex, value);
 
                     if (newIdx != _deviceData.NameIndex)
                         _deviceData.NameIndex = newIdx;

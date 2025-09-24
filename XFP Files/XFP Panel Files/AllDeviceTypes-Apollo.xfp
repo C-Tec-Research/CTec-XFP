@@ -4347,7 +4347,7 @@ File XFPTools
       Object Item( 14 )
         Device Type = 8
         Zone = 32
-        Name = No name allocated
+        Name = rrrrrr
         Hint = 
         Group = 0
         Name Index = 0
@@ -4356,18 +4356,18 @@ File XFPTools
         Array Shared Data
           Max = 7
           Item( 0 ) = 160
-          Item( 1 ) = 0
+          Item( 1 ) = 1
           Item( 2 ) = 193
-          Item( 3 ) = 1
+          Item( 3 ) = 2
           Item( 4 ) = 240
-          Item( 5 ) = 0
+          Item( 5 ) = 3
           Item( 6 ) = 240
           Item( 7 ) = 0
         End Array
         Array SubName
           Max = 2
-          Item( 0 ) = ertrtertertert
-          Item( 1 ) = No name allocated
+          Item( 0 ) = tttt
+          Item( 1 ) = test
           Item( 2 ) = No name allocated
         End Array
       End Object
@@ -4387,7 +4387,7 @@ File XFPTools
           Item( 2 ) = 255
           Item( 3 ) = 0
           Item( 4 ) = 0
-          Item( 5 ) = 2
+          Item( 5 ) = 4
           Item( 6 ) = 255
           Item( 7 ) = 0
         End Array
@@ -4455,7 +4455,7 @@ File XFPTools
       Object Item( 18 )
         Device Type = 16
         Zone = 0
-        Name = No name allocated
+        Name = test
         Hint = 
         Group = 0
         Name Index = 0
@@ -4464,7 +4464,7 @@ File XFPTools
         Array Shared Data
           Max = 7
           Item( 0 ) = 0
-          Item( 1 ) = 0
+          Item( 1 ) = 3
           Item( 2 ) = 255
           Item( 3 ) = 0
           Item( 4 ) = 255
@@ -4490,7 +4490,7 @@ File XFPTools
         Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 129
+          Item( 0 ) = 4
           Item( 1 ) = 0
           Item( 2 ) = 7
           Item( 3 ) = 7
@@ -4509,7 +4509,7 @@ File XFPTools
       Object Item( 20 )
         Device Type = 127
         Zone = 1
-        Name = No name allocated
+        Name = rrrrrr
         Hint = 
         Group = 0
         Name Index = 0
@@ -4518,9 +4518,9 @@ File XFPTools
         Array Shared Data
           Max = 7
           Item( 0 ) = 1
-          Item( 1 ) = 0
+          Item( 1 ) = 1
           Item( 2 ) = 129
-          Item( 3 ) = 0
+          Item( 3 ) = 5
           Item( 4 ) = 255
           Item( 5 ) = 0
           Item( 6 ) = 255
@@ -4528,7 +4528,7 @@ File XFPTools
         End Array
         Array SubName
           Max = 2
-          Item( 0 ) = No name allocated
+          Item( 0 ) = asfasfafsd
           Item( 1 ) = No name allocated
           Item( 2 ) = No name allocated
         End Array
