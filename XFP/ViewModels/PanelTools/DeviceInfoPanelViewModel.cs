@@ -1134,7 +1134,7 @@ namespace Xfp.ViewModels.PanelTools
                     continue;
                 
                 //d.IOConfigItems[ioIndex].NameIndex = _data.CurrentPanel.DeviceNamesConfig.Update(d.IOConfigItems[ioIndex].NameIndex, value);
-                d.IOConfigItems[ioIndex].NameIndex = SetDeviceNamesEntry?.Invoke(1, value) ?? 0;
+                d.IOConfigItems[ioIndex].NameIndex = SetDeviceNamesEntry?.Invoke(d.IOConfigItems[ioIndex].NameIndex, value) ?? 0;
                 d.RefreshView();
             }
 

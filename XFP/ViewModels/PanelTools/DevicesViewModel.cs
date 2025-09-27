@@ -57,12 +57,13 @@ namespace Xfp.ViewModels.PanelTools
 
         public List<ObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
 
+
         public void AddLoop2()
         {
             if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Query_Add_Second_Loop, PageHeader) == MessageBoxResult.Yes)
             {
                 NumLoops = 2;
-                populateLoop(2);
+                PopulateLoop(2);
                 OnPropertyChanged(nameof(CurrentLoop));
                 OnPropertyChanged(nameof(LoopIsFitted));
             }
@@ -534,8 +535,8 @@ namespace Xfp.ViewModels.PanelTools
 
             _data = data;
  
-            populateLoop(1);
-            populateLoop(2);
+            PopulateLoop(1);
+            PopulateLoop(2);
 
             if (this is DeviceDetailsViewModel)
                 if (LoopNum > NumLoops)
@@ -547,7 +548,7 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private void populateLoop(int loop)
+        public void PopulateLoop(int loop)
         {
             if (loop == 2)
                 _loop2.Clear();
@@ -590,11 +591,17 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(LoopNum));
             OnPropertyChanged(nameof(LoopIsFitted));
             OnPropertyChanged(nameof(IsLoop1));
-            //OnPropertyChanged(nameof(Loop1));
-            //OnPropertyChanged(nameof(Loop2));
+            //OnPropertyChanged(IsLoop1 ? nameof(Loop1) : nameof(Loop2));
             OnPropertyChanged(nameof(CurrentLoop));
             OnPropertyChanged(nameof(LoopNumberDesc));
             OnPropertyChanged(nameof(IsReadOnly));
+
+            var dataCount = _data.GetLoop2DeviceList(PanelNumber).Count;
+            if (_data.GetLoop2DeviceList(PanelNumber).Count > _loop2.Count)
+            {
+                PopulateLoop(2);
+                OnPropertyChanged(nameof(Loop2));
+            }
 
             _infoPanelViewModel?.RefreshView();
 

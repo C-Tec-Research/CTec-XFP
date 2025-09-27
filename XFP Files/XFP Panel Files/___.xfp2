@@ -480,14 +480,14 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": 5
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": 5
                 },
                 {
                   "Index": 2,
@@ -504,7 +504,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 0,
+              "NameIndex": 5,
               "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -527,14 +527,14 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": 8
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": 14
                 },
                 {
                   "Index": 2,
@@ -551,7 +551,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 0,
+              "NameIndex": 8,
               "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -2219,7 +2219,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 7
+                  "NameIndex": 0
                 },
                 {
                   "Index": 1,
@@ -2243,7 +2243,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 7,
+              "NameIndex": 0,
               "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -2367,7 +2367,7 @@
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 7
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
@@ -24258,11 +24258,28 @@
           "No name allocated",
           "rr",
           "afredf",
-          "abcd",
+          null,
           "efghi",
           "abc",
           "dddd",
-          "gggg",
+          null,
+          "abcd",
+          null,
+          null,
+          null,
+          null,
+          "a",
+          "ab",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },

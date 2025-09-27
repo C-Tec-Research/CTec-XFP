@@ -268,9 +268,9 @@ namespace Xfp.DataTypes.PanelData
                         {
                             //device icon
                             var cell = new TableCell();
+                            var deviceIcon = new Image() { Source = DeviceTypes.DeviceIcon(d.DeviceType, DeviceTypes.CurrentProtocolType), Width = 14, Height = 14 };
+                            cell.Blocks.Add(new BlockUIContainer(deviceIcon));
                             tableRow.Cells.Add(cell);
-                            var image = new Image() { Source = DeviceTypes.DeviceIcon(d.DeviceType, DeviceTypes.CurrentProtocolType), Width = 14, Height = 14 };
-                            cell.Blocks.Add(new BlockUIContainer(image));
                             
                             //device type name
                             tableRow.Cells.Add(new TableCell(new Paragraph(new Run(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)))) { RowSpan = numRows, ColumnSpan = 1, Foreground = _fg, FontFamily = _ff, FontSize = _fsz, FontStretch = _str });
