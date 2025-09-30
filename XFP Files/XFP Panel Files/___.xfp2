@@ -339,7 +339,7 @@
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 13
                 },
                 {
                   "Index": 1,
@@ -363,7 +363,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 0,
+              "NameIndex": 13,
               "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -24268,7 +24268,7 @@
           null,
           null,
           null,
-          "a",
+          "a name",
           "ab",
           null,
           null,
