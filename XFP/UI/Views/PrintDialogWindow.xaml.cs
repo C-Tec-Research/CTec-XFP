@@ -22,10 +22,10 @@ namespace Xfp.UI.Views
 
             _data = data;
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, btnPrint, btnPreview);
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, btnPrint);
             
             addShortcutKey(btnPrint);
-            addShortcutKey(btnPreview);
+            //addShortcutKey(btnPreview);
 
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
@@ -65,8 +65,8 @@ namespace Xfp.UI.Views
                 // is it one of the options that have hotkeys?
                 if (text == Cultures.Resources.Option_Print)
                     command = new(() => DialogResult = true);
-                else if (text == Cultures.Resources.Option_Preview)
-                    command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
+                //else if (text == Cultures.Resources.Option_Preview)
+                //    command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
 
                 _context.HotKeys.Add(properties, command);
 
@@ -126,8 +126,8 @@ namespace Xfp.UI.Views
 
 
         private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;
-        private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
-        private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)           => _context.PrinterListIsOpen = false;
+        private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)            { _context.PrinterListIsOpen = false; setSize(); }
         private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { try { DragMove(); updateWindowParams(); } catch { } }
+        private void PrinterList_SelectionChanged(object sender, SelectionChangedEventArgs e) => setSize();
     }
 }

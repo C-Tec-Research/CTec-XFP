@@ -131,8 +131,6 @@
                                 <TextBlock Text="{Binding Programming_Tools, Source={StaticResource Resources}}" 
                                            Foreground="{StaticResource Brush09}" 
                                            HorizontalAlignment="Center" FontSize="14" Padding="0" Margin="0,-8,0,0"/>
-                                <ctc:Icon IconSvgPathData="" 
-                                      Foreground="White" Width="24" Height="24"/>
                             </StackPanel>
                             <Border Background="{StaticResource Brush01}" BorderThickness="0" CornerRadius="6" HorizontalAlignment="Center" Margin="0,5,0,0">
                                 <TextBlock Text="{Binding VersionString}" 

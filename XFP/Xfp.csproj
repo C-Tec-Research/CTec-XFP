@@ -61,6 +61,7 @@
     <None Remove="UI\Images\panels.png" />
     <None Remove="upload-single.png" />
     <None Remove="Upload_All.png" />
+    <None Remove="XfpTools.Package_TemporaryKey.pfx" />
   </ItemGroup>
 
   <ItemGroup>

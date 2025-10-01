@@ -20,7 +20,7 @@ namespace Xfp.ViewModels
 {
     public class PrintDialogWindowViewModel : ViewModelBase
     {
-        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Button printButton, Button previewButton)
+        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Button printButton)
         {
             _applicationConfig = applicationConfig;
             _pages       = pages;

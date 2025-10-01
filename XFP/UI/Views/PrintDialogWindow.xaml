@@ -15,7 +15,7 @@
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         ShowInTaskbar="True"
-        Title="{Binding Path=Last_Comms_Log, Source={StaticResource Resources}}"
+        Title="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}"
         Foreground="White"
         LayoutTransform="{Binding LayoutTransform}"
         Loaded="window_Loaded"
@@ -89,12 +89,12 @@
                                Style="{StaticResource PopupTextTitle}" 
                                Visibility="{Binding LogText, Converter={StaticResource NonNullToVisibilityConverter}}"
                                Foreground="{StaticResource Brush02}" 
-                               FontSize="13" VerticalAlignment="Center" Margin="8,0,5,0"/>
+                               FontSize="12" VerticalAlignment="Center" Margin="8,0,5,0"/>
                 </StackPanel>
                 <ctc:CloseButton Grid.Row="0" Grid.Column="5" 
                                  WindowChrome.IsHitTestVisibleInChrome="True"
                                  Click="ClosePrint_Click" 
-                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"/>
+                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,5,7,5"/>
             </Grid>
             <!--#endregion-->
 
@@ -130,20 +130,17 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Select_Printer, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Select_Printer, Source={StaticResource Resources}}" Margin="0,1,5,0"/>
                         <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboPrinter"
                                     ItemsSource="{Binding Printers}"
                                     SelectedItem="{Binding SelectedPrinter}"
+                                    
                                     PreviewMouseDown="cboPrinter_PreviewMouseDown"
-                                    MinWidth="150"/>
+                                    MinWidth="150" MaxWidth="295"/>
 
-                        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Printer_Status, Source={StaticResource Resources}}" Margin="0,2,8,0"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PrinterStatus, Converter={StaticResource PrintQueueStatusToStringConverter}}" Margin="2,2,0,0"/>-->
-
-                        <StackPanel Grid.Column="3" Orientation="Horizontal" IsEnabled="{Binding CanPrint}" HorizontalAlignment="Right" Margin="0,-1,0,0">
-                            <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
-                            <ctc:NumberSpinner Value="{Binding NumCopies}" Minimum="1" Maximum="10"/>
-                        </StackPanel>
+                        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,5,5,2"/>
+                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" Minimum="1" Maximum="10" Margin="0,5,0,0"/>-->
+                        
                     </Grid>
                     <!--#endregion-->
 
@@ -164,7 +161,6 @@
                     </StackPanel>-->
 
                     <!--#region data range-->
-
                     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0,0,10">
                         <TextBlock Text="{Binding Path=Print_Panels, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
                         <RadioButton Content="{Binding Path=Print_Current_Panel, Source={StaticResource Resources}}" GroupName="grpPanels" 
@@ -251,7 +247,13 @@
                         </StackPanel>
                     </Border>-->
                     <!--#endregion-->
+
                     
+                    <StackPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="15,10,0,30">
+                        <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,5,5,2"/>
+                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" Minimum="1" Maximum="10" Margin="0,5,0,0"/>
+                    </StackPanel>
+
 
                     <Grid x:Name="grdButtons" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" Margin="0,0,0,10">
                         
@@ -270,18 +272,13 @@
                                 IsEnabled="{Binding CanPrint}" 
                                 Click="PrintButton_Click" 
                                 MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>
-                        <!--<Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                                x:Name="btnPrint"
-                                Content="{Binding Path=Option_Print, Source={StaticResource Resources}}" 
-                                IsEnabled="false"
-                                MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>-->
 
-                        <Button Grid.Row="0" Grid.Column="1" 
+                        <!--<Button Grid.Row="0" Grid.Column="1" 
                                 x:Name="btnPreview"
                                 Content="{Binding Path=Option_Preview, Source={StaticResource Resources}}" 
                                 IsEnabled="{Binding CanPrint}" 
                                 Click="PreviewButton_Click" 
-                                MinHeight="25" Width="70" Margin="10,0,0,0"/>
+                                MinHeight="25" Width="70" Margin="10,0,0,0"/>-->
 
                         <Button Grid.Row="1" Grid.Column="1" 
                                 x:Name="btnCancel"
@@ -308,6 +305,7 @@
                 <ListView Grid.Row="0" Grid.Column="1" 
                           ItemsSource="{Binding Printers}"
                           SelectedItem="{Binding SelectedPrinter}"
+                          SelectionChanged="PrinterList_SelectionChanged"
                           MinWidth="150"/>
             </Grid>
         </Popup>
