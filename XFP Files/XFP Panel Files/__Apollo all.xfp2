@@ -521,7 +521,7 @@
               "NameIndex": 0,
               "AncillaryBaseSounderGroup": 5,
               "IsRealDevice": true,
-              "RemoteLEDEnabled": false
+              "RemoteLEDEnabled": true
             },
             {
               "DeviceType": 24,
@@ -568,7 +568,7 @@
               "NameIndex": 0,
               "AncillaryBaseSounderGroup": 6,
               "IsRealDevice": true,
-              "RemoteLEDEnabled": false
+              "RemoteLEDEnabled": true
             },
             {
               "DeviceType": 25,
@@ -662,7 +662,7 @@
               "NameIndex": 0,
               "AncillaryBaseSounderGroup": 8,
               "IsRealDevice": true,
-              "RemoteLEDEnabled": false
+              "RemoteLEDEnabled": true
             },
             {
               "DeviceType": 112,
@@ -6164,13 +6164,13 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": null,
+              "DeviceType": 12,
               "LoopNum": 0,
               "Index": 125,
-              "Zone": 0,
-              "Group": 0,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
+              "Zone": 1,
+              "Group": 1,
+              "DaySensitivity": 100,
+              "NightSensitivity": 100,
               "DayVolume": null,
               "NightVolume": null,
               "DayMode": 1,
@@ -6178,34 +6178,34 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": 11
                 },
                 {
                   "Index": 1,
                   "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 }
               ],
-              "NameIndex": 0,
+              "NameIndex": 11,
               "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -12153,11 +12153,9 @@
           "777777",
           "888888",
           "9999999",
-          "10 10 10"
-        ],
-        "TotalNamesUsedText": "11",
-        "BytesUsed": 99,
-        "BytesRemaining": 8093
+          "10 10 10",
+          "device 126"
+        ]
       },
       "ZoneConfig": {
         "Zones": [
