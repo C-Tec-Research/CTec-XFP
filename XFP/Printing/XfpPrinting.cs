@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Printing;
 using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -41,6 +42,11 @@ namespace Xfp.Printing
                     CTecMessageBox.ShowOKError(Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
                     return;
                 }
+
+                PrintUtil.PrintHandler.PrintQueue                  = printParams.Settings.PrintQueue;
+                PrintUtil.PrintHandler.PrintTicket                 = printParams.Settings.PrintTicket;
+                PrintUtil.PrintHandler.PrintTicket.PageOrientation = printParams.Settings.Orientation;
+                PrintUtil.PrintHandler.PrintTicket.CopyCount       = printParams.Settings.Copies;
 
                 // Create a FlowDocument
                 //var systemName = Cultures.Resources.XFP_Config_Print_Description + " - " + Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
@@ -86,7 +92,7 @@ namespace Xfp.Printing
                     if (printParams.PrintLoopInfo)
                     {
                         //p.Loop1Config.PrintPdf(pdfDoc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
-                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
+                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
                     }
                     //if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p, ref pageNumber);
                     //if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p, ref pageNumber);
@@ -96,7 +102,7 @@ namespace Xfp.Printing
                 }
 
                 //if (printParams.PrintComments) printComments(doc, ref pageNumber);
-
+                
                 PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
             }
             catch (Exception ex)
