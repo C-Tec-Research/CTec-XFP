@@ -8,7 +8,7 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class NetworkConfigData
     {
-        public void Print(FlowDocument doc, XfpData data, int panelNumber, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpData data, int panelNumber, ref int pageNumber)
         {
             if (pageNumber++ > 1)
                 PrintUtil.InsertPageBreak(doc);

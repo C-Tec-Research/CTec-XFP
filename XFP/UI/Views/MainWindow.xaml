@@ -448,19 +448,19 @@
                                     <Button Background="Transparent" BorderThickness="0" 
                                             Click="downloadSystem_Click" 
                                             WindowChrome.IsHitTestVisibleInChrome="True"
-                                            Style="{StaticResource HeaderButton}" VerticalAlignment="Top" Margin="0,2,0,2">
+                                            Style="{StaticResource NoBordersButton}" VerticalAlignment="Top" Margin="0,2,0,2">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="2,3,2,0">
                                             <Image Source="/UI/Images/download-all.png" Height="25"/>
-                                            <TextBlock Text="{Binding Path=Download_System, Source={StaticResource Resources}}" Style="{StaticResource HeaderButtonLabel}" Width="90" />
+                                            <TextBlock Text="{Binding Path=Download_System, Source={StaticResource Resources}}" Style="{StaticResource NoBordersButtonLabel}" Width="90" />
                                         </StackPanel>
                                     </Button>
                                     <Button Background="Transparent" BorderThickness="0" 
                                             Click="uploadSystem_Click" 
                                             WindowChrome.IsHitTestVisibleInChrome="True"
-                                            Style="{StaticResource HeaderButton}" VerticalAlignment="Top" Margin="0,2,0,2">
+                                            Style="{StaticResource NoBordersButton}" VerticalAlignment="Top" Margin="0,2,0,2">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="2,3,2,0">
                                             <Image Source="/UI/Images/upload-all.png" Height="25"/>
-                                            <TextBlock Text="{Binding Path=Upload_System, Source={StaticResource Resources}}" Style="{StaticResource HeaderButtonLabel}" Width="90" />
+                                            <TextBlock Text="{Binding Path=Upload_System, Source={StaticResource Resources}}" Style="{StaticResource NoBordersButtonLabel}" Width="90" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
@@ -472,25 +472,25 @@
                                     <Button Background="Transparent" BorderThickness="0" 
                                             Click="downloadPage_Click" 
                                             WindowChrome.IsHitTestVisibleInChrome="True"
-                                            Style="{StaticResource HeaderButton}" VerticalAlignment="Top" Margin="0,0,0,0">
+                                            Style="{StaticResource NoBordersButton}" VerticalAlignment="Top" Margin="0,0,0,0">
                                         <StackPanel Orientation="Vertical">
                                             <Border Grid.Column="1" Style="{StaticResource HeaderPanelControlsBorder}" CornerRadius="13,0,0,13" Margin="2,3,0,0" Height="25" Width="90">
                                                 <Image Source="/UI/Images/download-single.png" Height="20" />
                                             </Border>
                                             <TextBlock Text="{Binding Path=Download_Page, Source={StaticResource Resources}}"
-                                                       Style="{StaticResource HeaderButtonLabel}" Width="90"/>
+                                                       Style="{StaticResource NoBordersButtonLabel}" Width="90"/>
                                         </StackPanel>
                                     </Button>
                                     <Button Background="Transparent" BorderThickness="0" 
                                             Click="uploadPage_Click" 
                                             WindowChrome.IsHitTestVisibleInChrome="True"
-                                            Style="{StaticResource HeaderButton}" VerticalAlignment="Top" Margin="-1,0,0,0">
+                                            Style="{StaticResource NoBordersButton}" VerticalAlignment="Top" Margin="-1,0,0,0">
                                         <StackPanel Orientation="Vertical">
                                             <Border Grid.Column="1" Style="{StaticResource HeaderPanelControlsBorder}" CornerRadius="0,13,13,0" Height="25" Width="90" Margin="0,3,2,0" >
                                                 <Image Source="/UI/Images/upload-single.png" Height="20" />
                                             </Border>
                                             <TextBlock Text="{Binding Path=Upload_Page, Source={StaticResource Resources}}" 
-                                                       Style="{StaticResource HeaderButtonLabel}" Width="90" />
+                                                       Style="{StaticResource NoBordersButtonLabel}" Width="90" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>

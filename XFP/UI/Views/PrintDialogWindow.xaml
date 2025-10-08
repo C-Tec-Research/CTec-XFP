@@ -273,12 +273,12 @@
                                 Click="PrintButton_Click" 
                                 MinHeight="40" MinWidth="70" Margin="0,0,0,0"/>
 
-                        <!--<Button Grid.Row="0" Grid.Column="1" 
+                        <Button Grid.Row="0" Grid.Column="1" 
                                 x:Name="btnPreview"
                                 Content="{Binding Path=Option_Preview, Source={StaticResource Resources}}" 
                                 IsEnabled="{Binding CanPrint}" 
                                 Click="PreviewButton_Click" 
-                                MinHeight="25" Width="70" Margin="10,0,0,0"/>-->
+                                MinHeight="25" Width="70" Margin="10,0,0,0"/>
 
                         <Button Grid.Row="1" Grid.Column="1" 
                                 x:Name="btnCancel"

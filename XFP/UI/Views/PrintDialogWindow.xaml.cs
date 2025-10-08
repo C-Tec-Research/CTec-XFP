@@ -25,7 +25,7 @@ namespace Xfp.UI.Views
             DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, btnPrint);
             
             addShortcutKey(btnPrint);
-            //addShortcutKey(btnPreview);
+            addShortcutKey(btnPreview);
 
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
@@ -65,8 +65,8 @@ namespace Xfp.UI.Views
                 // is it one of the options that have hotkeys?
                 if (text == Cultures.Resources.Option_Print)
                     command = new(() => DialogResult = true);
-                //else if (text == Cultures.Resources.Option_Preview)
-                //    command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
+                else if (text == Cultures.Resources.Option_Preview)
+                    command = new(() => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview));
 
                 _context.HotKeys.Add(properties, command);
 

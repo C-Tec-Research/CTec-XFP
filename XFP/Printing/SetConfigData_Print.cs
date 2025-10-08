@@ -13,7 +13,7 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class SetConfigData
     {
-        public void Print(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
             if (pageNumber++ > 1)
                 PrintUtil.InsertPageBreak(doc);

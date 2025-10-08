@@ -22,7 +22,7 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class DeviceConfigData
     {
-        public void Print(FlowDocument doc, XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder, CTecUtil.PrintActions printAction)
+        public void GetReport(FlowDocument doc, XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder, CTecUtil.PrintActions printAction)
         {
             _doc = doc;
             _data = data;
@@ -34,7 +34,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
 
-            //var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1);
+            //var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum);
             //var table = new Table() { Name = "Loop1Devices", Tag = reportName + _pageNum };
             //setColumnHeaders(table, reportName);
 
@@ -191,7 +191,7 @@ namespace Xfp.DataTypes.PanelData
         {
             int dataRows = 0;
             
-            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1);
+            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum);
             var table = new Table() { Name = "Loop1Devices", Tag = reportName + ++_pageNum };
 
             setColumnHeaders(table, reportName);

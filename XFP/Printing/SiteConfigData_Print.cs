@@ -9,7 +9,7 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class SiteConfigData
     {
-        public void Print(FlowDocument doc)
+        public void GetReport(FlowDocument doc)
         {
             var sitePage = new Section();
             sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));

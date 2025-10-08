@@ -188,7 +188,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Button Grid.Column="1"
-                                        Style="{StaticResource HeaderButton}"
+                                        Style="{StaticResource NoBordersButton}"
                                         Background="Transparent" BorderThickness="0" 
                                         PreviewMouseDown="AddLoop2_PreviewMouseDown"
                                         Opacity="0.4"

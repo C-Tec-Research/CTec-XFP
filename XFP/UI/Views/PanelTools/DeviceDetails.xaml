@@ -148,7 +148,7 @@
                                 <RadioButton Content="2" GroupName="LoopSelector" Style="{StaticResource LoopSelectorRadioButton}" 
                                              IsChecked="{Binding IsLoop1, Converter={StaticResource BoolToInverseConverter}}" 
                                              Visibility="{Binding NumLoops, Converter={StaticResource GreaterThanOneToVisibilityConverter}}"/>
-                                <Button Style="{StaticResource HeaderButton}" 
+                                <Button Style="{StaticResource NoBordersButton}" 
                                         Background="Transparent" BorderThickness="0"
                                         Visibility="{Binding NumLoops, Converter={StaticResource EqualsOneToVisibilityConverter}}"
                                         ToolTip="{Binding Path=ToolTip_Click_To_Add_Second_Loop, Source={StaticResource Resources}}"

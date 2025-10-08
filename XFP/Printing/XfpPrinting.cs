@@ -17,6 +17,11 @@ namespace Xfp.Printing
 {
     public class XfpPrinting
     {
+        static XfpPrinting()
+        {
+            PrintUtil.OnPrintPreview = PrintPreview;
+        }
+
         public XfpPrinting()
         {
         }
@@ -76,12 +81,12 @@ namespace Xfp.Printing
 
                 //if (printParams.PrintSiteConfig)
                 //{
-                //    data.SiteConfig.Print(doc);
+                //    data.SiteConfig.GetReport(doc);
 
                 //    foreach (var i in panelList)
                 //    {
                 //        var p = data.Panels[i];
-                //        p.PanelConfig.Print(doc, p, ref pageNumber);
+                //        p.PanelConfig.GetReport(doc, p, ref pageNumber);
                 //    }
                 //}
 
@@ -92,18 +97,19 @@ namespace Xfp.Printing
                     if (printParams.PrintLoopInfo)
                     {
                         //p.Loop1Config.PrintPdf(pdfDoc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
-                        p.Loop2Config.Print(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
+                        p.Loop2Config.GetReport(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
                     }
-                    //if (printParams.PrintZones)         p.ZoneConfig.Print(doc, p, ref pageNumber);
-                    //if (printParams.PrintGroups)        p.GroupConfig.Print(doc, p, ref pageNumber);
-                    //if (printParams.PrintSets)          p.SetConfig.Print(doc, p, ref pageNumber);
-                    //if (printParams.PrintCAndE)         p.CEConfig.Print(doc, p.PanelNumber, data, ref pageNumber);
-                    //if (printParams.PrintNetworkConfig) p.NetworkConfig.Print(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
+                    //if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
+                    //if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
+                    //if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
+                    //if (printParams.PrintCAndE)         p.CEConfig.GetReport(doc, p.PanelNumber, data, ref pageNumber);
+                    //if (printParams.PrintNetworkConfig) p.NetworkConfig.GetReport(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
                 }
 
-                //if (printParams.PrintComments) printComments(doc, ref pageNumber);
-                
+                if (printParams.PrintComments) printComments(doc, ref pageNumber);
+
                 PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
+                
             }
             catch (Exception ex)
             {
@@ -111,6 +117,10 @@ namespace Xfp.Printing
             }
         }
 
+
+        private static void PrintPreview(FlowDocument document, string description, PrintParameters parameters)
+            => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).ShowDialog();
+        
 
         private static void printComments(FlowDocument doc, ref int pageNumber)
         {
