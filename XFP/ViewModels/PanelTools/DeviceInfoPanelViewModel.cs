@@ -2129,7 +2129,7 @@ namespace Xfp.ViewModels.PanelTools
             return true;
         }
 
-        private bool io Channel Is Valid(int index)  <-- reports error when multiple devices selected (change ___xfp data to HS2)
+        private bool ioChannelIsValid(int index)  //TODO: reports error when multiple devices selected (change devices in ___xfp to HS2)
         {
             if (getIOChannel(index) is int channel)
                 //return channel >= (DeviceList.Count > 0 ? -1 : 0) && channel <= (getInputOutput(index) == IOTypes.Input ? InputChannels.Count : OutputChannels.Count);

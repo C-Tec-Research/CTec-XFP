@@ -59,10 +59,11 @@ namespace Xfp.Printing
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
                 var pageMargin = new Thickness(20);
                 var pageNumber = 1;
+                double reportHeaderHeight;
 
                 var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
                 var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
-                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName));
+                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName, out reportHeaderHeight));
                 doc.Name = _printFilePrefix;
                 doc.PageHeight = printParams.PrintHandler.PrintableAreaHeight;
                 doc.PageWidth = printParams.PrintHandler.PrintableAreaWidth;
@@ -108,7 +109,7 @@ namespace Xfp.Printing
 
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
-                PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
+                PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction, reportHeaderHeight);
                 
             }
             catch (Exception ex)
@@ -119,7 +120,7 @@ namespace Xfp.Printing
 
 
         private static void PrintPreview(FlowDocument document, string description, PrintParameters parameters)
-            => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).ShowDialog();
+            => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).Show();
         
 
         private static void printComments(FlowDocument doc, ref int pageNumber)

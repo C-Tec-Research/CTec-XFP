@@ -373,8 +373,9 @@ namespace Xfp.DataTypes.PanelData
 
                     bodyGroup.Rows.Add(tableRow);
 
-                    if (++rowCount % 25 == 24)
-                        break;
+                    //if (++rowCount % 25 == 24)
+                    //    break;
+rowCount++;
                 }
 
                 table.RowGroups.Add(bodyGroup);
