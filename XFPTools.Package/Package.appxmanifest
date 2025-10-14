@@ -9,11 +9,11 @@
   <Identity
     Name="C-tecComputionicsLtd.C-TECXFPConfigurationTool"
     Publisher="CN=E2F2D306-9D7D-4B70-B87E-57444DDDB0CD"
-    Version="8.1.8.0" />
+    Version="8.1.9.0" />
 
   <Properties>
     <DisplayName>C-TEC XFP Configuration Tool</DisplayName>
-    <PublisherDisplayName>Computionics Ltd</PublisherDisplayName>
+    <PublisherDisplayName>C-Tec</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
