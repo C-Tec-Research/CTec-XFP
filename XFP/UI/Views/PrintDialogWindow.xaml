@@ -12,16 +12,12 @@
         xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
         d:DataContext="{d:DesignInstance Type=viewmodels:PrintDialogWindowViewModel}"
         mc:Ignorable="d"
-        WindowStyle="SingleBorderWindow"
-        ResizeMode="NoResize"
         ShowInTaskbar="True"
         Title="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}"
         Foreground="White"
-        LayoutTransform="{Binding LayoutTransform}"
         Loaded="window_Loaded"
         SizeChanged="window_SizeChanged"
         PreviewKeyDown="window_PreviewKeyDown"
-        PreviewMouseWheel="window_PreviewMouseWheel" 
         MouseLeftButtonDown="mouseLeftButtonDown_DragMove" 
         Margin="0" Padding="0"
         Closing="window_Closing">
@@ -65,7 +61,10 @@
     </Window.Resources>
 
 
-    <Grid x:Name="grdOuter" Margin="0" Background="{StaticResource Brush10}">
+    <!--<Border x:Name="bordContainer" 
+            Background="{StaticResource Brush10}">-->
+
+        <Grid x:Name="grdOuter" Margin="0" Background="{StaticResource Brush10}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -74,7 +73,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="grdInner">
+        <Grid x:Name="grdInner"
+              LayoutTransform="{Binding LayoutTransform}">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -312,5 +313,6 @@
         <!--#endregion-->
     
     </Grid>
+    <!--</Border>-->
 
 </Window>

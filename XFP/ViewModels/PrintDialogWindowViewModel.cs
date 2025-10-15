@@ -20,21 +20,19 @@ namespace Xfp.ViewModels
 {
     public class PrintDialogWindowViewModel : ViewModelBase
     {
-        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Button printButton)
+        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Grid outerGrid)
         {
             _applicationConfig = applicationConfig;
             _pages       = pages;
             _currentPage = currentPage;
             _panelCount  = panelCount;
+            _outerGrid   = outerGrid;
 
-            ZoomLevel = _applicationConfig.PrintParametersWindow.Scale;
-            
             var printer = _applicationConfig.LastPrinter;
             SelectedPrinter = !string.IsNullOrEmpty(printer) ? printer : new LocalPrintServer().DefaultPrintQueue.Name;
             PrintSelectedPanel = true;
 
             setCurrentPageToPrint();
-
             refreshPrinterStatus();
         }
 
@@ -44,7 +42,8 @@ namespace Xfp.ViewModels
 
         private ObservableCollection<Page> _pages = new();
         private Page _currentPage;
-        private int _panelCount;
+        private int  _panelCount;
+        private Grid _outerGrid;
 
         private ApplicationConfig _applicationConfig { get; }
 
@@ -52,9 +51,9 @@ namespace Xfp.ViewModels
         internal HotKeyList HotKeys { get => _hotKeys; set => _hotKeys = value; }
 
 
-        public void UpdateWindowParams() => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX);
+        //public void UpdateWindowParams() => _applicationConfig.UpdatePrintParametersWindowParams(LayoutTransform.ScaleX);
 
-        public void Close(Window window) => UpdateWindowParams();
+        //public void Close(Window window) => UpdateWindowParams();
 
 
         #region printer
@@ -177,19 +176,22 @@ namespace Xfp.ViewModels
         private ScaleTransform _layoutTransform;
         public ScaleTransform LayoutTransform { get => _layoutTransform; set { _layoutTransform = value; OnPropertyChanged(); } }
 
-        public double ZoomLevel
-        {
-            get => _applicationConfig.PrintParametersWindow.Scale;
-            set
-            {
-                _applicationConfig.PrintParametersWindow.Scale = value;
-                LayoutTransform = new ScaleTransform(value, value);
-                OnPropertyChanged();
-            }
-        }
+        //public double WindowWidth => _outerGrid.ActualWidth * ZoomLevel;
 
-        public void ZoomIn()  { ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + ApplicationConfig.ZoomStep, ApplicationConfig.MaxZoom); }
-        public void ZoomOut() { ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - ApplicationConfig.ZoomStep, ApplicationConfig.MinZoom); }
+        //public double ZoomLevel
+        //{
+        //    get => _applicationConfig.PrintParametersWindow.Scale;
+        //    set
+        //    {
+        //        //_applicationConfig.PrintParametersWindow.Scale = value;
+        //        //LayoutTransform = new ScaleTransform(value, value);
+        //        //OnPropertyChanged();
+        //        //OnPropertyChanged(nameof(WindowWidth));
+        //    }
+        //}
+
+        //public void ZoomIn()  { /*ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + ApplicationConfig.ZoomStep, ApplicationConfig.MaxZoom);*/ }
+        //public void ZoomOut() { /*ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - ApplicationConfig.ZoomStep, ApplicationConfig.MinZoom);*/ }
         #endregion
     }
 }

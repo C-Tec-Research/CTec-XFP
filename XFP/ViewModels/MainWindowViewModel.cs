@@ -1505,9 +1505,9 @@ namespace Xfp.ViewModels
         public bool ZoomControlIsOpen { get => _zoomControlIsOpen; set { _zoomControlIsOpen = value; OnPropertyChanged(); } }
         public bool DataPopupIsOpen   { get => _dataPopupIsOpen;   set { if (_dataPopupIsOpen = value) refreshDataInfo(); OnPropertyChanged(); } }
 
-        public double MinZoom => XfpApplicationConfig.MinZoom;
-        public double MaxZoom => XfpApplicationConfig.MaxZoom;
-        public double ZoomStep => XfpApplicationConfig.ZoomStep;
+        public double MinZoom => CTecUtil.Config.UI.MinZoom;
+        public double MaxZoom => CTecUtil.Config.UI.MaxZoom;
+        public double ZoomStep => CTecUtil.Config.UI.ZoomStep;
         public double LargeZoomStep => ZoomStep * 2;
         public double TickFrequency => (MaxZoom - MinZoom) / 4;
 

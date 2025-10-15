@@ -58,6 +58,8 @@ namespace Xfp.DataTypes.PanelData
                 ;
 
             //doc.Blocks.Add(table);
+
+            TableUtil.ResetDefaults();
         }
 
 
@@ -87,7 +89,7 @@ namespace Xfp.DataTypes.PanelData
         
 
 
-        private void setColumnHeaders(Table table, string reportHeader)
+        private void defineColumnHeaders(Table table, string reportHeader)
         {
             //measure required column widths for subaddress and IO headers
             var cellMargins      = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
@@ -134,7 +136,7 @@ namespace Xfp.DataTypes.PanelData
             table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
             table.Columns.Add(new TableColumn() { Width = new GridLength(100) });             _totalColumns++;    // name
 
-
+            
             //add header row group for the header
             var headerGroup = new TableRowGroup();
             
@@ -194,7 +196,7 @@ namespace Xfp.DataTypes.PanelData
             var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum);
             var table = new Table() { Name = "Loop1Devices", Tag = reportName + ++_pageNum };
 
-            setColumnHeaders(table, reportName);
+            defineColumnHeaders(table, reportName);
 
             try
             {

@@ -81,6 +81,8 @@ namespace Xfp.UI.Views.PanelTools
                     _context.ZoomIn();
                 else
                     _context.ZoomOut();
+
+                e.Handled = true;
             }
         }
 

@@ -8,6 +8,7 @@ using System.Windows.Input;
 using CTecControls.UI;
 using CTecUtil;
 using CTecUtil.Config;
+using Windows.Media.Devices;
 using Xfp.DataTypes;
 using Xfp.Printing;
 using Xfp.ViewModels;
@@ -22,7 +23,10 @@ namespace Xfp.UI.Views
 
             _data = data;
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, btnPrint);
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, grdOuter)
+            {
+                LayoutTransform = Config.UI.LayoutTransform,
+            };
             
             addShortcutKey(btnPrint);
             addShortcutKey(btnPreview);
@@ -30,6 +34,7 @@ namespace Xfp.UI.Views
             var owner = Application.Current.MainWindow;
             this.Left = owner.Left + owner.ActualWidth  / 2 - 150;
             this.Top  = owner.Top  + owner.ActualHeight / 2 - 240;
+            LayoutTransform = Config.UI.LayoutTransform;
         }
 
 
@@ -80,17 +85,17 @@ namespace Xfp.UI.Views
         {
             try
             {
-                this.Width = grdOuter.Width = grdInner.ActualWidth;
-                this.Height = grdOuter.Height = grdInner.ActualHeight;
+                this.Width  = grdOuter.Width  = grdInner.ActualWidth  * _context.LayoutTransform.ScaleX;
+                this.Height = grdOuter.Height = grdInner.ActualHeight * _context.LayoutTransform.ScaleY;
             }
             catch (Exception ex) { }
         }
 
 
-        private void updateWindowParams() { if (_isOpen) _context.UpdateWindowParams(); }
+        private void updateWindowParams() { /*if (_isOpen) _context.UpdateWindowParams();*/ }
 
 
-        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); _context.Close(this); }
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { updateWindowParams(); /*_context.Close(this);*/ }
 
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e) => setSize();
@@ -103,17 +108,19 @@ namespace Xfp.UI.Views
                 _context.CheckHotKey(e);
         }
 
-        private void window_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if (Keyboard.Modifiers == ModifierKeys.Control)
-            {
-                //Ctrl+mouse wheel zooms the screen
-                if (e.Delta > 0)
-                    _context.ZoomIn();
-                else
-                    _context.ZoomOut();
-            }
-        }
+        //private void window_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        //{
+        //    if (Keyboard.Modifiers == ModifierKeys.Control)
+        //    {
+        //        //Ctrl+mouse wheel zooms the screen
+        //        if (e.Delta > 0)
+        //            _context.ZoomIn();
+        //        else
+        //            _context.ZoomOut();
+
+        //        e.Handled = true;
+        //    }
+        //}
 
 
         private void window_Loaded(object sender, RoutedEventArgs e) => _isOpen = true;

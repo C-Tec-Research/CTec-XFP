@@ -110,7 +110,6 @@ namespace Xfp.Printing
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
                 PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction, reportHeaderHeight);
-                
             }
             catch (Exception ex)
             {
