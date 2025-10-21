@@ -78,33 +78,33 @@ namespace Xfp.Printing
 
                 //List<List<Grid>> report = new();
 
-                List<int> panelList = printParams.PrintAllPanels ? [..(from k in data.Panels.Keys select k)] : new() { data.CurrentPanel.PanelNumber };
+                List<int> panelList = printParams.PrintAllPanels ? [..from k in data.Panels.Keys select k] : new() { data.CurrentPanel.PanelNumber };
 
-                //if (printParams.PrintSiteConfig)
-                //{
-                //    data.SiteConfig.GetReport(doc);
+                if (printParams.PrintSiteConfig)
+                {
+                    data.SiteConfig.GetReport(doc);
 
-                //    foreach (var i in panelList)
-                //    {
-                //        var p = data.Panels[i];
-                //        p.PanelConfig.GetReport(doc, p, ref pageNumber);
-                //    }
-                //}
+                    foreach (var i in panelList)
+                    {
+                        var p = data.Panels[i];
+                        p.PanelConfig.GetReport(doc, p, ref pageNumber);
+                    }
+                }
 
                 foreach (var i in panelList)
                 {
                     var p = data.Panels[i];
-            
+                    
                     if (printParams.PrintLoopInfo)
                     {
-                        //p.Loop1Config.PrintPdf(pdfDoc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, ref pageNumber);
+                        p.Loop1Config.GetReport(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
                         p.Loop2Config.GetReport(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
                     }
-                    //if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
-                    //if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
-                    //if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
-                    //if (printParams.PrintCAndE)         p.CEConfig.GetReport(doc, p.PanelNumber, data, ref pageNumber);
-                    //if (printParams.PrintNetworkConfig) p.NetworkConfig.GetReport(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
+                    if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
+                    if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
+                    if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
+                    if (printParams.PrintCAndE)         p.CEConfig.GetReport(doc, p.PanelNumber, data, ref pageNumber);
+                    if (printParams.PrintNetworkConfig) p.NetworkConfig.GetReport(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
                 }
 
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);

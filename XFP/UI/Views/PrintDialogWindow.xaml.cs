@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Printing;
@@ -23,7 +24,12 @@ namespace Xfp.UI.Views
 
             _data = data;
 
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, grdOuter)
+            var panelLoops = new List<int>();
+            
+            foreach (var p in data.Panels)
+                panelLoops.Add(p.Value.LoopConfig.NumLoops);
+            
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, panelLoops, grdOuter)
             {
                 LayoutTransform = Config.UI.LayoutTransform,
             };

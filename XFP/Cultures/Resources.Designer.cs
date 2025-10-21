@@ -2899,11 +2899,38 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loop 1.
+        /// </summary>
+        public static string Loop_1 {
+            get {
+                return ResourceManager.GetString("Loop_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loop 2.
+        /// </summary>
+        public static string Loop_2 {
+            get {
+                return ResourceManager.GetString("Loop_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loop.
         /// </summary>
         public static string Loop_Number {
             get {
                 return ResourceManager.GetString("Loop_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loop:.
+        /// </summary>
+        public static string Loop_Select {
+            get {
+                return ResourceManager.GetString("Loop_Select", resourceCulture);
             }
         }
         

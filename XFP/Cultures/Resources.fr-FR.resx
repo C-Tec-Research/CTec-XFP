@@ -2130,4 +2130,13 @@ Toutes ses données seront perdues.</value>
   <data name="Zone_Group_Set_Abbr" xml:space="preserve">
     <value>Z/G/E</value>
   </data>
+  <data name="Loop_1" xml:space="preserve">
+    <value>Boucle 1</value>
+  </data>
+  <data name="Loop_2" xml:space="preserve">
+    <value>Boucle 2</value>
+  </data>
+  <data name="Loop_Select" xml:space="preserve">
+    <value>Boucle :</value>
+  </data>
 </root>

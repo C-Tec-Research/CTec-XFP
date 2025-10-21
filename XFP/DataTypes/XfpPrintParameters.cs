@@ -39,6 +39,6 @@ namespace Xfp.DataTypes
         public SortOrder LoopPrintOrder { get; set; } = SortOrder.Number;
 
 
-        public void SetAllPagesToPrint(bool print) => PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;
+        //public void SetAllPagesToPrint(bool print) => PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;
     }
 }

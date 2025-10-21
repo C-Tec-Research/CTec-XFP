@@ -26,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
         {
             _doc = doc;
             _data = data;
-
+            
             TableUtil.ResetDefaults();
             TableUtil.SetForeground(PrintUtil.TextForeground);
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize-2);
@@ -39,7 +39,7 @@ namespace Xfp.DataTypes.PanelData
             //setColumnHeaders(table, reportName);
 
             
-            _deviceSort = new List<DeviceData>(_data.Panels[1].Loop1Config.Devices);
+            _deviceSort = new List<DeviceData>(_data.Panels[1].LoopConfig.Loops[LoopNum].Devices);
 
             if (!printAllLoopDevices)
                 for (int i = _deviceSort.Count - 1; i > 0; i--)
@@ -77,9 +77,6 @@ namespace Xfp.DataTypes.PanelData
         private int          _pageNum = 0;
 
         private static SolidColorBrush _seeIoSettingsForeground = Styles.SeeDetailsPrintBrush;
-        private static SolidColorBrush _ioBorderBrush           = Styles.Brush06;
-        private static SolidColorBrush _ioSubheaderBrush        = Styles.Brush02;
-
         
         private readonly List<string> _defaultSubaddressNames = new() { "0", "1", "2", "3" };
         private readonly List<string> _xfpHushSubaddressNames = new() { Cultures.Resources.Subaddress_Hush_0, 
@@ -88,113 +85,12 @@ namespace Xfp.DataTypes.PanelData
                                                                         Cultures.Resources.Subaddress_Hush_3 };
         
 
-
-        private void defineColumnHeaders(Table table, string reportHeader)
-        {
-            //measure required column widths for subaddress and IO headers
-            var cellMargins      = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
-            
-            var subaddressHeader = Cultures.Resources.Subaddress_Abbr;
-            var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width + 1;
-            foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
-            {
-                var wSub = (int)TableUtil.MeasureText(s).Width + 1;
-                if (wSub > subaddressWidth) subaddressWidth = wSub;
-            }
-            subaddressWidth += cellMargins;
-
-            var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width + 1;
-            var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width + 1;
-            var ioWidth = Math.Max(wIn, wOut);
-            ioWidth += cellMargins;
-            
-            var wType = 100;
-            var wZSG  = DeviceTypes.CurrentProtocolIsXfpApollo ? 40 : 70;
-            var wName = TableUtil.MeasureText(new string('n', DeviceNamesConfigData.DeviceNameLength)).Width + 1;   //no particular reason for 'n'
-            var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + 1;
-
-            //define table's columns
-            _totalColumns = 0;
-            table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
-            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wType) });           _totalColumns++;    // type name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });              _totalColumns++;    // v/s/m
-            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });              _totalColumns++;    // day:night
-
-            if (DeviceTypes.CurrentProtocolIsXfpApollo)
-            {
-                table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // remote LED
-                table.Columns.Add(new TableColumn() { Width = new GridLength(80) });          _totalColumns++;    // base sounder grp
-            }
-            _leftColumns = _totalColumns;
-
-            table.Columns.Add(new TableColumn() { Width = new GridLength(subaddressWidth) }); _totalColumns++;    // subaddress
-            table.Columns.Add(new TableColumn() { Width = new GridLength(ioWidth) });         _totalColumns++;    // i/o
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wChan) });           _totalColumns++;    // chan
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(100) });             _totalColumns++;    // name
-
-            
-            //add header row group for the header
-            var headerGroup = new TableRowGroup();
-            
-            var headerRow1 = new TableRow();
-            var headerRow2 = new TableRow();
-            var headerRow3 = new TableRow();
-
-            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
-            
-            var colHeader = TableUtil.NewCell(reportHeader, 1, _totalColumns, FontWeights.Bold);
-            colHeader.FontSize = PrintUtil.PrintDefaultFontSize;
-            colHeader.Padding = new(5,0,0,0);
-            headerRow1.Cells.Add(colHeader);
-
-            var colNum = TableUtil.NewCell(Cultures.Resources.Number_Symbol, 3, 1, TextAlignment.Right, FontWeights.Bold);
-            colNum.Padding = new(0,0,5,0);
-            headerRow2.Cells.Add(colNum);
-
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Device_Type,             3, 2, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone_Group,              3, 1, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Device_Name,             3, 1, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume_Sensitivity_mode, 3, 1, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Day_Night,               3, 1, TextAlignment.Center, FontWeights.Bold));
-
-            if (DeviceTypes.CurrentProtocolIsXfpApollo)
-            {
-                headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Remote_LED_Header,   3, 1, TextAlignment.Center,  FontWeights.Bold));
-                headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Base_Sounder_Header, 3, 1, FontWeights.Bold));
-            }
-            
-            headerRow3.Cells.Add(TableUtil.NewCell(subaddressHeader));
-            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.I_O));
-            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Channel_Abbr));
-            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone_Group_Set_Abbr));
-            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Description_Abbr));
-
-            //add I/O config subheader & underline
-            var ioSubhead = TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold);
-            ioSubhead.BorderBrush = Styles.Brush06;
-            ioSubhead.BorderThickness = new(0,0,0,0.25);
-            headerRow2.Cells.Add(ioSubhead);
-
-
-            headerGroup.Rows.Add(headerRow1);
-            headerGroup.Rows.Add(headerRow2);
-            headerGroup.Rows.Add(headerRow3);
-            table.RowGroups.Add(headerGroup);
-        }
-        
-
-        private int _deviceIndex = 0;
-
         public bool deviceList(bool printAllLoopDevices, ref int rowCount)
         {
             int dataRows = 0;
             
-            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum);
-            var table = new Table() { Name = "Loop1Devices", Tag = reportName + ++_pageNum };
+            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1);
+            var table = new Table() { Name = "Loop" + (LoopNum + 1) + "Devices", Tag = reportName + ++_pageNum, BorderThickness = new(0) };
 
             defineColumnHeaders(table, reportName);
 
@@ -224,12 +120,17 @@ namespace Xfp.DataTypes.PanelData
                     //rows required depends on the above
                     var numRows = Math.Max(ioRows, vsmRows);
 
-                    var tableRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    //create the required number of table rows
+                    var newRows = new List<TableRow>();
+                    for (int r = 0; r < numRows; r++)
+                        newRows.Add(new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground });
+                    foreach (var row in newRows)
+                        bodyGroup.Rows.Add(row);
 
                     //device number
-                    var colNum = TableUtil.NewCell((dev.Index + 1).ToString(), TextAlignment.Right);
+                    var colNum = TableUtil.NewCell((dev.Index + 1).ToString(), numRows, 1, TextAlignment.Right);
                     colNum.Padding = new(0,0,5,0);
-                    tableRow.Cells.Add(colNum);
+                    newRows[0].Cells.Add(colNum);
 
 
                     if (DeviceTypes.IsValidDeviceType(dev.DeviceType, DeviceTypes.CurrentProtocolType))
@@ -244,29 +145,20 @@ namespace Xfp.DataTypes.PanelData
                             Margin = new(0) 
                         };
 
-                        var cellIcon = new TableCell();
-                        cellIcon.Blocks.Add(new BlockUIContainer(deviceIcon));
-                        tableRow.Cells.Add(cellIcon);
+                        //var cellIcon = new TableCell() { RowSpan = numRows, ColumnSpan = 1 };
+                        //cellIcon.Blocks.Add(new BlockUIContainer(deviceIcon));
+                        //newRows[0].Cells.Add(cellIcon);
+                        newRows[0].Cells.Add(TableUtil.NewCell(deviceIcon, numRows, 1));
 
                         //device type name
-                        //tableRow.Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)));
-                        var cellType = TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType));
-                            
-                        tableRow.Cells.Add(cellType);
+                        newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType), numRows, 1));
 
                         //zone/group/set
-                        //if (d.IsIODevice)
-                        //    tableRow.Cells.Add(TableUtil.NewCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, _seeIoSettingsForeground, FontStyles.Italic));
-                        //else
-                        //    tableRow.Cells.Add(TableUtil.NewCell(zgsDescription(false, d.IsGroupedDevice, false, d.IsGroupedDevice ? d.Group : d.Zone)));
-                        var cellZG = dev.IsIODevice ? TableUtil.NewCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, _seeIoSettingsForeground, FontStyles.Italic)
-                                                    : TableUtil.NewCell(zgsDescription(false, dev.IsGroupedDevice, false, dev.IsGroupedDevice ? dev.Group : dev.Zone));
-                        tableRow.Cells.Add(cellZG);
+                        newRows[0].Cells.Add(dev.IsIODevice ? TableUtil.NewCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic)
+                                                            : TableUtil.NewCell(zgsDescription(false, dev.IsGroupedDevice, false, dev.IsGroupedDevice ? dev.Group : dev.Zone), numRows, 1));
 
                         //name
-                        //tableRow.Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(d.NameIndex)));
-                        var cellName = TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex));
-                        tableRow.Cells.Add(cellName);
+                        newRows[0].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex), numRows, 1));
 
 
                         //volume/sensitivity/mode & day:night values
@@ -278,8 +170,6 @@ namespace Xfp.DataTypes.PanelData
                             var dnText  = new StringBuilder();
                             if (dev.IsModeDevice)
                             {
-                                //tableRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Mode));
-                                //tableRow.Cells.Add(TableUtil.NewCell(string.Format("{0}:{1}", d.DayMode, d.NightMode ?? 0)));
                                 vsmText.Append(Cultures.Resources.Mode);
                                 dnText.Append(string.Format("{0}:{1}", dev.DayMode, dev.NightMode ?? 0));
                                 modeSensVolRows++;
@@ -287,8 +177,6 @@ namespace Xfp.DataTypes.PanelData
 
                             if (dev.IsVolumeDevice)
                             {
-                                //tableRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume));
-                                //tableRow.Cells.Add(TableUtil.NewCell(string.Format("{0}:{1}", d.DayVolume, d.NightVolume ?? 0)));
                                 if (modeSensVolRows > 0)
                                 {
                                     vsmText.Append("\n");
@@ -301,8 +189,6 @@ namespace Xfp.DataTypes.PanelData
 
                             if (dev.IsSensitivityDevice)
                             {
-                                //tableRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Sensitivity));
-                                //tableRow.Cells.Add(TableUtil.NewCell(string.Format("{0}:{1}", d.DaySensitivity ?? 0, d.NightSensitivity ?? 0)));
                                 if (modeSensVolRows > 0)
                                 {
                                     vsmText.Append("\n");
@@ -313,27 +199,29 @@ namespace Xfp.DataTypes.PanelData
                                 modeSensVolRows++;
                             }
                                 
-                            tableRow.Cells.Add(TableUtil.NewCell(vsmText.ToString()));
-                            tableRow.Cells.Add(TableUtil.NewCell(dnText.ToString(), TextAlignment.Center));
+                            newRows[0].Cells.Add(TableUtil.NewCell(vsmText.ToString()));
+                            newRows[0].Cells.Add(TableUtil.NewCell(dnText.ToString(), TextAlignment.Center));
                         }
                         else
                         {
-                            tableRow.Cells.Add(TableUtil.NewCell("--"));
-                            tableRow.Cells.Add(TableUtil.NewCell("--", TextAlignment.Center));
+                            newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1));
+                            newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1, TextAlignment.Center));
                             modeSensVolRows++;
                         }
 
                         if (DeviceTypes.CurrentProtocolIsXfpApollo)
                         {
                             //remote LED
-                            tableRow.Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", TextAlignment.Center));
+                            newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", TextAlignment.Center));
 
                             //base sounder group
-                            tableRow.Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value)));
+                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value)));
                         }
+
 
                         // I/O config
                         int ioRowsUsed = 0;
+
                         if (dev.IsIODevice)
                         {
                             List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && dev.DeviceType == (int)XfpCastDeviceTypeIds.HS2
@@ -344,26 +232,18 @@ namespace Xfp.DataTypes.PanelData
                             {
                                 if (dev.IOConfig[io].InputOutput != IOTypes.NotUsed)
                                 {
-                                    if (ioRowsUsed > 0)
-                                    {
-                                        bodyGroup.Rows.Add(tableRow);
-                                        tableRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
-                                        for (int c = 0; c < _leftColumns; c++)
-                                            tableRow.Cells.Add(TableUtil.NewCell(""));
-                                    }
-
                                     var isGroup = dev.IOConfig[io].InputOutput == IOTypes.Output && dev.IsGroupedDevice;
                                     var isSet   = dev.IOConfig[io].InputOutput == IOTypes.Output && !dev.IsZonalDevice;
 
                                     if (dev.IOConfig[io].Index >= 0 && dev.IOConfig[io].Index < subaddressNames.Count)
-                                        tableRow.Cells.Add(TableUtil.NewCell(subaddressNames[dev.IOConfig[io].Index]));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(subaddressNames[dev.IOConfig[io].Index]));
                                     else
-                                        tableRow.Cells.Add(TableUtil.NewCell(""));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(""));
 
-                                    tableRow.Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
-                                    tableRow.Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
-                                    tableRow.Cells.Add(TableUtil.NewCell(zgsDescription(true, isGroup, isSet, (int)dev.IOConfig[io].ZoneGroupSet)));
-                                    tableRow.Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(zgsDescription(true, isGroup, isSet, (int)dev.IOConfig[io].ZoneGroupSet)));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
 
                                     ioRowsUsed++;
                                 }
@@ -373,17 +253,11 @@ namespace Xfp.DataTypes.PanelData
                         var rowSpan = 1 + ioRowsUsed;
                     }
 
-                    bodyGroup.Rows.Add(tableRow);
-
-                    //if (++rowCount % 25 == 24)
-                    //    break;
-rowCount++;
+                    rowCount++;
                 }
 
                 table.RowGroups.Add(bodyGroup);
                 _doc.Blocks.Add(table);
-
-                //GridUtil.AddRowToGrid(grid, 10);
             }
             catch (Exception ex) { }
             finally
@@ -391,9 +265,103 @@ rowCount++;
                 PrintUtil.ResetFont();
             }
 
-            //return new(grid);
-
             return (rowCount < _deviceSort.Count);
+        }
+
+
+        private void defineColumnHeaders(Table table, string reportHeader)
+        {
+            //measure required column widths for subaddress and IO headers
+            var cellMargins      = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            
+            var subaddressHeader = Cultures.Resources.Subaddress_Abbr;
+            var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width + 1;
+            foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
+            {
+                var wSub = (int)TableUtil.MeasureText(s).Width + 1;
+                if (wSub > subaddressWidth) subaddressWidth = wSub;
+            }
+            subaddressWidth += cellMargins;
+
+            var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width + 1;
+            var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width + 1;
+            var ioWidth = Math.Max(wIn, wOut);
+            ioWidth += cellMargins;
+            
+            var wType = 100;
+            var wZSG  = DeviceTypes.CurrentProtocolIsXfpApollo ? 40 : 70;
+            var wName = TableUtil.MeasureText(new string('n', DeviceNamesConfigData.DeviceNameLength)).Width + 1;   //no particular reason for 'n'
+            var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + 1;
+            
+
+            //define table's columns
+            _totalColumns = 0;
+            table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
+            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wType) });           _totalColumns++;    // type name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });              _totalColumns++;    // v/s/m
+            table.Columns.Add(new TableColumn() { Width = new GridLength(40) });              _totalColumns++;    // day:night
+
+            if (DeviceTypes.CurrentProtocolIsXfpApollo)
+            {
+                table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // remote LED
+                table.Columns.Add(new TableColumn() { Width = new GridLength(80) });          _totalColumns++;    // base sounder grp
+            }
+            _leftColumns = _totalColumns;
+
+            table.Columns.Add(new TableColumn() { Width = new GridLength(subaddressWidth) }); _totalColumns++;    // subaddress
+            table.Columns.Add(new TableColumn() { Width = new GridLength(ioWidth) });         _totalColumns++;    // i/o
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wChan) });           _totalColumns++;    // chan
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(100) });             _totalColumns++;    // name
+            
+            //define rows for the header
+            var headerRow1 = new TableRow();
+            var headerRow2 = new TableRow();
+            var headerRow3 = new TableRow();
+
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
+            
+            var colHeader = TableUtil.NewCell(reportHeader, 1, _totalColumns, FontWeights.Bold);
+            colHeader.FontSize = PrintUtil.PrintDefaultFontSize;
+            colHeader.Padding = new(5,0,0,0);
+            headerRow1.Cells.Add(colHeader);
+
+            var colNum = TableUtil.NewCell(Cultures.Resources.Number_Symbol, 3, 1, TextAlignment.Right, FontWeights.Bold);
+            colNum.Padding = new(0,0,5,0);
+            headerRow2.Cells.Add(colNum);
+
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Device_Type,             2, 2, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone_Group,              2, 1, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Device_Name,             3, 1, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume_Sensitivity_mode, 3, 1, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Day_Night,               3, 1, TextAlignment.Center, FontWeights.Bold));
+
+            if (DeviceTypes.CurrentProtocolIsXfpApollo)
+            {
+                headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Remote_LED_Header,   3, 1, TextAlignment.Center,  FontWeights.Bold));
+                headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Base_Sounder_Header, 3, 1, FontWeights.Bold));
+            }
+            
+            headerRow3.Cells.Add(TableUtil.NewCell(subaddressHeader));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.I_O));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Channel_Abbr));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone_Group_Set_Abbr));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Description_Abbr));
+
+            //add I/O config subheader & underline
+            var ioSubhead = TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold);
+            ioSubhead.BorderBrush = Styles.Brush06;
+            ioSubhead.BorderThickness = new(0,0,0,0.25);
+            headerRow2.Cells.Add(ioSubhead);
+
+            var headerGroup = new TableRowGroup();
+            headerGroup.Rows.Add(headerRow1);
+            headerGroup.Rows.Add(headerRow2);
+            headerGroup.Rows.Add(headerRow3);
+            table.RowGroups.Add(headerGroup);
         }
         
 

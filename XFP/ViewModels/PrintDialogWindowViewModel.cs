@@ -20,12 +20,13 @@ namespace Xfp.ViewModels
 {
     public class PrintDialogWindowViewModel : ViewModelBase
     {
-        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, Grid outerGrid)
+        public PrintDialogWindowViewModel(ApplicationConfig applicationConfig, ObservableCollection<Page> pages, Page currentPage, int panelCount, List<int> panelLoops, Grid outerGrid)
         {
             _applicationConfig = applicationConfig;
             _pages       = pages;
             _currentPage = currentPage;
             _panelCount  = panelCount;
+            _panelLoops  = panelLoops;
             _outerGrid   = outerGrid;
 
             var printer = _applicationConfig.LastPrinter;
@@ -43,6 +44,7 @@ namespace Xfp.ViewModels
         private ObservableCollection<Page> _pages = new();
         private Page _currentPage;
         private int  _panelCount;
+        private List<int> _panelLoops;
         private Grid _outerGrid;
 
         private ApplicationConfig _applicationConfig { get; }
@@ -106,11 +108,11 @@ namespace Xfp.ViewModels
         public int  PanelCount                => _panelCount;
         public bool PrintAllPanels      { get => PrintParams.PrintAllPanels;      set { PrintParams.PrintAllPanels = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSelectedPanel  { get => !PrintParams.PrintAllPanels;     set { PrintParams.PrintAllPanels = !value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) PrintParams.SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(PrintCurrentPage)); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) SetAllPagesToPrint(true); OnPropertyChanged(); OnPropertyChanged(nameof(PrintCurrentPage)); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintCurrentPage    { get => !PrintParams.PrintAllPages && !PrintParams.SelectPagesToPrint; set { if (value) { PrintParams.PrintAllPages = PrintParams.SelectPagesToPrint = false; setCurrentPageToPrint(); } OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint;  set { if (PrintParams.SelectPagesToPrint = value) PrintAllPages = false; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSiteConfig     { get => PrintParams.PrintSiteConfig;     set { PrintParams.PrintSiteConfig = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
-        public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo;       set { PrintParams.PrintLoopInfo = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
+        public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo;       set { PrintParams.PrintLoopInfo = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); OnPropertyChanged(nameof(Loop1Available)); OnPropertyChanged(nameof(Loop2Available)); } }
         public bool PrintZones          { get => PrintParams.PrintZones;          set { PrintParams.PrintZones = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintGroups         { get => PrintParams.PrintGroups;         set { PrintParams.PrintGroups = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
         public bool PrintSets           { get => PrintParams.PrintSets;           set { PrintParams.PrintSets = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanPrint)); } }
@@ -124,6 +126,12 @@ namespace Xfp.ViewModels
         public bool PrintOrderDeviceType   { get => PrintParams.LoopPrintOrder == SortOrder.Type;  set { PrintParams.LoopPrintOrder = SortOrder.Type; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDeviceNumber)); OnPropertyChanged(nameof(PrintOrderGroupZone)); } }
         public bool PrintOrderGroupZone    { get => PrintParams.LoopPrintOrder == SortOrder.ZoneGroupSet;   set { PrintParams.LoopPrintOrder = SortOrder.ZoneGroupSet; OnPropertyChanged(); OnPropertyChanged(nameof(PrintOrderDeviceNumber)); OnPropertyChanged(nameof(PrintOrderDeviceType)); } }
 
+        public bool Loop1Available      { get => PrintParams.PrintLoopInfo; }
+        public bool Loop2Available      { get => PrintParams.PrintLoopInfo && NumLoops > 1; }
+        public int  NumLoops            { get => _panelLoops;                       set { _panelLoops = value; OnPropertyChanged(nameof(NumLoops)); } }
+
+        private void SetAllPagesToPrint(bool print) => PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;
+        
 
         public bool CanPrint =>  SelectedPrinter is not null //&& (PrintAllPanels/* || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||*/)
                                                              && (PrintAllPages || PrintSiteConfig    || PrintLoopInfo || PrintZones    || PrintGroups ||
