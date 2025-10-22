@@ -26,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
             initLists();
 
             var cePage = new Section();
-            cePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration));
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
             cePage.Blocks.Add(timerEventTimes());
             cePage.Blocks.Add(new BlockUIContainer(new TextBlock()));

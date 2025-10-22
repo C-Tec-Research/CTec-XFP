@@ -101,9 +101,6 @@
       <SubType>Code</SubType>
       <DependentUpon>LoopSummary.xaml.cs</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\DeviceViewModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ViewModels\PanelTools\LoopDeviceInfoPanelViewModel.cs">
       <SubType>Code</SubType>
     </Compile>

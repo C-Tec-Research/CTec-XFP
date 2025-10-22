@@ -23,13 +23,8 @@ namespace Xfp.UI.Views
             InitializeComponent();
 
             _data = data;
-
-            var panelLoops = new List<int>();
             
-            foreach (var p in data.Panels)
-                panelLoops.Add(p.Value.LoopConfig.NumLoops);
-            
-            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data.Panels.Count, panelLoops, grdOuter)
+            DataContext = _context = new PrintDialogWindowViewModel(applicationConfig, pages, currentPage, data, grdOuter)
             {
                 LayoutTransform = Config.UI.LayoutTransform,
             };

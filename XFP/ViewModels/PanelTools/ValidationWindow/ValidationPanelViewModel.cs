@@ -10,19 +10,32 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         public ValidationPanelViewModel(string name, XfpPanelData panelData) : base(name)
         {
             _panelData = panelData;
+            _numLoops = _panelData.LoopConfig.NumLoops;
 
-            _pages = new()
-            {
-                new(Cultures.Resources.Panel_Site_Configuration),
-                new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
-                new(string.Format(Cultures.Resources.Nav_Loop_x, 2)),
-                new(Cultures.Resources.Comms_Device_Names),
-                new(Cultures.Resources.Nav_Zone_Configuration),
-                new(Cultures.Resources.Nav_Group_Configuration),
-                new(Cultures.Resources.Nav_Set_Configuration),
-                new(Cultures.Resources.Nav_C_And_E_Configuration),
-                new(Cultures.Resources.Nav_Network_Configuration),
-            };
+            _pages = _numLoops > 1 
+                ? new()
+                {
+                    new(Cultures.Resources.Panel_Site_Configuration),
+                    new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
+                    new(string.Format(Cultures.Resources.Nav_Loop_x, 2)),
+                    new(Cultures.Resources.Comms_Device_Names),
+                    new(Cultures.Resources.Nav_Zone_Configuration),
+                    new(Cultures.Resources.Nav_Group_Configuration),
+                    new(Cultures.Resources.Nav_Set_Configuration),
+                    new(Cultures.Resources.Nav_C_And_E_Configuration),
+                    new(Cultures.Resources.Nav_Network_Configuration),
+                }
+                : new() {
+                    new(Cultures.Resources.Panel_Site_Configuration),
+                    new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
+                    new(Cultures.Resources.Comms_Device_Names),
+                    new(Cultures.Resources.Nav_Zone_Configuration),
+                    new(Cultures.Resources.Nav_Group_Configuration),
+                    new(Cultures.Resources.Nav_Set_Configuration),
+                    new(Cultures.Resources.Nav_C_And_E_Configuration),
+                    new(Cultures.Resources.Nav_Network_Configuration),
+                };
+
 
             foreach (var p in _pages)
                 Add(p);
@@ -30,6 +43,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
 
 
         private XfpPanelData _panelData;
+        private int _numLoops;
         private ObservableCollection<ValidationPageViewModel> _pages;
         public ObservableCollection<ValidationPageViewModel> Pages => _pages;
 
@@ -63,11 +77,14 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 page.SetChildren(pageErrors, page, expand);
             }
 
-            if ((page = FindInChildren(Pages, string.Format(Cultures.Resources.Nav_Loop_x, 2))) is not null)
+            if (_numLoops > 1)
             {
-                allPageErrors.AddRange(pageErrors = _panelData.Loop2Config.GetPageErrorDetails().Items);
-                expand = currentPage == Cultures.Resources.Nav_Device_Details ? currentPanel == PanelNumber && currentLoop == 2 && (currentPage?.Equals(page.Name) ?? false) : false;
-                page.SetChildren(pageErrors, page, currentPanel == PanelNumber && (currentPage?.Equals(page.Name) ?? false));
+                if ((page = FindInChildren(Pages, string.Format(Cultures.Resources.Nav_Loop_x, 2))) is not null)
+                {
+                    allPageErrors.AddRange(pageErrors = _panelData.Loop2Config.GetPageErrorDetails().Items);
+                    expand = currentPage == Cultures.Resources.Nav_Device_Details ? currentPanel == PanelNumber && currentLoop == 2 && (currentPage?.Equals(page.Name) ?? false) : false;
+                    page.SetChildren(pageErrors, page, currentPanel == PanelNumber && (currentPage?.Equals(page.Name) ?? false));
+                }
             }
 
             if ((page = FindInChildren(Pages, Cultures.Resources.Comms_Device_Names)) is not null)

@@ -15,9 +15,10 @@ namespace Xfp.DataTypes.PanelData
 
             _data = data;
             _panelNumber = panelNumber;
+
+            PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Network_Configuration);
+
             var sitePage = new Section();
-            sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Network_Configuration));
-            //sitePage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration));
 
             sitePage.Blocks.Add(networkConfigTop());
             sitePage.Blocks.Add(new BlockUIContainer(new TextBlock()));

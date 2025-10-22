@@ -54,6 +54,7 @@
         <ctcvh:ValidationErrorLevelToSvgPathDataConverter x:Key="ValidationErrorLevelToSvgPathDataConverter"/>
         <ctcvh:NonZeroToVisibilityConverter x:Key="NonZeroToVisibilityConverter"/>
         <ctcvh:GreaterThanOneConverter x:Key="GreaterThanOneConverter"/>
+        <ctcvh:GreaterThanOneToVisibilityConverter x:Key="GreaterThanOneToVisibilityConverter"/>
         <ctcvh:EqualsOneToOpacity40Converter x:Key="EqualsOneToOpacity40Converter"/>
         <ctcvh:IsNullOrWhiteSpaceToBoolConverter x:Key="IsNullOrWhiteSpaceToBoolConverter"/>
         <ctcvh:NonNullToBoolConverter x:Key="NonNullToBoolConverter"/>
@@ -182,10 +183,10 @@
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
                             <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
                             <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}"/>
-                            <StackPanel Orientation="Horizontal" Visibility="{Binding NumLoops, Converter={StaticResource GreaterThanOneConverter}}" Margin="20,0,0,0">
-                                <TextBlock Text="{Binding Path=Loop_Select, Source={StaticResource Resources}}"/>
-                                <CheckBox Content="1" IsChecked="{Binding PrintLoopInfo}" Margin="0,0,10,0"/>
-                                <CheckBox Content="2" IsChecked="{Binding PrintLoopInfo}"/>
+                            <StackPanel Orientation="Horizontal" Visibility="{Binding MaxLoops, Converter={StaticResource GreaterThanOneToVisibilityConverter}}" Margin="20,0,0,0">
+                                <TextBlock Text="{Binding Path=Loop_Select, Source={StaticResource Resources}}" Opacity="{Binding LoopSelectionAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}" Margin="0,0,10,5"/>
+                                <CheckBox Content="1" IsChecked="{Binding PrintLoop1}" IsEnabled="{Binding Loop1Available}" Margin="0,0,10,0"/>
+                                <CheckBox Content="2" IsChecked="{Binding PrintLoop2}" IsEnabled="{Binding Loop2Available}" />
                             </StackPanel>
                             <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}"/>
                             <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}"/>

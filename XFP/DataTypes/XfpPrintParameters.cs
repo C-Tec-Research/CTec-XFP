@@ -23,6 +23,8 @@ namespace Xfp.DataTypes
         //public bool PrintCurrentPage   { get; set; } = true;
         public bool PrintSiteConfig    { get; set; }
         public bool PrintLoopInfo      { get; set; }
+        public bool PrintLoop1         { get; set; }
+        public bool PrintLoop2         { get; set; }
         public bool PrintZones         { get; set; }
         public bool PrintGroups        { get; set; }
         public bool PrintSets          { get; set; }

@@ -11,8 +11,8 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc)
         {
+            PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Site_Configuration);
             var sitePage = new Section();
-            sitePage.Blocks.Add(PrintUtil.PageHeader(Cultures.Resources.Nav_Site_Configuration));
             sitePage.Blocks.Add(systemConfig());
             doc.Blocks.Add(sitePage);
         }

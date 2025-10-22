@@ -18,9 +18,9 @@ namespace Xfp.DataTypes.PanelData
 
             _data = panelData;
 
-            var groupsPage = new Section();
-            groupsPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Group_Configuration));
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Group_Configuration);
 
+            var groupsPage = new Section();
             groupsPage.Blocks.Add(headerInfo());
             groupsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
             groupsPage.Blocks.Add(groupList());

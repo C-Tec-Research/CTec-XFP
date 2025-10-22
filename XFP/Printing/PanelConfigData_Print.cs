@@ -9,23 +9,18 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class PanelConfigData
     {
-        public void GetReport(FlowDocument doc, XfpPanelData data, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
             if (pageNumber++ > 1)
                 PrintUtil.InsertPageBreak(doc);
 
-            _data = data;
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x_Settings, panelData.PanelNumber));
 
             var panelPage = new Section();
-            panelPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x_Settings, _data.PanelNumber)));
-
             panelPage.Blocks.Add(systemHeader());
 
             doc.Blocks.Add(panelPage);
         }
-
-
-        XfpPanelData _data;
 
 
         public BlockUIContainer systemHeader()

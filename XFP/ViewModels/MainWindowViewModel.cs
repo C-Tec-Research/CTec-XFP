@@ -1039,7 +1039,7 @@ namespace Xfp.ViewModels
             List<string> firmwareVersions = new();
             LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
             
-
+            //file must contain valid device protocols
             if (protocols.Count == 0)
             {
                 CTecMessageBox.ShowOKError(Cultures.Resources.Error_Invalid_Xfp_Data, Cultures.Resources.Open_File);
@@ -1052,7 +1052,7 @@ namespace Xfp.ViewModels
             {
                 if (panelNumbers?.IndexOf(PanelNumber - 1) is int idx)
                 {
-                    if (idx < firmwareVersions.Count)
+                    if (idx >= 0 && idx < firmwareVersions.Count)
                     {
                         if (_data.CurrentPanel.PanelConfig.FirmwareVersionEquals(firmwareVersions[idx]) == false)
                         {

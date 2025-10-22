@@ -20,61 +20,31 @@ using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class DeviceConfigData
+    public partial class LoopConfigData
     {
-        public void GetReport(FlowDocument doc, XfpData data, int panelNumber, bool printAllLoopDevices, SortOrder printOrder, CTecUtil.PrintActions printAction)
+        public void GetReport(FlowDocument doc, int panelNumber, bool printLoop1, bool printLoop2, bool printAllLoopDevices, SortOrder printOrder, CTecUtil.PrintActions printAction)
         {
-            _doc = doc;
-            _data = data;
-            
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_Device_Details);
+
             TableUtil.ResetDefaults();
             TableUtil.SetForeground(PrintUtil.TextForeground);
-            TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize-2);
+            TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
 
-            //var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum);
-            //var table = new Table() { Name = "Loop1Devices", Tag = reportName + _pageNum };
-            //setColumnHeaders(table, reportName);
-
-            
-            _deviceSort = new List<DeviceData>(_data.Panels[1].LoopConfig.Loops[LoopNum].Devices);
-
-            if (!printAllLoopDevices)
-                for (int i = _deviceSort.Count - 1; i > 0; i--)
-                    if (!DeviceTypes.IsValidDeviceType(_deviceSort[i].DeviceType, DeviceTypes.CurrentProtocolType))
-                        _deviceSort.RemoveAt(i);
-
-            if (_printOrder == SortOrder.Type)
-                _deviceSort.Sort(compareByDeviceType);
-            else if (_printOrder == SortOrder.ZoneGroupSet)
-                _deviceSort.Sort(compareByZoneGroupSet);
-
-            
-            int rowCount = 0;
-
-            while (deviceList(printAllLoopDevices, ref rowCount))
-                ;
-
-            //doc.Blocks.Add(table);
+            if (printLoop1) printDeviceList(doc, 0, printAllLoopDevices, printOrder);
+            if (printLoop2) printDeviceList(doc, 1, printAllLoopDevices, printOrder);
 
             TableUtil.ResetDefaults();
         }
 
 
-        private XfpData _data;
-        List<DeviceData> _deviceSort;
         internal static DeviceNamesEntryGetter GetDeviceName;
 
-
-        private SortOrder _printOrder;
         private int       _totalColumns;
         private int       _leftColumns;
         private int       _ioSettingsColumns = 5;
-       
-        private FlowDocument _doc;
-        private int          _pageNum = 0;
 
         private static SolidColorBrush _seeIoSettingsForeground = Styles.SeeDetailsPrintBrush;
         
@@ -83,14 +53,14 @@ namespace Xfp.DataTypes.PanelData
                                                                         Cultures.Resources.Subaddress_Hush_1, 
                                                                         Cultures.Resources.Subaddress_Hush_2, 
                                                                         Cultures.Resources.Subaddress_Hush_3 };
-        
 
-        public bool deviceList(bool printAllLoopDevices, ref int rowCount)
+
+        public void printDeviceList(FlowDocument doc, int loopNum, bool printAllLoopDevices, SortOrder printOrder)
         {
             int dataRows = 0;
             
-            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, LoopNum + 1);
-            var table = new Table() { Name = "Loop" + (LoopNum + 1) + "Devices", Tag = reportName + ++_pageNum, BorderThickness = new(0) };
+            var reportName = string.Format(Cultures.Resources.Loop_x_Devices, loopNum + 1);
+            var table = new Table() { Name = "Loop" + (loopNum + 1) + "Devices", Tag = reportName, BorderThickness = new(0) };
 
             defineColumnHeaders(table, reportName);
 
@@ -98,9 +68,8 @@ namespace Xfp.DataTypes.PanelData
             {
                 var bodyGroup = new TableRowGroup();
 
-                for (int ii = rowCount; ii < _deviceSort.Count; ii++)
+                foreach (var dev in sortDevicesForPrinting(loopNum, printOrder, printAllLoopDevices))
                 {
-                    var dev = _deviceSort[ii];
                     dataRows++;
 
                     //find number of rows of Mode/Sensitivity/Volume values
@@ -136,19 +105,7 @@ namespace Xfp.DataTypes.PanelData
                     if (DeviceTypes.IsValidDeviceType(dev.DeviceType, DeviceTypes.CurrentProtocolType))
                     {
                         //device icon
-                        var deviceIcon = new Image()
-                        {
-                            Source = DeviceTypes.DeviceIcon(dev.DeviceType, DeviceTypes.CurrentProtocolType), 
-                            Width = 14, Height = 14, 
-                            HorizontalAlignment = HorizontalAlignment.Left, 
-                            VerticalAlignment = VerticalAlignment.Center, 
-                            Margin = new(0) 
-                        };
-
-                        //var cellIcon = new TableCell() { RowSpan = numRows, ColumnSpan = 1 };
-                        //cellIcon.Blocks.Add(new BlockUIContainer(deviceIcon));
-                        //newRows[0].Cells.Add(cellIcon);
-                        newRows[0].Cells.Add(TableUtil.NewCell(deviceIcon, numRows, 1));
+                        newRows[0].Cells.Add(TableUtil.NewCell(getDeviceIcon(dev.DeviceType), numRows, 1));
 
                         //device type name
                         newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType), numRows, 1));
@@ -212,10 +169,10 @@ namespace Xfp.DataTypes.PanelData
                         if (DeviceTypes.CurrentProtocolIsXfpApollo)
                         {
                             //remote LED
-                            newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", TextAlignment.Center));
+                            newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
 
                             //base sounder group
-                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value)));
+                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
                         }
 
 
@@ -252,20 +209,16 @@ namespace Xfp.DataTypes.PanelData
 
                         var rowSpan = 1 + ioRowsUsed;
                     }
-
-                    rowCount++;
                 }
 
                 table.RowGroups.Add(bodyGroup);
-                _doc.Blocks.Add(table);
+                doc.Blocks.Add(table);
             }
             catch (Exception ex) { }
             finally
             {
                 PrintUtil.ResetFont();
             }
-
-            return (rowCount < _deviceSort.Count);
         }
 
 
@@ -289,8 +242,8 @@ namespace Xfp.DataTypes.PanelData
             ioWidth += cellMargins;
             
             var wType = 100;
-            var wZSG  = DeviceTypes.CurrentProtocolIsXfpApollo ? 40 : 70;
-            var wName = TableUtil.MeasureText(new string('n', DeviceNamesConfigData.DeviceNameLength)).Width + 1;   //no particular reason for 'n'
+            var wZSG  = 70;
+            var wName = 85;
             var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + 1;
             
 
@@ -307,7 +260,7 @@ namespace Xfp.DataTypes.PanelData
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
                 table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // remote LED
-                table.Columns.Add(new TableColumn() { Width = new GridLength(80) });          _totalColumns++;    // base sounder grp
+                table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // base sounder grp
             }
             _leftColumns = _totalColumns;
 
@@ -315,7 +268,7 @@ namespace Xfp.DataTypes.PanelData
             table.Columns.Add(new TableColumn() { Width = new GridLength(ioWidth) });         _totalColumns++;    // i/o
             table.Columns.Add(new TableColumn() { Width = new GridLength(wChan) });           _totalColumns++;    // chan
             table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(100) });             _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
             
             //define rows for the header
             var headerRow1 = new TableRow();
@@ -365,18 +318,21 @@ namespace Xfp.DataTypes.PanelData
         }
         
 
-        private string zgsDescription(bool isIODevice, bool isGroupedDevice, bool isSetDevice, int value)
+        public List<DeviceData> sortDevicesForPrinting(int loopNum, SortOrder printOrder, bool printAll)
         {
-            if (value == 0)
-                return Cultures.Resources.Use_In_Special_C_And_E;
+            var result = new List<DeviceData>(Loops[loopNum].Devices);
 
-            if (isGroupedDevice)
-                return string.Format(Cultures.Resources.Group_x, value);
+            if (!printAll)
+                for (int i = result.Count - 1; i > 0; i--)
+                    if (!DeviceTypes.IsValidDeviceType(result[i].DeviceType, DeviceTypes.CurrentProtocolType))
+                        result.RemoveAt(i);
 
-            if (isIODevice && isSetDevice) 
-                return string.Format(Cultures.Resources.Set_x, value);
+            if (printOrder == SortOrder.Type)
+                result.Sort(compareByDeviceType);
+            else if (printOrder == SortOrder.ZoneGroupSet)
+                result.Sort(compareByZoneGroupSet);
 
-            return string.Format(Cultures.Resources.Zone_x, value);
+            return result;
         }
 
 
@@ -411,6 +367,31 @@ namespace Xfp.DataTypes.PanelData
             if (d1.IsIODevice      && d2.IsGroupedDevice) return 1;
 
             return getIOSortZGS(d1, d2).CompareTo(getIOSortZGS(d2, d1));
+        }
+        
+
+        private Image getDeviceIcon(int? deviceType)
+            => new Image()
+            {
+                Source = DeviceTypes.DeviceIcon(deviceType, DeviceTypes.CurrentProtocolType), 
+                Width = 14, Height = 14, 
+                HorizontalAlignment = HorizontalAlignment.Left, 
+                VerticalAlignment = VerticalAlignment.Center, 
+                Margin = new(0) 
+            };
+        
+        private string zgsDescription(bool isIODevice, bool isGroupedDevice, bool isSetDevice, int value)
+        {
+            if (value == 0)
+                return Cultures.Resources.Use_In_Special_C_And_E;
+
+            if (isGroupedDevice)
+                return string.Format(Cultures.Resources.Group_x, value);
+
+            if (isIODevice && isSetDevice) 
+                return string.Format(Cultures.Resources.Set_x, value);
+
+            return string.Format(Cultures.Resources.Zone_x, value);
         }
 
 

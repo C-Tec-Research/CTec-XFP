@@ -26,9 +26,9 @@ namespace Xfp.DataTypes.PanelData
             _triggerDelayedSvgData      = (string)svgPathConverter.Convert(SetTriggerTypes.Delayed,      typeof(string), null, null);
             _triggerNotTriggeredSvgData = (string)svgPathConverter.Convert(SetTriggerTypes.NotTriggered, typeof(string), null, null);
 
-            var setsPage = new Section();
-            setsPage.Blocks.Add(PrintUtil.PageHeader(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration));
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration);
 
+            var setsPage = new Section();
             setsPage.Blocks.Add(headerInfo());
             setsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
             setsPage.Blocks.Add(setList());

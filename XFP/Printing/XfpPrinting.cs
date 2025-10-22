@@ -59,47 +59,28 @@ namespace Xfp.Printing
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
                 var pageMargin = new Thickness(20);
                 var pageNumber = 1;
-                double reportHeaderHeight;
 
                 var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
                 var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
-                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName, out reportHeaderHeight));
+                FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName));
                 doc.Name = _printFilePrefix;
                 doc.PageHeight = printParams.PrintHandler.PrintableAreaHeight;
                 doc.PageWidth = printParams.PrintHandler.PrintableAreaWidth;
-                doc.PagePadding = new Thickness(15);
+                doc.PagePadding = new Thickness(25);
                 doc.ColumnGap = 0;
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
-
-                //var pdfDoc = new PdfSharp.Pdf.PdfDocument();
-                //pdfDoc.Info.Title   = Cultures.Resources.XFP_Config_Print_Description;
-                //pdfDoc.Info.Subject = sysName;
-
-
-                //List<List<Grid>> report = new();
 
                 List<int> panelList = printParams.PrintAllPanels ? [..from k in data.Panels.Keys select k] : new() { data.CurrentPanel.PanelNumber };
 
                 if (printParams.PrintSiteConfig)
-                {
                     data.SiteConfig.GetReport(doc);
-
-                    foreach (var i in panelList)
-                    {
-                        var p = data.Panels[i];
-                        p.PanelConfig.GetReport(doc, p, ref pageNumber);
-                    }
-                }
 
                 foreach (var i in panelList)
                 {
                     var p = data.Panels[i];
                     
-                    if (printParams.PrintLoopInfo)
-                    {
-                        p.Loop1Config.GetReport(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
-                        p.Loop2Config.GetReport(doc, data, p.PanelNumber, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
-                    }
+                    if (printParams.PrintSiteConfig)    p.PanelConfig.GetReport(doc, p, ref pageNumber);
+                    if (printParams.PrintLoopInfo)      p.LoopConfig.GetReport(doc, p.PanelNumber, printParams.PrintLoop1, printParams.PrintLoop2, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
                     if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
                     if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
                     if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
@@ -109,7 +90,7 @@ namespace Xfp.Printing
 
                 if (printParams.PrintComments) printComments(doc, ref pageNumber);
 
-                PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction, reportHeaderHeight);
+                PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
             }
             catch (Exception ex)
             {
