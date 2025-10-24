@@ -24342,7 +24342,7 @@
             "AlarmReset": 0,
             "EndDelays": false,
             "Day": {
-              "DependencyOption": 4,
+              "DependencyOption": 6,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
@@ -24398,7 +24398,7 @@
               "ShowAlarmReset": false
             },
             "Night": {
-              "DependencyOption": 4,
+              "DependencyOption": 5,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
@@ -24440,7 +24440,7 @@
             "AlarmReset": 0,
             "EndDelays": false,
             "Day": {
-              "DependencyOption": 4,
+              "DependencyOption": 5,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
@@ -24643,7 +24643,7 @@
               "ShowAlarmReset": false
             },
             "Night": {
-              "DependencyOption": 4,
+              "DependencyOption": 6,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
