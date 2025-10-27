@@ -24385,17 +24385,17 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
+            "MCPs": true,
             "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
-            "EndDelays": false,
+            "EndDelays": true,
             "Day": {
-              "DependencyOption": 4,
+              "DependencyOption": 1,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
+              "ShowDetectorReset": true,
+              "ShowAlarmReset": true
             },
             "Night": {
               "DependencyOption": 5,
@@ -24489,7 +24489,7 @@
             "AlarmReset": 0,
             "EndDelays": false,
             "Day": {
-              "DependencyOption": 4,
+              "DependencyOption": 0,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
@@ -24538,18 +24538,18 @@
             "AlarmReset": 0,
             "EndDelays": false,
             "Day": {
-              "DependencyOption": 4,
+              "DependencyOption": 1,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
+              "ShowDetectorReset": true,
+              "ShowAlarmReset": true
             },
             "Night": {
-              "DependencyOption": 4,
+              "DependencyOption": 2,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
-              "ShowAlarmReset": false
+              "ShowAlarmReset": true
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
@@ -24581,11 +24581,11 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
+            "MCPs": true,
+            "Detectors": false,
             "DetectorReset": 0,
             "AlarmReset": 0,
-            "EndDelays": false,
+            "EndDelays": true,
             "Day": {
               "DependencyOption": 4,
               "DetectorReset": "00:01:00",
@@ -24594,11 +24594,11 @@
               "ShowAlarmReset": false
             },
             "Night": {
-              "DependencyOption": 4,
+              "DependencyOption": 1,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
+              "ShowDetectorReset": true,
+              "ShowAlarmReset": true
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
