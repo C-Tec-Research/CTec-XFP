@@ -3,7 +3,6 @@ using CTecDevices.DeviceTypes;
 using CTecDevices.Protocol;
 using CTecUtil;
 using CTecUtil.Printing;
-using CTecUtil.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;

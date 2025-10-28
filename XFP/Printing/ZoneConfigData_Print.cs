@@ -32,6 +32,14 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+
+            GridUtil.ResetDefaults();
+            GridUtil.SetForeground(PrintUtil.TextForeground);
+            GridUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
+            GridUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
+            GridUtil.SetFontWeight(FontWeights.Normal);
+            GridUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
+            GridUtil.SetPadding(PrintUtil.DefaultGridMargin);
             
             var headerSection = new Section();
             headerSection.Blocks.Add(headerInfo());
@@ -40,6 +48,7 @@ namespace Xfp.DataTypes.PanelData
             printZones(doc);
 
             TableUtil.ResetDefaults();
+            GridUtil.ResetDefaults();
 
             //var zonesPage = new Section();
             //zonesPage.Blocks.Add(headerInfo());
@@ -99,9 +108,9 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCell(z.Relay1Delay, "ms", false, TextAlignment.Center));              //relay1
                     newRow.Cells.Add(TableUtil.NewCell(z.Relay2Delay, "ms", false, TextAlignment.Center));              //relay2
                     newRow.Cells.Add(TableUtil.NewCell(z.RemoteDelay, "ms", false, TextAlignment.Center));              //outputs
-                    newRow.Cells.Add(TableUtil.NewCellYesNo(z.Detectors, false, false, TextAlignment.Center));          //functioning with detectors
-                    newRow.Cells.Add(TableUtil.NewCellYesNo(z.MCPs,      false, false, TextAlignment.Center));          //functioning with MCPs
-                    newRow.Cells.Add(TableUtil.NewCellYesNo(z.EndDelays, false, false, TextAlignment.Center));          //multiple alarms end delays
+                    newRow.Cells.Add(TableUtil.NewCellBool(z.Detectors, false, TextAlignment.Center));                  //functioning with detectors
+                    newRow.Cells.Add(TableUtil.NewCellBool(z.MCPs,      false, TextAlignment.Center));                  //functioning with MCPs
+                    newRow.Cells.Add(TableUtil.NewCellBool(z.EndDelays, false, TextAlignment.Center));                  //multiple alarms end delays
                     newRow.Cells.Add(TableUtil.NewCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption)));    //day dependency option          
                     newRow.Cells.Add(TableUtil.NewCell(z.Day.DetectorReset, "ms", false, TextAlignment.Center));        //day dependency detector reset
                     newRow.Cells.Add(TableUtil.NewCell(z.Day.AlarmReset, "ms", false, TextAlignment.Center));           //day dependency alarm reset
@@ -126,15 +135,15 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCell(p.Relay2Delay, "ms", false, TextAlignment.Center));          //sounder delay
                     newRow.Cells.Add(TableUtil.NewCell(p.RemoteDelay, "ms", false, TextAlignment.Center));          //sounder delay
 
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("    --", row, col++));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("    --", row, col++));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
-                    //grid.Children.Add(GridUtil.GridCell("-",      row, col++, false, HorizontalAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("  --"));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("  --"));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+                    newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
                 }
 
                 table.RowGroups.Add(bodyGroup);
@@ -313,66 +322,71 @@ namespace Xfp.DataTypes.PanelData
             //define rows for the header
             var headerRow1 = new TableRow();
             var headerRow2 = new TableRow();
+            var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
+            //headerRow1.Background = PrintUtil.GridHeaderBackground;
+            //headerRow2.Background = Brushes.Yellow;
+            //headerRow3.Background = Brushes.Pink;
 
             //var colNum = TableUtil.NewCell(Cultures.Resources.Number_Symbol, 3, 1, TextAlignment.Right, FontWeights.Bold);
             //colNum.Padding = new(0,0,5,0);
             //headerRow1.Cells.Add(colNum);
-
+            
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
-            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold));
-            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold));
 
+            //headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold));
+            var opdCell = TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold);
+            opdCell.BorderBrush = Styles.Brush06;
+            opdCell.BorderThickness = new(0, 0, 0, 0.25);
+            headerRow1.Cells.Add(opdCell);
+
+            //headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold));
+            var fwCell = TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold);
+            fwCell.BorderBrush = Styles.Brush06;
+            fwCell.BorderThickness = new(0, 0, 0, 0.25);
+            headerRow1.Cells.Add(fwCell);
+            
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Sounders, TextAlignment.Center, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_1, TextAlignment.Center, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_2, TextAlignment.Center, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Outputs, TextAlignment.Center, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detectors, TextAlignment.Center, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.MCPs, TextAlignment.Center, FontWeights.Bold));
-
+            
             headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Multiple_Alarms_End_Delays, 2, 1, FontWeights.Bold));
-            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold));
-            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold));
 
-            var dayOptionCell     = TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold);
-            var dayDetectorCell   = TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold);
-            var dayAlarmCell      = TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold);
-            var nightOptionCell   = TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold);
-            var nightDetectorCell = TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold);
-            var nightAlarmCell    = TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold);
+            //headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold));
+            var ddCell = TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold);
+            ddCell.BorderBrush = Styles.Brush06;
+            ddCell.BorderThickness = new(0, 0, 0, 0.25);
+            headerRow1.Cells.Add(ddCell);
 
-            dayOptionCell.BorderBrush = Styles.Brush06;
-            dayOptionCell.BorderThickness = new(0, 0, 0, 0.25);
-            dayDetectorCell.BorderBrush = Styles.Brush06;
-            dayDetectorCell.BorderThickness = new(0, 0, 0, 0.25);
-            dayAlarmCell.BorderBrush = Styles.Brush06;
-            dayAlarmCell.BorderThickness = new(0, 0, 0, 0.25);
-            nightOptionCell.BorderBrush = Styles.Brush06;
-            nightOptionCell.BorderThickness = new(0, 0, 0, 0.25);
-            nightDetectorCell.BorderBrush = Styles.Brush06;
-            nightDetectorCell.BorderThickness = new(0, 0, 0, 0.25);
-            nightAlarmCell.BorderBrush = Styles.Brush06;
-            nightAlarmCell.BorderThickness = new(0, 0, 0, 0.25);
+            //headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold));
+            var ndCell = TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold);
+            ndCell.BorderBrush = Styles.Brush06;
+            ndCell.BorderThickness = new(0, 0, 0, 0.25);
+            headerRow1.Cells.Add(ndCell);
 
-            headerRow2.Cells.Add(dayOptionCell);
-            headerRow2.Cells.Add(dayDetectorCell);
-            headerRow2.Cells.Add(dayAlarmCell);
-            headerRow2.Cells.Add(nightOptionCell);
-            headerRow2.Cells.Add(nightDetectorCell);
-            headerRow2.Cells.Add(nightAlarmCell);
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);
             headerGroup.Rows.Add(headerRow2);
+            //headerGroup.Rows.Add(headerRow3);
 
-//var headerRow3 = new TableRow() { Background = headerRow1.Background };
+//var headerRow4 = new TableRow() { Background = headerRow1.Background };
 //var headerGrid = columnHeadersAsGrid();
 //var headerCell = new TableCell() { RowSpan = 1, ColumnSpan = _numColumns };
 //headerCell.Blocks.Add(new BlockUIContainer(headerGrid));
-//headerRow3.Cells.Add(headerCell);
-//headerGroup.Rows.Add(headerRow3);
+//headerRow4.Cells.Add(headerCell);
+//headerGroup.Rows.Add(headerRow4);
 
             table.RowGroups.Add(headerGroup);
         }
@@ -394,19 +408,29 @@ namespace Xfp.DataTypes.PanelData
                     GridUtil.AddColumnToGrid(grid);
             }
 
+            GridUtil.SetForeground(PrintUtil.TextForeground);
+            TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
+            TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
+            TableUtil.SetFontWeight(FontWeights.Normal);
+            TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
+            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+
+
             grid.Children.Add(GridUtil.GridBackground(0, 0, 1, 15, PrintUtil.GridHeaderBackground));
             grid.Children.Add(GridUtil.GridBackground(1, 0, 1, 15, PrintUtil.GridHeaderBackground));
             grid.Children.Add(GridUtil.GridBackground(2, 0, 1, 15, PrintUtil.GridHeaderBackground));
 
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Delays_Mins,         0,  2, 1, 4, HorizontalAlignment.Center, VerticalAlignment.Center, _wOutputDelaysMins));
             grid.Children.Add(GridUtil.GridHeaderCell("→",                                           0,  2, 1, 4, HorizontalAlignment.Right));
+            
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Functioning_With,           0,  6, 1, 2, HorizontalAlignment.Center, VerticalAlignment.Center, _wFunctioningWith));
+            
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Multiple_Alarms_End_Delays, 0,  8, 3, 1, HorizontalAlignment.Center, VerticalAlignment.Bottom, _wMultipleAlarmsEndDelays));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Day_Dependencies,           0,  9, 1, 3, HorizontalAlignment.Center, VerticalAlignment.Center, _wDayDependencies));
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Night_Dependencies,         0, 12, 1, 3, HorizontalAlignment.Center, VerticalAlignment.Center, _wNightDependencies));
             
             GridUtil.AddBorderToGrid(grid, 1, 2, 1, 4, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -5, 1.5, 0), 3);
-            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 2, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -5, 1.5, 0), 3);
+            GridUtil.AddBorderToGrid(grid, 1, 6, 1, 1, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -5, 1.5, 0), 3);
             GridUtil.AddBorderToGrid(grid, 1, 9, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -5, 1.5, 0), 3);
             GridUtil.AddBorderToGrid(grid, 1,12, 1, 3, _headerBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -5, 1.5, 0), 3);
 
