@@ -117,11 +117,11 @@ namespace Xfp.ViewModels
         public int  PanelCount                => _panelCount;
         public bool PrintAllPanels      { get => PrintParams.PrintAllPanels;      set { PrintParams.PrintAllPanels = value; RefreshView(); } }
         public bool PrintSelectedPanel  { get => !PrintParams.PrintAllPanels;     set { PrintParams.PrintAllPanels = !value; RefreshView(); } }
-        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) SetAllPagesToPrint(true); RefreshView(); } }
-        public bool PrintCurrentPage    { get => !PrintParams.PrintAllPages && !PrintParams.SelectPagesToPrint; set { if (value) PrintParams.PrintAllPages = PrintParams.SelectPagesToPrint = false; RefreshView(); } }
+        public bool PrintAllPages       { get => PrintParams.PrintAllPages;       set { if (PrintParams.PrintAllPages = value) SetAllPagesToPrint(true); } }
+        public bool PrintCurrentPage    { get => !PrintParams.PrintAllPages && !PrintParams.SelectPagesToPrint; set { if (value) { PrintParams.PrintAllPages = PrintParams.SelectPagesToPrint = false; setCurrentPageToPrint(); } } }
         public bool SelectPagesToPrint  { get => PrintParams.SelectPagesToPrint;  set { if (PrintParams.SelectPagesToPrint = value) PrintAllPages = false; RefreshView(); } }
         public bool PrintSiteConfig     { get => PrintParams.PrintSiteConfig;     set { PrintParams.PrintSiteConfig = value; RefreshView(); } }
-        public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo;       set { PrintParams.PrintLoopInfo = PrintLoop1 = value; if (!value) PrintLoop2 = false; RefreshView(); } }
+        public bool PrintLoopInfo       { get => PrintParams.PrintLoopInfo && (PrintLoop1 || PrintLoop2); set { PrintParams.PrintLoopInfo = PrintLoop1 = value; if (!value) PrintLoop2 = false; RefreshView(); } }
         public bool PrintLoop1          { get => PrintParams.PrintLoop1;          set { PrintParams.PrintLoop1 = value; RefreshView(); } }
         public bool PrintLoop2          { get => PrintParams.PrintLoop2;          set { PrintParams.PrintLoop2 = value; RefreshView(); } }
         public bool PrintZones          { get => PrintParams.PrintZones;          set { PrintParams.PrintZones = value; RefreshView(); } }
@@ -132,12 +132,12 @@ namespace Xfp.ViewModels
         public bool PrintComments       { get => PrintParams.PrintComments;       set { PrintParams.PrintComments = value; RefreshView(); } }
         public bool PrintEventLog       { get => PrintParams.PrintEventLog;       set { PrintParams.PrintEventLog = value; RefreshView(); } }
 
-        public bool PrintAllLoopDevices    { get => PrintParams.PrintAllLoopDevices;                      set { PrintParams.PrintAllLoopDevices = value; RefreshView(); } }
+        public bool PrintAllLoopDevices    { get => PrintParams.PrintAllLoopDevices; set { PrintParams.PrintAllLoopDevices = value; RefreshView(); } }
         public bool PrintOrderDeviceNumber { get => PrintParams.LoopPrintOrder == SortOrder.Number;       set { PrintParams.LoopPrintOrder = SortOrder.Number; RefreshView(); } }
         public bool PrintOrderDeviceType   { get => PrintParams.LoopPrintOrder == SortOrder.Type;         set { PrintParams.LoopPrintOrder = SortOrder.Type; RefreshView(); } }
         public bool PrintOrderGroupZone    { get => PrintParams.LoopPrintOrder == SortOrder.ZoneGroupSet; set { PrintParams.LoopPrintOrder = SortOrder.ZoneGroupSet; RefreshView(); } }
 
-        public bool LoopSelectionAvailable => PrintParams.SelectPagesToPrint && PrintParams.PrintLoopInfo;
+        public bool LoopSelectionAvailable => PrintParams.SelectPagesToPrint && PrintParams.PrintLoopInfo && (PrintLoop1 || PrintLoop2);
         public bool Loop1Available         => PrintParams.PrintLoopInfo;
         public bool Loop2Available         => PrintParams.PrintLoopInfo && (PrintAllPanels || _currentPanelLoopCount > 1);
         public int MaxLoops
@@ -149,13 +149,6 @@ namespace Xfp.ViewModels
                 return result;
             }
         }
-
-        private void SetAllPagesToPrint(bool print)
-        {
-            PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;
-            PrintLoop1 = print;
-            PrintLoop2 = print && MaxLoops > 1;
-        }
         
 
         public bool CanPrint =>  SelectedPrinter is not null //&& (PrintAllPanels/* || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||*/)
@@ -166,6 +159,13 @@ namespace Xfp.ViewModels
 
         //private void setAllPagesToPrint(bool value) => PrintSiteConfig = PrintLoopInfo      = PrintZones = PrintGroups   = PrintSets 
         //                                             = PrintSiteConfig = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = value;
+
+        private void SetAllPagesToPrint(bool print)
+        {
+            PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = print;
+            PrintLoop1 = print;
+            PrintLoop2 = print && MaxLoops > 1;
+        }
 
         private void setCurrentPageToPrint()
         {

@@ -1,9 +1,4 @@
-﻿using CTecDevices;
-using CTecDevices.DeviceTypes;
-using CTecDevices.Protocol;
-using CTecUtil;
-using CTecUtil.Printing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Security.Policy;
@@ -14,7 +9,13 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Xfp.UI;
+using CTecControls.UI;
+using CTecDevices;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using CTecUtil;
+using CTecUtil.Utils;
+using CTecUtil.Printing;
 using static Xfp.ViewModels.PanelTools.DeviceItemViewModel;
 
 namespace Xfp.DataTypes.PanelData
@@ -25,6 +26,7 @@ namespace Xfp.DataTypes.PanelData
         {
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_Device_Details);
 
+            GridUtil.ResetDefaults();
             TableUtil.ResetDefaults();
             TableUtil.SetForeground(PrintUtil.TextForeground);
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
@@ -32,8 +34,8 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
 
-            if (printLoop1) printDeviceList(doc, 0, printAllLoopDevices, printOrder);
-            if (printLoop2) printDeviceList(doc, 1, printAllLoopDevices, printOrder);
+            if (printLoop1) doc.Blocks.Add(printDeviceList(0, printAllLoopDevices, printOrder));
+            if (printLoop2) doc.Blocks.Add(printDeviceList(1, printAllLoopDevices, printOrder));
 
             TableUtil.ResetDefaults();
         }
@@ -54,17 +56,18 @@ namespace Xfp.DataTypes.PanelData
                                                                         Cultures.Resources.Subaddress_Hush_3 };
 
 
-        public void printDeviceList(FlowDocument doc, int loopNum, bool printAllLoopDevices, SortOrder printOrder)
+        private Table printDeviceList(int loopNum, bool printAllLoopDevices, SortOrder printOrder)
         {
             int dataRows = 0;
             
             var reportName = string.Format(Cultures.Resources.Loop_x_Devices, loopNum + 1);
-            var table = new Table() { Name = "Loop" + (loopNum + 1) + "Devices", Tag = reportName, BorderThickness = new(0) };
-
-            defineColumnHeaders(table, reportName);
 
             try
             {
+                var table = TableUtil.NewTable(reportName);
+
+                defineColumnHeaders(table, reportName);
+
                 var bodyGroup = new TableRowGroup();
 
                 foreach (var dev in sortDevicesForPrinting(loopNum, printOrder, printAllLoopDevices))
@@ -104,7 +107,7 @@ namespace Xfp.DataTypes.PanelData
                     if (DeviceTypes.IsValidDeviceType(dev.DeviceType, DeviceTypes.CurrentProtocolType))
                     {
                         //device icon
-                        newRows[0].Cells.Add(TableUtil.NewCell(getDeviceIcon(dev.DeviceType), numRows, 1));
+                        newRows[0].Cells.Add(TableUtil.NewCellImage(getDeviceIcon(dev.DeviceType), numRows, 1));
 
                         //device type name
                         newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType), numRows, 1));
@@ -211,9 +214,13 @@ namespace Xfp.DataTypes.PanelData
                 }
 
                 table.RowGroups.Add(bodyGroup);
-                doc.Blocks.Add(table);
+                return table;
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                return null;
+            }
             finally
             {
                 PrintUtil.ResetFont();
@@ -304,10 +311,7 @@ namespace Xfp.DataTypes.PanelData
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Description_Abbr));
 
             //add I/O config subheader & underline
-            var ioSubhead = TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold);
-            ioSubhead.BorderBrush = Styles.Brush06;
-            ioSubhead.BorderThickness = new(0,0,0,0.25);
-            headerRow2.Cells.Add(ioSubhead);
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold), Styles.Brush06));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);
@@ -379,6 +383,7 @@ namespace Xfp.DataTypes.PanelData
                 Margin = new(0) 
             };
         
+
         private string zgsDescription(bool isIODevice, bool isGroupedDevice, bool isSetDevice, int value)
         {
             if (value == 0)

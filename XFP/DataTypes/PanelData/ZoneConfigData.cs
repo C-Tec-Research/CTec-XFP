@@ -46,6 +46,8 @@ namespace Xfp.DataTypes.PanelData
         public static readonly TimeSpan MaxDetectorReset = new(0,  1, 0);
         public static readonly TimeSpan MaxAlarmReset    = new(0, 30, 0);
         public static readonly TimeSpan MaxSetDelay      = new(0, 10, 0);
+        
+        public ZonePanelConfigData ZonePanelData { get; set; }
 
         public List<ZoneData> Zones { get; set; }
         public TimeSpan InputDelay { get; set; }

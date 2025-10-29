@@ -1,13 +1,16 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
+using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using CTecUtil.Printing;
-using CTecUtil.Utils;
-using static Xfp.DataTypes.PanelData.GroupConfigData;
-using Xfp.UI;
+using System.Xml.Linq;
+using Windows.ApplicationModel.Email.DataProvider;
 using Xfp.UI.ViewHelpers;
+using static Xfp.DataTypes.PanelData.GroupConfigData;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -20,39 +23,53 @@ namespace Xfp.DataTypes.PanelData
 
             _data = panelData;
 
+            GridUtil.ResetDefaults();
+            TableUtil.ResetDefaults();
+            TableUtil.SetForeground(PrintUtil.TextForeground);
+            TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
+            TableUtil.SetFontWeight(FontWeights.Normal);
+            TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
+            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration);
+
+            var headerSection = new Section();
+            headerSection.Blocks.Add(headerInfo());
+            doc.Blocks.Add(headerSection);
+            doc.Blocks.Add(printSets());
+
+            TableUtil.ResetDefaults();
+        }
+        
+
+        private XfpPanelData _data;
+        private double _wNum;
+        private double _wName;
+        private double _wNumGroup;
+        private double _wPanelRelayTriggered = 40;
+        private double _wArrow;
+        private double _wSilenceable;
+        private double _arrowFontSize = 16;
+        private Size   _iconSize = new(16, 15);
+        private int    _wDivider = 10;
+        private const int _setIdColumns = 2;
+        private const int _separatorColumns = 1;
+        private const int _totalColumns = NumOutputSetTriggers + NumPanelRelayTriggers + _setIdColumns + _separatorColumns;
+        private static SolidColorBrush _panelRelayHeaderBrush    = Xfp.UI.Styles.PrintPanelRelayHeaderBrush;
+        private static string _triggerPulsedSvgData;
+        private static string _triggerContinuousSvgData;
+        private static string _triggerDelayedSvgData;
+        private static string _triggerNotTriggeredSvgData;
+
+
+        private void initializeIconPathData()
+        {
             var svgPathConverter = new SetTriggerTypeToSvgPathConverter();
             _triggerPulsedSvgData       = (string)svgPathConverter.Convert(SetTriggerTypes.Pulsed,       typeof(string), null, null);
             _triggerContinuousSvgData   = (string)svgPathConverter.Convert(SetTriggerTypes.Continuous,   typeof(string), null, null);
             _triggerDelayedSvgData      = (string)svgPathConverter.Convert(SetTriggerTypes.Delayed,      typeof(string), null, null);
             _triggerNotTriggeredSvgData = (string)svgPathConverter.Convert(SetTriggerTypes.NotTriggered, typeof(string), null, null);
-
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration);
-
-            var setsPage = new Section();
-            setsPage.Blocks.Add(headerInfo());
-            setsPage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            setsPage.Blocks.Add(setList());
-
-            doc.Blocks.Add(setsPage);
         }
-        
-
-        private XfpPanelData _data;
-        private const int _setIdColumns = 2;
-        private const int _separatorColumns = 1;
-        private const int _totalColumns = NumOutputSetTriggers + NumPanelRelayTriggers + _setIdColumns + _separatorColumns;
-        private static SolidColorBrush _silenceableSetsBrush     = Styles.Brush07;
-        private static SolidColorBrush _columnSeparatorBrush     = Styles.ColumnSeparatorBrush;
-        private static SolidColorBrush _outputSetsBorderBrush    = Styles.Brush06;
-        private static SolidColorBrush _panelRelayHeaderBrush    = Styles.PrintPanelRelayHeaderBrush;
-        private static SolidColorBrush _triggerPulsedBrush       = Styles.TriggerPulsedBrush;
-        private static SolidColorBrush _triggerContinuousBrush   = Styles.TriggerContinuousBrush;
-        private static SolidColorBrush _triggerDelayedBrush      = Styles.TriggerDelayedBrush;
-        private static SolidColorBrush _triggerNotTriggeredBrush = Styles.TriggerNotTriggeredBrush;
-        private static string _triggerPulsedSvgData;
-        private static string _triggerContinuousSvgData;
-        private static string _triggerDelayedSvgData;
-        private static string _triggerNotTriggeredSvgData;
 
 
         private BlockUIContainer headerInfo()
@@ -70,127 +87,159 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        public BlockUIContainer setList()
+        private Table printSets()
         {
-            var grid = columnHeaders();
+            initializeIconPathData();
 
-            //add the rows for the data
-            for (int i = 0; i < _data.ZoneConfig.Zones.Count + _data.ZonePanelConfig.Panels.Count; i++)
-                    GridUtil.AddRowToGrid(grid);
+            int dataRows = 0;
 
-            int row = 4;
+            var reportName = Cultures.Resources.Nav_Group_Configuration;
 
-            //zone & panel names
-            for (int z = 0; z < _data.ZoneConfig.Zones.Count; z++)
+            try
             {
-                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                var table = TableUtil.NewTable(reportName);
 
-                grid.Children.Add(GridUtil.GridCell(_data.ZoneConfig.Zones[z].Number, row, 0, HorizontalAlignment.Right));
-                grid.Children.Add(GridUtil.GridCell(_data.ZoneConfig.Zones[z].Name,   row++, 1));
+                defineColumnHeaders(table, reportName);
+                printSilenceableSets(table);                
+
+                var bodyGroup = new TableRowGroup();
+
+                for (int i = 0; i < Sets.Count; i++)
+                {
+                    dataRows++;
+
+                    //create the new row
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    bodyGroup.Rows.Add(newRow);
+
+                    if (i < _data.ZoneConfig.Zones.Count)
+                    {
+                        newRow.Cells.Add(TableUtil.NewCell((_data.ZoneConfig.Zones[i].Index + 1).ToString(), 1, 1, TextAlignment.Right));                   //zone number
+                        newRow.Cells.Add(TableUtil.NewCell(_data.ZoneConfig.Zones[i].Name));                                                                //zone name
+
+                        for (int t = 0; t < NumOutputSetTriggers; t++)
+                            newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(Sets[i].OutputSetTriggers[t]), 1, 1, _iconSize));
+
+                        newRow.Cells.Add(TableUtil.NewCell(""));
+
+                        for (int t = 0; t < NumPanelRelayTriggers; t++)
+                            newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(Sets[i].PanelRelayTriggers[t]), 1, 1, _iconSize));
+                    }
+                    else if (i < _data.ZoneConfig.Zones.Count + _data.ZonePanelConfig.Panels.Count)
+                    {
+                        var ii = i - _data.ZoneConfig.Zones.Count;
+                        newRow.Cells.Add(TableUtil.NewCell((_data.ZonePanelConfig.Panels[ii].Index + 1).ToString(), 1, 1, TextAlignment.Right));            //panel number
+                        newRow.Cells.Add(TableUtil.NewCell(_data.ZonePanelConfig.Panels[ii].Name));                                                         //panel name
+
+                        for (int t = 0; t < NumOutputSetTriggers; t++)
+                            newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(Sets[i].OutputSetTriggers[t]), 1, 1, _iconSize));
+
+                        newRow.Cells.Add(TableUtil.NewCell(""));
+
+                        for (int t = 0; t < NumPanelRelayTriggers; t++)
+                            newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(Sets[i].PanelRelayTriggers[t]), 1, 1, _iconSize));
+                    }
+                }
+
+                table.RowGroups.Add(bodyGroup);
+                return table;
             }
-
-            for (int p = 0; p < _data.ZonePanelConfig.Panels.Count; p++)
+            catch (Exception ex)
             {
-                grid.Children.Add(GridUtil.GridBackground(row, 0, 1, _totalColumns, Int32.IsOddInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
-
-                grid.Children.Add(GridUtil.GridCell(_data.ZonePanelConfig.Panels[p].Number, row, 0, HorizontalAlignment.Right));
-                grid.Children.Add(GridUtil.GridCell(_data.ZonePanelConfig.Panels[p].Name,   row++, 1));
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                return null;
             }
+            finally
+            {
+                PrintUtil.ResetFont();
+            }
+        }
 
 
-            row = 3;
-            int col = _setIdColumns;
+        private void printSilenceableSets(Table table)
+        {
+            var bodyGroup = new TableRowGroup();
+            var sisetRow = new TableRow() { Background = Xfp.UI.Styles.Brush08 };
+            bodyGroup.Rows.Add(sisetRow);
 
-            //Silenceable sets
+            sisetRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
+            
             for (int t = 0; t < NumOutputSetTriggers; t++)
-                grid.Children.Add(GridUtil.GridCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], row, col++, true, true));
-            col++;
+                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 14, FontWeights.Normal, TextAlignment.Center));
+
+            sisetRow.Cells.Add(TableUtil.NewCell(""));
+            
             for (int t = 0; t < NumPanelRelayTriggers; t++)
-                grid.Children.Add(GridUtil.GridCellBool(_data.ZoneConfig.PanelRelayIsSilenceable[t], row, col++, true, true));
+                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 14, FontWeights.Normal, TextAlignment.Center));
+            
+            sisetRow.Cells.Add(TableUtil.NewCell("←", _arrowFontSize));
+            sisetRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Is_Set_Silenceable));
 
-            row++;
-
-            //trigger icons
-            for (int s = 0; s < Sets.Count; s++)
-            {
-                col = _setIdColumns;
-
-                for (int t = 0; t < NumOutputSetTriggers; t++)
-                    grid.Children.Add(GridCellTriggerIcon(Sets[s].OutputSetTriggers[t], row, col++));
-                
-                grid.Children.Add(GridUtil.GridBackground(row, col++, 1, 1, _columnSeparatorBrush));
-
-                for (int t = 0; t < NumPanelRelayTriggers; t++)
-                    grid.Children.Add(GridCellTriggerIcon(Sets[s].PanelRelayTriggers[t], row, col++));
-
-                row++;
-            }
-
-            GridUtil.AddRowToGrid(grid, 10);
-
-            return new(grid);
+            table.RowGroups.Add(bodyGroup);
         }
 
 
         private Grid columnHeaders()
         {
             Grid grid = new Grid();
-
-            GridUtil.AddRowToGrid(grid);
-            GridUtil.AddRowToGrid(grid, 7);
-            GridUtil.AddRowToGrid(grid);
-            GridUtil.AddRowToGrid(grid);
-
-            for (int i = 0; i < Sets.Count; i++)
-                GridUtil.AddRowToGrid(grid);
-            
-            for (int i = 0; i < _setIdColumns; i++)
-                GridUtil.AddColumnToGrid(grid);
-
-            for (int i = 0; i < NumOutputSetTriggers; i++)
-                GridUtil.AddColumnToGrid(grid, 18);
-            
-            GridUtil.AddColumnToGrid(grid, 8);
-            
-            for (int i = 0; i < NumPanelRelayTriggers; i++)
-                GridUtil.AddColumnToGrid(grid, 18);
- 
-
-            //header backgrounds
-            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(GridUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(GridUtil.GridBackground(2, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-            grid.Children.Add(GridUtil.GridBackground(3, 0, 1, _totalColumns, _silenceableSetsBrush));
-
-
-            //header text
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Output_Set_Triggered, 0, 2, 1, NumOutputSetTriggers, HorizontalAlignment.Center));
-            GridUtil.AddBorderToGrid(grid, 1, 2, 1, NumOutputSetTriggers, _outputSetsBorderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
-
-            grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Relay_Triggered, 0, 0, 1, _totalColumns, HorizontalAlignment.Right), _panelRelayHeaderBrush));
-            GridUtil.AddBorderToGrid(grid, 1, _totalColumns - 2, 1, NumPanelRelayTriggers, _panelRelayHeaderBrush, new Thickness(1, 1, 1, 0), new CornerRadius(0), new(1.5, -2, 1.5, 0), 3);
-            
-
-            //set numbers
-            int col = _setIdColumns;
-            for (int i = 0; i < NumSounderGroups; i++)
-                grid.Children.Add(GridUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center));
-            col++;
-            for (int i = 0; i < NumPanelRelayTriggers; i++)
-                grid.Children.Add(GridUtil.SetForeground(GridUtil.GridHeaderCell(i + 1, 2, col++, HorizontalAlignment.Center), _panelRelayHeaderBrush));
-
-            
-            //zone Num and name
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone, 3, 0, 1, 2));
-            
-            
-            //Is set silenceable label
-            GridUtil.AddColumnToGrid(grid);
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell("← ", 3, _totalColumns, false, 16), new(3,-2,0,0)));
-            GridUtil.AddColumnToGrid(grid);
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Is_Set_Silenceable, 3, _totalColumns + 1), new(0,2,0,2)));
-
             return grid;
+        }
+
+
+        private void defineColumnHeaders(Table table, string reportHeader)
+        {     
+            setColumnWidths();
+
+            //define table's columns
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wNum) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });
+            for (int i = 0; i < NumOutputSetTriggers; i++)
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDivider) });
+            for (int i = 0; i < NumPanelRelayTriggers; i++)
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_wPanelRelayTriggered / 2) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wArrow) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wSilenceable) });
+
+            //define rows for the header
+            var headerRow1 = new TableRow();
+            var headerRow2 = new TableRow();
+
+            headerRow1.Background = headerRow2.Background = PrintUtil.GridHeaderBackground;
+            
+            headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2));
+            headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2));
+            
+            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow1.Cells.Add(TableUtil.NewCell("", 1, 1));
+            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 1, NumPanelRelayTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            
+            for (int i = 0; i < NumOutputSetTriggers; i++)
+                headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+
+            headerRow2.Cells.Add(TableUtil.NewCell("", 1, 1));
+
+            for (int i = 0; i < NumPanelRelayTriggers; i++)
+                headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+    
+            var headerGroup = new TableRowGroup();
+            headerGroup.Rows.Add(headerRow1);
+            headerGroup.Rows.Add(headerRow2);
+
+            table.RowGroups.Add(headerGroup);
+        }
+
+
+        private void setColumnWidths()
+        {
+            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            
+            //measure required column widths for columns
+            _wNum         = TableUtil.MeasureText("99").Width + 1;
+            _wName        = _data.ZoneConfig.GetMaxZoneNameLength();
+            _wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins + 1;
+            _wArrow       = FontUtil.MeasureText("←", TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, TableUtil.FontWeight, TableUtil.FontStretch).Width;
+            _wSilenceable = TableUtil.MeasureText(Cultures.Resources.Is_Set_Silenceable).Width;
         }
 
         
@@ -202,10 +251,10 @@ namespace Xfp.DataTypes.PanelData
 
             var colour = value switch
             {
-                SetTriggerTypes.Pulsed     => _triggerPulsedBrush,
-                SetTriggerTypes.Continuous => _triggerContinuousBrush,
-                SetTriggerTypes.Delayed    => _triggerDelayedBrush,
-                _                          => _triggerNotTriggeredBrush,
+                SetTriggerTypes.Pulsed     => Xfp.UI.Styles.TriggerPulsedBrush,
+                SetTriggerTypes.Continuous => Xfp.UI.Styles.TriggerContinuousBrush,
+                SetTriggerTypes.Delayed    => Xfp.UI.Styles.TriggerDelayedBrush,
+                _                          => Xfp.UI.Styles.TriggerNotTriggeredBrush,
             };
 
             var pathData = value switch
@@ -224,6 +273,29 @@ namespace Xfp.DataTypes.PanelData
             result.Children.Add(vb);
 
             return result;
+        }
+
+        
+        public static System.Windows.Shapes.Path GridCellTriggerIcon(SetTriggerTypes value)
+        {
+            
+            var colour = value switch
+            {
+                SetTriggerTypes.Pulsed     => Xfp.UI.Styles.TriggerPulsedBrush,
+                SetTriggerTypes.Continuous => Xfp.UI.Styles.TriggerContinuousBrush,
+                SetTriggerTypes.Delayed    => Xfp.UI.Styles.TriggerDelayedBrush,
+                _                          => Xfp.UI.Styles.TriggerNotTriggeredBrush,
+            };
+
+            var pathData = value switch
+            {
+                SetTriggerTypes.Pulsed     => _triggerPulsedSvgData,
+                SetTriggerTypes.Continuous => _triggerContinuousSvgData,
+                SetTriggerTypes.Delayed    => _triggerDelayedSvgData,
+                _                          => _triggerNotTriggeredSvgData,
+            };
+
+            return new System.Windows.Shapes.Path() { Fill = colour, Data = Geometry.Parse(pathData) };
         }
     }
 }

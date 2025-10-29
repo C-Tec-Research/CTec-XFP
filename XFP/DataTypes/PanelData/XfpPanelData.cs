@@ -35,16 +35,21 @@ namespace Xfp.DataTypes.PanelData
         [JsonIgnore] public XfpPanelData.PanelNameChangeHandler PanelNameChanged;
 
 
+        private bool                _supportsEnvision;
+        private ZonePanelConfigData _zonePanelConfig;
+
         public int                   PanelNumber { get; set; }
+        public bool                  SupportsEnvision { get => Protocol == CTecDevices.ObjectTypes.XfpApollo ? _supportsEnvision : false; set => _supportsEnvision = Protocol == CTecDevices.ObjectTypes.XfpApollo ? value : false; }
         public PanelConfigData       PanelConfig { get; set; }
         public CEConfigData          CEConfig { get; set; }
         public LoopConfigData        LoopConfig { get; set; }
         public DeviceNamesConfigData DeviceNamesConfig { get; set; }
         public ZoneConfigData        ZoneConfig { get; set; }
-        public ZonePanelConfigData   ZonePanelConfig { get; set; }
+        public ZonePanelConfigData   ZonePanelConfig { get => _zonePanelConfig; set { _zonePanelConfig = value; if (ZoneConfig is not null) ZoneConfig.ZonePanelData = value; } }
         public SetConfigData         SetConfig { get; set; }
         public GroupConfigData       GroupConfig { get; set; }
         public NetworkConfigData     NetworkConfig { get; set; }
+
 
 
         [JsonIgnore] public DeviceConfigData  Loop1Config { get => LoopConfig?.Loop1; }

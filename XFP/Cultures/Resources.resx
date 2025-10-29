@@ -2077,9 +2077,6 @@ All of its data will be lost.</value>
     <value>4444</value>
     <comment>Not translated</comment>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="Validation_Header_Panel_Data" xml:space="preserve">
     <value>Panel data:</value>
   </data>
