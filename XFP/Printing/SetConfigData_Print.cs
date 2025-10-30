@@ -49,7 +49,8 @@ namespace Xfp.DataTypes.PanelData
         private double _wPanelRelayTriggered = 40;
         private double _wArrow;
         private double _wSilenceable;
-        private double _arrowFontSize = 16;
+        private string _arrow = "←";
+        private double _arrowFontSize = 10;
         private Size   _iconSize = new(16, 15);
         private int    _wDivider = 10;
         private const int _setIdColumns = 2;
@@ -100,7 +101,7 @@ namespace Xfp.DataTypes.PanelData
                 var table = TableUtil.NewTable(reportName);
 
                 defineColumnHeaders(table, reportName);
-                printSilenceableSets(table);                
+                printSilenceableSets(table);
 
                 var bodyGroup = new TableRowGroup();
 
@@ -159,30 +160,23 @@ namespace Xfp.DataTypes.PanelData
         private void printSilenceableSets(Table table)
         {
             var bodyGroup = new TableRowGroup();
-            var sisetRow = new TableRow() { Background = Xfp.UI.Styles.Brush08 };
+            var sisetRow = new TableRow() { Background = Xfp.UI.Styles.Brush07 };
             bodyGroup.Rows.Add(sisetRow);
 
             sisetRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
             
             for (int t = 0; t < NumOutputSetTriggers; t++)
-                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 14, FontWeights.Normal, TextAlignment.Center));
+                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 13, FontWeights.Normal, TextAlignment.Center));
 
             sisetRow.Cells.Add(TableUtil.NewCell(""));
             
             for (int t = 0; t < NumPanelRelayTriggers; t++)
-                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 14, FontWeights.Normal, TextAlignment.Center));
+                sisetRow.Cells.Add(TableUtil.NewCellBool(_data.ZoneConfig.OutputSetIsSilenceable[t], 1, 1, true, 13, FontWeights.Normal, TextAlignment.Center));
             
-            sisetRow.Cells.Add(TableUtil.NewCell("←", _arrowFontSize));
+            sisetRow.Cells.Add(TableUtil.NewCell(_arrow, _arrowFontSize, TextAlignment.Right));
             sisetRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Is_Set_Silenceable));
 
             table.RowGroups.Add(bodyGroup);
-        }
-
-
-        private Grid columnHeaders()
-        {
-            Grid grid = new Grid();
-            return grid;
         }
 
 
@@ -197,34 +191,37 @@ namespace Xfp.DataTypes.PanelData
                 table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wDivider) });
             for (int i = 0; i < NumPanelRelayTriggers; i++)
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_wPanelRelayTriggered / 2) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wArrow) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wSilenceable) });
 
             //define rows for the header
             var headerRow1 = new TableRow();
             var headerRow2 = new TableRow();
+            var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2));
             headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2));
+            headerRow3.Cells.Add(TableUtil.NewCell("", 1, 2));
             
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
-            headerRow1.Cells.Add(TableUtil.NewCell("", 1, 1));
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 1, NumPanelRelayTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow1.Cells.Add(TableUtil.NewCell("", 1, 17));
+            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 2, NumPanelRelayTriggers + 1, TextAlignment.Left, FontWeights.Bold), Styles.Brush04));
             
             for (int i = 0; i < NumOutputSetTriggers; i++)
-                headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+                headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
 
-            headerRow2.Cells.Add(TableUtil.NewCell("", 1, 1));
+            headerRow3.Cells.Add(TableUtil.NewCell(""));
 
             for (int i = 0; i < NumPanelRelayTriggers; i++)
-                headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+                headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
     
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);
             headerGroup.Rows.Add(headerRow2);
+            headerGroup.Rows.Add(headerRow3);
 
             table.RowGroups.Add(headerGroup);
         }
@@ -238,7 +235,7 @@ namespace Xfp.DataTypes.PanelData
             _wNum         = TableUtil.MeasureText("99").Width + 1;
             _wName        = _data.ZoneConfig.GetMaxZoneNameLength();
             _wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins + 1;
-            _wArrow       = FontUtil.MeasureText("←", TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, TableUtil.FontWeight, TableUtil.FontStretch).Width;
+            _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + cellMargins + 1;
             _wSilenceable = TableUtil.MeasureText(Cultures.Resources.Is_Set_Silenceable).Width;
         }
 

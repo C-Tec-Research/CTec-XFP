@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows;
-using System.Windows.Controls;
-using CTecUtil.Printing;
+﻿using CTecUtil.Printing;
 using CTecUtil.UI;
 using CTecUtil.Utils;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Xml.Linq;
 using Xfp.UI.ViewHelpers;
 
 namespace Xfp.DataTypes.PanelData
@@ -24,15 +25,24 @@ namespace Xfp.DataTypes.PanelData
             var svgPathConverter = new SetTriggerTypeToSvgPathConverter();
 
             initLists();
+            
+            GridUtil.ResetDefaults();
+            TableUtil.ResetDefaults();
+            TableUtil.SetForeground(PrintUtil.TextForeground);
+            TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
+            TableUtil.SetFontWeight(FontWeights.Normal);
+            TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
+            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
 
-            var cePage = new Section();
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
-            cePage.Blocks.Add(timerEventTimes());
-            cePage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            cePage.Blocks.Add(ceList());
-
-            doc.Blocks.Add(cePage);
+            var headerSection = new Section();
+            headerSection.Blocks.Add(timerEventTimes());
+            headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
+            doc.Blocks.Add(headerSection);
+            doc.Blocks.Add(ceList());
+        
+            TableUtil.ResetDefaults();
         }
         
 
@@ -110,129 +120,138 @@ namespace Xfp.DataTypes.PanelData
 
         public BlockUIContainer ceList()
         {
-            //PrintUtil.SetFontSmallerSize();
-            //PrintUtil.SetFontNarrowWidth();
-
             var grid = columnHeaders();
+
+            int dataRows = 0;
+            
+            var reportName = Cultures.Resources.Nav_C_And_E_Configuration;
 
             try
             {
+                var table = TableUtil.NewTable(reportName);
+
+                defineColumnHeaders(table, reportName);
+
+                var bodyGroup = new TableRowGroup();
+
                 //add the rows for the data
                 for (int i = 0; i < NumEvents; i++)
                 {
-                    GridUtil.AddRowToGrid(grid);
+                    /*
+                    //GridUtil.AddRowToGrid(grid);
 
-                    int row = i + 1;
-                    int col = 0;
+                    //int row = i + 1;
+                    //int col = 0;
 
-                    grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
+                    //grid.Children.Add(GridUtil.GridBackground(row, 0, 1, 15, Int32.IsEvenInteger(row) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground));
 
-                    //line number
-                    GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
+                    ////line number
+                    //GridUtil.AddCellToGrid(grid, (i + 1).ToString(), row, col++, HorizontalAlignment.Right, false);
 
-                    //action type
-                    GridUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
-                    if (Events[i].ActionType == CEActionTypes.None)
-                        continue;
+                    ////action type
+                    //GridUtil.AddCellToGrid(grid, Enums.CEActionTypesToString(Events[i].ActionType), row, col++, false, Events[i].ActionType < 0);
+                    //if (Events[i].ActionType == CEActionTypes.None)
+                    //    continue;
 
-                    //action parameter, if any
-                    if (!Events[i].HasActionParam())
-                    {
-                        GridUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
-                        if (Events[i].ActionParam < 0)
-                            continue;
-                    }
-                    else
-                    {
-                        col++;
-                    }
+                    ////action parameter, if any
+                    //if (!Events[i].HasActionParam())
+                    //{
+                    //    GridUtil.AddCellToGrid(grid, getActionParamDesc(Events[i].ActionType, Events[i].ActionParam), row, col++, false, Events[i].ActionParam < 0);
+                    //    if (Events[i].ActionParam < 0)
+                    //        continue;
+                    //}
+                    //else
+                    //{
+                    //    col++;
+                    //}
                 
 
-                    grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
+                    //grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
 
-                    //action trigger
-                    GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
-                    //if (Events[i].TriggerType == CETriggerTypes.None)
-                    if (Events[i].HasActionParam())
-                        continue;
+                    ////action trigger
+                    //GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].TriggerType), row, col++, false, Events[i].TriggerType < 0 || Events[i].TriggerType == CETriggerTypes.None);
+                    ////if (Events[i].TriggerType == CETriggerTypes.None)
+                    //if (Events[i].HasActionParam())
+                    //    continue;
 
-                    //trigger parameters
-                    //if (triggerHasParam(Events[i].TriggerType))
-                    if (Events[i].HasTriggerParam())
-                    {
-                        if (Events[i].TriggerTypeHasParamPair())
-                        {
-                            Grid paramGrid = new();
-                            GridUtil.AddRowToGrid(paramGrid);
-                            for (int c = 0; c < 4; c++)
-                                GridUtil.AddColumnToGrid(paramGrid);
+                    ////trigger parameters
+                    ////if (triggerHasParam(Events[i].TriggerType))
+                    //if (Events[i].HasTriggerParam())
+                    //{
+                    //    if (Events[i].TriggerTypeHasParamPair())
+                    //    {
+                    //        Grid paramGrid = new();
+                    //        GridUtil.AddRowToGrid(paramGrid);
+                    //        for (int c = 0; c < 4; c++)
+                    //            GridUtil.AddColumnToGrid(paramGrid);
 
-                            GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
-                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
-                            GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
-                            paramGrid.SetValue(Grid.RowProperty, row);
-                            paramGrid.SetValue(Grid.ColumnProperty, col);
-                            GridUtil.AddCellToGrid(grid, paramGrid);
+                    //        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].TriggerType), 0, 0);
+                    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam2 < 0, new(0, 2, 0, 2));
+                    //        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), 0, 3, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0, new(0, 2, 0, 2));
+                    //        paramGrid.SetValue(Grid.RowProperty, row);
+                    //        paramGrid.SetValue(Grid.ColumnProperty, col);
+                    //        GridUtil.AddCellToGrid(grid, paramGrid);
 
-                            if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
-                                continue;
-                        }
-                        else
-                        {
-                            GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
-                            if (Events[i].TriggerParam < 0)
-                                continue;
-                        }
-                    }
+                    //        if (Events[i].TriggerParam < 0 || Events[i].TriggerParam2 < 0)
+                    //            continue;
+                    //    }
+                    //    else
+                    //    {
+                    //        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].TriggerType, Events[i].TriggerParam), row, col, 1, HorizontalAlignment.Left, false, Events[i].TriggerParam < 0);
+                    //        if (Events[i].TriggerParam < 0)
+                    //            continue;
+                    //    }
+                    //}
                 
-                    col ++;
+                    //col ++;
 
-                    //trigger condition
-                    GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
+                    ////trigger condition
+                    //GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
 
 
-                    grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
+                    //grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
 
                 
-                    //reset trigger
-                    var noTrigger = Events[i].ResetType == CETriggerTypes.None;
-                    GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
-                    if (noTrigger)
-                        continue;
+                    ////reset trigger
+                    //var noTrigger = Events[i].ResetType == CETriggerTypes.None;
+                    //GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
+                    //if (noTrigger)
+                    //    continue;
 
-                    //reset parameters
-                    if (Events[i].HasResetParam())
-                    {
-                        if (Events[i].ResetTypeHasParamPair())
-                        {
-                            Grid paramGrid = new();
-                            GridUtil.AddRowToGrid(paramGrid);
-                            for (int c = 0; c < 4; c++)
-                                GridUtil.AddColumnToGrid(paramGrid);
-                            GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
-                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
-                            GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                            GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
-                            paramGrid.SetValue(Grid.RowProperty, row);
-                            paramGrid.SetValue(Grid.ColumnProperty, col);
-                            GridUtil.AddCellToGrid(grid, paramGrid);
-                            if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
-                                continue;
-                        }
-                        else
-                        {
-                            GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, false, Events[i].ResetParam < 0);
-                            if (Events[i].ResetParam < 0)
-                                continue;
-                        }
-                    }
+                    ////reset parameters
+                    //if (Events[i].HasResetParam())
+                    //{
+                    //    if (Events[i].ResetTypeHasParamPair())
+                    //    {
+                    //        Grid paramGrid = new();
+                    //        GridUtil.AddRowToGrid(paramGrid);
+                    //        for (int c = 0; c < 4; c++)
+                    //            GridUtil.AddColumnToGrid(paramGrid);
+                    //        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
+                    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
+                    //        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
+                    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
+                    //        paramGrid.SetValue(Grid.RowProperty, row);
+                    //        paramGrid.SetValue(Grid.ColumnProperty, col);
+                    //        GridUtil.AddCellToGrid(grid, paramGrid);
+                    //        if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
+                    //            continue;
+                    //    }
+                    //    else
+                    //    {
+                    //        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, false, Events[i].ResetParam < 0);
+                    //        if (Events[i].ResetParam < 0)
+                    //            continue;
+                    //    }
+                    //}
                  
-                    col++;
+                    //col++;
 
-                    //reset condition
-                    GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
+                    ////reset condition
+                    //GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
+                    */
                 }
 
                 GridUtil.AddRowToGrid(grid, 10);
@@ -244,6 +263,77 @@ namespace Xfp.DataTypes.PanelData
             }
 
             return new(grid);
+        }
+
+
+        private void defineColumnHeaders(Table table, string reportHeader)
+        {     
+            setColumnWidths();
+
+            //define table's columns
+            for (int i = 0; i < 3; i++)
+                table.Columns.Add(new TableColumn());
+            table.Columns.Add(new TableColumn() { Width = new GridLength(5.0) });
+            for (int i = 0; i < 6; i++)
+                table.Columns.Add(new TableColumn());
+            table.Columns.Add(new TableColumn() { Width = new GridLength(5.0) });
+            for (int i = 0; i < 6; i++)
+                table.Columns.Add(new TableColumn());
+
+            //table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });
+            //for (int i = 0; i < NumOutputSetTriggers; i++)
+            //    table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+            //table.Columns.Add(new TableColumn() { Width = new GridLength(_wDivider) });
+            //for (int i = 0; i < NumPanelRelayTriggers; i++)
+            //    table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+            //table.Columns.Add(new TableColumn() { Width = new GridLength(_wArrow) });
+            //table.Columns.Add(new TableColumn() { Width = new GridLength(_wSilenceable) });
+
+            //define rows for the header
+            var headerRow1 = new TableRow();
+            //var headerRow2 = new TableRow();
+            //var headerRow3 = new TableRow();
+
+            headerRow1.Background = /*headerRow2.Background = headerRow3.Background =*/ PrintUtil.GridHeaderBackground;
+
+            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Number_Symbol, TextAlignment.Right, FontWeights.Bold));
+            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 3, FontWeights.Bold));
+            headerRow1.Cells.Add(TableUtil.NewCell(""));
+            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 6, FontWeights.Bold));
+            headerRow1.Cells.Add(TableUtil.NewCell(""));
+            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 6, FontWeights.Bold));
+
+            //headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            //headerRow1.Cells.Add(TableUtil.NewCell("", 1, 17));
+            //headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 2, NumPanelRelayTriggers + 1, TextAlignment.Left, FontWeights.Bold), Styles.Brush04));
+
+            //for (int i = 0; i < NumOutputSetTriggers; i++)
+            //    headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+
+            //headerRow3.Cells.Add(TableUtil.NewCell(""));
+
+            //for (int i = 0; i < NumPanelRelayTriggers; i++)
+            //    headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
+
+            var headerGroup = new TableRowGroup();
+            headerGroup.Rows.Add(headerRow1);
+            //headerGroup.Rows.Add(headerRow2);
+            //headerGroup.Rows.Add(headerRow3);
+
+            table.RowGroups.Add(headerGroup);
+        }
+
+
+        private void setColumnWidths()
+        {
+            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            
+            //measure required column widths for columns
+            //_wNum         = TableUtil.MeasureText("99").Width + 1;
+            //_wName        = _data.ZoneConfig.GetMaxZoneNameLength();
+            //_wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins + 1;
+            //_wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + cellMargins + 1;
+            //_wSilenceable = TableUtil.MeasureText(Cultures.Resources.Is_Set_Silenceable).Width;
         }
 
 

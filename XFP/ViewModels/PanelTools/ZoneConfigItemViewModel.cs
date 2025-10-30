@@ -55,10 +55,10 @@ namespace Xfp.ViewModels.PanelTools
         public string   NightDetectorResetTime    => !_data.IsPanelData ? ((ZoneData)_data).Night.DetectorReset.ToString("m':'ss") : "";
         public string   NightAlarmResetTime       => !_data.IsPanelData ? ((ZoneData)_data).Night.AlarmReset.ToString("m':'ss") : "";
         public TimeSpan DelayTotal                => SounderDelay.Add(Relay1Delay).Add(Relay2Delay).Add(RemoteDelay).Add(InputDelay);
-        public bool     ShowDayDetectorReset      => !_data.IsPanelData ? ((ZoneData)_data).Day.DependencyOption   == ZoneDependencyOptions.A : false;
-        public bool     ShowNightDetectorReset    => !_data.IsPanelData ? ((ZoneData)_data).Night.DependencyOption == ZoneDependencyOptions.A : false;
-        public bool     ShowDayAlarmReset         => !_data.IsPanelData ? ((ZoneData)_data).Day.DependencyOption    switch { ZoneDependencyOptions.A or ZoneDependencyOptions.B => true, _ => false } : false;
-        public bool     ShowNightAlarmReset       => !_data.IsPanelData ? ((ZoneData)_data).Night.DependencyOption  switch { ZoneDependencyOptions.A or ZoneDependencyOptions.B => true, _ => false } : false;
+        public bool     ShowDayDetectorReset      => _data.IsPanelData ? false : ZoneConfigData.HasDetectorReset(((ZoneData)_data).Day.DependencyOption);
+        public bool     ShowNightDetectorReset    => _data.IsPanelData ? false : ZoneConfigData.HasDetectorReset(((ZoneData)_data).Night.DependencyOption);
+        public bool     ShowDayAlarmReset         => _data.IsPanelData ? false : ZoneConfigData.HasAlarmReset(((ZoneData)_data).Day.DependencyOption);
+        public bool     ShowNightAlarmReset       => _data.IsPanelData ? false : ZoneConfigData.HasAlarmReset(((ZoneData)_data).Night.DependencyOption);
         public bool     SounderDelayIsValid       => SounderDelay.CompareTo(ZoneConfigData.MaxSounderDelay) <= 0;
         public bool     Relay1DelayIsValid        => Relay1Delay.CompareTo(ZoneConfigData.MaxRelay1Delay) <= 0;
         public bool     Relay2DelayIsValid        => Relay2Delay.CompareTo(ZoneConfigData.MaxRelay2Delay) <= 0;
@@ -71,6 +71,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool     DayAlarmResetIsValid      => !ShowDayAlarmReset      || DayAlarmReset.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
         public bool     NightDetectorResetIsValid => !ShowNightDetectorReset || NightDetectorReset.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
         public bool     NightAlarmResetIsValid    => !ShowNightAlarmReset    || NightAlarmReset.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
+
 
         public void SetZoneDesc(string name)
         {

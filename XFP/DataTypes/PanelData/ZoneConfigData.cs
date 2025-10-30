@@ -56,6 +56,10 @@ namespace Xfp.DataTypes.PanelData
         public List<bool> PanelRelayIsSilenceable { get; set; }
 
 
+        public static bool HasDetectorReset(ZoneDependencyOptions option) => option == ZoneDependencyOptions.A;
+        public static bool HasAlarmReset(ZoneDependencyOptions option)    => option switch { ZoneDependencyOptions.A or ZoneDependencyOptions.B => true, _ => false };
+
+
         #region elements in XFP files that we don't use
         //[JsonIgnore]
         //public int DefaultAreaEquationValue { get; set; }

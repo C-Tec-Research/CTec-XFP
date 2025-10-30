@@ -8,6 +8,7 @@ using System.Windows.Media;
 using CTecControls.UI;
 using CTecUtil.Printing;
 using CTecUtil.Utils;
+using Xfp.ViewModels.PanelTools;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -51,17 +52,14 @@ namespace Xfp.DataTypes.PanelData
 
         private double _wNum;
         private double _wName = 0;
-        //private double _wNumZone;
         private double _wOutputDelaysCol;
-        //private double _wOutputDelaysMins;
         private double _wFunctioningWithCol;
-        //private double _wFunctioningWith;
         private double _wMultipleAlarmsEndDelays;
         private double _wOption; 
         private double _wDetAlarmCol; 
-        //private double _wDayDependencies; 
-        //private double _wNightDependencies; 
-        //private static SolidColorBrush  _headerBorderBrush = Styles.Brush06;
+        private double _wArrow;
+        private string _arrow = "→";
+        private double _arrowFontSize = 10;
 
 
         private BlockUIContainer headerInfo()
@@ -111,15 +109,34 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCellTime(z.Relay1Delay, "ms", false, TextAlignment.Center));          //relay1
                     newRow.Cells.Add(TableUtil.NewCellTime(z.Relay2Delay, "ms", false, TextAlignment.Center));          //relay2
                     newRow.Cells.Add(TableUtil.NewCellTime(z.RemoteDelay, "ms", false, TextAlignment.Center));          //outputs
+                    newRow.Cells.Add(TableUtil.NewCell(""));
                     newRow.Cells.Add(TableUtil.NewCellBool(z.Detectors, false, TextAlignment.Center));                  //functioning with detectors
                     newRow.Cells.Add(TableUtil.NewCellBool(z.MCPs,      false, TextAlignment.Center));                  //functioning with MCPs
                     newRow.Cells.Add(TableUtil.NewCellBool(z.EndDelays, false, TextAlignment.Center));                  //multiple alarms end delays
+                    
                     newRow.Cells.Add(TableUtil.NewCell(Enums.ZoneDependencyOptionToString(z.Day.DependencyOption)));    //day dependency option          
-                    newRow.Cells.Add(TableUtil.NewCellTime(z.Day.DetectorReset, "ms", false, TextAlignment.Center));    //day dependency detector reset
-                    newRow.Cells.Add(TableUtil.NewCellTime(z.Day.AlarmReset, "ms", false, TextAlignment.Center));       //day dependency alarm reset
+
+                    if (ZoneConfigData.HasDetectorReset(z.Day.DependencyOption))                               //day dependency detector reset
+                        newRow.Cells.Add(TableUtil.NewCellTime(z.Day.DetectorReset, "ms", false, TextAlignment.Center));
+                    else
+                        newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+
+                    if (ZoneConfigData.HasAlarmReset(z.Day.DependencyOption))                                  //day dependency alarm reset
+                        newRow.Cells.Add(TableUtil.NewCellTime(z.Day.AlarmReset, "ms", false, TextAlignment.Center));
+                    else
+                        newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+
                     newRow.Cells.Add(TableUtil.NewCell(Enums.ZoneDependencyOptionToString(z.Night.DependencyOption)));  //night dependency option
-                    newRow.Cells.Add(TableUtil.NewCellTime(z.Night.DetectorReset, "ms", false, TextAlignment.Center));  //night dependency detector reset
-                    newRow.Cells.Add(TableUtil.NewCellTime(z.Night.AlarmReset, "ms", false, TextAlignment.Center));     //night dependency alarm reset
+
+                    if (ZoneConfigData.HasDetectorReset(z.Night.DependencyOption))                             //night dependency detector reset
+                        newRow.Cells.Add(TableUtil.NewCellTime(z.Night.DetectorReset, "ms", false, TextAlignment.Center));
+                    else
+                        newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
+
+                    if (ZoneConfigData.HasAlarmReset(z.Night.DependencyOption))                                //night dependency alarm reset
+                        newRow.Cells.Add(TableUtil.NewCellTime(z.Night.AlarmReset, "ms", false, TextAlignment.Center));
+                    else
+                        newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
                 }
                 
                 foreach (var p in ZonePanelData?.Panels)
@@ -138,6 +155,7 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCellTime(p.Relay2Delay, "ms", false, TextAlignment.Center));          //sounder delay
                     newRow.Cells.Add(TableUtil.NewCellTime(p.RemoteDelay, "ms", false, TextAlignment.Center));          //sounder delay
 
+                    newRow.Cells.Add(TableUtil.NewCell(""));
                     newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
                     newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
                     newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
@@ -169,13 +187,13 @@ namespace Xfp.DataTypes.PanelData
             setColumnWidths();
 
             //define table's columns
-            var wFactor = 3.5;
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wNum) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wOutputDelaysCol) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wOutputDelaysCol) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wOutputDelaysCol) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wOutputDelaysCol) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wArrow) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wFunctioningWithCol) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wFunctioningWithCol) });
             table.Columns.Add(new TableColumn() { Width = new GridLength(_wMultipleAlarmsEndDelays) });
@@ -190,39 +208,43 @@ namespace Xfp.DataTypes.PanelData
             //define rows for the header
             var headerRow1 = new TableRow();
             var headerRow2 = new TableRow();
-            //var headerRow3 = new TableRow();
+            var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = /*headerRow3.Background =*/ PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
 
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.NewCell(_arrow));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
             
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Sounders, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_1, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_2, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Outputs, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detectors, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.MCPs, TextAlignment.Center, FontWeights.Bold));
-            
-            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Multiple_Alarms_End_Delays, 2, 1, FontWeights.Bold));
+            headerRow1.Cells.Add(TableUtil.NewCell("", 1, 7));
+            headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Multiple_Alarms_End_Delays, 3, 1, TextAlignment.Center, FontWeights.Bold));
 
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Sounders, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_1, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Relay_2, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Outputs, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(""));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detectors, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.MCPs, TextAlignment.Center, FontWeights.Bold));
 
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option,   TextAlignment.Left,   FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
-            headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm,    TextAlignment.Center, FontWeights.Bold));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option, TextAlignment.Left, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option, TextAlignment.Left, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));
+            headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Alarm, TextAlignment.Center, FontWeights.Bold));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);
             headerGroup.Rows.Add(headerRow2);
-            //headerGroup.Rows.Add(headerRow3);
+            headerGroup.Rows.Add(headerRow3);
 
 //var headerRow4 = new TableRow() { Background = headerRow1.Background };
 //var headerGrid = columnHeadersAsGrid();
@@ -249,6 +271,8 @@ namespace Xfp.DataTypes.PanelData
             var wRelay1   = TableUtil.MeasureText(Cultures.Resources.Relay_1).Width + cellMargins + 1;
             var wRelay2   = TableUtil.MeasureText(Cultures.Resources.Relay_2).Width + cellMargins + 1;
             var wOutputs  = TableUtil.MeasureText(Cultures.Resources.Outputs).Width + cellMargins + 1;
+            _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + 1;
+
             _wOutputDelaysCol  = Math.Max(wTime, Math.Max(wSounders, Math.Max(wRelay1, Math.Max(wRelay2, wOutputs)))) + 1;
             //_wOutputDelaysMins = Math.Max(_wOutputDelaysCol * 4, TableUtil.MeasureText(Cultures.Resources.Output_Delays_Mins).Width + cellMargins) + 1;
 
@@ -257,7 +281,7 @@ namespace Xfp.DataTypes.PanelData
             _wFunctioningWithCol = Math.Max(wDetectors, wMCPs);
             //_wFunctioningWith    = Math.Max(_wFunctioningWithCol * 4, TableUtil.MeasureText(Cultures.Resources.Functioning_With).Width + cellMargins + 1);
 
-            _wMultipleAlarmsEndDelays = 40;
+            _wMultipleAlarmsEndDelays = 42;
 
             var wDepOptionNotSet = TableUtil.MeasureText(Cultures.Resources.Not_Set).Width + cellMargins + 1;
             var wDepOptionNormal = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Normal).Width + cellMargins + 1;
