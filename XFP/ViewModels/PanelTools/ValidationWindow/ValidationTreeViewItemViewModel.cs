@@ -180,7 +180,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                         var found = false;
                         foreach (var c in parentPage.Children)
                         {
-                            if (s.Name == c.Name)
+                            if (s.Name == c?.Name)
                             {
                                 found = true;
                                 break;

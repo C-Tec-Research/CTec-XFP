@@ -97,7 +97,7 @@
           },
           {
             "Index": 4,
-            "ActionType": 0,
+            "ActionType": 20,
             "ActionParam": -1,
             "TriggerType": 0,
             "TriggerParam": -1,
@@ -110,8 +110,8 @@
           },
           {
             "Index": 5,
-            "ActionType": 0,
-            "ActionParam": -1,
+            "ActionType": 10,
+            "ActionParam": 3,
             "TriggerType": 0,
             "TriggerParam": -1,
             "TriggerParam2": -1,

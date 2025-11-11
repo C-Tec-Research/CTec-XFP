@@ -48,8 +48,6 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private int    _numColumns;
-
         private double _wNum;
         private double _wName = 0;
         private double _wOutputDelaysCol;
@@ -245,13 +243,6 @@ namespace Xfp.DataTypes.PanelData
             headerGroup.Rows.Add(headerRow1);
             headerGroup.Rows.Add(headerRow2);
             headerGroup.Rows.Add(headerRow3);
-
-//var headerRow4 = new TableRow() { Background = headerRow1.Background };
-//var headerGrid = columnHeadersAsGrid();
-//var headerCell = new TableCell() { RowSpan = 1, ColumnSpan = _numColumns };
-//headerCell.Blocks.Add(new BlockUIContainer(headerGrid));
-//headerRow4.Cells.Add(headerCell);
-//headerGroup.Rows.Add(headerRow4);
 
             table.RowGroups.Add(headerGroup);
         }
