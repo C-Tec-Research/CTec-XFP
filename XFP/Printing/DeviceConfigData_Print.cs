@@ -32,7 +32,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             if (printLoop1) doc.Blocks.Add(printDeviceList(0, printAllLoopDevices, printOrder));
             if (printLoop2) doc.Blocks.Add(printDeviceList(1, printAllLoopDevices, printOrder));
@@ -94,7 +94,7 @@ namespace Xfp.DataTypes.PanelData
                     //create the required number of table rows
                     var newRows = new List<TableRow>();
                     for (int r = 0; r < numRows; r++)
-                        newRows.Add(new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground });
+                        newRows.Add(new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground });
                     foreach (var row in newRows)
                         bodyGroup.Rows.Add(row);
 
@@ -231,7 +231,7 @@ namespace Xfp.DataTypes.PanelData
         private void defineColumnHeaders(Table table, string reportHeader)
         {
             //measure required column widths for subaddress and IO headers
-            var cellMargins      = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
             
             var subaddressHeader = Cultures.Resources.Subaddress_Abbr;
             var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width + 1;
@@ -281,7 +281,7 @@ namespace Xfp.DataTypes.PanelData
             var headerRow2 = new TableRow();
             var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.TableHeaderBackground;
             
             var colHeader = TableUtil.NewCell(reportHeader, 1, _totalColumns, FontWeights.Bold);
             colHeader.FontSize = PrintUtil.PrintDefaultFontSize;

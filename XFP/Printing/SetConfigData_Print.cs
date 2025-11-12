@@ -29,7 +29,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration);
 
@@ -46,7 +46,7 @@ namespace Xfp.DataTypes.PanelData
         private double _wNum;
         private double _wName;
         private double _wNumGroup;
-        private double _wPanelRelayTriggered = 40;
+        //private double _wPanelRelayTriggered = 40;
         private double _wArrow;
         private double _wSilenceable;
         private string _arrow = "←";
@@ -110,7 +110,7 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     if (i < _data.ZoneConfig.Zones.Count)
@@ -200,7 +200,7 @@ namespace Xfp.DataTypes.PanelData
             var headerRow2 = new TableRow();
             var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.TableHeaderBackground;
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2));
             headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2));
@@ -229,7 +229,7 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnWidths()
         {
-            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
             
             //measure required column widths for columns
             _wNum         = TableUtil.MeasureText("99").Width + 1;

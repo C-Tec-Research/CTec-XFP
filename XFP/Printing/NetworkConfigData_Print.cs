@@ -43,7 +43,7 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < _totalTopColumns; i++)
                 GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalTopColumns, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalTopColumns, PrintUtil.TableHeaderBackground));
 
             int col = 1;
             grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Name, 0, col++));
@@ -82,7 +82,7 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < NumPanelSettings + 1; i++)
                 GridUtil.AddColumnToGrid(grid);
             
-            grid.Children.Add(GridUtil.GridBackground(0, 0, 2, NumPanelSettings + 1, PrintUtil.GridHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(0, 0, 2, NumPanelSettings + 1, PrintUtil.TableHeaderBackground));
 
             var panelHeader = GridUtil.GridHeaderCell(string.Format(Cultures.Resources.Panel_x, _data.CurrentPanel.PanelNumber), 0, 0, 2, 1);
             panelHeader.SetValue(Grid.VerticalAlignmentProperty, VerticalAlignment.Center);

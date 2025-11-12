@@ -25,7 +25,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Group_Configuration);
 
@@ -107,7 +107,7 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     newRow.Cells.Add(TableUtil.NewCell((z.Index + 1).ToString(), 1, 1, TextAlignment.Right));                   //zone number
@@ -122,7 +122,7 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     newRow.Cells.Add(TableUtil.NewCell((p.Index + 1).ToString(), 1, 1, TextAlignment.Right));                   //zone number
@@ -188,7 +188,7 @@ namespace Xfp.DataTypes.PanelData
             var headerRow1 = new TableRow();
             var headerRow2 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = PrintUtil.TableHeaderBackground;
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
@@ -208,7 +208,7 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnWidths()
         {
-            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
             
             //measure required column widths for columns
             _wNum      = TableUtil.MeasureText("99").Width + 1;
@@ -226,7 +226,7 @@ namespace Xfp.DataTypes.PanelData
                 _                   => Xfp.UI.Styles.AlarmOffBrush,
             };
 
-            return new System.Windows.Shapes.Path() { Fill = colour, Style = Xfp.UI.Styles.AlarmIconStyle, Margin = PrintUtil.DefaultGridMargin };
+            return new System.Windows.Shapes.Path() { Fill = colour, Style = Xfp.UI.Styles.AlarmIconStyle, Margin = PrintUtil.DefaultTableMargin };
         }
     }
 }

@@ -37,7 +37,8 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
+            TableUtil.SetPadding(new(2,2,4,2));
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
@@ -63,33 +64,30 @@ namespace Xfp.DataTypes.PanelData
         private List<string> _loop1Devices;
         private List<string> _loop2Devices;
         private List<string> _zones;
-        private List<string> _zones2;
         private List<string> _zonesPanels;
         private List<string> _groups;
         private List<string> _sets;
         private List<string> _events;
-        private List<string> _events1;
-        private List<string> _events2;
         private List<string> _relays;
         private List<string> _setsRelays;
         private List<string> _times;
-        private List<string> _trueOrFalse;
 
-        //private double _wNum;
-        //private double _wActionName = 0;
-        //private double _wActionParam;
-        //private double _wTriggerName;
-        //private double _wTriggerParam;
-        //private double _wZone;
-        //private double _wEvent;
-        //private double _wZoneOrEventName;
-        //private double _wZoneOrEvent;
-        //private double _wAnd; 
-        //private double _wIs; 
-        //private double _wTrueOrFalse; 
+        private List<List<ReportElement>> _report;
         private List<double> _columnWidths = new();
-        private double _triggerWidth = 0.0;
-        private double _resetWidth   = 0.0;
+        private const double _spacerColumnWidth = 5;
+
+        private class ReportElement
+        {
+            public ReportElement() { }
+            public ReportElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
+            public ReportElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
+            public ReportElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
+
+            public string Text { get; private set; } = string.Empty;
+            public int    ColumnSpan { get; private set; } = 1;
+            public bool   IsError { get; private set; } = false;
+            public TextAlignment Alignment { get; private set; }
+        }
 
 
         private void initLists()
@@ -139,36 +137,19 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private class ReportElement
-        {
-            public ReportElement() { }
-            public ReportElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
-            public ReportElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
-            public ReportElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
-
-            public string Text { get; private set; } = string.Empty;
-            public int    ColumnSpan { get; private set; } = 1;
-            public bool   IsError { get; private set; } = false;
-            public TextAlignment Alignment { get; private set; }
-        }
-
-
-        private List<List<ReportElement>> _report = new();
-
-
         public Table ceList()
         {
-            createReportTable();
-
-            int dataRows = 0;
-            
             var reportName = Cultures.Resources.Nav_C_And_E_Configuration;
 
             try
             {
                 var table = TableUtil.NewTable(reportName);
 
+                createReportTable();
+                setColumnWidths();
                 defineColumnHeaders(table, reportName);
+
+                int dataRows = 0;            
 
                 var bodyGroup = new TableRowGroup();
 
@@ -177,142 +158,18 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     for (int c = 0; c < _report[r].Count; c++)
                     {
                         var item = _report[r][c];
-                        newRow.Cells.Add(TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground));
+                        //newRow.Cells.Add(TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground));
+                        var cell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground);
+                        cell.Background = (c % 4) switch { 0 => Styles.Brush03, 1 => Styles.ErrorBrush, 2 => Styles.WarnBrush, _ => Styles.OkBrush };
+                        newRow.Cells.Add(cell);
                     }
                 }
-
-                //foreach (var e in Events)
-                //{
-                //    dataRows++;
-
-                //    ////create the new row
-                //    //var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
-                //    //bodyGroup.Rows.Add(newRow);
-                    
-                //    newRow.Cells.Add(TableUtil.NewCell((e.Index + 1).ToString(), TextAlignment.Right));                         //C&E number
-                   
-                //    newRow.Cells.Add(TableUtil.NewCell(Enums.CEActionTypesToString(e.ActionType).ToString()));                  //action type
-                //    if (e.ActionType == CEActionTypes.None)
-                //        continue;
-
-                //    if (e.HasActionParam())                                                                                     //action parameter, if any
-                //    {
-                //        if (e.ActionParam >= 0)
-                //        {
-                //            newRow.Cells.Add(TableUtil.NewCell(getActionParamDesc(e.ActionType, e.ActionParam).ToString()));
-                //        }
-                //        else
-                //        {
-                //            newRow.Cells.Add(TableUtil.NewCell(PrintUtil.Errorindicator, Styles.ErrorBrush));
-                //            continue;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        newRow.Cells.Add(TableUtil.NewCell(""));
-                //    }
-
-                //    newRow.Cells.Add(TableUtil.NewCell(""));
-
-                //    if (e.TriggerType != CETriggerTypes.None)
-                //    {
-                //        newRow.Cells.Add(TableUtil.NewCell((Enums.CETriggerTypesToString(e.TriggerType)).ToString()));          //trigger type
-                //    }
-                //    else
-                //    {
-                //        newRow.Cells.Add(TableUtil.NewCell(PrintUtil.Errorindicator, Styles.ErrorBrush));
-                //        continue;
-                //    }
-
-                //    if (e.HasTriggerParam())                                                                                    //trigger parameter(s), if any
-                //    {
-                //        if (e.TriggerTypeHasParamPair())
-                //        {
-                //            newRow.Cells.Add(TableUtil.NewCell(e.TriggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
-                //            newRow.Cells.Add(TableUtil.NewCell(getTriggerParamDesc(e.TriggerType, e.TriggerParam2).ToString()));
-                //            newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Logical_And));
-
-                //            if (e.TriggerParam >= 0)
-                //               newRow.Cells.Add(TableUtil.NewCell(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString()));
-                            
-                //            if (e.TriggerParam < 0 || e.TriggerParam2 < 0)
-                //                continue;
-                //        }
-                //        else
-                //        {
-                //            newRow.Cells.Add(TableUtil.NewCell(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString(), 1, 4));
-                //        }
-
-                //        if (e.TriggerParam < 0)
-                //            continue;
-                //    }
-                //    else
-                //    {
-                //        newRow.Cells.Add(TableUtil.NewCell("", 1, 4));
-                //    }
-
-                //    newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Trigger_Condition_Is));                               
-                //    newRow.Cells.Add(TableUtil.NewCell(isTrueOrFalse(e.TriggerCondition)));                                     //trigger condition
-                    
-                //    /*
-
-                
-                //    //col ++;
-
-                //    ////trigger condition
-                //    //GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].TriggerCondition), row, col++);
-
-
-                //    //grid.Children.Add(GridUtil.GridBackground(1, col++, NumEvents, 1, _gridDividerBrush));
-
-                
-                //    ////reset trigger
-                //    //var noTrigger = Events[i].ResetType == CETriggerTypes.None;
-                //    //GridUtil.AddCellToGrid(grid, Enums.CETriggerTypesToString(Events[i].ResetType), row, col++, false, noTrigger);
-                //    //if (noTrigger)
-                //    //    continue;
-
-                //    ////reset parameters
-                //    //if (Events[i].HasResetParam())
-                //    //{
-                //    //    if (Events[i].ResetTypeHasParamPair())
-                //    //    {
-                //    //        Grid paramGrid = new();
-                //    //        GridUtil.AddRowToGrid(paramGrid);
-                //    //        for (int c = 0; c < 4; c++)
-                //    //            GridUtil.AddColumnToGrid(paramGrid);
-                //    //        GridUtil.AddCellToGrid(paramGrid, paramDesc(Events[i].ResetType), 0, 0);
-                //    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam2), 0, 1, HorizontalAlignment.Left, false, Events[i].ResetParam2 < 0, new(0, 2, 0, 2));
-                //    //        GridUtil.AddCellToGrid(paramGrid, Cultures.Resources.Logical_And, 0, 2);
-                //    //        GridUtil.AddCellToGrid(paramGrid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), 0, 3, HorizontalAlignment.Left, false, Events[i].ResetParam < 0, new(0, 2, 0, 2));
-                //    //        paramGrid.SetValue(Grid.RowProperty, row);
-                //    //        paramGrid.SetValue(Grid.ColumnProperty, col);
-                //    //        GridUtil.AddCellToGrid(grid, paramGrid);
-                //    //        if (Events[i].ResetParam < 0 || Events[i].ResetParam2 < 0)
-                //    //            continue;
-                //    //    }
-                //    //    else
-                //    //    {
-                //    //        GridUtil.AddCellToGrid(grid, getTriggerParamDesc(Events[i].ResetType, Events[i].ResetParam), row, col, false, Events[i].ResetParam < 0);
-                //    //        if (Events[i].ResetParam < 0)
-                //    //            continue;
-                //    //    }
-                //    //}
-                 
-                //    //col++;
-
-                //    ////reset condition
-                //    //GridUtil.AddCellToGrid(grid, isTrueOrFalse(Events[i].ResetCondition), row, col++);
-                //    */
-                //}
-
-                //GridUtil.AddRowToGrid(grid, 10);
 
                 table.RowGroups.Add(bodyGroup);
                 return table;
@@ -328,9 +185,15 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
+        /// <summary>
+        /// Build a string table of all the report values 
+        /// so that the required column widths can be calculated.
+        /// </summary>
         private void createReportTable()
         {
             //create string table of the report values
+            _report = new();
+
             foreach (var e in Events)
             {
                 var row = new List<ReportElement>();
@@ -340,6 +203,12 @@ namespace Xfp.DataTypes.PanelData
 
                 //action type
                 row.Add(new(Enums.CEActionTypesToString(e.ActionType).ToString()));
+
+                if (e.ActionType == CEActionTypes.None)
+                {
+                    _report.Add(row);
+                    continue;
+                }
 
                 //action parameter, if any
                 if (e.HasActionParam())
@@ -351,6 +220,7 @@ namespace Xfp.DataTypes.PanelData
                     else
                     {
                         row.Add(new(true));
+                        _report.Add(row);
                         continue;
                     }
                 }
@@ -369,6 +239,7 @@ namespace Xfp.DataTypes.PanelData
                 else
                 {
                     row.Add(new(true));
+                    _report.Add(row);
                     continue;
                 }
 
@@ -385,7 +256,10 @@ namespace Xfp.DataTypes.PanelData
                             row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString()));
 
                         if (e.TriggerParam < 0 || e.TriggerParam2 < 0)
+                        {
+                            _report.Add(row);
                             continue;
+                        }
                     }
                     else
                     {
@@ -393,7 +267,10 @@ namespace Xfp.DataTypes.PanelData
                     }
 
                     if (e.TriggerParam < 0)
+                    {
+                        _report.Add(row);
                         continue;
+                    }
                 }
                 else
                 {
@@ -402,222 +279,121 @@ namespace Xfp.DataTypes.PanelData
 
                 //trigger condition
                 row.Add(new(Cultures.Resources.Trigger_Condition_Is));
-                row.Add(new(isTrueOrFalse(e.TriggerCondition)));
+                row.Add(new(getTrueOrFalse(e.TriggerCondition)));
 
+                row.Add(new());
+
+                //reset type
+                if (e.ResetType != CETriggerTypes.None)
+                {
+                    row.Add(new((Enums.CETriggerTypesToString(e.ResetType)).ToString()));
+                }
+                else
+                {
+                    row.Add(new(true));
+                    _report.Add(row);
+                    continue;
+                }
+
+                //reset parameter(s), if any
+                if (e.HasResetParam())
+                {
+                    if (e.ResetTypeHasParamPair())
+                    {
+                        row.Add(new(e.ResetType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
+                        row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam2).ToString()));
+                        row.Add(new(Cultures.Resources.Logical_And));
+
+                        if (e.ResetParam >= 0)
+                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString()));
+
+                        if (e.ResetParam < 0 || e.ResetParam2 < 0)
+                        {
+                            _report.Add(row);
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString(), 4));
+                    }
+
+                    if (e.ResetParam < 0)
+                    {
+                        _report.Add(row);
+                        continue;
+                    }
+                }
+                else
+                {
+                    row.Add(new("", 4));
+                }
+
+                //reset condition
+                row.Add(new(Cultures.Resources.Trigger_Condition_Is));
+                row.Add(new(getTrueOrFalse(e.ResetCondition)));
                 _report.Add(row);
+            }
+        }
+
+        private void setColumnWidths()
+        {
+            var cellLeftRightPadding = TableUtil.Padding.Left + TableUtil.Padding.Right;
+
+            _columnWidths = new();
+
+            for (int row = 0; row < _report.Count; row++)
+            {
+                int offset = 0;
+
+                for (int col = 0; col < _report[row].Count; col++)
+                {
+                    if (_report[row][col].ColumnSpan > 1)
+                        offset += _report[row][col].ColumnSpan - 1;
+
+                    while (_columnWidths.Count <= col + offset)
+                        _columnWidths.Add(_spacerColumnWidth);
+
+                    if (_report[row][col].ColumnSpan == 1)
+                        _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                }
+            }
+
+            if (_columnWidths.Count < 5)
+            {
+                _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
+                for (int i = _columnWidths.Count; i < 13; i++)
+                    _columnWidths.Add(_spacerColumnWidth);
+            }
+
+            if (_columnWidths.Count < 13)
+            {
+                _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
+                for (int i = _columnWidths.Count; i < 17; i++)
+                    _columnWidths.Add(_spacerColumnWidth);
             }
         }
 
 
         private void defineColumnHeaders(Table table, string reportHeader)
         {     
-            setColumnWidths();
-
-            //define table's columns
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[0]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[1]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[2]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(5) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[3]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[4]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[5]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[6]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[7]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[8]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[9]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(5) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[10]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[11]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[12]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[13]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[14]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[15]) });
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_columnWidths[16]) });
+            foreach (var w in _columnWidths)
+                table.Columns.Add(new TableColumn() { Width = new GridLength(w) });
 
             var headerRow = new TableRow();
 
-            headerRow.Background = PrintUtil.GridHeaderBackground;
+            headerRow.Background = PrintUtil.TableHeaderBackground;
 
             headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Number_Symbol, TextAlignment.Right, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 2, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(""));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 7, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(""));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 3, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 8, FontWeights.Bold));
             headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 7, FontWeights.Bold));
-
-            //headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
-            //headerRow1.Cells.Add(TableUtil.NewCell("", 1, 17));
-            //headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 2, NumPanelRelayTriggers + 1, TextAlignment.Left, FontWeights.Bold), Styles.Brush04));
-
-            //for (int i = 0; i < NumOutputSetTriggers; i++)
-            //    headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
-
-            //headerRow3.Cells.Add(TableUtil.NewCell(""));
-
-            //for (int i = 0; i < NumPanelRelayTriggers; i++)
-            //    headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow);
-            //headerGroup.Rows.Add(headerRow2);
-            //headerGroup.Rows.Add(headerRow3);
 
             table.RowGroups.Add(headerGroup);
         }
-
-
-        private void setColumnWidths()
-        {
-            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
-
-            _columnWidths.Add(TableUtil.MeasureText("99").Width + 1);
-
-            //_wAnd = TableUtil.MeasureText(Cultures.Resources.Logical_And).Width + 1;
-            //_wIs  = TableUtil.MeasureText(Cultures.Resources.Trigger_Condition_Is).Width + 1;
-            
-            for (int i = 0; i < 17; i++)
-                _columnWidths.Add(5);
-
-            for (int row = 0; row < _report.Count; row++)
-            {
-                for (int col = 0; col < _report[row].Count; col++)
-                {
-                    if (_report[row][col].ColumnSpan > 1)
-                    {
-                        if (col < 8)
-                            _triggerWidth = Math.Max(_columnWidths[col], TableUtil.MeasureText(_report[row][col].Text).Width + 1);
-                        else
-                            _resetWidth = Math.Max(_columnWidths[col], TableUtil.MeasureText(_report[row][col].Text).Width + 1);
-                    }
-                    else
-                    {
-                        _columnWidths[col] = Math.Max(_columnWidths[col], TableUtil.MeasureText(_report[row][col].Text).Width + 1);
-                    }
-                }
-            }
-        }
-
-
-        //public double GetMaxActionNameLength()
-        //{
-        //    var result = 0.0;
-
-        //    foreach (var a in _actions)
-        //    {
-        //        var nameWidth = TableUtil.MeasureText(a).Width + 1;
-        //        if (nameWidth > result)
-        //            result = nameWidth;
-        //    }
-
-        //    return result;
-        //}
-
-
-        //public double GetMaxActionParamLength()
-        //{
-        //    var result = 0.0;
-        //    foreach (var d in _loop1Devices.Concat(_loop2Devices).ToList())
-        //        result = Math.Max(result, TableUtil.MeasureText(d).Width + 1);
-        //    foreach (var r in _relays)
-        //        result = Math.Max(result, TableUtil.MeasureText(r).Width + 1);
-        //    foreach (var g in _groups)
-        //        result = Math.Max(result, TableUtil.MeasureText(g).Width + 1);
-        //    foreach (var z in _zones)
-        //        result = Math.Max(result, TableUtil.MeasureText(z).Width + 1);
-        //    foreach (var s in _sets)
-        //        result = Math.Max(result, TableUtil.MeasureText(s).Width + 1);
-        //    foreach (var r in _setsRelays)
-        //        result = Math.Max(result, TableUtil.MeasureText(r).Width + 1);
-        //    foreach (var e in _events)
-        //        result = Math.Max(result, TableUtil.MeasureText(e).Width + 1);
-        //    return result;
-        //}
-
-
-        //public double GetMaxTriggerNameLength()
-        //{
-        //    var result = 0.0;
-        //    foreach (var t in _data.GetCETriggersList())
-        //        result = Math.Max(result, TableUtil.MeasureText(t).Width + 1);
-        //    return result;
-        //}
-
-
-        //public double GetMaxTriggerParamLength()
-        //{
-        //    var result = 0.0;
-        //    foreach (var a in _loop1Devices.Concat(_loop2Devices).ToList())
-        //        result = Math.Max(result, TableUtil.MeasureText(a).Width + 1);
-        //    foreach (var r in _relays)
-        //        result = Math.Max(result, TableUtil.MeasureText(r).Width + 1);
-        //    foreach (var z in _zones)
-        //        result = Math.Max(result, TableUtil.MeasureText(z).Width + 1);
-        //    foreach (var p in _zonesPanels)
-        //        result = Math.Max(result, TableUtil.MeasureText(p).Width + 1);
-        //    foreach (var i in _groups)
-        //        result = Math.Max(result, TableUtil.MeasureText(i).Width + 1);
-        //    foreach (var t in _times)
-        //        result = Math.Max(result, TableUtil.MeasureText(t).Width + 1);
-        //    foreach (var e in _events)
-        //        result = Math.Max(result, TableUtil.MeasureText(e).Width + 1);
-
-        //    result = Math.Max(result, _wZoneOrEventName + _wZoneOrEvent * 2 + _wAnd);
-        //    return result;
-        //}
-
-
-        //public double GetMaxEventLength()
-        //{
-        //    var result = 0.0;
-        //    foreach (var e in _events)
-        //        result = Math.Max(result, TableUtil.MeasureText(e).Width + 1);
-        //    return result;
-        //}
-
-
-        //public double GetMaxZoneLength()
-        //{
-        //    var result = 0.0;
-        //    foreach (var z in _zones)
-        //        result = Math.Max(result, TableUtil.MeasureText(z).Width + 1);
-        //    foreach (var p in _zonesPanels)
-        //        result = Math.Max(result, TableUtil.MeasureText(p).Width + 1);
-        //    return result;
-        //}
-
-
-        //private Grid columnHeaders()
-        //{
-        //    Grid grid = new Grid();
-
-        //    GridUtil.AddRowToGrid(grid);
-
-        //    for (int i = 0; i < CEConfigData.NumEvents; i++)
-        //        GridUtil.AddRowToGrid(grid);
-
-        //    for (int i = 0; i < _totalCEColumns; i++)
-        //    {
-        //        if (i == 3  || i == 7)
-        //            GridUtil.AddColumnToGrid(grid, 2);
-        //        else
-        //            GridUtil.AddColumnToGrid(grid);
-        //    }
-
-        //    //header background
-        //    grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalCEColumns, PrintUtil.GridHeaderBackground));
-
-        //    //header text
-        //    grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Number_Symbol, 0, 0, HorizontalAlignment.Right));
-        //    grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Action,        0, 1, 1, 2));
-        //    grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Occurs_When,   0, 3, 1, 3));
-        //    grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Resets_When,   0, 8, 1, 3));
-
-        //    return grid;
-        //}
-
-
-        private string paramDesc(CETriggerTypes triggerType) => triggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone;
-        private string isTrueOrFalse(bool condition) => condition ? Cultures.Resources.True : Cultures.Resources.False;
 
 
         private string getActionParamDesc(CEActionTypes action, int param)
@@ -650,7 +426,6 @@ namespace Xfp.DataTypes.PanelData
             };
         }
 
-
         private string getTriggerParamDesc(CETriggerTypes triggerType, int param)
         {
             return triggerType switch
@@ -676,6 +451,8 @@ namespace Xfp.DataTypes.PanelData
                 _ => "",
             };
         }
+
+        private string getTrueOrFalse(bool condition) => condition ? Cultures.Resources.True : Cultures.Resources.False;
 
 
         private string getListString(List<string> list, int? index)
