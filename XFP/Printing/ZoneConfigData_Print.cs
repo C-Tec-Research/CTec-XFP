@@ -25,7 +25,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultGridMargin);
+            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             GridUtil.ResetDefaults();
             //GridUtil.SetForeground(PrintUtil.TextForeground);
@@ -98,7 +98,7 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     newRow.Cells.Add(TableUtil.NewCell((z.Index + 1).ToString(), 1, 1, TextAlignment.Right));           //zone number
@@ -142,7 +142,7 @@ namespace Xfp.DataTypes.PanelData
                     dataRows++;
 
                     //create the new row
-                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.GridAlternatingRowBackground : PrintUtil.NoBackground };
+                    var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
                     newRow.Cells.Add(TableUtil.NewCell((p.Index + 1).ToString(), 1, 1, TextAlignment.Right));       //zone number
@@ -208,7 +208,7 @@ namespace Xfp.DataTypes.PanelData
             var headerRow2 = new TableRow();
             var headerRow3 = new TableRow();
 
-            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.GridHeaderBackground;
+            headerRow1.Background = headerRow2.Background = headerRow3.Background = PrintUtil.TableHeaderBackground;
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
@@ -250,7 +250,7 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnWidths()
         {
-            var cellMargins = (int)(PrintUtil.DefaultGridMargin.Left + PrintUtil.DefaultGridMargin.Right) + 1;
+            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
             
             //measure required column widths for columns
             _wNum     = TableUtil.MeasureText("99").Width + 1;
