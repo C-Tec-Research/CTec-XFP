@@ -21,7 +21,7 @@ namespace Xfp.DataTypes.PanelData
         {
             LoopNum     = original.LoopNum;
             //DeviceIndex = original.DeviceIndex;
-            Group       = original.Group;
+            //Group       = original.Group;
 
             if (original is not null)
                 foreach (var d in original.Devices)
@@ -60,7 +60,7 @@ namespace Xfp.DataTypes.PanelData
         [JsonIgnore] public int LoopNum { get; set; }
         public ObservableCollection<DeviceData> Devices { get; set; } = new();
         //public int DeviceIndex { get; set; }
-        public int Group { get; set; }
+        //public int Group { get; set; }
 
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Xfp.DataTypes.PanelData
 
             //if (DeviceIndex != od.DeviceIndex
             // || Group       != od.Group)
-            if (Group != od.Group)
-                return false;
+            //if (Group != od.Group)
+            //    return false;
 
             if (od.Devices.Count != Devices.Count) 
                 return false;

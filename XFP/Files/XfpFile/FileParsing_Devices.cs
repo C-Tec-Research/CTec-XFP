@@ -20,7 +20,7 @@ namespace Xfp.Files.XfpFile
                 switch (ItemName(currentLine))
                 {
                     //case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;
-                    case XfpTags.LoopGroup:       loop.Group       = parseInt(currentLine); break;
+                    //case XfpTags.LoopGroup:       loop.Group       = parseInt(currentLine); break;
                     case XfpTags.LoopArrayDevice: parseDevices(inputStream, ref result, loopNum); break;
                 }
             }

@@ -95,7 +95,7 @@ namespace Xfp.ViewModels
                             if (p.IsFitted)
                             {
                                 if (!_originalPanelNumberSet.Contains(p.Number))
-                                    _data.Panels.Add(p.Number, XfpPanelData.InitialisedNew(_protocol, p.Number));
+                                    _data.Panels.Add(p.Number, XfpPanelData.InitialisedNew(_protocol, p.Number, LoopConfigData.MaxLoops));
                             }
                             else
                             {

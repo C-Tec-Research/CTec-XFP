@@ -182,13 +182,13 @@ namespace Xfp.ViewModels
         /// <summary>
         /// Initialise an empty dataset with confirmation on changes to current data.
         /// </summary>
-        public void InitNewDataset() => InitNewDataset(CurrentProtocol, true);
+        public void InitNewDataset() => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops);
 
         /// <summary>
         /// Initialise an empty dataset with optional confirmation on changes to current data.
         /// </summary>
         /// <param name="checkForChanges">Set to True to check the current data for changes and ask for confirmation</param>
-        public void InitNewDataset(CTecDevices.ObjectTypes protocol, bool checkForChanges, bool repopulateView = true)
+        public void InitNewDataset(CTecDevices.ObjectTypes protocol, bool checkForChanges, int numLoops, bool repopulateView = true)
         {
             if (checkForChanges && DataHasChanged && !askClearCurrentData((_currentPage.DataContext as PanelToolsPageViewModelBase)?.PageHeader))
                 return;
@@ -198,7 +198,7 @@ namespace Xfp.ViewModels
             CurrentProtocol = protocol;
 
             if (repopulateView)
-                PopulateView(XfpData.InitialisedNew(CurrentProtocol, PanelNumber = PanelNumber, true));
+                PopulateView(XfpData.InitialisedNew(CurrentProtocol, PanelNumber = PanelNumber, true, numLoops));
 
             OnPropertyChanged(nameof(CurrentFileName));
             OnPropertyChanged(nameof(CurrentFilePath));
@@ -541,7 +541,7 @@ namespace Xfp.ViewModels
                 //CurrentProtocol = newProtocol;
                 ClosePopups();
                 //if (askConfirm)
-                    InitNewDataset(newProtocol, false, askConfirm);
+                    InitNewDataset(newProtocol, false, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops, askConfirm);
             }
 
             return true;
@@ -904,7 +904,7 @@ namespace Xfp.ViewModels
 
         #region menu & button commands
         public void ShowPanelManagementWindow(Window parent) { ClosePopups(); CloseValidationWindow(); ShowPanelManagementPopup(parent); }
-        public ICommand FileNewCommand { get => new DelegateCommand(() => { ClosePopups(); InitNewDataset(); }); }
+        public ICommand FileNewCommand { get => new DelegateCommand(() => { ClosePopups(); FileNew(); }); }
         public ICommand FileOpenCommand { get => new DelegateCommand(() => { ClosePopups(); FileOpen(); }); }
         public ICommand FileSaveCommand { get => new DelegateCommand(() => { ClosePopups(); FileSave(); }); }
         public ICommand FileSaveAsCommand { get => new DelegateCommand(() => { ClosePopups(); FileSaveAs(); }); }
@@ -923,6 +923,34 @@ namespace Xfp.ViewModels
 
 
         #region main menu options
+        public void FileNew()
+        {
+            try
+            {
+                CloseMainMenu();
+
+                var numLoops = askNumLoops();
+                InitNewDataset(CurrentProtocol, false, numLoops);
+            }
+            finally
+            {
+            }
+        }
+
+        private int askNumLoops()
+        {
+            //var dlg = new NewDatasetDialog
+            //{
+            //    Owner = _mainWindow,
+            //    WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            //};
+            //if (dlg.ShowDialog() == true)
+            //{
+            //    return dlg.NumberOfLoops;
+            //}
+            return LoopConfigData.MaxLoops;
+        }
+
         public bool FileOpen(string path = null)
         {
             try
@@ -1037,7 +1065,8 @@ namespace Xfp.ViewModels
             List<CTecDevices.ObjectTypes> protocols = new();
             List<int> panelNumbers = new();
             List<string> firmwareVersions = new();
-            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
+            int numLoops = LoopConfigData.MaxLoops;
+            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions, ref numLoops);
             
             //file must contain valid device protocols
             if (protocols.Count == 0)
@@ -1166,8 +1195,9 @@ namespace Xfp.ViewModels
             List<CTecDevices.ObjectTypes> protocols = new();
             List<int> panelNumbers = new();
             List<string> firmwareVersions = new();
+            int numLoops = LoopConfigData.MaxLoops;
 
-            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions);
+            LocalXfpFile.ReadDefiningSettings(TextFile.FilePath, ref protocols, ref panelNumbers, ref firmwareVersions, ref numLoops);
 
             if (protocols.Count == 0)
             {
@@ -1214,11 +1244,11 @@ namespace Xfp.ViewModels
             }
 
             if (protocolChanged || !keepOtherPanels)
-                result = XfpData.InitialisedNew(protocol, panelNumber, true);
+                result = XfpData.InitialisedNew(protocol, panelNumber, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops);
             else
                 result = new XfpData(_data);
 
-            var panelData = LocalXfpFile.ReadLegacyXfpFile(TextFile.FilePath, protocol, panelNumber);
+            var panelData = LocalXfpFile.ReadLegacyXfpFile(TextFile.FilePath, protocol, panelNumber, numLoops);
 
             if (result.Panels.Keys.Contains(panelNumber))
                 result.Panels[panelNumber] = panelData.Panels[panelNumber];

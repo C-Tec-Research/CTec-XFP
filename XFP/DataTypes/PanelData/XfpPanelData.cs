@@ -101,7 +101,7 @@ namespace Xfp.DataTypes.PanelData
         /// Returns an initialised XfpPanelData object
         /// </summary>
         /// <param name="protocol">Default protocol</param>
-        internal static XfpPanelData InitialisedNew(CTecDevices.ObjectTypes protocol, int panelNumber = 1)
+        internal static XfpPanelData InitialisedNew(CTecDevices.ObjectTypes protocol, int panelNumber, int numLoops)
         {
             var data = new XfpPanelData
             {
@@ -109,7 +109,7 @@ namespace Xfp.DataTypes.PanelData
                 Protocol          = protocol,
                 PanelNumber       = panelNumber,
                 PanelConfig       = PanelConfigData.InitialisedNew(),
-                LoopConfig        = LoopConfigData.InitialisedNew(),
+                LoopConfig        = LoopConfigData.InitialisedNew(numLoops),
                 DeviceNamesConfig = DeviceNamesConfigData.InitialisedNew(),
                 ZoneConfig        = ZoneConfigData.InitialisedNew(),
                 ZonePanelConfig   = ZonePanelConfigData.InitialisedNew(),

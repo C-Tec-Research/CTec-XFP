@@ -6,17 +6,18 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class LoopConfigData : ConfigData, IConfigData
     {
-        internal LoopConfigData()
+        internal LoopConfigData(int numLoops)
         {
+            NumLoops = numLoops;
             _pageErrorOrWarningDetails = new(Cultures.Resources.Nav_Device_Details);
         }
 
-        internal LoopConfigData(LoopConfigData original) : this()
+        internal LoopConfigData(LoopConfigData original) : this(original.NumLoops)
         {
             if (original is not null)
             {
                 Loop1 = new DeviceConfigData(original.Loop1);
-                Loop2 = new DeviceConfigData(original.Loop2);
+                Loop2 = NumLoops > 1 ? new DeviceConfigData(original.Loop2) : new(1);
             }
         }
 
@@ -66,11 +67,12 @@ namespace Xfp.DataTypes.PanelData
         /// <summary>
         /// Returns an initialised DeviceConfigData object.
         /// </summary>
-        internal new static LoopConfigData InitialisedNew()
+        internal static LoopConfigData InitialisedNew(int numLoops)
         {
-            var data = new LoopConfigData();
+            var data = new LoopConfigData(numLoops);
             data.Loop1 = DeviceConfigData.InitialisedNew(0);
-            data.Loop2 = DeviceConfigData.InitialisedNew(1);
+            if (numLoops > 1)
+                data.Loop2 = DeviceConfigData.InitialisedNew(1);
             return data;
         }
 
@@ -80,6 +82,8 @@ namespace Xfp.DataTypes.PanelData
             if (otherData is not LoopConfigData od)
                 return false;
 
+            if (od.NumLoops != NumLoops)
+                return false;
             if (!od.Loop1.Equals(Loop1))
                 return false;
             if (!od.Loop2.Equals(Loop2))
@@ -101,13 +105,16 @@ namespace Xfp.DataTypes.PanelData
                 _pageErrorOrWarningDetails.Items.Add(p);
             }
 
-            if (!Loop2.Validate())
+            if (NumLoops > 1)
             {
-                var epi = Loop2.GetErrorItems();
-                var p = new ConfigErrorPageItems(2, epi.Name);
-                foreach (var e in epi.ValidationCodes)
-                    p.ValidationCodes.Add(e);
-                _pageErrorOrWarningDetails.Items.Add(p);
+                if (!Loop2.Validate())
+                {
+                    var epi = Loop2.GetErrorItems();
+                    var p = new ConfigErrorPageItems(2, epi.Name);
+                    foreach (var e in epi.ValidationCodes)
+                        p.ValidationCodes.Add(e);
+                    _pageErrorOrWarningDetails.Items.Add(p);
+                }
             }
 
             return _pageErrorOrWarningDetails.Items.Count == 0;

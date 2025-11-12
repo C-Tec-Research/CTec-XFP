@@ -70,13 +70,13 @@ namespace Xfp.Files
         //}
 
 
-        internal static void ReadDefiningSettings(string path, ref List<CTecDevices.ObjectTypes> protocols, ref List<int> panelNumbers, ref List<string> firmwareVersions)
+        internal static void ReadDefiningSettings(string path, ref List<CTecDevices.ObjectTypes> protocols, ref List<int> panelNumbers, ref List<string> firmwareVersions, ref int numLoops)
         {
             try
             {
                 using (StreamReader strm = new StreamReader(path))
                 {
-                    XfpFile.FileParsingXfp.ReadDefiningSettings(strm, ref protocols, ref panelNumbers, ref firmwareVersions);
+                    XfpFile.FileParsingXfp.ReadDefiningSettings(strm, ref protocols, ref panelNumbers, ref firmwareVersions, ref numLoops);
                     return;
                 }
             }
@@ -89,11 +89,11 @@ namespace Xfp.Files
         }
 
 
-        internal static XfpData ReadLegacyXfpFile(string path, CTecDevices.ObjectTypes protocol, int panelNumber)
+        internal static XfpData ReadLegacyXfpFile(string path, CTecDevices.ObjectTypes protocol, int panelNumber, int numLoops)
         {
             using (StreamReader strm = new StreamReader(path))
             {
-                return normaliseData(XfpFile.FileParsingXfp.ParseXfp(strm, protocol, panelNumber));
+                return normaliseData(XfpFile.FileParsingXfp.ParseXfp(strm, protocol, panelNumber, numLoops));
             }
         }
 

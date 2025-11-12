@@ -99,10 +99,10 @@ namespace Xfp.DataTypes
 
         //        internal static new XfpData InitialisedNew() => InitialisedNew(CTecDevices.ObjectTypes.XfpCast, CurrentPanelNumber, true);
 
-        internal static XfpData InitialisedNew(CTecDevices.ObjectTypes protocol, int panelNumber, bool setCurrentToThis)
+        internal static XfpData InitialisedNew(CTecDevices.ObjectTypes protocol, int panelNumber, bool setCurrentToThis, int numLoops)
         {
             var data = new XfpData();
-            data.Panels.Add(panelNumber, XfpPanelData.InitialisedNew(protocol, panelNumber));
+            data.Panels.Add(panelNumber, XfpPanelData.InitialisedNew(protocol, panelNumber, numLoops));
             data.SiteConfig = SiteConfigData.InitialisedNew();
             if (setCurrentToThis)
                 CurrentPanelNumber = panelNumber;

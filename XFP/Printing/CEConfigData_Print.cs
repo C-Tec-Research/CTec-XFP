@@ -37,7 +37,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
+            //TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
             TableUtil.SetPadding(new(2,2,4,2));
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
@@ -81,7 +81,7 @@ namespace Xfp.DataTypes.PanelData
             public ReportElement() { }
             public ReportElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
             public ReportElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
-            public ReportElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
+            public ReportElement(bool isError) { IsError = isError; Text = /*PrintUtil.Errorindicator*/"[error]"; }
 
             public string Text { get; private set; } = string.Empty;
             public int    ColumnSpan { get; private set; } = 1;
@@ -164,10 +164,14 @@ namespace Xfp.DataTypes.PanelData
                     for (int c = 0; c < _report[r].Count; c++)
                     {
                         var item = _report[r][c];
-                        //newRow.Cells.Add(TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground));
-                        var cell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground);
-                        cell.Background = (c % 4) switch { 0 => Styles.Brush03, 1 => Styles.ErrorBrush, 2 => Styles.WarnBrush, _ => Styles.OkBrush };
-                        newRow.Cells.Add(cell);
+                        //newRow.Cells.Add(TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground, ));
+                        var newCell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment);
+                        if (item.IsError)
+                        {
+                            newCell.Foreground = PrintUtil.ErrorBrush;
+                            newCell.FontStyle = FontStyles.Italic;
+                        }
+                        newRow.Cells.Add(newCell);
                     }
                 }
 
@@ -341,7 +345,10 @@ namespace Xfp.DataTypes.PanelData
             var cellLeftRightPadding = TableUtil.Padding.Left + TableUtil.Padding.Right;
 
             _columnWidths = new();
+            var wTriggerParam = 0.0;
+            var wResetParam   = 0.0;
 
+            //measure the text in each cell to get the max widths per column
             for (int row = 0; row < _report.Count; row++)
             {
                 int offset = 0;
@@ -355,23 +362,39 @@ namespace Xfp.DataTypes.PanelData
                         _columnWidths.Add(_spacerColumnWidth);
 
                     if (_report[row][col].ColumnSpan == 1)
+                    {
                         _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                    }
+                    else
+                    {
+                        //trigger & reset params that span 4 columns - get the max width
+                        if (col == 5)
+                            wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                        else
+                            wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                    }
                 }
             }
 
-            if (_columnWidths.Count < 5)
+            //ensure full complement of columns
+            if (_columnWidths.Count < 19)
             {
-                _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
-                for (int i = _columnWidths.Count; i < 13; i++)
-                    _columnWidths.Add(_spacerColumnWidth);
+                for (int i = _columnWidths.Count; i < 18; i++)
+                {
+                    if (i == 5)
+                        _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
+                    else if (i == 13)
+                        _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Resets_When).Width + cellLeftRightPadding);
+                    else
+                        _columnWidths.Add(_spacerColumnWidth);
+                }
             }
 
-            if (_columnWidths.Count < 13)
-            {
-                _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
-                for (int i = _columnWidths.Count; i < 17; i++)
-                    _columnWidths.Add(_spacerColumnWidth);
-            }
+            //if AND parameters' width is less than the max 'normal' param width, pad the 4th column
+            if (_columnWidths[5] + _columnWidths[6] + _columnWidths[7] + _columnWidths[8] < wTriggerParam)
+                _columnWidths[8] = wTriggerParam - _columnWidths[5] - _columnWidths[6] - _columnWidths[7];
+            if (_columnWidths[13] + _columnWidths[14] + _columnWidths[15] + _columnWidths[16] < wResetParam)
+                _columnWidths[16] = wResetParam - _columnWidths[13] - _columnWidths[14] - _columnWidths[15];
         }
 
 

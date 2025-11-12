@@ -36,11 +36,13 @@ namespace Xfp.Files.XfpFile
         /// </summary>
         internal static void ReadDefiningSettings(StreamReader inputStream, ref List<CTecDevices.ObjectTypes> protocols,
                                                                             ref List<int> panelNumbers, 
-                                                                            ref List<string> firmwareVersions)
+                                                                            ref List<string> firmwareVersions,
+                                                                            ref int numLoops)
         {
             protocols        = new();
             panelNumbers     = new();
             firmwareVersions = new();
+            numLoops = LoopConfigData.MaxLoops;
 
             try
             {
@@ -62,6 +64,8 @@ namespace Xfp.Files.XfpFile
                         if (gotFw = !string.IsNullOrWhiteSpace(f))
                             firmwareVersions.Add(f);
                     }
+                    else if (item == XfpTags.LoopCount)                     // <-- legacy file
+                        numLoops = parseInt(currentLine);
                     else if (item == nameof(XfpPanelData.Protocol))         // <-- json file
                         protocols.Add(parseProtocol(currentLine));
                     else if (item == nameof(XfpPanelData.PanelNumber))      // <-- json file
@@ -72,6 +76,8 @@ namespace Xfp.Files.XfpFile
                         if (!string.IsNullOrWhiteSpace(fw))
                             firmwareVersions.Add(fw);
                     }
+                    else if (item == nameof(LoopConfigData.NumLoops))       // <-- json file
+                        numLoops = parseInt(currentLine);
 
                     if (gotProt && gotPan && gotFw)
                         return;
@@ -85,10 +91,10 @@ namespace Xfp.Files.XfpFile
         /// Parse the text file stream as XFP data.
         /// </summary>
         /// <returns>XfpPanelData object populated from the parsed data.</returns>
-        internal static XfpData ParseXfp(StreamReader inputStream, CTecDevices.ObjectTypes protocol, int panelNumber)
+        internal static XfpData ParseXfp(StreamReader inputStream, CTecDevices.ObjectTypes protocol, int panelNumber, int numLoops)
         {
             LineNumber = 1;
-            var result = XfpData.InitialisedNew(protocol, panelNumber, true);
+            var result = XfpData.InitialisedNew(protocol, panelNumber, true, numLoops);
 
             string currentLine = string.Empty;
             CTecUtil.Debug.WriteLine("Reading XFP file");
