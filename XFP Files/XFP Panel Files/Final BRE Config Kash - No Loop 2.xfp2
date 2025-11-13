@@ -15176,7 +15176,7 @@
         ]
       },
       "LoopConfig": {
-        "NumLoops": 2,
+        "NumLoops": 1,
         "Loop1": {
           "Devices": [
             {
@@ -21104,10 +21104,6 @@
           ],
           "Group": 0
         },
-        "Loop2": {
-          "Devices": [],
-          "Group": 0
-        }
       },
       "DeviceNamesConfig": {
         "DeviceNames": [

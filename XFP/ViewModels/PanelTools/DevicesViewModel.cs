@@ -63,6 +63,7 @@ namespace Xfp.ViewModels.PanelTools
             if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Query_Add_Second_Loop, PageHeader) == MessageBoxResult.Yes)
             {
                 NumLoops = 2;
+                _data.CurrentPanel.Loop2Config.Devices = DeviceConfigData.InitialisedNew(1).Devices;
                 PopulateLoop(2);
                 OnPropertyChanged(nameof(CurrentLoop));
                 OnPropertyChanged(nameof(LoopIsFitted));
@@ -705,7 +706,7 @@ namespace Xfp.ViewModels.PanelTools
             PanelComms.AddCommandEndDeviceNameUpload(Cultures.Resources.End_Of_Device_Names);
 
             //send loops
-            for (int loop = 0; loop < LoopConfigData.DetectedLoops; loop++)
+            for (int loop = 0; loop < LoopConfigData.DetectedLoops && loop < NumLoops; loop++)
             {
                 PanelComms.InitNewUploadCommandSubqueue(string.Format(Cultures.Resources.Loop_x_Devices, loop + 1), null);
                 for (int device = 0; device < DeviceConfigData.NumDevices; device++)

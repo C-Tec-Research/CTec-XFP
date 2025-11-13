@@ -6,10 +6,14 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class LoopConfigData : ConfigData, IConfigData
     {
-        internal LoopConfigData(int numLoops)
+        internal LoopConfigData()
+        {
+            _pageErrorOrWarningDetails = new(Cultures.Resources.Nav_Device_Details);
+        }
+
+        internal LoopConfigData(int numLoops) : this()
         {
             NumLoops = numLoops;
-            _pageErrorOrWarningDetails = new(Cultures.Resources.Nav_Device_Details);
         }
 
         internal LoopConfigData(LoopConfigData original) : this(original.NumLoops)

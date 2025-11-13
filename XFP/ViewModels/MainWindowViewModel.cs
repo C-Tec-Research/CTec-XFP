@@ -99,15 +99,23 @@ namespace Xfp.ViewModels
 
             SerialComms.NotifyDeviceProtocol = new((command) =>
             {
-                var loopType = LoopConfigData.LoopTypeBundle.Parse(command);
-                _panelProtocol = loopType.Protocol;
-                LoopConfigData.DetectedLoops = loopType.NumLoops;
+                if (command is not null)
+                {
+                    var loopType = LoopConfigData.LoopTypeBundle.Parse(command);
+                    _panelProtocol = loopType.Protocol;
+                    LoopConfigData.DetectedLoops = loopType.NumLoops;
+                }
             });
 
             SerialComms.NotifyConnectionStatus = new((status) =>
             {
-                PanelIsReadOnly = (CommsStatus = status) == SerialComms.ConnectionStatus.ConnectedReadOnly;
-                FirmwareError = CommsStatus == SerialComms.ConnectionStatus.FirmwareNotSupported;
+                PanelIsReadOnly = (CommsStatus = status) == ConnectionStatus.ConnectedReadOnly;
+                FirmwareError   = CommsStatus == ConnectionStatus.FirmwareNotSupported;
+
+                //set loops to default if disconnected
+                if (CommsStatus == ConnectionStatus.Disconnected || CommsStatus == ConnectionStatus.Unknown)
+                    LoopConfigData.DetectedLoops = LoopConfigData.MaxLoops;
+
                 OnPropertyChanged(nameof(PanelIsConnected));
                 OnPropertyChanged(nameof(PanelIsDisconnected));
             });
@@ -541,7 +549,7 @@ namespace Xfp.ViewModels
                 //CurrentProtocol = newProtocol;
                 ClosePopups();
                 //if (askConfirm)
-                    InitNewDataset(newProtocol, false, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops, askConfirm);
+                    InitNewDataset(newProtocol, false, LoopConfigData.MaxLoops, askConfirm);
             }
 
             return true;
@@ -929,8 +937,7 @@ namespace Xfp.ViewModels
             {
                 CloseMainMenu();
 
-                var numLoops = askNumLoops();
-                InitNewDataset(CurrentProtocol, false, numLoops);
+                InitNewDataset(CurrentProtocol, false, LoopConfigData.MaxLoops);
             }
             finally
             {
@@ -1244,7 +1251,7 @@ namespace Xfp.ViewModels
             }
 
             if (protocolChanged || !keepOtherPanels)
-                result = XfpData.InitialisedNew(protocol, panelNumber, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops);
+                result = XfpData.InitialisedNew(protocol, panelNumber, true, numLoops);
             else
                 result = new XfpData(_data);
 
@@ -1810,6 +1817,11 @@ namespace Xfp.ViewModels
                 return;
 
             List<Page> pagesToCheck = allPages ? new(_pages) : CurrentPageIsDevices ? new() { _deviceDetailsPage, _zonesPage/*, _groupsPage*/ } : new() { _currentPage };
+
+            if ((allPages || CurrentPageIsDevices) && _data.CurrentPanel.LoopConfig.NumLoops != LoopConfigData.DetectedLoops)
+            {
+                CTecMessageBox.ShowOKWarn("The number of loops on the panel does not correspond to the data", "Upload");
+            }
 
             _data.Validate();
             foreach (var _ in from p in pagesToCheck
