@@ -72,16 +72,17 @@ namespace Xfp.DataTypes.PanelData
         private List<string> _setsRelays;
         private List<string> _times;
 
-        private List<List<ReportElement>> _report;
+        private List<List<ReportTextElement>> _report;
         private List<double> _columnWidths = new();
         private const double _spacerColumnWidth = 5;
 
-        private class ReportElement
+
+        private class ReportTextElement
         {
-            public ReportElement() { }
-            public ReportElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
-            public ReportElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
-            public ReportElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
+            public ReportTextElement() { }
+            public ReportTextElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
+            public ReportTextElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
+            public ReportTextElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
 
             public string Text { get; private set; } = string.Empty;
             public int    ColumnSpan { get; private set; } = 1;
@@ -164,8 +165,8 @@ namespace Xfp.DataTypes.PanelData
                     for (int c = 0; c < _report[r].Count; c++)
                     {
                         var item = _report[r][c];
-                        //newRow.Cells.Add(TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment, item.IsError ? PrintUtil.ErrorBrush : PrintUtil.TextForeground, ));
                         var newCell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment);
+                        newCell.Background = (c % 4) switch { 1 => Styles.Brush05, 2 => Styles.ErrorBrush, 3 => Styles.OkBrush, _ => Styles.WarnBrush, };
                         if (item.IsError)
                         {
                             newCell.Foreground = PrintUtil.ErrorBrush;
@@ -200,7 +201,7 @@ namespace Xfp.DataTypes.PanelData
 
             foreach (var e in Events)
             {
-                var row = new List<ReportElement>();
+                var row = new List<ReportTextElement>();
 
                 //C&E number
                 row.Add(new((e.Index + 1).ToString(), TextAlignment.Right));
@@ -282,7 +283,6 @@ namespace Xfp.DataTypes.PanelData
                 }
 
                 //trigger condition
-                row.Add(new(Cultures.Resources.Trigger_Condition_Is));
                 row.Add(new(getTrueOrFalse(e.TriggerCondition)));
 
                 row.Add(new());
@@ -334,7 +334,6 @@ namespace Xfp.DataTypes.PanelData
                 }
 
                 //reset condition
-                row.Add(new(Cultures.Resources.Trigger_Condition_Is));
                 row.Add(new(getTrueOrFalse(e.ResetCondition)));
                 _report.Add(row);
             }
@@ -353,37 +352,43 @@ namespace Xfp.DataTypes.PanelData
             {
                 int offset = 0;
 
-                for (int col = 0; col < _report[row].Count; col++)
+                try
                 {
-                    if (_report[row][col].ColumnSpan > 1)
-                        offset += _report[row][col].ColumnSpan - 1;
-
-                    while (_columnWidths.Count <= col + offset)
-                        _columnWidths.Add(_spacerColumnWidth);
-
-                    if (_report[row][col].ColumnSpan == 1)
+                    for (int col = 0; col < _report[row].Count; col++)
                     {
-                        _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
-                    }
-                    else
-                    {
-                        //trigger & reset params that span 4 columns - get the max width
-                        if (col == 5)
-                            wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                        //if (_report[row][col].ColumnSpan > 1)
+                        //    offset += _report[row][col].ColumnSpan - 1;
+
+                        while (_columnWidths.Count < col + offset + _report[row][col].ColumnSpan)
+                            _columnWidths.Add(_spacerColumnWidth);
+
+                        if (_report[row][col].ColumnSpan == 1)
+                        {
+                            _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding + 8);
+                        }
                         else
-                            wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding);
+                        {
+                            //trigger & reset params that span 4 columns - get the max width
+                            if (col == 5)
+                                wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_report[row][col + offset].Text).Width + cellLeftRightPadding + 1);
+                            else
+                                wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_report[row][col + offset].Text).Width + cellLeftRightPadding + 1);
+                        }
+
+                        offset += _report[row][col].ColumnSpan - 1;
                     }
                 }
+                catch (Exception ex) { }
             }
 
             //ensure full complement of columns
-            if (_columnWidths.Count < 19)
+            if (_columnWidths.Count < 16)
             {
-                for (int i = _columnWidths.Count; i < 18; i++)
+                for (int i = _columnWidths.Count; i < 16; i++)
                 {
-                    if (i == 5)
+                    if (i == 4)
                         _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
-                    else if (i == 13)
+                    else if (i == 11)
                         _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Resets_When).Width + cellLeftRightPadding);
                     else
                         _columnWidths.Add(_spacerColumnWidth);
@@ -393,8 +398,8 @@ namespace Xfp.DataTypes.PanelData
             //if AND parameters' width is less than the max 'normal' param width, pad the 4th column
             if (_columnWidths[5] + _columnWidths[6] + _columnWidths[7] + _columnWidths[8] < wTriggerParam)
                 _columnWidths[8] = wTriggerParam - _columnWidths[5] - _columnWidths[6] - _columnWidths[7];
-            if (_columnWidths[13] + _columnWidths[14] + _columnWidths[15] + _columnWidths[16] < wResetParam)
-                _columnWidths[16] = wResetParam - _columnWidths[13] - _columnWidths[14] - _columnWidths[15];
+            if (_columnWidths[11] + _columnWidths[12] + _columnWidths[13] + _columnWidths[14] < wResetParam)
+                _columnWidths[14] = wResetParam - _columnWidths[11] - _columnWidths[12] - _columnWidths[13];
         }
 
 
@@ -409,8 +414,8 @@ namespace Xfp.DataTypes.PanelData
 
             headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Number_Symbol, TextAlignment.Right, FontWeights.Bold));
             headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 3, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 8, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 7, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 7, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 6, FontWeights.Bold));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow);
@@ -475,7 +480,7 @@ namespace Xfp.DataTypes.PanelData
             };
         }
 
-        private string getTrueOrFalse(bool condition) => condition ? Cultures.Resources.True : Cultures.Resources.False;
+        private string getTrueOrFalse(bool condition) => string.Format(Cultures.Resources.Condition_Is_x, condition ? Cultures.Resources.True : Cultures.Resources.False);
 
 
         private string getListString(List<string> list, int? index)

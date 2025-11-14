@@ -2152,4 +2152,7 @@ All of its data will be lost.</value>
   <data name="Loop_Select" xml:space="preserve">
     <value>Loop:</value>
   </data>
+  <data name="Condition_Is_x" xml:space="preserve">
+    <value>is {0}</value>
+  </data>
 </root>

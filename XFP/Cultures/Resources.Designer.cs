@@ -822,6 +822,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to is {0}.
+        /// </summary>
+        public static string Condition_Is_x {
+            get {
+                return ResourceManager.GetString("Condition_Is_x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Control_Button_Close {

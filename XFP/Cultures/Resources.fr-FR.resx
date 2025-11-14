@@ -2139,4 +2139,7 @@ Toutes ses données seront perdues.</value>
   <data name="Loop_Select" xml:space="preserve">
     <value>Boucle :</value>
   </data>
+  <data name="Condition_Is_x" xml:space="preserve">
+    <value>est {0}</value>
+  </data>
 </root>
