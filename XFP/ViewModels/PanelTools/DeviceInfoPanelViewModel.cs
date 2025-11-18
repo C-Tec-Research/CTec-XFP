@@ -2233,9 +2233,9 @@ namespace Xfp.ViewModels.PanelTools
                     }
 
                     if (!d.DayModeIsValid)
-                        d.DayMode = DeviceTypes.MinValidMode(d.DeviceType);
+                        d.DayMode = DeviceTypes.DefaultDayMode(d.DeviceType);
                     if (!d.NightModeIsValid)
-                        d.NightMode = DeviceTypes.MinValidMode(d.DeviceType);
+                        d.NightMode = DeviceTypes.DefaultDayMode(d.DeviceType);
 
                     if (d.IsSensitivityHighDevice)
                         d.DaySensitivity = d.NightSensitivity = DeviceConfigData.DefaultSensitivityHigh;

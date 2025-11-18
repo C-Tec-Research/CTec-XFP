@@ -116,9 +116,9 @@ namespace Xfp.DataTypes.PanelData
             result.Index = index;
             result.DeviceType = deviceType;
             if (!DeviceTypes.ModeIsValid(result.DeviceType, result.DayMode))
-                result.DayMode = DeviceTypes.MinValidMode(deviceType);
+                result.DayMode = DeviceTypes.DefaultDayMode(deviceType);
             if (!DeviceTypes.ModeIsValid(result.DeviceType, result.NightMode))
-                result.NightMode = DeviceTypes.MinValidMode(deviceType);
+                result.NightMode = DeviceTypes.DefaultDayMode(deviceType);
             return result;
         }
 

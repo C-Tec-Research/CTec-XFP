@@ -69,6 +69,27 @@ namespace XFP.Config
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalHeatCODetectorToneVAD },
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalHeatCODetectorVoice },
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalHeatCODetectorVoiceVAD },
+                //    }
+                //},
+                //new(ObjectTypes.XfpCast)
+                //{
+                //    MenuHeader = XfpCast.Tags.CastPro,
+                //    Icon = DeviceTypes.DeviceIcon((int?)XfpCastDeviceTypeIds.CastProOpticalHeatDetector, ObjectTypes.XfpCast),
+                //    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
+                //    {
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalDetectorTone },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalDetectorVoice },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalDetectorToneVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProOpticalDetectorVoiceVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProHeatDetectorTone },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProHeatDetectorVoice },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProHeatDetectorToneVAD  },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProHeatDetectorVoiceVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderTone },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderToneVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderVoice },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderVoiceVAD },
                     }
                 },
             },
