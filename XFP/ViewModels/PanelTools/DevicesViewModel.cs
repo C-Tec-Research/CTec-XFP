@@ -93,7 +93,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool IsLoop1 { get => _loopNum == 1; set => LoopNum = value ? 1 : 2; }
 
 
-        internal delegate void LoopChangedHandler(int loop);
+        internal delegate void LoopChangedHandler();
         internal LoopChangedHandler LoopChanged;
 
 

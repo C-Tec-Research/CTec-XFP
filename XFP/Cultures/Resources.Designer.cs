@@ -2872,6 +2872,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is the panel Envision-enabled?.
+        /// </summary>
+        public static string Is_Panel_Envision_Enabled {
+            get {
+                return ResourceManager.GetString("Is_Panel_Envision_Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is set silenceable?.
         /// </summary>
         public static string Is_Set_Silenceable {
@@ -5785,6 +5794,15 @@ namespace Xfp.Cultures {
         public static string Warn_No_Modes_Available_For_Selected_Devices {
             get {
                 return ResourceManager.GetString("Warn_No_Modes_Available_For_Selected_Devices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of loops on the panel does not correspond to the data.
+        /// </summary>
+        public static string Warn_Num_Loops_Different {
+            get {
+                return ResourceManager.GetString("Warn_Num_Loops_Different", resourceCulture);
             }
         }
         

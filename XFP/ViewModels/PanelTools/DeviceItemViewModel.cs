@@ -55,7 +55,7 @@ namespace Xfp.ViewModels.PanelTools
         
         public string DeviceName
         {
-            get => GetDeviceNamesEntry?.Invoke(_deviceData.NameIndex);    //_deviceNamesData?.DeviceNames[_deviceData.NameIndex].Name;
+            get => GetDeviceNamesEntry?.Invoke(_deviceData.NameIndex);
             set
             {
                 if (SetDeviceNamesEntry is not null)
@@ -67,7 +67,28 @@ namespace Xfp.ViewModels.PanelTools
                 }
             }
         }
-        
+
+        /// <summary>
+        /// Check for Envision compatibility: for Apollo, the DeviceName must be 
+        /// prefixed with the Envision device type code; returns true if protocol is CAST.
+        /// </summary>
+        public bool DeviceNameIsEnvisionCompatible() => DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo || DeviceName.StartsWith(DeviceType.ToString());
+
+        /// <summary>
+        /// Apply the Envision compatibility prefix: for Apollo, ensure the DeviceName is prefixed with the Envision device type code.
+        /// </summary>
+        public void MakeDeviceNameEnvisionCompatible()
+        {
+            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo && (DeviceName is null || !DeviceName.StartsWith(DeviceType.ToString() + " ")))
+            {
+                DeviceName = string.Format("{0} {1}", DeviceType, DeviceName ?? "");
+
+                if (DeviceName.Length > DeviceNamesConfigData.DeviceNameLength)
+                    DeviceName = DeviceName.Remove(DeviceNamesConfigData.DeviceNameLength);
+            }
+        }
+
+
         public bool?  RemoteLEDEnabled          { get => _deviceData.RemoteLEDEnabled;                                  set { _deviceData.RemoteLEDEnabled = value; OnPropertyChanged(); } }
         public bool?  HasAncillaryBaseSounder     => (_deviceData.AncillaryBaseSounderGroup??0) >= 0;
         public int?   AncillaryBaseSounderGroup { get => _deviceData.AncillaryBaseSounderGroup;                         set { _deviceData.AncillaryBaseSounderGroup = value; OnPropertyChanged(); OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid)); } }

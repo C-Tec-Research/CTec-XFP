@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Globalization;
+﻿using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
 using CTecUtil.ViewModels;
+using System;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 
@@ -26,6 +27,26 @@ namespace Xfp.ViewModels.PanelTools
         public int      ZoneNum                   => _data?.Number??1;
         public string   ZoneDesc            { get => _data.Name;        set { SetZoneDesc(value); } }
         public string   ZoneDescFull              => string.IsNullOrWhiteSpace(ZoneDesc) ? _data.IsPanelData ? string.Format(Cultures.Resources.Panel_x, _data.Number) : string.Format(Cultures.Resources.Zone_x, _data.Number) : ZoneDesc;
+
+        /// <summary>
+        /// Check for Envision compatibility: for Apollo, the DeviceName must be 
+        /// prefixed with the Envision device type code; returns true if protocol is CAST.
+        /// </summary>
+        public bool ZoneDescIsEnvisionCompatible() => ZoneDesc.StartsWith(ZoneNum.ToString("00 "));
+
+        /// <summary>
+        /// Apply the Envision compatibility prefix: for Apollo, ensure the ZoneDesc is prefixed with the ZoneNum.
+        /// </summary>
+        public void MakeZoneDescEnvisionCompatible()
+        {
+            if (ZoneDesc is null || !ZoneDescIsEnvisionCompatible())
+            {
+                ZoneDesc = string.Format("{0:00} {1}", ZoneNum, ZoneDesc ?? "");
+
+                if (ZoneDesc.Length > ZoneConfigData.MaxNameLength)
+                    ZoneDesc = ZoneDesc.Remove(ZoneConfigData.MaxNameLength);
+            }
+        }
 
 
         /// <summary>Input delay as shown in the Zones Page header</summary>

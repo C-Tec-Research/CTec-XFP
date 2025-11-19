@@ -58,7 +58,7 @@ namespace Xfp.UI.Views.PanelTools
         //internal DeviceDetailsViewModel Loop2Context;
 
 
-        private void loopChanged(int loop) {  }// => _context = loop == 2 ? Loop2Context : Loop1Context;
+        private void loopChanged() {  }// => _context = loop == 2 ? Loop2Context : Loop1Context;
 
 
         private void initMenu(DeviceSelectorConfig.DeviceSelectorMenu config) => ctcDeviceSelector.InitMenu(config);

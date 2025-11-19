@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using CTecDevices.Protocol;
 using CTecUtil.UI;
 using Xfp.UI.Views.PanelTools;
+using System.Linq;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -23,10 +24,7 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private void changeLoop(int loop)
-        {
-            _infoPanelViewModel?.PopulateView(_data);
-        }
+        private void changeLoop() => _infoPanelViewModel?.PopulateView(_data);
 
 
         private bool _showOnlyFittedDevices;
@@ -87,7 +85,7 @@ namespace Xfp.ViewModels.PanelTools
                 {
                     UIState.SetBusyState();
                     _loopNum = value;
-                    LoopChanged?.Invoke(_loopNum);
+                    LoopChanged?.Invoke();
                     if (_infoPanelViewModel is not null)
                         _infoPanelViewModel.DeviceList = value == 2 ? _loop2SelectedItems : _loop1SelectedItems;
                     RefreshView();
@@ -99,6 +97,29 @@ namespace Xfp.ViewModels.PanelTools
         public Visibility RemoteLEDColumnVisibility   => DeviceTypes.CurrentProtocolIsXfpApollo ? Visibility.Visible : Visibility.Collapsed;
         public Visibility BaseSounderColumnVisibility => DeviceTypes.CurrentProtocolIsXfpApollo ? Visibility.Visible : Visibility.Collapsed;
 
+
+        public bool CheckEnvisionPrefixes()
+        {
+            if (DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo)
+                return true;
+
+            foreach (var _ in from l in Loops
+                              from d in l
+                              where !d.DeviceNameIsEnvisionCompatible()
+                              select new { })
+                return false;
+
+            return true;
+        }
+
+
+        public void UpdateEnvisionPrefixes()
+        {
+            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo)
+                foreach (var l in Loops)
+                    foreach (var d in l)
+                        d.MakeDeviceNameEnvisionCompatible();
+        }
 
 
         #region ConfigToolsPageViewModelBase overrides

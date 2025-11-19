@@ -2142,4 +2142,10 @@ Toutes ses données seront perdues.</value>
   <data name="Condition_Is_x" xml:space="preserve">
     <value>est {0}</value>
   </data>
+  <data name="Is_Panel_Envision_Enabled" xml:space="preserve">
+    <value>Le panneau est-il compatible avec Envision ?</value>
+  </data>
+  <data name="Warn_Num_Loops_Different" xml:space="preserve">
+    <value>Le nombre de boucles sur le panneau ne correspond pas aux données</value>
+  </data>
 </root>

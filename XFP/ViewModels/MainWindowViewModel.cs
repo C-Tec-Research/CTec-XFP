@@ -1816,11 +1816,13 @@ namespace Xfp.ViewModels
              || !checkProtocol(CommsDirection.Upload, allPages))
                 return;
 
+            var messageBoxCaption = allPages ? Cultures.Resources.Upload_System : Cultures.Resources.Upload_Page;
+
             List<Page> pagesToCheck = allPages ? new(_pages) : CurrentPageIsDevices ? new() { _deviceDetailsPage, _zonesPage/*, _groupsPage*/ } : new() { _currentPage };
 
             if ((allPages || CurrentPageIsDevices) && _data.CurrentPanel.LoopConfig.NumLoops != LoopConfigData.DetectedLoops)
             {
-                CTecMessageBox.ShowOKWarn("The number of loops on the panel does not correspond to the data", "Upload");
+                CTecMessageBox.ShowOKWarn(Cultures.Resources.Warn_Num_Loops_Different, messageBoxCaption);
             }
 
             _data.Validate();
@@ -1830,13 +1832,27 @@ namespace Xfp.ViewModels
                               select new { })
             {
                 ShowValidationWindow(NavBarItems[NavBarSelectedIndex].MenuText);
-                CTecMessageBox.ShowOKError(Cultures.Resources.Error_Preupload_Data_Validation, Cultures.Resources.Upload_Page);
+                CTecMessageBox.ShowOKError(Cultures.Resources.Error_Preupload_Data_Validation, messageBoxCaption);
                 return;
             }
 
             CloseValidationWindow();
             CloseCommsLog();
             ClosePopups();
+
+            // Apollo only: Is the Envision enabled?
+            // If sending device or zone details the names must be
+            // prefixed with the device type and zone number respectively.
+            if (CurrentProtocolIsApollo && (allPages || CurrentPageIsDevices || CurrentPageIsZones))
+            {
+                //are any devices or zones not already prefixed correctly?
+                if (!checkEnvisionPrefixes(CurrentPageIsDevices))
+                {
+                    improve the message so say prefixes will be added if not present
+                    if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Is_Panel_Envision_Enabled, messageBoxCaption) == MessageBoxResult.Yes)
+                        updateEnvisionPrefixes(CurrentPageIsDevices);
+                }
+            }
 
             PanelComms.InitCommandQueue(CommsDirection.Upload, allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page);
 
@@ -1852,6 +1868,25 @@ namespace Xfp.ViewModels
             }
 
             PanelComms.SendCommandQueueToPanel(_mainAppWindow, commsStarting, allPages ? uploadEndedAllPages : uploadEndedThisPage);
+        }
+
+
+        private bool checkEnvisionPrefixes(bool checkDevices)
+        {
+            if (checkDevices)
+                if (!(_deviceDetailsPage.DataContext as DeviceDetailsViewModel).CheckEnvisionPrefixes())
+                    return false;
+
+            return (_zonesPage.DataContext as ZoneConfigViewModel).CheckEnvisionPrefixes();
+        }
+
+
+        private void updateEnvisionPrefixes(bool updateDevices)
+        {
+            if (updateDevices)
+                (_deviceDetailsPage.DataContext as DeviceDetailsViewModel).UpdateEnvisionPrefixes();
+
+            (_zonesPage.DataContext as ZoneConfigViewModel).MakeZoneDescEnvisionCompatible();
         }
 
 

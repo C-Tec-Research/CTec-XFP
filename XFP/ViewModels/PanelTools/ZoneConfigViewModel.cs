@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecDevices.Protocol;
+using CTecUtil.StandardPanelDataTypes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing.Printing;
@@ -6,8 +9,6 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using CTecControls.UI;
-using CTecUtil.StandardPanelDataTypes;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
@@ -172,6 +173,28 @@ namespace Xfp.ViewModels.PanelTools
 
             RefreshView();
             return newSelectedZone;
+        }
+
+
+        public bool CheckEnvisionPrefixes()
+        {
+            if (DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo)
+                return true;
+
+            foreach (var _ in from z in ZoneConfigItems
+                              where !z.ZoneDescIsEnvisionCompatible()
+                              select new { })
+                return false;
+
+            return true;
+        }
+
+
+        public void MakeZoneDescEnvisionCompatible()
+        {
+            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo)
+                foreach (var z in ZoneConfigItems)
+                    z.MakeZoneDescEnvisionCompatible();
         }
 
 

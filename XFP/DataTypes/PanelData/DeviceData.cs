@@ -16,6 +16,10 @@ namespace Xfp.DataTypes.PanelData
         {
             LoopNum = loopNum;
             DeviceType = null;
+            DayMode = 0;
+            NightMode = 0;
+            DayVolume = 0;
+            NightVolume = 0;
         }
 
         internal DeviceData(DeviceData original) : this(original.LoopNum)
@@ -118,7 +122,7 @@ namespace Xfp.DataTypes.PanelData
             if (!DeviceTypes.ModeIsValid(result.DeviceType, result.DayMode))
                 result.DayMode = DeviceTypes.DefaultDayMode(deviceType);
             if (!DeviceTypes.ModeIsValid(result.DeviceType, result.NightMode))
-                result.NightMode = DeviceTypes.DefaultDayMode(deviceType);
+                result.NightMode = DeviceTypes.DefaultNightMode(deviceType);
             return result;
         }
 

@@ -2155,4 +2155,10 @@ All of its data will be lost.</value>
   <data name="Condition_Is_x" xml:space="preserve">
     <value>is {0}</value>
   </data>
+  <data name="Is_Panel_Envision_Enabled" xml:space="preserve">
+    <value>Is the panel Envision-enabled?</value>
+  </data>
+  <data name="Warn_Num_Loops_Different" xml:space="preserve">
+    <value>The number of loops on the panel does not correspond to the data</value>
+  </data>
 </root>
