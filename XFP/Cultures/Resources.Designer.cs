@@ -755,6 +755,24 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The data is single-loop but the panel has 2 loops: Loop 2 on the panel will not be changed..
+        /// </summary>
+        public static string Comms_Upload_1_Loop_To_2_Loop_Panel {
+            get {
+                return ResourceManager.GetString("Comms_Upload_1_Loop_To_2_Loop_Panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The panel is single-loop. Only Loop 1 will be uploaded..
+        /// </summary>
+        public static string Comms_Upload_2_Loops_To_1_Loop_Panel {
+            get {
+                return ResourceManager.GetString("Comms_Upload_2_Loops_To_1_Loop_Panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The connected panel has only one loop.
         ///
         ///Any Loop 2 settings configured here will not be saved to the panel..
@@ -2872,15 +2890,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Is the panel Envision-enabled?.
-        /// </summary>
-        public static string Is_Panel_Envision_Enabled {
-            get {
-                return ResourceManager.GetString("Is_Panel_Envision_Enabled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Is set silenceable?.
         /// </summary>
         public static string Is_Set_Silenceable {
@@ -4226,6 +4235,17 @@ namespace Xfp.Cultures {
         public static string Query_Install_Update {
             get {
                 return ResourceManager.GetString("Query_Install_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is the panel Envision-enabled?
+        ///
+        ///If this is required device names and zone descriptions may be amended with prefixes to indicate device type and zone number..
+        /// </summary>
+        public static string Query_Is_Panel_Envision_Enabled {
+            get {
+                return ResourceManager.GetString("Query_Is_Panel_Envision_Enabled", resourceCulture);
             }
         }
         
@@ -5794,15 +5814,6 @@ namespace Xfp.Cultures {
         public static string Warn_No_Modes_Available_For_Selected_Devices {
             get {
                 return ResourceManager.GetString("Warn_No_Modes_Available_For_Selected_Devices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of loops on the panel does not correspond to the data.
-        /// </summary>
-        public static string Warn_Num_Loops_Different {
-            get {
-                return ResourceManager.GetString("Warn_Num_Loops_Different", resourceCulture);
             }
         }
         

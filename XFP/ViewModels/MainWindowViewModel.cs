@@ -1229,7 +1229,7 @@ namespace Xfp.ViewModels
 
                     changeProtocol(protocol, false);
                 }
-                else if (_data.Panels.ContainsKey(panelNumber) && PanelDataHasChanged(panelNumber))
+                else if (_data.Panels.Count > 1 && _data.Panels.ContainsKey(panelNumber) && PanelDataHasChanged(panelNumber))
                 {
                     if (!askOverwritePanel(panelNumber, string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
                         return null;
@@ -1822,7 +1822,10 @@ namespace Xfp.ViewModels
 
             if ((allPages || CurrentPageIsDevices) && _data.CurrentPanel.LoopConfig.NumLoops != LoopConfigData.DetectedLoops)
             {
-                CTecMessageBox.ShowOKWarn(Cultures.Resources.Warn_Num_Loops_Different, messageBoxCaption);
+                if (_data.CurrentPanel.LoopConfig.NumLoops == 1)
+                    CTecMessageBox.ShowOKWarn(Cultures.Resources.Comms_Upload_1_Loop_To_2_Loop_Panel, messageBoxCaption);
+                else
+                    CTecMessageBox.ShowOKWarn(Cultures.Resources.Comms_Upload_2_Loops_To_1_Loop_Panel, messageBoxCaption);
             }
 
             _data.Validate();
@@ -1846,11 +1849,10 @@ namespace Xfp.ViewModels
             if (CurrentProtocolIsApollo && (allPages || CurrentPageIsDevices || CurrentPageIsZones))
             {
                 //are any devices or zones not already prefixed correctly?
-                if (!checkEnvisionPrefixes(CurrentPageIsDevices))
+                if (!checkEnvisionPrefixes())
                 {
-                    improve the message so say prefixes will be added if not present
-                    if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Is_Panel_Envision_Enabled, messageBoxCaption) == MessageBoxResult.Yes)
-                        updateEnvisionPrefixes(CurrentPageIsDevices);
+                    if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Query_Is_Panel_Envision_Enabled, messageBoxCaption) == MessageBoxResult.Yes)
+                        updateEnvisionPrefixes();
                 }
             }
 
@@ -1871,21 +1873,13 @@ namespace Xfp.ViewModels
         }
 
 
-        private bool checkEnvisionPrefixes(bool checkDevices)
+        private bool checkEnvisionPrefixes()
+            => !(_deviceDetailsPage.DataContext as DeviceDetailsViewModel).CheckEnvisionPrefixes()
+            || !(_zonesPage.DataContext as ZoneConfigViewModel).CheckEnvisionPrefixes();
+
+        private void updateEnvisionPrefixes()
         {
-            if (checkDevices)
-                if (!(_deviceDetailsPage.DataContext as DeviceDetailsViewModel).CheckEnvisionPrefixes())
-                    return false;
-
-            return (_zonesPage.DataContext as ZoneConfigViewModel).CheckEnvisionPrefixes();
-        }
-
-
-        private void updateEnvisionPrefixes(bool updateDevices)
-        {
-            if (updateDevices)
-                (_deviceDetailsPage.DataContext as DeviceDetailsViewModel).UpdateEnvisionPrefixes();
-
+            (_deviceDetailsPage.DataContext as DeviceDetailsViewModel).UpdateEnvisionPrefixes();
             (_zonesPage.DataContext as ZoneConfigViewModel).MakeZoneDescEnvisionCompatible();
         }
 

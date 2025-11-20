@@ -756,8 +756,8 @@ namespace Xfp.ViewModels.PanelTools
                         d.DeviceName = value;
                         d.RefreshView();
 
-                        if (validIOIndex(0, d))
-                            d.IOConfigItems[0].NameIndex = d.DeviceData.NameIndex;
+                        //if (validIOIndex(0, d))
+                        //    d.IOConfigItems[0].NameIndex = d.DeviceData.NameIndex;
                     }
                 }
                 OnPropertyChanged();

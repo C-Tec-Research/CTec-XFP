@@ -32,7 +32,7 @@ namespace Xfp.ViewModels.PanelTools
         /// Check for Envision compatibility: for Apollo, the DeviceName must be 
         /// prefixed with the Envision device type code; returns true if protocol is CAST.
         /// </summary>
-        public bool ZoneDescIsEnvisionCompatible() => ZoneDesc.StartsWith(ZoneNum.ToString("00 "));
+        public bool ZoneDescIsEnvisionCompatible() => ZoneDesc.StartsWith((IsPanelData ? ZoneConfigData.NumZones + ZoneNum : ZoneNum).ToString("00 "));
 
         /// <summary>
         /// Apply the Envision compatibility prefix: for Apollo, ensure the ZoneDesc is prefixed with the ZoneNum.
@@ -41,7 +41,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             if (ZoneDesc is null || !ZoneDescIsEnvisionCompatible())
             {
-                ZoneDesc = string.Format("{0:00} {1}", ZoneNum, ZoneDesc ?? "");
+                ZoneDesc = string.Format("{0:00} {1}", (IsPanelData ? ZoneConfigData.NumZones + ZoneNum : ZoneNum), ZoneDesc ?? "");
 
                 if (ZoneDesc.Length > ZoneConfigData.MaxNameLength)
                     ZoneDesc = ZoneDesc.Remove(ZoneConfigData.MaxNameLength);

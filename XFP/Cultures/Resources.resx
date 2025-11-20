@@ -2155,10 +2155,15 @@ All of its data will be lost.</value>
   <data name="Condition_Is_x" xml:space="preserve">
     <value>is {0}</value>
   </data>
-  <data name="Is_Panel_Envision_Enabled" xml:space="preserve">
-    <value>Is the panel Envision-enabled?</value>
+  <data name="Query_Is_Panel_Envision_Enabled" xml:space="preserve">
+    <value>Is the panel Envision-enabled?
+
+If this is required device names and zone descriptions may be amended with prefixes to indicate device type and zone number.</value>
   </data>
-  <data name="Warn_Num_Loops_Different" xml:space="preserve">
-    <value>The number of loops on the panel does not correspond to the data</value>
+  <data name="Comms_Upload_2_Loops_To_1_Loop_Panel" xml:space="preserve">
+    <value>The panel is single-loop. Only Loop 1 will be uploaded.</value>
+  </data>
+  <data name="Comms_Upload_1_Loop_To_2_Loop_Panel" xml:space="preserve">
+    <value>The data is single-loop but the panel has 2 loops: Loop 2 on the panel will not be changed.</value>
   </data>
 </root>

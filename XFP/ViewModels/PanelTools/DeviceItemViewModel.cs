@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
+using CTecDevices.DeviceTypes;
 using CTecDevices.Protocol;
 using CTecUtil.ViewModels;
 using Xfp.DataTypes;
@@ -63,7 +64,14 @@ namespace Xfp.ViewModels.PanelTools
                     var newIdx = SetDeviceNamesEntry.Invoke(_deviceData.NameIndex, value);
 
                     if (newIdx != _deviceData.NameIndex)
+                    {
                         _deviceData.NameIndex = newIdx;
+                        
+                        if (IsIODevice)
+                            IOConfigItems[0].NameIndex = newIdx;
+
+                        OnPropertyChanged();
+                    }
                 }
             }
         }
@@ -81,7 +89,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo && (DeviceName is null || !DeviceName.StartsWith(DeviceType.ToString() + " ")))
             {
-                DeviceName = string.Format("{0} {1}", DeviceType, DeviceName ?? "");
+                DeviceName = string.Format("{0} {1}", XfpApolloEnvisionDeviceTypes.GetEnvisionDeviceTypeCode(DeviceType), DeviceName ?? "");
 
                 if (DeviceName.Length > DeviceNamesConfigData.DeviceNameLength)
                     DeviceName = DeviceName.Remove(DeviceNamesConfigData.DeviceNameLength);
