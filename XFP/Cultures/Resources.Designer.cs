@@ -755,24 +755,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data is single-loop but the panel has 2 loops: Loop 2 on the panel will not be changed..
-        /// </summary>
-        public static string Comms_Upload_1_Loop_To_2_Loop_Panel {
-            get {
-                return ResourceManager.GetString("Comms_Upload_1_Loop_To_2_Loop_Panel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The panel is single-loop. Only Loop 1 will be uploaded..
-        /// </summary>
-        public static string Comms_Upload_2_Loops_To_1_Loop_Panel {
-            get {
-                return ResourceManager.GetString("Comms_Upload_2_Loops_To_1_Loop_Panel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The connected panel has only one loop.
         ///
         ///Any Loop 2 settings configured here will not be saved to the panel..

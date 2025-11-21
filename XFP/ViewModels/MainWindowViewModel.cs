@@ -1820,14 +1820,6 @@ namespace Xfp.ViewModels
 
             List<Page> pagesToCheck = allPages ? new(_pages) : CurrentPageIsDevices ? new() { _deviceDetailsPage, _zonesPage/*, _groupsPage*/ } : new() { _currentPage };
 
-            if ((allPages || CurrentPageIsDevices) && _data.CurrentPanel.LoopConfig.NumLoops != LoopConfigData.DetectedLoops)
-            {
-                if (_data.CurrentPanel.LoopConfig.NumLoops == 1)
-                    CTecMessageBox.ShowOKWarn(Cultures.Resources.Comms_Upload_1_Loop_To_2_Loop_Panel, messageBoxCaption);
-                else
-                    CTecMessageBox.ShowOKWarn(Cultures.Resources.Comms_Upload_2_Loops_To_1_Loop_Panel, messageBoxCaption);
-            }
-
             _data.Validate();
             foreach (var _ in from p in pagesToCheck
                               where p is IConfigToolsPageViewModel

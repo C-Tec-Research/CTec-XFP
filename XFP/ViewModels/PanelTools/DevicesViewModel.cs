@@ -764,12 +764,12 @@ namespace Xfp.ViewModels.PanelTools
                 return false;
             }
 
-            if (NumLoops > LoopConfigData.DetectedLoops)
+            if (NumLoops != LoopConfigData.DetectedLoops)
             {
                 //warn if current loop does not exist on the panel
-                var messy = Cultures.Resources.Comms_Upload_Warn_Loop_Count_1_Loop;
+                var messy = NumLoops < LoopConfigData.DetectedLoops ? Cultures.Resources.Comms_Upload_Warn_Loop_Count_2_Loops : Cultures.Resources.Comms_Upload_Warn_Loop_Count_1_Loop;
                 var tit   = allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page;
-                CTecMessageBox.ShowOKInfo(messy, tit);
+                CTecMessageBox.ShowOKWarn(messy, tit);
             }
             return true;
         }

@@ -2147,10 +2147,4 @@ Toutes ses données seront perdues.</value>
 
 Si cela est nécessaire, les noms des appareils et les descriptions des zones peuvent être modifiés avec des préfixes pour indiquer le type d'appareil et le numéro de zone.</value>
   </data>
-  <data name="Comms_Upload_2_Loops_To_1_Loop_Panel" xml:space="preserve">
-    <value>Le panneau est à boucle unique. Seule la Boucle 1 sera téléchargée.</value>
-  </data>
-  <data name="Comms_Upload_1_Loop_To_2_Loop_Panel" xml:space="preserve">
-    <value>Les données sont à boucle unique mais le panneau a 2 boucles : la boucle 2 sur le panneau ne sera pas modifiée.</value>
-  </data>
 </root>
