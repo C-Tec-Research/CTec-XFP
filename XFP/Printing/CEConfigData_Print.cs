@@ -166,7 +166,7 @@ namespace Xfp.DataTypes.PanelData
                     {
                         var item = _report[r][c];
                         var newCell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment);
-                        newCell.Background = (c % 4) switch { 1 => Styles.Brush05, 2 => Styles.ErrorBrush, 3 => Styles.OkBrush, _ => Styles.WarnBrush, };
+                        //newCell.Background = (c % 4) switch { 1 => Styles.Brush05, 2 => Styles.ErrorBrush, 3 => Styles.OkBrush, _ => Styles.WarnBrush, };
                         if (item.IsError)
                         {
                             newCell.Foreground = PrintUtil.ErrorBrush;
