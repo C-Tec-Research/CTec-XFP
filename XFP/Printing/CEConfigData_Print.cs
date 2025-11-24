@@ -237,7 +237,7 @@ namespace Xfp.DataTypes.PanelData
                 row.Add(new());
 
                 //trigger type
-                if (e.TriggerType != CETriggerTypes.None)
+                if (e.TriggerType != CETriggerTypes.None && e.TriggerType >= 0)
                 {
                     row.Add(new((Enums.CETriggerTypesToString(e.TriggerType)).ToString()));
                 }
@@ -254,11 +254,18 @@ namespace Xfp.DataTypes.PanelData
                     if (e.TriggerTypeHasParamPair())
                     {
                         row.Add(new(e.TriggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
-                        row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam2).ToString()));
+
+                        if (e.TriggerParam2 >= 0)
+                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam2).ToString()));
+                        else
+                            row.Add(new(true));
+
                         row.Add(new(Cultures.Resources.Logical_And));
 
                         if (e.TriggerParam >= 0)
                             row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString()));
+                        else
+                            row.Add(new(true));
 
                         if (e.TriggerParam < 0 || e.TriggerParam2 < 0)
                         {
@@ -268,7 +275,10 @@ namespace Xfp.DataTypes.PanelData
                     }
                     else
                     {
-                        row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString(), 4));
+                        if (e.TriggerParam >= 0)
+                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString(), 4));
+                        else
+                            row.Add(new(true));
                     }
 
                     if (e.TriggerParam < 0)
@@ -288,7 +298,7 @@ namespace Xfp.DataTypes.PanelData
                 row.Add(new());
 
                 //reset type
-                if (e.ResetType != CETriggerTypes.None)
+                if (e.ResetType != CETriggerTypes.None && e.ResetType >= 0)
                 {
                     row.Add(new((Enums.CETriggerTypesToString(e.ResetType)).ToString()));
                 }
@@ -305,11 +315,18 @@ namespace Xfp.DataTypes.PanelData
                     if (e.ResetTypeHasParamPair())
                     {
                         row.Add(new(e.ResetType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
-                        row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam2).ToString()));
+
+                        if (e.ResetParam2 >= 0)
+                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam2).ToString()));
+                        else
+                            row.Add(new(true));
+
                         row.Add(new(Cultures.Resources.Logical_And));
 
                         if (e.ResetParam >= 0)
                             row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString()));
+                        else
+                            row.Add(new(true));
 
                         if (e.ResetParam < 0 || e.ResetParam2 < 0)
                         {
@@ -319,7 +336,10 @@ namespace Xfp.DataTypes.PanelData
                     }
                     else
                     {
-                        row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString(), 4));
+                        if (e.ResetParam >= 0)
+                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString(), 4));
+                        else
+                            row.Add(new(true));
                     }
 
                     if (e.ResetParam < 0)

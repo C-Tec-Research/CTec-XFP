@@ -141,14 +141,54 @@
                                 <CheckBox Grid.Row="8" Grid.Column="2" IsChecked="{Binding Repeaters[6].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
                                 <CheckBox Grid.Row="9" Grid.Column="2" IsChecked="{Binding Repeaters[7].IsFitted}" HorizontalAlignment="Center" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="0,4,0,0"/>
 
-                                <TextBox Grid.Row="2" Grid.Column="3" Width="180" Text="{Binding Repeater1Location}" PreviewKeyDown="ctrl_PreviewKeyDown" MaxLength="{Binding MaxLocationLength}" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="3" Grid.Column="3" Width="180" Text="{Binding Repeater2Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="4" Grid.Column="3" Width="180" Text="{Binding Repeater3Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="5" Grid.Column="3" Width="180" Text="{Binding Repeater4Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="6" Grid.Column="3" Width="180" Text="{Binding Repeater5Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="7" Grid.Column="3" Width="180" Text="{Binding Repeater6Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="8" Grid.Column="3" Width="180" Text="{Binding Repeater7Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
-                                <TextBox Grid.Row="9" Grid.Column="3" Width="180" Text="{Binding Repeater8Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                <Border Grid.Row="2" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[0].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="2" Grid.Column="3" Width="180" Text="{Binding Repeater1Location}" PreviewKeyDown="ctrl_PreviewKeyDown" MaxLength="{Binding MaxLocationLength}" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[1].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="3" Grid.Column="3" Width="180" Text="{Binding Repeater2Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[2].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="4" Grid.Column="3" Width="180" Text="{Binding Repeater3Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="5" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[3].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="5" Grid.Column="3" Width="180" Text="{Binding Repeater4Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="6" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[4].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="6" Grid.Column="3" Width="180" Text="{Binding Repeater5Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="7" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[5].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="7" Grid.Column="3" Width="180" Text="{Binding Repeater6Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="8" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[6].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="8" Grid.Column="3" Width="180" Text="{Binding Repeater7Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
+                                <Border Grid.Row="9" Grid.Column="3" 
+                                        BorderBrush="{Binding Repeaters[7].LocationIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
+                                        BorderThickness="1" CornerRadius="0" 
+                                        Padding="0" Margin="2,0,0,0">
+                                    <TextBox Grid.Row="9" Grid.Column="3" Width="180" Text="{Binding Repeater8Location}" PreviewKeyDown="ctrl_PreviewKeyDown" Margin="2,1,2,0"/>
+                                </Border>
 
                             </Grid>
                         </StackPanel>

@@ -2,6 +2,7 @@
   "Panels": {
     "1": {
       "PanelNumber": 1,
+      "SupportsEnvision": false,
       "PanelConfig": {
         "FirmwareVersion": null,
         "LoopCount": 0,
@@ -44,23 +45,23 @@
         "Events": [
           {
             "Index": 0,
-            "ActionType": 230,
-            "ActionParam": 6,
+            "ActionType": 170,
+            "ActionParam": 8,
             "TriggerType": 125,
-            "TriggerParam": 33,
-            "TriggerParam2": 33,
+            "TriggerParam": -1,
+            "TriggerParam2": -1,
             "TriggerCondition": false,
             "ResetType": 125,
-            "ResetParam": 31,
+            "ResetParam": -1,
             "ResetParam2": 31,
             "ResetCondition": false
           },
           {
             "Index": 1,
             "ActionType": 40,
-            "ActionParam": 10,
+            "ActionParam": -1,
             "TriggerType": 10,
-            "TriggerParam": 0,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": false,
             "ResetType": 10,
@@ -71,14 +72,14 @@
           {
             "Index": 2,
             "ActionType": 50,
-            "ActionParam": 3,
-            "TriggerType": 40,
+            "ActionParam": 5,
+            "TriggerType": -1,
             "TriggerParam": 0,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 65,
-            "ResetParam": 2,
-            "ResetParam2": 4,
+            "ResetParam": -1,
+            "ResetParam2": -1,
             "ResetCondition": false
           },
           {
@@ -86,7 +87,7 @@
             "ActionType": 40,
             "ActionParam": 13,
             "TriggerType": 40,
-            "TriggerParam": 2,
+            "TriggerParam": 3,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 125,
@@ -97,12 +98,12 @@
           {
             "Index": 4,
             "ActionType": 50,
-            "ActionParam": 10,
+            "ActionParam": -1,
             "TriggerType": 5,
-            "TriggerParam": 6,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
-            "ResetType": 30,
+            "ResetType": -1,
             "ResetParam": 0,
             "ResetParam2": 0,
             "ResetCondition": true
@@ -116,7 +117,7 @@
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 30,
-            "ResetParam": 0,
+            "ResetParam": -1,
             "ResetParam2": 0,
             "ResetCondition": true
           },
@@ -125,7 +126,7 @@
             "ActionType": 190,
             "ActionParam": 65535,
             "TriggerType": 60,
-            "TriggerParam": 8,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 55,
@@ -138,7 +139,7 @@
             "ActionType": 10,
             "ActionParam": 15,
             "TriggerType": 80,
-            "TriggerParam": 0,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 10,
@@ -149,22 +150,22 @@
           {
             "Index": 8,
             "ActionType": 20,
-            "ActionParam": 0,
+            "ActionParam": -1,
             "TriggerType": 15,
-            "TriggerParam": 2,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 55,
-            "ResetParam": 1,
+            "ResetParam": -1,
             "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 9,
             "ActionType": 170,
-            "ActionParam": 7,
+            "ActionParam": 5,
             "TriggerType": 5,
-            "TriggerParam": 0,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 80,
@@ -177,7 +178,7 @@
             "ActionType": 40,
             "ActionParam": 10,
             "TriggerType": 10,
-            "TriggerParam": 0,
+            "TriggerParam": -1,
             "TriggerParam2": 0,
             "TriggerCondition": true,
             "ResetType": 120,
@@ -188,9 +189,9 @@
           {
             "Index": 11,
             "ActionType": 90,
-            "ActionParam": 8,
+            "ActionParam": 2,
             "TriggerType": 125,
-            "TriggerParam": 9,
+            "TriggerParam": -1,
             "TriggerParam2": 14,
             "TriggerCondition": true,
             "ResetType": 85,
@@ -416,7 +417,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 161,
               "LoopNum": 0,
               "Index": 3,
               "Zone": 1,
@@ -425,19 +426,19 @@
               "NightSensitivity": null,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 2,
+              "NightMode": 2,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -463,28 +464,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 207,
               "LoopNum": 0,
               "Index": 4,
               "Zone": 1,
               "Group": 1,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayVolume": 3,
+              "NightVolume": 3,
+              "DayMode": 4,
+              "NightMode": 4,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -510,7 +511,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 118,
               "LoopNum": 0,
               "Index": 5,
               "Zone": 1,
@@ -519,19 +520,19 @@
               "NightSensitivity": null,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 7,
+              "NightMode": 10,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -557,28 +558,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 160,
               "LoopNum": 0,
               "Index": 6,
               "Zone": 1,
               "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
+              "DaySensitivity": 3,
+              "NightSensitivity": 3,
               "DayVolume": null,
               "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -604,28 +605,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 212,
               "LoopNum": 0,
               "Index": 7,
               "Zone": 1,
               "Group": 1,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayVolume": 3,
+              "NightVolume": 3,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -651,28 +652,28 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
+              "DeviceType": 32,
               "LoopNum": 0,
               "Index": 8,
               "Zone": 1,
               "Group": 1,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayVolume": 3,
+              "NightVolume": 3,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -698,7 +699,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": 31,
               "LoopNum": 0,
               "Index": 9,
               "Zone": 1,
@@ -707,8 +708,8 @@
               "NightSensitivity": null,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -726,7 +727,7 @@
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -745,7 +746,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": 8,
               "LoopNum": 0,
               "Index": 10,
               "Zone": 1,
@@ -754,8 +755,8 @@
               "NightSensitivity": null,
               "DayVolume": null,
               "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -773,7 +774,7 @@
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -792,7 +793,7 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": 16,
               "LoopNum": 0,
               "Index": 11,
               "Zone": 1,
@@ -801,26 +802,26 @@
               "NightSensitivity": null,
               "DayVolume": null,
               "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 2,
+                  "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -886,237 +887,92 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": null,
               "LoopNum": 0,
               "Index": 13,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": 0,
+              "NightSensitivity": 0,
+              "DayVolume": 0,
+              "NightVolume": 0,
               "DayMode": 9,
               "NightMode": 9,
-              "IOConfig": [
-                {
-                  "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 1,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 3,
-                  "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                }
-              ],
+              "IOConfig": [],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": null,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": null,
               "LoopNum": 0,
               "Index": 14,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": 0,
+              "NightSensitivity": 0,
+              "DayVolume": 0,
+              "NightVolume": 0,
               "DayMode": 9,
               "NightMode": 9,
-              "IOConfig": [
-                {
-                  "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 1,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 3,
-                  "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                }
-              ],
+              "IOConfig": [],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": null,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": null,
               "LoopNum": 0,
               "Index": 15,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": 0,
+              "NightSensitivity": 0,
+              "DayVolume": 0,
+              "NightVolume": 0,
               "DayMode": 9,
               "NightMode": 9,
-              "IOConfig": [
-                {
-                  "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 1,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 3,
-                  "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                }
-              ],
+              "IOConfig": [],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": null,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": null,
               "LoopNum": 0,
               "Index": 16,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": 0,
+              "NightSensitivity": 0,
+              "DayVolume": 0,
+              "NightVolume": 0,
               "DayMode": 9,
               "NightMode": 9,
-              "IOConfig": [
-                {
-                  "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 1,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 3,
-                  "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                }
-              ],
+              "IOConfig": [],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": null,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
+              "DeviceType": null,
               "LoopNum": 0,
               "Index": 17,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": null,
-              "NightSensitivity": null,
-              "DayVolume": null,
-              "NightVolume": null,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": 0,
+              "NightSensitivity": 0,
+              "DayVolume": 0,
+              "NightVolume": 0,
               "DayMode": 9,
               "NightMode": 9,
-              "IOConfig": [
-                {
-                  "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 1,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                },
-                {
-                  "Index": 3,
-                  "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": -1
-                }
-              ],
+              "IOConfig": [],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": null,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -12259,8 +12115,7 @@
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
-          ],
-          "Group": 0
+          ]
         },
         "Loop2": {
           "Devices": [
@@ -24249,8 +24104,7 @@
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
-          ],
-          "Group": 0
+          ]
         }
       },
       "DeviceNamesConfig": {
@@ -24259,6 +24113,234 @@
         ]
       },
       "ZoneConfig": {
+        "ZonePanelData": {
+          "Panels": [
+            {
+              "IsPanelData": true,
+              "Index": 0,
+              "Name": "Panel 1",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 1,
+              "Name": "Panel 2",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 2,
+              "Name": "Panel 3",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 3,
+              "Name": "Panel 4",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 4,
+              "Name": "Panel 5",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 5,
+              "Name": "Panel 6",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 6,
+              "Name": "Panel 7",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 7,
+              "Name": "Panel 8",
+              "InputDelay": "00:02:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
         "Zones": [
           {
             "IsPanelData": false,

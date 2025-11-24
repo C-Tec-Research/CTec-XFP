@@ -112,19 +112,23 @@ namespace Xfp.DataTypes.PanelData
 
         public override bool Validate()
         {
-            _pageErrorOrWarningDetails.Items.Clear();
-
-            foreach (var e in Events)
+            try
             {
-                if (!e.Validate())
+                _pageErrorOrWarningDetails.Items.Clear();
+
+                foreach (var e in Events)
                 {
-                    var epi = e.GetErrorItems();
-                    var p = new ConfigErrorPageItems(e.Number, epi.Name);
-                    foreach (var vc in epi.ValidationCodes)
-                        p.ValidationCodes.Add(vc);
-                    _pageErrorOrWarningDetails.Items.Add(p);
+                    if (!e.Validate())
+                    {
+                        var epi = e.GetErrorItems();
+                        var p = new ConfigErrorPageItems(e.Number, epi.Name);
+                        foreach (var vc in epi.ValidationCodes)
+                            p.ValidationCodes.Add(vc);
+                        _pageErrorOrWarningDetails.Items.Add(p);
+                    }
                 }
             }
+            catch { }
 
             return _pageErrorOrWarningDetails.Items.Count == 0;
         }

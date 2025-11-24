@@ -212,7 +212,7 @@
 
                         
                         <!--#region action type-->
-                        <ComboBox Grid.Row="1"   Grid.Column="2" ItemsSource="{Binding Actions}" SelectedIndex="{Binding CEConfigItems[0].SelectedAc     tionTypeIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="60"/>
+                        <ComboBox Grid.Row="1"   Grid.Column="2" ItemsSource="{Binding Actions}" SelectedIndex="{Binding CEConfigItems[0].SelectedActionTypeIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="60"/>
                         <ComboBox Grid.Row="2"   Grid.Column="2" ItemsSource="{Binding Actions}" SelectedIndex="{Binding CEConfigItems[1].SelectedActionTypeIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="60"/>
                         <ComboBox Grid.Row="3"   Grid.Column="2" ItemsSource="{Binding Actions}" SelectedIndex="{Binding CEConfigItems[2].SelectedActionTypeIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="60"/>
                         <ComboBox Grid.Row="4"   Grid.Column="2" ItemsSource="{Binding Actions}" SelectedIndex="{Binding CEConfigItems[3].SelectedActionTypeIndex}" PreviewMouseDown="combo_PreviewMouseDown" MinWidth="60"/>

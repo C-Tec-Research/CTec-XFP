@@ -55,7 +55,11 @@ namespace Xfp.DataTypes.PanelData
                 GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0, true);
                 GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1, true);
                 GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, true));
-                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
+
+                if (_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted && string.IsNullOrWhiteSpace(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location))
+                    GridUtil.AddCellToGrid(grid, "", i + 1, 3, true, true);
+                else
+                    GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
             }
 
             //for (int i = 0; i < _data.Panels.Count; i++)

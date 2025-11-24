@@ -420,7 +420,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                            <Grid Visibility="{Binding IsSensVolModeDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            <Grid Visibility="{Binding IsSensVolModeDevice, Converter={StaticResource BoolToVisibilityConverter}}" VerticalAlignment="Center">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>
@@ -434,17 +434,17 @@
                                                                    ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
                                                                    HorizontalAlignment="Center" 
                                                                    Margin="0"/>
-                                                    </Border>
+                                                </Border>
                                                 <Border Grid.Row="0"
                                                         BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                         Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                        BorderThickness="1" CornerRadius="5" 
+                                                        BorderThickness="1" CornerRadius="5"
                                                         Height="26" Padding="0">
                                                         <TextBlock Text="{Binding ModeValue, Mode=OneWay}" 
                                                                    ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
-                                                                   HorizontalAlignment="Center" 
+                                                                   HorizontalAlignment="Center"
                                                                    Margin="0"/>
-                                                    </Border>
+                                                </Border>
                                                 <Border Grid.Row="1"
                                                         BorderBrush="{Binding VolumeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                         Visibility="{Binding IsVolumeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
@@ -454,7 +454,7 @@
                                                                    ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
                                                                    HorizontalAlignment="Center" 
                                                                    Margin="0"/>
-                                                    </Border>
+                                                </Border>
                                             </Grid>
                                             <TextBlock Text="--" 
                                                        Visibility="{Binding IsSensVolModeDevice, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
@@ -795,7 +795,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
-                                            <Grid Visibility="{Binding IsSensVolModeDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            <Grid Visibility="{Binding IsSensVolModeDevice, Converter={StaticResource BoolToVisibilityConverter}}" VerticalAlignment="Center">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>

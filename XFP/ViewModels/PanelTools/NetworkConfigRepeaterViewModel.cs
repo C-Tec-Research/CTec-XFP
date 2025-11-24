@@ -22,16 +22,17 @@ namespace Xfp.ViewModels.PanelTools
 
         public int    Number         => _index < _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters.Count ? _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Number : 0;
         public string Name     { get => _data.CurrentPanel.ZonePanelConfig.Panels[_index].Name;
-                                 set { _data.CurrentPanel.ZonePanelConfig.Panels[_index].Name = value; OnPropertyChanged(); OnPropertyChanged(nameof(NameIsValid)); } }
+                                 set { _data.CurrentPanel.ZonePanelConfig.Panels[_index].Name = value; RefreshView(); } }
         public bool   IsFitted { get => _index < _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters.Count ? _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Fitted : false; 
-                                 set { _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Fitted = value; OnPropertyChanged(); } }
+                                 set { _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Fitted = value; RefreshView(); } }
         public string Location { get => _index < _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters.Count ? _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Location : ""; 
-                                 set { _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Location = value; OnPropertyChanged(); } }
-        public int    MaxLocationLength => SiteConfigData.MaxLocationLength;
+                                 set { _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].Location = value; RefreshView(); } }
 
-        public string DisplayName   => _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].DisplayName;
-        public bool   NameIsValid   => string.IsNullOrEmpty(Name) || Name.Length <= MaxNameLength;
-        public int    MaxNameLength => ZoneConfigData.MaxNameLength;
+        public string DisplayName       => _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[_index].DisplayName;
+        public bool   NameIsValid       => !string.IsNullOrEmpty(Name) && Name.Length <= MaxNameLength;
+        public bool   LocationIsValid   => !IsFitted || !string.IsNullOrEmpty(Location) && Name.Length <= MaxNameLength;
+        public int    MaxNameLength     => ZoneConfigData.MaxNameLength;
+        public int    MaxLocationLength => SiteConfigData.MaxLocationLength;
 
 
         #region IAppViewModel implementation
@@ -49,6 +50,8 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IsFitted));
             OnPropertyChanged(nameof(Location));
             OnPropertyChanged(nameof(DisplayName));
+            OnPropertyChanged(nameof(NameIsValid));
+            OnPropertyChanged(nameof(LocationIsValid));
         }
         #endregion
     }

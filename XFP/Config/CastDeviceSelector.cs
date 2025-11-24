@@ -13,46 +13,6 @@ namespace XFP.Config
             {
                 new(ObjectTypes.XfpCast)
                 {
-                    MenuHeader = XfpCast.Tags.Detector,
-                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
-                    {
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastOpticalDetector },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastHeatDetector },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastMultiDetector },
-                    }
-                },
-                new(ObjectTypes.XfpCast)
-                {
-                    MenuHeader = XfpCast.Tags.Sounder,
-                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
-                    {
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.SounderVAD },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.Sounder },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.VoiceSounder },
-                    }
-                },
-                new(ObjectTypes.XfpCast)
-                {
-                    MenuHeader = XfpCast.Tags.Callpoint,
-                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
-                    {
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.MCP },
-                    }
-                },
-                new(ObjectTypes.XfpCast)
-                {
-                    MenuHeader = XfpCast.Tags.Interface,
-                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
-                    {
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.IOUnit },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.MainsIOUnit },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.ZMU },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.NonLatchingIOUnit },
-                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.HS2 },
-                    }
-                },
-                new(ObjectTypes.XfpCast)
-                {
                     MenuHeader = XfpCast.Tags.CastProOpticalDetector,
                     Icon = DeviceTypes.DeviceIcon((int?)XfpCastDeviceTypeIds.CastProOpticalDetector, ObjectTypes.XfpCast),
                     Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
@@ -105,6 +65,16 @@ namespace XFP.Config
                 },
                 new(ObjectTypes.XfpCast)
                 {
+                    MenuHeader = XfpCast.Tags.Detector,
+                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
+                    {
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastOpticalDetector },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastHeatDetector },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastMultiDetector },
+                    }
+                },
+                new(ObjectTypes.XfpCast)
+                {
                     MenuHeader = XfpCast.Tags.CastProSounder,
                     Icon = DeviceTypes.DeviceIcon((int?)XfpCastDeviceTypeIds.CastProVAD, ObjectTypes.XfpCast),
                     Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
@@ -114,6 +84,36 @@ namespace XFP.Config
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderToneVAD },
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderVoice },
                         new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.CastProSounderVoiceVAD },
+                    }
+                },
+                new(ObjectTypes.XfpCast)
+                {
+                    MenuHeader = XfpCast.Tags.Sounder,
+                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
+                    {
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.SounderVAD },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.Sounder },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.VoiceSounder },
+                    }
+                },
+                new(ObjectTypes.XfpCast)
+                {
+                    MenuHeader = XfpCast.Tags.Callpoint,
+                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
+                    {
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.MCP },
+                    }
+                },
+                new(ObjectTypes.XfpCast)
+                {
+                    MenuHeader = XfpCast.Tags.Interface,
+                    Submenu = new DeviceSelectorConfig.DeviceMenuItem[]
+                    {
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.IOUnit },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.MainsIOUnit },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.ZMU },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.NonLatchingIOUnit },
+                        new(ObjectTypes.XfpCast) { DeviceType = (int)XfpCastDeviceTypeIds.HS2 },
                     }
                 },
             },
