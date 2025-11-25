@@ -200,7 +200,7 @@ namespace Xfp.ViewModels.PanelTools
                                   where d.Index < firstIndex
                                   select d)
                     firstIndex = d.Index;
-                newSelectedDev = Loop1[firstIndex > 0 ? firstIndex - 1 : Loop1.Count - 1];
+                newSelectedDev = Loop1[firstIndex > 0 ? firstIndex - 1 : ^1];
                 if (_infoPanelViewModel is not null)
                     _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;
@@ -214,7 +214,7 @@ namespace Xfp.ViewModels.PanelTools
                                   where d.Index < firstIndex
                                   select d)
                     firstIndex = d.Index;
-                newSelectedDev = Loop2[firstIndex > 0 ? firstIndex - 1 : Loop2.Count - 1];
+                newSelectedDev = Loop2[firstIndex > 0 ? firstIndex - 1 : ^1];
                 if (_infoPanelViewModel is not null)
                     _infoPanelViewModel.DeviceList = new() { newSelectedDev };
                 SelectedItem = newSelectedDev;

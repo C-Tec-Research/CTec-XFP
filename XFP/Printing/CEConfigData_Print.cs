@@ -82,7 +82,7 @@ namespace Xfp.DataTypes.PanelData
             public ReportTextElement() { }
             public ReportTextElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
             public ReportTextElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
-            public ReportTextElement(bool isError) { IsError = isError; Text = PrintUtil.Errorindicator; }
+            public ReportTextElement(bool isError) { IsError = isError; Text = PrintUtil.ErrorNotSet; }
 
             public string Text { get; private set; } = string.Empty;
             public int    ColumnSpan { get; private set; } = 1;

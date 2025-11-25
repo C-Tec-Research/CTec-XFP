@@ -144,7 +144,7 @@ namespace Xfp.ViewModels.PanelTools
                               select i)
                 firstIndex = (z.IsPanelData ? z.ZoneNum + ZoneConfigData.NumZones : z.ZoneNum) - 1;
 
-            var newSelectedZone = items[firstIndex > 0 ? firstIndex - 1 : items.Count - 1];
+            var newSelectedZone = items[firstIndex > 0 ? firstIndex - 1 : ^1];
             _infoPanelViewModel.ZoneList   = new() { newSelectedZone };
             _infoPanelViewModel.InputDelay = InputDelay;
             SelectedZone = newSelectedZone;

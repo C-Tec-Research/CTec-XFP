@@ -280,12 +280,12 @@
               "Index": 0,
               "Zone": -1,
               "Group": -1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
+              "DaySensitivity": 993,
+              "NightSensitivity": -1,
               "DayVolume": null,
               "NightVolume": null,
-              "DayMode": 9,
-              "NightMode": 9,
+              "DayMode": 9999,
+              "NightMode": -1,
               "IOConfig": [
                 {
                   "Index": 0,

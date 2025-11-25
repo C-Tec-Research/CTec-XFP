@@ -342,7 +342,7 @@
               "Index": 1,
               "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 100,
+              "DaySensitivity": 74,
               "NightSensitivity": 100,
               "DayVolume": null,
               "NightVolume": null,

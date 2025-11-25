@@ -283,16 +283,16 @@
               "Group": 1,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": null,
+              "DayVolume": 99999,
               "NightVolume": null,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": -1,
+              "NightMode": 999,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "ZoneGroupSet": -1,
                   "NameIndex": 3
                 },
                 {
@@ -323,24 +323,24 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 192,
+              "DeviceType": 186,
               "LoopNum": 0,
               "Index": 1,
               "Zone": 1,
-              "Group": 0,
+              "Group": 1,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": null,
-              "NightVolume": null,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayVolume": 999,
+              "NightVolume": -1,
+              "DayMode": -1,
+              "NightMode": 999,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 13
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
@@ -1035,8 +1035,8 @@
               "Group": 0,
               "DaySensitivity": null,
               "NightSensitivity": null,
-              "DayVolume": 3,
-              "NightVolume": 3,
+              "DayVolume": -1,
+              "NightVolume": 999,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [
@@ -12260,8 +12260,7 @@
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
-          ],
-          "Group": 0
+          ]
         },
         "Loop2": {
           "Devices": [
@@ -24250,8 +24249,7 @@
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
-          ],
-          "Group": 0
+          ]
         }
       },
       "DeviceNamesConfig": {
