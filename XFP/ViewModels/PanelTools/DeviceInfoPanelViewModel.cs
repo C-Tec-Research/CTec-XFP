@@ -337,7 +337,7 @@ namespace Xfp.ViewModels.PanelTools
                     }
                 }
 
-                return _groupIndex is not null && _groupIndex > -1 && _groupIndex < GroupConfigData.NumSounderGroups ? Groups[(int)_groupIndex] : null;
+                return GroupConfigData.IsValidGroup(_groupIndex, false) ? Groups[(int)_groupIndex] : null;
             }
             set
             {
@@ -361,48 +361,86 @@ namespace Xfp.ViewModels.PanelTools
         {
             get
             {
-                _ancillaryBaseSounderGroupIndex = null;
-
-                if (NoDeviceDetails)
-                    return null;
-
-                if (!DevicesHaveCommonHasAncillaryBaseSounder)
-                    return null;
-
-                if (_deviceList.Count == 1)
-                    return AncillaryBaseSounderGroups[_deviceList[0].AncillaryBaseSounderGroup??0];
-
-                _ancillaryBaseSounderGroupIndex = null;
-                foreach (var d in _deviceList)
+                try
                 {
-                    if (d?.DeviceType is null)
-                        continue;
+                    _ancillaryBaseSounderGroupIndex = -1;
 
-                    if (_ancillaryBaseSounderGroupIndex is null)
-                        _ancillaryBaseSounderGroupIndex = d.AncillaryBaseSounderGroup??0;
-                    else if (_ancillaryBaseSounderGroupIndex != d.AncillaryBaseSounderGroup)
-                    {
-                        _ancillaryBaseSounderGroupIndex = null;
+                    if (NoDeviceDetails)
                         return null;
-                    }
-                }
 
-                return _ancillaryBaseSounderGroupIndex is not null && _ancillaryBaseSounderGroupIndex > -1 ? AncillaryBaseSounderGroups[(int)_ancillaryBaseSounderGroupIndex] : null;
+                    if (!DevicesHaveCommonHasAncillaryBaseSounder)
+                        return null;
+
+                    if (_deviceList.Count == 1)
+                    {
+                        if (ancillaryBaseSounderGroupIndexIsValid(_deviceList[0].AncillaryBaseSounderGroup))
+                            return AncillaryBaseSounderGroups[(int)(_ancillaryBaseSounderGroupIndex = _deviceList[0].AncillaryBaseSounderGroup??0)];
+                        else
+                        {
+                            _ancillaryBaseSounderGroupIndex = -1;
+                            return "";
+                        }
+                    }
+
+                    foreach (var d in _deviceList)
+                    {
+                        if (d?.DeviceType is null)
+                            continue;
+
+                        if (_ancillaryBaseSounderGroupIndex == -1)
+                            _ancillaryBaseSounderGroupIndex = d.AncillaryBaseSounderGroup??0;
+                        else if (_ancillaryBaseSounderGroupIndex != d.AncillaryBaseSounderGroup)
+                        {
+                            _ancillaryBaseSounderGroupIndex = -1;
+                            return null;
+                        }
+                    }
+
+                    return SelectedAncillaryBaseSounderGroupIndex != -1 && SelectedAncillaryBaseSounderGroupIndex > -1 ? AncillaryBaseSounderGroups[(int)SelectedAncillaryBaseSounderGroupIndex] : null;
+                }
+                finally
+                {
+                    OnPropertyChanged(nameof(SelectedAncillaryBaseSounderGroupIndex));
+                }
             }
 
             set
             {
-                if (value is not null)
-                    foreach (var d in _deviceList)
-                        if (!NoDeviceDetails)
+                if (!NoDeviceDetails)
+                {
+                    if (value is not null)
+                        foreach (var d in _deviceList)
                             d.AncillaryBaseSounderGroup = findIndexInCombo(AncillaryBaseSounderGroups, value) ?? 0;
 
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(DevicesHaveCommonHasAncillaryBaseSounder));
-                OnPropertyChanged(nameof(DevicesHaveCommonAncillaryBaseSounderGroup));
-                OnPropertyChanged(nameof(IndicateMultipleValues));
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(DevicesHaveCommonHasAncillaryBaseSounder));
+                    OnPropertyChanged(nameof(DevicesHaveCommonAncillaryBaseSounderGroup));
+                    OnPropertyChanged(nameof(SelectedAncillaryBaseSounderGroupIndex));
+                    OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid));
+                    OnPropertyChanged(nameof(IndicateMultipleValues));
+                }
             }
         }
+
+
+        public int SelectedAncillaryBaseSounderGroupIndex
+        {
+            get 
+            {
+                //force update of index
+                var tmp = AncillaryBaseSounderGroup;
+                return _ancillaryBaseSounderGroupIndex ?? 0;
+            }
+            set
+            {
+                _ancillaryBaseSounderGroupIndex = value;
+                AncillaryBaseSounderGroup = AncillaryBaseSounderGroups[value];
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool ancillaryBaseSounderGroupIndexIsValid(int? index) => index is null || (index >= 0 && index <= GroupConfigData.NumSounderGroups);
 
 
         public int? DaySensitivity
@@ -2064,7 +2102,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool ZoneIsValid             => (!IsZonedDevice??false)   || _zoneIndex >= 0 && _zoneIndex <= ZoneConfigData.NumZones;
         public bool GroupIsValid            => (!IsGroupedDevice??false) || _groupIndex >= 0 && _groupIndex <= GroupConfigData.NumSounderGroups;
         public bool DeviceNameIsValid       => NoDeviceType || DeviceName is null || DeviceName.Length <= MaxNameLength;
-        public bool AncillaryBaseSounderGroupIsValid => _ancillaryBaseSounderGroupIndex is null || (_ancillaryBaseSounderGroupIndex >= 0 && _ancillaryBaseSounderGroupIndex < GroupConfigData.NumSounderGroups);
+        public bool AncillaryBaseSounderGroupIsValid => ancillaryBaseSounderGroupIndexIsValid(_ancillaryBaseSounderGroupIndex);
         public bool DaySensitivityIsValid   => sensitivityIsValid(DaySensitivity);
         public bool NightSensitivityIsValid => sensitivityIsValid(NightSensitivity);
         public bool DayVolumeIsValid        => volumeIsValid(findIndexInCombo(Volumes, DayVolume));
@@ -2685,6 +2723,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(Group));
             OnPropertyChanged(nameof(DeviceName));
             OnPropertyChanged(nameof(RemoteLEDEnabled));
+            OnPropertyChanged(nameof(SelectedAncillaryBaseSounderGroupIndex));
             OnPropertyChanged(nameof(AncillaryBaseSounderGroup));
             OnPropertyChanged(nameof(DevicesHaveCommonDeviceType));
             OnPropertyChanged(nameof(DevicesHaveCommonZGSType));

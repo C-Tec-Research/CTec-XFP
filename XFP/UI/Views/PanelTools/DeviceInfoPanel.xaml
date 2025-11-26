@@ -289,8 +289,8 @@
                                       Visibility="{Binding IsZonedDevice, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
                                                 Visibility="{Binding IsGroupedDevice, Converter={StaticResource BoolToVisibilityConverter}}">
+                                        
                                         <!--NB: as elsewhere, gave up trying to get Binding.ValidationRules to work without messing up interaction between InfoPanel and Details grid, so added explicit validation borders -->
-                                    
                                         <Border BorderBrush="{Binding GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
@@ -691,27 +691,40 @@
                                                        Text="{Binding Path=Ancillary_Base_Sounder_Group, Source={StaticResource Resources}}" 
                                                        HorizontalAlignment="Left" Margin="0,10,0,0"/>
 
-                                            <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,-2,0,0">
+                                            <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,-3,0,0">
 
-                                                <ComboBox ItemsSource="{Binding AncillaryBaseSounderGroups}"
-                                                          SelectedItem="{Binding AncillaryBaseSounderGroup}"
-                                                          MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                          PreviewKeyDown="comboBox_PreviewKeyDown" 
-                                                          CommandManager.PreviewExecuted="textBox_PreviewExecuted"
-                                                          Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                          Margin="10,5,0,0"/>
+                                                <Grid Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+
+                                                    <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
+                                                            BorderThickness="1" 
+                                                            HorizontalAlignment="Left" 
+                                                            Margin="0,3,0,0"  Padding="2">
+
+                                                        <ComboBox ItemsSource="{Binding AncillaryBaseSounderGroups}"
+                                                                  SelectedIndex="{Binding SelectedAncillaryBaseSounderGroupIndex}"
+                                                                  MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                                  PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                                  PreviewKeyDown="comboBox_PreviewKeyDown" 
+                                                                  CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                                                  Margin="0,0,0,0"/>
+                                                    </Border>
+
+                                                    <!--<ComboBox MinWidth="80" 
+                                                                Visibility="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                                IsEnabled="false"
+                                                                Margin="0,5,0,0"/>-->
+                                                </Grid>
 
                                                 <ComboBox MinWidth="80" 
-                                                          Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                          IsEnabled="false"
-                                                          Margin="10,5,0,0"/>
-                                                
+                                                            Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                            IsEnabled="false"
+                                                            Margin="3,6,0,0"/>
+
                                                 <Grid Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="3,3,0,0" Padding="0" 
-                                                               FontSize="18"
-                                                               Foreground="{StaticResource BrushInfo}"
-                                                               Visibility="{Binding DevicesHaveCommonAncillaryBaseSounderGroup, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                                FontSize="18"
+                                                                Foreground="{StaticResource BrushInfo}"
+                                                                Visibility="{Binding DevicesHaveCommonAncillaryBaseSounderGroup, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </StackPanel>
                                         </StackPanel>

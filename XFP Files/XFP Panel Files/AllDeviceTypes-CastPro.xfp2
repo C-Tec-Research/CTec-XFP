@@ -484,15 +484,15 @@
                 {
                   "Index": 0,
                   "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": -1,
+                  "ZoneGroupSet": -1,
                   "NameIndex": 0
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": 7,
+                  "ZoneGroupSet": 999,
                   "NameIndex": 0
                 },
                 {

@@ -507,11 +507,6 @@
                                                     <TextBlock Text="{Binding AncillaryBaseSounderGroup, Converter={StaticResource BaseSounderGroupToStringConverter}, Mode=OneWay}" 
                                                                ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
                                                                HorizontalAlignment="Left" 
-                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                               Margin="10,0,18,0"/>
-                                                    <TextBlock Text="--" 
-                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                               HorizontalAlignment="Left" 
                                                                Margin="10,0,18,0"/>
                                                 </Grid>
                                             </Border>

@@ -241,7 +241,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
         private bool isValidDevice(int device)     => device >= 0 && device < DeviceConfigData.NumDevices;
-        private bool isValidGroup(int group)       => group >= 0 && group <= GroupConfigData.NumSounderGroups;      // NB. the All Groups option
+        private bool isValidGroup(int group)       => GroupConfigData.IsValidGroup(group, false);      // NB. the All Groups option
         private bool isValidInput(int input)       => input >= 0 && input < XfpPanelData.NumPanelInputs;
         private bool isValidEvent(int evnt)        => evnt >= 0 && evnt < CEConfigData.NumEvents;
         private bool isValidPanel(int panel)       => panel >= 0 && ActionParam < NetworkConfigData.NumPanelSettings;

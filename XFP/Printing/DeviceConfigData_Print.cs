@@ -120,7 +120,7 @@ namespace Xfp.DataTypes.PanelData
                         if (dev.IsIODevice)
                             newRows[0].Cells.Add(TableUtil.NewCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
                         else
-                            newRows[0].Cells.Add(TableUtil.NewCell(zgsDescription(dev), numRows, 1, true));
+                            newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev), numRows, 1, true));
 
                         //name
                         newRows[0].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex), numRows, 1));
@@ -201,7 +201,8 @@ namespace Xfp.DataTypes.PanelData
                             newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
 
                             //base sounder group
-                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                            //newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                            newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
                         }
 
 
@@ -227,8 +228,9 @@ namespace Xfp.DataTypes.PanelData
                                         newRows[io].Cells.Add(TableUtil.NewCell(""));
 
                                     newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
-                                    newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
-                                    newRows[io].Cells.Add(TableUtil.NewCell(zgsDescription(dev, true, io), true));
+                                    //newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(getChannel(dev.IOConfig[io].Channel, dev.IOConfig[io].InputOutput == IOTypes.Input), true, true));
+                                    newRows[io].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, true, io), true));
                                     newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
 
                                     ioRowsUsed++;
@@ -253,21 +255,6 @@ namespace Xfp.DataTypes.PanelData
                 PrintUtil.ResetFont();
             }
         }
-
-
-        private bool isValidMode(int? mode, int? deviceType)
-        {
-            var validModes = getValidModes(deviceType);
-            return mode.HasValue && validModes.Count > 0 && mode >= validModes[0] && mode <= validModes[^1];
-        }
-
-        private List<int> getValidModes(int? deviceType) => (from m in DeviceTypes.ModeSettings(deviceType) select m.Index).ToList();
-
-        private bool isValidVolume(int? vol) => vol.HasValue && vol >= DeviceConfigData.MinVolume && vol <= DeviceConfigData.MaxVolume;
-
-        private bool isValidSensitivity(int? sens, bool isSensHighDevice)
-            => sens.HasValue && isSensHighDevice ? sens >= DeviceConfigData.MinSensitivityHigh && sens <= DeviceConfigData.MaxSensitivityHigh
-                                                 : sens >= DeviceConfigData.MinSensitivity && sens <= DeviceConfigData.MaxSensitivity;
 
 
         private void defineColumnHeaders(Table table, string reportHeader)
@@ -430,7 +417,7 @@ namespace Xfp.DataTypes.PanelData
             };
         
 
-        private string zgsDescription(DeviceData device, bool isIOSetting = false, int? ioIndex = null)
+        private string getZGSDescription(DeviceData device, bool isIOSetting = false, int? ioIndex = null)
         {
             var isIODevice = device.IsIODevice && ioIndex.HasValue;
             var value      = isIODevice ? device.IOConfig[(int)ioIndex].ZoneGroupSet : device.Zone;
@@ -446,6 +433,35 @@ namespace Xfp.DataTypes.PanelData
 
             return string.Format(formatStr, value);
         }
+
+        private string getAncillaryBaseSounder(DeviceData device, int? group)
+        {
+            if (!device.HasAncillaryBaseSounder || device.RemoteLEDEnabled == true)
+                return "--";
+            
+            return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? string.Format(Cultures.Resources.Group_x, group) : null;
+        }
+
+        private string getChannel(int? channel, bool isInput)
+        {
+            if (channel is null || channel < 0 || channel > (isInput ? 2 : 3))
+                return null;
+            return (channel + 1).ToString();
+        }
+
+        private bool isValidMode(int? mode, int? deviceType)
+        {
+            var validModes = getValidModes(deviceType);
+            return mode.HasValue && validModes.Count > 0 && mode >= validModes[0] && mode <= validModes[^1];
+        }
+
+        private List<int> getValidModes(int? deviceType) => (from m in DeviceTypes.ModeSettings(deviceType) select m.Index).ToList();
+
+        private bool isValidVolume(int? vol) => vol.HasValue && vol >= DeviceConfigData.MinVolume && vol <= DeviceConfigData.MaxVolume;
+
+        private bool isValidSensitivity(int? sens, bool isSensHighDevice)
+            => sens.HasValue && isSensHighDevice ? sens >= DeviceConfigData.MinSensitivityHigh && sens <= DeviceConfigData.MaxSensitivityHigh
+                                                 : sens >= DeviceConfigData.MinSensitivity && sens <= DeviceConfigData.MaxSensitivity;
 
 
         private int getIOSortZGS(DeviceData d1, DeviceData d2)

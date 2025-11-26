@@ -293,7 +293,7 @@
               "DeviceType": 160,
               "LoopNum": 0,
               "Index": 0,
-              "Zone": 1,
+              "Zone": -1,
               "Group": 1,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
@@ -332,7 +332,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 11,
+              "AncillaryBaseSounderGroup": -1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -379,7 +379,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 11,
+              "AncillaryBaseSounderGroup": 999,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -426,7 +426,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 12,
+              "AncillaryBaseSounderGroup": -1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },

@@ -1,21 +1,22 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecUtil;
+using CTecUtil.Config;
+using CTecUtil.Utils;
+using CTecUtil.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Management;
+using System.Printing;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using CTecUtil.ViewModels;
-using CTecUtil.Config;
-using CTecControls.UI;
-using CTecUtil;
-using System.Printing;
-using Xfp.DataTypes;
-using Xfp.ViewModels.PanelTools;
 using System.Windows.Input;
-using CTecUtil.Utils;
+using System.Windows.Media;
+using Xfp.DataTypes;
 using Xfp.UI.Views.PanelTools;
+using Xfp.ViewModels.PanelTools;
 
 namespace Xfp.ViewModels
 {
@@ -71,18 +72,51 @@ namespace Xfp.ViewModels
         private bool _printerListIsOpen;
         private bool _printIsOpen;
 
+        private object _printerListLock = new();
+
         public List<string> Printers
         {
             get
             {
-                var result = new List<string>();
-                foreach (var p in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-                    result.Add(p.ToString());
+                List<string> result = new ();
+
+                lock (_printerListLock)
+                {
+                    string defaultPrinter = "";
+
+                    try
+                    {
+                        //get default printer name and put it first in the list
+                        //result.Add(defaultPrinter = new System.Drawing.Printing.PrinterSettings().PrinterName);
+                        result.Add(defaultPrinter = getDefaultPrinterName());
+                    }
+                    catch { }
+
+                    foreach (var p in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+                        if (p is string printer && printer.ToLower() != defaultPrinter.ToLower())
+                            result.Add(printer);
+                }
+
                 return result;
             }
         }
 
-        public List<string> _printerDevices;
+
+        private static string getDefaultPrinterName()
+        {
+            var query = new ObjectQuery("SELECT * FROM Win32_Printer");
+            var searcher = new ManagementObjectSearcher(query);
+
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                if (((bool?) mo["Default"]) ?? false)
+                {
+                    return mo["Name"] as string;
+                }
+            }
+
+            return null;
+        }
 
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen;          set { _printerListIsOpen = value; OnPropertyChanged(); } }

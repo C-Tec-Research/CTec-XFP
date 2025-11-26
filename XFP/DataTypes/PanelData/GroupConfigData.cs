@@ -32,6 +32,10 @@ namespace Xfp.DataTypes.PanelData
 
         internal const  int NumSounderGroups = 16;
         internal static int NumToneMessagePairs => DeviceTypes.CurrentProtocolIsXfpApollo ? 15 : 31;
+
+        public static bool IsValidGroup(int? group, bool allowNull) => !group.HasValue ? allowNull : group >= 0 && group <= NumSounderGroups;
+
+
         
         public int PanelSounder1Group { get; set; }
         public int PanelSounder2Group { get; set; }
