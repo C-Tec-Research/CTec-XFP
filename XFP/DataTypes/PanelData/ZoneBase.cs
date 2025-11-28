@@ -67,21 +67,21 @@ namespace Xfp.DataTypes.PanelData
             
             if (Name.Length > ZoneConfigData.MaxNameLength)
                 _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataZoneNameTooLong);
-            
-            //if (SounderDelay.CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
-            //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataSounderDelayTooLong);
-            
-            //if (Relay1Delay.CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
-            //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataRelay1DelayTooLong);
-            
-            //if (Relay2Delay.CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
-            //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataRelay2DelayTooLong);
-            
-            //if (RemoteDelay.CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
-            //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataOutputDelayTooLong);
-            
-            if (SounderDelay.Add(Relay1Delay).Add(Relay2Delay).Add(RemoteDelay).Add(InputDelay).CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
-                _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataTotalDelayTooLong);
+
+            if (!ZoneConfigData.IsValidOutputDelay(SounderDelay))
+                _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataSounderDelayTooLong);
+
+            if (!ZoneConfigData.IsValidOutputDelay(Relay1Delay))
+                _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataRelay1DelayTooLong);
+
+            if (!ZoneConfigData.IsValidOutputDelay(Relay2Delay))
+                _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataRelay2DelayTooLong);
+
+            if (!ZoneConfigData.IsValidOutputDelay(RemoteDelay))
+                _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataOutputDelayTooLong);
+
+            //if (SounderDelay.Add(Relay1Delay).Add(Relay2Delay).Add(RemoteDelay).Add(InputDelay).CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
+            //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataTotalDelayTooLong);
 
             return _errorItems.ValidationCodes.Count == 0;
         }

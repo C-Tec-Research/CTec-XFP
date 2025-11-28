@@ -80,10 +80,10 @@ namespace Xfp.ViewModels.PanelTools
         public bool     ShowNightDetectorReset    => _data.IsPanelData ? false : ZoneConfigData.HasDetectorReset(((ZoneData)_data).Night.DependencyOption);
         public bool     ShowDayAlarmReset         => _data.IsPanelData ? false : ZoneConfigData.HasAlarmReset(((ZoneData)_data).Day.DependencyOption);
         public bool     ShowNightAlarmReset       => _data.IsPanelData ? false : ZoneConfigData.HasAlarmReset(((ZoneData)_data).Night.DependencyOption);
-        public bool     SounderDelayIsValid       => SounderDelay.CompareTo(ZoneConfigData.MaxSounderDelay) <= 0;
-        public bool     Relay1DelayIsValid        => Relay1Delay.CompareTo(ZoneConfigData.MaxRelay1Delay) <= 0;
-        public bool     Relay2DelayIsValid        => Relay2Delay.CompareTo(ZoneConfigData.MaxRelay2Delay) <= 0;
-        public bool     RemoteDelayIsValid        => RemoteDelay.CompareTo(ZoneConfigData.MaxRemoteDelay) <= 0;
+        public bool     SounderDelayIsValid       => ZoneConfigData.IsValidOutputDelay(SounderDelay);
+        public bool     Relay1DelayIsValid        => ZoneConfigData.IsValidOutputDelay(Relay1Delay);
+        public bool     Relay2DelayIsValid        => ZoneConfigData.IsValidOutputDelay(Relay2Delay);
+        public bool     RemoteDelayIsValid        => ZoneConfigData.IsValidOutputDelay(RemoteDelay);
         public bool     DelayTotalIsValid         => true;//RemoteDelay.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0;
         public bool     ZoneDescIsValid           => string.IsNullOrEmpty(ZoneDesc) || ZoneDesc.Length <= ZoneConfigData.MaxNameLength;
         public bool     DayDependencyIsValid      => !_data.IsPanelData ? (int)Day.DependencyOption   >= 0 && (int)Day.DependencyOption   < Enum.GetNames(typeof(ZoneDependencyOptions)).Length : true;

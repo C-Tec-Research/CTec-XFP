@@ -21,6 +21,7 @@
         <ctcvh:BoolToInverseConverter x:Key="BoolToInverseConverter"/>
         <ctcvh:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <ctcvh:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+        <ctcvh:InverseBoolToErrorBrushConverter x:Key="InverseBoolToErrorBrushConverter"/>
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:IsNullOrWhiteSpaceToBoolConverter x:Key="IsNullOrWhiteSpaceToBoolConverter"/>
@@ -196,50 +197,57 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,0">
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PanelSounder1GroupDesc}" HorizontalAlignment="Right" Margin="0,0,0,0"/>
-                        <ctc:NumberSpinner Grid.Row="0" Grid.Column="1"
-                                           Value="{Binding PanelSounder1Group}" 
-                                           Minimum="{Binding MinSounderGroup}"
-                                           Maximum="{Binding MaxSounderGroup}"
-                                           PreviewMouseDown="ctrl_PreviewEvent"
-                                           PreviewMouseWheel="ctrl_PreviewMouseWheel" 
-                                           Margin="5,4,0,0"/>
+                        <TextBlock Text="{Binding PanelSounder1GroupDesc}" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                        <Border BorderBrush="{Binding PanelSounder1GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
+                                Margin="5,0,0,0" Padding="2,0,2,0">
+                            <ctc:NumberSpinner Grid.Row="0" Grid.Column="1"
+                                               Value="{Binding PanelSounder1Group}" 
+                                               Minimum="{Binding MinSounderGroup}"
+                                               Maximum="{Binding MaxSounderGroup}"
+                                               PreviewMouseDown="ctrl_PreviewEvent"
+                                               PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+                        </Border>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,0">
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding PanelSounder2GroupDesc}" HorizontalAlignment="Right" Margin="0,0,0,0"/>
-                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" 
-                                           Value="{Binding PanelSounder2Group}"
-                                           Minimum="{Binding MinSounderGroup}"
-                                           Maximum="{Binding MaxSounderGroup}"
-                                           PreviewMouseDown="ctrl_PreviewEvent"
-                                           PreviewMouseWheel="ctrl_PreviewMouseWheel" 
-                                           Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding PanelSounder2GroupDesc}" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                        <Border BorderBrush="{Binding PanelSounder2GroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
+                                Margin="5,0,0,0" Padding="2,0,2,0">
+                            <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" 
+                                               Value="{Binding PanelSounder2Group}"
+                                               Minimum="{Binding MinSounderGroup}"
+                                               Maximum="{Binding MaxSounderGroup}"
+                                               PreviewMouseDown="ctrl_PreviewEvent"
+                                               PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+                        </Border>
                     </StackPanel>
 
 
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=Evac_Tone, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="25,2,0,0"/>
-                    <ComboBox Grid.Row="0" Grid.Column="3" 
-                              ItemsSource="{Binding EvacTones}"
-                              SelectedIndex="{Binding EvacTone}"
-                              PreviewMouseDown="combo_PreviewMouseDown"
-                              PreviewKeyDown="ctrl_PreviewEvent"
-                              MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                              Margin="5,3,0,0"/>
-
+                    <Border Grid.Row="0" Grid.Column="3" 
+                            BorderBrush="{Binding EvacToneIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
+                            Margin="5,0,0,0" Padding="2,0,2,0">
+                        <ComboBox ItemsSource="{Binding EvacTones}"
+                                  SelectedIndex="{Binding EvacTone}"
+                                  PreviewMouseDown="combo_PreviewMouseDown"
+                                  PreviewKeyDown="ctrl_PreviewEvent"
+                                  MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"/>
+                    </Border>
+                    
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=Alert_Tone, Source={StaticResource Resources}}" 
                                Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}" 
                                HorizontalAlignment="Right" Margin="25,0,0,0"/>
-                    <ComboBox Grid.Row="1" Grid.Column="3" 
-                              ItemsSource="{Binding AlertTones}"
-                              SelectedIndex="{Binding AlertTone, Mode=TwoWay}"
-                              PreviewMouseDown="combo_PreviewMouseDown"
-                              PreviewKeyDown="ctrl_PreviewKeyDown"
-                              MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                              Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}"
-                              Margin="5,2,0,0"/>
+                    <Border Grid.Row="1" Grid.Column="3" 
+                            BorderBrush="{Binding AlertToneIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
+                            Visibility="{Binding CurrentProtocolIsCast, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Margin="5,0,0,0" Padding="2,0,2,0">
+                        <ComboBox ItemsSource="{Binding AlertTones}"
+                                  SelectedIndex="{Binding AlertTone, Mode=TwoWay}"
+                                  PreviewMouseDown="combo_PreviewMouseDown"
+                                  PreviewKeyDown="ctrl_PreviewKeyDown"
+                                  MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"/>
+                    </Border>
 
-                    
                     <CheckBox Grid.Row="0" Grid.Column="4" Content="{Binding Path=New_Fire_Causes_Resound, Source={StaticResource Resources}}"
                               IsChecked="{Binding NewFireCausesResound}"
                               PreviewMouseDown="ctrl_PreviewEvent"
@@ -250,12 +258,14 @@
 
                     <WrapPanel Grid.Row="1" Grid.Column="4" Orientation="Horizontal">
                         <TextBlock Text="{Binding Path=Phased_Delay, Source={StaticResource Resources}}" Margin="30,0,0,0"/>
-                        <ctc:TimePicker x:Name="tpPhasedDelay"
+                        <Border BorderBrush="{Binding PhasedDelayIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1"
+                                Margin="5,0,0,0" Padding="1,1,0,1">
+                            <ctc:TimePicker x:Name="tpPhasedDelay"
                                         Value="{Binding PhasedDelay}" Format="mmss" MaxValue="10:00" SecondsIncrement="30" MinutesIncrement="1" 
                                         AllowMidnight="False"
                                         PreviewMouseDown="ctrl_PreviewEvent"
-                                        PreviewMouseWheel="ctrl_PreviewMouseWheel"
-                                        Margin="3,3,3,0"/>
+                                        PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
+                        </Border>
                         <TextBlock Text="{Binding Path=Minute_Short, Source={StaticResource Resources}}"/>
                     </WrapPanel>
                 </Grid>

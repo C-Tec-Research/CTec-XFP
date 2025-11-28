@@ -230,8 +230,8 @@
                     </StackPanel>
                     <!--#endregion-->
 
-                    <!--#region 10-minute error-->
-                    <Grid Grid.Row="3" Grid.Column="2" Grid.RowSpan="4" >
+                    <!--#region 10-minute error (not used)-->
+                    <!--<Grid Grid.Row="3" Grid.Column="2" Grid.RowSpan="4" >
                         <Grid.Resources>
                             <Style TargetType="{x:Type StackPanel}">
                                 <Style.Resources>
@@ -273,7 +273,6 @@
                         <StackPanel Orientation="Horizontal" 
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding DelayTotalIsValid, Converter={StaticResource InverseBoolToVisibilityConverter}}" Margin="2,0,0,0">
-                            <!--<Border BorderBrush="{StaticResource BrushError}" HorizontalAlignment="Left" BorderThickness="0,0,1,0" CornerRadius="0,8,8,0" Width="10"/>-->
                             <StackPanel Orientation="Vertical" Margin="5,0,0,0">
                                 <TextBlock Text="ü" Foreground="{StaticResource BrushError}" FontSize="28" FontFamily="Symbol" FontWeight="UltraLight" FontStretch="UltraCondensed" Margin="-3,2,0,0"/>
                                 <TextBlock Text="ý" Foreground="{StaticResource BrushError}" FontSize="28" FontFamily="Symbol" FontWeight="UltraLight" FontStretch="UltraCondensed" Margin="-3,-7,0,0"/>
@@ -281,7 +280,7 @@
                             </StackPanel>
                             <TextBlock Text="{Binding DelayTotalHighErrorMessage}" Foreground="{StaticResource BrushError}" Width="100" Margin="5,15,15,15"/>
                         </StackPanel>
-                    </Grid>
+                    </Grid>-->
                     <!--#endregion-->
 
                     <!--#endregion-->

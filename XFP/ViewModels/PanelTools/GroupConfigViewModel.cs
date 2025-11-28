@@ -45,6 +45,14 @@ namespace Xfp.ViewModels.PanelTools
         public bool NewFireCausesResound { get => _data.CurrentPanel.GroupConfig.ReSoundFunction; set { _data.CurrentPanel.GroupConfig.ReSoundFunction = value; OnPropertyChanged(); } }
         public TimeSpan PhasedDelay { get => _data.CurrentPanel.GroupConfig.PhasedDelay; set { _data.CurrentPanel.GroupConfig.PhasedDelay = value; OnPropertyChanged(); } }
 
+        public TimeSpan MaxPhasedDelay => GroupConfigData.MaxPhasedDelay;
+
+        public bool PanelSounder1GroupIsValid => GroupConfigData.IsValidPanelSounderGroup(PanelSounder1Group);
+        public bool PanelSounder2GroupIsValid => GroupConfigData.IsValidPanelSounderGroup(PanelSounder2Group);
+        public bool EvacToneIsValid           => GroupConfigData.IsValidTone(EvacTone);
+        public bool AlertToneIsValid          => GroupConfigData.IsValidTone(AlertTone);
+        public bool PhasedDelayIsValid        => GroupConfigData.IsValidPhasedDelay(PhasedDelay);
+
         public string EvacToneDesc
         {
             get => string.Format(Cultures.Resources.Tone_Message_Pair_x_Primary,   _data.CurrentPanel.GroupConfig.ContinuousTone);
@@ -412,6 +420,11 @@ namespace Xfp.ViewModels.PanelTools
             //OnPropertyChanged(nameof(AlarmOffSelected));
             //OnPropertyChanged(nameof(AlarmAlertSelected));
             //OnPropertyChanged(nameof(AlarmEvacSelected));
+            OnPropertyChanged(nameof(PanelSounder1GroupIsValid));
+            OnPropertyChanged(nameof(PanelSounder2GroupIsValid));
+            OnPropertyChanged(nameof(EvacToneIsValid));
+            OnPropertyChanged(nameof(AlertToneIsValid));
+            OnPropertyChanged(nameof(PhasedDelayIsValid));
 
             foreach (var g in GroupConfigItems)
                 g.RefreshView();

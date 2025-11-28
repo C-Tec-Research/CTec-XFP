@@ -423,6 +423,8 @@ namespace Xfp.ViewModels.PanelTools
                     if (_zoneList[0].IsPanelData)
                         return null;
                     _dayOptionIndex = _zoneList[0].Day?.DependencyOption switch { ZoneDependencyOptions.NotSet => 0, _ => (int)_zoneList[0].Day?.DependencyOption };
+                    if (!isValidDependencyIndex(_dayOptionIndex))
+                        return null;
                     return DependencyOptions[(int)_dayOptionIndex];
                 }
 
@@ -441,7 +443,7 @@ namespace Xfp.ViewModels.PanelTools
                     }
                 }
 
-                return _dayOptionIndex is not null && _dayOptionIndex > -1 ? DependencyOptions[(int)_dayOptionIndex] : null;
+                return isValidDependencyIndex(_dayOptionIndex) ? DependencyOptions[(int)_dayOptionIndex] : null;
             }
 
             set
@@ -458,6 +460,8 @@ namespace Xfp.ViewModels.PanelTools
                 OnPropertyChanged(nameof(DayOptionIsValid));
                 OnPropertyChanged(nameof(ShowDayDetectorReset));
                 OnPropertyChanged(nameof(ShowDayAlarmReset));
+                OnPropertyChanged(nameof(DayDetectorResetIsValid));
+                OnPropertyChanged(nameof(DayAlarmResetIsValid));
                 OnPropertyChanged(nameof(ZonesHaveCommonDayOption));
                 OnPropertyChanged(nameof(IndicateMultipleValues));
             }
@@ -477,6 +481,8 @@ namespace Xfp.ViewModels.PanelTools
                     if (_zoneList[0].IsPanelData)
                         return null;
                     _nightOptionIndex = _zoneList[0].Night.DependencyOption switch { ZoneDependencyOptions.NotSet => 0, _ => (int)_zoneList[0].Night.DependencyOption };
+                    if (!isValidDependencyIndex(_nightOptionIndex))
+                        return null;
                     return DependencyOptions[(int)_nightOptionIndex];
                 }
 
@@ -495,7 +501,7 @@ namespace Xfp.ViewModels.PanelTools
                     }
                 }
 
-                return _nightOptionIndex is not null && _nightOptionIndex > -1 ? DependencyOptions[(int)_nightOptionIndex] : null;
+                return isValidDependencyIndex(_nightOptionIndex) ? DependencyOptions[(int)_nightOptionIndex] : null;
             }
 
             set
@@ -512,10 +518,13 @@ namespace Xfp.ViewModels.PanelTools
                 OnPropertyChanged(nameof(NightOptionIsValid));
                 OnPropertyChanged(nameof(ShowNightDetectorReset));
                 OnPropertyChanged(nameof(ShowNightAlarmReset));
+                OnPropertyChanged(nameof(NightDetectorResetIsValid));
+                OnPropertyChanged(nameof(NightAlarmResetIsValid));
                 OnPropertyChanged(nameof(ZonesHaveCommonNightOption));
                 OnPropertyChanged(nameof(IndicateMultipleValues));
             }
         }
+
 
         public TimeSpan? DayDetectorReset
         {
@@ -737,17 +746,17 @@ namespace Xfp.ViewModels.PanelTools
 
 
         public bool   ZoneDescIsValid            => string.IsNullOrWhiteSpace(ZoneDesc) || ZoneDesc.Length <= ZoneConfigData.MaxNameLength;
-        public bool   SounderDelayIsValid        => SounderDelay is null || SounderDelay?.CompareTo(ZoneConfigData.MaxSounderDelay) <= 0;
-        public bool   Relay1DelayIsValid         => Relay1Delay is null || Relay1Delay?.CompareTo(ZoneConfigData.MaxRelay1Delay) <= 0;
-        public bool   Relay2DelayIsValid         => Relay2Delay is null || Relay2Delay?.CompareTo(ZoneConfigData.MaxRelay2Delay) <= 0;
-        public bool   RemoteDelayIsValid         => RemoteDelay is null || RemoteDelay?.CompareTo(ZoneConfigData.MaxRemoteDelay) <= 0;
-        public bool   DelayTotalIsValid          => true;//DelayTotal.CompareTo(ZoneConfigData.MaxTotalDelay) <= 0;
-        public bool   DayOptionIsValid           => _dayOptionIndex is null || _dayOptionIndex >= 0 && _dayOptionIndex < DependencyOptions.Count;
+        public bool   SounderDelayIsValid        => ZoneConfigData.IsValidOutputDelay(SounderDelay);
+        public bool   Relay1DelayIsValid         => ZoneConfigData.IsValidOutputDelay(Relay1Delay);
+        public bool   Relay2DelayIsValid         => ZoneConfigData.IsValidOutputDelay(Relay2Delay);
+        public bool   RemoteDelayIsValid         => ZoneConfigData.IsValidOutputDelay(RemoteDelay);
+        public bool   DelayTotalIsValid          => true;   //no check on this
+        public bool   DayOptionIsValid           => _dayOptionIndex is null   || _dayOptionIndex >= 0   && _dayOptionIndex < DependencyOptions.Count;
         public bool   NightOptionIsValid         => _nightOptionIndex is null || _nightOptionIndex >= 0 && _nightOptionIndex < DependencyOptions.Count;
-        public bool   DayDetectorResetIsValid    => !ShowDayDetectorReset || DayDetectorReset is null || DayDetectorReset?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
-        public bool   DayAlarmResetIsValid       => !ShowDayAlarmReset || DayAlarmReset is null || DayAlarmReset?.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
-        public bool   NightDetectorResetIsValid  => !ShowNightDetectorReset || NightDetectorReset is null || NightDetectorReset?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
-        public bool   NightAlarmResetIsValid     => !ShowNightAlarmReset || NightAlarmReset is null || NightAlarmReset?.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
+        public bool   DayDetectorResetIsValid    => !ShowDayDetectorReset   || ZoneConfigData.IsValidDetectorReset(DayDetectorReset);
+        public bool   DayAlarmResetIsValid       => !ShowDayAlarmReset      || ZoneConfigData.IsValidAlarmReset(DayAlarmReset);
+        public bool   NightDetectorResetIsValid  => !ShowNightDetectorReset || ZoneConfigData.IsValidDetectorReset(NightDetectorReset);
+        public bool   NightAlarmResetIsValid     => !ShowNightAlarmReset    || ZoneConfigData.IsValidAlarmReset(NightAlarmReset);
 
         public string DelayTotalHighErrorMessage => string.Format(Cultures.Resources.Error_Total_Delay_x_Cannot_Be_More_Than_y, timeToString(DelayTotal), timeToString(ZoneConfigData.MaxTotalDelay));
 
@@ -1085,6 +1094,7 @@ namespace Xfp.ViewModels.PanelTools
         private ObservableCollection<string> _dependencyOptions;
         public ObservableCollection<string> DependencyOptions { get => _dependencyOptions; set { _dependencyOptions = value; OnPropertyChanged(); } }
 
+        private bool isValidDependencyIndex(int? index) => index.HasValue && index >= 0 && index < DependencyOptions.Count;
 
         private void initComboList()
         {

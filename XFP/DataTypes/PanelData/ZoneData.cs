@@ -87,7 +87,7 @@ namespace Xfp.DataTypes.PanelData
             //if (SounderDelay.Add(Relay1Delay).Add(Relay2Delay).Add(RemoteDelay).Add(InputDelay).CompareTo(ZoneConfigData.MaxTotalDelay) > 0)
             //    _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataTotalDelayTooLong);
 
-            if ((int)Day.DependencyOption < 0 || (int)Day.DependencyOption >= Enum.GetNames(typeof(ZoneDependencyOptions)).Length)
+            if (!ZoneConfigData.IsValidDependencyOption(Day.DependencyOption))
                 _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataDayOptionInvalid);
 
             if (Day.ShowDetectorReset && Day.DetectorReset.CompareTo(ZoneConfigData.MaxDetectorReset) > 0)
@@ -96,7 +96,7 @@ namespace Xfp.DataTypes.PanelData
             if (Day.ShowAlarmReset && Day.AlarmReset.CompareTo(ZoneConfigData.MaxAlarmReset) > 0)
                 _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataDayAlarmResetTooLong);
 
-            if ((int)Night.DependencyOption < 0 || (int)Night.DependencyOption >= Enum.GetNames(typeof(ZoneDependencyOptions)).Length)
+            if (!ZoneConfigData.IsValidDependencyOption(Night.DependencyOption))
                 _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataNightOptionInvalid);
 
             if (Night.ShowDetectorReset && Night.DetectorReset.CompareTo(ZoneConfigData.MaxDetectorReset) > 0)

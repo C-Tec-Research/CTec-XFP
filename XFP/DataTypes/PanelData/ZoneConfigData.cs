@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
@@ -38,18 +39,20 @@ namespace Xfp.DataTypes.PanelData
         public const int NumPanels = 8;
         public const int NumDependencies = 6;
         public const int MaxNameLength = 14;
-        public static readonly TimeSpan MaxSounderDelay  = new(0, 10, 0);
-        public static readonly TimeSpan MaxRelay1Delay   = new(0, 10, 0);
-        public static readonly TimeSpan MaxRelay2Delay   = new(0, 10, 0);
-        public static readonly TimeSpan MaxRemoteDelay   = new(0, 10, 0);
+        public static readonly TimeSpan MaxOutputDelay   = new(0, 10, 0);
         public static readonly TimeSpan MaxTotalDelay    = new(0, 10, 0);
         public static readonly TimeSpan MaxDetectorReset = new(0,  1, 0);
         public static readonly TimeSpan MaxAlarmReset    = new(0, 30, 0);
         public static readonly TimeSpan MaxSetDelay      = new(0, 10, 0);
-        public bool IsValidZone(int zone)        => zone >= 0 && zone < ZoneConfigData.NumZones;
-        public bool IsValidZoneOrPanel(int zopa) => zopa >= 0 && zopa < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels;
 
-        
+        public static bool IsValidZone(int? zone)              => zone.HasValue && zone >= 0 && zone < ZoneConfigData.NumZones;
+        public static bool IsValidZoneOrPanel(int? zonePanel)  => zonePanel.HasValue && zonePanel >= 0 && zonePanel < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels;
+        public static bool IsValidOutputDelay(TimeSpan? delay) => delay is null || delay?.CompareTo(ZoneConfigData.MaxOutputDelay) <= 0;
+        public static bool IsValidDependencyOption(ZoneDependencyOptions option) => (int)option >= 0 && (int)option < Enum.GetNames(typeof(ZoneDependencyOptions)).Length;
+        public static bool IsValidDetectorReset(TimeSpan? time) => time is null || time?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
+        public static bool IsValidAlarmReset(TimeSpan? time)    => time is null || time?.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
+
+
         public ZonePanelConfigData ZonePanelData { get; set; }
 
         public List<ZoneData> Zones { get; set; }

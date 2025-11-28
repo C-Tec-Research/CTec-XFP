@@ -262,27 +262,27 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
 
             //measure required column widths for subaddress and IO headers
-            var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
+            var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
             
             var subaddressHeader = Cultures.Resources.Subaddress_Short;
-            var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width + 1;
+            var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width;
             foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
             {
-                var wSub = (int)TableUtil.MeasureText(s).Width + 1;
+                var wSub = (int)TableUtil.MeasureText(s).Width;
                 if (wSub > subaddressWidth) subaddressWidth = wSub;
             }
             subaddressWidth += cellMargins;
 
-            var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width + 1;
-            var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width + 1;
+            var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width;
+            var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width;
             var ioWidth = Math.Max(wIn, wOut);
             ioWidth += cellMargins;
             
             var wType = 100;
-            var wZSG  = 70;
-            var wName = 85;
-            var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + 1;
-            var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + 1;
+            var wZGS  = 45;
+            var wName = 75;
+            var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
+            var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
             
             TableUtil.SetFontSize(PrintUtil.PrintDefaultFontSize);
 
@@ -291,7 +291,7 @@ namespace Xfp.DataTypes.PanelData
             table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
             table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
             table.Columns.Add(new TableColumn() { Width = new GridLength(wType) });           _totalColumns++;    // type name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wZGS) });            _totalColumns++;    // z/g/s
             table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
             table.Columns.Add(new TableColumn() { Width = new GridLength(46) });              _totalColumns++;    // v/s/m
             table.Columns.Add(new TableColumn() { Width = new GridLength(wDN) });             _totalColumns++;    // day:night
@@ -306,7 +306,7 @@ namespace Xfp.DataTypes.PanelData
             table.Columns.Add(new TableColumn() { Width = new GridLength(subaddressWidth) }); _totalColumns++;    // subaddress
             table.Columns.Add(new TableColumn() { Width = new GridLength(ioWidth) });         _totalColumns++;    // i/o
             table.Columns.Add(new TableColumn() { Width = new GridLength(wChan) });           _totalColumns++;    // chan
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZSG) });            _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(wZGS) });            _totalColumns++;    // z/g/s
             table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
             
             //define rows for the header

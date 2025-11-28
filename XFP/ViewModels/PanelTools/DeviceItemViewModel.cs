@@ -98,7 +98,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         public bool?  RemoteLEDEnabled          { get => _deviceData.RemoteLEDEnabled;                                  set { _deviceData.RemoteLEDEnabled = value; OnPropertyChanged(); } }
-        public bool?  HasAncillaryBaseSounder     => (_deviceData.AncillaryBaseSounderGroup??0) >= 0;
+        public bool?  HasAncillaryBaseSounder     => CanHaveAncillaryBaseSounder && RemoteLEDEnabled == false;// (_deviceData.AncillaryBaseSounderGroup??0) >= 0;
         public int?   AncillaryBaseSounderGroup { get => _deviceData.AncillaryBaseSounderGroup;                         set { _deviceData.AncillaryBaseSounderGroup = value; OnPropertyChanged(); OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid)); } }
         public int?   DaySensitivity            { get => DaySensitivityIsValid ? _deviceData.DaySensitivity : null;     set { _deviceData.DaySensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
         public int?   NightSensitivity          { get => NightSensitivityIsValid ? _deviceData.NightSensitivity : null; set { _deviceData.NightSensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
@@ -232,7 +232,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool ZoneIsValid                      => !IsZonalDevice || Zone >= 0 && Zone <= ZoneConfigData.NumZones;
         public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group, false);
         public bool DeviceNameIsValid                => DeviceType is null || DeviceName is not null && DeviceName.Length <= DeviceNamesConfigData.DeviceNameLength;
-        public bool AncillaryBaseSounderGroupIsValid => !(HasAncillaryBaseSounder??false) || AncillaryBaseSounderGroup is null || AncillaryBaseSounderGroup >= 0 && AncillaryBaseSounderGroup <= GroupConfigData.NumSounderGroups;
+        public bool AncillaryBaseSounderGroupIsValid => !(HasAncillaryBaseSounder??false) || GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, true);
         public bool DaySensitivityIsValid            => sensitivityIsValid(_deviceData.DaySensitivity);
         public bool NightSensitivityIsValid          => sensitivityIsValid(_deviceData.NightSensitivity);
         public bool DayVolumeIsValid                 => volumeIsValid(_deviceData.DayVolume);

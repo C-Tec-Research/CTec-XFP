@@ -6084,11 +6084,11 @@
               "IsPanelData": true,
               "Index": 0,
               "Name": "Panel 1",
-              "InputDelay": "00:02:30",
-              "SounderDelay": "00:00:00",
-              "Relay1Delay": "00:00:00",
-              "Relay2Delay": "00:00:00",
-              "RemoteDelay": "00:00:00",
+              "InputDelay": "01:52:30",
+              "SounderDelay": "00:50:00",
+              "Relay1Delay": "00:50:00",
+              "Relay2Delay": "00:50:00",
+              "RemoteDelay": "00:50:00",
               "SounderGroups": [
                 2,
                 2,
@@ -6315,16 +6315,16 @@
             "AlarmReset": 0,
             "EndDelays": true,
             "Day": {
-              "DependencyOption": 2,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
+              "DependencyOption": -1,
+              "DetectorReset": "00:51:00",
+              "AlarmReset": "00:55:00",
               "ShowDetectorReset": false,
               "ShowAlarmReset": true
             },
             "Night": {
-              "DependencyOption": 5,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
+              "DependencyOption": 99,
+              "DetectorReset": "00:51:00",
+              "AlarmReset": "00:55:00",
               "ShowDetectorReset": false,
               "ShowAlarmReset": false
             },
@@ -6332,11 +6332,11 @@
             "PanelRelayTriggers": null,
             "Index": 0,
             "Name": "Zone 1",
-            "InputDelay": "00:02:30",
-            "SounderDelay": "00:03:30",
-            "Relay1Delay": "00:00:30",
-            "Relay2Delay": "00:04:30",
-            "RemoteDelay": "00:02:00",
+            "InputDelay": "00:52:30",
+            "SounderDelay": "00:53:30",
+            "Relay1Delay": "00:50:30",
+            "Relay2Delay": "00:54:30",
+            "RemoteDelay": "00:52:00",
             "SounderGroups": [
               2,
               2,
@@ -7909,7 +7909,7 @@
             "Name": "Panel 1",
             "InputDelay": "00:02:30",
             "SounderDelay": "00:00:00",
-            "Relay1Delay": "00:00:00",
+            "Relay1Delay": "00:55:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
             "SounderGroups": [
@@ -9175,12 +9175,12 @@
         "DelayTimer": "00:05:00"
       },
       "GroupConfig": {
-        "PanelSounder1Group": 1,
-        "PanelSounder2Group": 2,
-        "IntermittentTone": 0,
-        "ContinuousTone": 0,
+        "PanelSounder1Group": 999,
+        "PanelSounder2Group": -1,
+        "IntermittentTone": -1,
+        "ContinuousTone": -1,
         "ReSoundFunction": false,
-        "PhasedDelay": "00:00:30"
+        "PhasedDelay": "00:59:30"
       },
       "NetworkConfig": {
         "RepeaterSettings": {
