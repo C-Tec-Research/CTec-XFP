@@ -36,26 +36,26 @@ namespace Xfp.ViewModels.PanelTools
 
         public string PanelSounder1GroupDesc { get => string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1); }
         public string PanelSounder2GroupDesc { get => string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2); }
-        public int PanelSounder1Group { get => _data.CurrentPanel.GroupConfig.PanelSounder1Group; set { _data.CurrentPanel.GroupConfig.PanelSounder1Group = value; OnPropertyChanged(); } }
-        public int PanelSounder2Group { get => _data.CurrentPanel.GroupConfig.PanelSounder2Group; set { _data.CurrentPanel.GroupConfig.PanelSounder2Group = value; OnPropertyChanged(); } }
+        public int PanelSounder1Group { get => _data.CurrentPanel.GroupConfig.PanelSounder1Group; set { _data.CurrentPanel.GroupConfig.PanelSounder1Group = value; refreshValidators(); } }
+        public int PanelSounder2Group { get => _data.CurrentPanel.GroupConfig.PanelSounder2Group; set { _data.CurrentPanel.GroupConfig.PanelSounder2Group = value; refreshValidators(); } }
         public int MinSounderGroup { get => 1; }
         public int MaxSounderGroup { get => GroupConfigData.NumSounderGroups; }
-        public int EvacTone  { get => _data?.CurrentPanel.GroupConfig.ContinuousTone ?? 0;   set { if (_data is not null) _data.CurrentPanel.GroupConfig.ContinuousTone = value; OnPropertyChanged(); } }
-        public int AlertTone { get => _data?.CurrentPanel.GroupConfig.IntermittentTone ?? 0; set { if (_data is not null) _data.CurrentPanel.GroupConfig.IntermittentTone = value; OnPropertyChanged(); } }
+        public int EvacTone  { get => _data?.CurrentPanel.GroupConfig.ContinuousTone ?? 0;   set { if (_data is not null) _data.CurrentPanel.GroupConfig.ContinuousTone = value; refreshValidators(); } }
+        public int AlertTone { get => _data?.CurrentPanel.GroupConfig.IntermittentTone ?? 0; set { if (_data is not null) _data.CurrentPanel.GroupConfig.IntermittentTone = value; refreshValidators(); } }
         public bool NewFireCausesResound { get => _data.CurrentPanel.GroupConfig.ReSoundFunction; set { _data.CurrentPanel.GroupConfig.ReSoundFunction = value; OnPropertyChanged(); } }
-        public TimeSpan PhasedDelay { get => _data.CurrentPanel.GroupConfig.PhasedDelay; set { _data.CurrentPanel.GroupConfig.PhasedDelay = value; OnPropertyChanged(); } }
+        public TimeSpan PhasedDelay { get => _data.CurrentPanel.GroupConfig.PhasedDelay; set { _data.CurrentPanel.GroupConfig.PhasedDelay = value; refreshValidators(); } }
 
         public TimeSpan MaxPhasedDelay => GroupConfigData.MaxPhasedDelay;
 
         public bool PanelSounder1GroupIsValid => GroupConfigData.IsValidPanelSounderGroup(PanelSounder1Group);
         public bool PanelSounder2GroupIsValid => GroupConfigData.IsValidPanelSounderGroup(PanelSounder2Group);
-        public bool EvacToneIsValid           => GroupConfigData.IsValidTone(EvacTone);
-        public bool AlertToneIsValid          => GroupConfigData.IsValidTone(AlertTone);
+        public bool EvacToneIsValid           => GroupConfigData.IsValidAlarmTone(EvacTone);
+        public bool AlertToneIsValid          => GroupConfigData.IsValidAlarmTone(AlertTone);
         public bool PhasedDelayIsValid        => GroupConfigData.IsValidPhasedDelay(PhasedDelay);
 
         public string EvacToneDesc
         {
-            get => string.Format(Cultures.Resources.Tone_Message_Pair_x_Primary,   _data.CurrentPanel.GroupConfig.ContinuousTone);
+            get => string.Format(Cultures.Resources.Tone_Message_Pair_x_Primary, _data.CurrentPanel.GroupConfig.ContinuousTone);
             set { _data.CurrentPanel.GroupConfig.ContinuousTone = (int)TextUtil.ExtractIntFromFormattedText(value, Cultures.Resources.Tone_Message_Pair_x_Primary) - 1; OnPropertyChanged(); }
         }
         public string AlertToneDesc
@@ -395,7 +395,7 @@ namespace Xfp.ViewModels.PanelTools
             if (_data is null)
                 return;
 
-            Validator.IsValid(Parent);
+            //Validator.IsValid(Parent);
 
             initComboLists();
 
@@ -420,14 +420,20 @@ namespace Xfp.ViewModels.PanelTools
             //OnPropertyChanged(nameof(AlarmOffSelected));
             //OnPropertyChanged(nameof(AlarmAlertSelected));
             //OnPropertyChanged(nameof(AlarmEvacSelected));
+
+            refreshValidators();
+
+            foreach (var g in GroupConfigItems)
+                g.RefreshView();
+        }
+
+        private void refreshValidators()
+        {
             OnPropertyChanged(nameof(PanelSounder1GroupIsValid));
             OnPropertyChanged(nameof(PanelSounder2GroupIsValid));
             OnPropertyChanged(nameof(EvacToneIsValid));
             OnPropertyChanged(nameof(AlertToneIsValid));
             OnPropertyChanged(nameof(PhasedDelayIsValid));
-
-            foreach (var g in GroupConfigItems)
-                g.RefreshView();
         }
         #endregion
 

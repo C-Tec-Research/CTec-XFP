@@ -200,6 +200,11 @@
         ZonePanelConfigDataTotalDelayTooLong = 306,
         
         // - GroupConfigData config errors in 400s
+        PanelSounder1SounderGroup = 400,
+        PanelSounder2SounderGroup = 401,
+        EvacTone = 410,
+        AlertTone = 411,
+        PhasedDelay = 420,
         
         // - SetConfigData config errors in 500s
         SetConfigDelayTimerTooLong = 500,

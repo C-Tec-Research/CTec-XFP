@@ -167,9 +167,11 @@
                         <TextBlock Text="{Binding Path=Print_Panels, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
                         <RadioButton Content="{Binding Path=Print_Current_Panel, Source={StaticResource Resources}}" GroupName="grpPanels" 
                                      IsChecked="{Binding PrintSelectedPanel}" 
+                                     PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,3,0,0"/>
                         <RadioButton Content="{Binding Path=Print_All_Panels, Source={StaticResource Resources}}" GroupName="grpPanels" 
                                      IsChecked="{Binding PrintAllPanels}" 
+                                     PreviewMouseDown="rad_PreviewMouseDown"
                                      IsEnabled="{Binding PanelCount, Converter={StaticResource GreaterThanOneConverter}}" 
                                      Opacity="{Binding PanelCount, Converter={StaticResource EqualsOneToOpacity40Converter}}" 
                                      FontSize="13" Margin="5,3,0,0"/>
@@ -177,24 +179,37 @@
                     
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical" Margin="5,0,0,0">
 
-                        <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintAllPages}" FontSize="13" Margin="0,0,0,0"/>
-                        <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding PrintCurrentPage}" FontSize="13" Margin="0,2,0,0"/>
-                        <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" GroupName="grpPages" IsChecked="{Binding SelectPagesToPrint}" FontSize="13" Margin="0,10,0,0"/>
+                        <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}"
+                                     GroupName="grpPages" 
+                                     IsChecked="{Binding PrintAllPages}" 
+                                     PreviewMouseDown="rad_PreviewMouseDown"
+                                     FontSize="13" Margin="0,0,0,0"/>
+                        <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" 
+                                     GroupName="grpPages" 
+                                     IsChecked="{Binding PrintCurrentPage}" 
+                                     PreviewMouseDown="rad_PreviewMouseDown"
+                                     FontSize="13" Margin="0,2,0,0"/>
+                        <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" 
+                                     GroupName="grpPages" 
+                                     IsChecked="{Binding SelectPagesToPrint}" 
+                                     PreviewMouseDown="rad_PreviewMouseDown"
+                                     FontSize="13" Margin="0,10,0,0"/>
+
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
-                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}"/>
-                            <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}"/>
+                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             <StackPanel Orientation="Horizontal" Visibility="{Binding MaxLoops, Converter={StaticResource GreaterThanOneToVisibilityConverter}}" Margin="20,0,0,0">
                                 <TextBlock Text="{Binding Path=Loop_Select, Source={StaticResource Resources}}" Opacity="{Binding LoopSelectionAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}" Margin="0,0,10,5"/>
-                                <CheckBox Content="1" IsChecked="{Binding PrintLoop1}" IsEnabled="{Binding Loop1Available}" Margin="0,0,10,0"/>
-                                <CheckBox Content="2" IsChecked="{Binding PrintLoop2}" IsEnabled="{Binding Loop2Available}" />
+                                <CheckBox Content="1" IsChecked="{Binding PrintLoop1}" IsEnabled="{Binding Loop1Available}" PreviewMouseDown="chk_PreviewMouseDown" Margin="0,0,10,0"/>
+                                <CheckBox Content="2" IsChecked="{Binding PrintLoop2}" IsEnabled="{Binding Loop2Available}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             </StackPanel>
-                            <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}"/>
-                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}"/>
-                            <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}"/>
-                            <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}"/>
-                            <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}"/>
-                            <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}"/>
-                            <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}"/>
+                            <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}" PreviewMouseDown="chk_PreviewMouseDown"/>
                         </StackPanel>
 
                     </StackPanel>
@@ -213,52 +228,23 @@
                                 <Border BorderBrush="{StaticResource Brush03}" BorderThickness="0,0.5,0,0" Margin="0,2,-5,5"/>
                                 
                                 <StackPanel Orientation="Vertical" Margin="10,7,0,0">
-                                    <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" FontSize="13" Margin="0,0,0,0"/>
-                                    <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices, Converter={StaticResource BoolToInverseConverter}}" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_All_Loop_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices}" PreviewMouseDown="rad_PreviewMouseDown" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Only_Fitted_Devices, Source={StaticResource Resources}}" GroupName="grpLoops" IsChecked="{Binding PrintAllLoopDevices, Converter={StaticResource BoolToInverseConverter}}" PreviewMouseDown="rad_PreviewMouseDown" FontSize="13" Margin="0,0,0,0"/>
                                     <Border BorderBrush="{StaticResource Brush07}" BorderThickness="0.3" Margin="0,5,5,5"/>
                                     <TextBlock Text="{Binding Path=Print_Order_By, Source={StaticResource Resources}}"/>
-                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Number, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceNumber}" FontSize="13" Margin="0,5,0,0"/>
-                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Type, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceType}" FontSize="13" Margin="0,0,0,0"/>
-                                    <RadioButton Content="{Binding Path=Print_Order_By_Group_Zone_Set, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderGroupZone}" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Number, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceNumber}" PreviewMouseDown="rad_PreviewMouseDown" FontSize="13" Margin="0,5,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Device_Type, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderDeviceType}" PreviewMouseDown="rad_PreviewMouseDown" FontSize="13" Margin="0,0,0,0"/>
+                                    <RadioButton Content="{Binding Path=Print_Order_By_Group_Zone_Set, Source={StaticResource Resources}}" GroupName="grpOrder" IsChecked="{Binding PrintOrderGroupZone}" PreviewMouseDown="rad_PreviewMouseDown" FontSize="13" Margin="0,0,0,0"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
                     </WrapPanel>
                     <!--#endregion-->
 
-
-                    <!--#region print format-->
-                    <!--<Border Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"
-                            BorderBrush="{StaticResource Brush07}" BorderThickness="1" CornerRadius="5"
-                            IsEnabled="{Binding CanPrint}"
-                            Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                            Margin="0,8,0,10">
-                        <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
-                                    Orientation="Vertical"
-                                    Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                    Margin="10,5,0,5">
-                            <TextBlock Text="{Binding Path=Print_Orientation_Format, Source={StaticResource Resources}}"
-                                       Opacity="{Binding CanPrint, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                                       Margin="0,0,0,3"/>
-                            <StackPanel Orientation="Horizontal" 
-                                        IsEnabled="{Binding CanPrint}">
-                                <RadioButton Content="{Binding Path=Print_Orientation_Portrait, Source={StaticResource Resources}}" GroupName="grpFormat" IsChecked="{Binding IsPortrait}"/>
-                                <RadioButton Content="{Binding Path=Print_Orientation_Landscape, Source={StaticResource Resources}}" GroupName="grpFormat" IsChecked="{Binding IsPortrait, Converter={StaticResource BoolToInverseConverter}}"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-                                        IsEnabled="{Binding CanPrint}">
-                                <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,0,5,2"/>
-                                <ctc:NumberSpinner Value="{Binding NumCopies}" Minimum="1" Maximum="10"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>-->
-                    <!--#endregion-->
-
                     
                     <StackPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="15,10,0,30">
                         <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,5,5,2"/>
-                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" Minimum="1" Maximum="10" Margin="0,5,0,0"/>
+                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" PreviewMouseDown="cbo_PreviewMouseDown" PreviewKeyDown="cbo_PreviewMouseDown" Minimum="1" Maximum="10" Margin="0,5,0,0"/>
                     </StackPanel>
 
 

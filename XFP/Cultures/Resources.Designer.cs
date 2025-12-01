@@ -394,6 +394,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alarms.
+        /// </summary>
+        public static string Alarms {
+            get {
+                return ResourceManager.GetString("Alarms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert.
         /// </summary>
         public static string AlarmType_Alert {
@@ -2023,6 +2032,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alert tone is not set.
+        /// </summary>
+        public static string Error_Invalid_Alert_Tone {
+            get {
+                return ResourceManager.GetString("Error_Invalid_Alert_Tone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid day mode.
         /// </summary>
         public static string Error_Invalid_Day_Mode {
@@ -2055,6 +2073,15 @@ namespace Xfp.Cultures {
         public static string Error_Invalid_Device_Type {
             get {
                 return ResourceManager.GetString("Error_Invalid_Device_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evac tone is not set.
+        /// </summary>
+        public static string Error_Invalid_Evac_Tone {
+            get {
+                return ResourceManager.GetString("Error_Invalid_Evac_Tone", resourceCulture);
             }
         }
         
@@ -2167,6 +2194,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid panel sounder {0} sounder group.
+        /// </summary>
+        public static string Error_Invalid_Panel_Sounder_x_Sounder_Group {
+            get {
+                return ResourceManager.GetString("Error_Invalid_Panel_Sounder_x_Sounder_Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid placename.
         /// </summary>
         public static string Error_Invalid_Place_Name {
@@ -2226,6 +2262,15 @@ namespace Xfp.Cultures {
         public static string Error_Invalid_Zone_Num {
             get {
                 return ResourceManager.GetString("Error_Invalid_Zone_Num", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phased delay is outside the valid range.
+        /// </summary>
+        public static string Error_Invvalid_Phased_Delay {
+            get {
+                return ResourceManager.GetString("Error_Invvalid_Phased_Delay", resourceCulture);
             }
         }
         
@@ -3765,6 +3810,15 @@ namespace Xfp.Cultures {
         public static string Panel_Site_Configuration {
             get {
                 return ResourceManager.GetString("Panel_Site_Configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panel sounder sounder groups.
+        /// </summary>
+        public static string Panel_Sounder_Sounder_Groups {
+            get {
+                return ResourceManager.GetString("Panel_Sounder_Sounder_Groups", resourceCulture);
             }
         }
         

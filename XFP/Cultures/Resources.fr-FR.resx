@@ -2147,4 +2147,22 @@ Toutes ses données seront perdues.</value>
 
 Si cela est nécessaire, les noms des appareils et les descriptions des zones peuvent être modifiés avec des préfixes pour indiquer le type d'appareil et le numéro de zone.</value>
   </data>
+  <data name="Alarms" xml:space="preserve">
+    <value>Alarmes</value>
+  </data>
+  <data name="Error_Invalid_Alert_Tone" xml:space="preserve">
+    <value>Ton d’alerte non defini</value>
+  </data>
+  <data name="Error_Invalid_Evac_Tone" xml:space="preserve">
+    <value>Ton d’évac non defini</value>
+  </data>
+  <data name="Error_Invalid_Panel_Sounder_x_Sounder_Group" xml:space="preserve">
+    <value>Groupe du sonneur panneau {0} non valide</value>
+  </data>
+  <data name="Error_Invvalid_Phased_Delay" xml:space="preserve">
+    <value>Retard progressif est hors des valeurs valides</value>
+  </data>
+  <data name="Panel_Sounder_Sounder_Groups" xml:space="preserve">
+    <value>Groupes des sonneurs du panneau</value>
+  </data>
 </root>

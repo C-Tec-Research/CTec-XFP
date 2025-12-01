@@ -67,22 +67,23 @@ namespace Xfp.DataTypes.PanelData
 
             grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
             grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
-            grid.Children.Add(GridUtil.GridCell(PanelSounder1Group, 0, 2, 1, 2, true));
-            grid.Children.Add(GridUtil.GridCell(PanelSounder2Group, 1, 2, 1, 2, true));
+            
+            GridUtil.AddCellToGrid(grid, PanelSounder1Group.ToString(), 0, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder1Group));
+            GridUtil.AddCellToGrid(grid, PanelSounder2Group.ToString(), 1, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder2Group));
 
             grid.Children.Add(GridUtil.GridCell(" ", 0, 3));
 
             grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone),  0, 5));
             grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 5));
-            grid.Children.Add(GridUtil.GridCell(ContinuousTone,   0, 6, 1, 1, true));
-            grid.Children.Add(GridUtil.GridCell(IntermittentTone, 1, 6, 1, 1, true));
+            GridUtil.AddCellToGrid(grid, ContinuousTone.ToString(),   0, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(ContinuousTone));
+            GridUtil.AddCellToGrid(grid, IntermittentTone.ToString(), 1, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(IntermittentTone));
 
             grid.Children.Add(GridUtil.GridCell(" ", 2, 0));
 
             grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0, false));
             grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2, false));
             grid.Children.Add(GridUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, true));
-            grid.Children.Add(GridUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, true, HorizontalAlignment.Left));
+            GridUtil.AddCellToGrid(grid, GridUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, true, HorizontalAlignment.Left, !GroupConfigData.IsValidPhasedDelay(PhasedDelay)));
 
             return new(grid);
         }
@@ -147,33 +148,6 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        //private Grid columnHeaders()
-        //{
-        //    Grid grid = new Grid();
-
-        //    ////two rows for column headers
-        //    //GridUtil.AddRowToGrid(grid);
-        //    //GridUtil.AddRowToGrid(grid);
-
-        //    //for (int i = 0; i < _totalColumns; i++)
-        //    //    GridUtil.AddColumnToGrid(grid);
-
-        //    //grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-        //    //grid.Children.Add(GridUtil.GridBackground(1, 0, 1, _totalColumns, PrintUtil.GridHeaderBackground));
-
-        //    //grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Triggers_Sounder_Groups, 0, 1, 1, _totalColumns, HorizontalAlignment.Center));
-            
-        //    //int col = 0;
-        //    //grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Zone, 1, col++, 1, 2));
-        //    //col++;
-
-        //    //for (int i = 0; i < NumSounderGroups; i++)
-        //    //    grid.Children.Add(GridUtil.GridHeaderCell(i + 1, 1, col++, HorizontalAlignment.Center));
-
-        //    return grid;
-        //}
-
-
         private void defineColumnHeaders(Table table, string reportHeader)
         {            
             setColumnWidths();
@@ -196,7 +170,7 @@ namespace Xfp.DataTypes.PanelData
             headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Triggers_Sounder_Groups, 1, NumSounderGroups, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
             
             for (int i = 0; i < NumSounderGroups; i++)
-                headerRow2.Cells.Add(TableUtil.NewCell(i.ToString(), TextAlignment.Center, FontWeights.Bold));
+                headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
     
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);

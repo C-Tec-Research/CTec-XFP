@@ -258,6 +258,11 @@ namespace Xfp.DataTypes
                 ValidationCodes.ZonePanelConfigDataTotalDelayTooLong => Cultures.Resources.Error_Total_Delay_Is_Too_Long,
 
                 //groups
+                ValidationCodes.PanelSounder1SounderGroup => string.Format(Cultures.Resources.Error_Invalid_Panel_Sounder_x_Sounder_Group, 1),
+                ValidationCodes.PanelSounder2SounderGroup => string.Format(Cultures.Resources.Error_Invalid_Panel_Sounder_x_Sounder_Group, 2),
+                ValidationCodes.EvacTone => Cultures.Resources.Error_Invalid_Evac_Tone,
+                ValidationCodes.AlertTone => Cultures.Resources.Error_Invalid_Alert_Tone,
+                ValidationCodes.PhasedDelay => Cultures.Resources.Error_Invvalid_Phased_Delay,
 
                 //sets
                 ValidationCodes.SetConfigDelayTimerTooLong => Cultures.Resources.Error_Set_Delay_Timer_Too_Long,

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CTecDevices.Protocol;
+using Windows.ApplicationModel.SocialInfo;
+using Windows.ApplicationModel.Store;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
@@ -35,10 +37,9 @@ namespace Xfp.DataTypes.PanelData
         internal static readonly TimeSpan MaxPhasedDelay = new(0, 10, 0);
 
         public static bool IsValidGroup(int? group, bool allowNull) => !group.HasValue ? allowNull : group >= 0 && group <= NumSounderGroups;
-        public static bool IsValidPanelSounderGroup(int group)      => group >= 0 && group < NumSounderGroups;
-        public static bool IsValidTone(int? tone)                   => tone >= 0 && tone < NumToneMessagePairs;
-        public static bool IsValidPhasedDelay(TimeSpan? delay)      => delay.HasValue && ((TimeSpan)delay).CompareTo(MaxPhasedDelay) <= 0;
-
+        public static bool IsValidPanelSounderGroup(int group)      => group >= 0 && group <= NumSounderGroups;
+        public static bool IsValidAlarmTone(int? tone)              => tone >= 0 && tone < NumToneMessagePairs;
+        public static bool IsValidPhasedDelay(TimeSpan? delay)      => delay.HasValue && ((TimeSpan)delay).CompareTo(new(0, 0, 0)) >= 0 && ((TimeSpan)delay).CompareTo(MaxPhasedDelay) <= 0;
 
         
         public int PanelSounder1Group { get; set; }
@@ -75,11 +76,29 @@ namespace Xfp.DataTypes.PanelData
         {
             _pageErrorOrWarningDetails.Items.Clear();
 
+            var sounder1GroupErr = !IsValidPanelSounderGroup(PanelSounder1Group);
+            var sounder2GroupErr = !IsValidPanelSounderGroup(PanelSounder2Group);
+            var evacToneErr      = !IsValidAlarmTone(ContinuousTone);
+            var alertToneErr     =  DeviceTypes.CurrentProtocolIsXfpCast && !IsValidAlarmTone(IntermittentTone);
+            var phasedDelayErr   = !IsValidPhasedDelay(PhasedDelay);
 
-            //foreach (var s in SetNames)
-            //{
-            //}
+            if (sounder1GroupErr || sounder2GroupErr)
+            {
+                ConfigErrorPageItems groupErrs = new(0, Cultures.Resources.Panel_Sounder_Sounder_Groups);
+                if (sounder1GroupErr) groupErrs.ValidationCodes.Add(ValidationCodes.PanelSounder1SounderGroup);
+                if (sounder2GroupErr) groupErrs.ValidationCodes.Add(ValidationCodes.PanelSounder2SounderGroup);
+                _pageErrorOrWarningDetails.Items.Add(groupErrs);
+            }
 
+            if (evacToneErr || alertToneErr || phasedDelayErr)
+            {
+                ConfigErrorPageItems alarmErrs = new(0, Cultures.Resources.Alarms);
+                if (evacToneErr)    alarmErrs.ValidationCodes.Add(ValidationCodes.EvacTone);
+                if (alertToneErr)   alarmErrs.ValidationCodes.Add(ValidationCodes.AlertTone);
+                if (phasedDelayErr) alarmErrs.ValidationCodes.Add(ValidationCodes.PhasedDelay);
+                _pageErrorOrWarningDetails.Items.Add(alarmErrs);
+            }   
+            
             return _pageErrorOrWarningDetails.Items.Count == 0;
         }
         

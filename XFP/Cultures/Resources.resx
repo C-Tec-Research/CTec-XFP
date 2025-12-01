@@ -2160,4 +2160,22 @@ All of its data will be lost.</value>
 
 If this is required device names and zone descriptions may be amended with prefixes to indicate device type and zone number.</value>
   </data>
+  <data name="Alarms" xml:space="preserve">
+    <value>Alarms</value>
+  </data>
+  <data name="Error_Invalid_Alert_Tone" xml:space="preserve">
+    <value>Alert tone is not set</value>
+  </data>
+  <data name="Error_Invalid_Evac_Tone" xml:space="preserve">
+    <value>Evac tone is not set</value>
+  </data>
+  <data name="Error_Invalid_Panel_Sounder_x_Sounder_Group" xml:space="preserve">
+    <value>Invalid panel sounder {0} sounder group</value>
+  </data>
+  <data name="Error_Invvalid_Phased_Delay" xml:space="preserve">
+    <value>Phased delay is outside the valid range</value>
+  </data>
+  <data name="Panel_Sounder_Sounder_Groups" xml:space="preserve">
+    <value>Panel sounder sounder groups</value>
+  </data>
 </root>

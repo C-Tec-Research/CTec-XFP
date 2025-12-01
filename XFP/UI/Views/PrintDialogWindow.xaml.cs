@@ -127,15 +127,20 @@ namespace Xfp.UI.Views
         private void window_Loaded(object sender, RoutedEventArgs e) => _isOpen = true;
 
 
-        private void PreviewButton_Click(object sender, RoutedEventArgs e) => XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview);
-        private void PrintButton_Click(object sender, RoutedEventArgs e)   => DialogResult = true;
+        private void PreviewButton_Click(object sender, RoutedEventArgs e) { _context.PrinterListIsOpen = false; XfpPrinting.PrintConfig(_data, PrintParams, PrintActions.Preview); }
+        private void PrintButton_Click(object sender, RoutedEventArgs e)   { _context.PrinterListIsOpen = false; DialogResult = true; }
         private void CancelButton_Click(object sender, RoutedEventArgs e)  => Close();
         private void ClosePrint_Click(object sender, EventArgs e)          => Close();
 
 
         private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e)   => _context.PrinterListIsOpen = true;
         private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e)            { _context.PrinterListIsOpen = false; setSize(); }
-        private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { try { DragMove(); updateWindowParams(); } catch { } }
+        private void mouseLeftButtonDown_DragMove(object sender, MouseButtonEventArgs e)   { _context.PrinterListIsOpen = false; try { DragMove(); updateWindowParams(); } catch { } }
         private void PrinterList_SelectionChanged(object sender, SelectionChangedEventArgs e) => setSize();
+
+        private void rad_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
+        private void chk_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
+        private void cbo_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
+        private void cbo_PreviewMouseDown(object sender, KeyEventArgs e)         => _context.PrinterListIsOpen = false;
     }
 }

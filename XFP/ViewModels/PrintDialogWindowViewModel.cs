@@ -1,6 +1,7 @@
 ﻿using CTecControls.UI;
 using CTecUtil;
 using CTecUtil.Config;
+using CTecUtil.Printing;
 using CTecUtil.Utils;
 using CTecUtil.ViewModels;
 using System;
@@ -87,8 +88,7 @@ namespace Xfp.ViewModels
                     try
                     {
                         //get default printer name and put it first in the list
-                        //result.Add(defaultPrinter = new System.Drawing.Printing.PrinterSettings().PrinterName);
-                        result.Add(defaultPrinter = getDefaultPrinterName());
+                        result.Add(defaultPrinter = PrintUtil.DefaultPrinterName);
                     }
                     catch { }
 
@@ -102,21 +102,21 @@ namespace Xfp.ViewModels
         }
 
 
-        private static string getDefaultPrinterName()
-        {
-            var query = new ObjectQuery("SELECT * FROM Win32_Printer");
-            var searcher = new ManagementObjectSearcher(query);
+        //private static string getDefaultPrinterName()
+        //{
+        //    var query = new ObjectQuery("SELECT * FROM Win32_Printer");
+        //    var searcher = new ManagementObjectSearcher(query);
 
-            foreach (ManagementObject mo in searcher.Get())
-            {
-                if (((bool?) mo["Default"]) ?? false)
-                {
-                    return mo["Name"] as string;
-                }
-            }
+        //    foreach (ManagementObject mo in searcher.Get())
+        //    {
+        //        if (((bool?) mo["Default"]) ?? false)
+        //        {
+        //            return mo["Name"] as string;
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
 
         public bool   PrinterListIsOpen { get => _printerListIsOpen;          set { _printerListIsOpen = value; OnPropertyChanged(); } }
