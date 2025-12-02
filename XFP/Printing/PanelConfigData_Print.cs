@@ -49,8 +49,8 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddCellToGrid(grid, QuiescentString, 1, 1, 8, HorizontalAlignment.Left, true, string.IsNullOrWhiteSpace(QuiescentString));
             GridUtil.AddCellToGrid(grid, MaintenanceString, 2, 1, 8, HorizontalAlignment.Left, true, string.IsNullOrWhiteSpace(MaintenanceString));
             GridUtil.AddCellToGrid(grid, MaintenanceDate?.ToString("d"), 3, 1, 8, HorizontalAlignment.Left, true, MaintenanceDate is null);
-            GridUtil.AddCellToGrid(grid, AL2Code, 4, 1, 8, HorizontalAlignment.Left, true, string.IsNullOrWhiteSpace(AL2Code) || AL2Code.Length < AccessCodeLength);
-            GridUtil.AddCellToGrid(grid, AL3Code, 5, 1, 8, HorizontalAlignment.Left, true, string.IsNullOrWhiteSpace(AL3Code) || AL3Code.Length < AccessCodeLength);
+            GridUtil.AddCellToGrid(grid, AL2Code, 4, 1, 8, HorizontalAlignment.Left, true, !IsValidAccessCode(AL2Code));
+            GridUtil.AddCellToGrid(grid, AL3Code, 5, 1, 8, HorizontalAlignment.Left, true, !IsValidAccessCode(AL3Code));
             GridUtil.AddCellToGrid(grid, GridUtil.GridCellYesNo(RealTimeEventOutput, 6, 1, 1, 8, true, true));
             GridUtil.AddCellToGrid(grid, GridUtil.GridCellYesNo(BlinkPollingLED, 7, 1, 1, 8, true, true));
             GridUtil.AddCellToGrid(grid, GridUtil.GridCellYesNo(AutoAdjustDST, 8, 1, 1, 8, true, true));

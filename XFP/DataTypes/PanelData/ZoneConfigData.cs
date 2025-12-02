@@ -49,8 +49,9 @@ namespace Xfp.DataTypes.PanelData
         public static bool IsValidZoneOrPanel(int? zonePanel)  => zonePanel.HasValue && zonePanel >= 0 && zonePanel < ZoneConfigData.NumZones + ZonePanelConfigData.NumZonePanels;
         public static bool IsValidOutputDelay(TimeSpan? delay) => delay is null || delay?.CompareTo(ZoneConfigData.MaxOutputDelay) <= 0;
         public static bool IsValidDependencyOption(ZoneDependencyOptions option) => (int)option >= 0 && (int)option < Enum.GetNames(typeof(ZoneDependencyOptions)).Length;
-        public static bool IsValidDetectorReset(TimeSpan? time) => time is null || time?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
-        public static bool IsValidAlarmReset(TimeSpan? time)    => time is null || time?.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
+        public static bool IsValidDetectorReset(TimeSpan? time) => time is null || time?.CompareTo(new(0, 0, 0)) >= 0 && time?.CompareTo(ZoneConfigData.MaxDetectorReset) <= 0;
+        public static bool IsValidAlarmReset(TimeSpan? time)    => time is null || time?.CompareTo(new(0, 0, 0)) >= 0 && time?.CompareTo(ZoneConfigData.MaxAlarmReset) <= 0;
+        public static bool IsValidSetDelay(TimeSpan? delay)     => delay.HasValue && delay?.CompareTo(new(0, 0, 0)) >= 0 && delay?.CompareTo(MaxSetDelay) <= 0;
 
 
         public ZonePanelConfigData ZonePanelData { get; set; }

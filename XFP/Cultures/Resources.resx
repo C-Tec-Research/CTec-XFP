@@ -2172,10 +2172,10 @@ If this is required device names and zone descriptions may be amended with prefi
   <data name="Error_Invalid_Panel_Sounder_x_Sounder_Group" xml:space="preserve">
     <value>Invalid panel sounder {0} sounder group</value>
   </data>
-  <data name="Error_Invvalid_Phased_Delay" xml:space="preserve">
-    <value>Phased delay is outside the valid range</value>
+  <data name="Error_Phased_Delay_Too_Long" xml:space="preserve">
+    <value>Phased delay is too long</value>
   </data>
-  <data name="Panel_Sounder_Sounder_Groups" xml:space="preserve">
-    <value>Panel sounder sounder groups</value>
+  <data name="Panel_Sounder_Groups" xml:space="preserve">
+    <value>Panel sounder groups</value>
   </data>
 </root>

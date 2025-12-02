@@ -68,7 +68,12 @@ namespace Xfp.DataTypes.PanelData
         {
             GridUtil.AddCellToGrid(grid, nad.Name, startRow++, col, true, string.IsNullOrWhiteSpace(nad.Name));
             for (int i = 0; i < NameAndAddressData.NumAddressLines; i++)
-                GridUtil.AddCellToGrid(grid, addressLine(nad.Address, i), startRow + i, col, true, i == 0 && string.IsNullOrWhiteSpace(addressLine(nad.Address, i)));
+            {
+                //GridUtil.AddCellToGrid(grid, addressLine(nad.Address, i), startRow + i, col, true, i == 0 && string.IsNullOrWhiteSpace(addressLine(nad.Address, i)));
+                var isEmpty = string.IsNullOrWhiteSpace(addressLine(nad.Address, i));
+                if (i == 0 || !isEmpty)
+                    GridUtil.AddCellToGrid(grid, addressLine(nad.Address, i), startRow + i, col, true, isEmpty);
+            }
             startRow += NameAndAddressData.NumAddressLines;
             GridUtil.AddCellToGrid(grid, nad.Postcode, startRow++, col, true, false);//string.IsNullOrWhiteSpace(nad.Postcode));
             GridUtil.AddCellToGrid(grid, nad.Tel, startRow, col, true, false);//string.IsNullOrWhiteSpace(nad.Tel));

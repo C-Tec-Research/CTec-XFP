@@ -82,7 +82,7 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddColumnToGrid(grid);
 
             grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
-            grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, "ms", true, true, HorizontalAlignment.Left));
+            grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, 1, 1, "ms", true, true, HorizontalAlignment.Left, !ZoneConfigData.IsValidSetDelay(DelayTimer)));
 
             return new(grid);
         }

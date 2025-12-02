@@ -84,7 +84,7 @@ namespace Xfp.DataTypes.PanelData
 
             if (sounder1GroupErr || sounder2GroupErr)
             {
-                ConfigErrorPageItems groupErrs = new(0, Cultures.Resources.Panel_Sounder_Sounder_Groups);
+                ConfigErrorPageItems groupErrs = new(0, Cultures.Resources.Panel_Sounder_Groups);
                 if (sounder1GroupErr) groupErrs.ValidationCodes.Add(ValidationCodes.PanelSounder1SounderGroup);
                 if (sounder2GroupErr) groupErrs.ValidationCodes.Add(ValidationCodes.PanelSounder2SounderGroup);
                 _pageErrorOrWarningDetails.Items.Add(groupErrs);

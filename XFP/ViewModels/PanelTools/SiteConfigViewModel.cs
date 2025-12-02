@@ -82,8 +82,8 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        public bool AL2CodeIsValid           => validateAccessCode(AL2Code) && AL2Code.Length == PanelConfigData.AccessCodeLength;
-        public bool AL3CodeIsValid           => validateAccessCode(AL3Code) && AL3Code.Length == PanelConfigData.AccessCodeLength;
+        public bool AL2CodeIsValid           => PanelConfigData.IsValidAccessCode(AL2Code);
+        public bool AL3CodeIsValid           => PanelConfigData.IsValidAccessCode(AL3Code);
         public bool QuiescentStringIsValid   => !string.IsNullOrEmpty(QuiescentString)   && QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
         public bool MaintenanceStringIsValid => !string.IsNullOrEmpty(MaintenanceString) && MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
 
@@ -109,15 +109,13 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        private InputTextValidator validateAccessCode = new((text) => PanelConfigData.ValidateAccessCodeChars(text));
-
         public void AccessCode_PreviewTextInput(TextBox textBox, TextCompositionEventArgs e, AccessLevels level)
         {
             int newSelectionStart;
             switch (level)
             {
-                case AccessLevels.User:     AL2Code = previewTextInputHandlerWithValidation(textBox, e, validateAccessCode, out newSelectionStart);    break;
-                case AccessLevels.Engineer: AL3Code = previewTextInputHandlerWithValidation(textBox, e, validateAccessCode, out newSelectionStart);    break;
+                case AccessLevels.User:     AL2Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCode, out newSelectionStart);    break;
+                case AccessLevels.Engineer: AL3Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCode, out newSelectionStart);    break;
                 default: newSelectionStart = textBox.Text.Length; break;
             }
             textBox.SelectionStart = newSelectionStart;

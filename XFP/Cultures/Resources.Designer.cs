@@ -2266,15 +2266,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phased delay is outside the valid range.
-        /// </summary>
-        public static string Error_Invvalid_Phased_Delay {
-            get {
-                return ResourceManager.GetString("Error_Invvalid_Phased_Delay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Maintenance string is blank.
         /// </summary>
         public static string Error_Maintenance_String_Blank {
@@ -2460,6 +2451,15 @@ namespace Xfp.Cultures {
         public static string Error_Panel_Name_Too_Long {
             get {
                 return ResourceManager.GetString("Error_Panel_Name_Too_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phased delay is too long.
+        /// </summary>
+        public static string Error_Phased_Delay_Too_Long {
+            get {
+                return ResourceManager.GetString("Error_Phased_Delay_Too_Long", resourceCulture);
             }
         }
         
@@ -3814,11 +3814,11 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Panel sounder sounder groups.
+        ///   Looks up a localized string similar to Panel sounder groups.
         /// </summary>
-        public static string Panel_Sounder_Sounder_Groups {
+        public static string Panel_Sounder_Groups {
             get {
-                return ResourceManager.GetString("Panel_Sounder_Sounder_Groups", resourceCulture);
+                return ResourceManager.GetString("Panel_Sounder_Groups", resourceCulture);
             }
         }
         

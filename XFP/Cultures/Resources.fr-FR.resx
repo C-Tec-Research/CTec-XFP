@@ -2159,10 +2159,10 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="Error_Invalid_Panel_Sounder_x_Sounder_Group" xml:space="preserve">
     <value>Groupe du sonneur panneau {0} non valide</value>
   </data>
-  <data name="Error_Invvalid_Phased_Delay" xml:space="preserve">
-    <value>Retard progressif est hors des valeurs valides</value>
+  <data name="Error_Phased_Delay_Too_Long" xml:space="preserve">
+    <value>Le retard progressif est trop long</value>
   </data>
-  <data name="Panel_Sounder_Sounder_Groups" xml:space="preserve">
+  <data name="Panel_Sounder_Groups" xml:space="preserve">
     <value>Groupes des sonneurs du panneau</value>
   </data>
 </root>

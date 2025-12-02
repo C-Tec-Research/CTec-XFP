@@ -63,7 +63,7 @@ namespace Xfp.DataTypes.PanelData
         {
             _pageErrorOrWarningDetails.Items.Clear();
 
-            if (DelayTimer.CompareTo(ZoneConfigData.MaxSetDelay) > 0)
+            if (ZoneConfigData.IsValidSetDelay(DelayTimer))
                 _pageErrorOrWarningDetails.Items.Add(new(0, Cultures.Resources.Delay_Time) { ValidationCode = ValidationCodes.SetConfigDelayTimerTooLong });
 
             foreach (var s in Sets)

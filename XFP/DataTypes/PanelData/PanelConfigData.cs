@@ -115,12 +115,12 @@ namespace Xfp.DataTypes.PanelData
         public new static PanelConfigData InitialisedNew() => new () {
                                                                         QuiescentString   = Cultures.Resources.Default_Quiescent_String,
                                                                         MaintenanceString = Cultures.Resources.Default_Maintenance_String,
-                                                                        AL2Code    = Cultures.Resources.Default_AL2String,
-                                                                        AL3Code    = Cultures.Resources.Default_AL3String,
-                                                                        BlinkPollingLED = true,
-                                                                        AutoAdjustDST = true,
-                                                                        DayStart   = new() { false, false, false, false, false, false, false },
-                                                                        NightStart = new() { false, false, false, false, false, false, false }
+                                                                        AL2Code           = Cultures.Resources.Default_AL2String,
+                                                                        AL3Code           = Cultures.Resources.Default_AL3String,
+                                                                        BlinkPollingLED   = true,
+                                                                        AutoAdjustDST     = true,
+                                                                        DayStart          = new() { false, false, false, false, false, false, false },
+                                                                        NightStart        = new() { false, false, false, false, false, false, false }
                                                                     };
 
 
@@ -165,6 +165,9 @@ namespace Xfp.DataTypes.PanelData
 
             return true;
         }
+
+
+        public static bool IsValidAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == AccessCodeLength;
 
 
         /// <summary>

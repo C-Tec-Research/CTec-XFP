@@ -72,12 +72,17 @@ namespace Xfp.DataTypes
         {
             get
             {
-                XfpPanelData result;
-                if (Panels is not null && Panels.TryGetValue(CurrentPanelNumber, out result))
-                    return result;
+                XfpPanelData result = null;
 
-                result = Panels.First().Value;
-                CurrentPanelNumber = result.PanelNumber;
+                if (Panels is not null)
+                {
+                    if (!Panels.ContainsKey(CurrentPanelNumber))
+                        CurrentPanelNumber = Panels.First().Value.PanelNumber;
+
+                    if (Panels is not null && Panels.TryGetValue(CurrentPanelNumber, out result))
+                        return result;
+                }
+
                 return result;
             }
         }

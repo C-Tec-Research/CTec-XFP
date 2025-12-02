@@ -233,7 +233,7 @@
                                 </Button>
                                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="5,0,0,0">
                                     <TextBlock Text="{Binding Path=Delay_Time, Source={StaticResource Resources}}" FontSize="11" Margin="3,0,0,0"/>
-                                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="{Binding DelayTimerIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="2" Margin="-1,0,0,0">
+                                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="{Binding DelayTimerIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" BorderThickness="1" Margin="-1,0,0,0">
                                         <StackPanel Orientation="Horizontal">
                                             <ctc:TimePicker x:Name="tpDelay"
                                                             Value="{Binding DelayTimer}" Format="mmss" MaxValue="10:00" SecondsIncrement="30"

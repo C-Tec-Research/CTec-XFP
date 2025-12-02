@@ -9,11 +9,11 @@
         "DateEnabled": false,
         "SoundersPulsed": false,
         "CopyTime": true,
-        "MaintenanceString": "Call the Engineer",
-        "QuiescentString": "XFP Fire Panel",
-        "MaintenanceDate": "2099-01-01T00:00:00",
-        "AL2Code": "3333",
-        "AL3Code": "4444",
+        "MaintenanceString": null,
+        "QuiescentString": null,
+        "MaintenanceDate": null,
+        "AL2Code": "33",
+        "AL3Code": "44",
         "MCPDebounce": 1,
         "IODebounce": 1,
         "DetectorDebounce": 5,
@@ -9172,7 +9172,7 @@
             ]
           }
         ],
-        "DelayTimer": "00:05:00"
+        "DelayTimer": "00:59:00"
       },
       "GroupConfig": {
         "PanelSounder1Group": 999,
@@ -9298,7 +9298,7 @@
     "InstallDate": null,
     "CommissionDate": null,
     "Installer": {
-      "Name": "",
+      "Name": "kjlkhlkj",
       "Address": [
         "",
         "",
@@ -9320,13 +9320,13 @@
     "MaintenanceString": null,
     "QuiescentString": null,
     "MaintenanceDate": null,
-    "AL2Code": "3333",
-    "AL3Code": "4444",
+    "AL2Code": "333",
+    "AL3Code": "444",
     "MCPDebounce": 1,
     "IODebounce": 1,
     "DetectorDebounce": 1,
-    "OccupiedBegins": "00:00:00",
-    "OccupiedEnds": "00:00:00",
+    "OccupiedBegins": "25:10:00",
+    "OccupiedEnds": "25:10:00",
     "DayStart": null,
     "NightStart": null,
     "BlinkPollingLED": false,

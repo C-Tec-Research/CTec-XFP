@@ -38,7 +38,7 @@ namespace Xfp.ViewModels.PanelTools
         
         public TimeSpan DelayTimer { get => _data.CurrentPanel.SetConfig.DelayTimer; set { _data.CurrentPanel.SetConfig.DelayTimer = value; OnPropertyChanged(); OnPropertyChanged(nameof(DelayTimerIsValid)); } }
 
-        public bool DelayTimerIsValid => _data.CurrentPanel.SetConfig.DelayTimer.CompareTo(ZoneConfigData.MaxSetDelay) <= 0;
+        public bool DelayTimerIsValid => ZoneConfigData.IsValidSetDelay(_data.CurrentPanel.SetConfig.DelayTimer);
 
 
         private double _headerLeftWidth = 30;

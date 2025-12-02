@@ -183,29 +183,29 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        /// <summary>Verifies that characters within the code are valid</summary>
-        public static bool ValidateAccessCodeChars(string code) => new Regex(@"^[1-4]+$").IsMatch(code);
+        ///// <summary>Verifies that characters within the code are valid</summary>
+        //public static bool ValidateAccessCodeChars(string code) => new Regex(@"^[1-4]+$").IsMatch(code);
 
 
-        /// <summary>Verifies that the code is valid (non-blank/correct length; valid chars)</summary>
-        public static bool ValidateAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == PanelConfigData.AccessCodeLength;
+        ///// <summary>Verifies that the code is valid (non-blank/correct length; valid chars)</summary>
+        //public static bool ValidateAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == PanelConfigData.AccessCodeLength;
 
 
-        internal byte[] AL2CodeToByteArray() => ByteArrayUtil.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
+        //internal byte[] AL2CodeToByteArray() => ByteArrayUtil.StringToByteArray(AL2Code, DeviceNamesConfigData.DeviceNameLength);
         
         
-        public static string ParseAL2Code(byte[] data, Func<byte[], bool> responseTypeCheck)
-        {
-            try
-            {
-                return TextUtil.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, PanelConfigData.AccessCodeLength);
-            }
-            catch (Exception ex)
-            {
-                CTecUtil.Debug.WriteLine(nameof(ParseAL2Code) + " failed: " + ex.ToString());
-                return "";
-            }
-        }
+        //public static string ParseAL2Code(byte[] data, Func<byte[], bool> responseTypeCheck)
+        //{
+        //    try
+        //    {
+        //        return TextUtil.IntToZeroPaddedString(Integer.Parse(data, responseTypeCheck, 2, 2).Value, PanelConfigData.AccessCodeLength);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        CTecUtil.Debug.WriteLine(nameof(ParseAL2Code) + " failed: " + ex.ToString());
+        //        return "";
+        //    }
+        //}
 
     }
 }
