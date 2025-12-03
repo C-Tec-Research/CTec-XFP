@@ -2143,9 +2143,9 @@ Toutes ses données seront perdues.</value>
     <value>est {0}</value>
   </data>
   <data name="Query_Is_Panel_Envision_Enabled" xml:space="preserve">
-    <value>Le panneau est-il compatible avec Envision ?
+    <value>Est-ce qu'Envision est activé pour ce panneau ?
 
-Si cela est nécessaire, les noms des appareils et les descriptions des zones peuvent être modifiés avec des préfixes pour indiquer le type d'appareil et le numéro de zone.</value>
+Si cela est nécessaire, les noms des appareils et les descriptions des zones peuvent être modifiés pour s'assurer qu'ils sont préfixés afin d'indiquer le type d'appareil et le numéro de zone.</value>
   </data>
   <data name="Alarms" xml:space="preserve">
     <value>Alarmes</value>
@@ -2164,5 +2164,8 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   </data>
   <data name="Panel_Sounder_Groups" xml:space="preserve">
     <value>Groupes des sonneurs du panneau</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Aucun</value>
   </data>
 </root>

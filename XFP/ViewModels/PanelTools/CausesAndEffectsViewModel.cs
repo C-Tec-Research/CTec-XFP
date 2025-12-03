@@ -163,9 +163,13 @@ namespace Xfp.ViewModels.PanelTools
                 //ensure number of devices in list is correct (including blank first entry)
                 setListLength(Loop1Devices, deviceList.Count + 1);
 
-                int i = 1;
+                //int i = 1;
+                //foreach (var d in deviceList)
+                //    Loop1Devices[i++] = d;
+                Loop1Devices = new();
+                Loop1Devices.Add("");
                 foreach (var d in deviceList)
-                    Loop1Devices[i++] = d;
+                    Loop1Devices.Add(d);
 
                 OnPropertyChanged(nameof(Loop1Devices));
             }
@@ -187,11 +191,15 @@ namespace Xfp.ViewModels.PanelTools
                 //ensure number of devices in list is correct (including blank first entry)
                 setListLength(Loop2Devices, deviceList.Count + 1);
 
-                int i = 1;
+                //int i = 1;
+                //foreach (var d in deviceList)
+                //    Loop2Devices[i++] = d;
+                Loop2Devices = new();
+                Loop2Devices.Add("");
                 foreach (var d in deviceList)
-                    Loop2Devices[i++] = d;
+                    Loop2Devices.Add(d);
 
-             OnPropertyChanged(nameof(Loop2Devices));
+                OnPropertyChanged(nameof(Loop2Devices));
             }
 
             foreach (var c in CEConfigItems)

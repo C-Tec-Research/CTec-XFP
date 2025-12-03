@@ -18,7 +18,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     new(Cultures.Resources.Panel_Site_Configuration),
                     new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
                     new(string.Format(Cultures.Resources.Nav_Loop_x, 2)),
-                    new(Cultures.Resources.Comms_Device_Names),
+                    new(Cultures.Resources.Comms_Device_Names) { HideIfNoErrors = true },
                     new(Cultures.Resources.Nav_Zone_Configuration),
                     new(Cultures.Resources.Nav_Group_Configuration),
                     new(Cultures.Resources.Nav_Set_Configuration),
@@ -28,7 +28,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 : new() {
                     new(Cultures.Resources.Panel_Site_Configuration),
                     new(string.Format(Cultures.Resources.Nav_Loop_x, 1)),
-                    new(Cultures.Resources.Comms_Device_Names),
+                    new(Cultures.Resources.Comms_Device_Names) { HideIfNoErrors = true },
                     new(Cultures.Resources.Nav_Zone_Configuration),
                     new(Cultures.Resources.Nav_Group_Configuration),
                     new(Cultures.Resources.Nav_Set_Configuration),

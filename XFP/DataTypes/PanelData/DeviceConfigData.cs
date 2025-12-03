@@ -54,6 +54,7 @@ namespace Xfp.DataTypes.PanelData
         [JsonIgnore]internal const  int MinSensitivityHigh = 75;
         [JsonIgnore]internal const  int DefaultSensitivityHigh = 100;
         [JsonIgnore]internal const  int MaxSensitivityHigh = 125;
+        [JsonIgnore]internal const  int DefaultMode = 1;
         [JsonIgnore]internal const  int MinVolume = 1;
         [JsonIgnore]internal static int MaxVolume => DeviceTypes.VolumeSettings.Count;
 
@@ -61,6 +62,12 @@ namespace Xfp.DataTypes.PanelData
         public ObservableCollection<DeviceData> Devices { get; set; } = new();
         //public int DeviceIndex { get; set; }
         //public int Group { get; set; }
+
+
+        public static bool IsValidVolume(int? value)                                    => value.HasValue && value >= MinVolume - 1 && value <= MaxVolume - 1;
+        public static bool IsValidMode(int? deviceType, int? value)                     => value.HasValue && DeviceTypes.ModeIsValid(deviceType, value);
+        public static bool IsValidSensitivity(int? value, bool isSensitivityHighDevice) => value.HasValue && value >= (isSensitivityHighDevice ? MinSensitivityHigh : MinSensitivity) 
+                                                                                                          && value <= (isSensitivityHighDevice ? MaxSensitivityHigh : MaxSensitivity);
 
 
         /// <summary>

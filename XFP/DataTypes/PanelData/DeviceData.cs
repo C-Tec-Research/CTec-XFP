@@ -61,6 +61,17 @@ namespace Xfp.DataTypes.PanelData
                 if (_deviceType != value)
                 {
                     _deviceType = value;
+
+                    Zone = Group = 1;
+                    
+                    DaySensitivity = NightSensitivity = DefaultSensitivity;
+                    DayVolume = NightVolume = DeviceConfigData.DefaultVolume;
+                    DayMode = NightMode = DeviceConfigData.DefaultMode;
+                    NameIndex = 0;
+
+                    RemoteLEDEnabled = false;
+                    AncillaryBaseSounderGroup = 0;
+
                     IOConfig = new();
                     for (int i = 0; i < NumIOSettings; i++)
                         IOConfig.Add(new(i, value));
@@ -74,16 +85,17 @@ namespace Xfp.DataTypes.PanelData
         public int Group { get; set; } = 0;
         public int? DaySensitivity { get; set; }
         public int? NightSensitivity { get; set; }
+
         [JsonIgnore]
         public int DefaultSensitivity => IsSensitivityHighDevice ? DeviceConfigData.DefaultSensitivityHigh : DeviceConfigData.DefaultSensitivity;
         
         public int? DayVolume { get; set; }
         public int? NightVolume { get; set; }
-        public int? DayMode { get; set; } = 1;
-        public int? NightMode { get; set; } = 1;
+        public int? DayMode { get; set; } = DeviceConfigData.DefaultMode;
+        public int? NightMode { get; set; } = DeviceConfigData.DefaultMode;
         public List<IOSettingData> IOConfig { get; set; } = new();
         public int NameIndex { get; set; } = 0;
-        internal bool HasAncillaryBaseSounder => DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);//(AncillaryBaseSounderGroup??0) > 0;
+        internal bool HasAncillaryBaseSounder => DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
         public int? AncillaryBaseSounderGroup { get; set; } = null;
         public bool IsRealDevice { get; set; } = true;
         public bool? RemoteLEDEnabled { get; set; } = false;
@@ -172,33 +184,26 @@ namespace Xfp.DataTypes.PanelData
                 else
                 {
                     if (IsZonalDevice)
-                        if (Zone < -1 || Zone > ZoneConfigData.NumZones)
+                        if (ZoneConfigData.IsValidZone(Zone))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidZone);
 
                     if (IsGroupedDevice)
-                        if (Group < -1 || Group > GroupConfigData.NumSounderGroups)
+                        if (GroupConfigData.IsValidGroup(Group, false))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidGroup);
 
-                    if (IsSensitivityHighDevice)
+                    if (IsSensitivityDevice)
                     {
-                        if (DaySensitivity == -1 || DaySensitivity > DeviceConfigData.MaxSensitivityHigh)
+                        if (!DeviceConfigData.IsValidSensitivity(DaySensitivity, IsSensitivityHighDevice))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidDaySensitivity);
-                        if (NightSensitivity == -1 || NightSensitivity > DeviceConfigData.MaxSensitivityHigh)
-                            _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidNightSensitivity);
-                    }
-                    else if (IsSensitivityDevice)
-                    {
-                        if (DaySensitivity < -1 || DaySensitivity > DeviceConfigData.MaxSensitivity)
-                            _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidDaySensitivity);
-                        if (NightSensitivity < -1 || NightSensitivity > DeviceConfigData.MaxSensitivity)
+                        if (!DeviceConfigData.IsValidSensitivity(NightSensitivity, IsSensitivityHighDevice))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidNightSensitivity);
                     }
 
                     if (IsVolumeDevice)
                     {
-                        if (DayVolume < DeviceConfigData.MinVolume -1 || DayVolume > DeviceConfigData.MaxVolume - 1)
+                        if (!DeviceConfigData.IsValidVolume(DayVolume))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidDayVolume);
-                        if (NightVolume < DeviceConfigData.MinVolume - 1 || NightVolume > DeviceConfigData.MaxVolume - 1)
+                        if (!DeviceConfigData.IsValidVolume(NightVolume))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidNightVolume);
                     }
 

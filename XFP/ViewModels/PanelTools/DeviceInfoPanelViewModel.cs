@@ -427,8 +427,8 @@ namespace Xfp.ViewModels.PanelTools
         {
             get 
             {
-                //force update of index
-                var tmp = AncillaryBaseSounderGroup;
+                ////force update of index
+                //var tmp = AncillaryBaseSounderGroup;
                 return _ancillaryBaseSounderGroupIndex ?? 0;
             }
             set
@@ -1032,9 +1032,16 @@ namespace Xfp.ViewModels.PanelTools
         private void setChannel(int index, int? value)
         {
             if (value is not null)
+            {
                 foreach (var d in _deviceList)
+                {
                     if (validIOIndex(index, d))
+                    {
                         d.IOConfigItems[index].Channel = value;
+                        d.RefreshView();
+                    }
+                }
+            }
 
             OnPropertyChanged(nameof(IOInputChannel1));
             OnPropertyChanged(nameof(IOInputChannel2));
@@ -1117,12 +1124,20 @@ namespace Xfp.ViewModels.PanelTools
         private void setIOZoneSet(int index, string value)
         {
             if (value is not null)
+            {
                 foreach (var d in _deviceList)
+                {
                     if (validIOIndex(index, d))
+                    {
                         d.IOConfigItems[index].ZoneGroupSet = string.IsNullOrEmpty(value) ? null
                                                          : value == Cultures.Resources.Use_In_Special_C_And_E ? 0
                                                          : d.IOConfigItems[index].InputOutput == IOTypes.Input ? findIndexInCombo(_zones, value)
                                                          : d.IOConfigItems[index].InputOutput == IOTypes.Output ? findIndexInCombo(_sets, value) : null;
+                        d.RefreshView();
+                    }
+                }
+            }
+
             OnPropertyChanged(nameof(IOZoneSet1));
             OnPropertyChanged(nameof(IOZoneSet2));
             OnPropertyChanged(nameof(IOZoneSet3));
@@ -2127,7 +2142,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool IODescription4IsValid   => ioDescriptionIsValid(3);
 
 
-        private bool volumeIsValid(int? value)            => IsVolumeDevice == false || value >= DeviceConfigData.MinVolume - 1 && value <= DeviceConfigData.MaxVolume - 1;
+        private bool volumeIsValid(int? value)            => IsVolumeDevice == false || DeviceConfigData.IsValidVolume(value);
         private bool sensitivityIsValid(int? value)       => IsSensitivityDevice == false || value >= MinSensitivity && value <= MaxSensitivity;
 
         private bool selectedDayModesInvalid(ModeSettingOption value)
@@ -2279,6 +2294,12 @@ namespace Xfp.ViewModels.PanelTools
                         d.DaySensitivity = d.NightSensitivity = DeviceConfigData.DefaultSensitivity;
                     else if (d.IsVolumeDevice)
                         d.DayVolume = d.NightVolume = DeviceConfigData.DefaultVolume;
+
+                    if (DeviceTypes.CurrentProtocolIsXfpApollo)
+                    {
+                        RemoteLEDEnabled = false;
+                        SelectedAncillaryBaseSounderGroupIndex = 0;
+                    }
 
                     d.RefreshView();
                 }
@@ -2450,13 +2471,13 @@ namespace Xfp.ViewModels.PanelTools
 
             if (_baseSounderGroups is null)
             {
-                _baseSounderGroups = new() { CTecControls.Cultures.Resources.None };
+                _baseSounderGroups = new() { Cultures.Resources.None };
                 for (int g = 1; g <= GroupConfigData.NumSounderGroups; g++)
                     _baseSounderGroups.Add(string.Format(Cultures.Resources.Group_x, g));
             }
             else
             {
-                _baseSounderGroups[0] = CTecControls.Cultures.Resources.None;
+                _baseSounderGroups[0] = Cultures.Resources.None;
                 for (int g = 1; g <= GroupConfigData.NumSounderGroups; g++)
                     _baseSounderGroups[g] = string.Format(Cultures.Resources.Group_x, g);
             }

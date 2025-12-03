@@ -824,7 +824,7 @@ change to that type, or select Delete to remove a device</value>
   </data>
   <data name="Base_Sounder_Header" xml:space="preserve">
     <value>Base
-Sounder</value>
+Sounder Grp</value>
   </data>
   <data name="Action_Abstract_Event" xml:space="preserve">
     <value>Abstract event</value>
@@ -2156,9 +2156,9 @@ All of its data will be lost.</value>
     <value>is {0}</value>
   </data>
   <data name="Query_Is_Panel_Envision_Enabled" xml:space="preserve">
-    <value>Is the panel Envision-enabled?
+    <value>Is Envision enabled for this panel?
 
-If this is required device names and zone descriptions may be amended with prefixes to indicate device type and zone number.</value>
+If this is required then device names and zone descriptions may be amended to ensure they are prefixed to indicate device type and zone number.</value>
   </data>
   <data name="Alarms" xml:space="preserve">
     <value>Alarms</value>
@@ -2177,5 +2177,8 @@ If this is required device names and zone descriptions may be amended with prefi
   </data>
   <data name="Panel_Sounder_Groups" xml:space="preserve">
     <value>Panel sounder groups</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
   </data>
 </root>

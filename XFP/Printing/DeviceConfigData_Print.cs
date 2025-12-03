@@ -118,7 +118,7 @@ namespace Xfp.DataTypes.PanelData
 
                         //zone/group/set
                         if (dev.IsIODevice)
-                            newRows[0].Cells.Add(TableUtil.NewCell("  " + Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
+                            newRows[0].Cells.Add(TableUtil.NewCell(Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
                         else
                             newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev), numRows, 1, true));
 
@@ -136,17 +136,13 @@ namespace Xfp.DataTypes.PanelData
                             {
                                 newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Mode));
 
-                                var validDM = isValidMode(dev.DayMode, dev.DeviceType);
-                                var validNM = isValidMode(dev.NightMode, dev.DeviceType);
-                                var dMode = validDM ? dev.DayMode.ToString()   : PrintUtil.ErrorValue;
-                                var nMode = validNM ? dev.NightMode.ToString() : PrintUtil.ErrorValue;
+                                var validDM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.DayMode);
+                                var validNM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.NightMode);
+                                var dMode = dev.DayMode.ToString();
+                                var nMode = dev.NightMode.ToString();
+                                var modes = string.Format("{0}:{1}", dMode, nMode);
+                                var mCell = validDM && validNM ? TableUtil.NewCell(modes, TextAlignment.Center) : TableUtil.NewErrorCell(modes, 1, 1, TextAlignment.Center);
 
-                                var mCell = TableUtil.NewCell(string.Format("{0}:{1}", dMode, nMode));
-                                if (!validDM || !validNM)
-                                {
-                                    mCell.Foreground = PrintUtil.ErrorBrush;
-                                    mCell.FontStyle = FontStyles.Italic;
-                                }
                                 newRows[modeSensVolRows].Cells.Add(mCell);
                                 modeSensVolRows++;
                             }
@@ -155,17 +151,13 @@ namespace Xfp.DataTypes.PanelData
                             {
                                 newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume));
 
-                                var validDV = isValidVolume(dev.DayVolume);
-                                var validNV = isValidVolume(dev.NightVolume);
-                                var dVol = validDV ? (dev.DayVolume + 1).ToString()   : PrintUtil.ErrorValue;
-                                var nVol = validNV ? (dev.NightVolume + 1).ToString() : PrintUtil.ErrorValue;
-
-                                var vCell = TableUtil.NewCell(string.Format("{0}:{1}", dVol, nVol));
-                                if (!validDV || !validNV)
-                                {
-                                    vCell.Foreground = PrintUtil.ErrorBrush;
-                                    vCell.FontStyle = FontStyles.Italic;
-                                }
+                                var validDV = DeviceConfigData.IsValidVolume(dev.DayVolume);
+                                var validNV = DeviceConfigData.IsValidVolume(dev.NightVolume);
+                                var dVol = (dev.DayVolume + 1).ToString();
+                                var nVol = (dev.NightVolume + 1).ToString();
+                                var vols = string.Format("{0}:{1}", dVol, nVol);
+                                var vCell = validDV && validNV ? TableUtil.NewCell(vols, TextAlignment.Center) : TableUtil.NewErrorCell(vols, 1, 1, TextAlignment.Center);
+                                
                                 newRows[modeSensVolRows].Cells.Add(vCell);
                                 modeSensVolRows++;
                             }
@@ -174,18 +166,14 @@ namespace Xfp.DataTypes.PanelData
                             {
                                 newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Sensitivity));
 
-                                var validDS = isValidSensitivity(dev.DaySensitivity, dev.IsSensitivityHighDevice);
-                                var validNS = isValidSensitivity(dev.NightSensitivity, dev.IsSensitivityHighDevice);
-                                var dSens = validDS ? dev.DaySensitivity.ToString()   : PrintUtil.ErrorValue;
-                                var nSens = validNS ? dev.NightSensitivity.ToString() : PrintUtil.ErrorValue;
+                                var validDS = DeviceConfigData.IsValidSensitivity(dev.DaySensitivity, dev.IsSensitivityHighDevice);
+                                var validNS = DeviceConfigData.IsValidSensitivity(dev.NightSensitivity, dev.IsSensitivityHighDevice);
+                                var dSens = dev.DaySensitivity.ToString();
+                                var nSens = dev.NightSensitivity.ToString();
+                                var senss = string.Format("{0}:{1}", dSens, nSens);
+                                var sCell = validDS && validNS ? TableUtil.NewCell(senss, TextAlignment.Center) : TableUtil.NewErrorCell(senss, 1, 1, TextAlignment.Center);
 
-                                var vCell = TableUtil.NewCell(string.Format("{0}:{1}", dSens, nSens));
-                                if (!validDS || !validNS)
-                                {
-                                    vCell.Foreground = PrintUtil.ErrorBrush;
-                                    vCell.FontStyle = FontStyles.Italic;
-                                }
-                                newRows[modeSensVolRows].Cells.Add(vCell);
+                                newRows[modeSensVolRows].Cells.Add(sCell);
                             }
                         }
                         else
@@ -279,7 +267,7 @@ namespace Xfp.DataTypes.PanelData
             ioWidth += cellMargins;
             
             var wType = 100;
-            var wZGS  = 45;
+            var wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, 99)).Width, TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, 99)).Width), TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
             var wName = 75;
             var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
             var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
@@ -456,12 +444,6 @@ namespace Xfp.DataTypes.PanelData
         }
 
         private List<int> getValidModes(int? deviceType) => (from m in DeviceTypes.ModeSettings(deviceType) select m.Index).ToList();
-
-        private bool isValidVolume(int? vol) => vol.HasValue && vol >= DeviceConfigData.MinVolume && vol <= DeviceConfigData.MaxVolume;
-
-        private bool isValidSensitivity(int? sens, bool isSensHighDevice)
-            => sens.HasValue && isSensHighDevice ? sens >= DeviceConfigData.MinSensitivityHigh && sens <= DeviceConfigData.MaxSensitivityHigh
-                                                 : sens >= DeviceConfigData.MinSensitivity && sens <= DeviceConfigData.MaxSensitivity;
 
 
         private int getIOSortZGS(DeviceData d1, DeviceData d2)

@@ -476,7 +476,7 @@ namespace Xfp.Cultures {
         
         /// <summary>
         ///   Looks up a localized string similar to Base
-        ///Sounder.
+        ///Sounder Grp.
         /// </summary>
         public static string Base_Sounder_Header {
             get {
@@ -3418,6 +3418,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal string.
         /// </summary>
         public static string Normal_String {
@@ -4275,9 +4284,9 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Is the panel Envision-enabled?
+        ///   Looks up a localized string similar to Is Envision enabled for this panel?
         ///
-        ///If this is required device names and zone descriptions may be amended with prefixes to indicate device type and zone number..
+        ///If this is required then device names and zone descriptions may be amended to ensure they are prefixed to indicate device type and zone number..
         /// </summary>
         public static string Query_Is_Panel_Envision_Enabled {
             get {

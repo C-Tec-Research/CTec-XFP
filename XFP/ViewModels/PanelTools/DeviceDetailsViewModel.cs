@@ -100,7 +100,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool CheckEnvisionPrefixes()
         {
-            if (DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo)
+            if (!DeviceTypes.CurrentProtocolIsXfpApollo)
                 return true;
 
             foreach (var _ in from l in Loops
@@ -115,7 +115,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public void UpdateEnvisionPrefixes()
         {
-            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo)
+            if (DeviceTypes.CurrentProtocolIsXfpApollo)
                 foreach (var l in Loops)
                     foreach (var d in l)
                         d.MakeDeviceNameEnvisionCompatible();

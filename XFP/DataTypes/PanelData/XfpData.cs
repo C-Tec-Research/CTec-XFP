@@ -178,12 +178,13 @@ namespace Xfp.DataTypes
             _errorsAndWarnings.Clear();
 
             foreach (var p in Panels)
-                if (!p.Value.Validate())
-                {
-                    var e = p.Value.GetErrorItems();
-                    //foreach (var e in p.Value.GetPageErrorDetails().Items)
-                    //    _errorsAndWarnings.Add();
-                }
+                //if (!p.Value.Validate())
+                //{
+                //    var e = p.Value.GetErrorItems();
+                //    //foreach (var e in p.Value.GetPageErrorDetails().Items)
+                //    //    _errorsAndWarnings.Add();
+                //}
+                p.Value.Validate();
 
             if (!SiteConfig.Validate())
                 _errorsAndWarnings.Add(SiteConfig.GetPageErrorDetails());

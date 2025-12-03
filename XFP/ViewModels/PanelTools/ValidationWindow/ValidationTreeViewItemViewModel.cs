@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CTecUtil;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
@@ -23,11 +24,13 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         protected ValidationTreeViewItemViewModel(ValidationTreeViewItemViewModel parent) => _parent = parent;
 
 
-        readonly AsyncObservableCollection<ValidationTreeViewItemViewModel> _children = new();
-        readonly ValidationTreeViewItemViewModel _parent;
+        private readonly AsyncObservableCollection<ValidationTreeViewItemViewModel> _children = new();
+        private readonly ValidationTreeViewItemViewModel _parent;
 
-        bool _isExpanded;
-        bool _isSelected;
+        private bool _isExpanded;
+        private bool _isSelected;
+        private Visibility _visibility = Visibility.Visible;
+        private bool _hideIfNoErrors = false;
 
 
         public AsyncObservableCollection<ValidationTreeViewItemViewModel> Children => _children;
@@ -68,13 +71,19 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 }
             }
         }
+        
+
+        public Visibility Visibility      => HideIfNoErrors && TotalErrors == 0 ? Visibility.Collapsed : Visibility.Visible;
+        public bool   HideIfNoErrors      { get => _hideIfNoErrors; set { _hideIfNoErrors = value; OnPropertyChanged(nameof(Visibility)); } }
 
 
         private string _name = "";
         private ErrorLevels _errorLevel = ErrorLevels.OK;
+        
 
-        public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+        public string Name                    { get => _name;       set { _name = value; OnPropertyChanged(nameof(Name)); } }
         public virtual ErrorLevels ErrorLevel { get => _errorLevel; set { _errorLevel = value; OnPropertyChanged(nameof(ErrorLevel)); } }
+
 
         public List<ValidationCodeViewModel> ValidationCodes { get; set; }
 
@@ -237,7 +246,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                                 c.IsExpanded = true;
                 }
 
-                OnPropertyChanged(nameof(TotalErrors));
+                RefreshView();
             }
             catch { }
         }
@@ -292,8 +301,9 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     foreach (var v in ((ValidationPageItemViewModel)item).ValidationCodes)
                         existingItem.AddValidationCode(v);
                     existingItem.OnPropertyChanged(nameof(ErrorLevel));
-                    existingItem.OnPropertyChanged(nameof(ErrorLevel));
+                    existingItem.OnPropertyChanged(nameof(TotalErrors));
                     existingItem.OnPropertyChanged(nameof(ValidationCodes));
+                    existingItem.RefreshView();
                     return existingItem;
                 }
                 else
@@ -302,6 +312,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                 branch.OnPropertyChanged(nameof(ErrorLevel));
                 branch.OnPropertyChanged(nameof(Children));
             }
+            item.RefreshView();
             return item;
         }
 
@@ -314,13 +325,27 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
                     if (branch.Children[i].Name == name)
                     {
                         branch.Children.RemoveAt(i);
+                        branch.RefreshView();
                         return;
                     }
                 }
-
-                branch.OnPropertyChanged(nameof(ErrorLevel));
+                branch.RefreshView();
             }
         }
+
+
+        public virtual void RefreshView()
+        {
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(IsSelected));
+            OnPropertyChanged(nameof(IsExpanded));
+            OnPropertyChanged(nameof(ErrorLevel));
+            OnPropertyChanged(nameof(TotalErrors));
+            OnPropertyChanged(nameof(HideIfNoErrors));
+            OnPropertyChanged(nameof(Visibility));
+            OnPropertyChanged(nameof(ValidationCodes));
+        }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -332,7 +332,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": -1,
+              "AncillaryBaseSounderGroup": 3,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },

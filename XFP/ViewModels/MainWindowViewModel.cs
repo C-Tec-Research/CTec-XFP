@@ -1866,8 +1866,8 @@ namespace Xfp.ViewModels
 
 
         private bool checkEnvisionPrefixes()
-            => !(_deviceDetailsPage.DataContext as DeviceDetailsViewModel).CheckEnvisionPrefixes()
-            || !(_zonesPage.DataContext as ZoneConfigViewModel).CheckEnvisionPrefixes();
+            => (_deviceDetailsPage.DataContext as DeviceDetailsViewModel).CheckEnvisionPrefixes()
+            && (_zonesPage.DataContext as ZoneConfigViewModel).CheckEnvisionPrefixes();
 
         private void updateEnvisionPrefixes()
         {

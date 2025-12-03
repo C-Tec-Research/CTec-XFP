@@ -178,7 +178,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool CheckEnvisionPrefixes()
         {
-            if (DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo)
+            if (!DeviceTypes.CurrentProtocolIsXfpApollo)
                 return true;
 
             foreach (var _ in from z in ZoneConfigItems
@@ -192,7 +192,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public void MakeZoneDescEnvisionCompatible()
         {
-            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo)
+            if (DeviceTypes.CurrentProtocolIsXfpApollo)
                 foreach (var z in ZoneConfigItems)
                     z.MakeZoneDescEnvisionCompatible();
         }

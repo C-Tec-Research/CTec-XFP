@@ -808,11 +808,11 @@
                                                 <Border Grid.Row="0"
                                                         BorderBrush="{Binding ModeIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                         Visibility="{Binding IsModeDevice, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                        BorderThickness="1" CornerRadius="5" 
+                                                        BorderThickness="1" CornerRadius="5"
                                                         Height="26" Padding="0">
                                                     <TextBlock Text="{Binding ModeValue, Mode=OneWay}" 
                                                                    ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
-                                                                   HorizontalAlignment="Center" 
+                                                                   HorizontalAlignment="Center"
                                                                    Margin="0"/>
                                                 </Border>
                                                 <Border Grid.Row="1"
@@ -849,7 +849,10 @@
                                             <Path Fill="{StaticResource Brush03}" Stretch="Fill" 
                                                   Data="{Binding RemoteLEDEnabled, Converter={StaticResource IsTrueToSVGPathDataConverter}}"
                                                   Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                            <TextBlock Text="-" HorizontalAlignment="Left" Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource InverseBoolToVisibilityConverter}}" Margin="0"/>
+                                            <TextBlock Text="--" 
+                                                       Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
+                                                       HorizontalAlignment="Left" 
+                                                       Margin="0"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -868,19 +871,20 @@
                                         <Grid Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
                                             <Border BorderBrush="{Binding AncillaryBaseSounderGroupIsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}" 
                                                     BorderThickness="1" CornerRadius="5" 
+                                                    Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                                                     Height="26" Padding="0">
                                                 <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}">
                                                     <TextBlock Text="{Binding AncillaryBaseSounderGroup, Converter={StaticResource BaseSounderGroupToStringConverter}, Mode=OneWay}" 
                                                                ToolTip="{Binding Path=ToolTip_Click_To_Show_Device_Details, Source={StaticResource Resources}}" 
                                                                HorizontalAlignment="Left" 
-                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                               Margin="10,0,18,0"/>
-                                                    <TextBlock Text="--" 
-                                                               Visibility="{Binding HasAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                               HorizontalAlignment="Left" 
                                                                Margin="10,0,18,0"/>
                                                 </Grid>
                                             </Border>
+                                            <Grid Visibility="{Binding RemoteLEDEnabled, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                <TextBlock Text="--" 
+                                                           HorizontalAlignment="Left" 
+                                                           Margin="10,0,18,0"/>
+                                            </Grid>
                                             <Grid Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                 <TextBlock Text="--" 
                                                            HorizontalAlignment="Left" 

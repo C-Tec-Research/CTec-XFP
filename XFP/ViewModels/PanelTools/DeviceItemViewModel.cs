@@ -70,8 +70,10 @@ namespace Xfp.ViewModels.PanelTools
                         if (IsIODevice)
                             IOConfigItems[0].NameIndex = newIdx;
 
-                        OnPropertyChanged();
+                        //OnPropertyChanged();
                     }
+
+                    RefreshView();
                 }
             }
         }
@@ -80,16 +82,16 @@ namespace Xfp.ViewModels.PanelTools
         /// Check for Envision compatibility: for Apollo, the DeviceName must be 
         /// prefixed with the Envision device type code; returns true if protocol is CAST.
         /// </summary>
-        public bool DeviceNameIsEnvisionCompatible() => DeviceTypes.CurrentProtocolType != CTecDevices.ObjectTypes.XfpApollo || DeviceName.StartsWith(DeviceType.ToString());
+        public bool DeviceNameIsEnvisionCompatible() => !DeviceTypes.CurrentProtocolIsXfpApollo || DeviceName.StartsWith(DeviceType.ToString());
 
         /// <summary>
         /// Apply the Envision compatibility prefix: for Apollo, ensure the DeviceName is prefixed with the Envision device type code.
         /// </summary>
         public void MakeDeviceNameEnvisionCompatible()
         {
-            if (DeviceTypes.CurrentProtocolType == CTecDevices.ObjectTypes.XfpApollo && (DeviceName is null || !DeviceName.StartsWith(DeviceType.ToString() + " ")))
+            if (DeviceTypes.CurrentProtocolIsXfpApollo && (DeviceName is null || !DeviceName.StartsWith(DeviceType.ToString() + " ")))
             {
-                DeviceName = string.Format("{0} {1}", XfpApolloEnvisionDeviceTypes.GetEnvisionDeviceTypeCode(DeviceType), DeviceName ?? "");
+                DeviceName = string.Format("{0:000} {1}", XfpApolloEnvisionDeviceTypes.GetEnvisionDeviceTypeCode(DeviceType), DeviceName ?? "");
 
                 if (DeviceName.Length > DeviceNamesConfigData.DeviceNameLength)
                     DeviceName = DeviceName.Remove(DeviceNamesConfigData.DeviceNameLength);
@@ -229,7 +231,7 @@ namespace Xfp.ViewModels.PanelTools
         }
 
         public bool DeviceTypeIsValid                => DeviceType is null || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
-        public bool ZoneIsValid                      => !IsZonalDevice || Zone >= 0 && Zone <= ZoneConfigData.NumZones;
+        public bool ZoneIsValid                      => !IsZonalDevice || IsIODevice ? IOConfigItemsAreValid : ZoneConfigData.IsValidZone(Zone);
         public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group, false);
         public bool DeviceNameIsValid                => DeviceType is null || DeviceName is not null && DeviceName.Length <= DeviceNamesConfigData.DeviceNameLength;
         public bool AncillaryBaseSounderGroupIsValid => !(HasAncillaryBaseSounder??false) || GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, true);
@@ -259,10 +261,9 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
-        private bool volumeIsValid(int? value)       => !IsVolumeDevice || value is null || value >= DeviceConfigData.MinVolume - 1 && value <= DeviceConfigData.MaxVolume - 1;
-        private bool sensitivityIsValid(int? value)  => !IsSensitivityDevice || value is null || (value >= (IsSensitivityHighDevice ? DeviceConfigData.MinSensitivityHigh : DeviceConfigData.MinSensitivity) 
-                                                                                               && value <= (IsSensitivityHighDevice ? DeviceConfigData.MaxSensitivityHigh : DeviceConfigData.MaxSensitivity));
-        private bool modeIsValid(int? value)         => !IsModeDevice || value is null || DeviceTypes.ModeIsValid(DeviceType, value);
+        private bool volumeIsValid(int? value)       => !IsVolumeDevice || DeviceConfigData.IsValidVolume(value);
+        private bool sensitivityIsValid(int? value)  => !IsSensitivityDevice || DeviceConfigData.IsValidSensitivity(value, IsSensitivityHighDevice);
+        private bool modeIsValid(int? value)         => !IsModeDevice || DeviceConfigData.IsValidMode(DeviceType, value);
 
 
         [JsonIgnore]
