@@ -2181,4 +2181,7 @@ If this is required then device names and zone descriptions may be amended to en
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
+  <data name="Report_Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
 </root>

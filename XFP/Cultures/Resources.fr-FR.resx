@@ -2168,4 +2168,7 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="None" xml:space="preserve">
     <value>Aucun</value>
   </data>
+  <data name="Report_Key" xml:space="preserve">
+    <value>Clef</value>
+  </data>
 </root>

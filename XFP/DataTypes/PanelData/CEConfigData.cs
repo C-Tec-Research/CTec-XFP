@@ -41,6 +41,8 @@ namespace Xfp.DataTypes.PanelData
         [JsonIgnore]
         public const int NumConditions = 6;
 
+        public static bool IsValidTimerEventTime(TimeSpan? time) => time.HasValue && time?.CompareTo(new(0, 0, 59)) > 0 && time?.CompareTo(new(0, 23, 59, 0, 0)) <= 0;
+
 
         public List<CEEvent> Events { get; set; }
         public List<TimeSpan> TimerEventTimes { get; set; }

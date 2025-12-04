@@ -53,15 +53,14 @@ namespace Xfp.Printing
                 PrintUtil.PrintHandler.PrintTicket.PageOrientation = printParams.Settings.Orientation;
                 PrintUtil.PrintHandler.PrintTicket.CopyCount       = printParams.Settings.Copies;
 
-                // Create a FlowDocument
-                //var systemName = Cultures.Resources.XFP_Config_Print_Description + " - " + Cultures.Resources.System_Name + ": " + (string.IsNullOrWhiteSpace(data.SiteConfig.SystemName) ? Cultures.Resources.Not_Set : data.SiteConfig.SystemName);
-
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
                 var pageMargin = new Thickness(20);
                 var pageNumber = 1;
 
                 var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
                 var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
+
+                // Create a FlowDocument
                 FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName));
                 doc.Name = _printFilePrefix;
                 doc.PageHeight = printParams.PrintHandler.PrintableAreaHeight;
@@ -105,8 +104,6 @@ namespace Xfp.Printing
 
         private static void printComments(FlowDocument doc, ref int pageNumber)
         {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
         }
     }
 }

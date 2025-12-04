@@ -2,6 +2,7 @@
 using CTecUtil.Printing;
 using CTecUtil.Utils;
 using System;
+using System.Drawing.Printing;
 using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ namespace Xfp.DataTypes.PanelData
             //if (pageNumber++ > 1)
             //    PrintUtil.InsertPageBreak(doc);
 
+            _reportName = Cultures.Resources.Nav_Group_Configuration;
             _data = panelData;
 
             GridUtil.ResetDefaults();
@@ -27,17 +29,19 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Group_Configuration);
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName);
 
             var headerSection = new Section();
             headerSection.Blocks.Add(headerInfo());
             doc.Blocks.Add(headerSection);
+            doc.Blocks.Add(printKey());
             doc.Blocks.Add(printGroups());
 
             TableUtil.ResetDefaults();
         }
         
         
+        private string _reportName;
         private XfpPanelData _data;
         //private int    _totalColumns = NumSounderGroups + 2;
         //private int    _numColumns;
@@ -89,17 +93,54 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
+        private Table printKey()
+        {
+            try
+            {
+                var descWidth = Math.Max(Math.Max(TableUtil.MeasureText(Cultures.Resources.AlarmType_Off).Width, 
+                                                  TableUtil.MeasureText(Cultures.Resources.AlarmType_Alert).Width), 
+                                                  TableUtil.MeasureText(Cultures.Resources.AlarmType_Evacuate).Width) + 5;
+
+                var table = TableUtil.NewTable(_reportName);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+                    table.Columns.Add(new TableColumn() { Width = new GridLength(descWidth) });
+                }
+
+                var bodyGroup = new TableRowGroup();
+                var newRow = new TableRow();
+                bodyGroup.Rows.Add(newRow);
+
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Off), 1, 1, _iconSize));
+                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Off));
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Alert), 1, 1, _iconSize));
+                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Alert));
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Evacuate), 1, 1, _iconSize));
+                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Evacuate));
+
+                table.RowGroups.Add(bodyGroup);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                return null;
+            }
+        }
+
+
         private Table printGroups()
         {
             int dataRows = 0;
 
-            var reportName = Cultures.Resources.Nav_Group_Configuration;
-
             try
             {
-                var table = TableUtil.NewTable(reportName);
+                var table = TableUtil.NewTable(_reportName);
+                table.Margin = new(0);
 
-                defineColumnHeaders(table, reportName);
+                defineColumnHeaders(table, _reportName);
 
                 var bodyGroup = new TableRowGroup();
 
@@ -138,7 +179,7 @@ namespace Xfp.DataTypes.PanelData
             }
             catch (Exception ex)
             {
-                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
                 return null;
             }
             finally
@@ -195,8 +236,8 @@ namespace Xfp.DataTypes.PanelData
         {
             var colour = value switch
             {
-                AlarmTypes.Alert    => Xfp.UI.Styles.AlarmAlertBrush,
-                AlarmTypes.Evacuate => Xfp.UI.Styles.AlarmEvacBrush,
+                AlarmTypes.Alert    => Xfp.UI.Styles.AlarmAlertPrintBrush,
+                AlarmTypes.Evacuate => Xfp.UI.Styles.AlarmEvacPrintBrush,
                 _                   => Xfp.UI.Styles.AlarmOffBrush,
             };
 

@@ -1,4 +1,5 @@
-﻿using CTecUtil.Printing;
+﻿using CTecControls.UI;
+using CTecUtil.Printing;
 using CTecUtil.UI;
 using CTecUtil.Utils;
 using System;
@@ -21,8 +22,8 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc, int panelNumber, XfpData data, ref int pageNumber)
         {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
+            //if (pageNumber++ > 1)
+            //    PrintUtil.InsertPageBreak(doc);
 
             _panelNumber = panelNumber;
             _data = data;
@@ -37,15 +38,15 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            //TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
             TableUtil.SetPadding(new(2,2,4,2));
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
-            var headerSection = new Section();
-            headerSection.Blocks.Add(timerEventTimes());
-            headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            doc.Blocks.Add(headerSection);
+            //var headerSection = new Section();
+            //headerSection.Blocks.Add(timerEventTimes());
+            //headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
+            //doc.Blocks.Add(headerSection);
+            doc.Blocks.Add(timerEventTimes());
             doc.Blocks.Add(ceList());
         
             TableUtil.ResetDefaults();
@@ -56,8 +57,8 @@ namespace Xfp.DataTypes.PanelData
         private XfpData _data;
         private const int _totalTimerTimesColumns = 9;
         private const int _totalCEColumns = 11;
-        private static SolidColorBrush _timerEventTimesUnderlineBrush = Styles.Brush05;
-        private static SolidColorBrush _gridDividerBrush = Styles.Brush08;
+        private static SolidColorBrush _timerEventTimesUnderlineBrush = CTecControls.UI.Styles.Brush05;
+        private static SolidColorBrush _gridDividerBrush = CTecControls.UI.Styles.Brush08;
         private List<string> _actions;
         private List<string> _triggers;
         private List<string> _inputs;
@@ -108,9 +109,14 @@ namespace Xfp.DataTypes.PanelData
             _times        = _data.GetCETimerTList();
         }
 
-        private BlockUIContainer timerEventTimes()
+
+        private Section timerEventTimes()
         {
+            var headerSection = new Section();
+            
             var grid = new Grid();
+
+            GridUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
 
             for (int i = 0; i < 8; i++)
                 GridUtil.AddRowToGrid(grid);
@@ -134,7 +140,9 @@ namespace Xfp.DataTypes.PanelData
                 grid.Children.Add(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                                           3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
             }
 
-            return new(grid);
+            headerSection.Blocks.Add(new BlockUIContainer(grid));
+            headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
+            return headerSection;
         }
 
 

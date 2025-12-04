@@ -3,8 +3,11 @@
 
 
     <Color x:Key="ColourAlarmOff"              A="#00" R="#00" G="#00" B="#00"/>
-    <Color x:Key="ColourAlarmAlert"            A="#ff" R="#ff" G="#a0" B="#00"/>
+    <Color x:Key="ColourAlarmAlert"            A="#ff" R="#ff" G="#c0" B="#50"/>
     <Color x:Key="ColourAlarmEvac"             A="#ff" R="#ff" G="#50" B="#50"/>
+    <Color x:Key="ColourAlarmOffPrint"         A="#ff" R="#c0" G="#c0" B="#c0"/>
+    <Color x:Key="ColourAlarmAlertPrint"       A="#ff" R="#ff" G="#e7" B="#00"/>
+    <Color x:Key="ColourAlarmEvacPrint"        A="#ff" R="#ff" G="#50" B="#50"/>
     <Color x:Key="ColourTriggerNotTriggered"   A="#50" R="#00" G="#00" B="#00"/>
     <Color x:Key="ColourTriggerPulsed"         A="#ff" R="#ff" G="#c0" B="#50"/>
     <Color x:Key="ColourTriggerContinuous"     A="#ff" R="#ff" G="#50" B="#50"/>
@@ -14,6 +17,9 @@
     <SolidColorBrush x:Key="AlarmOffBrush"              Color="{StaticResource ColourAlarmOff}"/>
     <SolidColorBrush x:Key="AlarmAlertBrush"            Color="{StaticResource ColourAlarmAlert}"/>
     <SolidColorBrush x:Key="AlarmEvacBrush"             Color="{StaticResource ColourAlarmEvac}"/>
+    <SolidColorBrush x:Key="AlarmOffPrintBrush"         Color="{StaticResource ColourAlarmOffPrint}"/>
+    <SolidColorBrush x:Key="AlarmAlertPrintBrush"       Color="{StaticResource ColourAlarmAlertPrint}"/>
+    <SolidColorBrush x:Key="AlarmEvacPrintBrush"        Color="{StaticResource ColourAlarmEvacPrint}"/>
     <SolidColorBrush x:Key="TriggerNotTriggeredBrush"   Color="{StaticResource ColourTriggerNotTriggered}"/>
     <SolidColorBrush x:Key="TriggerPulsedBrush"         Color="{StaticResource ColourTriggerPulsed}"/>
     <SolidColorBrush x:Key="TriggerContinuousBrush"     Color="{StaticResource ColourTriggerContinuous}"/>

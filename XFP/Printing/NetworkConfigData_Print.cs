@@ -10,8 +10,8 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc, XfpData data, int panelNumber, ref int pageNumber)
         {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
+            //if (pageNumber++ > 1)
+            //    PrintUtil.InsertPageBreak(doc);
 
             _data = data;
             _panelNumber = panelNumber;

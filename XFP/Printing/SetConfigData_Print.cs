@@ -3,6 +3,7 @@ using CTecUtil.Printing;
 using CTecUtil.Utils;
 using System;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -18,9 +19,10 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
         {
-            if (pageNumber++ > 1)
-                PrintUtil.InsertPageBreak(doc);
+            //if (pageNumber++ > 1)
+            //    PrintUtil.InsertPageBreak(doc);
 
+            _reportName = Cultures.Resources.Nav_Set_Configuration;
             _data = panelData;
 
             GridUtil.ResetDefaults();
@@ -31,17 +33,19 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Set_Configuration);
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName);
 
             var headerSection = new Section();
-            headerSection.Blocks.Add(headerInfo());
+            //headerSection.Blocks.Add(headerInfo());
             doc.Blocks.Add(headerSection);
+            doc.Blocks.Add(printKey());
             doc.Blocks.Add(printSets());
 
             TableUtil.ResetDefaults();
         }
         
 
+        private string _reportName;
         private XfpPanelData _data;
         private double _wNum;
         private double _wName;
@@ -51,7 +55,7 @@ namespace Xfp.DataTypes.PanelData
         private double _wSilenceable;
         private string _arrow = "←";
         private double _arrowFontSize = 10;
-        private Size   _iconSize = new(16, 15);
+        private Size   _iconSize = new(18, 15);
         private int    _wDivider = 10;
         private const int _setIdColumns = 2;
         private const int _separatorColumns = 1;
@@ -73,18 +77,72 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private BlockUIContainer headerInfo()
+        //private BlockUIContainer headerInfo()
+        //{
+        //    var grid = new Grid();
+
+        //    GridUtil.AddRowToGrid(grid);
+        //    GridUtil.AddColumnToGrid(grid);
+        //    GridUtil.AddColumnToGrid(grid);
+
+        //    grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
+        //    grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, 1, 1, "ms", true, true, HorizontalAlignment.Left, !ZoneConfigData.IsValidSetDelay(DelayTimer)));
+
+        //    return new(grid);
+        //}
+
+
+        private Table printKey()
         {
-            var grid = new Grid();
+            try
+            {
+                var nWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Not_Triggered).Width + 5;
+                var pWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Pulsed).Width + 5;
+                var cWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Continuous).Width + 5;
+                var dWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Delayed).Width + 15;
 
-            GridUtil.AddRowToGrid(grid);
-            GridUtil.AddColumnToGrid(grid);
-            GridUtil.AddColumnToGrid(grid);
+                var table = TableUtil.NewTable(_reportName);
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
-            grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, 1, 1, "ms", true, true, HorizontalAlignment.Left, !ZoneConfigData.IsValidSetDelay(DelayTimer)));
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(nWidth) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(pWidth) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(cWidth) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(dWidth) });
+                table.Columns.Add(new TableColumn() { Width = new GridLength(TableUtil.MeasureText(Cultures.Resources.Delay_Time).Width) });
+                table.Columns.Add(new TableColumn());
 
-            return new(grid);
+                var bodyGroup = new TableRowGroup();
+                var newRow = new TableRow();
+                bodyGroup.Rows.Add(newRow);
+
+                TableCell cell;
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.NotTriggered), 1, 1, _iconSize));
+                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Not_Triggered);     cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Pulsed), 1, 1, _iconSize));
+                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Pulsed);            cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Continuous), 1, 1, _iconSize));
+                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Continuous);        cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Delayed), 1, 1, _iconSize));
+                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Delayed);           cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+                cell = TableUtil.NewCell(appendColon(Cultures.Resources.Delay_Time), 1, 1); cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+
+                if (ZoneConfigData.IsValidSetDelay(DelayTimer))
+                    cell = TableUtil.NewCellTime(DelayTimer, "ms", true, TextAlignment.Left, true);
+                else 
+                    cell = TableUtil.NewCellTimeError(DelayTimer, "ms", true, TextAlignment.Left);
+                                                                                            cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+
+                table.RowGroups.Add(bodyGroup);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                return null;
+            }
         }
 
 
@@ -94,13 +152,11 @@ namespace Xfp.DataTypes.PanelData
 
             int dataRows = 0;
 
-            var reportName = Cultures.Resources.Nav_Group_Configuration;
-
             try
             {
-                var table = TableUtil.NewTable(reportName);
+                var table = TableUtil.NewTable(_reportName);
 
-                defineColumnHeaders(table, reportName);
+                defineColumnHeaders(table, _reportName);
                 printSilenceableSets(table);
 
                 var bodyGroup = new TableRowGroup();
@@ -147,7 +203,7 @@ namespace Xfp.DataTypes.PanelData
             }
             catch (Exception ex)
             {
-                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
                 return null;
             }
             finally

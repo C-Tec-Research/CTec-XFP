@@ -27,7 +27,6 @@ namespace Xfp.DataTypes.PanelData
         public const int NumPanelRelayTriggers = 2;
         public const int DefaultDelayTimerSeconds = 300;
 
-
         public List<SetData> Sets { get; set; }
         public TimeSpan DelayTimer { get; set; }
 

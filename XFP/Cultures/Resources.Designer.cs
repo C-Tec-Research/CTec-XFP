@@ -4411,6 +4411,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key.
+        /// </summary>
+        public static string Report_Key {
+            get {
+                return ResourceManager.GetString("Report_Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resets when....
         /// </summary>
         public static string Resets_When {
