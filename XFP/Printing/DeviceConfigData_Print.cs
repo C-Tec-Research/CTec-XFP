@@ -25,7 +25,7 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class LoopConfigData
     {
-        public void GetReport(FlowDocument doc, int panelNumber, bool printLoop1, bool printLoop2, bool printAllLoopDevices, SortOrder printOrder, CTecUtil.PrintActions printAction)
+        public void GetReport(FlowDocument doc, int panelNumber, bool printLoop1, bool printLoop2, bool printAllLoopDevices, SortOrder printOrder)
         {
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_Device_Details);
 

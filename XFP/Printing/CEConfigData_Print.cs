@@ -42,10 +42,6 @@ namespace Xfp.DataTypes.PanelData
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
-            //var headerSection = new Section();
-            //headerSection.Blocks.Add(timerEventTimes());
-            //headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            //doc.Blocks.Add(headerSection);
             doc.Blocks.Add(timerEventTimes());
             doc.Blocks.Add(ceList());
         
@@ -73,9 +69,9 @@ namespace Xfp.DataTypes.PanelData
         private List<string> _setsRelays;
         private List<string> _times;
 
-        private List<List<ReportTextElement>> _report;
+        private List<List<ReportTextElement>> _reportStrings;
         private List<double> _columnWidths = new();
-        private const double _spacerColumnWidth = 5;
+        private const double _spacerColumnWidth = 2;
 
 
         private class ReportTextElement
@@ -127,8 +123,8 @@ namespace Xfp.DataTypes.PanelData
             grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Timer_Event_Times, 0, 0, 1, _totalTimerTimesColumns, true));
 
             GridUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 1, 0, 0));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 0)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 0, 10, 2)));
             GridUtil.AddBorderToGrid(grid, 4, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 5, 0), new(3, 2, 10, 2)));
             grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   6, 0), new(3, 2, 10, 2)));
@@ -136,12 +132,11 @@ namespace Xfp.DataTypes.PanelData
 
             for (int i = 0; i < 16; i++)
             {
-                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, false, HorizontalAlignment.Center), new(10, 2, 10, 2)));
-                grid.Children.Add(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                                           3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center));
-            }
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, false, HorizontalAlignment.Center), new(10, 0, 10, 0)));
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                        3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center), new(10, 0, 10, 0)));
+            } 
 
             headerSection.Blocks.Add(new BlockUIContainer(grid));
-            headerSection.Blocks.Add(new BlockUIContainer(new TextBlock()));
             return headerSection;
         }
 
@@ -154,7 +149,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 var table = TableUtil.NewTable(reportName);
 
-                createReportTable();
+                createReportStringTable();
                 setColumnWidths();
                 defineColumnHeaders(table, reportName);
 
@@ -162,7 +157,7 @@ namespace Xfp.DataTypes.PanelData
 
                 var bodyGroup = new TableRowGroup();
 
-                for (int r = 0; r < _report.Count; r++)
+                for (int r = 0; r < _reportStrings.Count; r++)
                 {
                     dataRows++;
 
@@ -170,9 +165,9 @@ namespace Xfp.DataTypes.PanelData
                     var newRow = new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground };
                     bodyGroup.Rows.Add(newRow);
 
-                    for (int c = 0; c < _report[r].Count; c++)
+                    for (int c = 0; c < _reportStrings[r].Count; c++)
                     {
-                        var item = _report[r][c];
+                        var item = _reportStrings[r][c];
                         var newCell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment);
                         //newCell.Background = (c % 4) switch { 1 => Styles.Brush05, 2 => Styles.ErrorBrush, 3 => Styles.OkBrush, _ => Styles.WarnBrush, };
                         if (item.IsError)
@@ -202,10 +197,10 @@ namespace Xfp.DataTypes.PanelData
         /// Build a string table of all the report values 
         /// so that the required column widths can be calculated.
         /// </summary>
-        private void createReportTable()
+        private void createReportStringTable()
         {
             //create string table of the report values
-            _report = new();
+            _reportStrings = new();
 
             foreach (var e in Events)
             {
@@ -219,7 +214,7 @@ namespace Xfp.DataTypes.PanelData
 
                 if (e.ActionType == CEActionTypes.None)
                 {
-                    _report.Add(row);
+                    _reportStrings.Add(row);
                     continue;
                 }
 
@@ -233,7 +228,7 @@ namespace Xfp.DataTypes.PanelData
                     else
                     {
                         row.Add(new(true));
-                        _report.Add(row);
+                        _reportStrings.Add(row);
                         continue;
                     }
                 }
@@ -242,7 +237,7 @@ namespace Xfp.DataTypes.PanelData
                     row.Add(new());
                 }
 
-                row.Add(new());
+                //row.Add(new());
 
                 //trigger type
                 if (e.TriggerType != CETriggerTypes.None && e.TriggerType >= 0)
@@ -252,7 +247,7 @@ namespace Xfp.DataTypes.PanelData
                 else
                 {
                     row.Add(new(true));
-                    _report.Add(row);
+                    _reportStrings.Add(row);
                     continue;
                 }
 
@@ -277,7 +272,7 @@ namespace Xfp.DataTypes.PanelData
 
                         if (e.TriggerParam < 0 || e.TriggerParam2 < 0)
                         {
-                            _report.Add(row);
+                            _reportStrings.Add(row);
                             continue;
                         }
                     }
@@ -291,7 +286,7 @@ namespace Xfp.DataTypes.PanelData
 
                     if (e.TriggerParam < 0)
                     {
-                        _report.Add(row);
+                        _reportStrings.Add(row);
                         continue;
                     }
                 }
@@ -303,7 +298,7 @@ namespace Xfp.DataTypes.PanelData
                 //trigger condition
                 row.Add(new(getTrueOrFalse(e.TriggerCondition)));
 
-                row.Add(new());
+                //row.Add(new());
 
                 //reset type
                 if (e.ResetType != CETriggerTypes.None && e.ResetType >= 0)
@@ -313,7 +308,7 @@ namespace Xfp.DataTypes.PanelData
                 else
                 {
                     row.Add(new(true));
-                    _report.Add(row);
+                    _reportStrings.Add(row);
                     continue;
                 }
 
@@ -338,7 +333,7 @@ namespace Xfp.DataTypes.PanelData
 
                         if (e.ResetParam < 0 || e.ResetParam2 < 0)
                         {
-                            _report.Add(row);
+                            _reportStrings.Add(row);
                             continue;
                         }
                     }
@@ -352,7 +347,7 @@ namespace Xfp.DataTypes.PanelData
 
                     if (e.ResetParam < 0)
                     {
-                        _report.Add(row);
+                        _reportStrings.Add(row);
                         continue;
                     }
                 }
@@ -363,7 +358,7 @@ namespace Xfp.DataTypes.PanelData
 
                 //reset condition
                 row.Add(new(getTrueOrFalse(e.ResetCondition)));
-                _report.Add(row);
+                _reportStrings.Add(row);
             }
         }
 
@@ -376,47 +371,47 @@ namespace Xfp.DataTypes.PanelData
             var wResetParam   = 0.0;
 
             //measure the text in each cell to get the max widths per column
-            for (int row = 0; row < _report.Count; row++)
+            for (int row = 0; row < _reportStrings.Count; row++)
             {
                 int offset = 0;
 
                 try
                 {
-                    for (int col = 0; col < _report[row].Count; col++)
+                    for (int col = 0; col < _reportStrings[row].Count; col++)
                     {
                         //if (_report[row][col].ColumnSpan > 1)
                         //    offset += _report[row][col].ColumnSpan - 1;
 
-                        while (_columnWidths.Count < col + offset + _report[row][col].ColumnSpan)
+                        while (_columnWidths.Count < col + offset + _reportStrings[row][col].ColumnSpan)
                             _columnWidths.Add(_spacerColumnWidth);
 
-                        if (_report[row][col].ColumnSpan == 1)
+                        if (_reportStrings[row][col].ColumnSpan == 1)
                         {
-                            _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_report[row][col].Text).Width + cellLeftRightPadding + 8);
+                            _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_reportStrings[row][col].Text).Width + cellLeftRightPadding + 8);
                         }
                         else
                         {
-                            //trigger & reset params that span 4 columns - get the max width
-                            if (col == 5)
-                                wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_report[row][col + offset].Text).Width + cellLeftRightPadding + 1);
+                            //trigger & reset params that span 4 columns
+                            if (col == 4)
+                                wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_reportStrings[row][col + offset].Text).Width + cellLeftRightPadding + 1);
                             else
-                                wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_report[row][col + offset].Text).Width + cellLeftRightPadding + 1);
+                                wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_reportStrings[row][col + offset].Text).Width + cellLeftRightPadding + 1);
                         }
 
-                        offset += _report[row][col].ColumnSpan - 1;
+                        offset += _reportStrings[row][col].ColumnSpan - 1;
                     }
                 }
                 catch (Exception ex) { }
             }
 
             //ensure full complement of columns
-            if (_columnWidths.Count < 16)
+            if (_columnWidths.Count < 14)
             {
-                for (int i = _columnWidths.Count; i < 16; i++)
+                for (int i = _columnWidths.Count; i < 14; i++)
                 {
-                    if (i == 4)
+                    if (i == 3)
                         _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Occurs_When).Width + cellLeftRightPadding);
-                    else if (i == 11)
+                    else if (i == 9)
                         _columnWidths.Add(TableUtil.MeasureText(Cultures.Resources.Resets_When).Width + cellLeftRightPadding);
                     else
                         _columnWidths.Add(_spacerColumnWidth);
@@ -424,10 +419,10 @@ namespace Xfp.DataTypes.PanelData
             }
 
             //if AND parameters' width is less than the max 'normal' param width, pad the 4th column
-            if (_columnWidths[5] + _columnWidths[6] + _columnWidths[7] + _columnWidths[8] < wTriggerParam)
-                _columnWidths[8] = wTriggerParam - _columnWidths[5] - _columnWidths[6] - _columnWidths[7];
-            if (_columnWidths[11] + _columnWidths[12] + _columnWidths[13] + _columnWidths[14] < wResetParam)
-                _columnWidths[14] = wResetParam - _columnWidths[11] - _columnWidths[12] - _columnWidths[13];
+            if (_columnWidths[4] + _columnWidths[5] + _columnWidths[6] + _columnWidths[7] < wTriggerParam)
+                _columnWidths[7] = wTriggerParam - _columnWidths[6] - _columnWidths[7] - _columnWidths[8];
+            if (_columnWidths[9] + _columnWidths[10] + _columnWidths[11] + _columnWidths[12] < wResetParam)
+                _columnWidths[12] = wResetParam - _columnWidths[10] - _columnWidths[11] - _columnWidths[12];
         }
 
 

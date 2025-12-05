@@ -79,7 +79,7 @@ namespace Xfp.Printing
                     var p = data.Panels[i];
                     
                     if (printParams.PrintSiteConfig)    p.PanelConfig.GetReport(doc, p, ref pageNumber);
-                    if (printParams.PrintLoopInfo)      p.LoopConfig.GetReport(doc, p.PanelNumber, printParams.PrintLoop1, printParams.PrintLoop2, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder, printAction);
+                    if (printParams.PrintLoopInfo)      p.LoopConfig.GetReport(doc, p.PanelNumber, printParams.PrintLoop1, printParams.PrintLoop2, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
                     if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
                     if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
                     if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
