@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Xfp.UI.Interfaces;
 using CTecUtil.StandardPanelDataTypes;
+using CTecDevices.Protocol;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -42,7 +43,65 @@ namespace Xfp.DataTypes.PanelData
         public const int NumConditions = 6;
 
         public static bool IsValidTimerEventTime(TimeSpan? time) => time.HasValue && time?.CompareTo(new(0, 0, 59)) > 0 && time?.CompareTo(new(0, 23, 59, 0, 0)) <= 0;
+        public static bool IsValidEvent(int? value) => value.HasValue && value >= 0 && value < NumEvents;
+        public static bool IsValidTimerEvent(int? value) => value.HasValue && value >= 0 && value < NumEvents;
 
+        public static bool IsValidActionParam(int? param, CEActionTypes actionType)
+        {
+            if (!param.HasValue || param < 0)
+                return false;
+
+            return actionType switch
+            {
+                CEActionTypes.GroupDisable        => GroupConfigData.IsValidGroup(param, false),
+                CEActionTypes.OutputDisable       => SetConfigData.isValidSet(param),
+                CEActionTypes.PanelRelay          => PanelConfigData.IsValidPanel(param),
+                CEActionTypes.TriggerNetworkEvent => IsValidEvent(param),
+                CEActionTypes.TriggerOutputSet    => SetConfigData.isValidSet(param),
+
+                CEActionTypes.Loop1DeviceDisable
+                or CEActionTypes.Loop2DeviceDisable
+                or CEActionTypes.TriggerLoop1Device
+                or CEActionTypes.TriggerLoop2Device => DeviceTypes.IsValidDeviceType(param),
+
+                CEActionTypes.PutZoneIntoAlarm
+                or CEActionTypes.ZoneDisable => ZoneConfigData.IsValidZone(param),
+                
+                CEActionTypes.SounderAlert
+                or CEActionTypes.SounderEvac 
+                or CEActionTypes.TriggerBeacons => GroupConfigData.IsValidGroup(param, false),
+
+                _ => true
+            };
+        }
+
+        public static bool IsValidTriggerParam(int? param, CETriggerTypes triggerType)
+        {
+            if (!param.HasValue || param < 0)
+                return false;
+
+            return triggerType switch
+            {
+                CETriggerTypes.PanelInput   => PanelConfigData.IsValidInput(param),
+                CETriggerTypes.TimerEventTn => IsValidTimerEvent(param),
+                CETriggerTypes.ZoneAnd      => ZoneConfigData.IsValidZone(param),
+
+                CETriggerTypes.EventAnd 
+                or CETriggerTypes.NetworkEventTriggered
+                or CETriggerTypes.OtherEventTriggered => IsValidEvent(param),
+                
+                CETriggerTypes.Loop1DevicePrealarm
+                or CETriggerTypes.Loop1DeviceTriggered
+                or CETriggerTypes.Loop2DevicePrealarm 
+                or CETriggerTypes.Loop2DeviceTriggered => DeviceTypes.IsValidDeviceType(param),
+                
+
+                CETriggerTypes.ZoneHasDeviceInAlarm
+                or CETriggerTypes.ZoneOrPanelInFire => ZoneConfigData.IsValidZoneOrPanel(param),
+                
+                _ => true,
+            };
+        }
 
         public List<CEEvent> Events { get; set; }
         public List<TimeSpan> TimerEventTimes { get; set; }

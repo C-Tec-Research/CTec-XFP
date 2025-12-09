@@ -77,12 +77,12 @@ namespace Xfp.DataTypes.PanelData
         private class ReportTextElement
         {
             public ReportTextElement() { }
-            public ReportTextElement(string text, TextAlignment align = TextAlignment.Left) { Text = text; Alignment = align; }
-            public ReportTextElement(string text, int columnSpan) { Text = text; ColumnSpan = columnSpan; }
+            public ReportTextElement(string text, int? dataValue, TextAlignment align = TextAlignment.Left) { Text = text; DataValue = dataValue; Alignment = align; }
+            public ReportTextElement(string text, int? dataValue) { Text = text; DataValue = dataValue; }
             public ReportTextElement(bool isError) { IsError = isError; Text = PrintUtil.ErrorNotSet; }
 
             public string Text { get; private set; } = string.Empty;
-            public int    ColumnSpan { get; private set; } = 1;
+            public int?   DataValue { get; private set; }
             public bool   IsError { get; private set; } = false;
             public TextAlignment Alignment { get; private set; }
         }
@@ -168,7 +168,7 @@ namespace Xfp.DataTypes.PanelData
                     for (int c = 0; c < _reportStrings[r].Count; c++)
                     {
                         var item = _reportStrings[r][c];
-                        var newCell = TableUtil.NewCell(item.Text, 1, item.ColumnSpan, item.Alignment);
+                        var newCell = TableUtil.NewCell(item.Text, 1, 1, item.Alignment);
                         //newCell.Background = (c % 4) switch { 1 => Styles.Brush05, 2 => Styles.ErrorBrush, 3 => Styles.OkBrush, _ => Styles.WarnBrush, };
                         if (item.IsError)
                         {
@@ -214,6 +214,7 @@ namespace Xfp.DataTypes.PanelData
 
                 if (e.ActionType == CEActionTypes.None)
                 {
+                    //none on this row, skip to next
                     _reportStrings.Add(row);
                     continue;
                 }
@@ -221,12 +222,13 @@ namespace Xfp.DataTypes.PanelData
                 //action parameter, if any
                 if (e.HasActionParam())
                 {
-                    if (e.ActionParam >= 0)
+                    if (IsValidActionParam(e.ActionParam, e.ActionType))
                     {
                         row.Add(new(getActionParamDesc(e.ActionType, e.ActionParam).ToString()));
                     }
                     else
                     {
+                        //no more on this row, skip to next
                         row.Add(new(true));
                         _reportStrings.Add(row);
                         continue;
@@ -237,15 +239,14 @@ namespace Xfp.DataTypes.PanelData
                     row.Add(new());
                 }
 
-                //row.Add(new());
-
                 //trigger type
                 if (e.TriggerType != CETriggerTypes.None && e.TriggerType >= 0)
                 {
-                    row.Add(new((Enums.CETriggerTypesToString(e.TriggerType)).ToString()));
+                    row.Add(new(Enums.CETriggerTypesToString(e.TriggerType)));
                 }
                 else
                 {
+                    //no more on this row, skip to next
                     row.Add(new(true));
                     _reportStrings.Add(row);
                     continue;
@@ -256,19 +257,14 @@ namespace Xfp.DataTypes.PanelData
                 {
                     if (e.TriggerTypeHasParamPair())
                     {
-                        row.Add(new(e.TriggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
+                        var error1 = !IsValidTriggerParam(e.TriggerParam, e.TriggerType);
+                        var error2 = !IsValidTriggerParam(e.TriggerParam2, e.TriggerType);
 
-                        if (e.TriggerParam2 >= 0)
-                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam2).ToString()));
-                        else
-                            row.Add(new(true));
+                        var text  = string.Format(e.TriggerType == CETriggerTypes.EventAnd ? Cultures.Resources.Event_x_And_y : Cultures.Resources.Zone_x_And_y, 
+                                                  error2 ? PrintUtil.ErrorNotSet : e.TriggerParam2, 
+                                                  error1 ? PrintUtil.ErrorNotSet : e.TriggerParam);
 
-                        row.Add(new(Cultures.Resources.Logical_And));
-
-                        if (e.TriggerParam >= 0)
-                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString()));
-                        else
-                            row.Add(new(true));
+                        row.Add(error1 || error2 ? new(true) : new(text));
 
                         if (e.TriggerParam < 0 || e.TriggerParam2 < 0)
                         {
@@ -278,35 +274,35 @@ namespace Xfp.DataTypes.PanelData
                     }
                     else
                     {
-                        if (e.TriggerParam >= 0)
-                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString(), 4));
+                        if (IsValidTriggerParam(e.TriggerParam, e.TriggerType))
+                            row.Add(new(getTriggerParamDesc(e.TriggerType, e.TriggerParam).ToString()));
                         else
                             row.Add(new(true));
                     }
 
                     if (e.TriggerParam < 0)
                     {
+                        //no more on this row, skip to next
                         _reportStrings.Add(row);
                         continue;
                     }
                 }
                 else
                 {
-                    row.Add(new("", 4));
+                    row.Add(new(""));
                 }
 
                 //trigger condition
                 row.Add(new(getTrueOrFalse(e.TriggerCondition)));
 
-                //row.Add(new());
-
                 //reset type
                 if (e.ResetType != CETriggerTypes.None && e.ResetType >= 0)
                 {
-                    row.Add(new((Enums.CETriggerTypesToString(e.ResetType)).ToString()));
+                    row.Add(new(Enums.CETriggerTypesToString(e.ResetType)));
                 }
                 else
                 {
+                    //no more on this row, skip to next
                     row.Add(new(true));
                     _reportStrings.Add(row);
                     continue;
@@ -317,19 +313,14 @@ namespace Xfp.DataTypes.PanelData
                 {
                     if (e.ResetTypeHasParamPair())
                     {
-                        row.Add(new(e.ResetType == CETriggerTypes.EventAnd ? Cultures.Resources.Event : Cultures.Resources.Zone));
+                        var error1 = !IsValidTriggerParam(e.ResetParam, e.ResetType);
+                        var error2 = !IsValidTriggerParam(e.ResetParam2, e.ResetType);
 
-                        if (e.ResetParam2 >= 0)
-                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam2).ToString()));
-                        else
-                            row.Add(new(true));
+                        var text  = string.Format(e.ResetType == CETriggerTypes.EventAnd ? Cultures.Resources.Event_x_And_y : Cultures.Resources.Zone_x_And_y, 
+                                                  error2 ? PrintUtil.ErrorNotSet : e.ResetParam2, 
+                                                  error1 ? PrintUtil.ErrorNotSet : e.ResetParam);
 
-                        row.Add(new(Cultures.Resources.Logical_And));
-
-                        if (e.ResetParam >= 0)
-                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString()));
-                        else
-                            row.Add(new(true));
+                        row.Add(error1 || error2 ? new(true) : new(text));
 
                         if (e.ResetParam < 0 || e.ResetParam2 < 0)
                         {
@@ -339,21 +330,22 @@ namespace Xfp.DataTypes.PanelData
                     }
                     else
                     {
-                        if (e.ResetParam >= 0)
-                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString(), 4));
+                        if (IsValidTriggerParam(e.ResetParam, e.ResetType))
+                            row.Add(new(getTriggerParamDesc(e.ResetType, e.ResetParam).ToString()));
                         else
                             row.Add(new(true));
                     }
 
                     if (e.ResetParam < 0)
                     {
+                        //no more on this row, skip to next
                         _reportStrings.Add(row);
                         continue;
                     }
                 }
                 else
                 {
-                    row.Add(new("", 4));
+                    row.Add(new(""));
                 }
 
                 //reset condition
@@ -364,41 +356,22 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnWidths()
         {
+            TableUtil.SetPadding(new(1, 2, 2, 0));
             var cellLeftRightPadding = TableUtil.Padding.Left + TableUtil.Padding.Right;
 
             _columnWidths = new();
-            var wTriggerParam = 0.0;
-            var wResetParam   = 0.0;
 
             //measure the text in each cell to get the max widths per column
             for (int row = 0; row < _reportStrings.Count; row++)
             {
-                int offset = 0;
-
                 try
                 {
                     for (int col = 0; col < _reportStrings[row].Count; col++)
                     {
-                        //if (_report[row][col].ColumnSpan > 1)
-                        //    offset += _report[row][col].ColumnSpan - 1;
-
-                        while (_columnWidths.Count < col + offset + _reportStrings[row][col].ColumnSpan)
+                        while (_columnWidths.Count < col + 1)
                             _columnWidths.Add(_spacerColumnWidth);
 
-                        if (_reportStrings[row][col].ColumnSpan == 1)
-                        {
-                            _columnWidths[col + offset] = Math.Max(_columnWidths[col + offset], TableUtil.MeasureText(_reportStrings[row][col].Text).Width + cellLeftRightPadding + 8);
-                        }
-                        else
-                        {
-                            //trigger & reset params that span 4 columns
-                            if (col == 4)
-                                wTriggerParam = Math.Max(wTriggerParam, TableUtil.MeasureText(_reportStrings[row][col + offset].Text).Width + cellLeftRightPadding + 1);
-                            else
-                                wResetParam = Math.Max(wResetParam, TableUtil.MeasureText(_reportStrings[row][col + offset].Text).Width + cellLeftRightPadding + 1);
-                        }
-
-                        offset += _reportStrings[row][col].ColumnSpan - 1;
+                        _columnWidths[col] = Math.Max(_columnWidths[col], TableUtil.MeasureText(_reportStrings[row][col].Text).Width + cellLeftRightPadding);
                     }
                 }
                 catch (Exception ex) { }
@@ -417,12 +390,6 @@ namespace Xfp.DataTypes.PanelData
                         _columnWidths.Add(_spacerColumnWidth);
                 }
             }
-
-            //if AND parameters' width is less than the max 'normal' param width, pad the 4th column
-            if (_columnWidths[4] + _columnWidths[5] + _columnWidths[6] + _columnWidths[7] < wTriggerParam)
-                _columnWidths[7] = wTriggerParam - _columnWidths[6] - _columnWidths[7] - _columnWidths[8];
-            if (_columnWidths[9] + _columnWidths[10] + _columnWidths[11] + _columnWidths[12] < wResetParam)
-                _columnWidths[12] = wResetParam - _columnWidths[10] - _columnWidths[11] - _columnWidths[12];
         }
 
 
@@ -436,9 +403,9 @@ namespace Xfp.DataTypes.PanelData
             headerRow.Background = PrintUtil.TableHeaderBackground;
 
             headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Number_Symbol, TextAlignment.Right, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 3, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 7, FontWeights.Bold));
-            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 6, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Action, 1, 2, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Occurs_When, 1, 3, FontWeights.Bold));
+            headerRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.Resets_When, 1, 3, FontWeights.Bold));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow);

@@ -2184,4 +2184,10 @@ If this is required then device names and zone descriptions may be amended to en
   <data name="Report_Key" xml:space="preserve">
     <value>Key</value>
   </data>
+  <data name="Event_x_And_y" xml:space="preserve">
+    <value>Event {0} and {1}</value>
+  </data>
+  <data name="Zone_x_And_y" xml:space="preserve">
+    <value>Zone {0} and {1}</value>
+  </data>
 </root>

@@ -2637,6 +2637,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event {0} and {1}.
+        /// </summary>
+        public static string Event_x_And_y {
+            get {
+                return ResourceManager.GetString("Event_x_And_y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to False.
         /// </summary>
         public static string False {
@@ -6147,6 +6156,15 @@ namespace Xfp.Cultures {
         public static string Zone_x {
             get {
                 return ResourceManager.GetString("Zone_x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zone {0} and {1}.
+        /// </summary>
+        public static string Zone_x_And_y {
+            get {
+                return ResourceManager.GetString("Zone_x_And_y", resourceCulture);
             }
         }
         

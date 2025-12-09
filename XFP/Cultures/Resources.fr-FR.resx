@@ -2171,4 +2171,10 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="Report_Key" xml:space="preserve">
     <value>Clef</value>
   </data>
+  <data name="Event_x_And_y" xml:space="preserve">
+    <value>Evénement {0} et {1}</value>
+  </data>
+  <data name="Zone_x_And_y" xml:space="preserve">
+    <value>Zone {0} et {1}</value>
+  </data>
 </root>

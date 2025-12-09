@@ -30,6 +30,8 @@ namespace Xfp.DataTypes.PanelData
         public List<SetData> Sets { get; set; }
         public TimeSpan DelayTimer { get; set; }
 
+        public static bool isValidSet(int? set) => set.HasValue && set >= 0 && set < NumOutputSetTriggers;
+
 
         public new static SetConfigData InitialisedNew()
         {

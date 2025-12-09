@@ -107,6 +107,10 @@ namespace Xfp.DataTypes.PanelData
         public bool BlinkPollingLED { get; set; }
         public bool AutoAdjustDST { get; set; }
         public bool RealTimeEventOutput { get; set; }
+        
+        
+        public static bool IsValidPanel(int? panel) => panel.HasValue && panel >= XfpData.MinPanelNumber && panel <= XfpData.MaxPanelNumber;
+        public static bool IsValidInput(int? input) => input.HasValue && input >= 0 && input < XfpPanelData.NumPanelInputs;
 
 
         /// <summary>

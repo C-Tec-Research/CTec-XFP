@@ -246,7 +246,7 @@ namespace Xfp.DataTypes.PanelData
         private bool isValidEvent(int evnt)        => evnt >= 0 && evnt < CEConfigData.NumEvents;
         private bool isValidPanel(int panel)       => panel >= 0 && ActionParam < NetworkConfigData.NumPanelSettings;
         private bool isValidRelay(int relay)       => relay >= 0 && relay < XfpPanelData.NumRelays;
-        private bool isValidSet(int set)           => set >= 0 && set < SetConfigData.NumOutputSetTriggers;
+        private bool isValidSet(int set)           => SetConfigData.isValidSet(set);
         private bool isValidSetRelay(int relay)    => relay >= 0 && relay < SetConfigData.NumOutputSetTriggers + XfpPanelData.NumRelays;
         private bool isValidTimer(int timer)       => timer >= 0 && timer < CEConfigData. NumEvents;
         private bool isValidZone(int zone)         => zone >= 0 && zone < ZoneConfigData.NumZones;
