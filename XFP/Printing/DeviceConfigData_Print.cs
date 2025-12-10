@@ -35,7 +35,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
             TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
+            TableUtil.SetPadding(new Thickness(0, 2, 0, 2));
 
             if (printLoop1) doc.Blocks.Add(printDeviceList(0, printAllLoopDevices, printOrder));
             if (printLoop2) doc.Blocks.Add(printDeviceList(1, printAllLoopDevices, printOrder));
@@ -69,6 +69,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 var table = TableUtil.NewTable(reportName);
 
+                setColumnWidths(loopNum);
                 defineColumnHeaders(table, reportName);
 
                 var bodyGroup = new TableRowGroup();
@@ -189,8 +190,8 @@ namespace Xfp.DataTypes.PanelData
                             newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
 
                             //base sounder group
-                            //newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
-                            newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
+                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                            //newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
                         }
 
 
@@ -245,57 +246,104 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private void defineColumnHeaders(Table table, string reportHeader)
+        private double _wDeviceType = 0.0;
+        private double _wZGS = 0.0;
+        private double _wName = 0.0;
+        private double _wChan = 0.0;
+        private double _wVS   = 0.0;
+        private double _wDN   = 0.0;
+        private double _wRLED = 0.0;
+        private double _wBSG  = 0.0;
+        private double _wSubaddr = 0.0;
+        private double _wIO = 0.0;
+        private string _subaddressHeader;
+
+        private void setColumnWidths(int loopNum)
         {
-            TableUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
-
-            //measure required column widths for subaddress and IO headers
-            var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
+            _wDeviceType = _wZGS = _wName = _wChan = _wVS = _wDN = _wRLED = _wBSG = _wSubaddr = _wIO = 0.0;
+            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
+ 
+            foreach (var d in Loops[loopNum].Devices)
+                _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + cellMargins);
             
-            var subaddressHeader = Cultures.Resources.Subaddress_Short;
-            var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width;
+            _wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, ZoneConfigData.NumZones)).Width, 
+                                       TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, ZonePanelConfigData.NumZonePanels)).Width), 
+                                       TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
+            _wName = 75;
+            _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
+            _wVS   = 46;
+            _wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
+            _wRLED = 50;
+            _wBSG  = 50;
+            
+            _subaddressHeader = Cultures.Resources.Subaddress_Short;
+            _wSubaddr  = (int)TableUtil.MeasureText(_subaddressHeader).Width  + cellMargins;
+            
             foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
-            {
-                var wSub = (int)TableUtil.MeasureText(s).Width;
-                if (wSub > subaddressWidth) subaddressWidth = wSub;
-            }
-            subaddressWidth += cellMargins;
-
+                _wSubaddr = Math.Max(_wSubaddr, (int)TableUtil.MeasureText(s).Width + cellMargins);
+            
             var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width;
             var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width;
-            var ioWidth = Math.Max(wIn, wOut);
-            ioWidth += cellMargins;
+            _wIO = Math.Max(wIn, wOut);
+            _wIO += cellMargins;
+
+            //_wDeviceType = Math.Min(_wDeviceType, 100);
+        }
+
+
+        private void defineColumnHeaders(Table table, string reportHeader)
+        {
+            //TableUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
+
+            //measure required column widths for subaddress and IO headers
+            //var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
             
-            var wType = 100;
-            var wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, 99)).Width, TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, 99)).Width), TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
-            var wName = 75;
-            var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
-            var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
+            //var subaddressHeader = Cultures.Resources.Subaddress_Short;
+            //var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width;
+            //foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
+            //{
+            //    var wSub = (int)TableUtil.MeasureText(s).Width;
+            //    if (wSub > subaddressWidth) subaddressWidth = wSub;
+            //}
+            //subaddressWidth += cellMargins;
+
+            //var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width;
+            //var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width;
+            //var ioWidth = Math.Max(wIn, wOut);
+            //ioWidth += cellMargins;
             
-            TableUtil.SetFontSize(PrintUtil.PrintDefaultFontSize);
+            //var wType = 100;
+            //var wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, ZoneConfigData.NumZones)).Width, 
+            //                              TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, ZonePanelConfigData.NumZonePanels)).Width), 
+            //                              TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
+            //var wName = 75;
+            //var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
+            //var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
+            
+            //TableUtil.SetFontSize(PrintUtil.PrintDefaultFontSize);
 
             //define table's columns
             _totalColumns = 0;
             table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
             table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wType) });           _totalColumns++;    // type name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZGS) });            _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDeviceType) });    _totalColumns++;    // type name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });           _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });          _totalColumns++;    // name
             table.Columns.Add(new TableColumn() { Width = new GridLength(46) });              _totalColumns++;    // v/s/m
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wDN) });             _totalColumns++;    // day:night
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDN) });            _totalColumns++;    // day:night
 
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
-                table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // remote LED
-                table.Columns.Add(new TableColumn() { Width = new GridLength(50) });          _totalColumns++;    // base sounder grp
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_wRLED) });      _totalColumns++;    // remote LED
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_wBSG) });       _totalColumns++;    // base sounder grp
             }
             _leftColumns = _totalColumns;
 
-            table.Columns.Add(new TableColumn() { Width = new GridLength(subaddressWidth) }); _totalColumns++;    // subaddress
-            table.Columns.Add(new TableColumn() { Width = new GridLength(ioWidth) });         _totalColumns++;    // i/o
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wChan) });           _totalColumns++;    // chan
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wZGS) });            _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(wName) });           _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wSubaddr) });       _totalColumns++;    // subaddress
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wIO) });            _totalColumns++;    // i/o
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wChan) });          _totalColumns++;    // chan
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });           _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });          _totalColumns++;    // name
             
             //define rows for the header
             var headerRow1 = new TableRow();
@@ -325,7 +373,7 @@ namespace Xfp.DataTypes.PanelData
                 headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Base_Sounder_Header, 3, 1, FontWeights.Bold));
             }
             
-            headerRow3.Cells.Add(TableUtil.NewCell(subaddressHeader));
+            headerRow3.Cells.Add(TableUtil.NewCell(_subaddressHeader));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.I_O));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Channel_Abbr));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone_Group_Set_Abbr));

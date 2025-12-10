@@ -184,11 +184,11 @@ namespace Xfp.DataTypes.PanelData
                 else
                 {
                     if (IsZonalDevice)
-                        if (ZoneConfigData.IsValidZone(Zone))
+                        if (!ZoneConfigData.IsValidZone(Zone))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidZone);
 
                     if (IsGroupedDevice)
-                        if (GroupConfigData.IsValidGroup(Group, false))
+                        if (!GroupConfigData.IsValidGroup(Group))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidGroup);
 
                     if (IsSensitivityDevice)
@@ -241,7 +241,7 @@ namespace Xfp.DataTypes.PanelData
                     }
 
                     if (DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType))
-                        if (!GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, false))
+                        if (!GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidSounderGroup);
                 }
             }

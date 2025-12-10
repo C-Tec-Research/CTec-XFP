@@ -191,6 +191,7 @@ namespace Xfp.ViewModels
         /// Initialise an empty dataset with confirmation on changes to current data.
         /// </summary>
         public void InitNewDataset() => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops);
+        //public void InitNewDataset(bool repopulateView) => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops, repopulateView);
 
         /// <summary>
         /// Initialise an empty dataset with optional confirmation on changes to current data.
@@ -1023,7 +1024,9 @@ namespace Xfp.ViewModels
                 }
 
                 if (!DataHasChanged || askOverwriteChanges(string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
-                {                    
+                {
+                    InitNewDataset();
+
                     if (LocalXfpFile.CheckForLegacyXfpFile(TextFile.FilePath))
                     {
                         newData = openLegacyXfpFile(path);

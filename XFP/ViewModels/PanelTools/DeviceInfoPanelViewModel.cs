@@ -337,7 +337,7 @@ namespace Xfp.ViewModels.PanelTools
                     }
                 }
 
-                return GroupConfigData.IsValidGroup(_groupIndex, false) ? Groups[(int)_groupIndex] : null;
+                return GroupConfigData.IsValidGroup(_groupIndex) ? Groups[(int)_groupIndex] : null;
             }
             set
             {

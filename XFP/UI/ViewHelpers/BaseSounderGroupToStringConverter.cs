@@ -9,7 +9,7 @@ namespace Xfp.UI.ViewHelpers
     class BaseSounderGroupToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            => !GroupConfigData.IsValidGroup((int?)value, false) ? "" : (int?)value == 0 ? Cultures.Resources.None : string.Format(Cultures.Resources.Group_x, (int)value);
+            => !GroupConfigData.IsValidGroup((int?)value) ? "" : (int?)value == 0 ? Cultures.Resources.None : string.Format(Cultures.Resources.Group_x, (int)value);
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => null;
     }

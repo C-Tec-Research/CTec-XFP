@@ -1,6 +1,7 @@
 ﻿using CTecDevices;
 using CTecDevices.Protocol;
 using System;
+using System.Security.Policy;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -39,6 +40,10 @@ namespace Xfp.DataTypes.PanelData
         public const int NumOutputChannels = 3;
 
 
+        public static bool IsValidIOType(int ioType)                    => ioType >= 0 && ioType < Enum.GetNames(typeof(IOTypes)).Length;
+        public static bool IsValidChannel(int? channel, IOTypes ioType) => channel.HasValue && channel >= 0 && channel <= (ioType == IOTypes.Input ? NumInputChannels : NumOutputChannels);
+
+
         //internal static IOSettingData InitialisedNew(int index) => new IOSettingData(index);
 
 
@@ -59,28 +64,28 @@ namespace Xfp.DataTypes.PanelData
         public override bool Validate()
         {
             _errorItems = new(Index, string.Format(Cultures.Resources.Subaddress_x, Index + 1));
-                
-            if (InputOutput < 0 || (int)InputOutput >= Enum.GetNames(typeof(IOTypes)).Length)
+
+            if (!IsValidIOType((int)InputOutput))
                 _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOInputOutput);
 
             if (InputOutput != IOTypes.NotUsed)
             {
-                if (Channel < 0 || Channel > (InputOutput == IOTypes.Input ? IOSettingData.NumInputChannels : IOSettingData.NumOutputChannels))
+                if (!IsValidChannel(Channel, InputOutput))
                     _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOChannel);
                 
                 if (InputOutput == IOTypes.Input)
                 {
-                    if (ZoneGroupSet < 0 || ZoneGroupSet > ZoneConfigData.NumZones)
+                    if (!ZoneConfigData.IsValidZone(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
                 }
                 else if (DeviceTypes.IOOutputIsGrouped(DeviceType, DeviceTypes.CurrentProtocolType))
                 {
-                    if (ZoneGroupSet < 0 || ZoneGroupSet > GroupConfigData.NumSounderGroups)
+                    if (!GroupConfigData.IsValidGroup(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
                 }
                 else
                 {
-                    if (ZoneGroupSet < 0 || ZoneGroupSet > DeviceData.NumIOSets)
+                    if (!SetConfigData.isValidSet(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
                 }
             }

@@ -53,7 +53,7 @@ namespace Xfp.DataTypes.PanelData
 
             return actionType switch
             {
-                CEActionTypes.GroupDisable        => GroupConfigData.IsValidGroup(param, false),
+                CEActionTypes.GroupDisable        => GroupConfigData.IsValidGroup(param),
                 CEActionTypes.OutputDisable       => SetConfigData.isValidSet(param),
                 CEActionTypes.PanelRelay          => PanelConfigData.IsValidPanel(param),
                 CEActionTypes.TriggerNetworkEvent => IsValidEvent(param),
@@ -62,14 +62,14 @@ namespace Xfp.DataTypes.PanelData
                 CEActionTypes.Loop1DeviceDisable
                 or CEActionTypes.Loop2DeviceDisable
                 or CEActionTypes.TriggerLoop1Device
-                or CEActionTypes.TriggerLoop2Device => DeviceTypes.IsValidDeviceType(param),
+                or CEActionTypes.TriggerLoop2Device => DeviceConfigData.IsValidDeviceIndex(param),
 
                 CEActionTypes.PutZoneIntoAlarm
                 or CEActionTypes.ZoneDisable => ZoneConfigData.IsValidZone(param),
                 
                 CEActionTypes.SounderAlert
                 or CEActionTypes.SounderEvac 
-                or CEActionTypes.TriggerBeacons => GroupConfigData.IsValidGroup(param, false),
+                or CEActionTypes.TriggerBeacons => GroupConfigData.IsValidGroup(param),
 
                 _ => true
             };
@@ -93,7 +93,7 @@ namespace Xfp.DataTypes.PanelData
                 CETriggerTypes.Loop1DevicePrealarm
                 or CETriggerTypes.Loop1DeviceTriggered
                 or CETriggerTypes.Loop2DevicePrealarm 
-                or CETriggerTypes.Loop2DeviceTriggered => DeviceTypes.IsValidDeviceType(param),
+                or CETriggerTypes.Loop2DeviceTriggered => DeviceConfigData.IsValidDeviceIndex(param),
                 
 
                 CETriggerTypes.ZoneHasDeviceInAlarm

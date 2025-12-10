@@ -33,14 +33,10 @@ namespace Xfp.DataTypes.PanelData
         /// Number of devices in the data<br/>
         /// NB: not a constant: it is dependent on the current protocol
         /// </summary>
-        internal static int NumDevices
-        {
-            get => DeviceTypes.CurrentProtocolType switch
-            {
-                CTecDevices.ObjectTypes.XfpApollo => CTecDevices.Protocol.XfpApollo.NumDevices,
-                _                                 => CTecDevices.Protocol.XfpCast.NumDevices,
-            };
-        }
+        internal static int NumDevices => DeviceTypes.CurrentProtocolIsXfpApollo ? XfpApollo.NumDevices : XfpCast.NumDevices;
+
+
+        public static bool IsValidDeviceIndex(int? index) => index.HasValue && index >=0 && index < NumDevices;
 
 
         private static CTecDevices.ObjectTypes _protocol = CTecDevices.ObjectTypes.XfpCast;

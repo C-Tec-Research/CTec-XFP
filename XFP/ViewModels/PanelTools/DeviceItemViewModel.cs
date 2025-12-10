@@ -232,7 +232,7 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool DeviceTypeIsValid                => DeviceType is null || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
         public bool ZoneIsValid                      => !IsZonalDevice || IsIODevice ? IOConfigItemsAreValid : ZoneConfigData.IsValidZone(Zone);
-        public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group, false);
+        public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group);
         public bool DeviceNameIsValid                => DeviceType is null || DeviceName is not null && DeviceName.Length <= DeviceNamesConfigData.DeviceNameLength;
         public bool AncillaryBaseSounderGroupIsValid => !(HasAncillaryBaseSounder??false) || GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, true);
         public bool DaySensitivityIsValid            => sensitivityIsValid(_deviceData.DaySensitivity);

@@ -138,7 +138,7 @@ namespace Xfp.DataTypes.PanelData
                         newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
 
                     if (ZoneConfigData.HasAlarmReset(z.Night.DependencyOption))                                             //night dependency alarm reset
-                        newRow.Cells.Add(IsValidDetectorReset(z.Night.AlarmReset) ? TableUtil.NewCellTime(z.Night.AlarmReset, "ms", false, TextAlignment.Center) : TableUtil.NewCellTimeError(z.Night.AlarmReset, "ms", false, TextAlignment.Center));   //sounder
+                        newRow.Cells.Add(IsValidAlarmReset(z.Night.AlarmReset) ? TableUtil.NewCellTime(z.Night.AlarmReset, "ms", false, TextAlignment.Center) : TableUtil.NewCellTimeError(z.Night.AlarmReset, "ms", false, TextAlignment.Center));   //sounder
                     else
                         newRow.Cells.Add(TableUtil.NewCell("-", TextAlignment.Center));
                 }

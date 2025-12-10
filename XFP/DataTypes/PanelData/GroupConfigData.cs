@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CTecControls.UI.ViewHelpers;
 using CTecDevices.Protocol;
 using Windows.ApplicationModel.SocialInfo;
 using Windows.ApplicationModel.Store;
@@ -36,10 +37,10 @@ namespace Xfp.DataTypes.PanelData
         internal static int NumToneMessagePairs => DeviceTypes.CurrentProtocolIsXfpApollo ? 15 : 31;
         internal static readonly TimeSpan MaxPhasedDelay = new(0, 10, 0);
 
-        public static bool IsValidGroup(int? group, bool allowNull) => !group.HasValue ? allowNull : group >= 0 && group <= NumSounderGroups;
-        public static bool IsValidPanelSounderGroup(int group)      => group >= 0 && group <= NumSounderGroups;
-        public static bool IsValidAlarmTone(int? tone)              => tone >= 0 && tone < NumToneMessagePairs;
-        public static bool IsValidPhasedDelay(TimeSpan? delay)      => delay.HasValue && ((TimeSpan)delay).CompareTo(new(0, 0, 0)) >= 0 && ((TimeSpan)delay).CompareTo(MaxPhasedDelay) <= 0;
+        public static bool IsValidGroup(int? group, bool allowNull = false) => !group.HasValue ? allowNull : group >= 0 && group <= NumSounderGroups;
+        public static bool IsValidPanelSounderGroup(int group)              => group >= 0 && group <= NumSounderGroups;
+        public static bool IsValidAlarmTone(int? tone)                      => tone >= 0 && tone < NumToneMessagePairs;
+        public static bool IsValidPhasedDelay(TimeSpan? delay)              => delay.HasValue && ((TimeSpan)delay).CompareTo(new(0, 0, 0)) >= 0 && ((TimeSpan)delay).CompareTo(MaxPhasedDelay) <= 0;
 
         
         public int PanelSounder1Group { get; set; }
