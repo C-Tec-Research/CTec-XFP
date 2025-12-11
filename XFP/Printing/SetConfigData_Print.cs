@@ -36,9 +36,8 @@ namespace Xfp.DataTypes.PanelData
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName);
 
             var headerSection = new Section();
-            //headerSection.Blocks.Add(headerInfo());
+            headerSection.Blocks.Add(key());
             doc.Blocks.Add(headerSection);
-            doc.Blocks.Add(printKey());
             doc.Blocks.Add(printSets());
 
             TableUtil.ResetDefaults();
@@ -77,73 +76,95 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        //private BlockUIContainer headerInfo()
-        //{
-        //    var grid = new Grid();
-
-        //    GridUtil.AddRowToGrid(grid);
-        //    GridUtil.AddColumnToGrid(grid);
-        //    GridUtil.AddColumnToGrid(grid);
-
-        //    grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Delay_Time), 0, 0));
-        //    grid.Children.Add(GridUtil.GridCellTimeSpan(DelayTimer, 0, 1, 1, 1, "ms", true, true, HorizontalAlignment.Left, !ZoneConfigData.IsValidSetDelay(DelayTimer)));
-
-        //    return new(grid);
-        //}
-
-
-        private Table printKey()
+        private BlockUIContainer key()
         {
-            try
-            {
-                var nWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Not_Triggered).Width + 5;
-                var pWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Pulsed).Width + 5;
-                var cWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Continuous).Width + 5;
-                var dWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Delayed).Width + 15;
+            var descWidth = Math.Max(Math.Max(Math.Max(TableUtil.MeasureText(Cultures.Resources.TriggerType_Not_Triggered).Width, 
+                                                       TableUtil.MeasureText(Cultures.Resources.TriggerType_Pulsed).Width), 
+                                                       TableUtil.MeasureText(Cultures.Resources.TriggerType_Continuous).Width),
+                                                       TableUtil.MeasureText(Cultures.Resources.TriggerType_Delayed).Width) + 5;
+            var grid = new Grid();
 
-                var table = TableUtil.NewTable(_reportName);
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddRowToGrid(grid);
 
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(nWidth) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(pWidth) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(cWidth) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(dWidth) });
-                table.Columns.Add(new TableColumn() { Width = new GridLength(TableUtil.MeasureText(Cultures.Resources.Delay_Time).Width) });
-                table.Columns.Add(new TableColumn());
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
 
-                var bodyGroup = new TableRowGroup();
-                var newRow = new TableRow();
-                bodyGroup.Rows.Add(newRow);
-
-                TableCell cell;
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.NotTriggered), 1, 1, _iconSize));
-                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Not_Triggered);     cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Pulsed), 1, 1, _iconSize));
-                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Pulsed);            cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Continuous), 1, 1, _iconSize));
-                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Continuous);        cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Delayed), 1, 1, _iconSize));
-                cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Delayed);           cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-                cell = TableUtil.NewCell(appendColon(Cultures.Resources.Delay_Time), 1, 1); cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-
-                if (ZoneConfigData.IsValidSetDelay(DelayTimer))
-                    cell = TableUtil.NewCellTime(DelayTimer, "ms", true, TextAlignment.Left, true);
-                else 
-                    cell = TableUtil.NewCellTimeError(DelayTimer, "ms", true, TextAlignment.Left);
-                                                                                            cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
-
-                table.RowGroups.Add(bodyGroup);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
-                return null;
-            }
+            var row0 = GridUtil.GridCell("", 0, 0);
+            row0.SetValue(Grid.HeightProperty, 10.0);
+            
+            grid.Children.Add(row0);
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.NotTriggered, 1, 0, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.TriggerType_Not_Triggered, 1, 1));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Pulsed, 1, 2, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.TriggerType_Pulsed, 1, 3));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Continuous, 1, 4, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.TriggerType_Continuous, 1, 5));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Delayed, 1, 6, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.TriggerType_Delayed, 1, 7));
+            
+            return new(grid);
         }
+
+
+        //private Table printKey()
+        //{
+        //    try
+        //    {
+        //        var nWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Not_Triggered).Width + 5;
+        //        var pWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Pulsed).Width + 5;
+        //        var cWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Continuous).Width + 5;
+        //        var dWidth = TableUtil.MeasureText(Cultures.Resources.TriggerType_Delayed).Width + 15;
+
+        //        var table = TableUtil.NewTable(_reportName);
+
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(nWidth) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(pWidth) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(cWidth) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(dWidth) });
+        //        table.Columns.Add(new TableColumn() { Width = new GridLength(TableUtil.MeasureText(Cultures.Resources.Delay_Time).Width) });
+        //        table.Columns.Add(new TableColumn());
+
+        //        var bodyGroup = new TableRowGroup();
+        //        var newRow = new TableRow();
+        //        bodyGroup.Rows.Add(newRow);
+
+        //        TableCell cell;
+        //        newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.NotTriggered), 1, 1, _iconSize));
+        //        cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Not_Triggered);     cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+        //        newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Pulsed), 1, 1, _iconSize));
+        //        cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Pulsed);            cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+        //        newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Continuous), 1, 1, _iconSize));
+        //        cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Continuous);        cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+        //        newRow.Cells.Add(TableUtil.NewCellImage(GridCellTriggerIcon(SetTriggerTypes.Delayed), 1, 1, _iconSize));
+        //        cell = TableUtil.NewCell(Cultures.Resources.TriggerType_Delayed);           cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+        //        cell = TableUtil.NewCell(appendColon(Cultures.Resources.Delay_Time), 1, 1); cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+
+        //        if (ZoneConfigData.IsValidSetDelay(DelayTimer))
+        //            cell = TableUtil.NewCellTime(DelayTimer, "ms", true, TextAlignment.Left, true);
+        //        else 
+        //            cell = TableUtil.NewCellTimeError(DelayTimer, "ms", true, TextAlignment.Left);
+        //                                                                                    cell.Padding = new(2,5,0,0);  newRow.Cells.Add(cell);
+
+        //        table.RowGroups.Add(bodyGroup);
+        //        return table;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
+        //        return null;
+        //    }
+        //}
 
 
         private Table printSets()
@@ -262,9 +283,9 @@ namespace Xfp.DataTypes.PanelData
             headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2));
             headerRow3.Cells.Add(TableUtil.NewCell("", 1, 2));
             
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Set_Triggered, 1, NumOutputSetTriggers, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 17));
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 2, NumPanelRelayTriggers + 1, TextAlignment.Left, FontWeights.Bold), Styles.Brush04));
+            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Panel_Relay_Triggered, 2, NumPanelRelayTriggers + 1, TextAlignment.Left, FontWeights.Bold), Styles.Brush05));
             
             for (int i = 0; i < NumOutputSetTriggers; i++)
                 headerRow3.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
@@ -296,7 +317,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
         
-        public static Grid GridCellTriggerIcon(SetTriggerTypes value, int row, int column)
+        public static Grid getIconPath(SetTriggerTypes value, int row, int column)
         {
             var result = new Grid();
 
@@ -325,6 +346,20 @@ namespace Xfp.DataTypes.PanelData
             result.SetValue(Grid.ColumnProperty, column);
             result.Children.Add(vb);
 
+            return result;
+        }
+
+
+        private static Viewbox gridCellTriggerViewbox(SetTriggerTypes triggerType, int row, int column, Size size)
+        {
+            var result = new Viewbox() { Width = size.Width, Height = size.Height, HorizontalAlignment = HorizontalAlignment.Center };
+            result.Child = SetConfigData.getIconPath(triggerType, row, column);
+            result.SetValue(Grid.RowProperty, row);
+            result.SetValue(Grid.ColumnProperty, column);
+            result.SetValue(Grid.WidthProperty, size.Width);
+            result.SetValue(Grid.HeightProperty, size.Height);
+            result.SetValue(Grid.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            result.SetValue(Grid.VerticalAlignmentProperty, VerticalAlignment.Center);
             return result;
         }
 

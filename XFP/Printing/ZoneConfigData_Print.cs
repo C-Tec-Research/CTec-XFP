@@ -221,9 +221,9 @@ namespace Xfp.DataTypes.PanelData
             headerRow2.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
 
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Output_Delays_Mins, 1, 4, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
             headerRow2.Cells.Add(TableUtil.NewCell(_arrow));
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Functioning_With, 1, 2, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
             
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 7));
             headerRow1.Cells.Add(TableUtil.NewCell(Cultures.Resources.Multiple_Alarms_End_Delays, 3, 1, TextAlignment.Center, FontWeights.Bold));
@@ -236,8 +236,8 @@ namespace Xfp.DataTypes.PanelData
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detectors, TextAlignment.Center, FontWeights.Bold));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.MCPs, TextAlignment.Center, FontWeights.Bold));
 
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Day_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Night_Dependencies, 1, 3, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
 
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Option, TextAlignment.Left, FontWeights.Bold));
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Detector, TextAlignment.Center, FontWeights.Bold));

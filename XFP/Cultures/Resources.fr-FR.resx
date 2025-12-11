@@ -2177,4 +2177,7 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="Zone_x_And_y" xml:space="preserve">
     <value>Zone {0} et {1}</value>
   </data>
+  <data name="No_Devices_In_Loop" xml:space="preserve">
+    <value>** Aucun appareil n'est configuré dans cette boucle **</value>
+  </data>
 </root>

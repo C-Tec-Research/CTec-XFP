@@ -74,161 +74,179 @@ namespace Xfp.DataTypes.PanelData
 
                 var bodyGroup = new TableRowGroup();
 
-                foreach (var dev in sortDevicesForPrinting(loopNum, printOrder, printAllLoopDevices))
+                var devices = sortDevicesForPrinting(loopNum, printOrder, printAllLoopDevices);
+
+                if (devices.Count > 0)
                 {
-                    dataRows++;
-
-                    //find number of rows of Mode/Sensitivity/Volume values
-                    var vsmRows = 0;
-                    if (DeviceTypes.IsSensitivityDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
-                        vsmRows++;
-                    if (DeviceTypes.IsVolumeDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
-                        vsmRows++;
-                    if (DeviceTypes.IsModeDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
-                        vsmRows++;
-                    if (vsmRows == 0)
-                        vsmRows = 1;
-
-                    //find number of I/O settings
-                    int ioRows = dev.IsIODevice ? dev.IOConfig.Count : 1;
-
-                    //rows required depends on the above
-                    var mvsRows = (dev.IsModeDevice ? 1 : 0) + (dev.IsVolumeDevice ? 1 : 0) + (dev.IsSensitivityDevice ? 1 : 0);
-                    var numRows = Math.Max(Math.Max(ioRows, vsmRows), mvsRows);
-
-                    //create the required number of table rows
-                    var newRows = new List<TableRow>();
-                    for (int r = 0; r < numRows; r++)
-                        newRows.Add(new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground });
-                    foreach (var row in newRows)
-                        bodyGroup.Rows.Add(row);
-
-                    //device number
-                    var colNum = TableUtil.NewCell((dev.Index + 1).ToString(), numRows, 1, TextAlignment.Right);
-                    colNum.Padding = new(0,0,5,0);
-                    newRows[0].Cells.Add(colNum);
-
-
-                    if (DeviceTypes.IsValidDeviceType(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                    foreach (var dev in sortDevicesForPrinting(loopNum, printOrder, printAllLoopDevices))
                     {
-                        //device icon
-                        newRows[0].Cells.Add(TableUtil.NewCellImage(getDeviceIcon(dev.DeviceType), numRows, 1));
+                        dataRows++;
 
-                        //device type name
-                        newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType), numRows, 1));
+                        //find number of rows of Mode/Sensitivity/Volume values
+                        var vsmRows = 0;
+                        if (DeviceTypes.IsSensitivityDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                            vsmRows++;
+                        if (DeviceTypes.IsVolumeDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                            vsmRows++;
+                        if (DeviceTypes.IsModeDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                            vsmRows++;
+                        if (vsmRows == 0)
+                            vsmRows = 1;
 
-                        //zone/group/set
-                        if (dev.IsIODevice)
-                            newRows[0].Cells.Add(TableUtil.NewCell(Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
-                        else
-                            newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev), numRows, 1, true));
+                        //find number of I/O settings
+                        int ioRows = dev.IsIODevice ? dev.IOConfig.Count : 1;
 
-                        //name
-                        newRows[0].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex), numRows, 1));
+                        //rows required depends on the above
+                        var mvsRows = (dev.IsModeDevice ? 1 : 0) + (dev.IsVolumeDevice ? 1 : 0) + (dev.IsSensitivityDevice ? 1 : 0);
+                        var numRows = Math.Max(Math.Max(ioRows, vsmRows), mvsRows);
+
+                        //create the required number of table rows
+                        var newRows = new List<TableRow>();
+                        for (int r = 0; r < numRows; r++)
+                            newRows.Add(new TableRow() { Background = Int32.IsEvenInteger(dataRows) ? PrintUtil.TableAlternatingRowBackground : PrintUtil.NoBackground });
+                        foreach (var row in newRows)
+                            bodyGroup.Rows.Add(row);
+
+                        //device number
+                        var colNum = TableUtil.NewCell((dev.Index + 1).ToString(), numRows, 1, TextAlignment.Right);
+                        colNum.Padding = new(0, 0, 5, 0);
+                        newRows[0].Cells.Add(colNum);
 
 
-                        //volume/sensitivity/mode & day:night values
-                        int modeSensVolRows = 0;
-                        bool modeSensVolIsValid = true;
-
-                        if (dev.IsModeDevice || dev.IsVolumeDevice || dev.IsSensitivityDevice)
+                        if (DeviceTypes.IsValidDeviceType(dev.DeviceType, DeviceTypes.CurrentProtocolType))
                         {
-                            if (dev.IsModeDevice)
+                            //device icon
+                            newRows[0].Cells.Add(TableUtil.NewCellImage(getDeviceIcon(dev.DeviceType), numRows, 1));
+
+                            //device type name
+                            newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.DeviceTypeName(dev.DeviceType, DeviceTypes.CurrentProtocolType), numRows, 1));
+
+                            //zone/group/set
+                            if (dev.IsIODevice)
+                                newRows[0].Cells.Add(TableUtil.NewCell(Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
+                            else
+                                newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev), numRows, 1, true));
+
+                            //name
+                            newRows[0].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex), numRows, 1));
+
+
+                            //volume/sensitivity/mode & day:night values
+                            int modeSensVolRows = 0;
+                            bool modeSensVolIsValid = true;
+
+                            if (dev.IsModeDevice || dev.IsVolumeDevice || dev.IsSensitivityDevice)
                             {
-                                newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Mode));
+                                if (dev.IsModeDevice)
+                                {
+                                    newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Mode));
 
-                                var validDM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.DayMode);
-                                var validNM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.NightMode);
-                                var dMode = dev.DayMode.ToString();
-                                var nMode = dev.NightMode.ToString();
-                                var modes = string.Format("{0}:{1}", dMode, nMode);
-                                var mCell = validDM && validNM ? TableUtil.NewCell(modes, TextAlignment.Center) : TableUtil.NewErrorCell(modes, 1, 1, TextAlignment.Center);
+                                    var validDM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.DayMode);
+                                    var validNM = DeviceConfigData.IsValidMode(dev.DeviceType, dev.NightMode);
+                                    var dMode = dev.DayMode.ToString();
+                                    var nMode = dev.NightMode.ToString();
+                                    var modes = string.Format("{0}:{1}", dMode, nMode);
+                                    var mCell = validDM && validNM ? TableUtil.NewCell(modes, TextAlignment.Center) : TableUtil.NewErrorCell(modes, 1, 1, TextAlignment.Center);
 
-                                newRows[modeSensVolRows].Cells.Add(mCell);
+                                    newRows[modeSensVolRows].Cells.Add(mCell);
+                                    modeSensVolRows++;
+                                }
+
+                                if (dev.IsVolumeDevice)
+                                {
+                                    newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume));
+
+                                    var validDV = DeviceConfigData.IsValidVolume(dev.DayVolume);
+                                    var validNV = DeviceConfigData.IsValidVolume(dev.NightVolume);
+                                    var dVol = (dev.DayVolume + 1).ToString();
+                                    var nVol = (dev.NightVolume + 1).ToString();
+                                    var vols = string.Format("{0}:{1}", dVol, nVol);
+                                    var vCell = validDV && validNV ? TableUtil.NewCell(vols, TextAlignment.Center) : TableUtil.NewErrorCell(vols, 1, 1, TextAlignment.Center);
+
+                                    newRows[modeSensVolRows].Cells.Add(vCell);
+                                    modeSensVolRows++;
+                                }
+
+                                if (dev.IsSensitivityDevice)
+                                {
+                                    newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Sensitivity));
+
+                                    var validDS = DeviceConfigData.IsValidSensitivity(dev.DaySensitivity, dev.IsSensitivityHighDevice);
+                                    var validNS = DeviceConfigData.IsValidSensitivity(dev.NightSensitivity, dev.IsSensitivityHighDevice);
+                                    var dSens = dev.DaySensitivity.ToString();
+                                    var nSens = dev.NightSensitivity.ToString();
+                                    var senss = string.Format("{0}:{1}", dSens, nSens);
+                                    var sCell = validDS && validNS ? TableUtil.NewCell(senss, TextAlignment.Center) : TableUtil.NewErrorCell(senss, 1, 1, TextAlignment.Center);
+
+                                    newRows[modeSensVolRows].Cells.Add(sCell);
+                                }
+                            }
+                            else
+                            {
+                                newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1));
+                                newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1, TextAlignment.Center));
                                 modeSensVolRows++;
                             }
 
-                            if (dev.IsVolumeDevice)
+                            if (DeviceTypes.CurrentProtocolIsXfpApollo)
                             {
-                                newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Volume));
+                                //remote LED
+                                newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
 
-                                var validDV = DeviceConfigData.IsValidVolume(dev.DayVolume);
-                                var validNV = DeviceConfigData.IsValidVolume(dev.NightVolume);
-                                var dVol = (dev.DayVolume + 1).ToString();
-                                var nVol = (dev.NightVolume + 1).ToString();
-                                var vols = string.Format("{0}:{1}", dVol, nVol);
-                                var vCell = validDV && validNV ? TableUtil.NewCell(vols, TextAlignment.Center) : TableUtil.NewErrorCell(vols, 1, 1, TextAlignment.Center);
-                                
-                                newRows[modeSensVolRows].Cells.Add(vCell);
-                                modeSensVolRows++;
+                                //base sounder group
+                                newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                                //newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
                             }
 
-                            if (dev.IsSensitivityDevice)
+
+                            // I/O config
+                            int ioRowsUsed = 0;
+
+                            if (dev.IsIODevice)
                             {
-                                newRows[modeSensVolRows].Cells.Add(TableUtil.NewCell(Cultures.Resources.Sensitivity));
-
-                                var validDS = DeviceConfigData.IsValidSensitivity(dev.DaySensitivity, dev.IsSensitivityHighDevice);
-                                var validNS = DeviceConfigData.IsValidSensitivity(dev.NightSensitivity, dev.IsSensitivityHighDevice);
-                                var dSens = dev.DaySensitivity.ToString();
-                                var nSens = dev.NightSensitivity.ToString();
-                                var senss = string.Format("{0}:{1}", dSens, nSens);
-                                var sCell = validDS && validNS ? TableUtil.NewCell(senss, TextAlignment.Center) : TableUtil.NewErrorCell(senss, 1, 1, TextAlignment.Center);
-
-                                newRows[modeSensVolRows].Cells.Add(sCell);
-                            }
-                        }
-                        else
-                        {
-                            newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1));
-                            newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1, TextAlignment.Center));
-                            modeSensVolRows++;
-                        }
-
-                        if (DeviceTypes.CurrentProtocolIsXfpApollo)
-                        {
-                            //remote LED
-                            newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
-
-                            //base sounder group
-                            newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
-                            //newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
-                        }
-
-
-                        // I/O config
-                        int ioRowsUsed = 0;
-
-                        if (dev.IsIODevice)
-                        {
-                            List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && dev.DeviceType == (int)XfpCastDeviceTypeIds.HS2
+                                List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && dev.DeviceType == (int)XfpCastDeviceTypeIds.HS2
                                                             ? _xfpHushSubaddressNames
                                                             : _defaultSubaddressNames;
 
-                            for (int io = 0; io < dev.IOConfig.Count; io++)
-                            {
-                                if (dev.IOConfig[io].InputOutput != IOTypes.NotUsed)
+                                for (int io = 0; io < dev.IOConfig.Count; io++)
                                 {
-                                    var isGroup = dev.IOConfig[io].InputOutput == IOTypes.Output && dev.IsGroupedDevice;
-                                    var isSet   = dev.IOConfig[io].InputOutput == IOTypes.Output && !dev.IsZonalDevice;
+                                    if (dev.IOConfig[io].InputOutput != IOTypes.NotUsed)
+                                    {
+                                        var isGroup = dev.IOConfig[io].InputOutput == IOTypes.Output && dev.IsGroupedDevice;
+                                        var isSet   = dev.IOConfig[io].InputOutput == IOTypes.Output && !dev.IsZonalDevice;
 
-                                    if (dev.IOConfig[io].Index >= 0 && dev.IOConfig[io].Index < subaddressNames.Count)
-                                        newRows[io].Cells.Add(TableUtil.NewCell(subaddressNames[dev.IOConfig[io].Index]));
-                                    else
-                                        newRows[io].Cells.Add(TableUtil.NewCell(""));
+                                        if (dev.IOConfig[io].Index >= 0 && dev.IOConfig[io].Index < subaddressNames.Count)
+                                            newRows[io].Cells.Add(TableUtil.NewCell(subaddressNames[dev.IOConfig[io].Index]));
+                                        else
+                                            newRows[io].Cells.Add(TableUtil.NewCell(""));
 
-                                    newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
-                                    //newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
-                                    newRows[io].Cells.Add(TableUtil.NewCell(getChannel(dev.IOConfig[io].Channel, dev.IOConfig[io].InputOutput == IOTypes.Input), true, true));
-                                    newRows[io].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, true, io), true));
-                                    newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
+                                        //newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(getChannel(dev.IOConfig[io].Channel, dev.IOConfig[io].InputOutput == IOTypes.Input), true, true));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, true, io), true));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
 
-                                    ioRowsUsed++;
+                                        ioRowsUsed++;
+                                    }
                                 }
                             }
-                        }
 
-                        var rowSpan = 1 + ioRowsUsed;
+                            var rowSpan = 1 + ioRowsUsed;
+                        }
                     }
+                }
+                else
+                {
+                    //no devices in loop
+                    var emptyTable = new List<TableRow>();
+                    emptyTable.Add(new TableRow() { Background = PrintUtil.NoBackground });
+                    foreach (var row in emptyTable)
+                        bodyGroup.Rows.Add(row);
+
+                    //device number
+                    var col = TableUtil.NewCell(Cultures.Resources.No_Devices_In_Loop, 1, _totalColumns, TextAlignment.Left);
+                    col.Padding = new(0, 5, 0, 5);
+                    emptyTable[0].Cells.Add(col);
                 }
 
                 table.RowGroups.Add(bodyGroup);
@@ -293,36 +311,6 @@ namespace Xfp.DataTypes.PanelData
 
         private void defineColumnHeaders(Table table, string reportHeader)
         {
-            //TableUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
-
-            //measure required column widths for subaddress and IO headers
-            //var cellMargins      = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
-            
-            //var subaddressHeader = Cultures.Resources.Subaddress_Short;
-            //var subaddressWidth  = (int)TableUtil.MeasureText(subaddressHeader).Width;
-            //foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
-            //{
-            //    var wSub = (int)TableUtil.MeasureText(s).Width;
-            //    if (wSub > subaddressWidth) subaddressWidth = wSub;
-            //}
-            //subaddressWidth += cellMargins;
-
-            //var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width;
-            //var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width;
-            //var ioWidth = Math.Max(wIn, wOut);
-            //ioWidth += cellMargins;
-            
-            //var wType = 100;
-            //var wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, ZoneConfigData.NumZones)).Width, 
-            //                              TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, ZonePanelConfigData.NumZonePanels)).Width), 
-            //                              TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
-            //var wName = 75;
-            //var wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
-            //var wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
-            
-            //TableUtil.SetFontSize(PrintUtil.PrintDefaultFontSize);
-
-            //define table's columns
             _totalColumns = 0;
             table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
             table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
@@ -380,7 +368,7 @@ namespace Xfp.DataTypes.PanelData
             headerRow3.Cells.Add(TableUtil.NewCell(Cultures.Resources.Description_Abbr));
 
             //add I/O config subheader & underline
-            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold), Styles.Brush06));
+            headerRow2.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.IO_Configuration, 1, _ioSettingsColumns, FontWeights.Bold), Styles.Brush05));
 
             var headerGroup = new TableRowGroup();
             headerGroup.Rows.Add(headerRow1);
@@ -395,14 +383,17 @@ namespace Xfp.DataTypes.PanelData
             var result = new List<DeviceData>(Loops[loopNum].Devices);
 
             if (!printAll)
-                for (int i = result.Count - 1; i > 0; i--)
+                for (int i = result.Count - 1; i >= 0; i--)
                     if (!DeviceTypes.IsValidDeviceType(result[i].DeviceType, DeviceTypes.CurrentProtocolType))
                         result.RemoveAt(i);
 
-            if (printOrder == SortOrder.Type)
-                result.Sort(compareByDeviceType);
-            else if (printOrder == SortOrder.ZoneGroupSet)
-                result.Sort(compareByZoneGroupSet);
+            if (result.Count > 0)
+            {
+                if (printOrder == SortOrder.Type)
+                    result.Sort(compareByDeviceType);
+                else if (printOrder == SortOrder.ZoneGroupSet)
+                    result.Sort(compareByZoneGroupSet);
+            }
 
             return result;
         }

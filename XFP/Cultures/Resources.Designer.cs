@@ -3400,6 +3400,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ** No devices are configured in this loop **.
+        /// </summary>
+        public static string No_Devices_In_Loop {
+            get {
+                return ResourceManager.GetString("No_Devices_In_Loop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No errors found..
         /// </summary>
         public static string No_Errors_Found {

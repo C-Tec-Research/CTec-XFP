@@ -2190,4 +2190,7 @@ If this is required then device names and zone descriptions may be amended to en
   <data name="Zone_x_And_y" xml:space="preserve">
     <value>Zone {0} and {1}</value>
   </data>
+  <data name="No_Devices_In_Loop" xml:space="preserve">
+    <value>** No devices are configured in this loop **</value>
+  </data>
 </root>

@@ -33,8 +33,8 @@ namespace Xfp.DataTypes.PanelData
 
             var headerSection = new Section();
             headerSection.Blocks.Add(headerInfo());
+            headerSection.Blocks.Add(key());
             doc.Blocks.Add(headerSection);
-            doc.Blocks.Add(printKey());
             doc.Blocks.Add(printGroups());
 
             TableUtil.ResetDefaults();
@@ -43,8 +43,6 @@ namespace Xfp.DataTypes.PanelData
         
         private string _reportName;
         private XfpPanelData _data;
-        //private int    _totalColumns = NumSounderGroups + 2;
-        //private int    _numColumns;
         private double _wNum;
         private double _wName;
         private double _wNumGroup;
@@ -93,41 +91,39 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private Table printKey()
+        private BlockUIContainer key()
         {
-            try
-            {
-                var descWidth = Math.Max(Math.Max(TableUtil.MeasureText(Cultures.Resources.AlarmType_Off).Width, 
-                                                  TableUtil.MeasureText(Cultures.Resources.AlarmType_Alert).Width), 
-                                                  TableUtil.MeasureText(Cultures.Resources.AlarmType_Evacuate).Width) + 5;
+            var descWidth = Math.Max(Math.Max(TableUtil.MeasureText(Cultures.Resources.AlarmType_Off).Width, 
+                                              TableUtil.MeasureText(Cultures.Resources.AlarmType_Alert).Width), 
+                                              TableUtil.MeasureText(Cultures.Resources.AlarmType_Evacuate).Width) + 5;
+            var grid = new Grid();
 
-                var table = TableUtil.NewTable(_reportName);
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddRowToGrid(grid);
+            GridUtil.AddRowToGrid(grid);
 
-                for (int i = 0; i < 3; i++)
-                {
-                    table.Columns.Add(new TableColumn() { Width = new GridLength(_iconSize.Width) });
-                    table.Columns.Add(new TableColumn() { Width = new GridLength(descWidth) });
-                }
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, _iconSize.Width);
+            GridUtil.AddColumnToGrid(grid, descWidth);
 
-                var bodyGroup = new TableRowGroup();
-                var newRow = new TableRow();
-                bodyGroup.Rows.Add(newRow);
-
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Off), 1, 1, _iconSize));
-                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Off));
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Alert), 1, 1, _iconSize));
-                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Alert));
-                newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(AlarmTypes.Evacuate), 1, 1, _iconSize));
-                newRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.AlarmType_Evacuate));
-
-                table.RowGroups.Add(bodyGroup);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                CTecMessageBox.ShowException(string.Format(CTecUtil.Cultures.Resources.Error_Generating_Report_x, _reportName), CTecUtil.Cultures.Resources.Error_Printing, ex);
-                return null;
-            }
+            var row0 = GridUtil.GridCell("", 0, 0);
+            var row2 = GridUtil.GridCell("", 2, 0);
+            row0.SetValue(Grid.HeightProperty, 10.0);
+            row2.SetValue(Grid.HeightProperty, 5.0);
+            
+            grid.Children.Add(row0);
+            grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Off, 1, 0, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Off, 1, 1));
+            grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Alert, 1, 2, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Alert, 1, 3));
+            grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Evacuate, 1, 4, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Evacuate, 1, 5));
+            grid.Children.Add(row2);
+            
+            return new(grid);
         }
 
 
@@ -156,7 +152,7 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCell(z.Name));                                                                //zone name
 
                     for (int i = 0; i < NumSounderGroups; i++)
-                        newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(z.SounderGroups[i]), 1, 1, _iconSize));     //icon
+                        newRow.Cells.Add(TableUtil.NewCellImage(getIconPath(z.SounderGroups[i]), 1, 1, _iconSize));             //icon
                 }
 
                 foreach (var p in _data.ZoneConfig.ZonePanelData.Panels)
@@ -171,7 +167,7 @@ namespace Xfp.DataTypes.PanelData
                     newRow.Cells.Add(TableUtil.NewCell(p.Name));                                                                //zone name
 
                     for (int i = 0; i < NumSounderGroups; i++)
-                        newRow.Cells.Add(TableUtil.NewCellImage(GridCellSounderIcon(p.SounderGroups[i]), 1, 1, _iconSize));     //icon
+                        newRow.Cells.Add(TableUtil.NewCellImage(getIconPath(p.SounderGroups[i]), 1, 1, _iconSize));             //icon
                 }
                 
                 table.RowGroups.Add(bodyGroup);
@@ -208,7 +204,7 @@ namespace Xfp.DataTypes.PanelData
             headerRow1.Cells.Add(TableUtil.NewCell("", 1, 2, FontWeights.Bold));
             headerRow2.Cells.Add(TableUtil.NewCell(Cultures.Resources.Zone, 1, 2, FontWeights.Bold));
 
-            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Triggers_Sounder_Groups, 1, NumSounderGroups, TextAlignment.Center, FontWeights.Bold), Styles.Brush04));
+            headerRow1.Cells.Add(TableUtil.UnderlineCell(TableUtil.NewCell(Cultures.Resources.Triggers_Sounder_Groups, 1, NumSounderGroups, TextAlignment.Center, FontWeights.Bold), Styles.Brush05));
             
             for (int i = 0; i < NumSounderGroups; i++)
                 headerRow2.Cells.Add(TableUtil.NewCell((i + 1).ToString(), TextAlignment.Center, FontWeights.Bold));
@@ -232,16 +228,30 @@ namespace Xfp.DataTypes.PanelData
         }
 
         
-        public static System.Windows.Shapes.Path GridCellSounderIcon(AlarmTypes value)
+        public static System.Windows.Shapes.Path getIconPath(AlarmTypes alarmType)
         {
-            var colour = value switch
+            var colour = alarmType switch
             {
                 AlarmTypes.Alert    => Xfp.UI.Styles.AlarmAlertPrintBrush,
                 AlarmTypes.Evacuate => Xfp.UI.Styles.AlarmEvacPrintBrush,
                 _                   => Xfp.UI.Styles.AlarmOffBrush,
             };
-
+            
             return new System.Windows.Shapes.Path() { Fill = colour, Style = Xfp.UI.Styles.AlarmIconStyle, Margin = PrintUtil.DefaultTableMargin };
+        }
+
+
+        private static Viewbox gridCellSounderViewbox(AlarmTypes alarmType, int row, int column, Size size)
+        {
+            var result = new Viewbox() { Width = size.Width, Height = size.Height, HorizontalAlignment = HorizontalAlignment.Center };
+            result.Child = getIconPath(alarmType);
+            result.SetValue(Grid.RowProperty, row);
+            result.SetValue(Grid.ColumnProperty, column);
+            result.SetValue(Grid.WidthProperty, size.Width);
+            result.SetValue(Grid.HeightProperty, size.Height);
+            result.SetValue(Grid.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            result.SetValue(Grid.VerticalAlignmentProperty, VerticalAlignment.Center);
+            return result;
         }
     }
 }
