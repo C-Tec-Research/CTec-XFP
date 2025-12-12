@@ -221,7 +221,6 @@ namespace Xfp.DataTypes.PanelData
                                             newRows[io].Cells.Add(TableUtil.NewCell(""));
 
                                         newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
-                                        //newRows[io].Cells.Add(TableUtil.NewCell(((dev.IOConfig[io].Channel ?? 0) + 1).ToString()));
                                         newRows[io].Cells.Add(TableUtil.NewCell(getChannel(dev.IOConfig[io].Channel, dev.IOConfig[io].InputOutput == IOTypes.Input), true, true));
                                         newRows[io].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, true, io), true));
                                         newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));

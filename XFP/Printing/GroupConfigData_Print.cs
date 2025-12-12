@@ -93,9 +93,10 @@ namespace Xfp.DataTypes.PanelData
 
         private BlockUIContainer key()
         {
-            var descWidth = Math.Max(Math.Max(TableUtil.MeasureText(Cultures.Resources.AlarmType_Off).Width, 
-                                              TableUtil.MeasureText(Cultures.Resources.AlarmType_Alert).Width), 
-                                              TableUtil.MeasureText(Cultures.Resources.AlarmType_Evacuate).Width) + 5;
+            var offText   = Cultures.Resources.AlarmType_Off;
+            var alertText = Cultures.Resources.AlarmType_Alert;
+            var evacText  = Cultures.Resources.AlarmType_Evacuate;
+
             var grid = new Grid();
 
             GridUtil.AddRowToGrid(grid);
@@ -103,11 +104,11 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddRowToGrid(grid);
 
             GridUtil.AddColumnToGrid(grid, _iconSize.Width);
-            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, TableUtil.MeasureText(offText).Width + 15);
             GridUtil.AddColumnToGrid(grid, _iconSize.Width);
-            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, TableUtil.MeasureText(alertText).Width + 15);
             GridUtil.AddColumnToGrid(grid, _iconSize.Width);
-            GridUtil.AddColumnToGrid(grid, descWidth);
+            GridUtil.AddColumnToGrid(grid, TableUtil.MeasureText(evacText).Width + 5);
 
             var row0 = GridUtil.GridCell("", 0, 0);
             var row2 = GridUtil.GridCell("", 2, 0);
@@ -116,11 +117,11 @@ namespace Xfp.DataTypes.PanelData
             
             grid.Children.Add(row0);
             grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Off, 1, 0, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Off, 1, 1));
+            grid.Children.Add(GridUtil.GridCell(offText, 1, 1));
             grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Alert, 1, 2, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Alert, 1, 3));
+            grid.Children.Add(GridUtil.GridCell(alertText, 1, 3));
             grid.Children.Add(gridCellSounderViewbox(AlarmTypes.Evacuate, 1, 4, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.AlarmType_Evacuate, 1, 5));
+            grid.Children.Add(GridUtil.GridCell(evacText, 1, 5));
             grid.Children.Add(row2);
             
             return new(grid);
