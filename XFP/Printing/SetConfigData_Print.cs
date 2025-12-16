@@ -17,11 +17,8 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class SetConfigData
     {
-        public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpPanelData panelData)
         {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
-
             _reportName = Cultures.Resources.Nav_Set_Configuration;
             _data = panelData;
 

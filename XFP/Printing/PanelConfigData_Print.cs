@@ -9,11 +9,8 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class PanelConfigData
     {
-        public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpPanelData panelData)
         {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
-
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x_Settings, panelData.PanelNumber));
 
             var panelPage = new Section();

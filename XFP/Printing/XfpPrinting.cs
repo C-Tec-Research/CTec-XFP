@@ -1,6 +1,7 @@
 ﻿using CTecControls.UI;
 using CTecUtil.Printing;
 using CTecUtil.UI;
+using CTecUtil.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using Xfp.Config;
 using Xfp.DataTypes;
+using Xfp.DataTypes.PanelData;
+using Xfp.UI.Views.PanelTools;
 
 namespace Xfp.Printing
 {
@@ -78,16 +81,17 @@ namespace Xfp.Printing
                 {
                     var p = data.Panels[i];
                     
-                    if (printParams.PrintSiteConfig)    p.PanelConfig.GetReport(doc, p, ref pageNumber);
+                    if (printParams.PrintSiteConfig)    p.PanelConfig.GetReport(doc, p);
                     if (printParams.PrintLoopInfo)      p.LoopConfig.GetReport(doc, p.PanelNumber, printParams.PrintLoop1, printParams.PrintLoop2, printParams.PrintAllLoopDevices, printParams.LoopPrintOrder);
-                    if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p, ref pageNumber);
-                    if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p, ref pageNumber);
-                    if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p, ref pageNumber);
-                    if (printParams.PrintCAndE)         p.CEConfig.GetReport(doc, p.PanelNumber, data, ref pageNumber);
-                    if (printParams.PrintNetworkConfig) p.NetworkConfig.GetReport(doc, data, data.CurrentPanel.PanelNumber, ref pageNumber);
+                    if (printParams.PrintZones)         p.ZoneConfig.GetReport(doc, p);
+                    if (printParams.PrintGroups)        p.GroupConfig.GetReport(doc, p);
+                    if (printParams.PrintSets)          p.SetConfig.GetReport(doc, p);
+                    if (printParams.PrintCAndE)         p.CEConfig.GetReport(doc, p.PanelNumber, data);
+                    if (printParams.PrintNetworkConfig) p.NetworkConfig.GetReport(doc, data, data.CurrentPanel.PanelNumber);
                 }
 
-                if (printParams.PrintComments) printComments(doc, ref pageNumber);
+                if (printParams.PrintEventLog) data.EventLog.GetReport(doc);
+                if (printParams.PrintComments) printComments(doc, data.Comments);
 
                 PrintUtil.Print(doc, Cultures.Resources.XFP_Config_Print_Description, printParams.Settings, printAction);
             }
@@ -102,8 +106,27 @@ namespace Xfp.Printing
             => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).Show();
         
 
-        private static void printComments(FlowDocument doc, ref int pageNumber)
+        private static void printComments(FlowDocument doc, string comments)
         {
+            GridUtil.ResetDefaults();            
+            PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Comments);
+            var commentsPage = new Section();
+            var grid = new Grid() { MaxWidth = 400, HorizontalAlignment = HorizontalAlignment.Left };
+            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            
+            if (!string.IsNullOrWhiteSpace(comments))
+            {
+                GridUtil.AddCellToGrid(grid, comments, 0, 0, false, false);
+            }
+            else
+            {
+                GridUtil.SetFontStyle(FontStyles.Italic);
+                GridUtil.AddCellToGrid(grid, !string.IsNullOrWhiteSpace(comments) ? comments : Cultures.Resources.Comments_Is_Blank, 0, 0, false, false);
+            }
+
+            commentsPage.Blocks.Add(new BlockUIContainer(grid));
+            doc.Blocks.Add(commentsPage);
+            GridUtil.ResetDefaults();
         }
     }
 }

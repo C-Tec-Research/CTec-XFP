@@ -5,13 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Xfp.UI.Views.PanelTools"
       xmlns:ctc="clr-namespace:CTecControls.UI;assembly=CTecControls" 
+      xmlns:ctcvh="clr-namespace:CTecControls.UI.ViewHelpers;assembly=CTecControls"
       xmlns:viewmodels="clr-namespace:Xfp.ViewModels.PanelTools" 
       d:DataContext="{d:DesignInstance Type=viewmodels:CommentsViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="430" d:DesignWidth="600"
       Title="EventLogViewer">
 
-
+    <Page.Resources>
+        <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
+    </Page.Resources>
+    
     <Grid Margin="10,5,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -26,7 +30,34 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Comments_For_File_Copy, Source={StaticResource Resources}}" Style="{StaticResource CommentsSubheader}" Margin="0,0,15,2"/>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0" Padding="0">
-            <ctc:CTecTextBox Text="{Binding Comments}" PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>
+
+            <Grid>
+                <ctc:CTecTextBox Text="{Binding Comments}"  PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>
+                <!--<TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />-->
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="{Binding Path=Comments_Is_Blank, Source={StaticResource Resources}}"
+                           Margin="20,-100,20,0"
+                           Foreground="#FF808080"
+                           Opacity="0.3"
+                           FontStyle="Italic"
+                           FontSize="18"
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Comments, Converter={StaticResource IsBlankToVisibilityConverter}}"
+                           x:Name="UserMessage">
+                    <!--<TextBlock.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value=""/>
+                                <Condition Property="IsKeyboardFocusWithin" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                        </MultiTrigger>
+                    </TextBlock.Triggers>-->
+                </TextBlock>
+            </Grid>
+
+            <!--<ctc:CTecTextBox Text="{Binding Comments}"  PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>-->
         </Border>
 
     </Grid>

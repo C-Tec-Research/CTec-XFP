@@ -14,26 +14,16 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class ZoneConfigData
     {
-        public void GetReport(FlowDocument doc, XfpPanelData panelData, ref int pageNumber)
-        {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
-            
+        public void GetReport(FlowDocument doc, XfpPanelData panelData)
+        {            
             TableUtil.ResetDefaults();
             TableUtil.SetForeground(PrintUtil.TextForeground);
             TableUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
-            //TableUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
             TableUtil.SetFontWeight(FontWeights.Normal);
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             GridUtil.ResetDefaults();
-            //GridUtil.SetForeground(PrintUtil.TextForeground);
-            //GridUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
-            //GridUtil.SetFontStretch(PrintUtil.FontNarrowWidth);
-            //GridUtil.SetFontWeight(FontWeights.Normal);
-            //GridUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
-            //GridUtil.SetPadding(PrintUtil.DefaultGridMargin);
 
             PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration);
             

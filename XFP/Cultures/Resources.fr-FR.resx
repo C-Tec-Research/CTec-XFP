@@ -1929,9 +1929,6 @@ Toutes ses données seront perdues.</value>
   <data name="Save_These_Changes" xml:space="preserve">
     <value>Enregistrer ces modifications ?</value>
   </data>
-  <data name="Comms_Download_Is_Complete" xml:space="preserve">
-    <value>Terminé avec succès.</value>
-  </data>
   <data name="Panel_x_Configuration" xml:space="preserve">
     <value>Configuration de Paneau {0}</value>
   </data>
@@ -2046,11 +2043,11 @@ Toutes ses données seront perdues.</value>
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
-  <data name="Option_Preview" xml:space="preserve">
-    <value>Pré_voir</value>
-  </data>
   <data name="XFP_Config_Print_Description" xml:space="preserve">
     <value>Configuration XFP</value>
+  </data>
+  <data name="Option_Preview" xml:space="preserve">
+    <value>Pré_voir</value>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Numéro d’ingénieur</value>
@@ -2072,9 +2069,6 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
     <value>Tapez pur ajouter une deuxième boucle</value>
-  </data>
-  <data name="Comms_Download_Incomplete" xml:space="preserve">
-    <value>Le téléchargement du panneau était incomplet.</value>
   </data>
   <data name="Download_x" xml:space="preserve">
     <value>Téléchargement du panneau : {0}</value>
@@ -2179,5 +2173,11 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   </data>
   <data name="No_Devices_In_Loop" xml:space="preserve">
     <value>** Aucun appareil n'est configuré dans cette boucle **</value>
+  </data>
+  <data name="Comments_Is_Blank" xml:space="preserve">
+    <value>La section des commentaires est vide</value>
+  </data>
+  <data name="File_Is_Empty" xml:space="preserve">
+    <value>[fichier vide]</value>
   </data>
 </root>

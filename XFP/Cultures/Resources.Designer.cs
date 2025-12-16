@@ -19,7 +19,7 @@ namespace Xfp.Cultures {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -625,6 +625,15 @@ namespace Xfp.Cultures {
         public static string Comments_For_File_Copy {
             get {
                 return ResourceManager.GetString("Comments_For_File_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Comments section is blank.
+        /// </summary>
+        public static string Comments_Is_Blank {
+            get {
+                return ResourceManager.GetString("Comments_Is_Blank", resourceCulture);
             }
         }
         
@@ -2705,6 +2714,15 @@ namespace Xfp.Cultures {
         public static string File_Data_Saved_By_Unknown_Tools_Version {
             get {
                 return ResourceManager.GetString("File_Data_Saved_By_Unknown_Tools_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [file is empty].
+        /// </summary>
+        public static string File_Is_Empty {
+            get {
+                return ResourceManager.GetString("File_Is_Empty", resourceCulture);
             }
         }
         

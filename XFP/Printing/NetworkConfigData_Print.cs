@@ -8,11 +8,8 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class NetworkConfigData
     {
-        public void GetReport(FlowDocument doc, XfpData data, int panelNumber, ref int pageNumber)
+        public void GetReport(FlowDocument doc, XfpData data, int panelNumber)
         {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
-
             _data = data;
             _panelNumber = panelNumber;
 
@@ -52,14 +49,14 @@ namespace Xfp.DataTypes.PanelData
 
             for (int i = 0; i < NumPanelSettings; i++)
             {
-                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0, true);
-                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1, true);
-                GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, true));
+                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0);
+                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1);
+                GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, false));
 
                 if (_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted && string.IsNullOrWhiteSpace(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location))
-                    GridUtil.AddCellToGrid(grid, "", i + 1, 3, true, true);
+                    GridUtil.AddCellToGrid(grid, "", i + 1, 3, false, true);
                 else
-                    GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, true);
+                    GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, false);
             }
 
             //for (int i = 0; i < _data.Panels.Count; i++)

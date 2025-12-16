@@ -90,6 +90,8 @@ namespace Xfp.DataTypes
 
         public SiteConfigData SiteConfig { get; set; }
         public string Comments { get; set; }
+        [JsonIgnore]
+        public EventLogData EventLog { get; set; } = new();
 
         public string ToolsVersion { get; set; }
 

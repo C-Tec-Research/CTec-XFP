@@ -2193,4 +2193,10 @@ If this is required then device names and zone descriptions may be amended to en
   <data name="No_Devices_In_Loop" xml:space="preserve">
     <value>** No devices are configured in this loop **</value>
   </data>
+  <data name="Comments_Is_Blank" xml:space="preserve">
+    <value>The Comments section is blank</value>
+  </data>
+  <data name="File_Is_Empty" xml:space="preserve">
+    <value>[file is empty]</value>
+  </data>
 </root>

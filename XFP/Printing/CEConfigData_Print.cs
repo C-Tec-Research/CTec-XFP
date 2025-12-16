@@ -21,11 +21,8 @@ namespace Xfp.DataTypes.PanelData
 {
     public partial class CEConfigData
     {
-        public void GetReport(FlowDocument doc, int panelNumber, XfpData data, ref int pageNumber)
+        public void GetReport(FlowDocument doc, int panelNumber, XfpData data)
         {
-            //if (pageNumber++ > 1)
-            //    PrintUtil.InsertPageBreak(doc);
-
             _panelNumber = panelNumber;
             _data = data;
 

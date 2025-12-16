@@ -412,6 +412,7 @@ namespace Xfp.ViewModels
                     CurrentFilePath = (CurrentPage.DataContext as PageViewModelBase)?.CurrentFilePath;
                     HeaderPanelEnabled = CurrentPage != _eventLogPage && CurrentPage != _commentsPage;
                     OnPropertyChanged();
+                    OnPropertyChanged(nameof(EnableChangesEnabled));
                 }
             }
         }
@@ -477,6 +478,7 @@ namespace Xfp.ViewModels
         private bool _headerPanelEnabled = true;
         public bool MainWindowEnabled { get => _mainWindowEnabled; set { _mainWindowEnabled = value; OnPropertyChanged(); } }
         public bool HeaderPanelEnabled { get => _headerPanelEnabled; set { _headerPanelEnabled = value; OnPropertyChanged(); OnPropertyChanged(nameof(PanelIsReadOnly)); } }
+        public bool EnableChangesEnabled => _headerPanelEnabled || CurrentPage == _eventLogPage || _currentPage == _commentsPage;
 
 
         private ScaleTransform _layoutTransform;

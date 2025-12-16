@@ -208,8 +208,8 @@
                             <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}" PreviewMouseDown="chk_PreviewMouseDown"/>
                         </StackPanel>
 
                     </StackPanel>
