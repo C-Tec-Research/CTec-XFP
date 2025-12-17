@@ -1,48 +1,63 @@
 ﻿using CTecUtil.Printing;
-using CTecUtil.Utils;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
-using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
 {
     public partial class EventLogData
     {
-        public void GetReport(FlowDocument doc)
+        public static void GetReport(FlowDocument doc)
         {
-            GridUtil.ResetDefaults();            
             PrintUtil.PageHeader(doc, Cultures.Resources.Print_Event_Log);
 
-            var eventLogPage = new Section();
-            var grid = new Grid();
-            var row  = 0;
+            TableUtil.ResetDefaults();
+            TableUtil.SetForeground(PrintUtil.TextForeground);
+            TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
+            TableUtil.SetPadding(new Thickness(0, 2, 0, 2));
+
+            doc.Blocks.Add(printEventLog());
+
+            TableUtil.ResetDefaults();
+        }
+
+
+        /// <summary>
+        /// Print in a single column table, with one row for 
+        /// the file name if needed, and one for the log text.
+        /// </summary>
+        private static Table printEventLog()
+        {
+            var table = new Table();
+            table.Padding = new(0);
+            table.Margin = new(0);
+            table.Columns.Add(new TableColumn() { Width = new GridLength(1, GridUnitType.Star) });
+            var rowGroup = new TableRowGroup();
 
             if (!string.IsNullOrEmpty(FilePath))
             {
-                GridUtil.AddRowToGrid(grid);
-                GridUtil.AddCellToGrid(grid, "\n" + string.Format(CTecControls.Cultures.Resources.File_x, Path.GetFileName(FilePath)) + "\n", row++, 0, false, false);
+                var fileNameRow = new TableRow();
+                fileNameRow.Cells.Add(TableUtil.NewCell(string.Format(CTecControls.Cultures.Resources.File_x, Path.GetFileName(FilePath))));
+                rowGroup.Rows.Add(fileNameRow);
             }
 
-            GridUtil.SetNonProportionalFont();
-            GridUtil.SetFontSize(8);
-            GridUtil.AddRowToGrid(grid);
+            TableUtil.SetNonProportionalFont();
 
+            var logRow = new TableRow();
             if (!string.IsNullOrWhiteSpace(LogText))
             {
-                GridUtil.AddCellToGrid(grid, LogText, row, 0, false, false);
+                TableUtil.SetFontSize(8);
+                logRow.Cells.Add(TableUtil.NewCell(LogText));
             }
             else
             {
-                GridUtil.SetFontStyle(FontStyles.Italic);
-                GridUtil.AddCellToGrid(grid, Cultures.Resources.File_Is_Empty, row, 0, false, false);
+                TableUtil.SetFontStyle(FontStyles.Italic);
+                logRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.File_Is_Empty));
             }
-
-            eventLogPage.Blocks.Add(new BlockUIContainer(grid));
-            doc.Blocks.Add(eventLogPage);
-            GridUtil.ResetDefaults();
+            rowGroup.Rows.Add(logRow);
+            
+            table.RowGroups.Add(rowGroup);
+            return table;
         }
     }
 }

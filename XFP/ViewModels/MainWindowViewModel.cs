@@ -87,6 +87,7 @@ namespace Xfp.ViewModels
                 (p.DataContext as PanelToolsPageViewModelBase)?.SetChangesAreAllowedChecker(CheckChangesAreAllowed);
 
             (_siteConfigPage.DataContext as SiteConfigViewModel).SystemNameChanged = new((name) => SystemName = name);
+            EventLogData.ClearEventLogViewer = (_eventLogPage.DataContext as EventLogViewerViewModel).Clear;
 
             ReadApplicationCfg();
             SetDeviceSelectorMenus();
@@ -207,7 +208,10 @@ namespace Xfp.ViewModels
             CurrentProtocol = protocol;
 
             if (repopulateView)
+            {
                 PopulateView(XfpData.InitialisedNew(CurrentProtocol, PanelNumber = PanelNumber, true, numLoops));
+                EventLogData.ClearEventLogViewer?.Invoke();
+            }
 
             OnPropertyChanged(nameof(CurrentFileName));
             OnPropertyChanged(nameof(CurrentFilePath));
@@ -976,7 +980,11 @@ namespace Xfp.ViewModels
 
         public void FileSave()
         {
-            if (preSaveToFileValidation())
+            if (CurrentPage == _eventLogPage)
+            {
+                (_eventLogPage.DataContext as EventLogViewerViewModel).SaveToFile();
+            }
+            else if (preSaveToFileValidation())
             {
                 //save all data
                 var savedPath = TextFile.FilePath = CurrentFilePath;
@@ -1442,6 +1450,7 @@ namespace Xfp.ViewModels
 
             if (result == true)
             {
+                UIState.SetBusyState();
                 var p = printDialog.PrintQueue;
                 XfpPrinting.PrintConfig(_data, printDialog.PrintParams, PrintActions.Print);
             }

@@ -33,7 +33,6 @@
 
             <Grid>
                 <ctc:CTecTextBox Text="{Binding Comments}"  PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>
-                <!--<TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />-->
                 <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Text="{Binding Path=Comments_Is_Blank, Source={StaticResource Resources}}"
@@ -45,19 +44,9 @@
                            IsHitTestVisible="False"
                            Visibility="{Binding Comments, Converter={StaticResource IsBlankToVisibilityConverter}}"
                            x:Name="UserMessage">
-                    <!--<TextBlock.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Text" Value=""/>
-                                <Condition Property="IsKeyboardFocusWithin" Value="False"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
-                        </MultiTrigger>
-                    </TextBlock.Triggers>-->
                 </TextBlock>
             </Grid>
 
-            <!--<ctc:CTecTextBox Text="{Binding Comments}"  PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>-->
         </Border>
 
     </Grid>

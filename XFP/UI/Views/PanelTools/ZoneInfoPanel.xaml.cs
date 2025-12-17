@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CTecUtil.Utils;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Xfp.ViewModels.PanelTools;
@@ -55,7 +56,7 @@ namespace Xfp.UI.Views.PanelTools
         private void spinner_PreviewKeyDown(object sender, KeyEventArgs e)              { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void checkBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)   { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void checkBox_PreviewKeyDown(object sender, KeyEventArgs e)             { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
-        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)              { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
+        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)              { if (!TextUtil.KeyIsSafeEditKey(e.Key) && !(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void timePicker_PreviewMouseDown(object sender, MouseButtonEventArgs e) { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void timePicker_PreviewKeyDown(object sender, KeyEventArgs e)           { if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
         private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)  { if (e.Command == ApplicationCommands.Paste) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }

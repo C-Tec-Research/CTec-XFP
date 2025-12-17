@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Windows;
 using CTecControls.UI;
 using CTecUtil;
@@ -31,7 +32,7 @@ namespace Xfp.ViewModels.PanelTools
         private bool _eraseAfter;
         private bool _isLogging;
         private bool _isPaused;
-        private bool isLogging          { get => _isLogging;  set { _isLogging = value; isPaused = false; CurrentFilePath = null; RefreshView(); } }
+        private bool isLogging          { get => _isLogging;  set { _isLogging = value; isPaused = false; EventLogFilePath = null; RefreshView(); } }
         private bool isPaused           { get => _isPaused;   set { if (!(_isPaused = value) && isLogging) enqueueEventLogRequest(); RefreshView(); } }
         private bool eraseAfter         { get => _eraseAfter; set { _eraseAfter = value; OnPropertyChanged(); } }
         private bool isLoggingOrPaused => isLogging || isPaused;
@@ -78,38 +79,32 @@ namespace Xfp.ViewModels.PanelTools
         public bool IsResumeAvailable => isPaused;
         public bool IsStopAvailable   => isLoggingOrPaused;
         public bool IsResetAvailable  => !isLoggingOrPaused && _eventLogIndex > 0;
-        public bool IsClearAvailable  => (LogText?.Length ?? 0) > 0;
+        public bool IsClearAvailable  => (EventLogText?.Length ?? 0) > 0;
         public bool IsSaveAvailable   => isPausedOrStopped && IsClearAvailable;
         public bool IsOpenAvailable   => !isLogging;
 
 
-
-
-        public string LogText
+        public string EventLogText
         {
-            get => _data.EventLog.LogText;
+            get => EventLogData.LogText;
             set
             {
-                _data.EventLog.LogText = value;
+                EventLogData.LogText = value;
                 Application.Current.Dispatcher.Invoke(new Action(() => ClearText?.Invoke()));
-                Application.Current.Dispatcher.Invoke(new Action(() => DataReceived?.Invoke(_data.EventLog.LogText)));
+                Application.Current.Dispatcher.Invoke(new Action(() => DataReceived?.Invoke(EventLogData.LogText)));
                 OnPropertyChanged();
             }
         }
 
-        
-        public override string CurrentFilePath { get => _data.EventLog.FilePath; set { _data.EventLog.FilePath = base.CurrentFilePath = value; OnPropertyChanged(); OnPropertyChanged(nameof(CurrentFileName)); } }
-        
-        private string CurrentFolder { get; set; }
+        public string EventLogFilePath { get => EventLogData.FilePath; set { EventLogData.FilePath = value; OnPropertyChanged(); OnPropertyChanged(nameof(EventLogFileName)); } }
+        public string EventLogFileName   => Path.GetFileName(EventLogData.FilePath);
+        private string CurrentFolder   { get; set; }
 
 
         public void Start()
         {
-            if (CurrentFilePath is not null)
-            {
-                LogText = "";
-                CurrentFilePath = null;
-            }
+            if (EventLogFilePath is not null) 
+                Clear();
 
             eraseAfter = CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Erase_Event_Log_After_Reading, Cultures.Resources.Nav_Event_Log) == MessageBoxResult.Yes;
             _eventLogIndex = 0; 
@@ -122,17 +117,16 @@ namespace Xfp.ViewModels.PanelTools
         public void Resume() => isPaused = false;
         public void Stop()   => isLogging = false;
         //public void ResetIndex() { _eventLogIndex = 0; RefreshView(); }
-        public void Clear() { ClearText?.Invoke(); _data.EventLog.LogText = ""; CurrentFilePath = null; RefreshView(); }
+        public void Clear() { ClearText?.Invoke(); EventLogText = EventLogFilePath = null; RefreshView(); }
 
         public void OpenFromFile()
         {
             TextFile.FilePath = CurrentFolder;
-            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
+            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.EventLogFileExt + "; *" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.EventLogFileExt + ";*" + CTecUtil.IO.TextFile.LogFileExt;
             if (TextFile.OpenFile())
             {
-                CurrentFilePath = _data.EventLog.FilePath = TextFile.FilePath;
-                _data.EventLog.LogText = File.ReadAllText(TextFile.FilePath);
-                LogText = !string.IsNullOrWhiteSpace(_data.EventLog.LogText) ? _data.EventLog.LogText : "\n" + Cultures.Resources.File_Is_Empty;
+                EventLogFilePath = TextFile.FilePath;
+                EventLogText = File.ReadAllText(TextFile.FilePath).ReplaceLineEndings("\r");      // <-- replace CRLF with CR to prevent double-spaced lines in RichTextBox
                 _eventLogIndex = 0;
                 RefreshView();
             }
@@ -141,8 +135,8 @@ namespace Xfp.ViewModels.PanelTools
         public void SaveToFile()
         {
             TextFile.FilePath = CurrentFolder;
-            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.LogFileExt;
-            TextFile.SaveFileAs(LogText);
+            TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.EventLogFileExt + ")|*" + CTecUtil.IO.TextFile.EventLogFileExt;
+            TextFile.SaveFileAs(EventLogText);
             CurrentFolder = System.IO.Path.GetDirectoryName(TextFile.FilePath);
         }
 
@@ -170,7 +164,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region IPanelToolsViewModel implementation
-        public void PopulateView(XfpData data) => _data = data;
+        public void PopulateView(XfpData data) { }
 
 
         public void RefreshView() 
@@ -189,9 +183,9 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IsClearAvailable)); 
             OnPropertyChanged(nameof(IsSaveAvailable)); 
             OnPropertyChanged(nameof(IsOpenAvailable)); 
-            OnPropertyChanged(nameof(LogText));
-            OnPropertyChanged(nameof(CurrentFileName));
-            OnPropertyChanged(nameof(CurrentFilePath));
+            OnPropertyChanged(nameof(EventLogText));
+            OnPropertyChanged(nameof(EventLogFilePath));
+            OnPropertyChanged(nameof(EventLogFileName));
         }
         #endregion
 
@@ -202,7 +196,7 @@ namespace Xfp.ViewModels.PanelTools
 
             if (!string.IsNullOrWhiteSpace(eventText.Value))
             {
-                _data.EventLog.LogText += eventText.Value + Environment.NewLine;
+                EventLogText += eventText.Value + Environment.NewLine;
                 Application.Current.Dispatcher.Invoke(new Action(() => DataReceived?.Invoke(eventText.Value + "\r")));
 
                 if (IsActivePage && !isPausedOrStopped)

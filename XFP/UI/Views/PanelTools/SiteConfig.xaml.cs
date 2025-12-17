@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using CTecUtil.Utils;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Xfp.DataTypes;
 using Xfp.ViewModels.PanelTools;
@@ -17,10 +18,10 @@ namespace Xfp.UI.Views.PanelTools
 
         private SiteConfigViewModel _context;
 
-        private void ctrl_PreviewKeyDown(object sender, KeyEventArgs e)                { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
+        private void ctrl_PreviewKeyDown(object sender, KeyEventArgs e)                { if (!TextUtil.KeyIsSafeEditKey(e.Key) && !(_context.CheckChangesAreAllowed?.Invoke() ?? true)) e.Handled = true; }
         private void ctrl_PreviewMouseDown(object sender, MouseButtonEventArgs e)      { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
         private void ctrl_PreviewMouseWheel(object sender, MouseWheelEventArgs e)      { if (_context.IsReadOnly) e.Handled = true; }
-        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) { if (e.Command == ApplicationCommands.Paste) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? false)) e.Handled = true; }
+        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e) { if (e.Command == ApplicationCommands.Paste) if (!(_context.CheckChangesAreAllowed?.Invoke() ?? true)) e.Handled = true; }
         private void al2Code_PreviewKeyDown(object sender, KeyEventArgs e)             { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.AccessCode_PreviewKeyDown(sender as TextBox, e, AccessLevels.User); }
         private void al3Code_PreviewKeyDown(object sender, KeyEventArgs e)             { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; else _context.AccessCode_PreviewKeyDown(sender as TextBox, e, AccessLevels.Engineer); }
 
