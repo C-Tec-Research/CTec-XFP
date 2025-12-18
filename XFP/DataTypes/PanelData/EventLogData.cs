@@ -8,7 +8,7 @@ using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData
 {
-    public partial class EventLogData : ConfigData, IConfigData
+    public partial class EventLogData
     {
         public static string LogText { get; set; }
 

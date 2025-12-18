@@ -426,33 +426,43 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="Nav_Comments" xml:space="preserve">
     <value>Comments</value>
+    <comment>Menu item: user comments</comment>
   </data>
   <data name="Nav_Device_Details" xml:space="preserve">
     <value>Device Details</value>
+    <comment>Menu item: device details</comment>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
     <value>Loop {0}</value>
+    <comment>Menu item: device overview for loop 'x'</comment>
   </data>
   <data name="Nav_Event_Log" xml:space="preserve">
     <value>Event Log Viewer</value>
+    <comment>Menu item: event log viewer</comment>
   </data>
   <data name="Nav_Group_Configuration" xml:space="preserve">
     <value>Groups</value>
+    <comment>Menu item: groups config</comment>
   </data>
   <data name="Nav_C_And_E_Configuration" xml:space="preserve">
     <value>Causes and Effects</value>
+    <comment>Menu item: causes &amp; effects config</comment>
   </data>
   <data name="Nav_Set Configuration" xml:space="preserve">
     <value>Sets</value>
+    <comment>Menu item: sets config</comment>
   </data>
   <data name="Nav_Site_Configuration" xml:space="preserve">
     <value>Site Configuration</value>
+    <comment>Menu item: site config</comment>
   </data>
   <data name="Nav_Network_Configuration" xml:space="preserve">
     <value>Network Configuration</value>
+    <comment>Menu item: network config</comment>
   </data>
   <data name="Nav_Zone_Configuration" xml:space="preserve">
     <value>Zones</value>
+    <comment>Menu item: zones config</comment>
   </data>
   <data name="New_File_Not_Saved" xml:space="preserve">
     <value>New file has not been saved</value>
@@ -538,6 +548,7 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="Program_Name" xml:space="preserve">
     <value>XFP</value>
+    <comment>Not translated</comment>
   </data>
   <data name="XFP_Log_Files" xml:space="preserve">
     <value>XFP log files</value>
@@ -566,9 +577,6 @@ Are you sure you want to exit without saving?</value>
   <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
     <value>Select a device to show details</value>
   </data>
-  <data name="Select_Baud_Rate" xml:space="preserve">
-    <value>Select Baud Rate</value>
-  </data>
   <data name="Select_Duration" xml:space="preserve">
     <value>Select duration</value>
   </data>
@@ -592,12 +600,6 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="Select_Option" xml:space="preserve">
     <value>Select Option</value>
-  </data>
-  <data name="Select_Paging_Type" xml:space="preserve">
-    <value>Select Paging Type</value>
-  </data>
-  <data name="Select_Parity" xml:space="preserve">
-    <value>Select Parity</value>
   </data>
   <data name="Select_Port" xml:space="preserve">
     <value>Select Port</value>
@@ -782,6 +784,7 @@ change to that type, or select Delete to remove a device</value>
   </data>
   <data name="Maintenance_String" xml:space="preserve">
     <value>Maintenance string</value>
+    <comment>The text displayed when a panel requires maintenance</comment>
   </data>
   <data name="Normal_String" xml:space="preserve">
     <value>Normal string</value>
@@ -1945,6 +1948,7 @@ All of its data will be lost.</value>
   </data>
   <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
     <value>Loop {0} device {1} : {2}</value>
+    <comment>Loop 'x', Device 'y' + device type</comment>
   </data>
   <data name="C_And_E_Event_x" xml:space="preserve">
     <value>Cause &amp; Effect Event #{0}</value>

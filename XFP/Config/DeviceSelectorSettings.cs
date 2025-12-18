@@ -11,7 +11,6 @@ namespace XFP.Config
              {
                  CTecDevices.ObjectTypes.XfpApollo => ApolloDeviceSelector.Menu,
                  CTecDevices.ObjectTypes.XfpCast   => CastDeviceSelector.Menu,
-                 //ProtocolTypes.Hochiki => HochikiDeviceSelector.Menu,
                  _ => null
              };
         }

@@ -851,11 +851,6 @@
                                                 <TextBlock Text="{Binding ApolloProtocol}" Foreground="{StaticResource Brush10}" Opacity="0.7" FontSize="14" Height="22" Margin="0,2,10,0"/>
                                             </StackPanel>
 
-                                            <!--<StackPanel Orientation="Horizontal">
-                                                <CheckBox Width="20" Height="20" Margin="5,7,5,0" IsChecked="{Binding CurrentProtocolIsHochiki}" Opacity="0.8"/>
-                                                <TextBlock Text="{Binding HochikiProtocol}" Foreground="{StaticResource Brush10}" Opacity="0.7" FontSize="14" Height="22" Margin="0,2,10,0"/>
-                                            </StackPanel>-->
-
                                         </StackPanel>
                                     </Grid>
                                 </ctc:HamburgerMenu.Content>

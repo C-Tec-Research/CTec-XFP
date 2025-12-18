@@ -89,6 +89,7 @@ namespace Xfp.DataTypes
 
 
         public SiteConfigData SiteConfig { get; set; }
+
         public string Comments { get; set; }
 
         public string ToolsVersion { get; set; }

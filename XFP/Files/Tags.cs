@@ -21,6 +21,5 @@
 
         internal const string CastProtocol    = "stCASTLoop";
         internal const string ApolloProtocol  = "stApolloLoop";
-        internal const string HochikiProtocol = "stHochikiLoop";
     }
 }

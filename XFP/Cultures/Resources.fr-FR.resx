@@ -558,9 +558,6 @@ Veuillez insérer le lien et réessayer.</value>
   <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
     <value>Sélectionnez un dispositif pour afficher les détails</value>
   </data>
-  <data name="Select_Baud_Rate" xml:space="preserve">
-    <value>Sélectionnez les Bauds</value>
-  </data>
   <data name="Select_Duration" xml:space="preserve">
     <value>Sélectionnez la Durée</value>
   </data>
@@ -584,12 +581,6 @@ Veuillez insérer le lien et réessayer.</value>
   </data>
   <data name="Select_Option" xml:space="preserve">
     <value>Sélectionnez une Option</value>
-  </data>
-  <data name="Select_Paging_Type" xml:space="preserve">
-    <value>Sélectionnez le Type</value>
-  </data>
-  <data name="Select_Parity" xml:space="preserve">
-    <value>Sélectionnez le Parité</value>
   </data>
   <data name="Select_Port" xml:space="preserve">
     <value>Sélectionnez le Port</value>
@@ -1770,6 +1761,9 @@ Que voulez-vous faire avec les paramètres des autres panneaux?</value>
   </data>
   <data name="Error_Quiescent_String_Blank" xml:space="preserve">
     <value>La chaîne normale manque</value>
+  </data>
+  <data name="Remove_Panel" xml:space="preserve">
+    <value>Supprimer</value>
   </data>
   <data name="Warn_File_Protocol_x" xml:space="preserve">
     <value>Le fichier contient les paramètres des dispositifs {0}.</value>

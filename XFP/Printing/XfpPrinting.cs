@@ -58,7 +58,6 @@ namespace Xfp.Printing
 
                 var printArea  = new Size(printParams.PrintHandler.PrintableAreaWidth, printParams.PrintHandler.PrintableAreaHeight);
                 var pageMargin = new Thickness(20);
-                var pageNumber = 1;
 
                 var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
                 var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
@@ -104,29 +103,5 @@ namespace Xfp.Printing
 
         private static void PrintPreview(FlowDocument document, string description, PrintParameters parameters)
             => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).Show();
-        
-
-        //private static void printComments(FlowDocument doc, string comments)
-        //{
-        //    GridUtil.ResetDefaults();            
-        //    PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Comments);
-        //    var commentsPage = new Section();
-        //    var grid = new Grid() { MaxWidth = 400, HorizontalAlignment = HorizontalAlignment.Left };
-        //    grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            
-        //    if (!string.IsNullOrWhiteSpace(comments))
-        //    {
-        //        GridUtil.AddCellToGrid(grid, comments, 0, 0, false, false);
-        //    }
-        //    else
-        //    {
-        //        GridUtil.SetFontStyle(FontStyles.Italic);
-        //        GridUtil.AddCellToGrid(grid, !string.IsNullOrWhiteSpace(comments) ? comments : Cultures.Resources.Comments_Is_Blank, 0, 0, false, false);
-        //    }
-
-        //    commentsPage.Blocks.Add(new BlockUIContainer(grid));
-        //    doc.Blocks.Add(commentsPage);
-        //    GridUtil.ResetDefaults();
-        //}
     }
 }

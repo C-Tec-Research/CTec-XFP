@@ -21,10 +21,7 @@
     <None Remove="Cast_IOmini_S_34x34pix.bmp" />
     <None Remove="Cast_MCP_S_34x34pix.bmp" />
     <None Remove="Cast_optical_detector_34x34pix.bmp" />
-    <None Remove="Cast_VAD_S_34x34pix.bmp" />
-    <None Remove="Cultures\Flags\flag-en-GB.png" />
-    <None Remove="Cultures\Flags\flag-es.png" />
-    <None Remove="Cultures\Flags\flag-fr.png" />               
+    <None Remove="Cast_VAD_S_34x34pix.bmp" />               
     <None Remove="Download_All.png" />
     <None Remove="Download_Single.png" />
     <None Remove="logo-xfp.png" />
@@ -120,9 +117,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Cultures\Flags\flag-en-GB.png" />
-    <Resource Include="Cultures\Flags\flag-es.png" />
-    <Resource Include="Cultures\Flags\flag-fr.png" />
     <Resource Include="Resources\info.png" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
@@ -166,7 +160,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Cultures\Resources.en-GB.resx">
+    <EmbeddedResource Update="Cultures\Resources.es-ES.resx">
+      <SubType>Designer</SubType>
       <CustomToolNamespace>Xfp.CulturesCultures</CustomToolNamespace>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>

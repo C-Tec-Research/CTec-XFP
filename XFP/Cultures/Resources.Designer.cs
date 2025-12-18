@@ -4564,15 +4564,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Baud Rate.
-        /// </summary>
-        public static string Select_Baud_Rate {
-            get {
-                return ResourceManager.GetString("Select_Baud_Rate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select duration.
         /// </summary>
         public static string Select_Duration {
@@ -4641,24 +4632,6 @@ namespace Xfp.Cultures {
         public static string Select_Option {
             get {
                 return ResourceManager.GetString("Select_Option", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select Paging Type.
-        /// </summary>
-        public static string Select_Paging_Type {
-            get {
-                return ResourceManager.GetString("Select_Paging_Type", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select Parity.
-        /// </summary>
-        public static string Select_Parity {
-            get {
-                return ResourceManager.GetString("Select_Parity", resourceCulture);
             }
         }
         
