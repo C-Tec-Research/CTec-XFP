@@ -126,9 +126,6 @@
   <data name="Check_Validity_Of_Panel_Data" xml:space="preserve">
     <value>Vérifier la validité des données du panneau</value>
   </data>
-  <data name="Click_To_Edit" xml:space="preserve">
-    <value>Tapez pour modifier</value>
-  </data>
   <data name="Client_Address" xml:space="preserve">
     <value>Adresse du client</value>
   </data>
@@ -184,10 +181,7 @@
     <value>Niveau inf.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
-  </data>
-  <data name="Copyright_Details" xml:space="preserve">
-    <value>© {0} Computionics Ltd (C-Tec)</value>
+    <value>Droits d'auteur</value>
   </data>
   <data name="Send_To_Panel" xml:space="preserve">
     <value>Copier au panneau?</value>
@@ -209,12 +203,6 @@
   </data>
   <data name="Device_Name" xml:space="preserve">
     <value>Nom du Dispositif</value>
-  </data>
-  <data name="Device_Program" xml:space="preserve">
-    <value>Programmer le dispositif</value>
-  </data>
-  <data name="Device_Read" xml:space="preserve">
-    <value>Lire le dispositif</value>
   </data>
   <data name="Device_Ready" xml:space="preserve">
     <value>Prêt</value>
@@ -398,7 +386,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Lieu</value>
   </data>
   <data name="Loop_x_Devices" xml:space="preserve">
-    <value>Dispositifs Boucle {0}</value>
+    <value>Dispositifs Circuit {0}</value>
   </data>
   <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
     <value>Les paramètres du panneau ont été modifiés.
@@ -430,7 +418,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Détails des Dispositifs</value>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
-    <value>Boucle {0}</value>
+    <value>Circuit {0}</value>
   </data>
   <data name="Nav_Event_Log" xml:space="preserve">
     <value>Journal des Événements</value>
@@ -624,9 +612,6 @@ Veuillez insérer le lien et réessayer.</value>
   <data name="Serial_Read_Timeout" xml:space="preserve">
     <value>Délai d’expiration de la lecture</value>
   </data>
-  <data name="Serial_Stop_Bits" xml:space="preserve">
-    <value>Bits d’arrêt</value>
-  </data>
   <data name="Serial_Write_Timeout" xml:space="preserve">
     <value>Délai d’expiration de l’écriture</value>
   </data>
@@ -819,10 +804,10 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
     <value>Mettre fin aux retards de zone</value>
   </data>
   <data name="Action_Group_Disable" xml:space="preserve">
-    <value>Désactiver le groupe</value>
+    <value>Désactivation de la groupe</value>
   </data>
   <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
-    <value>désactivation du dispositif en boucle {0}</value>
+    <value>désactivation du dispositif en circuit {0}</value>
   </data>
   <data name="Action_Mute_The_Panel" xml:space="preserve">
     <value>Couper le son du panneau</value>
@@ -849,7 +834,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
     <value>Définissez-le sur occupé</value>
   </data>
   <data name="Action_Set_To_Unoccupied" xml:space="preserve">
-    <value>Mis à inoccupé</value>
+    <value>Définissez-le sur inoccupé</value>
   </data>
   <data name="Action_Silence_Panel" xml:space="preserve">
     <value>Faire taire le panneau</value>
@@ -864,13 +849,13 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
     <value>Déclencher des phares</value>
   </data>
   <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
-    <value>Déclencher dispositif boucle {0}</value>
+    <value>Déclencher dispositif dans circuit {0}</value>
   </data>
   <data name="Action_Trigger_Network_Event" xml:space="preserve">
     <value>Déclencher un événement réseau</value>
   </data>
   <data name="Action_Trigger_Output_Set" xml:space="preserve">
-    <value>Déclencher le jeu de sortie</value>
+    <value>Déclencher l'ensemble de sortie</value>
   </data>
   <data name="Action_Zone_Disable" xml:space="preserve">
     <value>Désactiver la zone</value>
@@ -1005,10 +990,10 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
     <value>Événements : ET</value>
   </data>
   <data name="Trigger_Loop_x_Device_Triggered" xml:space="preserve">
-    <value>Dispositif boucle {0} déclenché</value>
+    <value>Dispositif circuit {0} déclenché</value>
   </data>
   <data name="Trigger_Loop_x_Device_Pre_Alarm" xml:space="preserve">
-    <value>Pré-alarme du dispositif en boucle {0}</value>
+    <value>Pré-alarme du dispositif en circuit {0}</value>
   </data>
   <data name="Trigger_More_Than_One_Alarm" xml:space="preserve">
     <value>Plus d’une alarme</value>
@@ -1071,10 +1056,10 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
     <value>Nom du Panneau</value>
   </data>
   <data name="Loop_x" xml:space="preserve">
-    <value>Boucle {0}</value>
+    <value>Circuit {0}</value>
   </data>
   <data name="Loop_Number" xml:space="preserve">
-    <value>Boucle</value>
+    <value>Circuit</value>
   </data>
   <data name="Zone_Set" xml:space="preserve">
     <value>Zone/Ensemble</value>
@@ -1291,7 +1276,7 @@ Voulez-vous le remplacer?</value>
     <value>Enregistrer...</value>
   </data>
   <data name="Zone_x_Name_y" xml:space="preserve">
-    <value>Zone {0} - {1}</value>
+    <value>Zone {0} - '{1}'</value>
   </data>
   <data name="Not_Set" xml:space="preserve">
     <value>Non défini</value>
@@ -1462,10 +1447,10 @@ Voulez-vous le remplacer?</value>
     <value>Groupe de l’action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 1 de l'action n’est pas défini</value>
+    <value>Dispositif circuit 1 de l'action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 2 de l’action n’est pas défini</value>
+    <value>Dispositif circuit 2 de l’action n’est pas défini</value>
   </data>
   <data name="Error_CE_Action_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau de l’action n’est pas défini</value>
@@ -1495,10 +1480,10 @@ Voulez-vous le remplacer?</value>
     <value>Evénement du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 1 du déclencheur de réinitialisation n’est pas défini</value>
+    <value>Dispositif circuit 1 du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 2 du déclencheur de réinitialisation n’est pas défini</value>
+    <value>Dispositif circuit 2 du déclencheur de réinitialisation n’est pas défini</value>
   </data>
   <data name="Error_CE_Reset_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau du déclencheur de réinitialisation n’est pas défini</value>
@@ -1534,10 +1519,10 @@ Voulez-vous le remplacer?</value>
     <value>Evénement du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Loop_1_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 1 du déclencheur n’est pas défini</value>
+    <value>Dispositif circuit 1 du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Loop_2_Device_Not_Set" xml:space="preserve">
-    <value>Dispositif boucle 2 du déclencheur n’est pas défini</value>
+    <value>Dispositif circuit 2 du déclencheur n’est pas défini</value>
   </data>
   <data name="Error_CE_Trigger_Network_Event_Not_Set" xml:space="preserve">
     <value>Evénement réseau du déclencheur n’est pas défini</value>
@@ -1640,20 +1625,20 @@ distance</value>
 Voir fenêtre Validation pour plus de détails.</value>
   </data>
   <data name="Comms_Download_Warn_Loop_Count_1_Loop" xml:space="preserve">
-    <value>Le panneau connecté ne comporte qu’une seule boucle.</value>
+    <value>Le panneau connecté ne comporte qu’une seule circuit.</value>
   </data>
   <data name="Comms_Download_Warn_Loop_Count_2_Loops" xml:space="preserve">
-    <value>Le panneau connecté comporte 2 boucles.</value>
+    <value>Le panneau connecté comporte 2 circuits.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_Count_1_Loop" xml:space="preserve">
-    <value>Le panneau connecté ne comporte qu’une seule boucle.
+    <value>Le panneau connecté ne comporte qu’une seule circuit.
 
-Les paramètres de la boucle 2 configurés ici ne seront pas téléchargés dans le panneau.</value>
+Les paramètres de la circuit 2 configurés ici ne seront pas téléchargés dans le panneau.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_Count_2_Loops" xml:space="preserve">
-    <value>Remarque: le panneau connecté comporte 2 boucles.
+    <value>Remarque: le panneau connecté comporte 2 circuits.
 
-Un seul boucle a été configuré ici.</value>
+Un seul circuit a été configuré ici.</value>
   </data>
   <data name="Error_Name_Limit_Exceeded" xml:space="preserve">
     <value>Le nom n’a pas été mis à jour car la limite de stockage du panneau pour les noms des dispositifs a été dépassée.</value>
@@ -1665,10 +1650,10 @@ Un seul boucle a été configuré ici.</value>
     <value>Paramètres en lecture seule</value>
   </data>
   <data name="Comms_Download_Warn_Loop_x_Not_Present" xml:space="preserve">
-    <value>La boucle {0} n’est pas installée sur le panneau.</value>
+    <value>La circuit {0} n’est pas installée sur le panneau.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_x_Not_Present" xml:space="preserve">
-    <value>La boucle 1 n’est pas installée sur le panneau, les paramètres de cette boucle ne seront donc pas téléchargés.</value>
+    <value>La circuit 1 n’est pas installée sur le panneau, les paramètres de cette circuit ne seront donc pas téléchargés.</value>
   </data>
   <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
     <value>Groupes des sonneurs à bases</value>
@@ -1686,7 +1671,7 @@ Un seul boucle a été configuré ici.</value>
     <value>Noms des dispositifs :</value>
   </data>
   <data name="Data_Info_Loops_Detected" xml:space="preserve">
-    <value>Boucles détectées :</value>
+    <value>Circuits détectées :</value>
   </data>
   <data name="Device_Names_Data_Limit" xml:space="preserve">
     <value>Limite de données des noms des dispositifs</value>
@@ -1735,9 +1720,6 @@ Retirer de la liste ?</value>
   </data>
   <data name="Panel_Number" xml:space="preserve">
     <value>Numéro de panneau</value>
-  </data>
-  <data name="Manage_Panels" xml:space="preserve">
-    <value>Gérer les panneaux</value>
   </data>
   <data name="Option_Keep" xml:space="preserve">
     <value>Conserver</value>
@@ -1789,7 +1771,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
     <value>Journal des Événements</value>
   </data>
   <data name="Print_Loop_Information" xml:space="preserve">
-    <value>Informations Boucles</value>
+    <value>Informations Circuits</value>
   </data>
   <data name="Select_Print_Options" xml:space="preserve">
     <value>Options d’Impression</value>
@@ -1798,7 +1780,7 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
     <value>_Imprimer</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
-    <value>Imprimer tous les dispositifs de boucle</value>
+    <value>Imprimer tous les dispositifs de circuit</value>
   </data>
   <data name="Print_All_Pages" xml:space="preserve">
     <value>Toutes les pages</value>
@@ -1924,10 +1906,10 @@ Toutes ses données seront perdues.</value>
     <value>Enregistrer ces modifications ?</value>
   </data>
   <data name="Panel_x_Configuration" xml:space="preserve">
-    <value>Configuration de Paneau {0}</value>
+    <value>Configuration de paneau {0}</value>
   </data>
   <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
-    <value>Boucle {0} dispositif {1} : {2}</value>
+    <value>Circuit {0} dispositif {1} : {2}</value>
   </data>
   <data name="C_And_E_Event_x" xml:space="preserve">
     <value>Evénement Causes et Effets #{0}</value>
@@ -1957,7 +1939,7 @@ Toutes ses données seront perdues.</value>
     <value>Minuteries de zone</value>
   </data>
   <data name="Loop_x_Base_Sounder_Group_y" xml:space="preserve">
-    <value>Boucle {0} : Groupe Sonneur à Base #{1}</value>
+    <value>Circuit {0} : Groupe Sonneur à Base #{1}</value>
   </data>
   <data name="Alarm_Verification_Counts" xml:space="preserve">
     <value>Nombre de vérifications d’alarmes</value>
@@ -1990,7 +1972,7 @@ Toutes ses données seront perdues.</value>
     <value>Nom du dispositif #{0} : {1}</value>
   </data>
   <data name="Loop_x_Device_y" xml:space="preserve">
-    <value>Boucle {0} dispositif #{1}</value>
+    <value>Circuit {0} dispositif #{1}</value>
   </data>
   <data name="Panel_Name_x_Value_y" xml:space="preserve">
     <value>Nom de panneau #{0}: '{1}'</value>
@@ -2056,13 +2038,13 @@ Toutes ses données seront perdues.</value>
     <value>Données du panneau :</value>
   </data>
   <data name="Add_Loop_2" xml:space="preserve">
-    <value>Ajouter la Boucle 2</value>
+    <value>Ajouter la Circuit 2</value>
   </data>
   <data name="Query_Add_Second_Loop" xml:space="preserve">
     <value>Add a second loop to the configuration?</value>
   </data>
   <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
-    <value>Tapez pur ajouter une deuxième boucle</value>
+    <value>Tapez pur ajouter une deuxième circuit</value>
   </data>
   <data name="Download_x" xml:space="preserve">
     <value>Téléchargement du panneau : {0}</value>
@@ -2086,7 +2068,7 @@ Toutes ses données seront perdues.</value>
     <value>Panneaux :</value>
   </data>
   <data name="Subaddress_Abbr" xml:space="preserve">
-    <value>S.Addr</value>
+    <value>S.addr</value>
   </data>
   <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
     <value>** nom du système non défini **</value>
@@ -2095,7 +2077,7 @@ Toutes ses données seront perdues.</value>
     <value>Voir E/S  →</value>
   </data>
   <data name="Subaddress_Short" xml:space="preserve">
-    <value>S.Addr</value>
+    <value>S.addr</value>
   </data>
   <data name="Comms_Alarm_Verification_Counts" xml:space="preserve">
     <value>Comptes de vérification</value>
@@ -2119,13 +2101,10 @@ Toutes ses données seront perdues.</value>
     <value>Z/G/E</value>
   </data>
   <data name="Loop_1" xml:space="preserve">
-    <value>Boucle 1</value>
+    <value>Circuit 1</value>
   </data>
   <data name="Loop_2" xml:space="preserve">
-    <value>Boucle 2</value>
-  </data>
-  <data name="Loop_Select" xml:space="preserve">
-    <value>Boucle :</value>
+    <value>Circuit 2</value>
   </data>
   <data name="Condition_Is_x" xml:space="preserve">
     <value>est {0}</value>
@@ -2166,12 +2145,18 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
     <value>Zone {0} et {1}</value>
   </data>
   <data name="No_Devices_In_Loop" xml:space="preserve">
-    <value>** Aucun appareil n'est configuré dans cette boucle **</value>
+    <value>** Aucun appareil n'est configuré dans cette circuit **</value>
   </data>
   <data name="Comments_Is_Blank" xml:space="preserve">
     <value>La section des commentaires est vide</value>
   </data>
   <data name="File_Is_Empty" xml:space="preserve">
     <value>[fichier vide]</value>
+  </data>
+  <data name="Manage_Panels" xml:space="preserve">
+    <value>Gérer les panneaux</value>
+  </data>
+  <data name="Loop_Select" xml:space="preserve">
+    <value>Circuit :</value>
   </data>
 </root>

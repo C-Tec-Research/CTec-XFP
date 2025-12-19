@@ -584,15 +584,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click to edit.
-        /// </summary>
-        public static string Click_To_Edit {
-            get {
-                return ResourceManager.GetString("Click_To_Edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Client Address.
         /// </summary>
         public static string Client_Address {
@@ -1241,24 +1232,6 @@ namespace Xfp.Cultures {
         public static string Device_Names_Data_Limit {
             get {
                 return ResourceManager.GetString("Device_Names_Data_Limit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Program device.
-        /// </summary>
-        public static string Device_Program {
-            get {
-                return ResourceManager.GetString("Device_Program", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Read device.
-        /// </summary>
-        public static string Device_Read {
-            get {
-                return ResourceManager.GetString("Device_Read", resourceCulture);
             }
         }
         
@@ -3079,7 +3052,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage panels.
+        ///   Looks up a localized string similar to Manage Panels.
         /// </summary>
         public static string Manage_Panels {
             get {
@@ -4839,15 +4812,6 @@ namespace Xfp.Cultures {
         public static string Serial_Read_Timeout {
             get {
                 return ResourceManager.GetString("Serial_Read_Timeout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop bits.
-        /// </summary>
-        public static string Serial_Stop_Bits {
-            get {
-                return ResourceManager.GetString("Serial_Stop_Bits", resourceCulture);
             }
         }
         

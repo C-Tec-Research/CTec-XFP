@@ -117,8 +117,132 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Client_Address" xml:space="preserve">
+    <value>Dirección del cliente</value>
+  </data>
+  <data name="Client_Details" xml:space="preserve">
+    <value>Detalles del cliente</value>
+  </data>
+  <data name="Client_Name" xml:space="preserve">
+    <value>Nombre del cliente</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Comments_For_File_Copy" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Comms_Device_Details" xml:space="preserve">
+    <value>Detalles de los dispositivos</value>
+  </data>
+  <data name="Comms_Downloading_Page" xml:space="preserve">
+    <value>Descargando página desde el panel...</value>
+  </data>
+  <data name="Comms_Downloading_System" xml:space="preserve">
+    <value>Descargando el sistema desde el panel...</value>
+  </data>
+  <data name="Comms_Groups" xml:space="preserve">
+    <value>Configuración de grupos</value>
+  </data>
+  <data name="Comms_Panel_Status" xml:space="preserve">
+    <value>Estado del panel:</value>
+  </data>
+  <data name="Comms_Site_Information" xml:space="preserve">
+    <value>Configuración del sitio</value>
+  </data>
+  <data name="Comms_Uploading_Page" xml:space="preserve">
+    <value>Subiendo la página al panel...</value>
+  </data>
+  <data name="Comms_Uploading_System" xml:space="preserve">
+    <value>Subiendo el sistema al panel...</value>
+  </data>
+  <data name="Comms_Zones" xml:space="preserve">
+    <value>Zonas</value>
+  </data>
+  <data name="Control_Button_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Control_Button_Maximise" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Derechos de autor</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Dispositivo</value>
+  </data>
+  <data name="Device_Name" xml:space="preserve">
+    <value>Nombre del dispositivo</value>
+  </data>
+  <data name="Device_Ready" xml:space="preserve">
+    <value>Listo</value>
+  </data>
+  <data name="Device_Receive" xml:space="preserve">
+    <value>Tx</value>
+  </data>
+  <data name="Device_Transmit" xml:space="preserve">
+    <value>Rx</value>
+  </data>
+  <data name="Device_Type" xml:space="preserve">
+    <value>Tipo de dispositivo</value>
+  </data>
+  <data name="Device_x" xml:space="preserve">
+    <value>Dispositivo #{0}</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Deshabilitada</value>
+  </data>
+  <data name="Double_Click_To_Edit" xml:space="preserve">
+    <value>Haga doble clic para editar</value>
+  </data>
+  <data name="Download_Page" xml:space="preserve">
+    <value>Descargar esta página desde el panel</value>
+  </data>
+  <data name="Download_System" xml:space="preserve">
+    <value>Descargar sistema desde el panel</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Habilitada</value>
+  </data>
+  <data name="Enable_Changes" xml:space="preserve">
+    <value>Permitir modificaciones</value>
+  </data>
+  <data name="AL3_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 3 (AL3)</value>
+  </data>
+  <data name="Engineer_Name" xml:space="preserve">
+    <value>Nombre del Ingeniero</value>
+  </data>
+  <data name="Error_Comms_Firmware_x_Not_Supported" xml:space="preserve">
+    <value>La versión del firmware del panel {0} no es compatible con esta herramienta de programación.</value>
+  </data>
+  <data name="Error_No_Client_Name" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="False" xml:space="preserve">
+    <value>Mentira</value>
+  </data>
   <data name="Loop_x_Devices" xml:space="preserve">
-    <value>Dispositivos del Bucle {0}</value>
+    <value>Dispositivos del Circuito {0}</value>
+  </data>
+  <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
+    <value>Se han cambiado los ajustes del panel.
+
+¿Está seguro de que desea salir sin guardar?</value>
+  </data>
+  <data name="Message_Settings_x_Not_Saved" xml:space="preserve">
+    <value>Se han cambiado los siguientes ajustes:
+
+{0}
+
+¿Está seguro de que desea salir sin guardar?</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minuto</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutos</value>
   </data>
   <data name="Nav_Comments" xml:space="preserve">
     <value>Comentarios</value>
@@ -127,7 +251,7 @@
     <value>Detalles de los Dispositivos</value>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
-    <value>Bucle {0}</value>
+    <value>Circuito {0}</value>
   </data>
   <data name="Nav_Event_Log" xml:space="preserve">
     <value>Registro de Eventos</value>
@@ -150,41 +274,610 @@
   <data name="Nav_Zone_Configuration" xml:space="preserve">
     <value>Zonas</value>
   </data>
+  <data name="Day_Begins_At" xml:space="preserve">
+    <value>Ocupado (Día) comienza a</value>
+  </data>
+  <data name="Night_Begins_At" xml:space="preserve">
+    <value>Desocupado (Noche) comienza a</value>
+  </data>
+  <data name="No_Device" xml:space="preserve">
+    <value>** Ningún dispositivo **</value>
+  </data>
+  <data name="Option_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Panel_Configuration" xml:space="preserve">
+    <value>Configuración del panel</value>
+  </data>
+  <data name="Product_Full_Name" xml:space="preserve">
+    <value>Herramientas de Programación: XFP por C-Tec</value>
+  </data>
+  <data name="Programming_Tools" xml:space="preserve">
+    <value>Herramientas de Programación</value>
+  </data>
+  <data name="Program_Name" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Query_Enable_Changes" xml:space="preserve">
+    <value>¿Desea permitir cambios en la configuración</value>
+  </data>
+  <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
+    <value>Seleccione un dispositivo para mostrar los detalles</value>
+  </data>
+  <data name="Select_Protocol" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Select_Zoom_Level" xml:space="preserve">
+    <value>Seleccionar nivel de zoom</value>
+  </data>
+  <data name="Serial_Data_Bits" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Show_Fitted_Devices_Only" xml:space="preserve">
+    <value>Mostrar solo los dispositivos montados</value>
+  </data>
+  <data name="Switching_To_x_Protocol" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="System_Name" xml:space="preserve">
+    <value>Nombre del Sistema</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="True" xml:space="preserve">
+    <value>Verdad</value>
+  </data>
+  <data name="Unassigned" xml:space="preserve">
+    <value>No asignado</value>
+  </data>
+  <data name="Unsaved_Changes_Will_Be_Lost" xml:space="preserve">
+    <value>Se perderán todos los cambios no guardados.</value>
+  </data>
+  <data name="Upload_Page" xml:space="preserve">
+    <value>Sube esta página al panel</value>
+  </data>
+  <data name="Upload_System" xml:space="preserve">
+    <value>Subir sistema al panel</value>
+  </data>
+  <data name="AL2_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 2 (AL2)</value>
+  </data>
+  <data name="Validation_Error" xml:space="preserve">
+    <value>Error de validación</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="Zoom_Level" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Minute_Abbr" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Day_Fri_Abbr" xml:space="preserve">
+    <value>v</value>
+  </data>
+  <data name="Day_Mon_Abbr" xml:space="preserve">
+    <value>l</value>
+  </data>
+  <data name="Day_Sat_Abbr" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="Day_Sun_Abbr" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="Day_Thu_Abbr" xml:space="preserve">
+    <value>j</value>
+  </data>
+  <data name="Day_Tue_Abbr" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Day_Wed_Abbr" xml:space="preserve">
+    <value>m</value>
+  </data>
   <data name="Maintenance_Date" xml:space="preserve">
     <value>Fecha de mantenimiento</value>
   </data>
   <data name="Maintenance_String" xml:space="preserve">
     <value>Cadena de texto de mantenimiento</value>
   </data>
-  <data name="Loop_x" xml:space="preserve">
-    <value>Bucle {0}</value>
+  <data name="Normal_String" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Panel_x" xml:space="preserve">
+    <value>Panel {0}</value>
+  </data>
+  <data name="Use_In_Special_C_And_E" xml:space="preserve">
+    <value>Uso en C&amp;E especiales</value>
+  </data>
+  <data name="DeviceInfo_Alarm_Verificaton_Count" xml:space="preserve">
+    <value>Cuenta de verificación de alarmas</value>
+  </data>
+  <data name="DeviceInfo_Detectors" xml:space="preserve">
+    <value>Detectores</value>
+  </data>
+  <data name="DeviceInfo_Interface_Units" xml:space="preserve">
+    <value>Unidades de interfaz</value>
+  </data>
+  <data name="DeviceInfo_Manual_Callpoints" xml:space="preserve">
+    <value>Pulsadores manuales</value>
+  </data>
+  <data name="Zone_Group_Set" xml:space="preserve">
+    <value>Zona/Grupo/Conjunto</value>
+  </data>
+  <data name="Action_Abstract_Event" xml:space="preserve">
+    <value>Evento abstracto</value>
+  </data>
+  <data name="Action_End_Phased_Evac" xml:space="preserve">
+    <value>Poner fin a la evacuación progresiva</value>
+  </data>
+  <data name="Action_End_Zone_Delays" xml:space="preserve">
+    <value>Poner fin a los retrasos en la zona</value>
+  </data>
+  <data name="Action_Group_Disable" xml:space="preserve">
+    <value>Desactivación del grupo</value>
+  </data>
+  <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
+    <value>Desactivación del dispositivo en el circuito {0}</value>
+  </data>
+  <data name="Action_Mute_The_Panel" xml:space="preserve">
+    <value>Silenciar el panel</value>
+  </data>
+  <data name="Action_No_Events" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="Action_Output_Delays_Disable" xml:space="preserve">
+    <value>Desactivar los retrasos de salida</value>
+  </data>
+  <data name="Action_Output_Disable" xml:space="preserve">
+    <value>Desactivar salida</value>
+  </data>
+  <data name="Action_Panel_Relay" xml:space="preserve">
+    <value>Relé de panel</value>
+  </data>
+  <data name="Action_Put_Zone_Into_Alarm" xml:space="preserve">
+    <value>Poner la zona en alarma</value>
+  </data>
+  <data name="Action_Reset_Panel" xml:space="preserve">
+    <value>Restablecer el panel</value>
+  </data>
+  <data name="Action_Set_To_Occupied" xml:space="preserve">
+    <value>Configúralo como ocupado</value>
+  </data>
+  <data name="Action_Set_To_Unoccupied" xml:space="preserve">
+    <value>Configúralo como desocupado</value>
+  </data>
+  <data name="Action_Silence_Panel" xml:space="preserve">
+    <value>Silencia el panel</value>
+  </data>
+  <data name="Action_Sounder_Alert" xml:space="preserve">
+    <value>Alerta de Sonador</value>
+  </data>
+  <data name="Action_Sounder_Evac" xml:space="preserve">
+    <value>Evacuación de Sounder</value>
+  </data>
+  <data name="Action_Trigger_Beacons" xml:space="preserve">
+    <value>Activar los faros</value>
+  </data>
+  <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
+    <value>Activar dispositivo en el circuito {0}</value>
+  </data>
+  <data name="Action_Trigger_Network_Event" xml:space="preserve">
+    <value>Activar un evento de red</value>
+  </data>
+  <data name="Action_Trigger_Output_Set" xml:space="preserve">
+    <value>Activar un conjunto de salida</value>
+  </data>
+  <data name="Action_Zone_Disable" xml:space="preserve">
+    <value>Desactivar la zona</value>
+  </data>
+  <data name="Dependencies" xml:space="preserve">
+    <value>Dependencias</value>
+  </data>
+  <data name="Dependency_Options" xml:space="preserve">
+    <value>Opciones de dependencia</value>
+  </data>
+  <data name="Detectors" xml:space="preserve">
+    <value>Detectores</value>
+  </data>
+  <data name="Double_Click_For_Dependency_Options" xml:space="preserve">
+    <value>Haga doble clic para opciones de dependencia</value>
+  </data>
+  <data name="Evac" xml:space="preserve">
+    <value>Evacuación</value>
+  </data>
+  <data name="Evac_Tone" xml:space="preserve">
+    <value>Tono de evacuación</value>
+  </data>
+  <data name="Functioning_With" xml:space="preserve">
+    <value>Funcionando con</value>
+  </data>
+  <data name="MCPs" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
+    <value>Múltiples alarmas ponen fin a los retrasos</value>
+  </data>
+  <data name="Outputs" xml:space="preserve">
+    <value>Salidas</value>
+  </data>
+  <data name="Output_Delays_Mins" xml:space="preserve">
+    <value>Retrasos de salida (minutos)</value>
+  </data>
+  <data name="Relay_1" xml:space="preserve">
+    <value>Relé 1</value>
+  </data>
+  <data name="Sounders" xml:space="preserve">
+    <value>Sonadores</value>
+  </data>
+  <data name="Time_T_x" xml:space="preserve">
+    <value>T{0}</value>
+  </data>
+  <data name="Trigger_Zone_AND" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Trigger_Zone_Has_Device_In_Alarm" xml:space="preserve">
+    <value>Zona con un dispositivo en estado "Alarma"</value>
+  </data>
+  <data name="Loop_x" xml:space="preserve">
+    <value>Circuito {0}</value>
+  </data>
   <data name="Loop_Number" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Manage_Panels" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Zone_Set" xml:space="preserve">
+    <value>Zona/Conjunto</value>
+  </data>
+  <data name="Menu_Remove_File_From_List" xml:space="preserve">
+    <value>Haga clic para eliminar el archivo de la lista</value>
+  </data>
+  <data name="Pre_Save_Check" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Elimínalo</value>
+  </data>
+  <data name="Multiple_Device_Types" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Zone_x" xml:space="preserve">
+    <value>Zona {0}</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Subaddress_x" xml:space="preserve">
+    <value>Subdirección {0}</value>
+  </data>
+  <data name="Sounder" xml:space="preserve">
+    <value>Sonador</value>
+  </data>
+  <data name="AlarmType_Alert" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="AlarmType_Evacuate" xml:space="preserve">
+    <value>Evac</value>
+  </data>
+  <data name="AlarmType_Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="Subaddress" xml:space="preserve">
+    <value>Subdirección</value>
+  </data>
+  <data name="Minute_Short" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="Relay_2" xml:space="preserve">
+    <value>Relé 2</value>
+  </data>
+  <data name="Alarm" xml:space="preserve">
+    <value>Alarma</value>
+  </data>
+  <data name="Day_Occupied" xml:space="preserve">
+    <value>Día (Ocupado)</value>
+  </data>
+  <data name="Detector" xml:space="preserve">
+    <value>Detector</value>
+  </data>
+  <data name="Night_Unoccupied" xml:space="preserve">
+    <value>Noche (Ocupada)</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>Opción</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="Event_x" xml:space="preserve">
+    <value>Evento {0}</value>
+  </data>
+  <data name="Panel" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="File_x_Already_Exists" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Zone_x_Name_y" xml:space="preserve">
+    <value>Zona {0} - '{1}'</value>
+  </data>
+  <data name="Zone_Dependency_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Select_Zone_Or_Panel_To_Show_Details" xml:space="preserve">
+    <value>Seleccione una zona o un panel para mostrar los detalles</value>
+  </data>
+  <data name="Zones" xml:space="preserve">
+    <value>Zonas</value>
+  </data>
+  <data name="Day_Dependencies" xml:space="preserve">
+    <value>Dependencias día</value>
+  </data>
+  <data name="Night_Dependencies" xml:space="preserve">
+    <value>Dependencias nocha</value>
+  </data>
+  <data name="Action_All_Groups" xml:space="preserve">
+    <value>Todos los grupos</value>
+  </data>
+  <data name="Zone_Group" xml:space="preserve">
+    <value>Zona/Grupo</value>
+  </data>
+  <data name="Error_Day_Dependency_Option_Invalid" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Error_Night_Dependency_Option_Invalid" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Error_Relay_1_Delay_Too_Long" xml:space="preserve">
+    <value>El retraso del relé 1 es demasiado largo</value>
+  </data>
+  <data name="Error_Relay_2_Delay_Too_Long" xml:space="preserve">
+    <value>El retraso del relé 2 es demasiado largo</value>
+  </data>
+  <data name="Error_Sounder_Delay_Too_Long" xml:space="preserve">
+    <value>El retraso de sonador es demasiado largo</value>
+  </data>
+  <data name="Error_Zone_Name_Too_Long" xml:space="preserve">
+    <value>El nombre de la zona es demasiado largo</value>
+  </data>
+  <data name="Comms_Device_Names" xml:space="preserve">
+    <value>Nombres de dispositivos</value>
+  </data>
+  <data name="Subaddress_Hush_0" xml:space="preserve">
+    <value>Sonador</value>
+  </data>
+  <data name="Day_Night" xml:space="preserve">
+    <value>Día:Noche</value>
+  </data>
+  <data name="Comms_C_And_E" xml:space="preserve">
+    <value>Causas y Efectos</value>
+  </data>
+  <data name="Comms_Sets" xml:space="preserve">
+    <value>Configuración de los Conjuntos</value>
+  </data>
+  <data name="Default_Maintenance_String" xml:space="preserve">
+    <value>Llama al Ingeniero</value>
+  </data>
+  <data name="Comms_Zone_Names" xml:space="preserve">
+    <value>Nombres de las zonas</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_1_Loop" xml:space="preserve">
+    <value>El panel conectado tiene solo un circuito.</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_2_Loops" xml:space="preserve">
+    <value>El panel conectado tiene 2 circuitos.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_Count_1_Loop" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Device_x_Type_y" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Settings_Are_Readonly" xml:space="preserve">
+    <value>Configuración de solo lectura</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_x_Not_Present" xml:space="preserve">
+    <value>El circuito {0} no está presente en el panel.</value>
+  </data>
+  <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
+    <value>Grupos de campaneros de bases</value>
+  </data>
+  <data name="Data_Info_Bytes_Remaining" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Device_Names_Data_Limit" xml:space="preserve">
+    <value>Límite de datos de los nombres de los dispositivos</value>
+  </data>
+  <data name="ToolTip_Panel_x_of_y" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Print_Loop_Information" xml:space="preserve">
+    <value>Información de circuitos</value>
+  </data>
+  <data name="Select_Print_Options" xml:space="preserve">
+    <value>Opciones de impresión</value>
+  </data>
+  <data name="Option_Print" xml:space="preserve">
+    <value>_Imprimir</value>
+  </data>
+  <data name="Print_All_Loop_Devices" xml:space="preserve">
+    <value>Imprimir todos los dispositivos del circuito</value>
+  </data>
+  <data name="Print_All_Pages" xml:space="preserve">
+    <value>Todas las páginas</value>
+  </data>
+  <data name="Print_Current_Page" xml:space="preserve">
+    <value>Página actual</value>
+  </data>
+  <data name="Print_Num_Copies" xml:space="preserve">
+    <value>Copias:</value>
+  </data>
+  <data name="Print_Only_Fitted_Devices" xml:space="preserve">
+    <value>Imprimir solo los dispositivos presentes</value>
+  </data>
+  <data name="Print_Order_By" xml:space="preserve">
+    <value>Ordenar por:</value>
+  </data>
+  <data name="Print_Order_By_Device_Number" xml:space="preserve">
+    <value>Número de dispositivo</value>
+  </data>
+  <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
+    <value>Grupo/zona/conjunto</value>
+  </data>
+  <data name="Print_Order_By_Device_Type" xml:space="preserve">
+    <value>Tipo de dispositivo</value>
+  </data>
+  <data name="Print_Select_Pages" xml:space="preserve">
+    <value>Seleccionar páginas:</value>
+  </data>
+  <data name="Do_You_Want_To_Save_These_Changes" xml:space="preserve">
+    <value>¿Quieres guardar estos cambios?</value>
+  </data>
+  <data name="File_Data_Is_Newer_Firmware_x" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Printer_Status" xml:space="preserve">
+    <value>Estado:</value>
+  </data>
+  <data name="Select_Printer" xml:space="preserve">
+    <value>Impresora:</value>
+  </data>
+  <data name="Erase_Event_Log_After_Reading" xml:space="preserve">
+    <value>¿Borrar eventos del panel después de leerlos?</value>
+  </data>
+  <data name="ToolTip_Event_Log_Start" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Panel_x_Configuration" xml:space="preserve">
+    <value>Configuración del panel {0}</value>
+  </data>
   <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
-    <value>Bucle {0} dispositivo {1} : {2}</value>
+    <value>Circuito {0} dispositivo {1} : {2}</value>
+  </data>
+  <data name="Day_And_Night_Settings" xml:space="preserve">
+    <value>Configuraciones de día y noche</value>
   </data>
   <data name="Network_Panel_Data" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="Zone_Group_Settings" xml:space="preserve">
+    <value>Configuración del grupo de zona</value>
+  </data>
+  <data name="Zone_Name_x" xml:space="preserve">
+    <value>Nombre de la zona: {0}</value>
+  </data>
   <data name="Loop_x_Base_Sounder_Group_y" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="Alarm_Verification_Counts" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Device_x_Name_y" xml:space="preserve">
+    <value>Nombre del dispositivo {0}:{1}</value>
+  </data>
+  <data name="End_Of_Device_Names" xml:space="preserve">
+    <value>[fin de la lista de nombres de dispositivos]</value>
+  </data>
+  <data name="Zone_Group_Settings_x" xml:space="preserve">
+    <value>Configuración del grupo de zona {0}</value>
+  </data>
+  <data name="Error_After_Download_End" xml:space="preserve">
+    <value>Ocurrió un error después de que terminó la descarga</value>
+  </data>
+  <data name="Device_Name_x" xml:space="preserve">
+    <value>Nombre del dispositivo #{0}</value>
+  </data>
+  <data name="Device_Name_x_Value_y" xml:space="preserve">
+    <value>Nombre del dispositivo #{0}: {1}</value>
+  </data>
   <data name="Loop_x_Device_y" xml:space="preserve">
-    <value>Bucle {0} dispositivo #{1}</value>
+    <value>Circuito {0} dispositivo #{1}</value>
+  </data>
+  <data name="Zone_Group_x" xml:space="preserve">
+    <value>Zona/Grupo #{0}</value>
+  </data>
+  <data name="Zone_Set_x" xml:space="preserve">
+    <value>Zona/Conjunto #{0}</value>
+  </data>
+  <data name="Printer_Not_Found" xml:space="preserve">
+    <value>Impresora no encontrada</value>
+  </data>
+  <data name="Option_Submit" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="Option_Preview" xml:space="preserve">
+    <value>Pre_ver</value>
+  </data>
+  <data name="Engineer_Number" xml:space="preserve">
+    <value>Número de ingeniero</value>
+  </data>
+  <data name="Minutes_Short" xml:space="preserve">
+    <value>mins</value>
+  </data>
+  <data name="Validation_Header_Panel_Data" xml:space="preserve">
+    <value>Datos de panel:</value>
+  </data>
+  <data name="Add_Loop_2" xml:space="preserve">
+    <value>Agregar el Circuito 2</value>
+  </data>
+  <data name="Download_x" xml:space="preserve">
+    <value>Descargar {0}</value>
+  </data>
+  <data name="Upload_x" xml:space="preserve">
+    <value>Subir: {0}</value>
+  </data>
+  <data name="Panel_x_Settings" xml:space="preserve">
+    <value>Configuración del panel {0}</value>
+  </data>
+  <data name="Print_All_Panels" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Print_Current_Panel" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="Subaddress_Abbr" xml:space="preserve">
+    <value>S.dir</value>
+  </data>
+  <data name="Subaddress_Short" xml:space="preserve">
+    <value>Subdir.</value>
+  </data>
+  <data name="Comms_Alarm_Verification_Counts" xml:space="preserve">
+    <value>Cuentas corrientes</value>
+  </data>
+  <data name="Description_Abbr" xml:space="preserve">
+    <value>Desc.</value>
   </data>
   <data name="Loop_1" xml:space="preserve">
-    <value>Bucle 1</value>
+    <value>Circuito 1</value>
   </data>
   <data name="Loop_2" xml:space="preserve">
-    <value>Bucle 2</value>
+    <value>Circuito 2</value>
   </data>
-  <data name="Loop_Select" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Condition_Is_x" xml:space="preserve">
+    <value>es {0}</value>
+  </data>
+  <data name="Alarms" xml:space="preserve">
+    <value>Alarmas</value>
+  </data>
+  <data name="Event_x_And_y" xml:space="preserve">
+    <value>Evento {0} y {1}</value>
+  </data>
+  <data name="Zone_x_And_y" xml:space="preserve">
+    <value>Zona {0} y {1}</value>
+  </data>
+  <data name="No_Devices_In_Loop" xml:space="preserve">
+    <value>** No hay dispositivos configurados en este circuito **</value>
+  </data>
+  <data name="Manage_Panels" xml:space="preserve">
+    <value>Gestionar los paneles</value>
+  </data>
+  <data name="Loop_Select" xml:space="preserve">
+    <value>Circuito</value>
   </data>
 </root>

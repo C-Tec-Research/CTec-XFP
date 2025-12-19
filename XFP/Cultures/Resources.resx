@@ -126,9 +126,6 @@
   <data name="Check_Validity_Of_Panel_Data" xml:space="preserve">
     <value>Check the validity of the Panel data</value>
   </data>
-  <data name="Click_To_Edit" xml:space="preserve">
-    <value>Click to edit</value>
-  </data>
   <data name="Client_Address" xml:space="preserve">
     <value>Client Address</value>
   </data>
@@ -146,6 +143,7 @@
   </data>
   <data name="Comms_Device_Details" xml:space="preserve">
     <value>Device details</value>
+    <comment>Comms in progress: device details</comment>
   </data>
   <data name="Comms_Downloading_Page" xml:space="preserve">
     <value>Downloading page from panel...</value>
@@ -155,6 +153,7 @@
   </data>
   <data name="Comms_Groups" xml:space="preserve">
     <value>Groups</value>
+    <comment>Comms in progress: groups</comment>
   </data>
   <data name="Comms_Panel_Status" xml:space="preserve">
     <value>Panel Status:</value>
@@ -170,24 +169,30 @@
   </data>
   <data name="Comms_Zones" xml:space="preserve">
     <value>Zones</value>
+    <comment>Comms in progress: zones</comment>
   </data>
   <data name="Control_Button_Close" xml:space="preserve">
     <value>Close</value>
+    <comment>Button: close window</comment>
   </data>
   <data name="Control_Button_Maximise" xml:space="preserve">
     <value>Maximise</value>
+    <comment>Button: maximise window</comment>
   </data>
   <data name="Control_Button_Minimise" xml:space="preserve">
     <value>Minimise</value>
+    <comment>Button: minimise window</comment>
   </data>
   <data name="Control_Button_Restore" xml:space="preserve">
     <value>Restore Down</value>
+    <comment>Button: restore down</comment>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
   </data>
   <data name="Copyright_Details" xml:space="preserve">
     <value>© {0} Computionics Ltd (C-Tec)</value>
+    <comment>Not translated</comment>
   </data>
   <data name="Send_To_Panel" xml:space="preserve">
     <value>Send to Panel?</value>
@@ -209,12 +214,6 @@
   </data>
   <data name="Device_Name" xml:space="preserve">
     <value>Device Name</value>
-  </data>
-  <data name="Device_Program" xml:space="preserve">
-    <value>Program device</value>
-  </data>
-  <data name="Device_Read" xml:space="preserve">
-    <value>Read device</value>
   </data>
   <data name="Device_Ready" xml:space="preserve">
     <value>Ready</value>
@@ -643,9 +642,6 @@ Are you sure you want to exit without saving?</value>
   <data name="Serial_Read_Timeout" xml:space="preserve">
     <value>Read timeout</value>
   </data>
-  <data name="Serial_Stop_Bits" xml:space="preserve">
-    <value>Stop bits</value>
-  </data>
   <data name="Serial_Write_Timeout" xml:space="preserve">
     <value>Write timeout</value>
   </data>
@@ -784,7 +780,7 @@ change to that type, or select Delete to remove a device</value>
   </data>
   <data name="Maintenance_String" xml:space="preserve">
     <value>Maintenance string</value>
-    <comment>The text displayed when a panel requires maintenance</comment>
+    <comment>Prompt for the text displayed when there is a fault on the panel</comment>
   </data>
   <data name="Normal_String" xml:space="preserve">
     <value>Normal string</value>
@@ -824,6 +820,7 @@ change to that type, or select Delete to remove a device</value>
   </data>
   <data name="Zone_Group_Set" xml:space="preserve">
     <value>Zone/Group/Set</value>
+    <comment>Zone, group or set</comment>
   </data>
   <data name="Base_Sounder_Header" xml:space="preserve">
     <value>Base
@@ -831,69 +828,91 @@ Sounder Grp</value>
   </data>
   <data name="Action_Abstract_Event" xml:space="preserve">
     <value>Abstract event</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_End_Phased_Evac" xml:space="preserve">
     <value>End phased evac</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_End_Zone_Delays" xml:space="preserve">
     <value>End zone delays</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Group_Disable" xml:space="preserve">
     <value>Group disable</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
     <value>Loop {0} device disabled</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Mute_The_Panel" xml:space="preserve">
     <value>Mute the panel</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_No_Events" xml:space="preserve">
     <value>None</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Output_Delays_Disable" xml:space="preserve">
     <value>Output delays disable</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Output_Disable" xml:space="preserve">
     <value>Output disable</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Panel_Relay" xml:space="preserve">
     <value>Panel relay</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Put_Zone_Into_Alarm" xml:space="preserve">
     <value>Put zone into alarm</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Reset_Panel" xml:space="preserve">
     <value>Reset panel</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Set_To_Occupied" xml:space="preserve">
     <value>Set to occupied</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Set_To_Unoccupied" xml:space="preserve">
     <value>Set to unoccupied</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Silence_Panel" xml:space="preserve">
     <value>Silence panel</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Sounder_Alert" xml:space="preserve">
     <value>Sounder alert</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Sounder_Evac" xml:space="preserve">
     <value>Sounder evac</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Trigger_Beacons" xml:space="preserve">
     <value>Trigger beacons</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
     <value>Trigger loop {0} device</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Trigger_Network_Event" xml:space="preserve">
     <value>Trigger network event</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Trigger_Output_Set" xml:space="preserve">
     <value>Trigger output set</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Action_Zone_Disable" xml:space="preserve">
     <value>Zone disable</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Alert" xml:space="preserve">
     <value>Alert</value>
@@ -1002,72 +1021,95 @@ Sounder Grp</value>
   </data>
   <data name="Trigger_Any_Device_In_Alarm" xml:space="preserve">
     <value>Any device in 'Alarm'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Disablement" xml:space="preserve">
     <value>Any disablement</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Dwelling_And_Communal" xml:space="preserve">
     <value>Any dwelling and communal</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Fault" xml:space="preserve">
     <value>Any fault</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Pre_Alarm" xml:space="preserve">
     <value>Any pre-alarm</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Remote_Panel_In_Fire" xml:space="preserve">
     <value>Any remote panel in 'Fire'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Any_Zone_In_Fire" xml:space="preserve">
     <value>Any zone in 'Fire'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Event_AND" xml:space="preserve">
     <value>Event AND</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Loop_x_Device_Triggered" xml:space="preserve">
     <value>Loop {0} device triggered</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Loop_x_Device_Pre_Alarm" xml:space="preserve">
     <value>Loop {0} device pre-alarm</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_More_Than_One_Alarm" xml:space="preserve">
     <value>More than one alarm</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_More_Than_One_Zone_In_Alarm" xml:space="preserve">
     <value>More than one zone in 'Alarm'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Network_Event_Triggered" xml:space="preserve">
     <value>Network event triggered</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Other_Event_Triggered" xml:space="preserve">
     <value>Other event triggered</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Panel_Input" xml:space="preserve">
     <value>Panel input</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Panel_Occupied" xml:space="preserve">
     <value>Panel occupied</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Panel_Reset" xml:space="preserve">
     <value>Panel reset</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Panel_Silenced" xml:space="preserve">
     <value>Panel silenced</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Panel_Unoccupied" xml:space="preserve">
     <value>Panel unoccupied</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Timer_Event" xml:space="preserve">
     <value>Timer event</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Zone_AND" xml:space="preserve">
     <value>Zone AND</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Zone_Has_Device_In_Alarm" xml:space="preserve">
     <value>Zone has device in 'Alarm'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Trigger_Zone_Or_Panel_In_Fire" xml:space="preserve">
     <value>Zone or panel in 'Fire'</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Accepts_Alarms" xml:space="preserve">
     <value>Alarms</value>
@@ -1098,6 +1140,7 @@ Sounder Grp</value>
   </data>
   <data name="Zone_Set" xml:space="preserve">
     <value>Zone/Set</value>
+    <comment>Zone or set</comment>
   </data>
   <data name="Menu_Remove_File_From_List" xml:space="preserve">
     <value>Click to remove file from list</value>
@@ -1244,15 +1287,19 @@ Save anyway?</value>
   </data>
   <data name="TriggerType_Continuous" xml:space="preserve">
     <value>Continuous</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="TriggerType_Delayed" xml:space="preserve">
     <value>Delayed</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="TriggerType_Not_Triggered" xml:space="preserve">
     <value>Not triggered</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="TriggerType_Pulsed" xml:space="preserve">
     <value>Pulsed</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Is_Set_Silenceable" xml:space="preserve">
     <value>Is set silenceable?</value>
@@ -1312,6 +1359,7 @@ Do you want to replace it?</value>
   </data>
   <data name="Zone_x_Name_y" xml:space="preserve">
     <value>Zone {0} - '{1}'</value>
+    <comment>Zone number and name</comment>
   </data>
   <data name="Not_Set" xml:space="preserve">
     <value>Not set</value>
@@ -1375,12 +1423,14 @@ Do you want to replace it?</value>
   </data>
   <data name="Action_All_Groups" xml:space="preserve">
     <value>All Groups</value>
+    <comment>C&amp;E action</comment>
   </data>
   <data name="Is_Silenceable" xml:space="preserve">
     <value>Is silenceable</value>
   </data>
   <data name="Zone_Group" xml:space="preserve">
     <value>Zone/Group</value>
+    <comment>Zone or group</comment>
   </data>
   <data name="Error_Total_Delay_Is_Too_Long" xml:space="preserve">
     <value>Total delay time is too long</value>
@@ -1582,6 +1632,7 @@ Do you want to replace it?</value>
   </data>
   <data name="Trigger_Condition_Is" xml:space="preserve">
     <value>is</value>
+    <comment>C&amp;E trigger/reset type</comment>
   </data>
   <data name="Saving_Settings_To_File" xml:space="preserve">
     <value>Saving settings to file:</value>
@@ -1591,6 +1642,7 @@ Do you want to replace it?</value>
   </data>
   <data name="Comms_Device_Names" xml:space="preserve">
     <value>Device names</value>
+    <comment>Comms in progress: device names</comment>
   </data>
   <data name="Error_Device_Name_Blank" xml:space="preserve">
     <value>The name/description is empty</value>
@@ -1625,15 +1677,19 @@ Mode</value>
   </data>
   <data name="Day_Night" xml:space="preserve">
     <value>Day:Night</value>
+    <comment>Column heading for day/night settings</comment>
   </data>
   <data name="Comms_C_And_E" xml:space="preserve">
     <value>Causes and Effects</value>
+    <comment>Comms in progress: causes &amp; effects</comment>
   </data>
   <data name="Comms_Sets" xml:space="preserve">
     <value>Sets</value>
+    <comment>Comms in progress: sets</comment>
   </data>
   <data name="Default_Maintenance_String" xml:space="preserve">
     <value>Call the Engineer</value>
+    <comment>Text displayed on the panel when there is a fault</comment>
   </data>
   <data name="Default_Quiescent_String" xml:space="preserve">
     <value>XFP Fire Panel</value>
@@ -1653,6 +1709,7 @@ LED</value>
   </data>
   <data name="Comms_Zone_Names" xml:space="preserve">
     <value>Zone names</value>
+    <comment>Comms in progress: zone names</comment>
   </data>
   <data name="Error_Preupload_Data_Validation" xml:space="preserve">
     <value>Please correct errors before uploading settings to the panel.
@@ -1692,6 +1749,7 @@ Only one loop has been configured here.</value>
   </data>
   <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
     <value>Base sounder groups</value>
+    <comment>Comms in progress: base sounder groups</comment>
   </data>
   <data name="Sensitivities_For_The_Selected_Devices_Have_Different_Ranges" xml:space="preserve">
     <value>Sensitivities for the selected devices have different ranges</value>
@@ -1756,9 +1814,6 @@ Remove from the list?</value>
   <data name="Panel_Number" xml:space="preserve">
     <value>Panel number</value>
   </data>
-  <data name="Manage_Panels" xml:space="preserve">
-    <value>Manage panels</value>
-  </data>
   <data name="Option_Keep" xml:space="preserve">
     <value>Keep</value>
   </data>
@@ -1816,6 +1871,7 @@ What do you want to do with the settings for panel {1}?</value>
   </data>
   <data name="Option_Print" xml:space="preserve">
     <value>_Print</value>
+    <comment>Print option.  Underscore precedes shortcut key.</comment>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Print all loop devices</value>
@@ -1828,21 +1884,26 @@ What do you want to do with the settings for panel {1}?</value>
   </data>
   <data name="Print_Num_Copies" xml:space="preserve">
     <value>Copies:</value>
+    <comment>The number of print copies</comment>
   </data>
   <data name="Print_Only_Fitted_Devices" xml:space="preserve">
     <value>Print only fitted devices</value>
   </data>
   <data name="Print_Order_By" xml:space="preserve">
     <value>Order by:</value>
+    <comment>Sorting order</comment>
   </data>
   <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Device number</value>
+    <comment>Printing sort order</comment>
   </data>
   <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
     <value>Group/zone/set</value>
+    <comment>Printing sort order</comment>
   </data>
   <data name="Print_Order_By_Device_Type" xml:space="preserve">
     <value>Device type</value>
+    <comment>Printing sort order</comment>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Properties</value>
@@ -2024,9 +2085,11 @@ All of its data will be lost.</value>
   </data>
   <data name="Zone_Group_x" xml:space="preserve">
     <value>Zone/Group #{0}</value>
+    <comment>Zone or group number</comment>
   </data>
   <data name="Zone_Set_x" xml:space="preserve">
     <value>Zone/Set #{0}</value>
+    <comment>Zone or set number</comment>
   </data>
   <data name="Zone_Timer_x" xml:space="preserve">
     <value>Zone timer #{0}</value>
@@ -2063,6 +2126,7 @@ All of its data will be lost.</value>
   </data>
   <data name="Option_Preview" xml:space="preserve">
     <value>Pre_view</value>
+    <comment>Print Preview option.  Underscore precedes shortcut key.</comment>
   </data>
   <data name="Engineer_Number" xml:space="preserve">
     <value>Engineer Number</value>
@@ -2153,11 +2217,9 @@ All of its data will be lost.</value>
   <data name="Loop_2" xml:space="preserve">
     <value>Loop 2</value>
   </data>
-  <data name="Loop_Select" xml:space="preserve">
-    <value>Loop:</value>
-  </data>
   <data name="Condition_Is_x" xml:space="preserve">
     <value>is {0}</value>
+    <comment>C&amp;E condition (i.e. true or false)</comment>
   </data>
   <data name="Query_Is_Panel_Envision_Enabled" xml:space="preserve">
     <value>Is Envision enabled for this panel?
@@ -2202,5 +2264,11 @@ If this is required then device names and zone descriptions may be amended to en
   </data>
   <data name="File_Is_Empty" xml:space="preserve">
     <value>[file is empty]</value>
+  </data>
+  <data name="Manage_Panels" xml:space="preserve">
+    <value>Manage Panels</value>
+  </data>
+  <data name="Loop_Select" xml:space="preserve">
+    <value>Loop:</value>
   </data>
 </root>
