@@ -38,9 +38,9 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(new(2,2,4,2));
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
+            //PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
 
-            doc.Blocks.Add(timerEventTimes());
+            doc.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration));
             doc.Blocks.Add(ceList());
         
             TableUtil.ResetDefaults();
@@ -107,34 +107,35 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        private Section timerEventTimes()
+        private Section headerInfo(string header)
         {
             var headerSection = new Section();
             
             var grid = new Grid();
 
-            GridUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
+            //GridUtil.SetFontSize(PrintUtil.PrintSmallerFontSize);
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
                 GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalTimerTimesColumns; i++)
                 GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Timer_Event_Times, 0, 0, 1, _totalTimerTimesColumns, true));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(header, 0, 0, 1, 8, true, PrintUtil.PrintPageHeaderFontSize, FontStyles.Normal, PrintUtil.PrintHeaderFont), new(1,15,3,5)));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Timer_Event_Times, 1, 0, 1, _totalTimerTimesColumns, true));
 
-            GridUtil.AddBorderToGrid(grid, 1, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 1, 0, 0));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 2, 0), new(3, 2, 10, 0)));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   3, 0), new(3, 0, 10, 2)));
-            GridUtil.AddBorderToGrid(grid, 4, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 5, 0), new(3, 2, 10, 2)));
-            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   6, 0), new(3, 2, 10, 2)));
-            GridUtil.AddBorderToGrid(grid, 7, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
+            GridUtil.AddBorderToGrid(grid, 2, 0, 1, _totalTimerTimesColumns, _timerEventTimesUnderlineBrush, new Thickness(0, 1, 0, 0));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 3, 0), new(3, 2, 10, 0)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   4, 0), new(3, 0, 10, 2)));
+            GridUtil.AddBorderToGrid(grid, 5, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Timer_Event, 6, 0), new(3, 2, 10, 2)));
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(Cultures.Resources.Occurs_At,   7, 0), new(3, 2, 10, 2)));
+            GridUtil.AddBorderToGrid(grid, 8, 0, 1, _totalTimerTimesColumns, _gridDividerBrush, new Thickness(0, 0.5, 0, 0));
 
             for (int i = 0; i < 16; i++)
             {
-                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 2, i % 8 + 1, false, HorizontalAlignment.Center), new(10, 0, 10, 0)));
-                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                        3 * (i / 8) + 3, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center), new(10, 0, 10, 0)));
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(string.Format(Cultures.Resources.Time_T_x, i + 1), 3 * (i / 8) + 3, i % 8 + 1, false, HorizontalAlignment.Center), new(10, 0, 10, 0)));
+                grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCellTimeSpan(TimerEventTimes[i],                        3 * (i / 8) + 4, i % 8 + 1, "hm", false, true, HorizontalAlignment.Center), new(10, 0, 10, 0)));
             } 
 
             headerSection.Blocks.Add(new BlockUIContainer(grid));

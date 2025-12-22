@@ -30,10 +30,8 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName);
-
             var headerSection = new Section();
-            headerSection.Blocks.Add(key());
+            headerSection.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName));
             doc.Blocks.Add(headerSection);
             doc.Blocks.Add(printSets());
 
@@ -71,9 +69,9 @@ namespace Xfp.DataTypes.PanelData
             _triggerDelayedSvgData      = (string)svgPathConverter.Convert(SetTriggerTypes.Delayed,      typeof(string), null, null);
             _triggerNotTriggeredSvgData = (string)svgPathConverter.Convert(SetTriggerTypes.NotTriggered, typeof(string), null, null);
         }
-
-
-        private BlockUIContainer key()
+        
+        
+        private BlockUIContainer headerInfo(string header)
         {
             var notTriggeredText = Cultures.Resources.TriggerType_Not_Triggered;
             var pulsedText       = Cultures.Resources.TriggerType_Pulsed;
@@ -81,7 +79,7 @@ namespace Xfp.DataTypes.PanelData
             var delayedText      = Cultures.Resources.TriggerType_Delayed;
 
             var grid = new Grid();
-
+            GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
 
@@ -94,18 +92,20 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddColumnToGrid(grid, _iconSize.Width);
             GridUtil.AddColumnToGrid(grid, TableUtil.MeasureText(delayedText).Width + 5);
 
-            var row0 = GridUtil.GridCell("", 0, 0);
+            grid.Children.Add(GridUtil.SetMargin(GridUtil.GridCell(header, 0, 0, 1, 8, true, PrintUtil.PrintPageHeaderFontSize, FontStyles.Normal, PrintUtil.PrintHeaderFont), new(1,15,3,5)));
+
+            var row0 = GridUtil.GridCell("", 1, 0);
             row0.SetValue(Grid.HeightProperty, 10.0);
             
             grid.Children.Add(row0);
-            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.NotTriggered, 1, 0, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(notTriggeredText, 1, 1));
-            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Pulsed, 1, 2, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(pulsedText, 1, 3));
-            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Continuous, 1, 4, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(continuousText, 1, 5));
-            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Delayed, 1, 6, _iconSize));
-            grid.Children.Add(GridUtil.GridCell(delayedText, 1, 7));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.NotTriggered, 2, 0, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(notTriggeredText, 2, 1));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Pulsed, 2, 2, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(pulsedText, 2, 3));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Continuous, 2, 4, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(continuousText, 2, 5));
+            grid.Children.Add(gridCellTriggerViewbox(SetTriggerTypes.Delayed, 2, 6, _iconSize));
+            grid.Children.Add(GridUtil.GridCell(delayedText, 2, 7));
             
             return new(grid);
         }

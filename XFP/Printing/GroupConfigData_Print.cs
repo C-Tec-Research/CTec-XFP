@@ -26,15 +26,14 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName);
-
             var headerSection = new Section();
-            headerSection.Blocks.Add(headerInfo());
+            headerSection.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName));
             headerSection.Blocks.Add(key());
             doc.Blocks.Add(headerSection);
             doc.Blocks.Add(printGroups());
 
             TableUtil.ResetDefaults();
+            GridUtil.ResetDefaults();
         }
         
         
@@ -46,9 +45,9 @@ namespace Xfp.DataTypes.PanelData
         private Size   _iconSize = new(18, 14);
 
 
-        private BlockUIContainer headerInfo()
+        private BlockUIContainer headerInfo(string header)
         {
-            var grid = new Grid();
+            var grid = GridUtil.NewGrid(header);
 
             GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
@@ -64,25 +63,25 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.AddColumnToGrid(grid);
             GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 0, 0, 1, 2));
-            grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 1, 0, 1, 2));
+            grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 1)), 1, 0, 1, 2));
+            grid.Children.Add(GridUtil.GridCell(appendColon(string.Format(Cultures.Resources.Panel_Sounder_x_Belongs_To_Sounder_Group, 2)), 2, 0, 1, 2));
             
-            GridUtil.AddCellToGrid(grid, PanelSounder1Group.ToString(), 0, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder1Group));
-            GridUtil.AddCellToGrid(grid, PanelSounder2Group.ToString(), 1, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder2Group));
+            GridUtil.AddCellToGrid(grid, PanelSounder1Group.ToString(), 1, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder1Group));
+            GridUtil.AddCellToGrid(grid, PanelSounder2Group.ToString(), 2, 2, 1, 2, HorizontalAlignment.Left, true, !GroupConfigData.IsValidPanelSounderGroup(PanelSounder2Group));
 
-            grid.Children.Add(GridUtil.GridCell(" ", 0, 3));
+            grid.Children.Add(GridUtil.GridCell(" ", 1, 3));
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone),  0, 5));
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 1, 5));
-            GridUtil.AddCellToGrid(grid, ContinuousTone.ToString(),   0, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(ContinuousTone));
-            GridUtil.AddCellToGrid(grid, IntermittentTone.ToString(), 1, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(IntermittentTone));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Evac_Tone),  1, 5));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Alert_Tone), 2, 5));
+            GridUtil.AddCellToGrid(grid, ContinuousTone.ToString(),   1, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(ContinuousTone));
+            GridUtil.AddCellToGrid(grid, IntermittentTone.ToString(), 2, 6, 1, 1, HorizontalAlignment.Left, true, !GroupConfigData.IsValidAlarmTone(IntermittentTone));
 
-            grid.Children.Add(GridUtil.GridCell(" ", 2, 0));
+            grid.Children.Add(GridUtil.GridCell(" ", 3, 0));
 
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 3, 0, false));
-            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            4, 0, 1, 2, false));
-            grid.Children.Add(GridUtil.GridCellYesNo(ReSoundFunction, 3, 1, true, true));
-            GridUtil.AddCellToGrid(grid, GridUtil.GridCellTimeSpan(PhasedDelay, 4, 1, 1, 3, "ms", true, true, HorizontalAlignment.Left, !GroupConfigData.IsValidPhasedDelay(PhasedDelay)));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.New_Fire_Causes_Resound), 4, 0, false));
+            grid.Children.Add(GridUtil.GridCell(appendColon(Cultures.Resources.Phased_Delay),            5, 0, 1, 2, false));
+            grid.Children.Add(GridUtil.GridCellYesNo(ReSoundFunction, 4, 1, true, true));
+            GridUtil.AddCellToGrid(grid, GridUtil.GridCellTimeSpan(PhasedDelay, 5, 1, 1, 3, "ms", true, true, HorizontalAlignment.Left, !GroupConfigData.IsValidPhasedDelay(PhasedDelay)));
 
             return new(grid);
         }

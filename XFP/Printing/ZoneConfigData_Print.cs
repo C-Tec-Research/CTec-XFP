@@ -25,16 +25,14 @@ namespace Xfp.DataTypes.PanelData
 
             GridUtil.ResetDefaults();
 
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration);
-            
             var headerSection = new Section();
-            headerSection.Blocks.Add(headerInfo());
+            headerSection.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
             
             doc.Blocks.Add(headerSection);
             doc.Blocks.Add(printZones());
 
             TableUtil.ResetDefaults();
-            //GridUtil.ResetDefaults();
+            GridUtil.ResetDefaults();
         }
 
 
@@ -50,20 +48,18 @@ namespace Xfp.DataTypes.PanelData
         private double _arrowFontSize = 10;
 
 
-        private BlockUIContainer headerInfo()
+        private BlockUIContainer headerInfo(string header)
         {
-            var grid = new Grid();
-
+            var grid = GridUtil.NewGrid(header);
             GridUtil.AddRowToGrid(grid);
             GridUtil.AddRowToGrid(grid);
 
             GridUtil.AddColumnToGrid(grid);
-            GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Input_Delay, 0, 0));
-            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 0, 1));
-            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Investigation_Period, 1, 0));
-            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 1, 1));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Input_Delay, 1, 0));
+            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InputDelay, true, TextAlignment.Left, "ms", true), 1, 1));
+            grid.Children.Add(GridUtil.GridCell(Cultures.Resources.Investigation_Period, 2, 0));
+            grid.Children.Add(GridUtil.GridCell(TextUtil.TimeSpanToString(InvestigationPeriod, true, TextAlignment.Left, "ms", true), 2, 1));
 
             return new(grid);
         }
