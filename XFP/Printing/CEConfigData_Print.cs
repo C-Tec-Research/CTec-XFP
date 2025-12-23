@@ -381,6 +381,8 @@ namespace Xfp.DataTypes.PanelData
                 catch (Exception ex) { }
             }
 
+            checkTotalWidth();
+
             //ensure full complement of columns
             if (_columnWidths.Count < 14)
             {
@@ -395,6 +397,33 @@ namespace Xfp.DataTypes.PanelData
                 }
             }
         }
+
+
+        /// <summary>
+        /// Check total width against nominal printable width and adjust column widths if necessary
+        /// </summary>
+        private void checkTotalWidth()
+        {
+            var wTot = 0.0;
+            foreach (var c in _columnWidths)
+                wTot += c;
+
+            if (wTot > PrintUtil.PrintHandler.PrintableAreaWidth - 60)
+            {
+                //recursively shorten the widest columns until they will fit within the spwcified width
+                List<KeyValuePair<int,double>> wOrdered = new();
+                foreach (var w in _columnWidths)
+                    wOrdered.Add(new(wOrdered.Count, w));
+
+                wOrdered.Sort(reverseSort);
+
+                _columnWidths[wOrdered[0].Key] -= 5;
+                checkTotalWidth();
+            }
+
+        }
+
+        private int reverseSort(KeyValuePair<int,double> w1, KeyValuePair<int,double> w2) => w1.Value > w2.Value ? -1 : w2.Value > w1.Value ? 1 : 0;
 
 
         private void defineColumnHeaders(Table table, string reportHeader)

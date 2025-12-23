@@ -1245,6 +1245,7 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="txtAboutHeader" Text="{Binding AboutHeader}" Width="{Binding AboutHeaderWidth}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -1267,17 +1268,20 @@
                                 <TextBlock Grid.Row="3" Grid.Column="0" Text="CTecDevices" FontWeight="DemiBold" Margin="20,0,0,3"/>
                                 <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding DevicesVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
 
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="CTecUtil" FontWeight="DemiBold" Margin="20,0,0,3"/>
-                                <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding UtilVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="CTecFtdi" FontWeight="DemiBold" Margin="20,0,0,3"/>
+                                <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding FtdiVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
 
-                                <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="20,20,0,0" Click="History_Click">
+                                <TextBlock Grid.Row="5" Grid.Column="0" Text="CTecUtil" FontWeight="DemiBold" Margin="20,0,0,3"/>
+                                <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding UtilVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
+
+                                <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="20,20,0,0" Click="History_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <ctc:Icon IconType="History" Width="12" Height="12" Foreground="{StaticResource Brush03}" Margin="0,3,5,3"/>
                                         <TextBlock Text="{Binding Path=Revision_History, Source={StaticResource Resources}}"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Image Grid.Row="3" Grid.Column="3" Grid.RowSpan="3" Source="/CTecControls;component/UI/Images/c-tec.png" Height="70" Stretch="Uniform" VerticalAlignment="Top" Margin="20,10,10,0"/>
+                                <Image Grid.Row="2" Grid.Column="3" Grid.RowSpan="4" Source="/CTecControls;component/UI/Images/c-tec.png" Height="70" Stretch="Uniform" VerticalAlignment="Top" Margin="20,10,10,0"/>
 
                             </Grid>
                         </StackPanel>

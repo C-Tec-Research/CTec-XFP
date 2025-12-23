@@ -72,6 +72,7 @@ namespace Xfp.Printing
                 doc.ColumnWidth = printParams.PrintHandler.PrintableAreaWidth;
 
                 List<int> panelList = printParams.PrintAllPanels ? [..from k in data.Panels.Keys select k] : new() { data.CurrentPanel.PanelNumber };
+                panelList.Sort();
 
                 if (printParams.PrintSiteConfig)
                     data.SiteConfig.GetReport(doc);
@@ -102,6 +103,6 @@ namespace Xfp.Printing
 
 
         private static void PrintPreview(FlowDocument document, string description, PrintParameters parameters)
-            => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, true, parameters).Show();
+            => new FlowDocumentViewer(document, description, XfpApplicationConfig.Settings, parameters).Show();
     }
 }

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using CTecUtil.Printing;
+using CTecUtil.Utils;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using CTecUtil.Printing;
-using CTecUtil.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -11,7 +12,7 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc)
         {
-            PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Site_Configuration);
+            PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Site_Configuration, PrintUtil.PrintPageLargeHeaderFontSize);
             var sitePage = new Section();
             sitePage.Blocks.Add(systemConfig());
             doc.Blocks.Add(sitePage);
@@ -32,8 +33,11 @@ namespace Xfp.DataTypes.PanelData
             for (int i = 0; i < _totalColumns; i++)
                 GridUtil.AddColumnToGrid(grid);
 
-            GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right, false);
-            GridUtil.AddCellToGrid(grid, " ",  1, 0, false, false);
+            GridUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
+            GridUtil.SetFontFamily(PrintUtil.PrintHeaderFont);
+            GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.System_Name), 0, 0, HorizontalAlignment.Right, true);
+            GridUtil.ResetDefaults();
+            GridUtil.AddCellToGrid(grid, " ", 1, 0, false, false);
             GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Client_Name),       2, 0, HorizontalAlignment.Right, false);
             GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Client_Address),    3, 0, HorizontalAlignment.Right, false);
             GridUtil.AddCellToGrid(grid, appendColon(Cultures.Resources.Postcode),          7, 0, HorizontalAlignment.Right, false);
@@ -50,7 +54,10 @@ namespace Xfp.DataTypes.PanelData
             
             GridUtil.AddCellToGrid(grid, "\t", 1, 2, false, false);
 
+            GridUtil.SetFontSize(PrintUtil.PrintPageHeaderFontSize);
+            GridUtil.SetFontFamily(PrintUtil.PrintHeaderFont);
             GridUtil.AddCellToGrid(grid, SystemName, 0, 1, true, string.IsNullOrWhiteSpace(SystemName));
+            GridUtil.SetFontSize(PrintUtil.PrintDefaultFontSize);
             addAddress(grid, Client, 2, 1);
             addAddress(grid, Installer, 2, 4);
             GridUtil.AddCellToGrid(grid, InstallDate?.ToString("d"),    10, 1, true, false);//InstallDate is null);

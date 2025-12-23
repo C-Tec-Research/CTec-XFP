@@ -34,6 +34,8 @@ namespace Xfp.DataTypes.PanelData
             table.Columns.Add(new TableColumn() { Width = new GridLength(1, GridUnitType.Star) });
             var rowGroup = new TableRowGroup();
 
+            TableUtil.SetFontStretch(PrintUtil.FontNormalWidth);
+
             if (!string.IsNullOrEmpty(FilePath))
             {
                 var fileNameRow = new TableRow();
@@ -41,18 +43,17 @@ namespace Xfp.DataTypes.PanelData
                 rowGroup.Rows.Add(fileNameRow);
             }
 
-            TableUtil.SetNonProportionalFont();
-
             var logRow = new TableRow();
             if (!string.IsNullOrWhiteSpace(LogText))
             {
                 TableUtil.SetFontSize(8);
+                TableUtil.SetNonProportionalFont();
                 logRow.Cells.Add(TableUtil.NewCell(LogText));
             }
             else
             {
                 TableUtil.SetFontStyle(FontStyles.Italic);
-                logRow.Cells.Add(TableUtil.NewCell(Cultures.Resources.File_Is_Empty));
+                logRow.Cells.Add(TableUtil.NewCell(string.IsNullOrEmpty(FilePath) ? CTecUtil.Cultures.Resources.No_Data : Cultures.Resources.File_Is_Empty));
             }
             rowGroup.Rows.Add(logRow);
             

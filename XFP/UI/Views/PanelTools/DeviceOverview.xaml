@@ -120,11 +120,6 @@
                                   KeyUp="lstDeviceList_KeyUp"
                                   Margin="-1">
 
-                            <!--<ListView.Resources>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
-                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Yellow" />
-                    </ListView.Resources>-->
-
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -136,23 +131,25 @@
                                     <Grid Margin="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
-                                            <RowDefinition Height="Auto"/>
+                                            <!--<RowDefinition Height="Auto"/>-->
                                         </Grid.RowDefinitions>
 
-                                        <StackPanel Grid.Row="0" Orientation="Vertical">
-                                            <Image Grid.Row="0" 
-                                                   Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
-                                                   ToolTip="{Binding DeviceTypeToolTip}" 
-                                                   Style="{StaticResource DeviceImage}" 
-                                                   Margin="0">
-                                            </Image>
-                                            <Label Grid.Row="1" 
-                                               Content="{Binding DeviceNum}" 
-                                               ToolTip="{Binding DeviceTypeToolTip}" 
-                                               Style="{StaticResource DeviceNum}" 
-                                               Margin="3,0,0,2" />
-                                        </StackPanel>
-
+                                        <Border BorderBrush="{Binding DeviceHasErrors, Converter={StaticResource IsInvalidToErrorBrushConverter}}" 
+                                                BorderThickness="1" CornerRadius="5" 
+                                                Padding="2,1,2,0">
+                                            <StackPanel Orientation="Vertical">
+                                                <Image Source="{Binding DeviceType, Converter={StaticResource ResourceKey=DeviceIconConverter}, Mode=OneWay}" 
+                                                       ToolTip="{Binding DeviceTypeToolTip}" 
+                                                       Style="{StaticResource DeviceImage}" 
+                                                       Margin="0">
+                                                </Image>
+                                                <Label Content="{Binding DeviceNum}" 
+                                                       ToolTip="{Binding DeviceTypeToolTip}" 
+                                                       Style="{StaticResource DeviceNum}" 
+                                                       Margin="3,0,0,1" />
+                                            </StackPanel>
+                                        </Border>
+                                        
                                         <Grid.Style>
                                             <Style TargetType="{x:Type Grid}">
                                                 <Style.Triggers>
@@ -167,12 +164,6 @@
 
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-
-                            <!--<ListView.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="ToolTip" Value="{Binding ToolTip}"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>-->
 
                         </ListView>
 

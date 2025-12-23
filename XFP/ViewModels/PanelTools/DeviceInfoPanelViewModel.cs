@@ -155,7 +155,10 @@ namespace Xfp.ViewModels.PanelTools
             {
                 if (value is not null)
                     foreach (var d in _deviceList)
+                    {
                         d.DeviceType = value;
+                        d.RefreshView();
+                    }
 
                 RefreshView();
             }
@@ -284,7 +287,10 @@ namespace Xfp.ViewModels.PanelTools
             {
                 if (value is not null & !NoDeviceDetails)
                     foreach (var d in _deviceList)
+                    {
                         d.ZoneIndex = (_zoneIndex = findIndexInCombo(Zones, value))??0;
+                        d.RefreshView();
+                    }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ZoneIsValid));
@@ -343,7 +349,10 @@ namespace Xfp.ViewModels.PanelTools
             {
                 if (value is not null & !NoDeviceDetails)
                     foreach (var d in _deviceList)
+                    {
                         d.GroupIndex = (_groupIndex = findIndexInCombo(Groups, value))??0;
+                        d.RefreshView();
+                    }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(GroupIsValid));
@@ -410,7 +419,10 @@ namespace Xfp.ViewModels.PanelTools
                 {
                     if (value is not null)
                         foreach (var d in _deviceList)
+                        {
                             d.AncillaryBaseSounderGroup = findIndexInCombo(AncillaryBaseSounderGroups, value) ?? 0;
+                            d.RefreshView();
+                        }
 
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(DevicesHaveCommonHasAncillaryBaseSounder));
@@ -476,7 +488,10 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null)
                     foreach (var d in _deviceList)
                         if (d is not null)
+                        {
                             d.DaySensitivity = NoDeviceDetails ? null : value.Value;
+                            d.RefreshView();
+                        }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(DaySensitivity));
@@ -519,7 +534,10 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null)
                     foreach (var d in _deviceList)
                         if (d is not null)
+                        {
                             d.NightSensitivity = NoDeviceDetails ? null : value.Value;
+                            d.RefreshView();
+                        }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(NightSensitivity));
@@ -565,7 +583,10 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null)
                     foreach (var d in _deviceList)
                         if (!NoDeviceDetails)
+                        {
                             d.DayVolume = findIndexInCombo(Volumes, value) ?? 0;
+                            d.RefreshView();
+                        }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(DayVolumeIsValid));
@@ -610,7 +631,10 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null)
                     foreach (var d in _deviceList)
                         if (!NoDeviceDetails)
+                        {
                             d.NightVolume = findIndexInCombo(Volumes, value) ?? 0;
+                            d.RefreshView();
+                        }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(NightVolumeIsValid));
@@ -670,7 +694,11 @@ namespace Xfp.ViewModels.PanelTools
                     if (value.IsEnabled)
                         foreach (var d in _deviceList)
                             if (d is not null)
+                            {
                                 d.DayMode = value?.Number;
+                                d.RefreshView();
+                            }
+
 
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(DayModeIsInvalid));
@@ -722,7 +750,10 @@ namespace Xfp.ViewModels.PanelTools
                 if (value is not null && !NoDeviceDetails)
                     foreach (var d in _deviceList)
                         if (d is not null)
+                        {
                             d.NightMode = value?.Number;
+                            d.RefreshView();
+                        }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(NightModeIsInvalid));
@@ -807,33 +838,6 @@ namespace Xfp.ViewModels.PanelTools
         }
 
 
-        //private bool setDeviceName(string value)
-        //{
-        //    if (!checkNameMemoryLimit(value))
-        //        return false;
-
-        //    foreach (var d in _deviceList)
-        //    {
-        //        if (d?.DeviceType is null)
-        //            continue;
-
-        //        d.DeviceName = value;
-        //        d.RefreshView();
-
-        //        if (validIOIndex(0, d))
-        //            //setIODescription(0, value);
-        //            d.IOConfigItems[0].NameIndex = d.DeviceData.NameIndex;
-        //    }
-        
-        //    OnPropertyChanged();
-        //    OnPropertyChanged(nameof(DeviceNameIsValid));
-        //    OnPropertyChanged(nameof(DevicesHaveCommonDeviceName));
-        //    OnPropertyChanged(nameof(IndicateMultipleValues));
-        //    updateDebugInfo();
-        //    return true;
-        //}
-
-
         /// <summary>
         /// Refreshes the debug info (show via Ctrl-Alt-Shift-U)
         /// </summary>
@@ -877,7 +881,10 @@ namespace Xfp.ViewModels.PanelTools
                 try
                 {
                     foreach (var d in _deviceList)
+                    {
                         d.RemoteLEDEnabled = value;
+                        d.RefreshView();
+                    }
                 }
                 finally
                 {
@@ -953,7 +960,10 @@ namespace Xfp.ViewModels.PanelTools
             if (value is not null)
                 foreach (var d in _deviceList)
                     if (validIOIndex(index, d))
+                    {
                         d.IOConfigItems[index].InputOutput = (IOTypes)value;
+                        d.RefreshView();
+                    }
             
             OnPropertyChanged(nameof(IOInputOutput1));
             OnPropertyChanged(nameof(IOInputOutput2));
@@ -1208,11 +1218,6 @@ namespace Xfp.ViewModels.PanelTools
 
             return true;
         }
-
-
-        //private void setIODescription(System.Windows.Controls.TextBox textBox)
-        //{
-        //}
 
         private bool validIOIndex(int index, DeviceItemViewModel device) => index >= 0 && index < (device?.IOConfigItems?.Count??0);
         #endregion
@@ -1497,8 +1502,6 @@ namespace Xfp.ViewModels.PanelTools
                 return result;
             }
         }
-
-
 
 
         #region commonalities
@@ -2211,7 +2214,7 @@ namespace Xfp.ViewModels.PanelTools
         #region device editing
         public delegate void ShowFittedDevicesChanged(bool show);
         public ShowFittedDevicesChanged OnShowFittedDeviceChange;
-
+        
 
         public void ChangeDeviceType() => ChangeDeviceType(DeviceSelectorDeviceType);
 
@@ -2697,9 +2700,6 @@ namespace Xfp.ViewModels.PanelTools
         {
             if (_data is null)
                 return;
-
-             //_dayVolumeIndex   = findIndexInCombo(Volumes, DayVolume) ?? -1;
-             //_nightVolumeIndex = findIndexInCombo(Volumes, NightVolume) ?? -1;
 
             OnPropertyChanged(nameof(CurrentProtocolIsXfpCast));
             OnPropertyChanged(nameof(SoundersCanHaveRemoteDevices));

@@ -247,7 +247,7 @@ namespace Xfp.DataTypes.PanelData
             
             //measure required column widths for columns
             _wNum     = TableUtil.MeasureText("99").Width + cellMargins;
-            _wName    = GetMaxZoneNameLength();
+            _wName    = GetMaxZonePanelNameLength();
             //_wNumZone = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins;
 
             var wTime     = TableUtil.MeasureText("00:00").Width + cellMargins;
@@ -288,7 +288,7 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        public double GetMaxZoneNameLength()
+        public double GetMaxZonePanelNameLength()
         {
             var result = 0.0;
 
@@ -296,7 +296,7 @@ namespace Xfp.DataTypes.PanelData
                 result = Math.Max(result, TableUtil.MeasureText(z.Name).Width);
 
             foreach (var p in  ZonePanelData?.Panels)
-                Math.Max(result, TableUtil.MeasureText(p.Name).Width);
+                result = Math.Max(result, TableUtil.MeasureText(p.Name).Width);
 
             return result + (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
         }

@@ -11,7 +11,7 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc, XfpPanelData panelData)
         {
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x_Settings, panelData.PanelNumber));
+            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x_Settings, panelData.PanelNumber), PrintUtil.PrintPageLargeHeaderFontSize);
 
             var panelPage = new Section();
             panelPage.Blocks.Add(systemHeader());

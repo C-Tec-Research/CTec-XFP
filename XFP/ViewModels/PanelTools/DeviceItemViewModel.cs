@@ -100,7 +100,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         public bool?  RemoteLEDEnabled          { get => _deviceData.RemoteLEDEnabled;                                  set { _deviceData.RemoteLEDEnabled = value; OnPropertyChanged(); } }
-        public bool?  HasAncillaryBaseSounder     => CanHaveAncillaryBaseSounder && RemoteLEDEnabled == false;// (_deviceData.AncillaryBaseSounderGroup??0) >= 0;
+        public bool?  HasAncillaryBaseSounder         => CanHaveAncillaryBaseSounder && RemoteLEDEnabled == false;
         public int?   AncillaryBaseSounderGroup { get => _deviceData.AncillaryBaseSounderGroup;                         set { _deviceData.AncillaryBaseSounderGroup = value; OnPropertyChanged(); OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid)); } }
         public int?   DaySensitivity            { get => DaySensitivityIsValid ? _deviceData.DaySensitivity : null;     set { _deviceData.DaySensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
         public int?   NightSensitivity          { get => NightSensitivityIsValid ? _deviceData.NightSensitivity : null; set { _deviceData.NightSensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
@@ -153,39 +153,6 @@ namespace Xfp.ViewModels.PanelTools
         public bool IsEnabled { get; set; }
 
 
-        //public string ZoneGroup
-        //{
-        //    get
-        //    {
-        //        var zga = ZoneGroupSetIndex;
-        //        if (zga > 0 && DeviceTypes.IsValidDeviceType(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType))
-        //        {
-        //            if (IsZonalDevice)
-        //            {
-        //                if (zga <= ZoneConfigData.NumZones)
-        //                {
-        //                    var defaultname = string.Format(Cultures.Resources.Zone_x, zga);
-        //                    var name = _zoneData.Zones[zga - 1].Name;
-        //                    //return defaultname + (name != defaultname ? " - " + name : "");
-        //                    if (name != defaultname)
-        //                        return defaultname + " - " + name;
-        //                    return name;
-        //                }
-        //            }
-        //            else if (IsGroupedDevice)
-        //            {
-        //                if (zga <= GroupConfigData.NumSounderGroups)
-        //                    return string.Format(Cultures.Resources.Group_x, zga);
-        //            }
-        //        }
-
-        //        if (zga == 0)
-        //            return Cultures.Resources.Use_In_Special_C_And_E;
-
-        //        return "";
-        //    }
-        //}
-
         public string ZoneDesc
         {
             get
@@ -230,6 +197,7 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
+        public bool DeviceHasErrors                  => !_deviceData.Validate();
         public bool DeviceTypeIsValid                => DeviceType is null || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
         public bool ZoneIsValid                      => !IsZonalDevice || IsIODevice ? IOConfigItemsAreValid : ZoneConfigData.IsValidZone(Zone);
         public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group);
@@ -339,6 +307,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(HasAncillaryBaseSounder));
             OnPropertyChanged(nameof(AncillaryBaseSounderGroup));
             OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid));
+            OnPropertyChanged(nameof(DeviceHasErrors));
         }
         #endregion
     }

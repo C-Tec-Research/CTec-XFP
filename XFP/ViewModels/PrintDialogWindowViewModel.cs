@@ -185,14 +185,11 @@ namespace Xfp.ViewModels
         }
         
 
-        public bool CanPrint =>  SelectedPrinter is not null //&& (PrintAllPanels/* || CTecUtil.TextProcessing.NumberListToString PrintPanelRange.Length > 0 ||*/)
-                                                             && (PrintAllPages      || PrintSiteConfig 
+        public bool CanPrint =>  SelectedPrinter is not null && (PrintAllPages      || PrintSiteConfig 
                                                               || PrintLoopInfo && (PrintLoop1 || PrintLoop2) 
                                                               || PrintZones         || PrintGroups     || PrintSets
                                                               || PrintNetworkConfig || PrintCAndE      || PrintComments || PrintEventLog);
 
-        //private void setAllPagesToPrint(bool value) => PrintSiteConfig = PrintLoopInfo      = PrintZones = PrintGroups   = PrintSets 
-        //                                             = PrintSiteConfig = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = value;
 
         private void SetAllPagesToPrint(bool print)
         {
@@ -203,27 +200,33 @@ namespace Xfp.ViewModels
 
         private void setCurrentPageToPrint()
         {
-            //PrintParams.SetAllPagesToPrint(false);
-            PrintSiteConfig = PrintLoopInfo = PrintZones = PrintGroups = PrintSets = PrintNetworkConfig = PrintCAndE = PrintComments = PrintEventLog = false;
-
-            if (_currentPage.DataContext is DevicesViewModel)
+            if (PrintAllPages)
             {
-                PrintLoopInfo = true;
-
-                if (_currentPage.DataContext is DevicesViewModel vm)
-                {
-                    PrintLoop1 = vm.IsLoop1;
-                    PrintLoop2 = !vm.IsLoop1;
-                }
+                SetAllPagesToPrint(true);
             }
-            else if (_currentPage.DataContext is ZoneConfigViewModel)       PrintZones = true;
-            else if (_currentPage.DataContext is GroupConfigViewModel)      PrintGroups = true;
-            else if (_currentPage.DataContext is SetConfigViewModel)        PrintSets = true;
-            else if (_currentPage.DataContext is SiteConfigViewModel)       PrintSiteConfig = true;
-            else if (_currentPage.DataContext is CausesAndEffectsViewModel) PrintCAndE = true;
-            else if (_currentPage.DataContext is NetworkConfigViewModel)    PrintNetworkConfig = true;
-            else if (_currentPage.DataContext is EventLogViewerViewModel)   PrintEventLog = true;
-            else if (_currentPage.DataContext is CommentsViewModel)         PrintComments = true;
+            else
+            {
+                SetAllPagesToPrint(false);
+
+                if (_currentPage.DataContext is DevicesViewModel)
+                {
+                    PrintLoopInfo = true;
+
+                    if (_currentPage.DataContext is DevicesViewModel vm)
+                    {
+                        PrintLoop1 = vm.IsLoop1;
+                        PrintLoop2 = !vm.IsLoop1;
+                    }
+                }
+                else if (_currentPage.DataContext is ZoneConfigViewModel)       PrintZones = true;
+                else if (_currentPage.DataContext is GroupConfigViewModel)      PrintGroups = true;
+                else if (_currentPage.DataContext is SetConfigViewModel)        PrintSets = true;
+                else if (_currentPage.DataContext is SiteConfigViewModel)       PrintSiteConfig = true;
+                else if (_currentPage.DataContext is CausesAndEffectsViewModel) PrintCAndE = true;
+                else if (_currentPage.DataContext is NetworkConfigViewModel)    PrintNetworkConfig = true;
+                else if (_currentPage.DataContext is EventLogViewerViewModel)   PrintEventLog = true;
+                else if (_currentPage.DataContext is CommentsViewModel)         PrintComments = true;
+            }
         }
         #endregion
 

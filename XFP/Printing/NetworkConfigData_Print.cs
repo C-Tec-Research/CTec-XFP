@@ -1,8 +1,12 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
+﻿using CTecControls.UI;
 using CTecUtil.Printing;
 using CTecUtil.Utils;
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -15,12 +19,36 @@ namespace Xfp.DataTypes.PanelData
 
             PrintUtil.PageHeader(doc, Cultures.Resources.Nav_Network_Configuration);
 
-            var sitePage = new Section();
+            var nwSect = new Section();
 
-            sitePage.Blocks.Add(networkConfigTop());
-            sitePage.Blocks.Add(new BlockUIContainer(new TextBlock()));
-            sitePage.Blocks.Add(networkConfigBottom());
-            doc.Blocks.Add(sitePage);
+            var table = TableUtil.NewTable(Cultures.Resources.Nav_Network_Configuration);
+            table.Columns.Add(new TableColumn() { Width = new GridLength(1d, GridUnitType.Auto) });
+            table.Columns.Add(new TableColumn() { Width = new GridLength(1d, GridUnitType.Auto) });
+            
+            var headerRow = new TableRow();
+            var dataRow   = new TableRow();
+
+            //TableUtil.SetPadding(new(0, 0, 0, 10));
+            //var headerCell = TableUtil.NewCell(Cultures.Resources.Nav_Network_Configuration, 1, 2, TextAlignment.Left, FontWeights.Bold, PrintUtil.PrintPageHeaderFontSize, Styles.Brush00, FontStyles.Normal, new(PrintUtil.PrintHeaderFont));
+            //headerRow.Cells.Add(headerCell);
+            //TableUtil.ResetDefaults();
+            //headerRow.Cells.Add(TableUtil.NewCell("", 1, 1));
+
+            var leftGrid = networkConfigTop();
+            dataRow.Cells.Add(new TableCell(leftGrid));
+
+            var rightGrid = networkConfigBottom();
+            dataRow.Cells.Add(new TableCell(rightGrid));
+            
+            dataRow.Cells.Add(TableUtil.NewCell("", 1, 1));
+                        
+            var nwGroup = new TableRowGroup();
+            nwGroup.Rows.Add(headerRow);
+            nwGroup.Rows.Add(dataRow);
+            table.RowGroups.Add(nwGroup);
+
+            nwSect.Blocks.Add(table);
+            doc.Blocks.Add(nwSect);
         }
 
 
@@ -34,40 +62,30 @@ namespace Xfp.DataTypes.PanelData
         {
             var grid = new Grid();
 
-            for (int i = 0; i < NumPanelSettings + 1; i++)
+            for (int i = 0; i < NumPanelSettings + 2; i++)
                 GridUtil.AddRowToGrid(grid);
 
             for (int i = 0; i < _totalTopColumns; i++)
                 GridUtil.AddColumnToGrid(grid);
 
-            grid.Children.Add(GridUtil.GridBackground(0, 0, 1, _totalTopColumns, PrintUtil.TableHeaderBackground));
+            grid.Children.Add(GridUtil.GridBackground(1, 0, 1, _totalTopColumns, PrintUtil.TableHeaderBackground));
 
             int col = 1;
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Name, 0, col++));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Fitted,     0, col++));
-            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Location,   0, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Panel_Name, 1, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Fitted,     1, col++));
+            grid.Children.Add(GridUtil.GridHeaderCell(Cultures.Resources.Location,   1, col++));
 
             for (int i = 0; i < NumPanelSettings; i++)
             {
-                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 1, 0);
-                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 1, 1);
-                GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 1, 2, false, false));
+                GridUtil.AddCellToGrid(grid, (i + 1).ToString(), i + 2, 0);
+                GridUtil.AddCellToGrid(grid, _data.CurrentPanel.ZonePanelConfig.Panels[i].Name, i + 2, 1);
+                GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, false, false));
 
                 if (_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted && string.IsNullOrWhiteSpace(_data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location))
-                    GridUtil.AddCellToGrid(grid, "", i + 1, 3, false, true);
+                    GridUtil.AddCellToGrid(grid, "", i + 2, 3, false, true);
                 else
-                    GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 1, 3, false);
+                    GridUtil.AddCellToGrid(grid, _data.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, false);
             }
-
-            //for (int i = 0; i < _data.Panels.Count; i++)
-            //{
-            //    XfpPanelData p;
-            //    if (_data.Panels.TryGetValue(i + 1, out p))
-            //    {
-            //        GridUtil.AddCellToGrid(grid, GridUtil.GridCellBool(p.NetworkConfig.RepeaterSettings.Repeaters[i].Fitted, i + 2, 2, false, true));
-            //        GridUtil.AddCellToGrid(grid, p.NetworkConfig.RepeaterSettings.Repeaters[i].Location, i + 2, 3, true);
-            //    }
-            //}
 
             return new(grid);
         }

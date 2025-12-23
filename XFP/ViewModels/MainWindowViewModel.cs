@@ -1641,13 +1641,17 @@ namespace Xfp.ViewModels
 
 
         public string   ExeVersion       { get => string.Format(Cultures.Resources.Version_x_Abbr, BuildInfo.Details.Version); }
-        public DateTime ExeDate          { get => BuildInfo.Details.BuildDate.Value; }
         public string   ControlsVersion  { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecControls.BuildInfo.Details.Version); }
-        public DateTime ControlsDate     { get => CTecControls.BuildInfo.Details.BuildDate.Value; }
         public string   DevicesVersion   { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecDevices.BuildInfo.Details.Version); }
-        public DateTime DevicesDate      { get => CTecDevices.BuildInfo.Details.BuildDate.Value; }
+        public string   FtdiVersion      { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecFtdi.BuildInfo.Details.Version); }
         public string   UtilVersion      { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecUtil.BuildInfo.Details.Version); }
+
+        public DateTime ExeDate          { get => BuildInfo.Details.BuildDate.Value; }
+        public DateTime ControlsDate     { get => CTecControls.BuildInfo.Details.BuildDate.Value; }
+        public DateTime DevicesDate      { get => CTecDevices.BuildInfo.Details.BuildDate.Value; }
+        public DateTime FtdiDate         { get => CTecFtdi.BuildInfo.Details.BuildDate.Value; }
         public DateTime UtilDate         { get => CTecUtil.BuildInfo.Details.BuildDate.Value; }
+
         public string   CopyrightDetails { get => string.Format(Cultures.Resources.Copyright_Details, BuildInfo.Details.BuildYear); }
         public string   Who              { get => Credits.Components[0].Notes; }
         #endregion
@@ -1662,7 +1666,7 @@ namespace Xfp.ViewModels
                 MainWindowEnabled = false;
 
                 var document = DocxToFlowDocumentConverter.ReadDocxResource("XFP Revision History");
-                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History, XfpApplicationConfig.Settings, false).ShowDialog();
+                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History, XfpApplicationConfig.Settings).ShowDialog();
             }
             catch (Exception ex) { }
             finally { MainWindowEnabled = true; }

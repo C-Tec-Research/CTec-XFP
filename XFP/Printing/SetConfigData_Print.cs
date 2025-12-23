@@ -308,7 +308,7 @@ namespace Xfp.DataTypes.PanelData
             
             //measure required column widths for columns
             _wNum         = TableUtil.MeasureText("99").Width + 1;
-            _wName        = _data.ZoneConfig.GetMaxZoneNameLength();
+            _wName        = _data.ZoneConfig.GetMaxZonePanelNameLength();
             _wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins + 1;
             _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + cellMargins + 1;
             _wSilenceable = TableUtil.MeasureText(Cultures.Resources.Is_Set_Silenceable).Width;
