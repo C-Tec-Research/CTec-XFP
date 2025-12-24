@@ -276,6 +276,15 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
+
+        internal void alarmSelectAll(DataGrid grid)
+        {
+            foreach (var g in GroupConfigItems)
+                foreach (var a in g.Alarms)
+                    a.Button.IsChecked = true;
+        }
+
+
         internal void alarmMouseEnter(object sender, RoutedEventArgs e)
         {
             if (_newSelectionStart is null)

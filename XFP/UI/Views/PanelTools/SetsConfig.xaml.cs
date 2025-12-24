@@ -43,5 +43,11 @@ namespace Xfp.UI.Views.PanelTools
         
         private void ToggleButton_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.triggerMouseDown(sender, e);
         private void ToggleButton_MouseEnter(object sender, MouseEventArgs e)             => _context.triggerMouseEnter(sender, e);
+
+        private void page_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A && Keyboard.Modifiers == ModifierKeys.Control)
+                _context.alarmSelectAll(sender as DataGrid);
+        }
     }
 }

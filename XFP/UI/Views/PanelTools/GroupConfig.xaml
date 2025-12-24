@@ -13,6 +13,7 @@
       xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
       xmlns:val="clr-namespace:Xfp.UI.Validation"
       d:DataContext="{d:DesignInstance Type=viewmodels:GroupConfigViewModel}"
+      PreviewKeyDown="page_PreviewKeyDown"
       mc:Ignorable="d" 
       Title="GroupConfig">
 
@@ -97,31 +98,6 @@
             </Setter>
         </Style>
 
-        <!--<Style x:Key="AlarmButtonStyle" TargetType="{x:Type ToggleButton}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Grid x:Name="grid">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.4"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-
         <Style x:Key="GridIconStyle" TargetType="{x:Type ToggleButton}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -133,7 +109,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid x:Name="grid">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -173,7 +153,7 @@
             <TextBlock Grid.Row="0" Text="{Binding PageHeader}" Style="{StaticResource PageTitle}"/>
 
 
-            <!--#region properties-->
+            <!--#region sounder properties-->
             <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     Style="{StaticResource InputPanelBorder}"
                     Margin="0,3,0,8" Padding="10" VerticalAlignment="Top">
@@ -366,7 +346,7 @@
 
 
             <!--#region main grid-->
-            <WrapPanel Grid.Row="3" Grid.Column="0">
+            <WrapPanel x:Name="pnlAlarms" Grid.Row="3" Grid.Column="0">
                 <Border Background="{StaticResource Brush02}" BorderBrush="{StaticResource Brush02}" BorderThickness="1" CornerRadius="10,10,0,0" Margin="0,5,5,5">
                     <Grid Margin="1,5,1,1" Background="{StaticResource Brush10}">
 
@@ -560,7 +540,8 @@
                                     <Grid Grid.Row="38" Grid.Column="0" Background="{StaticResource Brush09}" Margin="0"><TextBlock Text="6" HorizontalAlignment="Right" Padding="5,0,5,0"/></Grid>
                                     <Grid Grid.Row="39" Grid.Column="0" Background="{StaticResource Brush09}" Margin="0"><TextBlock Text="7" HorizontalAlignment="Right" Padding="5,0,5,0"/></Grid>
                                     <Grid Grid.Row="40" Grid.Column="0" Background="{StaticResource Brush09}" Margin="0"><TextBlock Text="8" HorizontalAlignment="Right" Padding="5,0,5,0"/></Grid>
-
+                                    <!--#endregion-->
+                                    
                                     <!--#region zone/panel names-->
                                     <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource Brush09}" Margin="-4,0,0,0">
                                         <TextBlock Text="{Binding GroupConfigItems[0].Name}" Padding="3,0,0,0"/>

@@ -12,6 +12,7 @@
       xmlns:vh="clr-namespace:Xfp.UI.ViewHelpers"
       xmlns:val="clr-namespace:Xfp.UI.Validation"
       d:DataContext="{d:DesignInstance Type=viewmodels:SetConfigViewModel}"
+      PreviewKeyDown="page_PreviewKeyDown"
       mc:Ignorable="d" 
       Title="SetConfig">
 

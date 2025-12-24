@@ -203,6 +203,20 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
+
+        internal void alarmSelectAll(DataGrid grid)
+        {
+            foreach (var s in SetConfigItems)
+            {
+                foreach (var a in s.OutputSetTriggers)
+                    a.Button.IsChecked = true;
+                foreach (var a in s.PanelRelayTriggers)
+                    a.Button.IsChecked = true;
+            }
+        }
+
+
+
         internal void triggerMouseEnter(object sender, RoutedEventArgs e)
         {
             if (_newSelectionStart is null)
