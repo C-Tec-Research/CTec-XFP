@@ -18,7 +18,7 @@ namespace Xfp.DataTypes.PanelData
                 return;
             
             FirmwareVersion     = original.FirmwareVersion;
-            LoopCount           = original.LoopCount;
+            //LoopCount           = original.LoopCount;
             DateEnabled         = original.DateEnabled;
             SoundersPulsed      = original.SoundersPulsed;
             CopyTime            = original.CopyTime;
@@ -56,7 +56,7 @@ namespace Xfp.DataTypes.PanelData
         public PanelConfigData(XfpData data) : this()
         {
             FirmwareVersion     = data.FirmwareVersion;
-            LoopCount           = LoopConfigData.MaxLoops;
+            //LoopCount           = LoopConfigData.MaxLoops;
             DateEnabled         = data.SiteConfig.DateEnabled;
             SoundersPulsed      = data.SiteConfig.SoundersPulsed;
             CopyTime            = data.SiteConfig.CopyTime;
@@ -84,7 +84,7 @@ namespace Xfp.DataTypes.PanelData
 
 
         public string FirmwareVersion { get; set; }
-        public int LoopCount { get; set; }
+        //public int LoopCount { get; set; }
         public bool DateEnabled { get; set; }
         public bool SoundersPulsed { get; set; }
         public bool CopyTime { get; set; }
@@ -133,8 +133,8 @@ namespace Xfp.DataTypes.PanelData
             if (otherData is not PanelConfigData od)
                 return false;
 
-            if (od.LoopCount != LoopCount
-             || od.DateEnabled != DateEnabled
+            if (/*od.LoopCount != LoopCount
+             || */od.DateEnabled != DateEnabled
              || od.SoundersPulsed != SoundersPulsed
              || od.MaintenanceString != MaintenanceString
              || od.QuiescentString != QuiescentString

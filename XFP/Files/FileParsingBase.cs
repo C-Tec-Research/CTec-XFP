@@ -66,9 +66,10 @@ namespace Xfp.Files
             => input?.Substring(0, input.Contains(Tags.Comment) ? input.IndexOf(Tags.Comment) : input.Length);
 
 
-        internal static string ParseString(string input)
+        internal static string ParseString(string input, bool nullIfEmpty = false)
         {
             //divider in legacy file is '=', for the case of a json file check for ':'
+            var result = "";
             var legacyFile = input.Contains("=");
             var split = input.Split(legacyFile ? "=" : ":");
             if (split.Length > 1)
@@ -79,9 +80,9 @@ namespace Xfp.Files
                                   select c)
                     tmp.Append(c);
 
-                return legacyFile ? tmp.ToString().Trim() : tmp.ToString().Trim().Trim(['\"', ',']);
+                result = legacyFile ? tmp.ToString().Trim() : tmp.ToString().Trim().Trim(['\"', ',']);
             }
-            return "";
+            return nullIfEmpty && result == "" ? null : result;
         }
 
 

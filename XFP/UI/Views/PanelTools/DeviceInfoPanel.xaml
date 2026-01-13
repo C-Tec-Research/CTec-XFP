@@ -701,7 +701,7 @@
                                                             Margin="0,3,0,0"  Padding="2">
 
                                                         <ComboBox ItemsSource="{Binding AncillaryBaseSounderGroups}"
-                                                                  SelectedIndex="{Binding SelectedAncillaryBaseSounderGroupIndex}"
+                                                                  SelectedItem="{Binding AncillaryBaseSounderGroup}"
                                                                   MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                                   PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                                   PreviewKeyDown="comboBox_PreviewKeyDown" 

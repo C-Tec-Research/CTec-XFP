@@ -1047,6 +1047,8 @@ namespace Xfp.ViewModels
                     }
                 }
 
+                normaliseFileData(newData);
+
                 if (newData is null)
                     return false;
 
@@ -1281,6 +1283,59 @@ namespace Xfp.ViewModels
             result.Comments = panelData.Comments;
 
             return result;
+        }
+
+
+        private void normaliseFileData(XfpData data)
+        {
+            normaliseDeviceNames();
+
+            foreach (var p in data.Panels)
+            {
+                //ensure consistent device defaults
+                foreach (var l in p.Value.LoopConfig.Loops)
+                {
+                    foreach (var d in l.Devices)
+                    {
+                        if (d.DeviceType is null)
+                        {
+                            d.DayMode = d.NightMode = 0;
+                        }
+
+                        for (int i = 0; i < d.IOConfig.Count; i++)
+                        {
+                            if (!d.IsIODevice)
+                                d.IOConfig[i].NameIndex = -1;
+                            else if (i == 0)
+                                d.IOConfig[i].NameIndex = d.NameIndex;
+                            else if (d.IOConfig[i].NameIndex == 0)
+                                d.IOConfig[i].NameIndex = -1;
+                        }
+                        d.AncillaryBaseSounderGroup = 1;
+                    }
+                }
+
+                //ensure consistent C&E defaults
+                foreach (var e in p.Value.CEConfig.Events)
+                {
+                    if (e.ActionParam   == -1) e.ActionParam = 0;
+                    if (e.TriggerParam  == -1) e.TriggerParam = 0;
+                    if (e.TriggerParam2 == -1) e.TriggerParam2 = 0;
+                    if (e.TriggerParam  == 0)  e.TriggerCondition = true;
+                    if (e.ResetParam    == -1) e.ResetParam = 0;
+                    if (e.ResetParam2   == -1) e.ResetParam2 = 0;
+                    if (e.ResetParam    == 0)  e.ResetCondition = false;
+                }
+            }
+        }
+        
+
+        private void normaliseDeviceNames() => normaliseDeviceNames(XfpData.CurrentPanelNumber);
+
+        private void normaliseDeviceNames(int panelIndex)
+        {      
+            if (_data.Panels[panelIndex].DeviceNamesConfig.DeviceNames.Count == 0)
+                _data.Panels[panelIndex].DeviceNamesConfig = DeviceNamesConfigData.InitialisedNew();
         }
 
 
@@ -2113,7 +2168,7 @@ namespace Xfp.ViewModels
             try
             {
                 CTecUtil.Debug.WriteLine("commsEnded()");
-                normaliseData();
+                normaliseDeviceNames();
             }
             finally
             {
@@ -2141,12 +2196,6 @@ namespace Xfp.ViewModels
                 case CommsResult.Cancelled: Notifications.ShowWarning(message, title); break;
                 default:                    Notifications.Show(message, title); break;
             }
-        }
-
-        private void normaliseData()
-        {      
-            if (_data.CurrentPanel.DeviceNamesConfig.DeviceNames.Count == 0)
-                _data.CurrentPanel.DeviceNamesConfig = DeviceNamesConfigData.InitialisedNew();
         }
         #endregion
 

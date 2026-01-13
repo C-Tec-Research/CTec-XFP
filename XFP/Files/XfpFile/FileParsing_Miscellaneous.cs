@@ -17,7 +17,7 @@ namespace Xfp.Files.XfpFile
                 //case XfpTags.Loop2:                 result.CurrentPanel.Loop2Available = ParseString(currentLine); break;
                 case XfpTags.MainVersion:           result.CurrentPanel.PanelConfig.FirmwareVersion = ParseString(currentLine); break;
 
-                case XfpTags.LoopCount:             result.CurrentPanel.PanelConfig.LoopCount = parseInt(currentLine); break;
+                //case XfpTags.LoopCount:             result.CurrentPanel.PanelConfig.LoopCount = parseInt(currentLine); break;
                 case XfpTags.SystemType:            result.CurrentPanel.Protocol = parseProtocol(currentLine); break;
                 case XfpTags.DateEnabled:           result.CurrentPanel.PanelConfig.DateEnabled = parseBool(currentLine); break;
                 case XfpTags.SoundersPulsed:        result.CurrentPanel.PanelConfig.SoundersPulsed = parseBool(currentLine); break;
@@ -28,7 +28,7 @@ namespace Xfp.Files.XfpFile
                 case XfpTags.InvestigationPeriod1:  result.CurrentPanel.ZoneConfig.InvestigationPeriod = parseIntTime(currentLine); break;
 
                                                     //old XFP files support only 1 panel; any panel location found is stored against our current panel
-                case XfpTags.PanelLocation:         result.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[result.CurrentPanel.PanelNumber - 1].Location = ParseString(currentLine); break;
+                case XfpTags.PanelLocation:         result.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[result.CurrentPanel.PanelNumber - 1].Location = ParseString(currentLine, true); break;
                 case XfpTags.AL2Code:               result.CurrentPanel.PanelConfig.AL2Code = ParseString(currentLine); break;
                 case XfpTags.AL3Code:               result.CurrentPanel.PanelConfig.AL3Code = ParseString(currentLine); break;
                 case XfpTags.FrontPanel:            result.SiteConfig.FrontPanel = ParseString(currentLine); break;

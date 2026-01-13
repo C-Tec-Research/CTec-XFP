@@ -91,9 +91,9 @@ namespace Xfp.ViewModels.PanelTools
         
         public bool DisplayShowFittedDevicesOnlyOption { get => _displayShowFittedDeviceOnlyOption; set { _displayShowFittedDeviceOnlyOption = value; OnPropertyChanged(); } }
 
-        //public bool ShowFittedDevicesOnly { get => _showFittedDeviceOnly; set { _showFittedDeviceOnly = value; OnShowFittedDeviceChange?.Invoke(_showFittedDeviceOnly); OnPropertyChanged(); } }
+        public bool ShowFittedDevicesOnly              { get => _showFittedDeviceOnly; set { _showFittedDeviceOnly = value; OnShowFittedDeviceChange?.Invoke(_showFittedDeviceOnly); OnPropertyChanged(); } }
 
-        public bool SoundersCanHaveRemoteDevices  => DeviceTypes.SoundersCanHaveRemoteDevices(DeviceTypes.CurrentProtocolType);
+        public bool SoundersCanHaveRemoteDevices       => DeviceTypes.SoundersCanHaveRemoteDevices(DeviceTypes.CurrentProtocolType);
 
 
         #region alarm verification count
