@@ -93,7 +93,7 @@ namespace Xfp.Files.XfpFile
         /// <returns>XfpPanelData object populated from the parsed data.</returns>
         internal static XfpData ParseXfp(StreamReader inputStream, CTecDevices.ObjectTypes protocol, int panelNumber, int numLoops)
         {
-            LineNumber = 1;
+            LineNumber = 0;
             var result = XfpData.InitialisedNew(protocol, panelNumber, true, numLoops);
 
             string currentLine = string.Empty;

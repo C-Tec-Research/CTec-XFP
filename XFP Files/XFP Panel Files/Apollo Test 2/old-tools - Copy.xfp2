@@ -25,9 +25,23 @@
           false,
           false,
           false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
           false
         ],
         "NightStart": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
           false,
           false,
           false,
@@ -275,7 +289,7 @@
         "Loop1": {
           "Devices": [
             {
-              "DeviceType": 31,
+              "DeviceType": 8,
               "LoopNum": 0,
               "Index": 0,
               "Zone": 1,
@@ -292,31 +306,31 @@
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 1,
+                  "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 1,
+              "NameIndex": 0,
               "AncillaryBaseSounderGroup": 1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -4566,17 +4580,17 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 2
-                },
-                {
-                  "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": 0
+                },
+                {
+                  "Index": 1,
+                  "InputOutput": 2,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -4593,7 +4607,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 2,
+              "NameIndex": 0,
               "AncillaryBaseSounderGroup": 1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -4613,17 +4627,17 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 2
-                },
-                {
-                  "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": 0
+                },
+                {
+                  "Index": 1,
+                  "InputOutput": 2,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -4640,7 +4654,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 2,
+              "NameIndex": 0,
               "AncillaryBaseSounderGroup": 1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -4989,17 +5003,17 @@
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 2,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 2
-                },
-                {
-                  "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": 0
+                },
+                {
+                  "Index": 1,
+                  "InputOutput": 2,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -5016,7 +5030,7 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 2,
+              "NameIndex": 0,
               "AncillaryBaseSounderGroup": 1,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
@@ -12128,8 +12142,9 @@
       "DeviceNamesConfig": {
         "DeviceNames": [
           "No name allocated",
-          "031 ",
-          "008 "
+          "1",
+          "0",
+          "161"
         ]
       },
       "ZoneConfig": {
@@ -12138,7 +12153,7 @@
             {
               "IsPanelData": true,
               "Index": 0,
-              "Name": "33 Panel 1",
+              "Name": "Panel 1",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12166,7 +12181,7 @@
             {
               "IsPanelData": true,
               "Index": 1,
-              "Name": "34 Panel 2",
+              "Name": "Panel 2",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12194,7 +12209,7 @@
             {
               "IsPanelData": true,
               "Index": 2,
-              "Name": "35 Panel 3",
+              "Name": "Panel 3",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12222,7 +12237,7 @@
             {
               "IsPanelData": true,
               "Index": 3,
-              "Name": "36 Panel 4",
+              "Name": "Panel 4",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12250,7 +12265,7 @@
             {
               "IsPanelData": true,
               "Index": 4,
-              "Name": "37 Panel 5",
+              "Name": "Panel 5",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12278,7 +12293,7 @@
             {
               "IsPanelData": true,
               "Index": 5,
-              "Name": "38 Panel 6",
+              "Name": "Panel 6",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12306,7 +12321,7 @@
             {
               "IsPanelData": true,
               "Index": 6,
-              "Name": "39 Panel 7",
+              "Name": "Panel 7",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12334,7 +12349,7 @@
             {
               "IsPanelData": true,
               "Index": 7,
-              "Name": "40 Panel 8",
+              "Name": "Panel 8",
               "InputDelay": "00:05:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -12386,7 +12401,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 0,
-            "Name": "01 Zone 1",
+            "Name": "Zone 1",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12435,7 +12450,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 1,
-            "Name": "02 Zone 2",
+            "Name": "Zone 2",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12484,7 +12499,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 2,
-            "Name": "03 Zone 3",
+            "Name": "Zone 3",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12533,7 +12548,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 3,
-            "Name": "04 Zone 4",
+            "Name": "Zone 4",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12582,7 +12597,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 4,
-            "Name": "05 Zone 5",
+            "Name": "Zone 5",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12631,7 +12646,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 5,
-            "Name": "06 Zone 6",
+            "Name": "Zone 6",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12680,7 +12695,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 6,
-            "Name": "07 Zone 7",
+            "Name": "Zone 7",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12729,7 +12744,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 7,
-            "Name": "08 Zone 8",
+            "Name": "Zone 8",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12778,7 +12793,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 8,
-            "Name": "09 Zone 9",
+            "Name": "Zone 9",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12827,7 +12842,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 9,
-            "Name": "10 Zone 10",
+            "Name": "Zone 10",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12876,7 +12891,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 10,
-            "Name": "11 Zone 11",
+            "Name": "Zone 11",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12925,7 +12940,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 11,
-            "Name": "12 Zone 12",
+            "Name": "Zone 12",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -12974,7 +12989,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 12,
-            "Name": "13 Zone 13",
+            "Name": "Zone 13",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13023,7 +13038,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 13,
-            "Name": "14 Zone 14",
+            "Name": "Zone 14",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13072,7 +13087,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 14,
-            "Name": "15 Zone 15",
+            "Name": "Zone 15",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13121,7 +13136,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 15,
-            "Name": "16 Zone 16",
+            "Name": "Zone 16",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13170,7 +13185,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 16,
-            "Name": "17 Zone 17",
+            "Name": "Zone 17",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13219,7 +13234,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 17,
-            "Name": "18 Zone 18",
+            "Name": "Zone 18",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13268,7 +13283,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 18,
-            "Name": "19 Zone 19",
+            "Name": "Zone 19",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13317,7 +13332,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 19,
-            "Name": "20 Zone 20",
+            "Name": "Zone 20",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13366,7 +13381,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 20,
-            "Name": "21 Zone 21",
+            "Name": "Zone 21",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13415,7 +13430,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 21,
-            "Name": "22 Zone 22",
+            "Name": "Zone 22",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13464,7 +13479,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 22,
-            "Name": "23 Zone 23",
+            "Name": "Zone 23",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13513,7 +13528,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 23,
-            "Name": "24 Zone 24",
+            "Name": "Zone 24",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13562,7 +13577,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 24,
-            "Name": "25 Zone 25",
+            "Name": "Zone 25",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13611,7 +13626,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 25,
-            "Name": "26 Zone 26",
+            "Name": "Zone 26",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13660,7 +13675,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 26,
-            "Name": "27 Zone 27",
+            "Name": "Zone 27",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13709,7 +13724,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 27,
-            "Name": "28 Zone 28",
+            "Name": "Zone 28",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13758,7 +13773,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 28,
-            "Name": "29 Zone 29",
+            "Name": "Zone 29",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13807,7 +13822,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 29,
-            "Name": "30 Zone 30",
+            "Name": "Zone 30",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13856,7 +13871,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 30,
-            "Name": "31 Zone 31",
+            "Name": "Zone 31",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13905,7 +13920,7 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 31,
-            "Name": "32 Zone 32",
+            "Name": "Zone 32",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13961,7 +13976,7 @@
           {
             "IsPanelData": true,
             "Index": 0,
-            "Name": "33 Panel 1",
+            "Name": "Panel 1",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -13989,7 +14004,7 @@
           {
             "IsPanelData": true,
             "Index": 1,
-            "Name": "34 Panel 2",
+            "Name": "Panel 2",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14017,7 +14032,7 @@
           {
             "IsPanelData": true,
             "Index": 2,
-            "Name": "35 Panel 3",
+            "Name": "Panel 3",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14045,7 +14060,7 @@
           {
             "IsPanelData": true,
             "Index": 3,
-            "Name": "36 Panel 4",
+            "Name": "Panel 4",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14073,7 +14088,7 @@
           {
             "IsPanelData": true,
             "Index": 4,
-            "Name": "37 Panel 5",
+            "Name": "Panel 5",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14101,7 +14116,7 @@
           {
             "IsPanelData": true,
             "Index": 5,
-            "Name": "38 Panel 6",
+            "Name": "Panel 6",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14129,7 +14144,7 @@
           {
             "IsPanelData": true,
             "Index": 6,
-            "Name": "39 Panel 7",
+            "Name": "Panel 7",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -14157,7 +14172,7 @@
           {
             "IsPanelData": true,
             "Index": 7,
-            "Name": "40 Panel 8",
+            "Name": "Panel 8",
             "InputDelay": "00:05:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",

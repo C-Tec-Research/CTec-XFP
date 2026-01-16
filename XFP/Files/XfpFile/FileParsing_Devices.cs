@@ -148,8 +148,8 @@ namespace Xfp.Files.XfpFile
                                 if (value == 0xff)
                                 {
                                     device.IOConfig[i].InputOutput  = IOTypes.NotUsed;
-                                    device.IOConfig[i].Channel      = 0;
-                                    device.IOConfig[i].ZoneGroupSet = 1;
+                                    device.IOConfig[i].Channel      = null;
+                                    device.IOConfig[i].ZoneGroupSet = null;
 
                                     if (i > 0)
                                         device.IOConfig[i].NameIndex = 0;
