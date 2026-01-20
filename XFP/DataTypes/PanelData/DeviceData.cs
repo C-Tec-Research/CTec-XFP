@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using CTecDevices;
 using CTecDevices.Protocol;
@@ -329,6 +330,11 @@ namespace Xfp.DataTypes.PanelData
                         result[5] = (byte)(DaySensitivity ?? 0);
                         result[6] = (byte)(NightSensitivity ?? 0);
                     }
+                    else
+                    {
+                        result[5] = 0x64;
+                        result[6] = 0x64;
+                    }
 
                     if (IsVolumeDevice)
                     {
@@ -363,16 +369,32 @@ namespace Xfp.DataTypes.PanelData
                     }
                 }
             }
-            //CTecUtil.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> device=" + (Index + 1) + "  data=[" + ByteArrayProcessing.ByteArrayToHexString(result) + "]");
+
+            //CTecUtil.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> device=" + (Index + 1) + "  data=[" + ByteArrayUtil.ByteArrayToHexString(result) + "]");
             return result;
         }
 
         private byte channelAndZGSByte(IOSettingData io)
         {
+            //Input/Output - bit 0
+            //  0 = Input
+            //  1 = Output
+            //Channel -
+            //  Input:  - bit 1: 0 = Ch1, 1 = Ch2
+            //  Output: - bits 1 & 2: 01 = Ch1, 10 = Ch2, 11 = Ch3
+            //ZGS -
+            //  Input:  bits 2-7
+            //  Output: bits 4-7
+
             var result = (byte)(io.ZoneGroupSet ?? 0);
-            if (io.InputOutput == IOTypes.Output) result |= 0x80;
-            if (io.Channel > 0) result |= 0x40;
-            if (io.Channel > 1) result |= 0x20;
+            if (io.InputOutput == IOTypes.Input)
+            {
+                if (io.Channel > 0) result |= 0x40;
+            }
+            else
+            { 
+                result |= (byte)(0x80 | ((io.Channel + 1) & 0x03) << 5);
+            }
             return result;
         }
 
@@ -401,7 +423,7 @@ namespace Xfp.DataTypes.PanelData
                 DeviceData result = InitialisedNew(requestedLoop ?? 0);
                 result.Index      = requestedIndex ?? 0;
 
-                //CTecUtil.Debug.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< device=" + (result.Index + 1) + "  data=[" + ByteArrayProcessing.ByteArrayToHexString(data) + "]");
+                //CTecUtil.Debug.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< device=" + (result.Index + 1) + "  data=[" + ByteArrayUtil.ByteArrayToHexString(data) + "]");
                               
                 if (DeviceTypes.CurrentProtocolIsXfpApollo && result.Index >= DeviceConfigData.NumDevices)
                 {   
@@ -412,35 +434,52 @@ namespace Xfp.DataTypes.PanelData
                 {
                     result.DeviceType = data[4];
 
-                    var inUse0 = data[5]  != 0xff;
-                    var inUse1 = data[7]  != 0xff;
-                    var inUse2 = data[9]  != 0xff;
-                    var inUse3 = data[11] != 0xff;
-
-                    result.IOConfig[0].InputOutput = inUse0 ? (data[5] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                    result.IOConfig[1].InputOutput = inUse1 ? (data[7] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                    result.IOConfig[2].InputOutput = inUse2 ? (data[9] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                    result.IOConfig[3].InputOutput = inUse3 ? (data[11] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-
-                    if (inUse0) result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5]  & 0x60) == 0x60 ? 2 : ((data[5]  & 0x40) >> 6);
-                    if (inUse1) result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7]  & 0x60) == 0x60 ? 2 : ((data[7]  & 0x40) >> 6);
-                    if (inUse2) result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9]  & 0x60) == 0x60 ? 2 : ((data[9]  & 0x40) >> 6);
-                    if (inUse3) result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6);
-
-                    if (inUse0)
-                    {
-                        if (result.IsZonalDevice)
-                            result.Zone = data[5] & 0x3f;
-                        else if (result.IsGroupedDevice)
-                            result.Group = data[5] & 0x0f;
-                    }
-
+                    bool inUse0, inUse1, inUse2, inUse3;
+                    inUse0 = inUse1 = inUse2 = inUse3 = false;
+                    
                     if (result.IsIODevice)
                     {
-                        if (inUse0) result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5]  & 0x3f : data[5]  & 0x1f;
-                        if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f;
-                        if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f;
-                        if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f;
+                        inUse0 = data[5]  != 0xff;
+                        inUse1 = data[7]  != 0xff;
+                        inUse2 = data[9]  != 0xff;
+                        inUse3 = data[11] != 0xff;
+
+                        //Input/Output
+                        //  bit 0: 0 = Input, 1 = Output
+                        
+                        result.IOConfig[0].InputOutput = inUse0 ? (data[5] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                        result.IOConfig[1].InputOutput = inUse1 ? (data[7] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                        result.IOConfig[2].InputOutput = inUse2 ? (data[9] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                        result.IOConfig[3].InputOutput = inUse3 ? (data[11] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+
+                        //Channel -
+                        //  Input:  - bit 1: 0 = Ch1, 1 = Ch2
+                        //  Output: - bits 1 & 2: 01 = Ch1, 10 = Ch2, 11 = Ch3
+
+                        if (inUse0) result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5]  & 0x60) == 0x60 ? 2 : ((data[5]  & 0x40) >> 6);
+                        if (inUse1) result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7]  & 0x60) == 0x60 ? 2 : ((data[7]  & 0x40) >> 6);
+                        if (inUse2) result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9]  & 0x60) == 0x60 ? 2 : ((data[9]  & 0x40) >> 6);
+                        if (inUse3) result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6);
+
+                        if (inUse0)
+                        {
+                            if (result.IsZonalDevice)
+                                result.Zone = data[5] & 0x3f;
+                            else if (result.IsGroupedDevice)
+                                result.Group = data[5] & 0x0f;
+                        }
+
+                        if (result.IsIODevice)
+                        {
+                            //ZGS -
+                            //  Input: bits 2-7
+                            //  Output: bits 4-7
+
+                            if (inUse0) result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5]  & 0x3f : data[5]  & 0x1f;
+                            if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f;
+                            if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f;
+                            if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f;
+                        }
                     }
 
                     result.NameIndex = data[6];

@@ -133,4 +133,7 @@
   <data name="Device_Name_x_Value_y" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="Envision_Support" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>

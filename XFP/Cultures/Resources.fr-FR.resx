@@ -2159,4 +2159,7 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="Loop_Select" xml:space="preserve">
     <value>Circuit :</value>
   </data>
+  <data name="Envision_Support" xml:space="preserve">
+    <value>Support d'Envision</value>
+  </data>
 </root>

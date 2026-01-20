@@ -2271,4 +2271,7 @@ If this is required then device names and zone descriptions may be amended to en
   <data name="Loop_Select" xml:space="preserve">
     <value>Loop:</value>
   </data>
+  <data name="Envision_Support" xml:space="preserve">
+    <value>Envision Support</value>
+  </data>
 </root>

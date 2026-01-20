@@ -1443,6 +1443,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Envision Support.
+        /// </summary>
+        public static string Envision_Support {
+            get {
+                return ResourceManager.GetString("Envision_Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erase events from the panel after reading?.
         /// </summary>
         public static string Erase_Event_Log_After_Reading {
