@@ -120,6 +120,11 @@
     <Resource Include="Resources\info.png" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="TomsToolbox.Composition" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Essentials" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.ObservableCollections" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Wpf" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Wpf.Composition" Version="2.22.2" />
     <Resource Include="Resources\print.png" />
     <EmbeddedResource Include="Resources\XFP Revision History[fr-FR].docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

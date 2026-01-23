@@ -426,15 +426,22 @@ namespace Xfp.DataTypes.PanelData
                 //CTecUtil.Debug.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< device=" + (result.Index + 1) + "  data=[" + ByteArrayUtil.ByteArrayToHexString(data) + "]");
                               
                 if (DeviceTypes.CurrentProtocolIsXfpApollo && result.Index >= DeviceConfigData.NumDevices)
-                {   
+                {
+                    //ancillary base sounder group record
                     result.Index -= DeviceConfigData.NumDevices + 1;
                     result.AncillaryBaseSounderGroup = data[5] & 0x1f;
                 }
                 else if (DeviceTypes.IsValidDeviceType(data[4], DeviceTypes.CurrentProtocolType))
                 {
                     result.DeviceType = data[4];
+                    
+                    if (result.IsZonalDevice)
+                        result.Zone = data[5];
+                    else if (result.IsGroupedDevice)
+                        result.Group = data[5] & 0x3f;
+                    
 
-                    bool inUse0, inUse1, inUse2, inUse3;
+                        bool inUse0, inUse1, inUse2, inUse3;
                     inUse0 = inUse1 = inUse2 = inUse3 = false;
                     
                     if (result.IsIODevice)

@@ -82,14 +82,14 @@ namespace Xfp.ViewModels.PanelTools
         /// Check for Envision compatibility: for Apollo, the DeviceName must be 
         /// prefixed with the Envision device type code; returns true if protocol is CAST.
         /// </summary>
-        public bool DeviceNameIsEnvisionCompatible() => !DeviceTypes.CurrentProtocolIsXfpApollo || DeviceName.StartsWith(DeviceType.ToString());
+        public bool DeviceNameIsEnvisionCompatible() => !DeviceTypes.CurrentProtocolIsXfpApollo || DeviceType is null || DeviceName.StartsWith(string.Format("{0:000} ", DeviceType));
 
         /// <summary>
         /// Apply the Envision compatibility prefix: for Apollo, ensure the DeviceName is prefixed with the Envision device type code.
         /// </summary>
         public void MakeDeviceNameEnvisionCompatible()
         {
-            if (DeviceTypes.CurrentProtocolIsXfpApollo && (DeviceName is null || !DeviceName.StartsWith(DeviceType.ToString() + " ")))
+            if (!DeviceNameIsEnvisionCompatible())
             {
                 DeviceName = string.Format("{0:000} {1}", XfpApolloEnvisionDeviceTypes.GetEnvisionDeviceTypeCode(DeviceType), DeviceName ?? "");
 

@@ -174,7 +174,12 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7463" PrivateAssets="all" />
+    <PackageReference Include="TomsToolbox.Composition" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Essentials" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.ObservableCollections" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Wpf" Version="2.22.2" />
+    <PackageReference Include="TomsToolbox.Wpf.Composition" Version="2.22.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XFP\Xfp.csproj" />
