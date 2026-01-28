@@ -1164,7 +1164,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Orientation="Vertical" >
+                                <StackPanel Grid.Column="0" Orientation="Vertical" Background="Red">
                                     <StackPanel Grid.Column="0" Orientation="Horizontal" >
                                         <Path StrokeThickness="1.25"
                                               Data="{StaticResource IconInfo}"

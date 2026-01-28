@@ -23,6 +23,7 @@ namespace Xfp.Views
 
             FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 
+            CTecControls.Util.IconUtilities.InitIconResources();
             InitializeComponent();
 
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
