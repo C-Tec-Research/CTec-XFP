@@ -1,6 +1,9 @@
 ﻿using CTecUtil.Pipes;
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace Xfp
 {
@@ -9,6 +12,19 @@ namespace Xfp
     /// </summary>
     public partial class App
     {
+        static App()
+        {
+            // Ensure resource parsing and any culture-sensitive conversions use invariant culture
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+            // Ensure WPF's default language for FrameworkElement matches the invariant culture
+            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.InvariantCulture.IetfLanguageTag)));
+
+            //initialize icon definition resources
+            CTecControls.Util.IconUtilities.InitIconResources();
+        }
+
         private PipeClient _pipeClient;
 
         public static string SingletonPipeName = "Xfp.App.Pipe";

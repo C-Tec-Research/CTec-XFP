@@ -9,6 +9,7 @@ using CTecControls.UI;
 using Xfp.ViewModels;
 using Xfp.Config;
 using CTecUtil.Utils;
+using System.Threading;
 
 namespace Xfp.Views
 {
@@ -21,9 +22,8 @@ namespace Xfp.Views
         {
             EventLog.WriteInfo("Starting app");
 
-            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            //CTecControls.Util.IconUtilities.InitIconResources();
 
-            CTecControls.Util.IconUtilities.InitIconResources();
             InitializeComponent();
 
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
