@@ -20,9 +20,6 @@ namespace Xfp
 
             // Ensure WPF's default language for FrameworkElement matches the invariant culture
             FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.InvariantCulture.IetfLanguageTag)));
-
-            //initialize icon definition resources
-            CTecControls.Util.IconUtilities.InitIconResources();
         }
 
         private PipeClient _pipeClient;

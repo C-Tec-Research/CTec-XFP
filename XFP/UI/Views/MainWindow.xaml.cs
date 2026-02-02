@@ -20,11 +20,13 @@ namespace Xfp.Views
     {
         public MainWindow()
         {
-            EventLog.WriteInfo("Starting app");
-
-            //CTecControls.Util.IconUtilities.InitIconResources();
+            EventLog.WriteInfo("Starting XFP app");
 
             InitializeComponent();
+
+            //initialize icon definition resources
+            CTecControls.Util.IconUtilities.InitIconResources();
+
 
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
 
