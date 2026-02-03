@@ -372,8 +372,6 @@ namespace Xfp.ViewModels
         #region ViewModel properties
         public static string VersionString { get => string.Format(Cultures.Resources.Version_x, BuildInfo.Details.Version); }
 
-        public BitmapImage CurrentLanguageIcon { get => CTecControls.Cultures.CultureTools.GetFlagIcon(Cultures.Resources.Culture?.Name); }
-
         public string CultureName { get => CultureInfo.CurrentCulture.Name; }
 
         public string SystemName { get => _data.SiteConfig.SystemName ?? ""; set { _data.SiteConfig.SystemName = value; OnPropertyChanged(); } }
@@ -2296,7 +2294,6 @@ namespace Xfp.ViewModels
             setNavBarText();
             SetHambMenuText();
 
-            OnPropertyChanged(nameof(CurrentLanguageIcon));
             OnPropertyChanged(nameof(CultureName));
             OnPropertyChanged(nameof(VersionString));
             OnPropertyChanged(nameof(ToolTip_SelectCOMPort));

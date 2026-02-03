@@ -68,7 +68,6 @@
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:InverseBoolToOpacity20pcConverter x:Key="InverseBoolToOpacity20pcConverter"/>
         <ctcvh:IsNullToNAConverter x:Key="IsNullToNAConverter"/>
-        <ctcvh:LanguageIconConverter x:Key="LanguageIconConverter"/>
         <ctcvh:LanguageFlagConverter x:Key="LanguageFlagConverter"/>
         <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
 
@@ -1166,13 +1165,6 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Orientation="Vertical" Background="{StaticResource Brush10}">
                                     <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                                        <!--<Path StrokeThickness="1.25"
-                                              Data="{StaticResource IconPathDataInfo}"
-                                              HorizontalAlignment="Left" Height="16" Width="16" Stretch="Uniform" Margin="8,2,0,0">
-                                            <Path.Fill>
-                                                <SolidColorBrush Color="{StaticResource Colour03}"/>
-                                            </Path.Fill>
-                                        </Path>-->
                                         <ctc:Icon IconType="Info" 
                                                   HorizontalAlignment="Left" 
                                                   Height="14" Width="14" 

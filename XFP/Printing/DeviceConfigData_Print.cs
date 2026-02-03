@@ -454,7 +454,7 @@ namespace Xfp.DataTypes.PanelData
             if (value == 0)
                 return Cultures.Resources.Use_In_Special_C_And_E;
 
-            var isSet     = device.IsIODevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output && !device.IsZonalDevice;
+            var isSet     = isIOSetting && device.IsZonalDevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output;
             var formatStr = device.IsGroupedDevice ? Cultures.Resources.Group_x : isSet ? Cultures.Resources.Set_x : Cultures.Resources.Zone_x;
 
             return string.Format(formatStr, value);

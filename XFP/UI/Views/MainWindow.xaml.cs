@@ -27,7 +27,6 @@ namespace Xfp.Views
             //initialize icon definition resources
             CTecControls.Util.IconUtilities.InitIconResources();
 
-
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
 
             _context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
