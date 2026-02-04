@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Imaging;
 
-namespace Xfp.UI
+namespace Xfp.UI.Util
 {
     internal class Bitmaps
     {
