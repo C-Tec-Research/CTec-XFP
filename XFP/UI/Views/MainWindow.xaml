@@ -535,7 +535,7 @@
                                   Style="{StaticResource HeaderMainMenuCheckBox}" 
                                   WindowChrome.IsHitTestVisibleInChrome="True"
                                   IsChecked="{Binding MainMenuIsOpen}"
-                                  Height="30" Padding="4,5,4,5" VerticalAlignment="Top" Margin="20,24,14,0">
+                                  Height="30" Padding="4,5,4,5" VerticalAlignment="Top" Margin="20,20,14,0">
                             <CheckBox.Template>
                                 <ControlTemplate TargetType="CheckBox">
                                     <Grid Background="Transparent">
