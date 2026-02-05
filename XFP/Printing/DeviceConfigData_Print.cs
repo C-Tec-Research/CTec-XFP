@@ -190,12 +190,20 @@ namespace Xfp.DataTypes.PanelData
 
                             if (DeviceTypes.CurrentProtocolIsXfpApollo)
                             {
-                                //remote LED
-                                newRows[0].Cells.Add(TableUtil.NewCell(DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType) ? dev.RemoteLEDEnabled ?? false ? "Y" : "N" : "--", numRows, 1, TextAlignment.Center));
+                                if (DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                                {
+                                    //remote LED
+                                    newRows[0].Cells.Add(TableUtil.NewCell(dev.RemoteLEDEnabled ?? false ? "Y" : "N", numRows, 1, TextAlignment.Center));
 
-                                //base sounder group
-                                newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? "--" : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
-                                //newRows[0].Cells.Add(TableUtil.NewCell(getAncillaryBaseSounder(dev, dev.AncillaryBaseSounderGroup), numRows, 1, true));
+                                    //base sounder group
+                                    newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? Cultures.Resources.None : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                                }
+                                else
+                                {
+                                    newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1, TextAlignment.Center));
+                                    newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1));
+
+                                }
                             }
 
 

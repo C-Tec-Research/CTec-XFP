@@ -253,8 +253,8 @@ namespace Xfp.DataTypes.PanelData
 
         internal byte[] ToByteArray()
         {
-            //ancillary base sounders for Apollo devices are sent in 'dummy' device records, with device index += NumDevices
-            //e.g. the record for device 11 has index 137; the base sounder group is in the zone/group byte.
+            //NB: ancillary base sounders for Apollo devices are sent in 'dummy' device records, with device index += NumDevices
+            //    e.g. the record for device 11 has index 137; the base sounder group is in the zone/group byte.
             
             //NB: top bit is set on zone/group if is an output device - this applies to byte [3], plus bytes [5], [7] & [9] for I/O devices 
 

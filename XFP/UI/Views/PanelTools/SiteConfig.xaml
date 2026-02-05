@@ -96,48 +96,55 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
+                            <!-- 
+                            ****************************************************************************
+                            Note that the client and installer details have FilterAscii127=False because 
+                            their values are only ever saved to file and are not sent to the panel
+                            ****************************************************************************
+                            -->
+                            
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Client_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="1" Text="{Binding ClientName}" PreviewKeyDown="ctrl_PreviewKeyDown" Width="200" Margin="0,2,25,3" Grid.ColumnSpan="2"/>
+                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="1" Text="{Binding ClientName}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" Width="200" Margin="0,2,25,3" Grid.ColumnSpan="2"/>
 
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Client_Address, Source={StaticResource Resources}}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,2,25,0" Grid.ColumnSpan="2">
-                                <ctc:CTecTextBox Text="{Binding ClientAddress[0]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
-                                <ctc:CTecTextBox Text="{Binding ClientAddress[1]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
-                                <ctc:CTecTextBox Text="{Binding ClientAddress[2]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
-                                <ctc:CTecTextBox Text="{Binding ClientAddress[3]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[0]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[1]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[2]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding ClientAddress[3]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
                             </StackPanel>
 
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Postcode, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,0,25,0" Grid.ColumnSpan="2">
-                                <ctc:CTecTextBox Grid.Column="0" Text="{Binding ClientPostcode}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
+                                <ctc:CTecTextBox Grid.Column="0" Text="{Binding ClientPostcode}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
                                 <TextBlock Text="{Binding Path=Tel, Source={StaticResource Resources}}" Width="35" TextAlignment="Right" Margin="0,0,5,0"/>
-                                <ctc:CTecTextBox Text="{Binding ClientTelephone}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
+                                <ctc:CTecTextBox Text="{Binding ClientTelephone}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
                             </StackPanel>
 
                             <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=Installer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
-                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="5" Text="{Binding InstallerName}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,2,0,3"/>
+                            <ctc:CTecTextBox Grid.Row="0" Grid.Column="5" Text="{Binding InstallerName}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,2,0,3"/>
 
                             <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=Installer_Address, Source={StaticResource Resources}}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Vertical" Margin="0,2,0,0">
-                                <ctc:CTecTextBox Text="{Binding InstallerAddress[0]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
-                                <ctc:CTecTextBox Text="{Binding InstallerAddress[1]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
-                                <ctc:CTecTextBox Text="{Binding InstallerAddress[2]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
-                                <ctc:CTecTextBox Text="{Binding InstallerAddress[3]}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[0]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[1]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[2]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerAddress[3]}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="200" Margin="0,0,0,0"/>
                             </StackPanel>
 
                             <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Path=Postcode, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                             <StackPanel Grid.Row="2" Grid.Column="5" Orientation="Horizontal">
-                                <ctc:CTecTextBox Text="{Binding InstallerPostcode}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerPostcode}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
                                 <TextBlock Text="{Binding Path=Tel, Source={StaticResource Resources}}" Width="35" TextAlignment="Right" Margin="0,0,5,0"/>
-                                <ctc:CTecTextBox Text="{Binding EngineerTelephone}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
+                                <ctc:CTecTextBox Text="{Binding EngineerTelephone}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
                             </StackPanel>
 
                             <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Path=Engineer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
-                            <ctc:CTecTextBox Grid.Row="4" Grid.Column="5" Width="200" Text="{Binding EngineerName}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
+                            <ctc:CTecTextBox Grid.Row="4" Grid.Column="5" Width="200" Text="{Binding EngineerName}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
 
 
                             <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding Path=Engineer_Number, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
-                            <ctc:CTecTextBox Grid.Row="5" Grid.Column="5" Width="200" Text="{Binding EngineerNumber}" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
+                            <ctc:CTecTextBox Grid.Row="5" Grid.Column="5" Width="200" Text="{Binding EngineerNumber}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Margin="0,6,0,1"/>
 
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Installed_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <ctc:CTecDatePicker Grid.Row="4" Grid.Column="1" 

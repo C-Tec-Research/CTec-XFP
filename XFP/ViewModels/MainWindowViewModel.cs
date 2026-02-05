@@ -305,6 +305,27 @@ namespace Xfp.ViewModels
 
 
         #region navigaton menu
+
+        private int _navBarSelectedIndex;
+        public int NavBarSelectedIndex
+        {
+            get => _navBarSelectedIndex;
+            set
+            {
+                if (_pages.Count > 0)
+                {
+                    UIState.SetBusyState();
+                    _navBarSelectedIndex = value >= 0 && value < NavBarItems.Count ? value : 0;
+                    CurrentPage = NavBarItems[_navBarSelectedIndex].Page;
+                    CurrentFilePath = (CurrentPage.DataContext as PageViewModelBase)?.CurrentFilePath;
+                    HeaderPanelEnabled = CurrentPage != _eventLogPage && CurrentPage != _commentsPage;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(EnableChangesEnabled));
+                }
+            }
+        }
+
+
         public void SetDeviceSelectorMenus()
         {
             foreach (var p in _pages)
@@ -314,29 +335,20 @@ namespace Xfp.ViewModels
 
         private ObservableCollection<NavBarMenuItemViewModel> _navBarItems;
         public ObservableCollection<NavBarMenuItemViewModel> NavBarItems
-        {
-            get
-            {
-                if (_navBarItems is null)
-                {
-                    _navBarItems = new()
-                    {
-                        new NavBarMenuItemViewModel { Page = _deviceDetailsPage,  MenuIcon = UI.Bitmaps.GetBitmap("nav-device-details") },
-                        new NavBarMenuItemViewModel { Page = _loop1Page,          MenuIcon = UI.Bitmaps.GetBitmap("nav-device-summary") },
-                        new NavBarMenuItemViewModel { Page = _loop2Page,          MenuIcon = UI.Bitmaps.GetBitmap("nav-device-summary"), },
-                        new NavBarMenuItemViewModel { Page = _zonesPage,          MenuIcon = UI.Bitmaps.GetBitmap("nav-zone-config") },
-                        new NavBarMenuItemViewModel { Page = _groupsPage,         MenuIcon = UI.Bitmaps.GetBitmap("nav-zone-config") },
-                        new NavBarMenuItemViewModel { Page = _setsPage,           MenuIcon = UI.Bitmaps.GetBitmap("nav-zone-config") },
-                        new NavBarMenuItemViewModel { Page = _siteConfigPage,     MenuIcon = UI.Bitmaps.GetBitmap("nav-site-config") },
-                        new NavBarMenuItemViewModel { Page = _ceConfigPage,       MenuIcon = UI.Bitmaps.GetBitmap("nav-paging-config") },
-                        new NavBarMenuItemViewModel { Page = _networkConfigPage,  MenuIcon = UI.Bitmaps.GetBitmap("nav-paging-config") },
-                        new NavBarMenuItemViewModel { Page = _eventLogPage,       MenuIcon = UI.Bitmaps.GetBitmap("nav-event-log") },
-                        new NavBarMenuItemViewModel { Page = _commentsPage,       MenuIcon = UI.Bitmaps.GetBitmap("nav-comments") },
-                    };
-                }
-                return _navBarItems;
-            }
-        }
+            => _navBarItems ?? (_navBarItems = new() {
+                                                        new NavBarMenuItemViewModel { Page = _deviceDetailsPage,  MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-device-details") },
+                                                        new NavBarMenuItemViewModel { Page = _loop1Page,          MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-device-summary") },
+                                                        new NavBarMenuItemViewModel { Page = _loop2Page,          MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-device-summary"), },
+                                                        new NavBarMenuItemViewModel { Page = _zonesPage,          MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-zone-config") },
+                                                        new NavBarMenuItemViewModel { Page = _groupsPage,         MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-zone-config") },
+                                                        new NavBarMenuItemViewModel { Page = _setsPage,           MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-zone-config") },
+                                                        new NavBarMenuItemViewModel { Page = _siteConfigPage,     MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-site-config") },
+                                                        new NavBarMenuItemViewModel { Page = _ceConfigPage,       MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-paging-config") },
+                                                        new NavBarMenuItemViewModel { Page = _networkConfigPage,  MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-paging-config") },
+                                                        new NavBarMenuItemViewModel { Page = _eventLogPage,       MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-event-log") },
+                                                        new NavBarMenuItemViewModel { Page = _commentsPage,       MenuIcon = UI.Util.Bitmaps.GetBitmap("nav-comments") },
+                                                    });
+        
 
 
         private void setNavBarText()
@@ -399,25 +411,6 @@ namespace Xfp.ViewModels
 
         private bool _panelIsReadOnly = true;
         public bool PanelIsReadOnly { get => _panelIsReadOnly; set { _panelIsReadOnly = value; OnPropertyChanged(); } }
-
-        private int _navBarSelectedIndex;
-        public int NavBarSelectedIndex
-        {
-            get => _navBarSelectedIndex;
-            set
-            {
-                if (_pages.Count > 0)
-                {
-                    UIState.SetBusyState();
-                    _navBarSelectedIndex = value >= 0 && value < NavBarItems.Count ? value : 0;
-                    CurrentPage = NavBarItems[_navBarSelectedIndex].Page;
-                    CurrentFilePath = (CurrentPage.DataContext as PageViewModelBase)?.CurrentFilePath;
-                    HeaderPanelEnabled = CurrentPage != _eventLogPage && CurrentPage != _commentsPage;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(EnableChangesEnabled));
-                }
-            }
-        }
 
 
         public Page CurrentPage
