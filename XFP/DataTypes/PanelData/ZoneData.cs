@@ -12,13 +12,13 @@ namespace Xfp.DataTypes.PanelData
         }
 
         public override bool IsPanelData => false;
-        public virtual bool MCPs { get; set; }
-        public virtual bool Detectors { get; set; }
+        //public virtual bool MCPs { get; set; }
+        //public virtual bool Detectors { get; set; }
         public virtual int DetectorReset { get; set; }
         public virtual int AlarmReset { get; set; }
         public virtual bool EndDelays { get; set; }
-        public virtual ZoneDependency Day { get; set; }
-        public virtual ZoneDependency Night { get; set; }
+        //public virtual ZoneDependency Day { get; set; }
+        //public virtual ZoneDependency Night { get; set; }
         public ObservableCollection<SetTriggerTypes> OutputSetTriggers { get; set; }
         public ObservableCollection<SetTriggerTypes> PanelRelayTriggers { get; set; }
 
@@ -26,13 +26,13 @@ namespace Xfp.DataTypes.PanelData
         public ZoneData(ZoneData original)
             : base(original)
         {
-            MCPs          = original.MCPs;
-            Detectors     = original.Detectors;
+            //MCPs          = original.MCPs;
+            //Detectors     = original.Detectors;
             DetectorReset = original.DetectorReset;
             AlarmReset    = original.AlarmReset;
             EndDelays     = original.EndDelays;
-            Day           = new(original.Day);
-            Night         = new(original.Night);
+            //Day           = new(original.Day);
+            //Night         = new(original.Night);
         }
 
 
@@ -69,9 +69,9 @@ namespace Xfp.DataTypes.PanelData
             if (!base.Equals(otherData))
                 return false;
                 
-            if (MCPs != od.MCPs
+            if (/*MCPs != od.MCPs
              || Detectors != od.Detectors
-             || DetectorReset != od.DetectorReset
+             || */DetectorReset != od.DetectorReset
              || AlarmReset != od.AlarmReset
              || EndDelays != od.EndDelays)
                 return false;
