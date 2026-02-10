@@ -583,7 +583,7 @@ Veuillez insérer le lien et réessayer.</value>
     <value>Sélectionnez la Tonalité</value>
   </data>
   <data name="Select_Zoom_Level" xml:space="preserve">
-    <value>Niveau de Zoom</value>
+    <value>Sélectionnez le Niveau de Zoom</value>
   </data>
   <data name="Serial_Baud_Rate" xml:space="preserve">
     <value>Bauds</value>

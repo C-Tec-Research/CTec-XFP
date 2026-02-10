@@ -8,9 +8,9 @@
         "DateEnabled": false,
         "SoundersPulsed": false,
         "CopyTime": false,
-        "MaintenanceString": "Call the Engineer",
-        "QuiescentString": "XFP Fire Panel",
-        "MaintenanceDate": null,
+        "MaintenanceString": "Appeler l?ing?nieur",
+        "QuiescentString": "Panneau de commande d?alarme incendie",
+        "MaintenanceDate": "2099-01-01T00:00:00",
         "AL2Code": "3333",
         "AL3Code": "4444",
         "MCPDebounce": 1,
@@ -12135,13 +12135,29 @@
           "Panels": [
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 0,
-              "Name": "Panel 1",
+              "Name": "33 Panneau 1",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12163,13 +12179,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 1,
-              "Name": "Panel 2",
+              "Name": "34 Panneau 2",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12191,13 +12223,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 2,
-              "Name": "Panel 3",
+              "Name": "35 Panneau 3",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12219,13 +12267,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 3,
-              "Name": "Panel 4",
+              "Name": "36 Panneau 4",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12247,13 +12311,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 4,
-              "Name": "Panel 5",
+              "Name": "37 Panneau 5",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12275,13 +12355,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 5,
-              "Name": "Panel 6",
+              "Name": "38 Panneau 6",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12303,13 +12399,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 6,
-              "Name": "Panel 7",
+              "Name": "39 Panneau 7",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12331,13 +12443,29 @@
             },
             {
               "IsPanelData": true,
+              "MCPs": false,
+              "Detectors": true,
               "Index": 7,
-              "Name": "Panel 8",
+              "Name": "40 Panneau 8",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
               "Relay2Delay": "00:00:00",
               "RemoteDelay": "00:00:00",
+              "Day": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
+              "Night": {
+                "DependencyOption": 4,
+                "DetectorReset": "00:01:00",
+                "AlarmReset": "00:05:00",
+                "ShowDetectorReset": false,
+                "ShowAlarmReset": false
+              },
               "SounderGroups": [
                 2,
                 2,
@@ -12362,34 +12490,34 @@
         "Zones": [
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 0,
-            "Name": "Zone 1",
+            "Name": "01 Zone 1",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12411,34 +12539,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 1,
-            "Name": "Zone 2",
+            "Name": "02 Zone 2",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12460,34 +12588,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 2,
-            "Name": "Zone 3",
+            "Name": "03 Zone 3",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12509,34 +12637,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 3,
-            "Name": "Zone 4",
+            "Name": "04 Zone 4",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12558,34 +12686,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 4,
-            "Name": "Zone 5",
+            "Name": "05 Zone 5",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12607,34 +12735,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 5,
-            "Name": "Zone 6",
+            "Name": "06 Zone 6",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12656,34 +12784,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 6,
-            "Name": "Zone 7",
+            "Name": "07 Zone 7",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12705,34 +12833,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 7,
-            "Name": "Zone 8",
+            "Name": "08 Zone 8",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12754,34 +12882,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 8,
-            "Name": "Zone 9",
+            "Name": "09 Zone 9",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12803,34 +12931,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 9,
-            "Name": "Zone 10",
+            "Name": "10 Zone 10",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12852,34 +12980,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 10,
-            "Name": "Zone 11",
+            "Name": "11 Zone 11",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12901,34 +13029,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 11,
-            "Name": "Zone 12",
+            "Name": "12 Zone 12",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12950,34 +13078,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 12,
-            "Name": "Zone 13",
+            "Name": "13 Zone 13",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -12999,34 +13127,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 13,
-            "Name": "Zone 14",
+            "Name": "14 Zone 14",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13048,34 +13176,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 14,
-            "Name": "Zone 15",
+            "Name": "15 Zone 15",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13097,34 +13225,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 15,
-            "Name": "Zone 16",
+            "Name": "16 Zone 16",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13146,34 +13274,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 16,
-            "Name": "Zone 17",
+            "Name": "17 Zone 17",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13195,34 +13323,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 17,
-            "Name": "Zone 18",
+            "Name": "18 Zone 18",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13244,34 +13372,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 18,
-            "Name": "Zone 19",
+            "Name": "19 Zone 19",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13293,34 +13421,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 19,
-            "Name": "Zone 20",
+            "Name": "20 Zone 20",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13342,34 +13470,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 20,
-            "Name": "Zone 21",
+            "Name": "21 Zone 21",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13391,34 +13519,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 21,
-            "Name": "Zone 22",
+            "Name": "22 Zone 22",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13440,34 +13568,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 22,
-            "Name": "Zone 23",
+            "Name": "23 Zone 23",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13489,34 +13617,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 23,
-            "Name": "Zone 24",
+            "Name": "24 Zone 24",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13538,34 +13666,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 24,
-            "Name": "Zone 25",
+            "Name": "25 Zone 25",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13587,34 +13715,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 25,
-            "Name": "Zone 26",
+            "Name": "26 Zone 26",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13636,34 +13764,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 26,
-            "Name": "Zone 27",
+            "Name": "27 Zone 27",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13685,34 +13813,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 27,
-            "Name": "Zone 28",
+            "Name": "28 Zone 28",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13734,34 +13862,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 28,
-            "Name": "Zone 29",
+            "Name": "29 Zone 29",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13783,34 +13911,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 29,
-            "Name": "Zone 30",
+            "Name": "30 Zone 30",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13832,34 +13960,34 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 30,
-            "Name": "Zone 31",
+            "Name": "31 Zone 31",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13881,11 +14009,20 @@
           },
           {
             "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
             "DetectorReset": 0,
             "AlarmReset": 0,
             "EndDelays": false,
+            "OutputSetTriggers": null,
+            "PanelRelayTriggers": null,
+            "MCPs": false,
+            "Detectors": true,
+            "Index": 31,
+            "Name": "32 Zone 32",
+            "InputDelay": "00:00:00",
+            "SounderDelay": "00:00:00",
+            "Relay1Delay": "00:00:00",
+            "Relay2Delay": "00:00:00",
+            "RemoteDelay": "00:00:00",
             "Day": {
               "DependencyOption": 4,
               "DetectorReset": "00:01:00",
@@ -13900,15 +14037,6 @@
               "ShowDetectorReset": false,
               "ShowAlarmReset": false
             },
-            "OutputSetTriggers": null,
-            "PanelRelayTriggers": null,
-            "Index": 31,
-            "Name": "Zone 32",
-            "InputDelay": "00:00:00",
-            "SounderDelay": "00:00:00",
-            "Relay1Delay": "00:00:00",
-            "Relay2Delay": "00:00:00",
-            "RemoteDelay": "00:00:00",
             "SounderGroups": [
               2,
               2,
@@ -13958,13 +14086,29 @@
         "Panels": [
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 0,
-            "Name": "Panel 1",
+            "Name": "33 Panneau 1",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -13986,13 +14130,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 1,
-            "Name": "Panel 2",
+            "Name": "34 Panneau 2",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14014,13 +14174,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 2,
-            "Name": "Panel 3",
+            "Name": "35 Panneau 3",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14042,13 +14218,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 3,
-            "Name": "Panel 4",
+            "Name": "36 Panneau 4",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14070,13 +14262,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 4,
-            "Name": "Panel 5",
+            "Name": "37 Panneau 5",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14098,13 +14306,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 5,
-            "Name": "Panel 6",
+            "Name": "38 Panneau 6",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14126,13 +14350,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 6,
-            "Name": "Panel 7",
+            "Name": "39 Panneau 7",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14154,13 +14394,29 @@
           },
           {
             "IsPanelData": true,
+            "MCPs": false,
+            "Detectors": true,
             "Index": 7,
-            "Name": "Panel 8",
+            "Name": "40 Panneau 8",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
             "Relay2Delay": "00:00:00",
             "RemoteDelay": "00:00:00",
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
             "SounderGroups": [
               2,
               2,
@@ -14188,7 +14444,7 @@
             "Index": 0,
             "Number": 1,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14214,7 +14470,7 @@
             "Index": 1,
             "Number": 2,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14240,7 +14496,7 @@
             "Index": 2,
             "Number": 3,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14266,7 +14522,7 @@
             "Index": 3,
             "Number": 4,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14292,7 +14548,7 @@
             "Index": 4,
             "Number": 5,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14318,7 +14574,7 @@
             "Index": 5,
             "Number": 6,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14344,7 +14600,7 @@
             "Index": 6,
             "Number": 7,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14370,7 +14626,7 @@
             "Index": 7,
             "Number": 8,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14396,7 +14652,7 @@
             "Index": 8,
             "Number": 9,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14422,7 +14678,7 @@
             "Index": 9,
             "Number": 10,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14448,7 +14704,7 @@
             "Index": 10,
             "Number": 11,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14474,7 +14730,7 @@
             "Index": 11,
             "Number": 12,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14500,7 +14756,7 @@
             "Index": 12,
             "Number": 13,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14526,7 +14782,7 @@
             "Index": 13,
             "Number": 14,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14552,7 +14808,7 @@
             "Index": 14,
             "Number": 15,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14578,7 +14834,7 @@
             "Index": 15,
             "Number": 16,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14604,7 +14860,7 @@
             "Index": 16,
             "Number": 17,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14630,7 +14886,7 @@
             "Index": 17,
             "Number": 18,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14656,7 +14912,7 @@
             "Index": 18,
             "Number": 19,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14682,7 +14938,7 @@
             "Index": 19,
             "Number": 20,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14708,7 +14964,7 @@
             "Index": 20,
             "Number": 21,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14734,7 +14990,7 @@
             "Index": 21,
             "Number": 22,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14760,7 +15016,7 @@
             "Index": 22,
             "Number": 23,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14786,7 +15042,7 @@
             "Index": 23,
             "Number": 24,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14812,7 +15068,7 @@
             "Index": 24,
             "Number": 25,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14838,7 +15094,7 @@
             "Index": 25,
             "Number": 26,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14864,7 +15120,7 @@
             "Index": 26,
             "Number": 27,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14890,7 +15146,7 @@
             "Index": 27,
             "Number": 28,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14916,7 +15172,7 @@
             "Index": 28,
             "Number": 29,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14942,7 +15198,7 @@
             "Index": 29,
             "Number": 30,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14968,7 +15224,7 @@
             "Index": 30,
             "Number": 31,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -14994,7 +15250,7 @@
             "Index": 31,
             "Number": 32,
             "OutputSetTriggers": [
-              0,
+              2,
               0,
               0,
               0,
@@ -15338,9 +15594,9 @@
   "SiteConfig": {
     "SystemName": "XFP",
     "Client": {
-      "Name": "Klaus Müller",
+      "Name": null,
       "Address": [
-        "Rue Bréville",
+        "",
         "",
         "",
         ""
@@ -15365,7 +15621,7 @@
     "EngineerNo": null,
     "FaultLockout": 0,
     "FrontPanel": null,
-    "RecalibrationTime": "04:00:00",
+    "RecalibrationTime": "00:00:00",
     "LoopCount": 0,
     "DateEnabled": false,
     "SoundersPulsed": false,

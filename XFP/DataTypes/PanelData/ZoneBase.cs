@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Windows.Media.Media3D;
 
 namespace Xfp.DataTypes.PanelData
 {
@@ -14,14 +12,10 @@ namespace Xfp.DataTypes.PanelData
         {
             Index         = original.Index;
             Name          = original.Name;
-            MCPs          = original.MCPs;
-            Detectors     = original.Detectors;
             SounderDelay  = original.SounderDelay;
             Relay1Delay   = original.Relay1Delay;
             Relay2Delay   = original.Relay2Delay;
             RemoteDelay   = original.RemoteDelay;
-            Day           = new(original.Day);
-            Night         = new(original.Night);
             SounderGroups = new();
             foreach (var g in original.SounderGroups)
                 SounderGroups.Add(g);
@@ -31,8 +25,6 @@ namespace Xfp.DataTypes.PanelData
         private string _name = "";
 
         public abstract bool IsPanelData { get; }
-        public virtual bool MCPs { get; set; }
-        public virtual bool Detectors { get; set; }
         public int Index { get; set; }
         public virtual string Name { get => string.IsNullOrEmpty(_name) ? DefaultName : _name; set => _name = value; }
         [JsonIgnore] public int    Number => Index + 1;
@@ -43,8 +35,6 @@ namespace Xfp.DataTypes.PanelData
         public TimeSpan Relay1Delay { get; set; }
         public TimeSpan Relay2Delay { get; set; }
         public TimeSpan RemoteDelay { get; set; }
-        public virtual ZoneDependency Day { get; set; }
-        public virtual ZoneDependency Night { get; set; }
         public List<AlarmTypes> SounderGroups { get; set; }
         
 
@@ -58,8 +48,6 @@ namespace Xfp.DataTypes.PanelData
                 
             if (Index != od.Index
              || Name != od.Name
-             || MCPs != od.MCPs
-             || Detectors != od.Detectors
              || SounderDelay != od.SounderDelay
              || Relay1Delay != od.Relay1Delay
              || Relay2Delay != od.Relay2Delay

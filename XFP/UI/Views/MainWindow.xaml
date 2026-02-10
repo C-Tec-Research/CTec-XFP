@@ -240,7 +240,7 @@
 
                                 <TextBlock Text="{Binding Path=Comms_Panel_Status, Source={StaticResource Resources}}" Foreground="{StaticResource Brush09}" Opacity="0.6" FontSize="13" Margin="0"/>
 
-                                <StackPanel Orientation="Horizontal" Visibility="{Binding FirmwareError, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                <!--<StackPanel Orientation="Horizontal" Visibility="{Binding FirmwareError, Converter={StaticResource InverseBoolToVisibilityConverter}}">-->
 
                                     <Border CornerRadius="5" 
                                             Visibility="{Binding PanelIsDisconnected, Converter={StaticResource InverseBoolToVisibilityConverter}}"
@@ -249,13 +249,14 @@
                                     <ctc:Icon IconType="DisconnectedSerial" 
                                               Visibility="{Binding PanelIsDisconnected, Converter={StaticResource BoolToVisibilityConverter}}"
                                               Foreground="{StaticResource BrushWarn}" Width="16" Height="16" Margin="5,2,0,0"/>
+                                    <!--locked padlock-->
                                     <Grid Visibility="{Binding PanelIsConnected, Converter={StaticResource BoolToVisibilityConverter}}">
                                         <ctc:Icon IconType="Locked" 
                                                   Visibility="{Binding PanelIsReadOnly, Converter={StaticResource BoolToVisibilityConverter}}"
                                                   Foreground="{StaticResource BrushWarn}" Width="14" Height="14" Margin="5,2,0,0"/>
                                     </Grid>
                                     
-                                </StackPanel>
+                                <!--</StackPanel>-->
 
                                 <!--warning-->
                                 <ctc:Icon IconType="Warning" 
@@ -769,10 +770,9 @@
                                     <StackPanel Orientation="Vertical">
                                         <StackPanel Orientation="Horizontal" Margin="50,0,10,5" ToolTip="{Binding ToolTip_SelectCOMPort}">
 
-                                            <!--<Viewbox Width="24" Margin="0,-5,10,0">
-                                                <Path Fill="{StaticResource Brush10}" Data="{Binding SerialPortNameIconPathData}"/>
-                                            </Viewbox>-->
-                                            <ctc:Icon IconType="PortName" Foreground="{StaticResource Brush10}" Width="20" Height="20" Margin="0,-4,10,0"/>
+                                            <!--<Viewbox Width="24" Margin="0,-5,7,0">-->
+                                            <ctc:Icon IconType="PortName" Foreground="{StaticResource Brush10}" Width="20" Height="20" Margin="0,0,0,0"/>
+                                            <!--</Viewbox>-->
                                             
                                             <StackPanel Orientation="Horizontal" Visibility="{Binding NoPortsAvailable, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                 <TextBlock Text="{Binding Path=Serial_Port_Name, Source={StaticResource Resources}}" 

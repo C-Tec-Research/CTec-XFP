@@ -95,15 +95,15 @@ namespace Xfp.Files.XfpFile
                     switch (ItemName(currentLine))
                     {
                         case XfpTags.ZoneName:              result.CurrentPanel.NetworkConfig.RepeaterSettings.Repeaters[panelIndex].Name = ParseString(currentLine); break;
-                        case XfpTags.ZoneMCP:               result.CurrentPanel.ZoneConfig.Zones[index].MCPs = parseBool(currentLine); break;
-                        case XfpTags.ZoneDetector:          result.CurrentPanel.ZoneConfig.Zones[index].Detectors = parseBool(currentLine); break;
+                        //case XfpTags.ZoneMCP:               result.CurrentPanel.ZoneConfig.Zones[index].MCPs = parseBool(currentLine); break;
+                        //case XfpTags.ZoneDetector:          result.CurrentPanel.ZoneConfig.Zones[index].Detectors = parseBool(currentLine); break;
                         case XfpTags.ZoneSounderDelay:      result.CurrentPanel.ZonePanelConfig.Panels[panelIndex].SounderDelay = parseIntTime(currentLine); break;
                         case XfpTags.ZoneRelay1Delay:       result.CurrentPanel.ZonePanelConfig.Panels[panelIndex].Relay1Delay = parseIntTime(currentLine); break;
                         case XfpTags.ZoneRelay2Delay:       result.CurrentPanel.ZonePanelConfig.Panels[panelIndex].Relay2Delay = parseIntTime(currentLine); break;
                         case XfpTags.ZoneRemoteDelay:       result.CurrentPanel.ZonePanelConfig.Panels[panelIndex].RemoteDelay = parseIntTime(currentLine); break;
                         case XfpTags.ZoneArrayGroups:       parseGroups(inputStream, ref result, panelIndex, true); break;
                         case XfpTags.ZoneArrayZoneSets:     parseSets(inputStream, ref result, panelIndex, true); break;
-                        case XfpTags.ZoneArrayDependencies: parseDependencies(inputStream, ref result, panelIndex, true); break;
+                        //case XfpTags.ZoneArrayDependencies: parseDependencies(inputStream, ref result, panelIndex, true); break;
                     }
                 }
             }
@@ -157,7 +157,7 @@ namespace Xfp.Files.XfpFile
 
         private static void parseDependencies(StreamReader inputStream, ref XfpData result, int zoneNum, bool isPanel)
         {
-            //if (!isPanel)
+            if (!isPanel)
             {
                 var zone = result.CurrentPanel.ZoneConfig.Zones[zoneNum];
 

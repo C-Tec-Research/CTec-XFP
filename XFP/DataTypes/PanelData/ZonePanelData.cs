@@ -34,9 +34,6 @@ namespace Xfp.DataTypes.PanelData
                 Name = string.Format(Cultures.Resources.Panel_x, index + 1),
             };
             
-            data.Detectors     = true;
-            data.Day           = new();
-            data.Night         = new();
             data.SounderGroups = new();
 
             for (int i = 0; i < GroupConfigData.NumSounderGroups; i++)

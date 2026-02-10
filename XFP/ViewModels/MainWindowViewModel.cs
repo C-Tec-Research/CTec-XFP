@@ -1024,18 +1024,30 @@ namespace Xfp.ViewModels
                     path = XfpTextFile.FilePath;
                 }
 
-                if (!DataHasChanged || askOverwriteChanges(string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
-                {
-                    InitNewDataset();
+                var isLegacyFile = false;
 
-                    if (LocalXfpFile.CheckForLegacyXfpFile(TextFile.FilePath))
+                try
+                {
+                    if (!DataHasChanged || askOverwriteChanges(string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
                     {
-                        newData = openLegacyXfpFile(path);
+                        InitNewDataset();
+
+                        if (isLegacyFile = LocalXfpFile.CheckForLegacyXfpFile(TextFile.FilePath))
+                        {
+                            newData = openLegacyXfpFile(path);
+                        }
+                        else
+                        {
+                            newData = openXfp2File(path);
+                        }
                     }
-                    else
-                    {
-                        newData = openXfp2File(path);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    CTecUtil.Debug.WriteLine(isLegacyFile ? ("Conversion Error, Line " + " " + FileParsingBase.LineNumber) : "json file error" + "\n\n" + ex.Message);
+                    CTecMessageBox.Show(Cultures.Resources.Error_Could_Not_Parse_File + "\n\n" + ex.Message, Cultures.Resources.Open_File);
+                    //PopulateView(savedData);
+                    return false;
                 }
 
                 normaliseFileData(newData);

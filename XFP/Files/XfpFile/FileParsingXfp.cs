@@ -98,8 +98,8 @@ namespace Xfp.Files.XfpFile
 
             string currentLine = string.Empty;
             CTecUtil.Debug.WriteLine("Reading XFP file");
-            try
-            {
+            //try
+            //{
                 while ((currentLine = readNext(inputStream, Tags.EndFile)) != null)
                 {
                     var item = ItemName(currentLine);
@@ -119,12 +119,12 @@ namespace Xfp.Files.XfpFile
                         default:                         parseMiscTags(currentLine,      ref result);    break;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                CTecUtil.Debug.WriteLine("Conversion Error Line " + " " + currentLine + "\n\n" + ex.Message);
-                CTecMessageBox.Show(Cultures.Resources.Error_Could_Not_Parse_File + "\n\n" + ex.Message, Cultures.Resources.Open_File);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    CTecUtil.Debug.WriteLine("Conversion Error Line " + " " + currentLine + "\n\n" + ex.Message);
+            //    CTecMessageBox.Show(Cultures.Resources.Error_Could_Not_Parse_File + "\n\n" + ex.Message, Cultures.Resources.Open_File);
+            //}
 
             return result;
         }
