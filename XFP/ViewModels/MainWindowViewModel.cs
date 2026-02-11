@@ -304,6 +304,16 @@ namespace Xfp.ViewModels
         #endregion
 
 
+        #region icon resources
+        public string InfoIconType         => IconUtilities.IconResourceInfo;
+        public string PortNameIconType     => IconUtilities.IconResourcePortName;
+        public string DisconnectedIconType => IconUtilities.IconResourceDisconnectedSerial;
+        public string LockedIconType       => IconUtilities.IconResourceLocked;
+        public string WarningIconType      => IconUtilities.IconResourceWarning;
+        public string DebugModeIconType    => IconUtilities.IconResourceDebugMode;
+        public string HistoryIconType      => IconUtilities.IconResourceHistory;
+        #endregion
+
         #region navigaton menu
 
         private int _navBarSelectedIndex;

@@ -88,8 +88,12 @@ namespace Xfp.DataTypes.PanelData
         public bool DateEnabled { get; set; }
         public bool SoundersPulsed { get; set; }
         public bool CopyTime { get; set; }
-        public string MaintenanceString { get; set; }
-        public string QuiescentString { get; set; }
+
+        private string _maintenanceString = null;
+        private string _quiescentString = null;
+        public string MaintenanceString { get => !string.IsNullOrWhiteSpace(_maintenanceString) ? _maintenanceString : Cultures.Resources.Default_Maintenance_String; set => _maintenanceString = value; }
+        public string QuiescentString   { get => !string.IsNullOrWhiteSpace(_quiescentString)   ? _quiescentString   : Cultures.Resources.Default_Quiescent_String;   set => _quiescentString   = value; }
+        
         public DateTime? MaintenanceDate { get; set; }
         public string AL2Code { get; set; }
         public string AL3Code { get; set; }
@@ -117,8 +121,8 @@ namespace Xfp.DataTypes.PanelData
         /// Returns an initialised SiteConfigPanelData object.
         /// </summary>
         public new static PanelConfigData InitialisedNew() => new () {
-                                                                        QuiescentString   = Cultures.Resources.Default_Quiescent_String,
-                                                                        MaintenanceString = Cultures.Resources.Default_Maintenance_String,
+                                                                        QuiescentString   = null,//Cultures.Resources.Default_Quiescent_String,
+                                                                        MaintenanceString = null,//Cultures.Resources.Default_Maintenance_String,
                                                                         AL2Code           = Cultures.Resources.Default_AL2String,
                                                                         AL3Code           = Cultures.Resources.Default_AL3String,
                                                                         BlinkPollingLED   = true,

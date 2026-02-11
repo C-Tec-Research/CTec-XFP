@@ -190,10 +190,10 @@
                                     </Border>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Margin="5,0,0,0">
+                                <Grid Grid.Column="1" Margin="10,0,0,0">
                                     <TextBlock Text="{Binding DeviceTypeName, Mode=OneWay}" 
                                                Visibility="{Binding NoDeviceType, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                               FontWeight="DemiBold" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" MaxWidth="300" Margin="0"/>
+                                               FontWeight="DemiBold" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" MaxWidth="200" Margin="0"/>
                                     <TextBlock Text="{Binding Path=No_Device, Source={StaticResource Resources}}" 
                                                VerticalAlignment="Center" 
                                                FontStyle="Italic" FontWeight="Normal" FontSize="16" Margin="0"

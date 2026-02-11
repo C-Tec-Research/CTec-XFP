@@ -77,8 +77,8 @@ namespace Xfp.DataTypes.PanelData
                                                                         RecalibrationTime = new(4, 0, 0),
 
                                                                         //legacy settings
-                                                                        QuiescentString   = Cultures.Resources.Default_Quiescent_String,
-                                                                        MaintenanceString = Cultures.Resources.Default_Maintenance_String,
+                                                                        QuiescentString   = null,//Cultures.Resources.Default_Quiescent_String,
+                                                                        MaintenanceString = null,//Cultures.Resources.Default_Maintenance_String,
                                                                         AL2Code    = "3333",
                                                                         AL3Code    = "4444",
                                                                         BlinkPollingLED = true,

@@ -359,7 +359,7 @@ dispositivo</value>
     <value>Configure el puerto serie mediante el menú Configuración.</value>
   </data>
   <data name="False" xml:space="preserve">
-    <value>0</value>
+    <value>Falso</value>
   </data>
   <data name="Firmware_Version" xml:space="preserve">
     <value>Versión del firmware</value>
@@ -392,10 +392,16 @@ dispositivo</value>
     <value>Dispositivos del bucle {0}</value>
   </data>
   <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
-    <value>Se han cambiado los ajustes del panel.¿Está seguro de que desea salir sin guardar?</value>
+    <value>Se han cambiado los ajustes del panel.
+
+¿Está seguro de que desea salir sin guardar?</value>
   </data>
   <data name="Message_Settings_x_Not_Saved" xml:space="preserve">
-    <value>Se han cambiado los siguientes ajustes:{0}¿Está seguro de que desea salir sin guardar?</value>
+    <value>Se han cambiado los siguientes ajustes:
+
+{0}
+
+¿Está seguro de que desea salir sin guardar?</value>
   </data>
   <data name="Message_Title_Settings_Not_Saved" xml:space="preserve">
     <value>Configuración no guardada.</value>
@@ -650,7 +656,8 @@ dispositivo</value>
     <value>Haga clic para mostrar los detalles del dispositivo</value>
   </data>
   <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
-    <value>Seleccione un tipo de dispositivo y, a continuación, haga clic en la lista de dispositivos para establecer o cambiar a ese tipo, o seleccione Eliminar para eliminar un dispositivo</value>
+    <value>Seleccione un tipo de dispositivo y, a continuación, haga clic en la lista de dispositivos para
+establecer o cambiar a ese tipo, o seleccione Eliminar para eliminar un dispositivo</value>
   </data>
   <data name="ToolTip_Next_Area" xml:space="preserve">
     <value>Seleccionar siguiente área</value>
@@ -665,7 +672,7 @@ dispositivo</value>
     <value>Seleccionar protocolo</value>
   </data>
   <data name="True" xml:space="preserve">
-    <value>1</value>
+    <value>Verdadero</value>
   </data>
   <data name="Unassigned" xml:space="preserve">
     <value>Sin asignar</value>
@@ -927,7 +934,7 @@ de la sonda base</value>
     <value>Salidas</value>
   </data>
   <data name="Output_Delays_Mins" xml:space="preserve">
-    <value>Retardos de salida (minutos)</value>
+    <value>Retardos de salida (mins)</value>
   </data>
   <data name="Output_Set_Triggered" xml:space="preserve">
     <value>Salida activada</value>
@@ -1080,7 +1087,9 @@ de la sonda base</value>
     <value>Comprobación previa al guardado</value>
   </data>
   <data name="Query_Data_Errors_Save_Anyway" xml:space="preserve">
-    <value>Los datos contienen errores o advertencias; consulte la ventana Validación de datos para obtener más detalles.</value>
+    <value>Los datos contienen errores o advertencias; consulte la ventana Validación de datos para obtener más detalles.
+
+¿Guardar de todos modos?</value>
   </data>
   <data name="See_IO_Configuration" xml:space="preserve">
     <value>Ver configuración de E/S</value>
@@ -1263,7 +1272,8 @@ de la sonda base</value>
     <value>Establecer elementos seleccionados en No activado</value>
   </data>
   <data name="ToolTip_Pulsed" xml:space="preserve">
-    <value>Establecer elementos seleccionados en Pulsado</value>
+    <value>Establecer elementos seleccionados en Pulsado
+- se aplica solo a relés de panel</value>
   </data>
   <data name="Panel" xml:space="preserve">
     <value>Panel</value>
@@ -1619,7 +1629,9 @@ Remoto</value>
     <value>Nombres de zonas</value>
   </data>
   <data name="Error_Preupload_Data_Validation" xml:space="preserve">
-    <value>Corrija los errores antes de cargar la configuración en el panel.Consulte la ventana Validación para obtener más detalles.</value>
+    <value>Corrija los errores antes de cargar la configuración en el panel.
+
+Consulte la ventana Validación para obtener más detalles.</value>
   </data>
   <data name="Comms_Download_Warn_Loop_Count_1_Loop" xml:space="preserve">
     <value>El panel conectado solo tiene un bucle.</value>
@@ -1628,7 +1640,9 @@ Remoto</value>
     <value>El panel conectado tiene 2 bucles.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_Count_1_Loop" xml:space="preserve">
-    <value>El panel conectado solo tiene un bucle.Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
+    <value>El panel conectado solo tiene un bucle.
+
+Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
   </data>
   <data name="Comms_Upload_Warn_Loop_Count_2_Loops" xml:space="preserve">
     <value>Nota: el panel conectado tiene 2 bucles.Aquí solo se ha configurado un bucle.</value>
@@ -1670,7 +1684,8 @@ Remoto</value>
     <value>Límite de datos de nombres de dispositivos</value>
   </data>
   <data name="Error_Device_Name_Bytes_Exceeded" xml:space="preserve">
-    <value>El tamaño total de los datos de nombres de dispositivos es demasiado grande(consulte «Ver/Mostrar uso de datos»).</value>
+    <value>El tamaño total de los datos de nombres de dispositivos es demasiado grande
+(consulte «Ver/Mostrar uso de datos»).</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>Información</value>
@@ -1679,7 +1694,9 @@ Remoto</value>
     <value>¿Descargar e instalar actualizaciones ahora? Esto reiniciará la aplicación.</value>
   </data>
   <data name="Error_File_x_Does_Not_Exist" xml:space="preserve">
-    <value>El archivo «{0}» no existe en esta ubicación.¿Eliminar de la lista?</value>
+    <value>El archivo «{0}» no existe en esta ubicación.
+
+¿Eliminar de la lista?</value>
   </data>
   <data name="Mode" xml:space="preserve">
     <value>Modo</value>
@@ -1724,7 +1741,9 @@ Remoto</value>
     <value>Paneles: {0}</value>
   </data>
   <data name="Query_Keep_Other_Panel_Settings" xml:space="preserve">
-    <value>El archivo contiene los ajustes del panel {0}.¿Qué desea hacer con los ajustes de los demás paneles?</value>
+    <value>El archivo contiene los ajustes del panel {0}.
+
+¿Qué desea hacer con los ajustes de los demás paneles?</value>
   </data>
   <data name="Error_Maintenance_String_Blank" xml:space="preserve">
     <value>La cadena de mantenimiento está en blanco</value>
@@ -1739,7 +1758,9 @@ Remoto</value>
     <value>El archivo contiene los ajustes de {0} dispositivos.</value>
   </data>
   <data name="Query_Keep_Other_Panel_Settings_Single_x" xml:space="preserve">
-    <value>El archivo contiene los ajustes del panel {0}.¿Qué desea hacer con los ajustes del panel {1}?</value>
+    <value>El archivo contiene los ajustes del panel {0}.
+
+¿Qué desea hacer con los ajustes del panel {1}?</value>
   </data>
   <data name="ToolTip_Panel_x_of_y" xml:space="preserve">
     <value>Panel n.º {0} ({1} paneles disponibles)</value>
@@ -1850,7 +1871,9 @@ Remoto</value>
     <value>Se ha producido un error al imprimir el documento.</value>
   </data>
   <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
-    <value>Los detalles de la configuración del sitio están incompletos; consulte la ventana Validación de datos para obtener más información.¿Guardar de todos modos?</value>
+    <value>Los detalles de la configuración del sitio están incompletos; consulte la ventana Validación de datos para obtener más información.
+
+¿Guardar de todos modos?</value>
   </data>
   <data name="Warn_Modes_Not_Available_For_Selected_Device" xml:space="preserve">
     <value>Algunos modos no están disponibles para el dispositivo seleccionado.</value>
@@ -1883,7 +1906,8 @@ Remoto</value>
     <value>Detener el registro del registro de eventos</value>
   </data>
   <data name="Remove_Panel_x" xml:space="preserve">
-    <value>¿Eliminar el panel {0}?Se perderán todos sus datos.</value>
+    <value>¿Eliminar el panel {0}?
+Se perderán todos sus datos.</value>
   </data>
   <data name="Save_These_Changes" xml:space="preserve">
     <value>¿Guardar estos cambios?</value>

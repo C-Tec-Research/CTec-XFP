@@ -309,7 +309,7 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentTime}" HorizontalAlignment="Center" FontFamily="Arial Black" Foreground="{StaticResource Brush04}" FontSize="14" Margin="5,6,5,6" Padding="0,2,0,0"/>
                         </Border>
                         <CheckBox Grid.Row="1" Grid.Column="0" Content="{Binding Path=Send_To_Panel, Source={StaticResource Resources}}" HorizontalAlignment="Left" IsChecked="{Binding SyncPanelTime}" FontSize="12" Margin="20,10,0,0"/>
-                        <CheckBox Grid.Row="2" Grid.Column="0" Content="{Binding Path=Auto_Adjust_DST, Source={StaticResource Resources}}" HorizontalAlignment="Left" IsChecked="{Binding AutoAdjustDST}" PreviewMouseDown="ctrl_PreviewMouseDown" FontSize="12" Margin="20,10,0,0"/>
+                        <CheckBox Grid.Row="2" Grid.Column="0" Content="{Binding Path=Auto_Adjust_DST, Source={StaticResource Resources}}" HorizontalAlignment="Left" IsChecked="{Binding AutoAdjustDST}" PreviewMouseDown="ctrl_PreviewMouseDown" MaxWidth="200" FontSize="12" Margin="20,10,0,0"/>
                     </Grid>
                 </Border>
                 <!--#endregion-->
@@ -344,7 +344,7 @@
                                              PreviewKeyDown="al3Code_PreviewKeyDown" 
                                              PreviewTextInput="al3Code_PreviewTextInput"
                                              CommandManager.PreviewExecuted="textBox_PreviewExecuted" 
-                                             MaxLength="4" Padding="0,2,0,0" Width="36" Margin="0,2,0,0"/>
+                                             MaxLength="4" MaxWidth="150" Padding="0,2,0,0" Width="36" Margin="0,2,0,0"/>
                         </Border>
 
                     </Grid>

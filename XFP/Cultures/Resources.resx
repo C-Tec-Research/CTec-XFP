@@ -429,7 +429,7 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="Nav_Device_Details" xml:space="preserve">
     <value>Device Details</value>
-    <comment>Menu item: device details</comment>
+    <comment>Menu item: detailsof the devices</comment>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
     <value>Loop {0}</value>

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Xps;
 using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
+using TomsToolbox.Essentials;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
@@ -48,8 +49,8 @@ namespace Xfp.ViewModels.PanelTools
         public string EngineerName           { get => _data?.SiteConfig.EngineerName;       set { if (_data != null) { _data.SiteConfig.EngineerName = value; OnPropertyChanged(); } } }
         public string EngineerNumber         { get => _data?.SiteConfig.EngineerNo;         set { if (_data != null) { _data.SiteConfig.EngineerNo = value; OnPropertyChanged(); } } }
 
-        public string QuiescentString        { get => _data?.CurrentPanel.PanelConfig.QuiescentString;         set { if (_data is not null) { _data.CurrentPanel.PanelConfig.QuiescentString = value; OnPropertyChanged(); OnPropertyChanged(nameof(QuiescentStringIsValid)); } } }
-        public string MaintenanceString      { get => _data?.CurrentPanel.PanelConfig.MaintenanceString;       set { if (_data is not null) { _data.CurrentPanel.PanelConfig.MaintenanceString = value; OnPropertyChanged(); OnPropertyChanged(nameof(MaintenanceStringIsValid)); } } }
+        public string QuiescentString        { get => _data?.CurrentPanel.PanelConfig.QuiescentString;   set { if (_data is not null) { _data.CurrentPanel.PanelConfig.QuiescentString = value; OnPropertyChanged(); OnPropertyChanged(nameof(QuiescentStringIsValid)); } } }
+        public string MaintenanceString      { get => _data?.CurrentPanel.PanelConfig.MaintenanceString; set { if (_data is not null) { _data.CurrentPanel.PanelConfig.MaintenanceString = value; OnPropertyChanged(); OnPropertyChanged(nameof(MaintenanceStringIsValid)); } } }
         public DateTime? MaintenanceDate     { get => _data?.CurrentPanel.PanelConfig.MaintenanceDate;         set { if (_data is not null) { _data.CurrentPanel.PanelConfig.MaintenanceDate = value; OnPropertyChanged(); } } }
         public bool SendMaintToPanel         { get => _sendMaintToPanel;                                       set { _sendMaintToPanel = value; OnPropertyChanged(); } }
 
@@ -84,8 +85,8 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool AL2CodeIsValid           => PanelConfigData.IsValidAccessCode(AL2Code);
         public bool AL3CodeIsValid           => PanelConfigData.IsValidAccessCode(AL3Code);
-        public bool QuiescentStringIsValid   => !string.IsNullOrEmpty(QuiescentString)   && QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
-        public bool MaintenanceStringIsValid => !string.IsNullOrEmpty(MaintenanceString) && MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
+        public bool QuiescentStringIsValid   => string.IsNullOrEmpty(QuiescentString)   || QuiescentString?.Length   < PanelConfigData.MaxQuiescentStringLength;
+        public bool MaintenanceStringIsValid => string.IsNullOrEmpty(MaintenanceString) || MaintenanceString?.Length < PanelConfigData.MaxMaintenanceStringLength;
 
 
         #region input validation
@@ -190,6 +191,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(InstallerPostcode));
             OnPropertyChanged(nameof(EngineerTelephone));
             OnPropertyChanged(nameof(EngineerName));
+            OnPropertyChanged(nameof(PanelDesc));
             OnPropertyChanged(nameof(QuiescentString));
             OnPropertyChanged(nameof(MaintenanceString));
             OnPropertyChanged(nameof(MaintenanceDate));

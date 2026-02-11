@@ -135,6 +135,7 @@
                                            Foreground="{StaticResource  Brush09}" 
                                            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" Margin="12,0,12,1.5"/>
                             </Border>
+                            
                         </StackPanel>
                         <!--#endregion-->
 
@@ -240,26 +241,28 @@
 
                                 <TextBlock Text="{Binding Path=Comms_Panel_Status, Source={StaticResource Resources}}" Foreground="{StaticResource Brush09}" Opacity="0.6" FontSize="13" Margin="0"/>
 
-                                <!--<StackPanel Orientation="Horizontal" Visibility="{Binding FirmwareError, Converter={StaticResource InverseBoolToVisibilityConverter}}">-->
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding FirmwareError, Converter={StaticResource InverseBoolToVisibilityConverter}}">
 
                                     <Border CornerRadius="5" 
                                             Visibility="{Binding PanelIsDisconnected, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                                             Background="{Binding CommsStatus, Converter={StaticResource ConnectionStatusToBrushConverter}}" 
                                             Height="10" Width="10" Margin="7,3,5,0"/>
-                                    <ctc:Icon IconType="DisconnectedSerial" 
+                              
+                                    <ctc:Icon IconSvgPathData="{Binding DisconnectedIconType}"
                                               Visibility="{Binding PanelIsDisconnected, Converter={StaticResource BoolToVisibilityConverter}}"
                                               Foreground="{StaticResource BrushWarn}" Width="16" Height="16" Margin="5,2,0,0"/>
+                                
                                     <!--locked padlock-->
                                     <Grid Visibility="{Binding PanelIsConnected, Converter={StaticResource BoolToVisibilityConverter}}">
-                                        <ctc:Icon IconType="Locked" 
+                                        <ctc:Icon IconSvgPathData="{Binding LockedIconType}" 
                                                   Visibility="{Binding PanelIsReadOnly, Converter={StaticResource BoolToVisibilityConverter}}"
                                                   Foreground="{StaticResource BrushWarn}" Width="14" Height="14" Margin="5,2,0,0"/>
                                     </Grid>
                                     
-                                <!--</StackPanel>-->
+                                </StackPanel>
 
                                 <!--warning-->
-                                <ctc:Icon IconType="Warning" 
+                                <ctc:Icon IconSvgPathData="{Binding WarningIconType}" 
                                           Visibility="{Binding FirmwareError, Converter={StaticResource BoolToVisibilityConverter}}"
                                           Foreground="{StaticResource BrushWarn}"
                                           Margin="5,2,0,0" Width="16" Height="16"/>
@@ -269,7 +272,8 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <ctc:Icon Grid.Column="1" Grid.Row="1" IconType="DebugMode"
+                        <ctc:Icon Grid.Column="1" Grid.Row="1"
+                                  IconSvgPathData="{Binding DebugModeIconType}"
                                   Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}"
                                   Foreground="{StaticResource BrushDebug}" 
                                   Opacity="0.8"
@@ -770,9 +774,7 @@
                                     <StackPanel Orientation="Vertical">
                                         <StackPanel Orientation="Horizontal" Margin="50,0,10,5" ToolTip="{Binding ToolTip_SelectCOMPort}">
 
-                                            <!--<Viewbox Width="24" Margin="0,-5,7,0">-->
-                                            <ctc:Icon IconType="PortName" Foreground="{StaticResource Brush10}" Width="20" Height="20" Margin="0,0,0,0"/>
-                                            <!--</Viewbox>-->
+                                            <ctc:Icon IconSvgPathData="{Binding PortNameIconType}" Foreground="{StaticResource Brush10}" Width="20" Height="20" Margin="0,-4,10,0"/>
                                             
                                             <StackPanel Orientation="Horizontal" Visibility="{Binding NoPortsAvailable, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                 <TextBlock Text="{Binding Path=Serial_Port_Name, Source={StaticResource Resources}}" 
@@ -1164,7 +1166,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Orientation="Vertical" Background="{StaticResource Brush10}">
                                     <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                                        <ctc:Icon IconType="Info" 
+                                        <ctc:Icon IconSvgPathData="{Binding InfoIconType}" 
                                                   HorizontalAlignment="Left" 
                                                   Height="14" Width="14" 
                                                   Margin="0,2,5,0" 
@@ -1272,7 +1274,7 @@
 
                                 <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="20,20,0,0" Click="History_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <ctc:Icon IconType="History" Width="12" Height="12" Foreground="{StaticResource Brush03}" Margin="0,3,5,3"/>
+                                        <ctc:Icon IconSvgPathData="{Binding HistoryIconType}" Width="12" Height="12" Foreground="{StaticResource Brush03}" Margin="0,3,5,3"/>
                                         <TextBlock Text="{Binding Path=Revision_History, Source={StaticResource Resources}}"/>
                                     </StackPanel>
                                 </Button>
