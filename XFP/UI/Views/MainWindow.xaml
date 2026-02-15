@@ -68,7 +68,6 @@
         <ctcvh:InverseBoolToOpacity40pcConverter x:Key="InverseBoolToOpacity40pcConverter"/>
         <ctcvh:InverseBoolToOpacity20pcConverter x:Key="InverseBoolToOpacity20pcConverter"/>
         <ctcvh:IsNullToNAConverter x:Key="IsNullToNAConverter"/>
-        <ctcvh:IsTrueToSVGPathDataConverter x:Key="IsTrueToSVGPathDataConverter"/>
 
         <Style x:Key="ContextMenuItemStyle" TargetType="Grid">
             <Style.Triggers>

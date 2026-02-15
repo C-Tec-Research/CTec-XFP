@@ -463,10 +463,10 @@ namespace Xfp.DataTypes.PanelData
                         //  Input:  - bit 1: 0 = Ch1, 1 = Ch2
                         //  Output: - bits 1 & 2: 01 = Ch1, 10 = Ch2, 11 = Ch3
 
-                        if (inUse0) result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5]  & 0x60) == 0x60 ? 2 : ((data[5]  & 0x40) >> 6);
-                        if (inUse1) result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7]  & 0x60) == 0x60 ? 2 : ((data[7]  & 0x40) >> 6);
-                        if (inUse2) result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9]  & 0x60) == 0x60 ? 2 : ((data[9]  & 0x40) >> 6);
-                        if (inUse3) result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6);
+                        if (inUse0) result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5]  & 0x60) == 0x60 ? 2 : ((data[5]  & 0x40) >> 6); else result.IOConfig[0].Channel = null;
+                        if (inUse1) result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7]  & 0x60) == 0x60 ? 2 : ((data[7]  & 0x40) >> 6); else result.IOConfig[1].Channel = null;
+                        if (inUse2) result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9]  & 0x60) == 0x60 ? 2 : ((data[9]  & 0x40) >> 6); else result.IOConfig[2].Channel = null;
+                        if (inUse3) result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6); else result.IOConfig[3].Channel = null;
 
                         if (inUse0)
                         {
@@ -482,10 +482,10 @@ namespace Xfp.DataTypes.PanelData
                             //  Input: bits 2-7
                             //  Output: bits 4-7
 
-                            if (inUse0) result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5]  & 0x3f : data[5]  & 0x1f;
-                            if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f;
-                            if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f;
-                            if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f;
+                            if (inUse0) result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5]  & 0x3f : data[5]  & 0x1f; else result.IOConfig[0].ZoneGroupSet = null;
+                            if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f; else result.IOConfig[1].ZoneGroupSet = null;
+                            if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f; else result.IOConfig[2].ZoneGroupSet = null;
+                            if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f; else result.IOConfig[3].ZoneGroupSet = null;
                         }
                     }
 

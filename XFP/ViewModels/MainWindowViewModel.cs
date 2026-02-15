@@ -305,6 +305,10 @@ namespace Xfp.ViewModels
 
 
         #region icon resources
+        /*
+        *  NB: specifying the IconType in the xaml for these icons doesn't work.
+        *  As a fudge the IconSvgPathData properties are bound to the icon resources.
+        */
         public string InfoIconType         => IconUtilities.IconResourceInfo;
         public string PortNameIconType     => IconUtilities.IconResourcePortName;
         public string DisconnectedIconType => IconUtilities.IconResourceDisconnectedSerial;

@@ -284,7 +284,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 1 )
-      Name = 01 Zone 1
+      Name = Zone 1
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -371,7 +371,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 2 )
-      Name = 02 Zone 2
+      Name = Zone 2
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -458,7 +458,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 3 )
-      Name = 03 Zone 3
+      Name = Zone 3
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -545,7 +545,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 4 )
-      Name = 04 Zone 4
+      Name = Zone 4
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -632,7 +632,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 5 )
-      Name = 05 Zone 5
+      Name = Zone 5
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -719,7 +719,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 6 )
-      Name = 06 Zone 6
+      Name = Zone 6
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -806,7 +806,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 7 )
-      Name = 07 Zone 7
+      Name = Zone 7
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -893,7 +893,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 8 )
-      Name = 08 Zone 8
+      Name = Zone 8
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -980,7 +980,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 9 )
-      Name = 09 Zone 9
+      Name = Zone 9
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1067,7 +1067,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 10 )
-      Name = 10 Zone 10
+      Name = Zone 10
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1154,7 +1154,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 11 )
-      Name = 11 Zone 11
+      Name = Zone 11
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1241,7 +1241,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 12 )
-      Name = 12 Zone 12
+      Name = Zone 12
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1328,7 +1328,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 13 )
-      Name = 13 Zone 13
+      Name = Zone 13
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1415,7 +1415,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 14 )
-      Name = 14 Zone 14
+      Name = Zone 14
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1502,7 +1502,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 15 )
-      Name = 15 Zone 15
+      Name = Zone 15
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1589,7 +1589,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 16 )
-      Name = 16 Zone 16
+      Name = Zone 16
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1676,7 +1676,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 17 )
-      Name = 17 Zone 17
+      Name = Zone 17
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1763,7 +1763,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 18 )
-      Name = 18 Zone 18
+      Name = Zone 18
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1850,7 +1850,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 19 )
-      Name = 19 Zone 19
+      Name = Zone 19
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -1937,7 +1937,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 20 )
-      Name = 20 Zone 20
+      Name = Zone 20
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2024,7 +2024,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 21 )
-      Name = 21 Zone 21
+      Name = Zone 21
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2111,7 +2111,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 22 )
-      Name = 22 Zone 22
+      Name = Zone 22
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2198,7 +2198,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 23 )
-      Name = 23 Zone 23
+      Name = Zone 23
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2285,7 +2285,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 24 )
-      Name = 24 Zone 24
+      Name = Zone 24
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2372,7 +2372,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 25 )
-      Name = 25 Zone 25
+      Name = Zone 25
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2459,7 +2459,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 26 )
-      Name = 26 Zone 26
+      Name = Zone 26
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2546,7 +2546,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 27 )
-      Name = 27 Zone 27
+      Name = Zone 27
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2633,7 +2633,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 28 )
-      Name = 28 Zone 28
+      Name = Zone 28
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2720,7 +2720,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 29 )
-      Name = 29 Zone 29
+      Name = Zone 29
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2807,7 +2807,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 30 )
-      Name = 30 Zone 30
+      Name = Zone 30
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2894,7 +2894,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 31 )
-      Name = 31 Zone 31
+      Name = Zone 31
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -2981,7 +2981,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 32 )
-      Name = 32 Zone 32
+      Name = Zone 32
       MCP = FALSE
       Detector = TRUE
       Remote Delay = 0
@@ -3068,7 +3068,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 33 )
-      Name = 33 Panneau 1
+      Name = Panel 1
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3102,7 +3102,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3155,7 +3155,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 34 )
-      Name = 34 Panneau 2
+      Name = Panel 2
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3189,7 +3189,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3242,7 +3242,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 35 )
-      Name = 35 Panneau 3
+      Name = Panel 3
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3276,7 +3276,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3329,7 +3329,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 36 )
-      Name = 36 Panneau 4
+      Name = Panel 4
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3363,7 +3363,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3416,7 +3416,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 37 )
-      Name = 37 Panneau 5
+      Name = Panel 5
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3450,7 +3450,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3503,7 +3503,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 38 )
-      Name = 38 Panneau 6
+      Name = Panel 6
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3537,7 +3537,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3590,7 +3590,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 39 )
-      Name = 39 Panneau 7
+      Name = Panel 7
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3624,7 +3624,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3677,7 +3677,7 @@ File XFPTools
       End Array
     End Object
     Object Item( 40 )
-      Name = 40 Panneau 8
+      Name = Panel 8
       MCP = FALSE
       Detector = FALSE
       Remote Delay = 0
@@ -3711,7 +3711,7 @@ File XFPTools
       Array Zone Sets
         Max = 40
         Item( 0 ) = 0
-        Item( 1 ) = 0
+        Item( 1 ) = 2
         Item( 2 ) = 0
         Item( 3 ) = 0
         Item( 4 ) = 0
@@ -3774,35 +3774,35 @@ File XFPTools
         Fitted = FALSE
       End Object
       Object Item( 1 )
-        Name = 33 Panneau 1
+        Name = Panel 1
         Fitted = FALSE
       End Object
       Object Item( 2 )
-        Name = 34 Panneau 2
+        Name = Panel 2
         Fitted = FALSE
       End Object
       Object Item( 3 )
-        Name = 35 Panneau 3
+        Name = Panel 3
         Fitted = FALSE
       End Object
       Object Item( 4 )
-        Name = 36 Panneau 4
+        Name = Panel 4
         Fitted = FALSE
       End Object
       Object Item( 5 )
-        Name = 37 Panneau 5
+        Name = Panel 5
         Fitted = FALSE
       End Object
       Object Item( 6 )
-        Name = 38 Panneau 6
+        Name = Panel 6
         Fitted = FALSE
       End Object
       Object Item( 7 )
-        Name = 39 Panneau 7
+        Name = Panel 7
         Fitted = FALSE
       End Object
       Object Item( 8 )
-        Name = 40 Panneau 8
+        Name = Panel 8
         Fitted = FALSE
       End Object
     End Array
@@ -3967,20 +3967,20 @@ File XFPTools
     Array Device
       Max = 254
       Object Item( 0 )
-        Device Type = 254
-        Zone = 0
+        Device Type = 31
+        Zone = 1
         Name = No name allocated
         Hint = 
         Group = 0
         Name Index = 0
         Has Base Sounder = TRUE
-        Type Changed = TRUE
+        Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 0
+          Item( 0 ) = 1
           Item( 1 ) = 0
-          Item( 2 ) = 0
-          Item( 3 ) = 0
+          Item( 2 ) = 100
+          Item( 3 ) = 100
           Item( 4 ) = 0
           Item( 5 ) = 0
           Item( 6 ) = 0
@@ -6424,23 +6424,23 @@ File XFPTools
         End Array
       End Object
       Object Item( 91 )
-        Device Type = 254
-        Zone = 0
+        Device Type = 8
+        Zone = 1
         Name = No name allocated
         Hint = 
         Group = 0
         Name Index = 0
         Has Base Sounder = TRUE
-        Type Changed = TRUE
+        Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 0
+          Item( 0 ) = 1
           Item( 1 ) = 0
-          Item( 2 ) = 0
+          Item( 2 ) = 161
           Item( 3 ) = 0
-          Item( 4 ) = 0
+          Item( 4 ) = 255
           Item( 5 ) = 0
-          Item( 6 ) = 0
+          Item( 6 ) = 255
           Item( 7 ) = 0
         End Array
         Array SubName
@@ -6451,23 +6451,23 @@ File XFPTools
         End Array
       End Object
       Object Item( 92 )
-        Device Type = 254
-        Zone = 0
+        Device Type = 8
+        Zone = 1
         Name = No name allocated
         Hint = 
         Group = 0
         Name Index = 0
         Has Base Sounder = TRUE
-        Type Changed = TRUE
+        Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 0
+          Item( 0 ) = 1
           Item( 1 ) = 0
-          Item( 2 ) = 0
+          Item( 2 ) = 161
           Item( 3 ) = 0
-          Item( 4 ) = 0
+          Item( 4 ) = 255
           Item( 5 ) = 0
-          Item( 6 ) = 0
+          Item( 6 ) = 255
           Item( 7 ) = 0
         End Array
         Array SubName
@@ -6667,23 +6667,23 @@ File XFPTools
         End Array
       End Object
       Object Item( 100 )
-        Device Type = 254
-        Zone = 0
+        Device Type = 8
+        Zone = 1
         Name = No name allocated
         Hint = 
         Group = 0
         Name Index = 0
         Has Base Sounder = TRUE
-        Type Changed = TRUE
+        Type Changed = FALSE
         Array Shared Data
           Max = 7
-          Item( 0 ) = 0
+          Item( 0 ) = 1
           Item( 1 ) = 0
-          Item( 2 ) = 0
+          Item( 2 ) = 161
           Item( 3 ) = 0
-          Item( 4 ) = 0
+          Item( 4 ) = 255
           Item( 5 ) = 0
-          Item( 6 ) = 0
+          Item( 6 ) = 255
           Item( 7 ) = 0
         End Array
         Array SubName
@@ -17750,13 +17750,13 @@ File XFPTools
   SoundersPulsed = FALSE
   CopyTime = TRUE
   FaultLockout = 10
-  PhasedDelay = 65535
-  InvestigationPeriod = 0
-  InvestigationPeriod1 = 0
+  PhasedDelay = 120
+  InvestigationPeriod = 300
+  InvestigationPeriod1 = 180
   PanelLocation = 
   EngineerNo = 
-  MaintenanceString = Appeler l?ing?nieur
-  QuiescentString = Panneau de commande d?alarme incendie
+  MaintenanceString = Service required, call engineer
+  QuiescentString = C-Tec XFP Fire Panel
   Engineer = 
   MaintenanceDate = 01/01/2099
   AL3Code = 4444
@@ -17786,7 +17786,7 @@ File XFPTools
   Night_Enable_Flags = 0
   Polling_LED = TRUE
   MCP_Delay = 1
-  Detector_Delay = 1
+  Detector_Delay = 5
   IO_Delay = 1
   ReSound_Function = FALSE
   BST_Adjustment = TRUE
