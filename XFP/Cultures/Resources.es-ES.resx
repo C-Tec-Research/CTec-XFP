@@ -1,0 +1,2169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Access_Codes" xml:space="preserve">
+    <value>Códigos de acceso</value>
+  </data>
+  <data name="Cancelled_By_User" xml:space="preserve">
+    <value>Cancelado por el usuario</value>
+  </data>
+  <data name="Check_Validity_Of_Panel_Data" xml:space="preserve">
+    <value>Compruebe la validez de los datos del panel</value>
+  </data>
+  <data name="Client_Address" xml:space="preserve">
+    <value>Dirección del cliente</value>
+  </data>
+  <data name="Client_Details" xml:space="preserve">
+    <value>Detalles del cliente</value>
+  </data>
+  <data name="Client_Name" xml:space="preserve">
+    <value>Nombre del cliente</value>
+  </data>
+  <data name="Comments_For_File_Copy" xml:space="preserve">
+    <value>para copiar el archivo</value>
+  </data>
+  <data name="Commissioned_On" xml:space="preserve">
+    <value>Encargado</value>
+  </data>
+  <data name="Comms_Device_Details" xml:space="preserve">
+    <value>Detalles de los dispositivos</value>
+  </data>
+  <data name="Comms_Downloading_Page" xml:space="preserve">
+    <value>Descargando página del panel...</value>
+  </data>
+  <data name="Comms_Downloading_System" xml:space="preserve">
+    <value>Descargando sistema del panel...</value>
+  </data>
+  <data name="Comms_Groups" xml:space="preserve">
+    <value>Grupos</value>
+  </data>
+  <data name="Comms_Panel_Status" xml:space="preserve">
+    <value>Estado del panel:</value>
+  </data>
+  <data name="Comms_Site_Information" xml:space="preserve">
+    <value>Información del sitio</value>
+  </data>
+  <data name="Comms_Uploading_Page" xml:space="preserve">
+    <value>Cargando página al panel...</value>
+  </data>
+  <data name="Comms_Uploading_System" xml:space="preserve">
+    <value>Cargando sistema al panel...</value>
+  </data>
+  <data name="Comms_Zones" xml:space="preserve">
+    <value>Zonas</value>
+  </data>
+  <data name="Control_Button_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Control_Button_Maximise" xml:space="preserve">
+    <value>Maximizar</value>
+  </data>
+  <data name="Control_Button_Minimise" xml:space="preserve">
+    <value>Minimizar</value>
+  </data>
+  <data name="Control_Button_Restore" xml:space="preserve">
+    <value>Restaurar Abajo</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="Copyright_Details" xml:space="preserve">
+    <value>© {0} Computionics Ltd (C-Tec)</value>
+  </data>
+  <data name="Send_To_Panel" xml:space="preserve">
+    <value>¿Enviar al panel?</value>
+  </data>
+  <data name="Data_Validation" xml:space="preserve">
+    <value>Validación de datos</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="Debug_Config_Bytes" xml:space="preserve">
+    <value>Bytes de datos:</value>
+  </data>
+  <data name="Debug_Config_String" xml:space="preserve">
+    <value>Cadena de datos:</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Dispositivo</value>
+  </data>
+  <data name="Device_Name" xml:space="preserve">
+    <value>Nombre del
+dispositivo</value>
+  </data>
+  <data name="Device_Ready" xml:space="preserve">
+    <value>Listo</value>
+  </data>
+  <data name="Device_Receive" xml:space="preserve">
+    <value>Rx</value>
+  </data>
+  <data name="Device_Transmit" xml:space="preserve">
+    <value>Tx</value>
+  </data>
+  <data name="Device_Type" xml:space="preserve">
+    <value>Tipo de dispositivo</value>
+  </data>
+  <data name="Device_x" xml:space="preserve">
+    <value>Dispositivo n.º {0}</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="Double_Click_To_Edit" xml:space="preserve">
+    <value>Haga doble clic para editar</value>
+  </data>
+  <data name="Download_Page" xml:space="preserve">
+    <value>Descargar esta página desde el panel</value>
+  </data>
+  <data name="Download_System" xml:space="preserve">
+    <value>Descargar el sistema desde el panel</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="Enable_Changes" xml:space="preserve">
+    <value>Permitir modificaciones</value>
+  </data>
+  <data name="Real_Time_Output_Of_Events" xml:space="preserve">
+    <value>Salida de eventos en tiempo real</value>
+  </data>
+  <data name="AL3_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 3 (AL3)</value>
+  </data>
+  <data name="Engineer_Name" xml:space="preserve">
+    <value>Nombre del ingeniero</value>
+  </data>
+  <data name="Error_Comms_Connection_Status_Unknown" xml:space="preserve">
+    <value>Se desconoce el estado de conexión del panel.</value>
+  </data>
+  <data name="Error_Comms_Firmware_Not_Supported" xml:space="preserve">
+    <value>La versión de firmware del panel no es compatible con esta herramienta de programación.</value>
+  </data>
+  <data name="Error_Comms_Firmware_Unknown" xml:space="preserve">
+    <value>No se ha podido comprobar la versión de firmware del panel.</value>
+  </data>
+  <data name="Error_Comms_Firmware_x_Not_Supported" xml:space="preserve">
+    <value>La versión de firmware del panel {0} no es compatible con esta herramienta de programación.</value>
+  </data>
+  <data name="Error_Comms_Logging_Mode" xml:space="preserve">
+    <value>No se pueden enviar comandos al panel mientras está en modo de registro.</value>
+  </data>
+  <data name="Error_Comms_Panel_x_Not_Connected" xml:space="preserve">
+    <value>El panel n.º {0} no está conectado.</value>
+  </data>
+  <data name="Error_Comms_Nvm_Link" xml:space="preserve">
+    <value>El enlace NVM no está instalado en el panel.Instale el enlace y vuelva a intentar enviar los datos.</value>
+  </data>
+  <data name="Error_Confirm" xml:space="preserve">
+    <value>Confirme que esto es correcto</value>
+  </data>
+  <data name="Error_Could_Not_Parse_File" xml:space="preserve">
+    <value>No se ha podido interpretar el archivo.</value>
+  </data>
+  <data name="Error_Data_Not_Read" xml:space="preserve">
+    <value>No se han podido leer los datos.</value>
+  </data>
+  <data name="Error_Device_Page_Not_Opened" xml:space="preserve">
+    <value>No se ha podido abrir la página de este dispositivo.</value>
+  </data>
+  <data name="Error_File_Data_Is_Not_Device_Data" xml:space="preserve">
+    <value>El archivo no contiene una configuración válida del dispositivo.</value>
+  </data>
+  <data name="Error_File_Data_Is_Not_Panel_Data" xml:space="preserve">
+    <value>El archivo no contiene una configuración válida del panel.</value>
+  </data>
+  <data name="Error_Invalid_AL2_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 2 (AL2) no válido.</value>
+  </data>
+  <data name="Error_Invalid_AL3_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 3 (AL3) no válido.</value>
+  </data>
+  <data name="Error_Invalid_Device_Type" xml:space="preserve">
+    <value>Tipo de dispositivo no válido.</value>
+  </data>
+  <data name="Error_Invalid_Group_Num" xml:space="preserve">
+    <value>Número de grupo no válido.</value>
+  </data>
+  <data name="Error_Invalid_Logging_Setting" xml:space="preserve">
+    <value>Configuración del registro de impresión no válida.</value>
+  </data>
+  <data name="Error_Invalid_Place_Name" xml:space="preserve">
+    <value>Nombre de lugar no válido.</value>
+  </data>
+  <data name="Error_Invalid_Zone_Group_Area_Code" xml:space="preserve">
+    <value>Código de zona/grupo/área no válido.</value>
+  </data>
+  <data name="Error_Invalid_Zone_Num" xml:space="preserve">
+    <value>Número de zona no válido.</value>
+  </data>
+  <data name="Error_Missing_Client_Address" xml:space="preserve">
+    <value>No se ha introducido la dirección del cliente.</value>
+  </data>
+  <data name="Error_Missing_Client_Tel" xml:space="preserve">
+    <value>No se ha introducido el número de teléfono del cliente.</value>
+  </data>
+  <data name="Error_Missing_Commissioning_Date" xml:space="preserve">
+    <value>No se ha introducido la fecha de puesta en servicio.</value>
+  </data>
+  <data name="Error_Missing_Engineer_Name" xml:space="preserve">
+    <value>No se ha introducido el nombre del ingeniero.</value>
+  </data>
+  <data name="Error_Missing_Installation_Date" xml:space="preserve">
+    <value>No se ha introducido la fecha de instalación.</value>
+  </data>
+  <data name="Error_Missing_Installer_Address" xml:space="preserve">
+    <value>No se ha introducido la dirección del instalador.</value>
+  </data>
+  <data name="Error_Missing_Installer_Tel" xml:space="preserve">
+    <value>No se ha introducido el número de teléfono del instalador.</value>
+  </data>
+  <data name="Error_Missing_Panel_Location" xml:space="preserve">
+    <value>No se ha introducido la ubicación del panel.</value>
+  </data>
+  <data name="Error_No_Client_Name" xml:space="preserve">
+    <value>No se ha introducido el nombre del cliente.</value>
+  </data>
+  <data name="Error_No_Installer_Name" xml:space="preserve">
+    <value>No se ha introducido el nombre del instalador.</value>
+  </data>
+  <data name="Error_No_System_Name" xml:space="preserve">
+    <value>El nombre del sistema está en blanco.</value>
+  </data>
+  <data name="Error_Opening_File" xml:space="preserve">
+    <value>Se ha producido un error al abrir el archivo.</value>
+  </data>
+  <data name="Error_Page_Data" xml:space="preserve">
+    <value>Errores en esta página:</value>
+  </data>
+  <data name="Error_Print_Log_Setting" xml:space="preserve">
+    <value>Configuración del registro de impresión no válida.</value>
+  </data>
+  <data name="Error_Serial_Port_Settings" xml:space="preserve">
+    <value>Configure el puerto serie mediante el menú Configuración.</value>
+  </data>
+  <data name="False" xml:space="preserve">
+    <value>Falso</value>
+  </data>
+  <data name="Firmware_Version" xml:space="preserve">
+    <value>Versión del firmware</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grupo</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Info_Abbr" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="Installation_Details" xml:space="preserve">
+    <value>Detalles de la instalación</value>
+  </data>
+  <data name="Installed_On" xml:space="preserve">
+    <value>Instalado</value>
+  </data>
+  <data name="Installer_Address" xml:space="preserve">
+    <value>Dirección del instalador</value>
+  </data>
+  <data name="Installer_Name" xml:space="preserve">
+    <value>Nombre del instalador</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="Loop_x_Devices" xml:space="preserve">
+    <value>Dispositivos del bucle {0}</value>
+  </data>
+  <data name="Message_Panel_Settings_Not_Saved" xml:space="preserve">
+    <value>Se han cambiado los ajustes del panel.
+
+¿Está seguro de que desea salir sin guardar?</value>
+  </data>
+  <data name="Message_Settings_x_Not_Saved" xml:space="preserve">
+    <value>Se han cambiado los siguientes ajustes:
+
+{0}
+
+¿Está seguro de que desea salir sin guardar?</value>
+  </data>
+  <data name="Message_Title_Settings_Not_Saved" xml:space="preserve">
+    <value>Configuración no guardada.</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minuto</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutos</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Nav_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="Nav_Device_Details" xml:space="preserve">
+    <value>Detalles de los dispositivos</value>
+  </data>
+  <data name="Nav_Loop_x" xml:space="preserve">
+    <value>Bucle {0}</value>
+  </data>
+  <data name="Nav_Event_Log" xml:space="preserve">
+    <value>Visor del registro de eventos</value>
+  </data>
+  <data name="Nav_Group_Configuration" xml:space="preserve">
+    <value>Grupos</value>
+  </data>
+  <data name="Nav_C_And_E_Configuration" xml:space="preserve">
+    <value>Causas y efectos</value>
+  </data>
+  <data name="Nav_Set Configuration" xml:space="preserve">
+    <value>Conjuntos</value>
+  </data>
+  <data name="Nav_Site_Configuration" xml:space="preserve">
+    <value>Configuración del sitio</value>
+  </data>
+  <data name="Nav_Network_Configuration" xml:space="preserve">
+    <value>Configuración de red</value>
+  </data>
+  <data name="Nav_Zone_Configuration" xml:space="preserve">
+    <value>Zonas</value>
+  </data>
+  <data name="New_File_Not_Saved" xml:space="preserve">
+    <value>No se ha guardado el nuevo archivo.</value>
+  </data>
+  <data name="New_Line_Before_SOH" xml:space="preserve">
+    <value>Nueva línea antes de &lt;SOH&gt;.</value>
+  </data>
+  <data name="Night" xml:space="preserve">
+    <value>Noche</value>
+  </data>
+  <data name="Day_Begins_At" xml:space="preserve">
+    <value>Ocupado (día) comienza a las</value>
+  </data>
+  <data name="Night_Begins_At" xml:space="preserve">
+    <value>Desocupado (noche) comienza a las</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Nota</value>
+  </data>
+  <data name="Notes_Link" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="Not_Defined" xml:space="preserve">
+    <value>No definido</value>
+  </data>
+  <data name="Not_Fitted" xml:space="preserve">
+    <value>No instalado</value>
+  </data>
+  <data name="No_Device" xml:space="preserve">
+    <value>** Sin dispositivo **</value>
+  </data>
+  <data name="No_Errors_Found" xml:space="preserve">
+    <value>No se han encontrado errores.</value>
+  </data>
+  <data name="No_Name_Allocated" xml:space="preserve">
+    <value>No se ha asignado ningún nombre</value>
+  </data>
+  <data name="No_Ports_Available" xml:space="preserve">
+    <value>No hay puertos disponibles</value>
+  </data>
+  <data name="Number_Symbol" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Number_Symbol_x" xml:space="preserve">
+    <value>#{0}</value>
+  </data>
+  <data name="Open_File" xml:space="preserve">
+    <value>Abrir archivo</value>
+  </data>
+  <data name="Option_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Option_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Option_Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Panel_Comms" xml:space="preserve">
+    <value>Comunicaciones del panel</value>
+  </data>
+  <data name="Panel_Configuration" xml:space="preserve">
+    <value>Configuración del panel</value>
+  </data>
+  <data name="Panel_Location" xml:space="preserve">
+    <value>Ubicación del panel</value>
+  </data>
+  <data name="Part_Number" xml:space="preserve">
+    <value>Número de pieza</value>
+  </data>
+  <data name="Postcode" xml:space="preserve">
+    <value>Código postal</value>
+  </data>
+  <data name="Primary_Areas" xml:space="preserve">
+    <value>Áreas principales</value>
+  </data>
+  <data name="Product_Full_Name" xml:space="preserve">
+    <value>Herramientas de programación C-Tec XFP</value>
+  </data>
+  <data name="Programming_Tools" xml:space="preserve">
+    <value>Herramientas de programación</value>
+  </data>
+  <data name="Program_Name" xml:space="preserve">
+    <value>XFP</value>
+  </data>
+  <data name="XFP_Log_Files" xml:space="preserve">
+    <value>Archivos de registro XFP</value>
+  </data>
+  <data name="Query_Change_Device_Type" xml:space="preserve">
+    <value>¿Cambiar este dispositivo a «{0}»?</value>
+  </data>
+  <data name="Query_Delete_Device" xml:space="preserve">
+    <value>¿Eliminar este dispositivo?</value>
+  </data>
+  <data name="Query_Enable_Changes" xml:space="preserve">
+    <value>¿Desea permitir cambios en la configuración?</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>Segundos</value>
+  </data>
+  <data name="See_Data_Errors_Warnings_Below" xml:space="preserve">
+    <value>Vea los errores/advertencias a continuación.</value>
+  </data>
+  <data name="See_Data_Warnings_Below" xml:space="preserve">
+    <value>Vea las advertencias a continuación.</value>
+  </data>
+  <data name="Select_Area" xml:space="preserve">
+    <value>Seleccionar área</value>
+  </data>
+  <data name="Select_A_Device_To_Show_Details" xml:space="preserve">
+    <value>Seleccionar un dispositivo para mostrar detalles</value>
+  </data>
+  <data name="Select_Duration" xml:space="preserve">
+    <value>Seleccionar duración</value>
+  </data>
+  <data name="Select_Group" xml:space="preserve">
+    <value>Seleccionar grupo</value>
+  </data>
+  <data name="Select_Handshake" xml:space="preserve">
+    <value>Seleccionar protocolo</value>
+  </data>
+  <data name="Select_Language" xml:space="preserve">
+    <value>Seleccionar idioma</value>
+  </data>
+  <data name="Select_Level" xml:space="preserve">
+    <value>Seleccionar nivel</value>
+  </data>
+  <data name="Select_Location" xml:space="preserve">
+    <value>Seleccionar ubicación</value>
+  </data>
+  <data name="Select_Logging_Frequency" xml:space="preserve">
+    <value>Seleccionar frecuencia de registro</value>
+  </data>
+  <data name="Select_Option" xml:space="preserve">
+    <value>Seleccionar opción</value>
+  </data>
+  <data name="Select_Port" xml:space="preserve">
+    <value>Seleccionar puerto</value>
+  </data>
+  <data name="Select_Protocol" xml:space="preserve">
+    <value>Seleccionar protocolo</value>
+  </data>
+  <data name="Select_Stop_Bits" xml:space="preserve">
+    <value>Seleccionar bits de parada</value>
+  </data>
+  <data name="Select_Tone_Type" xml:space="preserve">
+    <value>Seleccionar tipo de tono</value>
+  </data>
+  <data name="Select_Zoom_Level" xml:space="preserve">
+    <value>Seleccionar nivel de zoom</value>
+  </data>
+  <data name="Serial_Baud_Rate" xml:space="preserve">
+    <value>Velocidad en baudios</value>
+  </data>
+  <data name="Serial_Data_Bits" xml:space="preserve">
+    <value>Bits de datos</value>
+  </data>
+  <data name="Serial_Handshake" xml:space="preserve">
+    <value>Protocolo de enlace en serie</value>
+  </data>
+  <data name="Serial_Monitor_Clear" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="Serial_Monitor_Title" xml:space="preserve">
+    <value>Configurador Monitor serie</value>
+  </data>
+  <data name="Serial_Parity" xml:space="preserve">
+    <value>Paridad</value>
+  </data>
+  <data name="Serial_Port_Name" xml:space="preserve">
+    <value>Nombre del puerto</value>
+  </data>
+  <data name="Serial_Port_Settings_Header" xml:space="preserve">
+    <value>Puerto serie</value>
+  </data>
+  <data name="Serial_Read_Timeout" xml:space="preserve">
+    <value>Tiempo de espera de lectura</value>
+  </data>
+  <data name="Serial_Write_Timeout" xml:space="preserve">
+    <value>Tiempo de espera de escritura</value>
+  </data>
+  <data name="Show_Fitted_Devices_Only" xml:space="preserve">
+    <value>Mostrar solo dispositivos instalados</value>
+  </data>
+  <data name="Switching_To_x_Protocol" xml:space="preserve">
+    <value>Cambiar al protocolo {0}</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="System_Name" xml:space="preserve">
+    <value>Nombre del sistema</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Title_Device_Type" xml:space="preserve">
+    <value>Dispositivo: {0}</value>
+  </data>
+  <data name="Title_Open_File" xml:space="preserve">
+    <value>Abrir archivo</value>
+  </data>
+  <data name="ToolTip_Click_To_Change_Device_Type" xml:space="preserve">
+    <value>Haga clic para cambiar el tipo de dispositivo</value>
+  </data>
+  <data name="ToolTip_Click_To_Edit_Name" xml:space="preserve">
+    <value>Haga clic para editar el nombre</value>
+  </data>
+  <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
+    <value>Haga clic para mostrar los detalles del dispositivo</value>
+  </data>
+  <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
+    <value>Seleccione un tipo de dispositivo y, a continuación, haga clic en la lista de dispositivos para
+establecer o cambiar a ese tipo, o seleccione Eliminar para eliminar un dispositivo</value>
+  </data>
+  <data name="ToolTip_Next_Area" xml:space="preserve">
+    <value>Seleccionar siguiente área</value>
+  </data>
+  <data name="ToolTip_Next_Device" xml:space="preserve">
+    <value>Seleccionar siguiente dispositivo</value>
+  </data>
+  <data name="ToolTip_Previous_Device" xml:space="preserve">
+    <value>Seleccionar dispositivo anterior</value>
+  </data>
+  <data name="ToolTip_Select_Protocol" xml:space="preserve">
+    <value>Seleccionar protocolo</value>
+  </data>
+  <data name="True" xml:space="preserve">
+    <value>Verdadero</value>
+  </data>
+  <data name="Unassigned" xml:space="preserve">
+    <value>Sin asignar</value>
+  </data>
+  <data name="Unsaved_Changes_Will_Be_Lost" xml:space="preserve">
+    <value>Se perderán los cambios no guardados.</value>
+  </data>
+  <data name="Upload_Page" xml:space="preserve">
+    <value>Enviar esta página al panel</value>
+  </data>
+  <data name="Upload_System" xml:space="preserve">
+    <value>Enviar el sistema al panel</value>
+  </data>
+  <data name="AL2_Code" xml:space="preserve">
+    <value>Código de nivel de acceso 2 (AL2)</value>
+  </data>
+  <data name="Validation_Error" xml:space="preserve">
+    <value>Error de validación</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="Version_x" xml:space="preserve">
+    <value>Versión {0}</value>
+  </data>
+  <data name="Version_x_Abbr" xml:space="preserve">
+    <value>v{0}</value>
+  </data>
+  <data name="Warn_Clear_Data" xml:space="preserve">
+    <value>Esto borrará la configuración actual.</value>
+  </data>
+  <data name="Warn_Confirm_Continue" xml:space="preserve">
+    <value>¿Desea continuar?</value>
+  </data>
+  <data name="Warn_Overwrite_Changes" xml:space="preserve">
+    <value>Esto sobrescribirá los cambios realizados en la configuración.</value>
+  </data>
+  <data name="Written_By" xml:space="preserve">
+    <value>Escrito por</value>
+  </data>
+  <data name="Zone" xml:space="preserve">
+    <value>Zona</value>
+  </data>
+  <data name="Zone_Zero_Name" xml:space="preserve">
+    <value>Sin zona asignada</value>
+  </data>
+  <data name="Zoom_Level" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Protocol_Header" xml:space="preserve">
+    <value>Protocolo:</value>
+  </data>
+  <data name="Fitted" xml:space="preserve">
+    <value>Instalado</value>
+  </data>
+  <data name="Hour_Abbr" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="Minute_Abbr" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Day_Fri_Abbr" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="Day_Mon_Abbr" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="Day_Sat_Abbr" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="Day_Sun_Abbr" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="Day_Thu_Abbr" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Day_Tue_Abbr" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="Day_Wed_Abbr" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Maintenance_Date" xml:space="preserve">
+    <value>Fecha de mantenimiento</value>
+  </data>
+  <data name="Maintenance_String" xml:space="preserve">
+    <value>Cadena de mantenimiento</value>
+  </data>
+  <data name="Normal_String" xml:space="preserve">
+    <value>Cadena normal</value>
+  </data>
+  <data name="Recalibrate_At" xml:space="preserve">
+    <value>Recalibrar en</value>
+  </data>
+  <data name="Blink_Polling_LED" xml:space="preserve">
+    <value>LED de sondeo parpadeante</value>
+  </data>
+  <data name="XFP_Panel_Config_Files" xml:space="preserve">
+    <value>Archivos XFP</value>
+  </data>
+  <data name="Auto_Adjust_DST" xml:space="preserve">
+    <value>¿Ajustar automáticamente el horario de verano?</value>
+  </data>
+  <data name="Panel_x" xml:space="preserve">
+    <value>Panel {0}</value>
+  </data>
+  <data name="Set_x" xml:space="preserve">
+    <value>Establecer {0}</value>
+  </data>
+  <data name="Use_In_Special_C_And_E" xml:space="preserve">
+    <value>Usar en C&amp;E especial</value>
+  </data>
+  <data name="DeviceInfo_Alarm_Verificaton_Count" xml:space="preserve">
+    <value>Recuento de verificación de alarmas</value>
+  </data>
+  <data name="DeviceInfo_Detectors" xml:space="preserve">
+    <value>Detectores</value>
+  </data>
+  <data name="DeviceInfo_Interface_Units" xml:space="preserve">
+    <value>Unidades de interfaz</value>
+  </data>
+  <data name="DeviceInfo_Manual_Callpoints" xml:space="preserve">
+    <value>Puntos de llamada manuales</value>
+  </data>
+  <data name="Zone_Group_Set" xml:space="preserve">
+    <value>Zona/Grupo/Conjunto</value>
+  </data>
+  <data name="Base_Sounder_Header" xml:space="preserve">
+    <value>Encabezado
+de la sonda base</value>
+  </data>
+  <data name="Action_Abstract_Event" xml:space="preserve">
+    <value>Evento abstracto</value>
+  </data>
+  <data name="Action_End_Phased_Evac" xml:space="preserve">
+    <value>Fin de evacuación por fases</value>
+  </data>
+  <data name="Action_End_Zone_Delays" xml:space="preserve">
+    <value>Fin de retrasos de zona</value>
+  </data>
+  <data name="Action_Group_Disable" xml:space="preserve">
+    <value>Desactivación de grupo</value>
+  </data>
+  <data name="Action_Loop_x_Device_Disabled" xml:space="preserve">
+    <value>Dispositivo de bucle {0} desactivado</value>
+  </data>
+  <data name="Action_Mute_The_Panel" xml:space="preserve">
+    <value>Silenciar el panel</value>
+  </data>
+  <data name="Action_No_Events" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="Action_Output_Delays_Disable" xml:space="preserve">
+    <value>Desactivar retrasos de salida</value>
+  </data>
+  <data name="Action_Output_Disable" xml:space="preserve">
+    <value>Desactivar salida</value>
+  </data>
+  <data name="Action_Panel_Relay" xml:space="preserve">
+    <value>Relé del panel</value>
+  </data>
+  <data name="Action_Put_Zone_Into_Alarm" xml:space="preserve">
+    <value>Poner la zona en alarma</value>
+  </data>
+  <data name="Action_Reset_Panel" xml:space="preserve">
+    <value>Restablecer el panel</value>
+  </data>
+  <data name="Action_Set_To_Occupied" xml:space="preserve">
+    <value>Establecer como ocupado</value>
+  </data>
+  <data name="Action_Set_To_Unoccupied" xml:space="preserve">
+    <value>Establecer como desocupado</value>
+  </data>
+  <data name="Action_Silence_Panel" xml:space="preserve">
+    <value>Silenciar el panel</value>
+  </data>
+  <data name="Action_Sounder_Alert" xml:space="preserve">
+    <value>Alerta de sirena</value>
+  </data>
+  <data name="Action_Sounder_Evac" xml:space="preserve">
+    <value>Evacuación de sirena</value>
+  </data>
+  <data name="Action_Trigger_Beacons" xml:space="preserve">
+    <value>Activación de balizas</value>
+  </data>
+  <data name="Action_Trigger_Loop_x_Device" xml:space="preserve">
+    <value>Disparar dispositivo de bucle {0}</value>
+  </data>
+  <data name="Action_Trigger_Network_Event" xml:space="preserve">
+    <value>Disparar evento de red</value>
+  </data>
+  <data name="Action_Trigger_Output_Set" xml:space="preserve">
+    <value>Disparar salida establecida</value>
+  </data>
+  <data name="Action_Zone_Disable" xml:space="preserve">
+    <value>Desactivar zona</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="Alert_Tone" xml:space="preserve">
+    <value>Tono de alerta</value>
+  </data>
+  <data name="Clear_All" xml:space="preserve">
+    <value>Borrar todo</value>
+  </data>
+  <data name="Delayed" xml:space="preserve">
+    <value>Retrasado</value>
+  </data>
+  <data name="Delay_Time" xml:space="preserve">
+    <value>Tiempo de retraso</value>
+  </data>
+  <data name="Dependencies" xml:space="preserve">
+    <value>Dependencias</value>
+  </data>
+  <data name="Dependency_Options" xml:space="preserve">
+    <value>Opciones de dependencia</value>
+  </data>
+  <data name="Detectors" xml:space="preserve">
+    <value>Detectores</value>
+  </data>
+  <data name="Double_Click_For_Dependency_Options" xml:space="preserve">
+    <value>Haga doble clic para ver las opciones de dependencia</value>
+  </data>
+  <data name="Evac" xml:space="preserve">
+    <value>Evacuación</value>
+  </data>
+  <data name="Evac_Tone" xml:space="preserve">
+    <value>Tono de evacuación</value>
+  </data>
+  <data name="Functioning_With" xml:space="preserve">
+    <value>Funcionamiento con</value>
+  </data>
+  <data name="Input_Delay" xml:space="preserve">
+    <value>Retraso de entrada:</value>
+  </data>
+  <data name="Investigation_Period" xml:space="preserve">
+    <value>Período de investigación:</value>
+  </data>
+  <data name="MCPs" xml:space="preserve">
+    <value>MCP</value>
+  </data>
+  <data name="Multiple_Alarms_End_Delays" xml:space="preserve">
+    <value>Retrasos de fin de alarmas múltiples</value>
+  </data>
+  <data name="New_Fire_Causes_Resound" xml:space="preserve">
+    <value>Un nuevo incendio provoca un nuevo sonido</value>
+  </data>
+  <data name="Not_Triggered" xml:space="preserve">
+    <value>No activado</value>
+  </data>
+  <data name="Occurs_At" xml:space="preserve">
+    <value>Ocurre en:</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="Outputs" xml:space="preserve">
+    <value>Salidas</value>
+  </data>
+  <data name="Output_Delays_Mins" xml:space="preserve">
+    <value>Retardos de salida (mins)</value>
+  </data>
+  <data name="Output_Set_Triggered" xml:space="preserve">
+    <value>Salida activada</value>
+  </data>
+  <data name="Panel_Relay_Triggered" xml:space="preserve">
+    <value>Relé del panel activado</value>
+  </data>
+  <data name="Phased_Delay" xml:space="preserve">
+    <value>Retardo por fases</value>
+  </data>
+  <data name="Pulsed" xml:space="preserve">
+    <value>Pulsado</value>
+  </data>
+  <data name="Relay_1" xml:space="preserve">
+    <value>Relé 1</value>
+  </data>
+  <data name="Set_All_To_Off" xml:space="preserve">
+    <value>Establecer todo en Desactivado</value>
+  </data>
+  <data name="Set_All_To_Alert" xml:space="preserve">
+    <value>Establecer todo en Alerta</value>
+  </data>
+  <data name="Set_All_To_Evac" xml:space="preserve">
+    <value>Establecer todo en Evacuación</value>
+  </data>
+  <data name="Sounders" xml:space="preserve">
+    <value>Sirenas</value>
+  </data>
+  <data name="Timer_Event" xml:space="preserve">
+    <value>Evento:</value>
+  </data>
+  <data name="Timer_Event_Times" xml:space="preserve">
+    <value>Tiempos del evento del temporizador</value>
+  </data>
+  <data name="Time_T_x" xml:space="preserve">
+    <value>T{0}</value>
+  </data>
+  <data name="Triggers_Sounder_Groups" xml:space="preserve">
+    <value>Activa grupos de sirenas</value>
+  </data>
+  <data name="Trigger_Any_Device_In_Alarm" xml:space="preserve">
+    <value>Cualquier dispositivo en «Alarma»</value>
+  </data>
+  <data name="Trigger_Any_Disablement" xml:space="preserve">
+    <value>Cualquier desactivación</value>
+  </data>
+  <data name="Trigger_Any_Dwelling_And_Communal" xml:space="preserve">
+    <value>Cualquier vivienda y zona común</value>
+  </data>
+  <data name="Trigger_Any_Fault" xml:space="preserve">
+    <value>Cualquier fallo</value>
+  </data>
+  <data name="Trigger_Any_Pre_Alarm" xml:space="preserve">
+    <value>Cualquier prealarma</value>
+  </data>
+  <data name="Trigger_Any_Remote_Panel_In_Fire" xml:space="preserve">
+    <value>Cualquier panel remoto en «Incendio»</value>
+  </data>
+  <data name="Trigger_Any_Zone_In_Fire" xml:space="preserve">
+    <value>Cualquier zona en «Incendio»</value>
+  </data>
+  <data name="Trigger_Event_AND" xml:space="preserve">
+    <value>Evento,Y</value>
+  </data>
+  <data name="Trigger_Loop_x_Device_Triggered" xml:space="preserve">
+    <value>Dispositivo del bucle {0} activado</value>
+  </data>
+  <data name="Trigger_Loop_x_Device_Pre_Alarm" xml:space="preserve">
+    <value>Prealarma del dispositivo del bucle {0}</value>
+  </data>
+  <data name="Trigger_More_Than_One_Alarm" xml:space="preserve">
+    <value>Más de una alarma</value>
+  </data>
+  <data name="Trigger_More_Than_One_Zone_In_Alarm" xml:space="preserve">
+    <value>Más de una zona en «Alarma»</value>
+  </data>
+  <data name="Trigger_Network_Event_Triggered" xml:space="preserve">
+    <value>Evento de red activado</value>
+  </data>
+  <data name="Trigger_Other_Event_Triggered" xml:space="preserve">
+    <value>Otro evento activado</value>
+  </data>
+  <data name="Trigger_Panel_Input" xml:space="preserve">
+    <value>Entrada del panel</value>
+  </data>
+  <data name="Trigger_Panel_Occupied" xml:space="preserve">
+    <value>Panel ocupado</value>
+  </data>
+  <data name="Trigger_Panel_Reset" xml:space="preserve">
+    <value>Restablecimiento del panel</value>
+  </data>
+  <data name="Trigger_Panel_Silenced" xml:space="preserve">
+    <value>Panel silenciado</value>
+  </data>
+  <data name="Trigger_Panel_Unoccupied" xml:space="preserve">
+    <value>Panel desocupado</value>
+  </data>
+  <data name="Trigger_Timer_Event" xml:space="preserve">
+    <value>Evento del temporizador</value>
+  </data>
+  <data name="Trigger_Zone_AND" xml:space="preserve">
+    <value>Zona AND</value>
+  </data>
+  <data name="Trigger_Zone_Has_Device_In_Alarm" xml:space="preserve">
+    <value>La zona tiene un dispositivo en «Alarma»</value>
+  </data>
+  <data name="Trigger_Zone_Or_Panel_In_Fire" xml:space="preserve">
+    <value>Zona o panel en «Incendio»</value>
+  </data>
+  <data name="Accepts_Alarms" xml:space="preserve">
+    <value>Alarmas</value>
+  </data>
+  <data name="Accepts_Controls" xml:space="preserve">
+    <value>Controles</value>
+  </data>
+  <data name="Accepts_Disablements" xml:space="preserve">
+    <value>Desactivaciones</value>
+  </data>
+  <data name="Accepts_Faults" xml:space="preserve">
+    <value>Fallos</value>
+  </data>
+  <data name="Accepts_From_Panels" xml:space="preserve">
+    <value>Acepta desde los paneles</value>
+  </data>
+  <data name="Accepts_Occupied_Unoccupied" xml:space="preserve">
+    <value>Ocupado/Desocupado</value>
+  </data>
+  <data name="Panel_Name" xml:space="preserve">
+    <value>Nombre del panel</value>
+  </data>
+  <data name="Loop_x" xml:space="preserve">
+    <value>Bucle {0}</value>
+  </data>
+  <data name="Loop_Number" xml:space="preserve">
+    <value>Bucle</value>
+  </data>
+  <data name="Zone_Set" xml:space="preserve">
+    <value>Zona/Conjunto</value>
+  </data>
+  <data name="Menu_Remove_File_From_List" xml:space="preserve">
+    <value>Haga clic para eliminar el archivo de la lista</value>
+  </data>
+  <data name="ToolTip_Double_Click_For_Protocol_Menu" xml:space="preserve">
+    <value>Haga doble clic para abrir el menú Protocolo</value>
+  </data>
+  <data name="Change_Protocol_To_x" xml:space="preserve">
+    <value>Cambiar el protocolo a {0}</value>
+  </data>
+  <data name="Pre_Save_Check" xml:space="preserve">
+    <value>Comprobación previa al guardado</value>
+  </data>
+  <data name="Query_Data_Errors_Save_Anyway" xml:space="preserve">
+    <value>Los datos contienen errores o advertencias; consulte la ventana Validación de datos para obtener más detalles.
+
+¿Guardar de todos modos?</value>
+  </data>
+  <data name="See_IO_Configuration" xml:space="preserve">
+    <value>Ver configuración de E/S</value>
+  </data>
+  <data name="Query_Change_Device_Type1" xml:space="preserve">
+    <value>¿Cambiar este dispositivo a «{0}»?</value>
+  </data>
+  <data name="Query_Change_Device_Types" xml:space="preserve">
+    <value>¿Cambiar los dispositivos {0} a «{1}»?</value>
+  </data>
+  <data name="Query_Delete_1_Device" xml:space="preserve">
+    <value>¿Eliminar 1 dispositivo?</value>
+  </data>
+  <data name="Query_Delete_Device1" xml:space="preserve">
+    <value>¿Eliminar este dispositivo?</value>
+  </data>
+  <data name="Query_Delete_Devices" xml:space="preserve">
+    <value>¿Eliminar {0} dispositivos?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Asterisk" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="Multiple_Device_Types" xml:space="preserve">
+    <value>Varios tipos de dispositivos</value>
+  </data>
+  <data name="Multiple_Values" xml:space="preserve">
+    <value>Varios valores</value>
+  </data>
+  <data name="IO_Configuration" xml:space="preserve">
+    <value>Configuración de E/S</value>
+  </data>
+  <data name="Group_x" xml:space="preserve">
+    <value>Grupo {0}</value>
+  </data>
+  <data name="Zone_x" xml:space="preserve">
+    <value>Zona {0}</value>
+  </data>
+  <data name="Channel_x" xml:space="preserve">
+    <value>Canal {0}</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Subaddress_x" xml:space="preserve">
+    <value>Subdirección {0}</value>
+  </data>
+  <data name="Fire_x" xml:space="preserve">
+    <value>Incendio {0}</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="Not_Used" xml:space="preserve">
+    <value>No se utiliza</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Salida</value>
+  </data>
+  <data name="Sounder" xml:space="preserve">
+    <value>Sirena</value>
+  </data>
+  <data name="IO_Config" xml:space="preserve">
+    <value>Configuración de E/S</value>
+  </data>
+  <data name="AlarmType_Alert" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="AlarmType_Evacuate" xml:space="preserve">
+    <value>Evacuación</value>
+  </data>
+  <data name="AlarmType_Off" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="Channel" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="Input_Output" xml:space="preserve">
+    <value>Entrada/Salida</value>
+  </data>
+  <data name="Panel_Sounder_x_Belongs_To_Sounder_Group" xml:space="preserve">
+    <value>La sirena del panel {0} pertenece al grupo de sirenas</value>
+  </data>
+  <data name="Subaddress" xml:space="preserve">
+    <value>Subdirección</value>
+  </data>
+  <data name="Minute_Short" xml:space="preserve">
+    <value>mín</value>
+  </data>
+  <data name="Tone_Message_Pair_x_Primary" xml:space="preserve">
+    <value>Par tono/mensaje {0} Primario</value>
+  </data>
+  <data name="Tone_Message_Pair_x_Secondary" xml:space="preserve">
+    <value>Par tono/mensaje {0} Secundario</value>
+  </data>
+  <data name="Set_Selected_Items" xml:space="preserve">
+    <value>Establecer elementos seleccionados:</value>
+  </data>
+  <data name="Relay_2" xml:space="preserve">
+    <value>Relé 2</value>
+  </data>
+  <data name="Error_Invalid_Zone_Name" xml:space="preserve">
+    <value>Nombre de zona no válido</value>
+  </data>
+  <data name="Alarm" xml:space="preserve">
+    <value>Alarma</value>
+  </data>
+  <data name="Day_Occupied" xml:space="preserve">
+    <value>Día (ocupado)</value>
+  </data>
+  <data name="Detector" xml:space="preserve">
+    <value>Detector</value>
+  </data>
+  <data name="Night_Unoccupied" xml:space="preserve">
+    <value>Noche (desocupado)</value>
+  </data>
+  <data name="N_A" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>Opción</value>
+  </data>
+  <data name="Time_To_Reset" xml:space="preserve">
+    <value>Tiempo para restablecer</value>
+  </data>
+  <data name="TriggerType_Continuous" xml:space="preserve">
+    <value>Continuo</value>
+  </data>
+  <data name="TriggerType_Delayed" xml:space="preserve">
+    <value>Retrasado</value>
+  </data>
+  <data name="TriggerType_Not_Triggered" xml:space="preserve">
+    <value>No activado</value>
+  </data>
+  <data name="TriggerType_Pulsed" xml:space="preserve">
+    <value>Pulsado</value>
+  </data>
+  <data name="Is_Set_Silenceable" xml:space="preserve">
+    <value>¿Está configurado como silenciable?</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="Event_x" xml:space="preserve">
+    <value>Evento {0}</value>
+  </data>
+  <data name="Input_x" xml:space="preserve">
+    <value>Entrada {0}</value>
+  </data>
+  <data name="Logical_And" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="Occurs_When" xml:space="preserve">
+    <value>Ocurre cuando...</value>
+  </data>
+  <data name="Relay_x" xml:space="preserve">
+    <value>Relé {0}</value>
+  </data>
+  <data name="Resets_When" xml:space="preserve">
+    <value>Se restablece cuando...</value>
+  </data>
+  <data name="Time_x" xml:space="preserve">
+    <value>Tiempo: {0}</value>
+  </data>
+  <data name="ToolTip_Clear_All" xml:space="preserve">
+    <value>Restablecer todo a No activado</value>
+  </data>
+  <data name="ToolTip_Continuous" xml:space="preserve">
+    <value>Establecer elementos seleccionados en Continuo</value>
+  </data>
+  <data name="ToolTip_Delayed" xml:space="preserve">
+    <value>Establecer elementos seleccionados en Retrasado</value>
+  </data>
+  <data name="ToolTip_Not_Triggered" xml:space="preserve">
+    <value>Establecer elementos seleccionados en No activado</value>
+  </data>
+  <data name="ToolTip_Pulsed" xml:space="preserve">
+    <value>Establecer elementos seleccionados en Pulsado
+- se aplica solo a relés de panel</value>
+  </data>
+  <data name="Panel" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="File_x_Already_Exists" xml:space="preserve">
+    <value>«{0}» ya existe.¿Desea reemplazarlo?</value>
+  </data>
+  <data name="Save_File_Header" xml:space="preserve">
+    <value>Guardar archivo...</value>
+  </data>
+  <data name="Zone_x_Name_y" xml:space="preserve">
+    <value>Zona {0} - «{1}»</value>
+  </data>
+  <data name="Not_Set" xml:space="preserve">
+    <value>No configurado</value>
+  </data>
+  <data name="Open_File_x" xml:space="preserve">
+    <value>Abrir archivo: {0}</value>
+  </data>
+  <data name="Zone_Dependency_A" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="Zone_Dependency_B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Zone_Dependency_C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Zone_Dependency_Dwelling" xml:space="preserve">
+    <value>Vivienda</value>
+  </data>
+  <data name="Zone_Dependency_Investigation" xml:space="preserve">
+    <value>Investigación</value>
+  </data>
+  <data name="Zone_Dependency_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="x_Zones" xml:space="preserve">
+    <value>[ {0} zonas ]</value>
+  </data>
+  <data name="ToolTip_Next_Zone" xml:space="preserve">
+    <value>Seleccionar siguiente zona</value>
+  </data>
+  <data name="ToolTip_Previous_Zone" xml:space="preserve">
+    <value>Seleccionar zona anterior</value>
+  </data>
+  <data name="Multiple_Rows_Selected" xml:space="preserve">
+    <value>Varias filas seleccionadas</value>
+  </data>
+  <data name="Select_Zone_Or_Panel_To_Show_Details" xml:space="preserve">
+    <value>Seleccione una zona o panel para mostrar los detalles</value>
+  </data>
+  <data name="ToolTip_Dependencies_Day_Occupied" xml:space="preserve">
+    <value>Opciones de dependencia para Día (ocupado)</value>
+  </data>
+  <data name="ToolTip_Dependencies_Night_Unoccupied" xml:space="preserve">
+    <value>Opciones de dependencia para Noche (desocupado)</value>
+  </data>
+  <data name="Panels" xml:space="preserve">
+    <value>Paneles</value>
+  </data>
+  <data name="Zones" xml:space="preserve">
+    <value>Zonas</value>
+  </data>
+  <data name="Day_Dependencies" xml:space="preserve">
+    <value>Dependencias diurnas</value>
+  </data>
+  <data name="Error_Total_Delay_x_Cannot_Be_More_Than_y" xml:space="preserve">
+    <value>El retraso total es {0}.  No puede ser superior a {1}</value>
+  </data>
+  <data name="Night_Dependencies" xml:space="preserve">
+    <value>Dependencias nocturnas</value>
+  </data>
+  <data name="Action_All_Groups" xml:space="preserve">
+    <value>Todos los grupos</value>
+  </data>
+  <data name="Is_Silenceable" xml:space="preserve">
+    <value>Se puede silenciar</value>
+  </data>
+  <data name="Zone_Group" xml:space="preserve">
+    <value>Zona/Grupo</value>
+  </data>
+  <data name="Error_Total_Delay_Is_Too_Long" xml:space="preserve">
+    <value>El tiempo de retraso total es demasiado largo</value>
+  </data>
+  <data name="Error_Device_Name_Too_Long" xml:space="preserve">
+    <value>El nombre/descripción es demasiado largo</value>
+  </data>
+  <data name="Error_Invalid_Sounder_Group" xml:space="preserve">
+    <value>Grupo de sirenas base no válido</value>
+  </data>
+  <data name="Error_File_Data_Unsupported_Protocol" xml:space="preserve">
+    <value>El archivo no contiene ajustes para un protocolo compatible.</value>
+  </data>
+  <data name="Channel_Abbr" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="I_O" xml:space="preserve">
+    <value>E/S</value>
+  </data>
+  <data name="Error_Invalid_IO_Description_Too_Long" xml:space="preserve">
+    <value>La descripción de la subdirección de E/S es demasiado larga</value>
+  </data>
+  <data name="Error_Invalid_IO_Channel" xml:space="preserve">
+    <value>Canal de subdirección de E/S no válido</value>
+  </data>
+  <data name="Error_Invalid_IO_Input_Output" xml:space="preserve">
+    <value>Subdirección no válida Configuración de entrada/salida</value>
+  </data>
+  <data name="Error_Invalid_IO_Set" xml:space="preserve">
+    <value>Subdirección de E/S no válida</value>
+  </data>
+  <data name="Error_Invalid_IO_Zone" xml:space="preserve">
+    <value>Zona de subdirección de E/S no válida</value>
+  </data>
+  <data name="Panel_Strings" xml:space="preserve">
+    <value>Cadenas del panel</value>
+  </data>
+  <data name="Error_Day_Alarm_Reset_Too_Long" xml:space="preserve">
+    <value>El reinicio de la alarma diurna es demasiado largo</value>
+  </data>
+  <data name="Error_Day_Dependency_Option_Invalid" xml:space="preserve">
+    <value>La opción de dependencia diurna no es válida</value>
+  </data>
+  <data name="Error_Day_Detector_Reset_Too_Long" xml:space="preserve">
+    <value>El reinicio del detector diurno es demasiado largo</value>
+  </data>
+  <data name="Error_Maintenance_String_Too_long" xml:space="preserve">
+    <value>La cadena de mantenimiento es demasiado larga</value>
+  </data>
+  <data name="Error_Night_Alarm_Reset_Too_Long" xml:space="preserve">
+    <value>El reinicio de la alarma nocturna es demasiado largo</value>
+  </data>
+  <data name="Error_Night_Dependency_Option_Invalid" xml:space="preserve">
+    <value>La opción de dependencia nocturna no es válida</value>
+  </data>
+  <data name="Error_Night_Detector_Reset_Too_Long" xml:space="preserve">
+    <value>El reinicio del detector nocturno es demasiado largo</value>
+  </data>
+  <data name="Error_Output_Delay_Too_Long" xml:space="preserve">
+    <value>El retraso de salida es demasiado largo</value>
+  </data>
+  <data name="Error_Quiescent_String_Too_long" xml:space="preserve">
+    <value>La cadena normal es demasiado larga</value>
+  </data>
+  <data name="Error_Relay_1_Delay_Too_Long" xml:space="preserve">
+    <value>El retardo del relé 1 es demasiado largo</value>
+  </data>
+  <data name="Error_Relay_2_Delay_Too_Long" xml:space="preserve">
+    <value>El retardo del relé 2 es demasiado largo</value>
+  </data>
+  <data name="Error_Sounder_Delay_Too_Long" xml:space="preserve">
+    <value>El retardo de la sirena es demasiado largo</value>
+  </data>
+  <data name="Error_Zone_Name_Too_Long" xml:space="preserve">
+    <value>El nombre de la zona es demasiado largo</value>
+  </data>
+  <data name="Error_Set_Delay_Timer_Too_Long" xml:space="preserve">
+    <value>El tiempo de retardo es demasiado largo</value>
+  </data>
+  <data name="Error_Invalid_Repeater_Name" xml:space="preserve">
+    <value>Nombre de repetidor no válido</value>
+  </data>
+  <data name="Error_Invalid_Panel_Name" xml:space="preserve">
+    <value>Nombre de panel no válido</value>
+  </data>
+  <data name="Error_Invalid_Panel_Num" xml:space="preserve">
+    <value>Número de panel no válido</value>
+  </data>
+  <data name="Error_Panel_Name_Too_Long" xml:space="preserve">
+    <value>El nombre del panel es demasiado largo</value>
+  </data>
+  <data name="Error_CE_Action_Beacon_Group_Not_Set" xml:space="preserve">
+    <value>El grupo de balizas de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Device_Unassigned" xml:space="preserve">
+    <value>El dispositivo de la acción no está asignado</value>
+  </data>
+  <data name="Error_CE_Action_Group_Not_Set" xml:space="preserve">
+    <value>El grupo de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 1 de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 2 de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Network_Event_Not_Set" xml:space="preserve">
+    <value>El evento de red de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Output_Not_Set" xml:space="preserve">
+    <value>La salida de la acción no está configurada</value>
+  </data>
+  <data name="Error_CE_Action_Panel_Relay_Not_Set" xml:space="preserve">
+    <value>El relé del panel de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Sounder_Group_Not_Set" xml:space="preserve">
+    <value>El grupo de sirenas de la acción no está configurado</value>
+  </data>
+  <data name="Error_CE_Action_Zone_Not_Set" xml:space="preserve">
+    <value>La zona de la acción no está configurada</value>
+  </data>
+  <data name="Error_CE_Reset_Condition_Not_Set" xml:space="preserve">
+    <value>La condición de reinicio no está configurada</value>
+  </data>
+  <data name="Error_CE_Reset_Device_Unassigned" xml:space="preserve">
+    <value>El dispositivo del reinicio no está asignado</value>
+  </data>
+  <data name="Error_CE_Reset_Event_2_Not_Set" xml:space="preserve">
+    <value>El segundo evento del reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Event_Not_Set" xml:space="preserve">
+    <value>El evento del disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 1 del disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 2 del disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Network_Event_Not_Set" xml:space="preserve">
+    <value>El evento de red del disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Panel_Input_Not_Set" xml:space="preserve">
+    <value>La entrada del panel del disparador de reinicio no está configurada</value>
+  </data>
+  <data name="Error_CE_Reset_Timer_Not_Set" xml:space="preserve">
+    <value>El temporizador del disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Type_Not_Set" xml:space="preserve">
+    <value>El tipo de disparador de reinicio no está configurado</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_2_Not_Set" xml:space="preserve">
+    <value>La segunda zona del disparador de reinicio no está configurada</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_Not_Set" xml:space="preserve">
+    <value>La zona del disparador de reinicio no está configurada</value>
+  </data>
+  <data name="Error_CE_Reset_Zone_Or_Panel_Not_Set" xml:space="preserve">
+    <value>La zona o el panel del disparador de reinicio no están configurados</value>
+  </data>
+  <data name="Error_CE_Trigger_Condition_Not_Set" xml:space="preserve">
+    <value>La condición del disparador no está configurada</value>
+  </data>
+  <data name="Error_CE_Trigger_Device_Unassigned" xml:space="preserve">
+    <value>El dispositivo del disparador no está asignado</value>
+  </data>
+  <data name="Error_CE_Trigger_Event_2_Not_Set" xml:space="preserve">
+    <value>El segundo evento del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Event_Not_Set" xml:space="preserve">
+    <value>El evento del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Loop_1_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 1 del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Loop_2_Device_Not_Set" xml:space="preserve">
+    <value>El dispositivo del bucle 1 del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Network_Event_Not_Set" xml:space="preserve">
+    <value>El evento de red del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Panel_Input_Not_Set" xml:space="preserve">
+    <value>La entrada del panel del disparador no está configurada</value>
+  </data>
+  <data name="Error_CE_Trigger_Timer_Not_Set" xml:space="preserve">
+    <value>El temporizador del disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Type_Not_Set" xml:space="preserve">
+    <value>El tipo de disparador no está configurado</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_2_Not_Set" xml:space="preserve">
+    <value>La segunda zona del disparador no está configurada</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_Not_Set" xml:space="preserve">
+    <value>La zona del disparador no está configurada</value>
+  </data>
+  <data name="Error_CE_Trigger_Zone_Or_Panel_Not_Set" xml:space="preserve">
+    <value>La zona o el panel del disparador no están configurados</value>
+  </data>
+  <data name="Trigger_Condition_Is" xml:space="preserve">
+    <value>es</value>
+  </data>
+  <data name="Saving_Settings_To_File" xml:space="preserve">
+    <value>Guardando la configuración en el archivo:</value>
+  </data>
+  <data name="Error_Comms_Panel_Protocol_x_Does_Not_Match_Tools_y" xml:space="preserve">
+    <value>El protocolo del panel ({0}) no coincide con la configuración actual ({1})</value>
+  </data>
+  <data name="Comms_Device_Names" xml:space="preserve">
+    <value>Nombres de dispositivos</value>
+  </data>
+  <data name="Error_Device_Name_Blank" xml:space="preserve">
+    <value>El nombre/descripción está vacío</value>
+  </data>
+  <data name="Subaddress_Hush_0" xml:space="preserve">
+    <value>Sirena</value>
+  </data>
+  <data name="Subaddress_Hush_1" xml:space="preserve">
+    <value>Incendio 2</value>
+  </data>
+  <data name="Subaddress_Hush_2" xml:space="preserve">
+    <value>Incendio 1</value>
+  </data>
+  <data name="Subaddress_Hush_3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Sensitivity" xml:space="preserve">
+    <value>Sensibilidad</value>
+  </data>
+  <data name="Volume_Sensitivity_mode" xml:space="preserve">
+    <value>Vol/Sens/
+Modo</value>
+  </data>
+  <data name="Sensitivity_x" xml:space="preserve">
+    <value>Sens: {0}</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="Volume_x" xml:space="preserve">
+    <value>Vol: {0}</value>
+  </data>
+  <data name="Day_Night" xml:space="preserve">
+    <value>Día:Noche</value>
+  </data>
+  <data name="Comms_C_And_E" xml:space="preserve">
+    <value>Causas y efectos</value>
+  </data>
+  <data name="Comms_Sets" xml:space="preserve">
+    <value>Configura</value>
+  </data>
+  <data name="Default_Maintenance_String" xml:space="preserve">
+    <value>Llamar al ingeniero</value>
+  </data>
+  <data name="Default_Quiescent_String" xml:space="preserve">
+    <value>Panel de incendios XFP</value>
+  </data>
+  <data name="Ancillary_Base_Sounder_Group" xml:space="preserve">
+    <value>Grupo de sirenas auxiliares</value>
+  </data>
+  <data name="Remote_LED_Enabled" xml:space="preserve">
+    <value>LED remoto habilitado</value>
+  </data>
+  <data name="Tone_Message_M_x" xml:space="preserve">
+    <value>Tono/Mensaje M{0}</value>
+  </data>
+  <data name="Remote_LED_Header" xml:space="preserve">
+    <value>LED
+Remoto</value>
+  </data>
+  <data name="Comms_Zone_Names" xml:space="preserve">
+    <value>Nombres de zonas</value>
+  </data>
+  <data name="Error_Preupload_Data_Validation" xml:space="preserve">
+    <value>Corrija los errores antes de cargar la configuración en el panel.
+
+Consulte la ventana Validación para obtener más detalles.</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_1_Loop" xml:space="preserve">
+    <value>El panel conectado solo tiene un bucle.</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_Count_2_Loops" xml:space="preserve">
+    <value>El panel conectado tiene 2 bucles.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_Count_1_Loop" xml:space="preserve">
+    <value>El panel conectado solo tiene un bucle.
+
+Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_Count_2_Loops" xml:space="preserve">
+    <value>Nota: el panel conectado tiene 2 bucles.Aquí solo se ha configurado un bucle.</value>
+  </data>
+  <data name="Error_Name_Limit_Exceeded" xml:space="preserve">
+    <value>El nombre no se ha actualizado porque se ha superado el límite de almacenamiento del panel para nombres de dispositivos.</value>
+  </data>
+  <data name="Device_x_Type_y" xml:space="preserve">
+    <value>{0}:  {1}</value>
+  </data>
+  <data name="Settings_Are_Readonly" xml:space="preserve">
+    <value>Configuración de solo lectura</value>
+  </data>
+  <data name="Comms_Download_Warn_Loop_x_Not_Present" xml:space="preserve">
+    <value>El bucle {0} no está presente en el panel.</value>
+  </data>
+  <data name="Comms_Upload_Warn_Loop_x_Not_Present" xml:space="preserve">
+    <value>El bucle {0} no está presente en el panel.</value>
+  </data>
+  <data name="Comms_Base_Sounder_Groups" xml:space="preserve">
+    <value>Grupos de sirenas base</value>
+  </data>
+  <data name="Sensitivities_For_The_Selected_Devices_Have_Different_Ranges" xml:space="preserve">
+    <value>Las sensibilidades de los dispositivos seleccionados tienen rangos diferentes</value>
+  </data>
+  <data name="Data_Info_Bytes_Remaining" xml:space="preserve">
+    <value>Restante:</value>
+  </data>
+  <data name="Data_Info_Bytes_Used" xml:space="preserve">
+    <value>Total de bytes:</value>
+  </data>
+  <data name="Data_Info_Device_Names" xml:space="preserve">
+    <value>Nombres de dispositivos:</value>
+  </data>
+  <data name="Data_Info_Loops_Detected" xml:space="preserve">
+    <value>Bucles detectados:</value>
+  </data>
+  <data name="Device_Names_Data_Limit" xml:space="preserve">
+    <value>Límite de datos de nombres de dispositivos</value>
+  </data>
+  <data name="Error_Device_Name_Bytes_Exceeded" xml:space="preserve">
+    <value>El tamaño total de los datos de nombres de dispositivos es demasiado grande
+(consulte «Ver/Mostrar uso de datos»).</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="Query_Install_Update" xml:space="preserve">
+    <value>¿Descargar e instalar actualizaciones ahora? Esto reiniciará la aplicación.</value>
+  </data>
+  <data name="Error_File_x_Does_Not_Exist" xml:space="preserve">
+    <value>El archivo «{0}» no existe en esta ubicación.
+
+¿Eliminar de la lista?</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="Warn_Modes_Not_Available_For_Selected_Devices" xml:space="preserve">
+    <value>Algunos modos no están disponibles para los dispositivos seleccionados</value>
+  </data>
+  <data name="Error_Invalid_Day_Mode" xml:space="preserve">
+    <value>Modo diurno no válido</value>
+  </data>
+  <data name="Error_Invalid_Day_Sensitivity" xml:space="preserve">
+    <value>Sensibilidad diurna no válida</value>
+  </data>
+  <data name="Error_Invalid_Day_Volume" xml:space="preserve">
+    <value>Volumen diurno no válido</value>
+  </data>
+  <data name="Error_Invalid_Night_Mode" xml:space="preserve">
+    <value>Modo nocturno no válido</value>
+  </data>
+  <data name="Error_Invalid_Night_Sensitivity" xml:space="preserve">
+    <value>Sensibilidad nocturna no válida</value>
+  </data>
+  <data name="Error_Invalid_Night_Volume" xml:space="preserve">
+    <value>Volumen nocturno no válido</value>
+  </data>
+  <data name="Warn_No_Modes_Available_For_Selected_Devices" xml:space="preserve">
+    <value>No hay modos válidos comunes a todos los dispositivos seleccionados</value>
+  </data>
+  <data name="Panel_Number" xml:space="preserve">
+    <value>Número de panel</value>
+  </data>
+  <data name="Option_Keep" xml:space="preserve">
+    <value>Conservar</value>
+  </data>
+  <data name="Option_Remove" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Other_Panel_Settings" xml:space="preserve">
+    <value>Otros ajustes del panel</value>
+  </data>
+  <data name="Panel_Count_x" xml:space="preserve">
+    <value>Paneles: {0}</value>
+  </data>
+  <data name="Query_Keep_Other_Panel_Settings" xml:space="preserve">
+    <value>El archivo contiene los ajustes del panel {0}.
+
+¿Qué desea hacer con los ajustes de los demás paneles?</value>
+  </data>
+  <data name="Error_Maintenance_String_Blank" xml:space="preserve">
+    <value>La cadena de mantenimiento está en blanco</value>
+  </data>
+  <data name="Error_Quiescent_String_Blank" xml:space="preserve">
+    <value>La cadena normal está en blanco</value>
+  </data>
+  <data name="Remove_Panel" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Warn_File_Protocol_x" xml:space="preserve">
+    <value>El archivo contiene los ajustes de {0} dispositivos.</value>
+  </data>
+  <data name="Query_Keep_Other_Panel_Settings_Single_x" xml:space="preserve">
+    <value>El archivo contiene los ajustes del panel {0}.
+
+¿Qué desea hacer con los ajustes del panel {1}?</value>
+  </data>
+  <data name="ToolTip_Panel_x_of_y" xml:space="preserve">
+    <value>Panel n.º {0} ({1} paneles disponibles)</value>
+  </data>
+  <data name="ToolTip_Panel_x_of_y_Single" xml:space="preserve">
+    <value>Panel n.º {0} (1 panel disponible)</value>
+  </data>
+  <data name="Option_Add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="Panel_Management" xml:space="preserve">
+    <value>Gestión de paneles</value>
+  </data>
+  <data name="Print_Event_Log" xml:space="preserve">
+    <value>Registro de eventos</value>
+  </data>
+  <data name="Print_Loop_Information" xml:space="preserve">
+    <value>Información de bucle</value>
+  </data>
+  <data name="Select_Print_Options" xml:space="preserve">
+    <value>Seleccionar opciones de impresión</value>
+  </data>
+  <data name="Option_Print" xml:space="preserve">
+    <value>_Imprimir</value>
+  </data>
+  <data name="Print_All_Loop_Devices" xml:space="preserve">
+    <value>Imprimir todos los dispositivos de bucle</value>
+  </data>
+  <data name="Print_All_Pages" xml:space="preserve">
+    <value>Todas las páginas</value>
+  </data>
+  <data name="Print_Current_Page" xml:space="preserve">
+    <value>Página actual</value>
+  </data>
+  <data name="Print_Num_Copies" xml:space="preserve">
+    <value>Copias:</value>
+  </data>
+  <data name="Print_Only_Fitted_Devices" xml:space="preserve">
+    <value>Imprimir solo los dispositivos instalados</value>
+  </data>
+  <data name="Print_Order_By" xml:space="preserve">
+    <value>Ordenar por:</value>
+  </data>
+  <data name="Print_Order_By_Device_Number" xml:space="preserve">
+    <value>Número de dispositivo</value>
+  </data>
+  <data name="Print_Order_By_Group_Zone_Set" xml:space="preserve">
+    <value>Grupo/zona/conjunto</value>
+  </data>
+  <data name="Print_Order_By_Device_Type" xml:space="preserve">
+    <value>Tipo de dispositivo</value>
+  </data>
+  <data name="Print_Properties" xml:space="preserve">
+    <value>Propiedades</value>
+  </data>
+  <data name="Print_Select_Pages" xml:space="preserve">
+    <value>Seleccionar páginas:</value>
+  </data>
+  <data name="Cancel_Changes" xml:space="preserve">
+    <value>¿Cancelar cambios?</value>
+  </data>
+  <data name="Do_You_Want_To_Save_These_Changes" xml:space="preserve">
+    <value>¿Desea guardar estos cambios?</value>
+  </data>
+  <data name="One_Panel_Added" xml:space="preserve">
+    <value>1 panel añadido</value>
+  </data>
+  <data name="One_Panel_Removed" xml:space="preserve">
+    <value>1 panel eliminado</value>
+  </data>
+  <data name="Send_Data_To_Panel_x" xml:space="preserve">
+    <value>¿Enviar estos datos al panel {0}?</value>
+  </data>
+  <data name="x_Panels_Added" xml:space="preserve">
+    <value>{0} paneles añadidos</value>
+  </data>
+  <data name="x_Panels_Removed" xml:space="preserve">
+    <value>{0} paneles eliminados</value>
+  </data>
+  <data name="Warn_Overwrite_Panel_x" xml:space="preserve">
+    <value>Esto sobrescribirá la configuración del panel {0}.</value>
+  </data>
+  <data name="File_Data_Is_Newer_Firmware_x" xml:space="preserve">
+    <value>El archivo contiene datos creados para un firmware de panel más reciente ({0})</value>
+  </data>
+  <data name="File_Data_Is_Older_Firmware_x" xml:space="preserve">
+    <value>El archivo contiene datos creados para un firmware de panel más antiguo ({0})</value>
+  </data>
+  <data name="File_Data_Is_Unknown_Firmware" xml:space="preserve">
+    <value>El archivo contiene datos para una versión de firmware de panel desconocida</value>
+  </data>
+  <data name="File_Data_Saved_By_Newer_Tools_Version_x" xml:space="preserve">
+    <value>Los datos se guardaron con una versión más reciente de XFP Tools ({0})</value>
+  </data>
+  <data name="File_Data_Saved_By_Older_Tools_Version_x" xml:space="preserve">
+    <value>Los datos se guardaron con una versión más antigua de XFP Tools ({0})</value>
+  </data>
+  <data name="File_Data_Saved_By_Unknown_Tools_Version" xml:space="preserve">
+    <value>El archivo contiene datos guardados con una versión desconocida de XFP Tools</value>
+  </data>
+  <data name="Printer_Status" xml:space="preserve">
+    <value>Estado:</value>
+  </data>
+  <data name="Select_Printer" xml:space="preserve">
+    <value>Impresora:</value>
+  </data>
+  <data name="Error_Printing_Document" xml:space="preserve">
+    <value>Se ha producido un error al imprimir el documento.</value>
+  </data>
+  <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
+    <value>Los detalles de la configuración del sitio están incompletos; consulte la ventana Validación de datos para obtener más información.
+
+¿Guardar de todos modos?</value>
+  </data>
+  <data name="Warn_Modes_Not_Available_For_Selected_Device" xml:space="preserve">
+    <value>Algunos modos no están disponibles para el dispositivo seleccionado.</value>
+  </data>
+  <data name="Erase_Event_Log_After_Reading" xml:space="preserve">
+    <value>¿Borrar eventos del panel después de leerlos?</value>
+  </data>
+  <data name="ToolTip_Event_Log_Clear" xml:space="preserve">
+    <value>Borrar la pantalla Registro de eventos</value>
+  </data>
+  <data name="ToolTip_Event_Log_Open" xml:space="preserve">
+    <value>Cargar el contenido de un archivo de registro de eventos en la pantalla</value>
+  </data>
+  <data name="ToolTip_Event_Log_Pause" xml:space="preserve">
+    <value>Pausar el registro de eventos desde el panel</value>
+  </data>
+  <data name="ToolTip_Event_Log_Reset" xml:space="preserve">
+    <value>Restablecer el punto de inicio del registro al principio</value>
+  </data>
+  <data name="ToolTip_Event_Log_Resume" xml:space="preserve">
+    <value>Reanudar el registro del registro de eventos desde el evento anterior</value>
+  </data>
+  <data name="ToolTip_Event_Log_Save" xml:space="preserve">
+    <value>Guardar el contenido de la pantalla Registro de eventos en un archivo</value>
+  </data>
+  <data name="ToolTip_Event_Log_Start" xml:space="preserve">
+    <value>Iniciar el registro del registro de eventos desde el panel</value>
+  </data>
+  <data name="ToolTip_Event_Log_Stop" xml:space="preserve">
+    <value>Detener el registro del registro de eventos</value>
+  </data>
+  <data name="Remove_Panel_x" xml:space="preserve">
+    <value>¿Eliminar el panel {0}?
+Se perderán todos sus datos.</value>
+  </data>
+  <data name="Save_These_Changes" xml:space="preserve">
+    <value>¿Guardar estos cambios?</value>
+  </data>
+  <data name="Panel_x_Configuration" xml:space="preserve">
+    <value>Configuración del panel {0}</value>
+  </data>
+  <data name="Loop_x_Device_y_Type_z" xml:space="preserve">
+    <value>Dispositivo {1} del bucle {0} : {2}</value>
+  </data>
+  <data name="C_And_E_Event_x" xml:space="preserve">
+    <value>Evento de causa y efecto n.º {0}</value>
+  </data>
+  <data name="Day_And_Night_Settings" xml:space="preserve">
+    <value>Configuración diurna y nocturna</value>
+  </data>
+  <data name="Group_Phased_Settings" xml:space="preserve">
+    <value>Configuración por fases del grupo</value>
+  </data>
+  <data name="Network_Panel_Data" xml:space="preserve">
+    <value>Datos del panel de red</value>
+  </data>
+  <data name="Panel_Name_x" xml:space="preserve">
+    <value>Nombre del panel: {0}</value>
+  </data>
+  <data name="Zone_Group_Settings" xml:space="preserve">
+    <value>Configuración del grupo de zonas</value>
+  </data>
+  <data name="Zone_Name_x" xml:space="preserve">
+    <value>Nombre de la zona: {0}</value>
+  </data>
+  <data name="Zone_Phased_Settings" xml:space="preserve">
+    <value>Configuración por fases de la zona</value>
+  </data>
+  <data name="Zone_Timers" xml:space="preserve">
+    <value>Temporizadores de la zona</value>
+  </data>
+  <data name="Loop_x_Base_Sounder_Group_y" xml:space="preserve">
+    <value>Grupo de sirenas base del bucle {0} n.º {1}</value>
+  </data>
+  <data name="Alarm_Verification_Counts" xml:space="preserve">
+    <value>Recuentos de verificación</value>
+  </data>
+  <data name="Device_x_Name_y" xml:space="preserve">
+    <value>Nombre del dispositivo {0}: {1}</value>
+  </data>
+  <data name="End_Of_Device_Names" xml:space="preserve">
+    <value>[fin de la lista de nombres de dispositivos]</value>
+  </data>
+  <data name="Zone_Group_Settings_x" xml:space="preserve">
+    <value>Configuración del grupo de zonas {0}</value>
+  </data>
+  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
+    <value>Ver el último registro de descargas</value>
+  </data>
+  <data name="Error_After_Download_End" xml:space="preserve">
+    <value>Se ha producido un error al finalizar la descarga</value>
+  </data>
+  <data name="Zone_Timers_Type_x_Index_y" xml:space="preserve">
+    <value>Temporizadores de la zona: {0} {1}</value>
+  </data>
+  <data name="Error_Comms_Panel_Protocol_Not_Identified" xml:space="preserve">
+    <value>No se ha identificado el protocolo del panel.</value>
+  </data>
+  <data name="Device_Name_x" xml:space="preserve">
+    <value>Nombre del dispositivo #{0}</value>
+  </data>
+  <data name="Device_Name_x_Value_y" xml:space="preserve">
+    <value>Nombre del dispositivo #{0}: {1}</value>
+  </data>
+  <data name="Loop_x_Device_y" xml:space="preserve">
+    <value>Dispositivo de bucle {0} #{1}</value>
+  </data>
+  <data name="Panel_Name_x_Value_y" xml:space="preserve">
+    <value>Nombre del panel #{0}: “{1}”</value>
+  </data>
+  <data name="Phased_Settings" xml:space="preserve">
+    <value>Configuración por fases</value>
+  </data>
+  <data name="Send_Time_To_Panel" xml:space="preserve">
+    <value>Enviar hora al panel</value>
+  </data>
+  <data name="Zone_Group_x" xml:space="preserve">
+    <value>Zona/Grupo #{0}</value>
+  </data>
+  <data name="Zone_Set_x" xml:space="preserve">
+    <value>Zona/Conjunto #{0}</value>
+  </data>
+  <data name="Zone_Timer_x" xml:space="preserve">
+    <value>Temporizador de zona #{0}</value>
+  </data>
+  <data name="Error_Validation_Window" xml:space="preserve">
+    <value>Se ha producido un error al mostrar la ventana de validación</value>
+  </data>
+  <data name="Error_Validation_Window_Timeout" xml:space="preserve">
+    <value>Se ha producido un error de tiempo de espera al mostrar la ventana de validación</value>
+  </data>
+  <data name="Printer_Not_Found" xml:space="preserve">
+    <value>No se ha encontrado la impresora</value>
+  </data>
+  <data name="Print_Orientation_Format" xml:space="preserve">
+    <value>Formato:</value>
+  </data>
+  <data name="Print_Orientation_Landscape" xml:space="preserve">
+    <value>Ahorado</value>
+  </data>
+  <data name="Print_Orientation_Portrait" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="XFP_Revision_History" xml:space="preserve">
+    <value>Herramientas de programación XFP Historial de revisiones</value>
+  </data>
+  <data name="Option_Submit" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="XFP_Config_Print_Description" xml:space="preserve">
+    <value>Configuración XFP</value>
+  </data>
+  <data name="Option_Preview" xml:space="preserve">
+    <value>Vista pre_via</value>
+  </data>
+  <data name="Engineer_Number" xml:space="preserve">
+    <value>Número de ingeniero</value>
+  </data>
+  <data name="Minutes_Short" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="Panel_Site_Configuration" xml:space="preserve">
+    <value>Configuración del panel del sitio</value>
+  </data>
+  <data name="Validation_Header_Panel_Data" xml:space="preserve">
+    <value>Datos del panel:</value>
+  </data>
+  <data name="Add_Loop_2" xml:space="preserve">
+    <value>Añadir bucle 2</value>
+  </data>
+  <data name="Query_Add_Second_Loop" xml:space="preserve">
+    <value>¿Añadir un segundo bucle a la configuración?</value>
+  </data>
+  <data name="ToolTip_Click_To_Add_Second_Loop" xml:space="preserve">
+    <value>Haga clic para añadir un segundo bucle</value>
+  </data>
+  <data name="Download_x" xml:space="preserve">
+    <value>Descargar: {0}</value>
+  </data>
+  <data name="Upload_x" xml:space="preserve">
+    <value>Cargar: {0}</value>
+  </data>
+  <data name="Error_Invalid_Xfp_Data" xml:space="preserve">
+    <value>El archivo no contiene datos XFP válidos o es para un protocolo no compatible.</value>
+  </data>
+  <data name="Panel_x_Settings" xml:space="preserve">
+    <value>Configuración del panel {0}</value>
+  </data>
+  <data name="Print_All_Panels" xml:space="preserve">
+    <value>Todos los paneles</value>
+  </data>
+  <data name="Print_Current_Panel" xml:space="preserve">
+    <value>Panel actual</value>
+  </data>
+  <data name="Print_Panels" xml:space="preserve">
+    <value>Paneles:</value>
+  </data>
+  <data name="Subaddress_Abbr" xml:space="preserve">
+    <value>Sub.addr</value>
+  </data>
+  <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
+    <value>** nombre del sistema no establecido **</value>
+  </data>
+  <data name="See_IO_Configuration_Abbr" xml:space="preserve">
+    <value>Ver E/S  →</value>
+  </data>
+  <data name="Subaddress_Short" xml:space="preserve">
+    <value>Subdirección</value>
+  </data>
+  <data name="Comms_Alarm_Verification_Counts" xml:space="preserve">
+    <value>Recuentos de verificación</value>
+  </data>
+  <data name="ToolTip_Print_Event_Log" xml:space="preserve">
+    <value>Imprimir el registro de eventos</value>
+  </data>
+  <data name="Build_Date" xml:space="preserve">
+    <value>Fecha de creación:</value>
+  </data>
+  <data name="Revision_History" xml:space="preserve">
+    <value>Historial de revisiones</value>
+  </data>
+  <data name="Title_App_x_Comms_y" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Description_Abbr" xml:space="preserve">
+    <value>Desc.</value>
+  </data>
+  <data name="Zone_Group_Set_Abbr" xml:space="preserve">
+    <value>Z/G/S</value>
+  </data>
+  <data name="Loop_1" xml:space="preserve">
+    <value>Bucle 1</value>
+  </data>
+  <data name="Loop_2" xml:space="preserve">
+    <value>Bucle 2</value>
+  </data>
+  <data name="Condition_Is_x" xml:space="preserve">
+    <value>es {0}</value>
+  </data>
+  <data name="Query_Is_Panel_Envision_Enabled" xml:space="preserve">
+    <value>¿Está habilitado Envision para este panel?
+
+Si es necesario, se pueden modificar los nombres de los dispositivos y las descripciones de las zonas para garantizar que tengan un prefijo que indique el tipo de dispositivo y el número de zona.</value>
+  </data>
+  <data name="Alarms" xml:space="preserve">
+    <value>Alarmas</value>
+  </data>
+  <data name="Error_Invalid_Alert_Tone" xml:space="preserve">
+    <value>El tono de alerta no está configurado</value>
+  </data>
+  <data name="Error_Invalid_Evac_Tone" xml:space="preserve">
+    <value>El tono de evacuación no está configurado</value>
+  </data>
+  <data name="Error_Invalid_Panel_Sounder_x_Sounder_Group" xml:space="preserve">
+    <value>Sirena del panel no válida {0} grupo de sirenas</value>
+  </data>
+  <data name="Error_Phased_Delay_Too_Long" xml:space="preserve">
+    <value>El retraso por fases es demasiado largo</value>
+  </data>
+  <data name="Panel_Sounder_Groups" xml:space="preserve">
+    <value>Grupos de sirenas del panel</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="Report_Key" xml:space="preserve">
+    <value>Tecla</value>
+  </data>
+  <data name="Event_x_And_y" xml:space="preserve">
+    <value>Evento {0} y {1}</value>
+  </data>
+  <data name="Zone_x_And_y" xml:space="preserve">
+    <value>Zona {0} y {1}</value>
+  </data>
+  <data name="No_Devices_In_Loop" xml:space="preserve">
+    <value>** No hay dispositivos configurados en este bucle **</value>
+  </data>
+  <data name="Comments_Is_Blank" xml:space="preserve">
+    <value>La sección Comentarios está en blanco</value>
+  </data>
+  <data name="File_Is_Empty" xml:space="preserve">
+    <value>[el archivo está vacío]</value>
+  </data>
+  <data name="Manage_Panels" xml:space="preserve">
+    <value>Gestionar paneles</value>
+  </data>
+  <data name="Loop_Select" xml:space="preserve">
+    <value>Bucle:</value>
+  </data>
+</root>

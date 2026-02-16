@@ -429,7 +429,7 @@ Are you sure you want to exit without saving?</value>
   </data>
   <data name="Nav_Device_Details" xml:space="preserve">
     <value>Device Details</value>
-    <comment>Menu item: device details</comment>
+    <comment>Menu item: detailsof the devices</comment>
   </data>
   <data name="Nav_Loop_x" xml:space="preserve">
     <value>Loop {0}</value>
@@ -2270,5 +2270,8 @@ If this is required then device names and zone descriptions may be amended to en
   </data>
   <data name="Loop_Select" xml:space="preserve">
     <value>Loop:</value>
+  </data>
+  <data name="Envision_Support" xml:space="preserve">
+    <value>Envision Support</value>
   </data>
 </root>
