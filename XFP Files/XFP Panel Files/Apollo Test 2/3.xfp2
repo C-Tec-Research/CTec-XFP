@@ -25,9 +25,23 @@
           false,
           false,
           false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
           false
         ],
         "NightStart": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
           false,
           false,
           false,
@@ -4576,7 +4590,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -4623,7 +4637,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -4999,7 +5013,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
@@ -15387,6 +15401,6 @@
     "RealTimeEventOutput": false
   },
   "Comments": "",
-  "ToolsVersion": "8.1.9",
+  "ToolsVersion": "8.1.10",
   "FirmwareVersion": null
 }

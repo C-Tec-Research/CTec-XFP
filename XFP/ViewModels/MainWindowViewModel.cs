@@ -1933,7 +1933,7 @@ namespace Xfp.ViewModels
                 //are any devices or zones not already prefixed correctly?
                 if (!checkEnvisionPrefixes())
                 {
-                    if (CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support) == MessageBoxResult.Yes)
+                    if (CTecMessageBox.ShowYesNoWarn(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support) == MessageBoxResult.Yes)
                         updateEnvisionPrefixes();
                 }
             }

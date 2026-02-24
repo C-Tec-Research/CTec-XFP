@@ -85,7 +85,7 @@ namespace Xfp.Files.XfpFile
 
                                 switch (ItemName(currentLine))
                                 {
-                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = DeviceTypes.CanHaveAncillaryBaseSounder(device.DeviceType, DeviceTypes.CurrentProtocolType) ? parseInt(currentLine) : null; break;
+                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = device.HasAncillaryBaseSounder ? parseInt(currentLine) : null; break;
                                 }
                             }
                         }

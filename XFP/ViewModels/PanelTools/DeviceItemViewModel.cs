@@ -144,7 +144,7 @@ namespace Xfp.ViewModels.PanelTools
         public int  ZoneIndex                  { get => _deviceData.Zone; set { _deviceData.Zone = value; RefreshView(); } }
         public int  GroupIndex                 { get => _deviceData.Group;        set { _deviceData.Group = value; RefreshView(); } }
         public bool SoundersCanHaveRemoteDevices => DeviceTypes.SoundersCanHaveRemoteDevices(DeviceTypes.CurrentProtocolType);
-        public bool CanHaveAncillaryBaseSounder  => DeviceTypes.CanHaveAncillaryBaseSounder(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
+        public bool CanHaveAncillaryBaseSounder  => _deviceData.HasAncillaryBaseSounder;
         public bool ShowOnlyIfFitted           { get => _showOnlyIfFitted;        set { _showOnlyIfFitted = value; OnPropertyChanged(); OnPropertyChanged(nameof(ShowThisDevice)); } }
         public bool IsEditable                   => DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
         public bool ShowThisDevice               => !_showOnlyIfFitted || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);

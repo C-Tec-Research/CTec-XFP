@@ -289,7 +289,7 @@
         "Loop1": {
           "Devices": [
             {
-              "DeviceType": 8,
+              "DeviceType": 31,
               "LoopNum": 0,
               "Index": 0,
               "Zone": 1,
@@ -306,11 +306,11 @@
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 2,
+                  "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
                   "NameIndex": -1
@@ -4595,15 +4595,15 @@
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -4642,15 +4642,15 @@
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -5018,15 +5018,15 @@
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -12141,10 +12141,7 @@
       },
       "DeviceNamesConfig": {
         "DeviceNames": [
-          "No name allocated",
-          "1",
-          "0",
-          "161"
+          "No name allocated"
         ]
       },
       "ZoneConfig": {
@@ -15404,6 +15401,6 @@
     "RealTimeEventOutput": false
   },
   "Comments": "",
-  "ToolsVersion": "8.1.9",
+  "ToolsVersion": "8.1.10",
   "FirmwareVersion": null
 }

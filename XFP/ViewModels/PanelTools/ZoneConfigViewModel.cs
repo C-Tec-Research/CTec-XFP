@@ -306,7 +306,7 @@ namespace Xfp.ViewModels.PanelTools
         private ZoneConfigData.ZoneTimersBundle bundleTimers(int index, ZoneConfigItemViewModel zone)
         {
             var result = new ZoneConfigData.ZoneTimersBundle();
-            
+
             result.Index        = index;
             result.SounderDelay = zone.SounderDelay;
             result.Relay1Delay  = zone.Relay1Delay;
@@ -324,6 +324,16 @@ namespace Xfp.ViewModels.PanelTools
                 result.DayDetectorAlarmTime   = zone.Day.AlarmReset;
                 result.NightDetectorResetTime = zone.Night.DetectorReset;
                 result.NightDetectorAlarmTime = zone.Night.AlarmReset;
+            }
+            else
+            {
+                var zonePanelDefaults = new ZoneDependency();
+                result.DayDependency          = zonePanelDefaults.DependencyOption;
+                result.NightDependency        = zonePanelDefaults.DependencyOption;
+                result.DayDetectorResetTime   = zonePanelDefaults.DetectorReset;
+                result.DayDetectorAlarmTime   = zonePanelDefaults.AlarmReset;
+                result.NightDetectorResetTime = zonePanelDefaults.DetectorReset;
+                result.NightDetectorAlarmTime = zonePanelDefaults.AlarmReset;
             }
 
             return result;

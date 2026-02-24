@@ -71,6 +71,7 @@ namespace Xfp.DataTypes.PanelData
                     NameIndex = 0;
 
                     RemoteLEDEnabled = false;
+                    HasAncillaryBaseSounder = DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
                     AncillaryBaseSounderGroup = 0;
 
                     IOConfig = new();
@@ -96,7 +97,7 @@ namespace Xfp.DataTypes.PanelData
         public int? NightMode { get; set; } = DeviceConfigData.DefaultMode;
         public List<IOSettingData> IOConfig { get; set; } = new();
         public int NameIndex { get; set; } = 0;
-        internal bool HasAncillaryBaseSounder => DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool HasAncillaryBaseSounder { get; set; } //DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
         public int? AncillaryBaseSounderGroup { get; set; } = null;
         public bool IsRealDevice { get; set; } = true;
         public bool? RemoteLEDEnabled { get; set; } = false;
@@ -241,7 +242,7 @@ namespace Xfp.DataTypes.PanelData
                         }
                     }
 
-                    if (DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType))
+                    if (HasAncillaryBaseSounder)
                         if (!GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidSounderGroup);
                 }
@@ -376,15 +377,15 @@ namespace Xfp.DataTypes.PanelData
 
         private byte channelAndZGSByte(IOSettingData io)
         {
-            //Input/Output - bit 0
+            //Input/Output - bit 7
             //  0 = Input
             //  1 = Output
             //Channel -
-            //  Input:  - bit 1: 0 = Ch1, 1 = Ch2
-            //  Output: - bits 1 & 2: 01 = Ch1, 10 = Ch2, 11 = Ch3
+            //  Input:  - bit 6:       0 = Ch1,  1 = Ch2
+            //  Output: - bits 6 & 5: 01 = Ch1, 10 = Ch2, 11 = Ch3
             //ZGS -
-            //  Input:  bits 2-7
-            //  Output: bits 4-7
+            //  Input:  bits 5-0
+            //  Output: bits 3-0
 
             var result = (byte)(io.ZoneGroupSet ?? 0);
             if (io.InputOutput == IOTypes.Input)

@@ -190,7 +190,7 @@ namespace Xfp.DataTypes.PanelData
 
                             if (DeviceTypes.CurrentProtocolIsXfpApollo)
                             {
-                                if (DeviceTypes.CanHaveAncillaryBaseSounder(dev.DeviceType, DeviceTypes.CurrentProtocolType))
+                                if (dev.HasAncillaryBaseSounder)
                                 {
                                     //remote LED
                                     newRows[0].Cells.Add(TableUtil.NewCell(dev.RemoteLEDEnabled ?? false ? "Y" : "N", numRows, 1, TextAlignment.Center));

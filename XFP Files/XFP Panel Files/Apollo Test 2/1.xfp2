@@ -4,10 +4,10 @@
       "PanelNumber": 1,
       "SupportsEnvision": false,
       "PanelConfig": {
-        "FirmwareVersion": "09A27",
+        "FirmwareVersion": null,
         "DateEnabled": false,
         "SoundersPulsed": false,
-        "CopyTime": true,
+        "CopyTime": false,
         "MaintenanceString": "Service required, call engineer",
         "QuiescentString": "C-Tec XFP Fire Panel",
         "MaintenanceDate": "2099-01-01T00:00:00",
@@ -25,23 +25,9 @@
           false,
           false,
           false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
           false
         ],
         "NightStart": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
           false,
           false,
           false,
@@ -4590,20 +4576,20 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -4637,20 +4623,20 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -5013,20 +4999,20 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "Channel": null,
+                  "ZoneGroupSet": null,
                   "NameIndex": -1
                 }
               ],
@@ -15251,7 +15237,7 @@
       },
       "NetworkConfig": {
         "RepeaterSettings": {
-          "Segment": 1,
+          "Segment": 0,
           "Repeaters": [
             {
               "Fitted": false,
@@ -15352,34 +15338,34 @@
   "SiteConfig": {
     "SystemName": "XFP",
     "Client": {
-      "Name": "",
+      "Name": null,
       "Address": [
         "",
         "",
         "",
         ""
       ],
-      "Postcode": "",
+      "Postcode": null,
       "Tel": null
     },
     "InstallDate": null,
     "CommissionDate": null,
     "Installer": {
-      "Name": "",
+      "Name": null,
       "Address": [
         "",
         "",
         "",
         ""
       ],
-      "Postcode": "",
+      "Postcode": null,
       "Tel": null
     },
-    "EngineerName": "",
+    "EngineerName": null,
     "EngineerNo": null,
     "FaultLockout": 0,
     "FrontPanel": null,
-    "RecalibrationTime": "00:00:00",
+    "RecalibrationTime": "04:00:00",
     "LoopCount": 0,
     "DateEnabled": false,
     "SoundersPulsed": false,
@@ -15394,13 +15380,29 @@
     "DetectorDebounce": 1,
     "OccupiedBegins": "00:00:00",
     "OccupiedEnds": "00:00:00",
-    "DayStart": null,
-    "NightStart": null,
-    "BlinkPollingLED": false,
-    "AutoAdjustDST": false,
+    "DayStart": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "NightStart": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "BlinkPollingLED": true,
+    "AutoAdjustDST": true,
     "RealTimeEventOutput": false
   },
   "Comments": "",
-  "ToolsVersion": "8.1.9",
+  "ToolsVersion": "8.1.10",
   "FirmwareVersion": null
 }
