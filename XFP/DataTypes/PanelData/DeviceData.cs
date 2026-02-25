@@ -71,7 +71,7 @@ namespace Xfp.DataTypes.PanelData
                     NameIndex = 0;
 
                     RemoteLEDEnabled = false;
-                    HasAncillaryBaseSounder = DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
+                    //HasAncillaryBaseSounder = DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
                     AncillaryBaseSounderGroup = 0;
 
                     IOConfig = new();
@@ -97,7 +97,7 @@ namespace Xfp.DataTypes.PanelData
         public int? NightMode { get; set; } = DeviceConfigData.DefaultMode;
         public List<IOSettingData> IOConfig { get; set; } = new();
         public int NameIndex { get; set; } = 0;
-        internal bool HasAncillaryBaseSounder { get; set; } //DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool CanHaveAncillaryBaseSounder => DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
         public int? AncillaryBaseSounderGroup { get; set; } = null;
         public bool IsRealDevice { get; set; } = true;
         public bool? RemoteLEDEnabled { get; set; } = false;
@@ -242,7 +242,7 @@ namespace Xfp.DataTypes.PanelData
                         }
                     }
 
-                    if (HasAncillaryBaseSounder)
+                    if (CanHaveAncillaryBaseSounder)
                         if (!GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup))
                             _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidSounderGroup);
                 }

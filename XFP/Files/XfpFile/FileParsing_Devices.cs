@@ -16,7 +16,6 @@ namespace Xfp.Files.XfpFile
             {
                 // NB: the "Loop As IO Unit" tag is not used.
 
-                var loop = loopNum > 1 ? result.CurrentPanel.LoopConfig.Loop2 : result.CurrentPanel.LoopConfig.Loop1;
                 switch (ItemName(currentLine))
                 {
                     //case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;
@@ -39,6 +38,8 @@ namespace Xfp.Files.XfpFile
 
         private static void parseDevices(StreamReader inputStream, ref XfpData result, int loopNum)
         {
+            var loopData = loopNum > 1 ? result.CurrentPanel.LoopConfig.Loop2 : result.CurrentPanel.LoopConfig.Loop1;
+
             string currentLine;
             while ((currentLine = readNext(inputStream, XfpTags.EndArray)) != null)
             {
@@ -60,11 +61,9 @@ namespace Xfp.Files.XfpFile
                             // 
                             // NB: The "Hint" and "Type Changed" tags are not used.
 
-                            var loop = loopNum > 1 ? result.CurrentPanel.LoopConfig.Loop2 : result.CurrentPanel.LoopConfig.Loop1;
-
                             if (index < DeviceConfigData.NumDevices)
                             {
-                                var device = loop.Devices[index];
+                                var device = loopData.Devices[index];
 
                                 switch (ItemName(currentLine))
                                 {
@@ -73,6 +72,7 @@ namespace Xfp.Files.XfpFile
                                     case XfpTags.LoopDeviceName:            device.NameIndex      = device.IOConfig[0].NameIndex = parseDeviceName(ref result, currentLine); break;
                                     case XfpTags.LoopDeviceArraySharedData: parseSharedData(inputStream, ref result, ref device); break;
                                     case XfpTags.LoopDeviceArraySubName:    parseSubNames(inputStream, ref result, ref device); break;
+                                    //case XfpTags.LoopDeviceHasBaseSounder:  
                                 }
                             }
                             else if (DeviceTypes.SoundersCanHaveRemoteDevices(result.CurrentPanel.Protocol) && index > DeviceConfigData.NumDevices && index < DeviceConfigData.NumDevices * 2)
@@ -81,11 +81,11 @@ namespace Xfp.Files.XfpFile
                                 // is used to store the base sounder group of the device (in the Zone field, would you believe?)
                                 // (...and these upper device indices are offset by an additional 1 on top of the 126, ffs)
 
-                                var device = loop.Devices[index - DeviceConfigData.NumDevices - 1];
+                                var device = loopData.Devices[index - DeviceConfigData.NumDevices - 1];
 
                                 switch (ItemName(currentLine))
                                 {
-                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = device.HasAncillaryBaseSounder ? parseInt(currentLine) : null; break;
+                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = device.CanHaveAncillaryBaseSounder ? parseInt(currentLine) : null; break;
                                 }
                             }
                         }

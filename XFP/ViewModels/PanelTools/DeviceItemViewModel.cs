@@ -100,7 +100,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         public bool?  RemoteLEDEnabled          { get => _deviceData.RemoteLEDEnabled;                                  set { _deviceData.RemoteLEDEnabled = value; OnPropertyChanged(); } }
-        public bool?  HasAncillaryBaseSounder         => CanHaveAncillaryBaseSounder && RemoteLEDEnabled == false;
+        public bool?  HasAncillaryBaseSounder         => RemoteLEDEnabled == false;
         public int?   AncillaryBaseSounderGroup { get => _deviceData.AncillaryBaseSounderGroup;                         set { _deviceData.AncillaryBaseSounderGroup = value; OnPropertyChanged(); OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid)); } }
         public int?   DaySensitivity            { get => DaySensitivityIsValid ? _deviceData.DaySensitivity : null;     set { _deviceData.DaySensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
         public int?   NightSensitivity          { get => NightSensitivityIsValid ? _deviceData.NightSensitivity : null; set { _deviceData.NightSensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
@@ -144,7 +144,7 @@ namespace Xfp.ViewModels.PanelTools
         public int  ZoneIndex                  { get => _deviceData.Zone; set { _deviceData.Zone = value; RefreshView(); } }
         public int  GroupIndex                 { get => _deviceData.Group;        set { _deviceData.Group = value; RefreshView(); } }
         public bool SoundersCanHaveRemoteDevices => DeviceTypes.SoundersCanHaveRemoteDevices(DeviceTypes.CurrentProtocolType);
-        public bool CanHaveAncillaryBaseSounder  => _deviceData.HasAncillaryBaseSounder;
+        public bool CanHaveAncillaryBaseSounder  => _deviceData.CanHaveAncillaryBaseSounder;
         public bool ShowOnlyIfFitted           { get => _showOnlyIfFitted;        set { _showOnlyIfFitted = value; OnPropertyChanged(); OnPropertyChanged(nameof(ShowThisDevice)); } }
         public bool IsEditable                   => DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
         public bool ShowThisDevice               => !_showOnlyIfFitted || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);

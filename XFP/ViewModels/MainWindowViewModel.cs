@@ -1328,7 +1328,7 @@ namespace Xfp.ViewModels
                             else if (d.IOConfig[i].NameIndex == 0)
                                 d.IOConfig[i].NameIndex = -1;
                         }
-                        d.AncillaryBaseSounderGroup = 1;
+                        //d.AncillaryBaseSounderGroup = 1;
                     }
                 }
 

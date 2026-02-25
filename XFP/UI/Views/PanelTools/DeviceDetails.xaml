@@ -478,9 +478,9 @@
                                         <Grid Width="10" Height="10" Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
                                             <Path Fill="{StaticResource Brush03}" Stretch="Fill" 
                                                   Data="{Binding RemoteLEDEnabled, Converter={StaticResource IsTrueToSVGPathDataConverter}}"
-                                                  Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                  Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                             <TextBlock Text="--" 
-                                                       Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
+                                                       Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                                                        HorizontalAlignment="Left" 
                                                        Margin="0"/>
                                         </Grid>
@@ -848,7 +848,7 @@
                                         <Grid Width="10" Height="10" Visibility="{Binding DeviceType, Converter={StaticResource NonNullToVisibilityConverter}}">
                                             <Path Fill="{StaticResource Brush03}" Stretch="Fill" 
                                                   Data="{Binding RemoteLEDEnabled, Converter={StaticResource IsTrueToSVGPathDataConverter}}"
-                                                  Visibility="{Binding SoundersCanHaveRemoteDevices, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                  Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                             <TextBlock Text="--" 
                                                        Visibility="{Binding CanHaveAncillaryBaseSounder, Converter={StaticResource InverseBoolToVisibilityConverter}}" 
                                                        HorizontalAlignment="Left" 

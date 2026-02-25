@@ -190,7 +190,7 @@ namespace Xfp.DataTypes.PanelData
 
                             if (DeviceTypes.CurrentProtocolIsXfpApollo)
                             {
-                                if (dev.HasAncillaryBaseSounder)
+                                if (dev.CanHaveAncillaryBaseSounder)
                                 {
                                     //remote LED
                                     newRows[0].Cells.Add(TableUtil.NewCell(dev.RemoteLEDEnabled ?? false ? "Y" : "N", numRows, 1, TextAlignment.Center));
@@ -470,7 +470,7 @@ namespace Xfp.DataTypes.PanelData
 
         private string getAncillaryBaseSounder(DeviceData device, int? group)
         {
-            if (!device.HasAncillaryBaseSounder || device.RemoteLEDEnabled == true)
+            if (!device.CanHaveAncillaryBaseSounder || device.RemoteLEDEnabled == true)
                 return "--";
             
             return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? string.Format(Cultures.Resources.Group_x, group) : null;
