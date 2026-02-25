@@ -175,7 +175,8 @@ namespace Xfp.DataTypes.PanelData
         }
 
 
-        public static bool IsValidAccessCode(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code) && code.Length == AccessCodeLength;
+        public static bool IsValidAccessCode(string code) => IsValidAccessCodeChars(code) && code.Length == AccessCodeLength;
+        public static bool IsValidAccessCodeChars(string code) => !string.IsNullOrWhiteSpace(code) && ValidateAccessCodeChars(code);
 
 
         /// <summary>

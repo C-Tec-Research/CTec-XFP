@@ -17,7 +17,7 @@ namespace Xfp.Files
             if (!string.IsNullOrWhiteSpace(input))
             {
                 //var splitChar = input.Contains("(") ? "(" : input.Contains(":") ? ":" : "=";
-                var splitChar = input.Contains("(") ? "(" : "=";
+                var splitChar = input.Contains("(") ? "(" : input.Contains("\"") ? ":" : "=";
                 var split = input.Split(splitChar);
                 if (split.Length > 0)
                     return split[0].Trim().Trim([ '"', '/' ]);

@@ -87,6 +87,7 @@ namespace Xfp.DataTypes.PanelData
                 ValidationCodes.SiteConfigNoInstallerAddress or 
                 ValidationCodes.SiteConfigNoInstallerTel or 
                 ValidationCodes.SiteConfigNoEngineerName or 
+                ValidationCodes.SiteConfigNoEngineerNo or 
                 ValidationCodes.SiteConfigNoInstallDate or 
                 ValidationCodes.SiteConfigNoCommissionDate => ErrorLevels.Warning,
 

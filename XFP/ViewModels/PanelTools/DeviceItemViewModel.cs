@@ -89,6 +89,7 @@ namespace Xfp.ViewModels.PanelTools
         /// </summary>
         public void MakeDeviceNameEnvisionCompatible()
         {
+
             if (!DeviceNameIsEnvisionCompatible())
             {
                 DeviceName = string.Format("{0:000} {1}", XfpApolloEnvisionDeviceTypes.GetEnvisionDeviceTypeCode(DeviceType), DeviceName ?? "");

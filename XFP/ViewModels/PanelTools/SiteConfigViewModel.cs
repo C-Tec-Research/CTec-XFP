@@ -45,7 +45,7 @@ namespace Xfp.ViewModels.PanelTools
         public string InstallerName          { get => _data?.SiteConfig.Installer.Name;     set { if (_data != null) { _data.SiteConfig.Installer.Name = value; OnPropertyChanged(); } } }
         public List<string> InstallerAddress { get => _data?.SiteConfig.Installer.Address;  set { if (_data != null) { _data.SiteConfig.Installer.Address = value; OnPropertyChanged(); } } }
         public string InstallerPostcode      { get => _data?.SiteConfig.Installer.Postcode; set { if (_data != null) { _data.SiteConfig.Installer.Postcode = value; OnPropertyChanged(); } } }
-        public string EngineerTelephone      { get => _data?.SiteConfig.Installer.Tel;      set { if (_data != null) { _data.SiteConfig.Installer.Tel = value; OnPropertyChanged(); } } }
+        public string InstallerTelephone     { get => _data?.SiteConfig.Installer.Tel;      set { if (_data != null) { _data.SiteConfig.Installer.Tel = value; OnPropertyChanged(); } } }
         public string EngineerName           { get => _data?.SiteConfig.EngineerName;       set { if (_data != null) { _data.SiteConfig.EngineerName = value; OnPropertyChanged(); } } }
         public string EngineerNumber         { get => _data?.SiteConfig.EngineerNo;         set { if (_data != null) { _data.SiteConfig.EngineerNo = value; OnPropertyChanged(); } } }
 
@@ -115,8 +115,8 @@ namespace Xfp.ViewModels.PanelTools
             int newSelectionStart;
             switch (level)
             {
-                case AccessLevels.User:     AL2Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCode, out newSelectionStart);    break;
-                case AccessLevels.Engineer: AL3Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCode, out newSelectionStart);    break;
+                case AccessLevels.User:     AL2Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCodeChars, out newSelectionStart);    break;
+                case AccessLevels.Engineer: AL3Code = previewTextInputHandlerWithValidation(textBox, e, PanelConfigData.IsValidAccessCodeChars, out newSelectionStart);    break;
                 default: newSelectionStart = textBox.Text.Length; break;
             }
             textBox.SelectionStart = newSelectionStart;
@@ -189,8 +189,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(InstallerName));
             OnPropertyChanged(nameof(InstallerAddress));
             OnPropertyChanged(nameof(InstallerPostcode));
-            OnPropertyChanged(nameof(EngineerTelephone));
+            OnPropertyChanged(nameof(EngineerNumber));
             OnPropertyChanged(nameof(EngineerName));
+            OnPropertyChanged(nameof(CommissionDate));
+            OnPropertyChanged(nameof(InstallDate));
             OnPropertyChanged(nameof(PanelDesc));
             OnPropertyChanged(nameof(QuiescentString));
             OnPropertyChanged(nameof(MaintenanceString));

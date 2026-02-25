@@ -218,8 +218,9 @@
         SiteConfigNoInstallerAddress = 611,
         SiteConfigNoInstallerTel = 612,
         SiteConfigNoEngineerName = 613,
-        SiteConfigNoInstallDate = 614,
-        SiteConfigNoCommissionDate = 615,
+        SiteConfigNoEngineerNo = 614,
+        SiteConfigNoInstallDate = 615,
+        SiteConfigNoCommissionDate = 616,
         
         // - SitePanelData config errors 650+
         SiteConfigQuiescentStringBlank = 650,

@@ -23,6 +23,7 @@ namespace Xfp.DataTypes.PanelData
             Installer = new NameAndAddressData(original.Installer);
             Installer.Tel = original.Client.Tel;
             EngineerName = original.EngineerName;
+            EngineerNo = original.EngineerNo;
             
             //legacy setting from file format with single panel only
             AL2Code = original.AL2Code;
@@ -74,6 +75,10 @@ namespace Xfp.DataTypes.PanelData
                                                                         SystemName = "XFP",
                                                                         Client     = NameAndAddressData.InitialisedNew(),
                                                                         Installer  = NameAndAddressData.InitialisedNew(),
+                                                                        EngineerName = "",
+                                                                        EngineerNo   = "",
+                                                                        InstallDate       = null,
+                                                                        CommissionDate    = null,
                                                                         RecalibrationTime = new(4, 0, 0),
 
                                                                         //legacy settings
@@ -99,10 +104,10 @@ namespace Xfp.DataTypes.PanelData
                 && od.CommissionDate == CommissionDate
                 && od.Installer.Equals(Installer)
                 && od.Client.Tel == Installer.Tel
-                && od.EngineerName == EngineerName
                 
                 //legacy settings
                 && od.EngineerName == EngineerName
+                && od.EngineerNo == EngineerNo
                 && od.AL2Code == AL2Code
                 && od.AL3Code == AL3Code;
         }
@@ -140,14 +145,16 @@ namespace Xfp.DataTypes.PanelData
             var installerAddrErr = Installer.AddressIsEmpty();
             var installerTelErr  = string.IsNullOrWhiteSpace(Installer.Tel);
             var engineerNameErr  = string.IsNullOrWhiteSpace(EngineerName);
+            var engineerNoErr    = string.IsNullOrWhiteSpace(EngineerNo);
 
-            if (installerNameErr || installerAddrErr || installerTelErr|| engineerNameErr)
+            if (installerNameErr || installerAddrErr || installerTelErr|| engineerNameErr || engineerNoErr)
             {
                 ConfigErrorPageItems installerErrs = new(0, Cultures.Resources.Installation_Details);
                 if (installerNameErr) installerErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoInstallerName);
                 if (installerAddrErr) installerErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoInstallerAddress);
                 if (installerTelErr)  installerErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoInstallerTel);
                 if (engineerNameErr)  installerErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoEngineerName);
+                if (engineerNoErr)    installerErrs.ValidationCodes.Add(ValidationCodes.SiteConfigNoEngineerNo);
                 _pageErrorOrWarningDetails.Items.Add(installerErrs);
             }
 

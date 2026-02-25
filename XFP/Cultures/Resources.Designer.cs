@@ -2311,6 +2311,15 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The engineer number has not been entered.
+        /// </summary>
+        public static string Error_Missing_Engineer_Number {
+            get {
+                return ResourceManager.GetString("Error_Missing_Engineer_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The installation date has not been entered.
         /// </summary>
         public static string Error_Missing_Installation_Date {

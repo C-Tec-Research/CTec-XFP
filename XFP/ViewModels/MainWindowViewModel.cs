@@ -1064,10 +1064,10 @@ namespace Xfp.ViewModels
                     return false;
                 }
 
-                normaliseFileData(newData);
-
                 if (newData is null)
                     return false;
+
+                normaliseFileData(newData);
 
                 CurrentFilePath = TextFile.FilePath;
                 foreach (var p in _pages)

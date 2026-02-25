@@ -2162,4 +2162,7 @@ Si cela est nécessaire, les noms des appareils et les descriptions des zones pe
   <data name="Envision_Support" xml:space="preserve">
     <value>Support d'Envision</value>
   </data>
+  <data name="Error_Missing_Engineer_Number" xml:space="preserve">
+    <value> Le de téléphone de l'ingénieur n'a pas été saisi</value>
+  </data>
 </root>

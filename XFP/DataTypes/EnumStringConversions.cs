@@ -276,6 +276,7 @@ namespace Xfp.DataTypes
                 ValidationCodes.SiteConfigNoInstallerAddress => Cultures.Resources.Error_Missing_Installer_Address,
                 ValidationCodes.SiteConfigNoInstallerTel => Cultures.Resources.Error_Missing_Installer_Tel,
                 ValidationCodes.SiteConfigNoEngineerName => Cultures.Resources.Error_Missing_Engineer_Name,
+                ValidationCodes.SiteConfigNoEngineerNo => Cultures.Resources.Error_Missing_Engineer_Number,
                 ValidationCodes.SiteConfigNoInstallDate => Cultures.Resources.Error_Missing_Installation_Date,
                 ValidationCodes.SiteConfigNoCommissionDate => Cultures.Resources.Error_Missing_Commissioning_Date,
                 ValidationCodes.SiteConfigQuiescentStringBlank => Cultures.Resources.Error_Quiescent_String_Blank,

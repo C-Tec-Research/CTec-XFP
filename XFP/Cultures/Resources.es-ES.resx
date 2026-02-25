@@ -2166,4 +2166,7 @@ Si es necesario, se pueden modificar los nombres de los dispositivos y las descr
   <data name="Loop_Select" xml:space="preserve">
     <value>Bucle:</value>
   </data>
+  <data name="Error_Missing_Engineer_Number" xml:space="preserve">
+    <value>No se ha introducido el número de teléfono del ingeniero</value>
+  </data>
 </root>

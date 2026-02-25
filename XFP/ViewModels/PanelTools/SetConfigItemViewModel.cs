@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Controls.Primitives;
+using CTecDevices.Protocol;
 using CTecUtil.ViewModels;
 using Xfp.DataTypes;
 using Xfp.UI.Interfaces;
@@ -28,12 +29,25 @@ namespace Xfp.ViewModels.PanelTools
         public bool IsName             { get => _isName;             set { _isName = value; OnPropertyChanged(); } }
         public bool IsSpacer           { get => _isSpacer;           set { _isSpacer = value; OnPropertyChanged(); } }
         public string Text             { get => _text;               set { _text = value; OnPropertyChanged(); } }
-        public SetTriggerTypes Trigger { get => _trigger;            set { if (value != SetTriggerTypes.Pulsed || IsPanelRelayTrigger) { _trigger = value; ValueChanged?.Invoke(ZoneIndex, TriggerIndex, IsPanelRelayTrigger, value); OnPropertyChanged(); } } }
         public int ZoneIndex           { get => _zoneIndex;          set { _zoneIndex = value; OnPropertyChanged(); } }
         public int TriggerIndex        { get => _triggerIndex;       set { _triggerIndex = value; OnPropertyChanged(); } }
         public bool IsChecked          { get => _isChecked;          set { _isChecked = value; OnPropertyChanged(); } }
         public ToggleButton Button     { get => _button;             set { _button = value; OnPropertyChanged(); } }
         public bool IsPanelRelayTrigger { get; set; }
+
+        public SetTriggerTypes Trigger
+        {
+            get => _trigger;
+            set
+            {
+                if (DeviceTypes.CurrentProtocolIsXfpCast || IsPanelRelayTrigger || value != SetTriggerTypes.Pulsed)
+                {
+                    _trigger = value;
+                    ValueChanged?.Invoke(ZoneIndex, TriggerIndex, IsPanelRelayTrigger, value);
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         
         /// <summary>

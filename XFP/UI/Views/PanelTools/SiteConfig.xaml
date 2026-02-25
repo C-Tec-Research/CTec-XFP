@@ -136,7 +136,7 @@
                             <StackPanel Grid.Row="2" Grid.Column="5" Orientation="Horizontal">
                                 <ctc:CTecTextBox Text="{Binding InstallerPostcode}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="60"/>
                                 <TextBlock Text="{Binding Path=Tel, Source={StaticResource Resources}}" Width="35" TextAlignment="Right" Margin="0,0,5,0"/>
-                                <ctc:CTecTextBox Text="{Binding EngineerTelephone}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
+                                <ctc:CTecTextBox Text="{Binding InstallerTelephone}" FilterAscii127="False" PreviewKeyDown="ctrl_PreviewKeyDown" CommandManager.PreviewExecuted="textBox_PreviewExecuted" Width="100"/>
                             </StackPanel>
 
                             <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Path=Engineer_Name, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
