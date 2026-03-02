@@ -1810,9 +1810,11 @@ namespace Xfp.ViewModels
 
 
         #region Minimise/Maximise/Restore/Exit
-        private bool _windowIsMaximised;
-        public bool WindowIsMaximised { get => _windowIsMaximised; set { _windowIsMaximised = value; OnPropertyChanged(); } }
-        public void ChangeWindowState(WindowState windowState) => WindowIsMaximised = windowState == WindowState.Maximized;
+        
+        private WindowState _windowState;
+        public bool WindowIsMaximised => _windowState == WindowState.Maximized;
+        public void ChangeWindowState(WindowState windowState) { _windowState = windowState; OnPropertyChanged(nameof(WindowIsMaximised)); }
+
 
         public void ExitApp()
         {
