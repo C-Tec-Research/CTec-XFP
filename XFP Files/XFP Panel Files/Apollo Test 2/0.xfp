@@ -595,7 +595,7 @@ File XFPTools
         Item( 14 ) = 0
         Item( 15 ) = 0
         Item( 16 ) = 0
-        Item( 17 ) = 2
+        Item( 17 ) = 1
         Item( 18 ) = 2
         Item( 19 ) = 0
         Item( 20 ) = 0
@@ -682,7 +682,7 @@ File XFPTools
         Item( 14 ) = 0
         Item( 15 ) = 0
         Item( 16 ) = 0
-        Item( 17 ) = 2
+        Item( 17 ) = 1
         Item( 18 ) = 2
         Item( 19 ) = 0
         Item( 20 ) = 0
@@ -944,7 +944,7 @@ File XFPTools
         Item( 15 ) = 0
         Item( 16 ) = 0
         Item( 17 ) = 2
-        Item( 18 ) = 2
+        Item( 18 ) = 1
         Item( 19 ) = 0
         Item( 20 ) = 0
         Item( 21 ) = 0

@@ -40,6 +40,7 @@ namespace Xfp.ViewModels.PanelTools
             get => _trigger;
             set
             {
+                //for Apollo Pulsed is only allowed for panel relay triggers
                 if (DeviceTypes.CurrentProtocolIsXfpCast || IsPanelRelayTrigger || value != SetTriggerTypes.Pulsed)
                 {
                     _trigger = value;
