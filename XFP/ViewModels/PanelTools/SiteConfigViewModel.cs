@@ -64,7 +64,7 @@ namespace Xfp.ViewModels.PanelTools
         public string AL3Code                { get => _data.CurrentPanel.PanelConfig.AL3Code;                  set { _data.CurrentPanel.PanelConfig.AL3Code = value; OnPropertyChanged(); OnPropertyChanged(nameof(AL3CodeIsValid)); } }
 
         public bool ShowRecalibrationTime => !DeviceTypes.CurrentProtocolIsXfpCast;
-        public TimeSpan RecalibrationTime    { get => _data?.SiteConfig.RecalibrationTime ?? new();                 set { if (_data is not null) { _data.SiteConfig.RecalibrationTime = value; OnPropertyChanged(); } } }
+        public TimeSpan RecalibrationTime    { get => _data?.CurrentPanel.PanelConfig.RecalibrationTime ?? new();   set { if (_data is not null) { _data.CurrentPanel.PanelConfig.RecalibrationTime = value; OnPropertyChanged(); } } }
         public bool RealTimeEventOutput      { get => _data?.CurrentPanel.PanelConfig.RealTimeEventOutput ?? new(); set { if (_data is not null) { _data.CurrentPanel.PanelConfig.RealTimeEventOutput = value; OnPropertyChanged(); } } }
         public bool BlinkPollingLED          { get => _data?.CurrentPanel.PanelConfig.BlinkPollingLED ?? new();     set { if (_data is not null) { _data.CurrentPanel.PanelConfig.BlinkPollingLED = value; OnPropertyChanged(); } } }
 

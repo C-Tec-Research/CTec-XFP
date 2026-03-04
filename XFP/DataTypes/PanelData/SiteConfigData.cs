@@ -43,7 +43,6 @@ namespace Xfp.DataTypes.PanelData
         public string EngineerNo { get; set; }
         public int FaultLockout { get; set; }
         public string FrontPanel { get; set; }
-        public TimeSpan RecalibrationTime { get; set; }
 
 
         //legacy setting from file format with single panel only - retained for backward compatibility with old data files
@@ -65,6 +64,7 @@ namespace Xfp.DataTypes.PanelData
         public List<bool> NightStart { get; set; }
         public bool BlinkPollingLED { get; set; }
         public bool AutoAdjustDST { get; set; }
+        public TimeSpan RecalibrationTime { get; set; }
         public bool RealTimeEventOutput { get; set; }
 
 
@@ -79,7 +79,6 @@ namespace Xfp.DataTypes.PanelData
                                                                         EngineerNo   = "",
                                                                         InstallDate       = null,
                                                                         CommissionDate    = null,
-                                                                        RecalibrationTime = new(4, 0, 0),
 
                                                                         //legacy settings
                                                                         QuiescentString   = null,//Cultures.Resources.Default_Quiescent_String,
@@ -88,6 +87,7 @@ namespace Xfp.DataTypes.PanelData
                                                                         AL3Code    = "4444",
                                                                         BlinkPollingLED = true,
                                                                         AutoAdjustDST = true,
+                                                                        RecalibrationTime = new(4, 0, 0),
                                                                         DayStart   = new() { false, false, false, false, false, false, false },
                                                                         NightStart = new() { false, false, false, false, false, false, false },
                                                                     };

@@ -25,23 +25,9 @@
           false,
           false,
           false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
           false
         ],
         "NightStart": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
           false,
           false,
           false,
@@ -331,7 +317,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -378,7 +364,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -425,7 +411,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -472,7 +458,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -519,7 +505,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -566,7 +552,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -613,7 +599,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -660,7 +646,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -707,7 +693,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -754,7 +740,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -801,7 +787,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -848,7 +834,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -895,7 +881,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -942,7 +928,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -989,7 +975,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1036,7 +1022,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1083,7 +1069,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1130,7 +1116,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1177,7 +1163,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1224,7 +1210,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1271,7 +1257,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1318,7 +1304,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1365,7 +1351,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1412,7 +1398,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1459,7 +1445,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1506,7 +1492,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1553,7 +1539,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1600,7 +1586,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1647,7 +1633,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1694,7 +1680,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1741,7 +1727,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1788,7 +1774,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1835,7 +1821,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1882,7 +1868,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1929,7 +1915,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1976,7 +1962,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2023,7 +2009,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2070,7 +2056,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2117,7 +2103,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2164,7 +2150,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2211,7 +2197,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2258,7 +2244,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2305,7 +2291,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2352,7 +2338,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2399,7 +2385,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2446,7 +2432,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2493,7 +2479,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2540,7 +2526,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2587,7 +2573,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2634,7 +2620,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2681,7 +2667,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2728,7 +2714,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2775,7 +2761,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2822,7 +2808,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2869,7 +2855,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2916,7 +2902,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -2963,7 +2949,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3010,7 +2996,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3057,7 +3043,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3104,7 +3090,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3151,7 +3137,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3198,7 +3184,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3245,7 +3231,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3292,7 +3278,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3339,7 +3325,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3386,7 +3372,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3433,7 +3419,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3480,7 +3466,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3527,7 +3513,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3574,7 +3560,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3621,7 +3607,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3668,7 +3654,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3715,7 +3701,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3762,7 +3748,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3809,7 +3795,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3856,7 +3842,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3903,7 +3889,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3950,7 +3936,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3997,7 +3983,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4044,7 +4030,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4091,7 +4077,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4138,7 +4124,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4185,7 +4171,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4232,7 +4218,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4279,7 +4265,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4326,7 +4312,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4373,7 +4359,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4420,7 +4406,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4467,7 +4453,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4514,7 +4500,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4561,7 +4547,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4590,7 +4576,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
@@ -4608,7 +4594,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4637,7 +4623,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
@@ -4655,7 +4641,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4702,7 +4688,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4749,7 +4735,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4796,7 +4782,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4843,7 +4829,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4890,7 +4876,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4937,7 +4923,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -4984,7 +4970,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5013,7 +4999,7 @@
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": -1
+                  "NameIndex": 0
                 },
                 {
                   "Index": 2,
@@ -5031,7 +5017,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5078,7 +5064,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5125,7 +5111,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5172,7 +5158,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5219,7 +5205,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5266,7 +5252,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5313,7 +5299,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5360,7 +5346,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5407,7 +5393,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5454,7 +5440,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5501,7 +5487,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5548,7 +5534,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5595,7 +5581,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5642,7 +5628,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5689,7 +5675,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5736,7 +5722,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5783,7 +5769,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5830,7 +5816,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5877,7 +5863,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5924,7 +5910,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -5971,7 +5957,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6018,7 +6004,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6065,7 +6051,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6112,7 +6098,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6159,7 +6145,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6206,7 +6192,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
@@ -6257,7 +6243,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6304,7 +6290,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6351,7 +6337,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6398,7 +6384,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6445,7 +6431,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6492,7 +6478,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6539,7 +6525,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6586,7 +6572,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6633,7 +6619,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6680,7 +6666,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6727,7 +6713,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6774,7 +6760,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6821,7 +6807,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6868,7 +6854,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6915,7 +6901,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -6962,7 +6948,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7009,7 +6995,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7056,7 +7042,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7103,7 +7089,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7150,7 +7136,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7197,7 +7183,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7244,7 +7230,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7291,7 +7277,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7338,7 +7324,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7385,7 +7371,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7432,7 +7418,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7479,7 +7465,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7526,7 +7512,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7573,7 +7559,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7620,7 +7606,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7667,7 +7653,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7714,7 +7700,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7761,7 +7747,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7808,7 +7794,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7855,7 +7841,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7902,7 +7888,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7949,7 +7935,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -7996,7 +7982,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8043,7 +8029,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8090,7 +8076,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8137,7 +8123,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8184,7 +8170,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8231,7 +8217,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8278,7 +8264,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8325,7 +8311,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8372,7 +8358,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8419,7 +8405,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8466,7 +8452,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8513,7 +8499,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8560,7 +8546,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8607,7 +8593,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8654,7 +8640,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8701,7 +8687,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8748,7 +8734,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8795,7 +8781,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8842,7 +8828,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8889,7 +8875,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8936,7 +8922,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -8983,7 +8969,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9030,7 +9016,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9077,7 +9063,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9124,7 +9110,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9171,7 +9157,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9218,7 +9204,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9265,7 +9251,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9312,7 +9298,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9359,7 +9345,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9406,7 +9392,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9453,7 +9439,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9500,7 +9486,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9547,7 +9533,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9594,7 +9580,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9641,7 +9627,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9688,7 +9674,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9735,7 +9721,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9782,7 +9768,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9829,7 +9815,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9876,7 +9862,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9923,7 +9909,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -9970,7 +9956,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10017,7 +10003,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10064,7 +10050,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10111,7 +10097,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10158,7 +10144,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10205,7 +10191,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10252,7 +10238,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10299,7 +10285,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10346,7 +10332,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10393,7 +10379,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10440,7 +10426,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10487,7 +10473,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10534,7 +10520,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10581,7 +10567,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10628,7 +10614,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10675,7 +10661,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10722,7 +10708,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10769,7 +10755,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10816,7 +10802,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10863,7 +10849,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10910,7 +10896,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -10957,7 +10943,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11004,7 +10990,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11051,7 +11037,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11098,7 +11084,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11145,7 +11131,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11192,7 +11178,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11239,7 +11225,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11286,7 +11272,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11333,7 +11319,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11380,7 +11366,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11427,7 +11413,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11474,7 +11460,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11521,7 +11507,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11568,7 +11554,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11615,7 +11601,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11662,7 +11648,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11709,7 +11695,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11756,7 +11742,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11803,7 +11789,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11850,7 +11836,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11897,7 +11883,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11944,7 +11930,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -11991,7 +11977,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -12038,7 +12024,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -12085,7 +12071,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -12132,7 +12118,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": 0,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             }
@@ -14298,7 +14284,7 @@
               0
             ],
             "PanelRelayTriggers": [
-              2,
+              1,
               2
             ]
           },
@@ -14324,7 +14310,7 @@
               0
             ],
             "PanelRelayTriggers": [
-              2,
+              1,
               2
             ]
           },
@@ -14403,7 +14389,7 @@
             ],
             "PanelRelayTriggers": [
               2,
-              2
+              1
             ]
           },
           {
@@ -15376,7 +15362,7 @@
       "Tel": null
     },
     "EngineerName": "",
-    "EngineerNo": null,
+    "EngineerNo": "",
     "FaultLockout": 0,
     "FrontPanel": null,
     "RecalibrationTime": "00:00:00",

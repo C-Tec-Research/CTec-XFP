@@ -56,7 +56,7 @@ namespace Xfp.ViewModels.PanelTools
         public TimeSpan Relay1Delay         { get => _data.Relay1Delay; set { _data.Relay1Delay = value; updateDelayBindings(); } }
         public TimeSpan Relay2Delay         { get => _data.Relay2Delay; set { _data.Relay2Delay = value; updateDelayBindings(); } }
         public TimeSpan RemoteDelay         { get => _data.RemoteDelay; set { _data.RemoteDelay = value; updateDelayBindings(); } }
-        public bool     Detectors           { get => !_data.IsPanelData ? ((ZoneData)_data).Detectors : false;   set { if (!_data.IsPanelData) ((ZoneData)_data).Detectors = value; OnPropertyChanged(); } }
+        public bool     Detectors           { get => !_data.IsPanelData ? ((ZoneData)_data).Detectors : true;   set { if (!_data.IsPanelData) ((ZoneData)_data).Detectors = value; OnPropertyChanged(); } }
         public bool     MCPs                { get => !_data.IsPanelData ? ((ZoneData)_data).MCPs : false;        set { if (!_data.IsPanelData) ((ZoneData)_data).MCPs = value; OnPropertyChanged(); } }
         public bool     EndDelays           { get => !_data.IsPanelData ? ((ZoneData)_data).EndDelays : false;   set { if (!_data.IsPanelData) ((ZoneData)_data).EndDelays = value; OnPropertyChanged(); } }
         public ZoneDependency Day                 => !_data.IsPanelData ? ((ZoneData)_data).Day : null;

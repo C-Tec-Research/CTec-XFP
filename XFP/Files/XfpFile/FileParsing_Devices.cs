@@ -85,7 +85,7 @@ namespace Xfp.Files.XfpFile
 
                                 switch (ItemName(currentLine))
                                 {
-                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = device.CanHaveAncillaryBaseSounder ? parseInt(currentLine) : null; break;
+                                    case XfpTags.LoopDeviceZone: device.AncillaryBaseSounderGroup = device.CanHaveAncillaryBaseSounder ? parseInt(currentLine) : 0; break;
                                 }
                             }
                         }
@@ -100,7 +100,9 @@ namespace Xfp.Files.XfpFile
             if (device.IsIODevice)
                 return;
 
-            if (DeviceTypes.IsZonalDevice(device.DeviceType, result.CurrentPanel.Protocol))
+            if (device.DeviceType is null)
+                device.Zone = 1;
+            else if (DeviceTypes.IsZonalDevice(device.DeviceType, result.CurrentPanel.Protocol))
                 device.Zone = parseInt(currentLine);
             else if (DeviceTypes.IsGroupedDevice(device.DeviceType, result.CurrentPanel.Protocol))
                 device.Group = parseInt(currentLine);
@@ -140,26 +142,26 @@ namespace Xfp.Files.XfpFile
                         {
                             if (index % 2 == 0)
                             {
-                                var i = index / 2;
+                                var ioIndex = index / 2;
 
-                                while (device.IOConfig.Count <= i)
-                                    device.IOConfig.Add(new(i, device.DeviceType));
+                                while (device.IOConfig.Count <= ioIndex)
+                                    device.IOConfig.Add(new(ioIndex, device.DeviceType));
 
                                 if (value == 0xff)
                                 {
-                                    device.IOConfig[i].InputOutput  = IOTypes.NotUsed;
-                                    device.IOConfig[i].Channel      = null;
-                                    device.IOConfig[i].ZoneGroupSet = null;
+                                    device.IOConfig[ioIndex].InputOutput  = IOTypes.NotUsed;
+                                    device.IOConfig[ioIndex].Channel      = null;
+                                    device.IOConfig[ioIndex].ZoneGroupSet = null;
 
-                                    if (i > 0)
-                                        device.IOConfig[i].NameIndex = 0;
+                                    if (ioIndex > 0)
+                                        device.IOConfig[ioIndex].NameIndex = 0;
                                 }
                                 else
                                 {
                                     var isInput = (value & 0x80) == 0;
-                                    device.IOConfig[i].InputOutput  = isInput ? IOTypes.Input       : IOTypes.Output;
-                                    device.IOConfig[i].Channel      = isInput ? (value & 0x40) >> 6 : Math.Max(0,((value & 0x60) >> 5) - 1);
-                                    device.IOConfig[i].ZoneGroupSet = isInput ? value & 0x3f        : value & 0x1f;
+                                    device.IOConfig[ioIndex].InputOutput  = isInput ? IOTypes.Input       : IOTypes.Output;
+                                    device.IOConfig[ioIndex].Channel      = isInput ? (value & 0x40) >> 6 : Math.Max(0,((value & 0x60) >> 5) - 1);
+                                    device.IOConfig[ioIndex].ZoneGroupSet = isInput ? value & 0x3f        : value & 0x1f;
                                 }                            
                             }
                         }

@@ -48,7 +48,7 @@ namespace Xfp.Files.XfpFile
                 case XfpTags.EngineerNo:            result.SiteConfig.EngineerNo = ParseString(currentLine); break;
                 case XfpTags.NightBegin:            result.CurrentPanel.PanelConfig.OccupiedEnds = parseTime(currentLine); break;
                 case XfpTags.NightEnd:              result.CurrentPanel.PanelConfig.OccupiedBegins = parseTime(currentLine); break;
-                case XfpTags.RecalibrationTime:     result.SiteConfig.RecalibrationTime = parseTime(currentLine); break;
+                case XfpTags.RecalibrationTime:     result.CurrentPanel.PanelConfig.RecalibrationTime = parseTime(currentLine); break;
                 case XfpTags.Day_Enable_Flags:      parseDayEnableFlags(currentLine, ref result); break;
                 case XfpTags.Night_Enable_Flags:    parseNightEnableFlags(currentLine, ref result); break;
                 case XfpTags.MaintenanceString:     result.CurrentPanel.PanelConfig.MaintenanceString = ParseString(currentLine); break;

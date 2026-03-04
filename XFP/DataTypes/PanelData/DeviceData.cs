@@ -72,7 +72,7 @@ namespace Xfp.DataTypes.PanelData
 
                     RemoteLEDEnabled = false;
                     //HasAncillaryBaseSounder = DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
-                    AncillaryBaseSounderGroup = 0;
+                    AncillaryBaseSounderGroup = 1;
 
                     IOConfig = new();
                     for (int i = 0; i < NumIOSettings; i++)
@@ -111,6 +111,9 @@ namespace Xfp.DataTypes.PanelData
         internal bool IsSensitivityHighDevice => DeviceTypes.IsSensitivityHighDevice(DeviceType, DeviceTypes.CurrentProtocolType);
         internal bool IsVolumeDevice => DeviceTypes.IsVolumeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
         internal bool IsModeDevice => DeviceTypes.IsModeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+
+        internal bool IsBaseSounderRecord => DeviceTypes.CurrentProtocolIsXfpApollo && Index >= DeviceConfigData.NumDevices;
+        //internal DeviceData ParentDevice { get; set; }   //for ancillary base sounder records, to link back to the main device record [ <-- excellent comment supplied automatically by VS Copilot AI! ]
 
 
         /// <summary>
@@ -259,22 +262,27 @@ namespace Xfp.DataTypes.PanelData
             
             //NB: top bit is set on zone/group if is an output device - this applies to byte [3], plus bytes [5], [7] & [9] for I/O devices 
 
-            var isBaseSounderRecord = DeviceTypes.CurrentProtocolIsXfpApollo && Index >= DeviceConfigData.NumDevices;
-
             byte[] result = new byte[11];
 
             result[0] = (byte)(Index + 1);
             result[1] = (byte)(LoopNum + 1);
             result[2] = (byte)(DeviceType ?? 0xfe);
 
-            if (DeviceType is not null)
+            //if (DeviceType is not null)
+            //{
+            if (IsBaseSounderRecord)
             {
-                if (isBaseSounderRecord)
-                {
-                    //set top bit as base sounder is an output device
-                    result[3] = (byte)(AncillaryBaseSounderGroup > 0 ? (byte)((AncillaryBaseSounderGroup ?? 0) | 0x80) : 0);
-                }
-                else if (IsIODevice)
+                //set top bit as base sounder is an output device
+                result[3] = (byte)(AncillaryBaseSounderGroup > 0 ? (byte)((AncillaryBaseSounderGroup ?? 0) | 0x80) : 0);
+            }
+            else
+            {
+                result[2] = (byte)(DeviceType ?? 0xfe);
+            }
+
+            if (DeviceType is not null && DeviceType > 0)
+            {
+                if (IsIODevice)
                 {
                     if (IOConfig[0].InputOutput == IOTypes.NotUsed)
                     {
@@ -318,7 +326,7 @@ namespace Xfp.DataTypes.PanelData
                 }
                 else
                 {
-                    result[3] = (byte)(DeviceType is not null ? IsZonalDevice ? Zone : (Group | 0x80) : 0);
+                    result[3] = (byte)(IsZonalDevice ? Zone : (Group | 0x80));
                     result[4] = (byte)NameIndex;
 
                     if (IsModeDevice)
@@ -369,6 +377,18 @@ namespace Xfp.DataTypes.PanelData
                         result[10] = (byte)(Group | 0x80);
                     }
                 }
+            }
+            else
+            {
+                //no device: populate the data with defaults (to match the old tools)
+                result[3] = 1;
+                result[4] = 0;
+                result[5] = 161;
+                result[6] = 0;
+                result[7] = 255;
+                result[8] = 0;
+                result[9] = 255;
+                result[10] = 0;
             }
 
             //CTecUtil.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> device=" + (Index + 1) + "  data=[" + ByteArrayUtil.ByteArrayToHexString(result) + "]");

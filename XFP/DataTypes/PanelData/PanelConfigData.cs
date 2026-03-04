@@ -34,6 +34,7 @@ namespace Xfp.DataTypes.PanelData
             OccupiedEnds        = original.OccupiedEnds;
             BlinkPollingLED     = original.BlinkPollingLED;
             AutoAdjustDST       = original.AutoAdjustDST;
+            RecalibrationTime   = original.RecalibrationTime;
             RealTimeEventOutput = original.RealTimeEventOutput;
             FirmwareVersion     = original.FirmwareVersion;
 
@@ -74,6 +75,7 @@ namespace Xfp.DataTypes.PanelData
             NightStart          = data.SiteConfig.NightStart;
             BlinkPollingLED     = data.SiteConfig.BlinkPollingLED;
             AutoAdjustDST       = data.SiteConfig.AutoAdjustDST;
+            RecalibrationTime   = data.SiteConfig.RecalibrationTime;
             RealTimeEventOutput = data.SiteConfig.RealTimeEventOutput;
         }
 
@@ -110,6 +112,7 @@ namespace Xfp.DataTypes.PanelData
 
         public bool BlinkPollingLED { get; set; }
         public bool AutoAdjustDST { get; set; }
+        public TimeSpan RecalibrationTime { get; set; }
         public bool RealTimeEventOutput { get; set; }
         
         
@@ -127,6 +130,7 @@ namespace Xfp.DataTypes.PanelData
                                                                         AL3Code           = Cultures.Resources.Default_AL3String,
                                                                         BlinkPollingLED   = true,
                                                                         AutoAdjustDST     = true,
+                                                                        RecalibrationTime = new(4, 0, 0),
                                                                         DayStart          = new() { false, false, false, false, false, false, false },
                                                                         NightStart        = new() { false, false, false, false, false, false, false }
                                                                     };
@@ -152,6 +156,7 @@ namespace Xfp.DataTypes.PanelData
              || od.OccupiedEnds != OccupiedEnds
              || od.BlinkPollingLED != BlinkPollingLED
              || od.AutoAdjustDST != AutoAdjustDST
+             || od.RecalibrationTime != RecalibrationTime
              || od.RealTimeEventOutput != RealTimeEventOutput)
                 return false;
 

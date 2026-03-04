@@ -725,17 +725,18 @@ namespace Xfp.ViewModels.PanelTools
                 PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Base_Sounder_Groups, null);
                 for (int loop = 0; loop < LoopConfigData.DetectedLoops; loop++)
                 {
-                    for (int device = 0; device < DeviceConfigData.NumDevices; device++)
+                    for (int i = 0; i < DeviceConfigData.NumDevices; i++)
                     {
-                        var dev = loop < NumLoops ? _data.CurrentPanel.LoopConfig.Loops[loop].Devices[device] : new DeviceData(loop);
+                        var dev = loop < NumLoops ? _data.CurrentPanel.LoopConfig.Loops[loop].Devices[i] : new DeviceData(loop);
+
                         PanelComms.AddCommandSetBaseSounderGroup(new(loop)
                         {
-                            Index = device + DeviceConfigData.NumDevices + 1,
+                            Index = i + DeviceConfigData.NumDevices + 1,
                             DeviceType = (int)(dev.AncillaryBaseSounderGroup > 0 ? XfpApolloDeviceTypeIds.SounderController : XfpApolloDeviceTypeIds.Unknown),
                             AncillaryBaseSounderGroup = dev.AncillaryBaseSounderGroup,
                             IsRealDevice = false,
                         },
-                        string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, device + 1));
+                        string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, i + 1));
                     }
                 }
             }
