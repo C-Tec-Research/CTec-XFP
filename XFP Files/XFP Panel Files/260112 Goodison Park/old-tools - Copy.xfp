@@ -1,0 +1,195 @@
+File XFPTools
+  Loop Count = 2
+  System Type = stApolloLoop
+  Object Loop 1
+    Device Index = 0
+    Group = 0
+    As I/O Unit = FALSE
+    Array Device
+      Max = 254
+      Object Item( 0 )
+        Device Type = 8
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 2 ) = 161
+          Item( 3 ) = 3
+          Item( 4 ) = 255
+          Item( 5 ) = 0
+          Item( 6 ) = 255
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = 
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array      Object Item( 1 )
+        Device Type = 254
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 2 ) = 161
+          Item( 3 ) = 0
+          Item( 4 ) = 255
+          Item( 5 ) = 0
+          Item( 6 ) = 255
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = No name allocated
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+      Object Item( 91 )
+        Device Type = 8
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 2 ) = 161
+          Item( 3 ) = 3
+          Item( 4 ) = 255
+          Item( 5 ) = 0
+          Item( 6 ) = 255
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = 
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+      Object Item( 92 )
+        Device Type = 8
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 2 ) = 161
+          Item( 3 ) = 3
+          Item( 4 ) = 255
+          Item( 5 ) = 0
+          Item( 6 ) = 255
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = 
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+      Object Item( 100 )
+        Device Type = 8
+        Zone = 1
+        Name = No name allocated
+        Hint = 
+        Group = 0
+        Name Index = 0
+        Has Base Sounder = FALSE
+        Type Changed = FALSE
+        Array Shared Data
+          Max = 7
+          Item( 0 ) = 1
+          Item( 1 ) = 0
+          Item( 2 ) = 161
+          Item( 3 ) = 4
+          Item( 4 ) = 255
+          Item( 5 ) = 0
+          Item( 6 ) = 255
+          Item( 7 ) = 0
+        End Array
+        Array SubName
+          Max = 2
+          Item( 0 ) = 
+          Item( 1 ) = No name allocated
+          Item( 2 ) = No name allocated
+        End Array
+      End Object
+	End Object
+  DateEnabled = FALSE
+  SoundersPulsed = FALSE
+  CopyTime = TRUE
+  FaultLockout = 10
+  PhasedDelay = 120
+  InvestigationPeriod = 300
+  InvestigationPeriod1 = 180
+  PanelLocation = 
+  EngineerNo = 
+  MaintenanceString = Service required, call engineer
+  QuiescentString = C-Tec XFP Fire Panel
+  Engineer = 
+  MaintenanceDate = 01/01/2099
+  AL3Code = 4444
+  AL2Code = 3333
+  ClientName = 
+  Loop2 = 
+  FrontPanel = 
+  Loop1 = t
+  MainVersion = 09A27
+  Installer = 
+  ClientAddress3 = 
+  ClientAddress2 = 
+  ClientAddress1 = 
+  ClientAddress5 = 
+  ClientAddress4 = 
+  InstallerAddress3 = 
+  InstallerAddress2 = 
+  InstallerAddress1 = 
+  InstallerAddress5 = 
+  InstallerAddress4 = 
+  NightBegin = 00:00
+  NightEnd = 00:00
+  ReCal = 04:00
+  PanelSounder1_Group = 1
+  PanelSounder2_Group = 2
+  Day_Enable_Flags = 0
+  Night_Enable_Flags = 0
+  Polling_LED = TRUE
+  MCP_Delay = 1
+  Detector_Delay = 5
+  IO_Delay = 1
+  ReSound_Function = FALSE
+  BST_Adjustment = TRUE
+  RealTime_Event_Output = FALSE
+  Panel Number = 1
+  Memo Comments
+  End Memo
+  Intermittent Tone = 0
+  Continuous Tone = 0
+  Delay Timer = 300
+End File
