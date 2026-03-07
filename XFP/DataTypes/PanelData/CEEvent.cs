@@ -46,6 +46,18 @@ namespace Xfp.DataTypes.PanelData
         public int ResetParam2 { get; set; }
         public bool ResetCondition { get; set; }
 
+        
+        public string ActionTypeName { get; set; }
+        public string ActionParamDesc { get; set; }
+        public string TriggerTypeName { get; set; }
+        public string TriggerParamDesc { get; set; }
+        public string TriggerParam2Desc { get; set; }
+        public string TriggerConditionDesc { get; set; }
+        public string ResetTypeName { get; set; }
+        public string ResetParamDesc { get; set; }
+        public string ResetParam2Desc { get; set; }
+        public bool ResetConditionDesc { get; set; }
+
 
         /// <summary>
         /// Returns an initialised GroupData object.
@@ -257,6 +269,22 @@ namespace Xfp.DataTypes.PanelData
         {
             var result = new byte[1];                
             return result;
+        }
+
+
+        internal void NormaliseCEEventData()
+        {
+            if (ActionParam   == -1) ActionParam = 0;
+            if (TriggerParam  == -1) TriggerParam = 0;
+            if (TriggerParam2 == -1) TriggerParam2 = 0;
+            if (TriggerParam  == 0)  TriggerCondition = true;
+            if (ResetParam    == -1) ResetParam = 0;
+            if (ResetParam2   == -1) ResetParam2 = 0;
+            if (ResetParam    == 0)  ResetCondition = false;
+
+            ActionTypeName = Enums.CEActionTypesToString(ActionType);
+            TriggerTypeName = Enums.CETriggerTypesToString(TriggerType);
+            ResetTypeName = Enums.CETriggerTypesToString(ResetType);
         }
     }
 }

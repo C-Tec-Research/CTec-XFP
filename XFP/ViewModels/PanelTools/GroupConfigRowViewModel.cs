@@ -40,7 +40,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool   IsPanel { get => _zoneData.IsPanelData; }
         public int    Index   { get => _zoneData.Index; set { _zoneData.Index = value; OnPropertyChanged(); } }
         public int    Number  { get => _zoneData.Number; }
-        //public string Name   => string.IsNullOrEmpty(_zoneData.Name) ? IsPanel ? string.Format(Cultures.Resources.Panel_x, Number) : string.Format(Cultures.Resources.Zone_x, Number) : _zoneData.Name;
+        //public string Name   => string.IsNullOrEmpty(_zoneData.Name) ? IsPanel ? string.Format(Cultures.Resources.Panel_x, Number) : ZoneConfigData.GetZoneName(Number) : _zoneData.Name;
         public string Name   => _zoneData.Name;
 
         

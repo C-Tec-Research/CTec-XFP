@@ -103,7 +103,7 @@ namespace Xfp.DataTypes.PanelData
             
             grid.Children.Add(GridUtil.GridBackground(0, 0, 2, NumPanelSettings + 1, PrintUtil.TableHeaderBackground));
 
-            var panelHeader = GridUtil.GridHeaderCell(string.Format(Cultures.Resources.Panel_x, _data.CurrentPanel.PanelNumber), 0, 0, 2, 1);
+            var panelHeader = GridUtil.GridHeaderCell(PanelConfigData.GetPanelName(_data.CurrentPanel.PanelNumber), 0, 0, 2, 1);
             panelHeader.SetValue(Grid.VerticalAlignmentProperty, VerticalAlignment.Center);
             grid.Children.Add(panelHeader);
 

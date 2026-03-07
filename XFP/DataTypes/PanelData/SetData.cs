@@ -75,7 +75,7 @@ namespace Xfp.DataTypes.PanelData
 
         public override bool Validate()
         {
-            _errorItems = new(Index, string.Format(Cultures.Resources.Set_x, Number));
+            _errorItems = new(Index, SetConfigData.GetSetName(Number));
             return true;
         }
 

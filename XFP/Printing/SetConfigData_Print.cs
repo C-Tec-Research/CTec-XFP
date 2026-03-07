@@ -31,7 +31,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetPadding(PrintUtil.DefaultTableMargin);
 
             var headerSection = new Section();
-            headerSection.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + _reportName));
+            headerSection.Blocks.Add(headerInfo(PanelConfigData.GetPanelName(panelData.PanelNumber) + " - " + _reportName));
             doc.Blocks.Add(headerSection);
             doc.Blocks.Add(printSets());
 

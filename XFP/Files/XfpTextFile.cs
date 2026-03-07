@@ -31,6 +31,8 @@ namespace Xfp.Files
             if (FilePath != origPath && CTecMessageBox.ShowYesNoWarn(string.Format(Cultures.Resources.File_x_Already_Exists, FilePath), Cultures.Resources.Save_File_Header) != MessageBoxResult.Yes)
                 return origPath;
 
+            data.SetDescriptorsForFile();
+
             CTecUtil.IO.TextFile.SaveFile(JsonConvert.SerializeObject(data, Formatting.Indented));
             CurrentFolder = Path.GetDirectoryName(FilePath);
             return FilePath;
@@ -41,6 +43,8 @@ namespace Xfp.Files
         {
             if (data is null)
                 return null;
+
+            data.SetDescriptorsForFile();
 
             FilePath = SetFileNameSuffix(string.IsNullOrWhiteSpace(FilePath) ? Path.Combine(CurrentFolder ?? "", data.SiteConfig.SystemName.Trim()) : FilePath, XfpFileExt);
             Filter = GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, XfpFileExt);

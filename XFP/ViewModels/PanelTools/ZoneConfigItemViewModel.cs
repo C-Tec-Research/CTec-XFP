@@ -26,7 +26,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool     IsPanelData               => _data.IsPanelData;
         public int      ZoneNum                   => _data?.Number??1;
         public string   ZoneDesc            { get => _data.Name;        set { SetZoneDesc(value); } }
-        public string   ZoneDescFull              => string.IsNullOrWhiteSpace(ZoneDesc) ? _data.IsPanelData ? string.Format(Cultures.Resources.Panel_x, _data.Number) : string.Format(Cultures.Resources.Zone_x, _data.Number) : ZoneDesc;
+        public string   ZoneDescFull              => string.IsNullOrWhiteSpace(ZoneDesc) ? _data.IsPanelData ? string.Format(Cultures.Resources.Panel_x, _data.Number) : ZoneConfigData.GetZoneName(_data.Number) : ZoneDesc;
 
         /// <summary>
         /// Check for Envision compatibility: for Apollo, the DeviceName must be 

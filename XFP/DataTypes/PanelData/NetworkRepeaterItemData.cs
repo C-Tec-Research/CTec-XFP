@@ -21,7 +21,7 @@ namespace Xfp.DataTypes.PanelData
         [JsonIgnore] public int    Index { get; set; }
         [JsonIgnore] public int    Number => Index + 1;
         [JsonIgnore] public string Name { get; set; }
-        [JsonIgnore] public string DefaultName => string.Format(Cultures.Resources.Panel_x, Number);
+        [JsonIgnore] public string DefaultName => PanelConfigData.GetPanelName(Number);
         [JsonIgnore] public string DisplayName => string.IsNullOrEmpty(Name) ? DefaultName : Name == DefaultName ? Name : DefaultName + " - " + Name;
 
         public bool   Fitted { get; set; }
@@ -57,7 +57,7 @@ namespace Xfp.DataTypes.PanelData
 
         public override bool Validate()
         {
-            _errorItems = new(Number, string.Format(string.Format(Cultures.Resources.Panel_x, Number)));
+            _errorItems = new(Number, string.Format(PanelConfigData.GetPanelName(Number)));
 
             if (Name is null || Name.Length > ZoneConfigData.MaxNameLength)
                 _errorItems.ValidationCodes.Add(ValidationCodes.NetworkConfigInvalidPanelName);

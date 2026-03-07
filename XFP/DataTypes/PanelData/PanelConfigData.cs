@@ -85,6 +85,9 @@ namespace Xfp.DataTypes.PanelData
         public const int AccessCodeLength = 4;
 
 
+        internal static string GetPanelName(int? index) => string.Format(Cultures.Resources.Panel_x, index is not null ? index : "...");
+
+
         public string FirmwareVersion { get; set; }
         //public int LoopCount { get; set; }
         public bool DateEnabled { get; set; }

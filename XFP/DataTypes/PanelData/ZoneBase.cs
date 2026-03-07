@@ -28,7 +28,7 @@ namespace Xfp.DataTypes.PanelData
         public int Index { get; set; }
         public virtual string Name { get => string.IsNullOrEmpty(_name) ? DefaultName : _name; set => _name = value; }
         [JsonIgnore] public int    Number => Index + 1;
-        [JsonIgnore] public string DefaultName => string.Format(IsPanelData ? Cultures.Resources.Panel_x : Cultures.Resources.Zone_x, Index + 1);
+        [JsonIgnore] public string DefaultName => IsPanelData ? PanelConfigData.GetPanelName(Index + 1) : ZoneConfigData.GetZoneName(Index + 1);
         [JsonIgnore] public string DisplayName => string.IsNullOrEmpty(Name) ? DefaultName : Name == DefaultName ? Name : string.Format(IsPanelData ? Cultures.Resources.Panel_Name_x_Value_y : Cultures.Resources.Zone_x_Name_y, Number, Name);
         public TimeSpan InputDelay { get; set; }
         public TimeSpan SounderDelay { get; set; }
@@ -60,7 +60,7 @@ namespace Xfp.DataTypes.PanelData
 
         public override bool Validate()
         {
-            _errorItems = new(Index, string.Format(IsPanelData ? Cultures.Resources.Panel_x : Cultures.Resources.Zone_x, Number));
+            _errorItems = new(Index, IsPanelData ? PanelConfigData.GetPanelName(Number) : ZoneConfigData.GetZoneName(Number));
 
             if (Index < 0 || Index >= ZoneConfigData.NumZones + ZoneConfigData.NumPanels)
                 _errorItems.ValidationCodes.Add(ValidationCodes.ZoneConfigDataInvalidZoneNum);

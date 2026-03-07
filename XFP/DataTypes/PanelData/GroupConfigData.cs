@@ -50,6 +50,7 @@ namespace Xfp.DataTypes.PanelData
         public bool ReSoundFunction { get; set; }
         public TimeSpan PhasedDelay { get; set; }
 
+        public static string GetGroupName(int? index) => string.Format(Cultures.Resources.Group_x, index is not null ? index : "...");
 
         /// <summary>
         /// Returns an initialised GroupConfigData object.

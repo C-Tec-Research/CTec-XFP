@@ -733,7 +733,7 @@ namespace Xfp.ViewModels.PanelTools
                         {
                             Index = i + DeviceConfigData.NumDevices + 1,
                             DeviceType = (int)(dev.AncillaryBaseSounderGroup > 0 ? XfpApolloDeviceTypeIds.SounderController : XfpApolloDeviceTypeIds.Unknown),
-                            AncillaryBaseSounderGroup = dev.AncillaryBaseSounderGroup,
+                            AncillaryBaseSounderGroup = dev.CanHaveAncillaryBaseSounder && !(dev.RemoteLEDEnabled??false) ? dev.AncillaryBaseSounderGroup : 0,
                             IsRealDevice = false,
                         },
                         string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, loop + 1, i + 1));

@@ -1244,7 +1244,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(DelayTotalHighErrorMessage));
 
             if (string.IsNullOrWhiteSpace(ZoneDesc))
-                ZoneDesc = string.Format(IsPanelData??false ? Cultures.Resources.Panel_x : Cultures.Resources.Zone_x, ZoneNum);
+                ZoneDesc = IsPanelData??false ? PanelConfigData.GetPanelName(ZoneNum) : ZoneConfigData.GetZoneName(ZoneNum);
 
             Validator.IsValid(Parent);
         }

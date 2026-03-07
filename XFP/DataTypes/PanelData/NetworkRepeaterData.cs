@@ -10,7 +10,7 @@ namespace Xfp.DataTypes.PanelData
         {
             Repeaters = new();
             //for (int i = 0; i < NumRepeaters; i++)
-            //    Repeaters.Add(new() { Number = i + 1, Name = String.Format(Cultures.Resources.Panel_x, i) });
+            //    Repeaters.Add(new() { Number = i + 1, Name = PanelConfigData.GetPanelName(i) });
         }
 
         public NetworkRepeaterData(NetworkRepeaterData original) : this()
@@ -38,7 +38,7 @@ namespace Xfp.DataTypes.PanelData
         {
             //var data = new NetworkRepeaterData();
             //for (int i = 0; i < NumRepeaters; i++)
-            //    data.Repeaters.Add(new() { Name = String.Format(Cultures.Resources.Panel_x, i) });
+            //    data.Repeaters.Add(new() { Name = PanelConfigData.GetPanelName(i) });
             //for (int i = 0; i < NumPanelSettings; i++)
             //    data.PanelSettings.Add(new());
             //return data;

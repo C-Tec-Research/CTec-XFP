@@ -27,7 +27,7 @@ namespace Xfp.DataTypes.PanelData
     {
         public void GetReport(FlowDocument doc, int panelNumber, bool printLoop1, bool printLoop2, bool printAllLoopDevices, SortOrder printOrder)
         {
-            PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_Device_Details);
+            PrintUtil.PageHeader(doc, PanelConfigData.GetPanelName(panelNumber) + " - " + Cultures.Resources.Nav_Device_Details);
 
             GridUtil.ResetDefaults();
             TableUtil.ResetDefaults();
@@ -196,7 +196,7 @@ namespace Xfp.DataTypes.PanelData
                                     newRows[0].Cells.Add(TableUtil.NewCell(dev.RemoteLEDEnabled ?? false ? "Y" : "N", numRows, 1, TextAlignment.Center));
 
                                     //base sounder group
-                                    newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? Cultures.Resources.None : string.Format(Cultures.Resources.Group_x, dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                                    newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? Cultures.Resources.None : GroupConfigData.GetGroupName(dev.AncillaryBaseSounderGroup.Value), numRows, 1));
                                 }
                                 else
                                 {
@@ -291,8 +291,8 @@ namespace Xfp.DataTypes.PanelData
             foreach (var d in Loops[loopNum].Devices)
                 _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + cellMargins);
             
-            _wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(string.Format(Cultures.Resources.Zone_x, ZoneConfigData.NumZones)).Width, 
-                                       TableUtil.MeasureText(string.Format(Cultures.Resources.Panel_x, ZonePanelConfigData.NumZonePanels)).Width), 
+            _wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones)).Width, 
+                                       TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
                                        TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
             _wName = 75;
             _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
@@ -462,10 +462,13 @@ namespace Xfp.DataTypes.PanelData
             if (value == 0)
                 return Cultures.Resources.Use_In_Special_C_And_E;
 
-            var isSet     = isIOSetting && device.IsZonalDevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output;
-            var formatStr = device.IsGroupedDevice ? Cultures.Resources.Group_x : isSet ? Cultures.Resources.Set_x : Cultures.Resources.Zone_x;
+            var isSet = isIOSetting && device.IsZonalDevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output;
 
-            return string.Format(formatStr, value);
+            if (device.IsGroupedDevice) 
+                return GroupConfigData.GetGroupName((int)value);
+            if (isSet) 
+                return SetConfigData.GetSetName((int)value);
+            return ZoneConfigData.GetZoneName((int)value);
         }
 
         private string getAncillaryBaseSounder(DeviceData device, int? group)
@@ -473,7 +476,7 @@ namespace Xfp.DataTypes.PanelData
             if (!device.CanHaveAncillaryBaseSounder || device.RemoteLEDEnabled == true)
                 return "--";
             
-            return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? string.Format(Cultures.Resources.Group_x, group) : null;
+            return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(group.Value) : null;
         }
 
         private string getChannel(int? channel, bool isInput)

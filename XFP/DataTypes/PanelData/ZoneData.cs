@@ -44,7 +44,7 @@ namespace Xfp.DataTypes.PanelData
             var data = new ZoneData()
             {
                 Index = index,
-                //Name = string.Format(Cultures.Resources.Zone_x, index + 1),
+                //Name = ZoneConfigData.GetZoneName(index + 1),
             };
 
             data.Name = data.DefaultName;

@@ -2435,26 +2435,26 @@ namespace Xfp.ViewModels.PanelTools
             {
                 _groups = new() { Cultures.Resources.Use_In_Special_C_And_E };
                 for (int i = 1; i <= GroupConfigData.NumSounderGroups; i++)
-                    _groups.Add(string.Format(Cultures.Resources.Group_x, i));
+                    _groups.Add(GroupConfigData.GetGroupName(i));
             }
             else
             {
                 _groups[0] = Cultures.Resources.Use_In_Special_C_And_E;
                 for (int i = 1; i <= GroupConfigData.NumSounderGroups; i++)
-                    _groups[i] = string.Format(Cultures.Resources.Group_x, i);
+                    _groups[i] = GroupConfigData.GetGroupName(i);
             }
 
             if (_sets is null)
             {
                 _sets = new() { Cultures.Resources.Use_In_Special_C_And_E };
                 for (int s = 1; s <= DeviceData.NumIOSets; s++)
-                    _sets.Add(string.Format(Cultures.Resources.Set_x, s));
+                    _sets.Add(SetConfigData.GetSetName(s));
             }
             else
             {
                 _sets[0] = Cultures.Resources.Use_In_Special_C_And_E;
                 for (int s = 1; s <= DeviceData.NumIOSets; s++)
-                    _sets[s] = string.Format(Cultures.Resources.Set_x, s);
+                    _sets[s] = SetConfigData.GetSetName(s);
             }
 
             //ZoneGroup = "";
@@ -2476,13 +2476,13 @@ namespace Xfp.ViewModels.PanelTools
             {
                 _baseSounderGroups = new() { Cultures.Resources.None };
                 for (int g = 1; g <= GroupConfigData.NumSounderGroups; g++)
-                    _baseSounderGroups.Add(string.Format(Cultures.Resources.Group_x, g));
+                    _baseSounderGroups.Add(GroupConfigData.GetGroupName(g));
             }
             else
             {
                 _baseSounderGroups[0] = Cultures.Resources.None;
                 for (int g = 1; g <= GroupConfigData.NumSounderGroups; g++)
-                    _baseSounderGroups[g] = string.Format(Cultures.Resources.Group_x, g);
+                    _baseSounderGroups[g] = GroupConfigData.GetGroupName(g);
             }
             
             OnPropertyChanged(nameof(AncillaryBaseSounderGroups));

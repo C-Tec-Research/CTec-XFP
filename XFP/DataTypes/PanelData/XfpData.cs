@@ -254,7 +254,7 @@ namespace Xfp.DataTypes
         {
             _groups = new();
             for (int i = 0; i <= GroupConfigData.NumSounderGroups; i++)
-                _groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : string.Format(Cultures.Resources.Group_x, i));
+                _groups.Add(i == 0 ? Cultures.Resources.Action_All_Groups : GroupConfigData.GetGroupName(i));
             return _groups;
         }
 
@@ -286,7 +286,7 @@ namespace Xfp.DataTypes
         {
             _zones = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                _zones.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+                _zones.Add(SetConfigData.GetSetName(i + 1));
             return _zones;
         }
   
@@ -302,9 +302,9 @@ namespace Xfp.DataTypes
         {
             _zonesPanels = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                _zonesPanels.Add(string.Format(Cultures.Resources.Zone_x, i + 1));
+                _zonesPanels.Add(SetConfigData.GetSetName(i + 1));
             for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
-                _zonesPanels.Add(string.Format(Cultures.Resources.Panel_x, i + 1));
+                _zonesPanels.Add(PanelConfigData.GetPanelName(i + 1));
             return _zonesPanels;
         }
   
@@ -320,7 +320,7 @@ namespace Xfp.DataTypes
         {
             _sets = new();
             for (int i = 0; i < XfpPanelData.NumSets; i++)
-                _sets.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+                _sets.Add(SetConfigData.GetSetName(i + 1));
             return _sets;
         }
 
@@ -344,7 +344,7 @@ namespace Xfp.DataTypes
         {
             _setsRelays = new List<string>();
             for (int i = 0; i < XfpPanelData.NumSets; i++)
-                _setsRelays.Add(string.Format(Cultures.Resources.Set_x, i + 1));
+                _setsRelays.Add(SetConfigData.GetSetName(i + 1));
             for (int i = 0; i < XfpPanelData.NumRelays; i++)
                 _setsRelays.Add(string.Format(Cultures.Resources.Relay_x, i + 1));
             return _setsRelays;
@@ -392,6 +392,44 @@ namespace Xfp.DataTypes
             }
 
             return result;
+        }
+
+        
+
+
+        internal void NormaliseFileData()
+        {
+            foreach (var p in Panels)
+            {
+                p.Value.DeviceNamesConfig.NormaliseDeviceNames();
+
+                //ensure consistent device defaults
+                foreach (var l in p.Value.LoopConfig.Loops)
+                    foreach (var d in l.Devices)
+                        d.NormaliseDeviceData();
+
+                //ensure consistent C&E defaults
+                foreach (var e in p.Value.CEConfig.Events)
+                    e.NormaliseCEEventData();
+            }
+        }
+        
+        internal void NormaliseDeviceNames()
+        {
+            foreach (var p in Panels)
+                p.Value.DeviceNamesConfig.NormaliseDeviceNames();
+        }
+
+
+        /// <summary>
+        /// set any descriptive text before saving to file, e.g. device type names
+        /// </summary>
+        internal void SetDescriptorsForFile()
+        {
+            foreach (var p in Panels)
+                foreach (var l in p.Value.LoopConfig.Loops)
+                    foreach (var d in l.Devices)
+                        d.SetDescriptorsForFile();
         }
     }
 }

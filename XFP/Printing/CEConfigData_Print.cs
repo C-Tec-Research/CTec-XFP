@@ -38,9 +38,7 @@ namespace Xfp.DataTypes.PanelData
             TableUtil.SetFontFamily(PrintUtil.PrintDefaultFont);
             TableUtil.SetPadding(new(2,2,4,2));
 
-            //PrintUtil.PageHeader(doc, string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration);
-
-            doc.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration));
+            doc.Blocks.Add(headerInfo(PanelConfigData.GetPanelName(panelNumber) + " - " + Cultures.Resources.Nav_C_And_E_Configuration));
             doc.Blocks.Add(ceList());
         
             TableUtil.ResetDefaults();

@@ -164,7 +164,7 @@ namespace Xfp.ViewModels.PanelTools
                     if (z > 0 && DeviceTypes.IsValidDeviceType(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType)
                      && z <= ZoneConfigData.NumZones)
                     {
-                        var defaultname = string.Format(Cultures.Resources.Zone_x, z);
+                        var defaultname = ZoneConfigData.GetZoneName(z);
                         var name = _zoneData.Zones[z - 1].Name;
                         //return defaultname + (name != defaultname ? " - " + name : "");
                         if (name != defaultname)
@@ -188,7 +188,7 @@ namespace Xfp.ViewModels.PanelTools
                     var g = GroupIndex;
                     if (g > 0 && DeviceTypes.IsValidDeviceType(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType)
                      && g <= GroupConfigData.NumSounderGroups)
-                        return string.Format(Cultures.Resources.Group_x, g);
+                        return GroupConfigData.GetGroupName(g);
 
                     if (g == 0)
                         //if (ZoneDesc != Cultures.Resources.Use_In_Special_C_And_E)
@@ -203,7 +203,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool ZoneIsValid                      => !IsZonalDevice || IsIODevice ? IOConfigItemsAreValid : ZoneConfigData.IsValidZone(Zone);
         public bool GroupIsValid                     => !IsGroupedDevice || GroupConfigData.IsValidGroup(Group);
         public bool DeviceNameIsValid                => DeviceType is null || DeviceName is not null && DeviceName.Length <= DeviceNamesConfigData.DeviceNameLength;
-        public bool AncillaryBaseSounderGroupIsValid => !(HasAncillaryBaseSounder??false) || GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, true);
+        public bool AncillaryBaseSounderGroupIsValid => !CanHaveAncillaryBaseSounder || !(HasAncillaryBaseSounder??false) || GroupConfigData.IsValidGroup(AncillaryBaseSounderGroup, true);
         public bool DaySensitivityIsValid            => sensitivityIsValid(_deviceData.DaySensitivity);
         public bool NightSensitivityIsValid          => sensitivityIsValid(_deviceData.NightSensitivity);
         public bool DayVolumeIsValid                 => volumeIsValid(_deviceData.DayVolume);

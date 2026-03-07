@@ -81,6 +81,11 @@ namespace Xfp.DataTypes.PanelData
             }
         }
 
+        /// <summary>
+        /// NB: This is solely for ease of reading a .xfp2 config file
+        /// </summary>
+        public string DeviceTypeName { get; set; }
+
         public int LoopNum { get; set; }
         public int Index { get; set; }
         public int Zone { get; set; } = 0;
@@ -278,117 +283,117 @@ namespace Xfp.DataTypes.PanelData
             else
             {
                 result[2] = (byte)(DeviceType ?? 0xfe);
-            }
 
-            if (DeviceType is not null && DeviceType > 0)
-            {
-                if (IsIODevice)
+                if (DeviceType is not null && DeviceType > 0)
                 {
-                    if (IOConfig[0].InputOutput == IOTypes.NotUsed)
+                    if (IsIODevice)
                     {
-                        result[3] = 0xff;
-                    }
-                    else
-                    {
-                        result[3] = channelAndZGSByte(IOConfig[0]);
-                        result[4] = (byte)IOConfig[0].NameIndex;
-                    }
+                        if (IOConfig[0].InputOutput == IOTypes.NotUsed)
+                        {
+                            result[3] = 0xff;
+                        }
+                        else
+                        {
+                            result[3] = channelAndZGSByte(IOConfig[0]);
+                            result[4] = (byte)IOConfig[0].NameIndex;
+                        }
 
-                    if (IOConfig[1].InputOutput == IOTypes.NotUsed)
-                    {
-                        result[5] = 0xff;
-                    }
-                    else
-                    {
-                        result[5] = channelAndZGSByte(IOConfig[1]);
-                        result[6] = (byte)IOConfig[1].NameIndex;
-                    }
+                        if (IOConfig[1].InputOutput == IOTypes.NotUsed)
+                        {
+                            result[5] = 0xff;
+                        }
+                        else
+                        {
+                            result[5] = channelAndZGSByte(IOConfig[1]);
+                            result[6] = (byte)IOConfig[1].NameIndex;
+                        }
 
-                    if (IOConfig[2].InputOutput == IOTypes.NotUsed)
-                    {
-                        result[7] = 0xff;
-                    }
-                    else
-                    {
-                        result[7] = channelAndZGSByte(IOConfig[2]);
-                        result[8] = (byte)IOConfig[2].NameIndex;
-                    }
+                        if (IOConfig[2].InputOutput == IOTypes.NotUsed)
+                        {
+                            result[7] = 0xff;
+                        }
+                        else
+                        {
+                            result[7] = channelAndZGSByte(IOConfig[2]);
+                            result[8] = (byte)IOConfig[2].NameIndex;
+                        }
 
-                    if (IOConfig[3].InputOutput == IOTypes.NotUsed)
-                    {
-                        result[9] = 0xff;
+                        if (IOConfig[3].InputOutput == IOTypes.NotUsed)
+                        {
+                            result[9] = 0xff;
+                        }
+                        else
+                        {
+                            result[9] = channelAndZGSByte(IOConfig[3]);
+                            result[10] = (byte)IOConfig[3].NameIndex;
+                        }
                     }
                     else
                     {
-                        result[9] = channelAndZGSByte(IOConfig[3]);
-                        result[10] = (byte)IOConfig[3].NameIndex;
+                        result[3] = (byte)(IsZonalDevice ? Zone : (Group | 0x80));
+                        result[4] = (byte)NameIndex;
+
+                        if (IsModeDevice)
+                        {
+                            result[5] = (byte)(DayMode ?? 1);
+                            result[6] = (byte)(NightMode ?? 1);
+                        }
+                        else if (IsSensitivityDevice)
+                        {
+                            result[5] = (byte)(DaySensitivity ?? 0);
+                            result[6] = (byte)(NightSensitivity ?? 0);
+                        }
+                        else
+                        {
+                            result[5] = 0x64;
+                            result[6] = 0x64;
+                        }
+
+                        if (IsVolumeDevice)
+                        {
+                            //CAST PRO has both mode and volume, so volume is offset from the usual bytes
+                            if (IsModeDevice)
+                            {
+                                result[8] = (byte)((DayVolume ?? 0) + 1);
+                                result[9] = (byte)((NightVolume ?? 0) + 1);
+                            }
+                            else
+                            {
+                                result[5] = (byte)((DayVolume ?? 1) + 1);
+                                result[6] = (byte)((NightVolume ?? 1) + 1);
+                            }
+                        }
+
+                        if (IsZonalDevice && IsGroupedDevice)
+                            result[10] = (byte)(Group | 0x80);
+
+
+
+                        //byte-10 can be remote LED for Apollo or group for CAST Pro
+                        if (DeviceTypes.CurrentProtocolIsXfpApollo)
+                        {
+                            result[10] = (byte)(RemoteLEDEnabled ?? false ? 1 : 0);
+                        }
+                        else if (IsZonalDevice && IsGroupedDevice)
+                        {
+                            //CAST PRO can have group as well as zone;
+                            //set top bit to denote output device (=grouped)
+                            result[10] = (byte)(Group | 0x80);
+                        }
                     }
                 }
                 else
                 {
-                    result[3] = (byte)(IsZonalDevice ? Zone : (Group | 0x80));
-                    result[4] = (byte)NameIndex;
-
-                    if (IsModeDevice)
-                    {
-                        result[5] = (byte)(DayMode ?? 1);
-                        result[6] = (byte)(NightMode ?? 1);
-                    }
-                    else if (IsSensitivityDevice)
-                    {
-                        result[5] = (byte)(DaySensitivity ?? 0);
-                        result[6] = (byte)(NightSensitivity ?? 0);
-                    }
-                    else
-                    {
-                        result[5] = 0x64;
-                        result[6] = 0x64;
-                    }
-
-                    if (IsVolumeDevice)
-                    {
-                        //CAST PRO has both mode and volume, so volume is offset from the usual bytes
-                        if (IsModeDevice)
-                        {
-                            result[8] = (byte)((DayVolume ?? 0) + 1);
-                            result[9] = (byte)((NightVolume ?? 0) + 1);
-                        }
-                        else
-                        {
-                            result[5] = (byte)((DayVolume ?? 1) + 1);
-                            result[6] = (byte)((NightVolume ?? 1) + 1);
-                        }
-                    }
-
-                    if (IsZonalDevice && IsGroupedDevice)
-                        result[10] = (byte)(Group | 0x80);
-
-
-
-                    //byte-10 can be remote LED for Apollo or group for CAST Pro
-                    if (DeviceTypes.CurrentProtocolIsXfpApollo)
-                    {
-                        result[10] = (byte)(RemoteLEDEnabled ?? false ? 1 : 0);
-                    }
-                    else if (IsZonalDevice && IsGroupedDevice)
-                    {
-                        //CAST PRO can have group as well as zone;
-                        //set top bit to denote output device (=grouped)
-                        result[10] = (byte)(Group | 0x80);
-                    }
+                    //no device: populate the data with defaults (to match the old tools)
+                    result[3] = 1;
+                    result[4] = 0;
+                    result[5] = 161;
+                    result[6] = 0;
+                    result[7] = 255;
+                    result[8] = 0;
+                    result[9] = 255;
+                    result[10] = 0;
                 }
-            }
-            else
-            {
-                //no device: populate the data with defaults (to match the old tools)
-                result[3] = 1;
-                result[4] = 0;
-                result[5] = 161;
-                result[6] = 0;
-                result[7] = 255;
-                result[8] = 0;
-                result[9] = 255;
-                result[10] = 0;
             }
 
             //CTecUtil.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> device=" + (Index + 1) + "  data=[" + ByteArrayUtil.ByteArrayToHexString(result) + "]");
@@ -460,9 +465,11 @@ namespace Xfp.DataTypes.PanelData
                         result.Zone = data[5];
                     else if (result.IsGroupedDevice)
                         result.Group = data[5] & 0x3f;
+
+                    result.NameIndex = data[6];
                     
 
-                        bool inUse0, inUse1, inUse2, inUse3;
+                    bool inUse0, inUse1, inUse2, inUse3;
                     inUse0 = inUse1 = inUse2 = inUse3 = false;
                     
                     if (result.IsIODevice)
@@ -497,8 +504,8 @@ namespace Xfp.DataTypes.PanelData
                                 result.Group = data[5] & 0x0f;
                         }
 
-                        if (result.IsIODevice)
-                        {
+                        //if (result.IsIODevice)
+                        //{
                             //ZGS -
                             //  Input: bits 2-7
                             //  Output: bits 4-7
@@ -507,13 +514,11 @@ namespace Xfp.DataTypes.PanelData
                             if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f; else result.IOConfig[1].ZoneGroupSet = null;
                             if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f; else result.IOConfig[2].ZoneGroupSet = null;
                             if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f; else result.IOConfig[3].ZoneGroupSet = null;
-                        }
-                    }
+                        //}
+                    //}
 
-                    result.NameIndex = data[6];
-
-                    if (result.IsIODevice)
-                    {
+                    //if (result.IsIODevice)
+                    //{
                         if (inUse0) result.IOConfig[0].NameIndex = data[6];
                         if (inUse1) result.IOConfig[1].NameIndex = data[8];
                         if (inUse2) result.IOConfig[2].NameIndex = data[10];
@@ -604,6 +609,38 @@ namespace Xfp.DataTypes.PanelData
             }
 
             return new((int)requestedIndex, stringValue, DeviceNamesConfigData.DeviceNameLength);
+        }
+
+
+        internal void NormaliseDeviceData()
+        {
+            if (DeviceType is null)
+                DayMode = NightMode = 0;
+
+            if (AncillaryBaseSounderGroup < 0 || AncillaryBaseSounderGroup > GroupConfigData.NumSounderGroups)
+                AncillaryBaseSounderGroup = 0;
+
+            for (int i = 0; i < IOConfig.Count; i++)
+            {
+                if (!IsIODevice)
+                    IOConfig[i].NameIndex = -1;
+                else if (i == 0)
+                    IOConfig[i].NameIndex = NameIndex;
+                else if (IOConfig[i].NameIndex == 0)
+                    IOConfig[i].NameIndex = -1;
+            }
+            //AncillaryBaseSounderGroup = 1;
+        }
+
+
+        //Note - setting DeviceTypeName is for readability when saving to a file
+        internal void SetDescriptorsForFile()
+        {
+            if (DeviceType is not null)
+                DeviceTypeName = DeviceTypes.DeviceTypeName(DeviceType, DeviceTypes.CurrentProtocolType);
+            else
+                DeviceTypeName = Cultures.Resources.No_Device;
+             
         }
     }
 }

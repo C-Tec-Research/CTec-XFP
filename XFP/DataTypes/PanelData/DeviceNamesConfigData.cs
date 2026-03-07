@@ -192,5 +192,13 @@ namespace Xfp.DataTypes.PanelData
 
             return _pageErrorOrWarningDetails.Items.Count == 0;
         }
+
+
+        internal void NormaliseDeviceNames()
+        {
+            //ensure the default no-name entry is present
+            if (DeviceNames.Count == 0)
+                DeviceNames.Add(Cultures.Resources.No_Name_Allocated);
+        }
     }
 }

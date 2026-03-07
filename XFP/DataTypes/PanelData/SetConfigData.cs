@@ -32,6 +32,8 @@ namespace Xfp.DataTypes.PanelData
 
         public static bool isValidSet(int? set) => set.HasValue && set >= 0 && set <= NumOutputSetTriggers;
 
+        public static string GetSetName(int index) => string.Format(Cultures.Resources.Set_x, index);
+
 
         public new static SetConfigData InitialisedNew()
         {

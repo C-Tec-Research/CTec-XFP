@@ -423,7 +423,7 @@ namespace Xfp.ViewModels.PanelTools
                                                         OutputSetTriggers = setTriggers,
                                                         PanelRelayTriggers = relayTriggers,
                                                         DelayTimer = _data.CurrentPanel.SetConfig.DelayTimer },
-                                                string.Format(Cultures.Resources.Set_x, zone + 1));
+                                                SetConfigData.GetSetName(zone + 1));
             }
         }
         
@@ -460,7 +460,7 @@ namespace Xfp.ViewModels.PanelTools
             if (data is not SetConfigData.SetBundle set)
                 return false;
 
-            CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.Set_x, set.Index + 1));
+            CTecUtil.CommsLog.AddReceivedData(SetConfigData.GetSetName(set.Index + 1));
 
             //data in set 0 is the Silenceable flags
             if (set.Index == 0)

@@ -26,7 +26,7 @@ namespace Xfp.DataTypes.PanelData
             GridUtil.ResetDefaults();
 
             var headerSection = new Section();
-            headerSection.Blocks.Add(headerInfo(string.Format(Cultures.Resources.Panel_x, panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
+            headerSection.Blocks.Add(headerInfo(PanelConfigData.GetPanelName(panelData.PanelNumber) + " - " + Cultures.Resources.Nav_Zone_Configuration));
             
             doc.Blocks.Add(headerSection);
             doc.Blocks.Add(printZones());

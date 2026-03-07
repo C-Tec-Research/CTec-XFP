@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
+using Xfp.DataTypes.PanelData;
 
 namespace Xfp.UI.ViewHelpers
 {
-    [ValueConversion(typeof(string), typeof(int))]
+    [ValueConversion(typeof(string), typeof(int?))]
     class ZoneToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            => value is null  || (int)value < 0 ? Cultures.Resources.Unassigned : (int)value > 0 ? string.Format(Cultures.Resources.Zone_x, (int)value) : (int)value == -1 ? Cultures.Resources.Use_In_Special_C_And_E : Cultures.Resources.Unassigned;
+            => value is null  || (int)value < 0 ? Cultures.Resources.Unassigned : (int)value > 0 ? ZoneConfigData.GetZoneName((int?)value) : (int)value == -1 ? Cultures.Resources.Use_In_Special_C_And_E : Cultures.Resources.Unassigned;
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

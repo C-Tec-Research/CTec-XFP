@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.ViewModels;
+using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using CTecUtil.StandardPanelDataTypes;
-using CTecUtil.ViewModels;
 using Xfp.DataTypes;
+using Xfp.DataTypes.PanelData;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.ViewModels.PanelTools
@@ -65,7 +66,7 @@ namespace Xfp.ViewModels.PanelTools
         private bool _nightAlarmResetIsNull;
 
 
-        private string _defaultZoneName { get => ZoneNum is not null ? string.Format(Cultures.Resources.Zone_x, ZoneNum) : null; }
+        private string _defaultZoneName { get => ZoneNum is not null ? ZoneConfigData.GetZoneName(ZoneNum) : null; }
         
         public int?   ZoneNum   {  get => _zoneNum;  set { _zoneNum  = value; OnPropertyChanged(); } }
         public string ZoneName  {  get => _zoneName; set { _zoneName = value; OnPropertyChanged(); } }

@@ -31,7 +31,7 @@ namespace Xfp.DataTypes.PanelData
             var data = new ZonePanelData()
             {
                 Index = index,
-                Name = string.Format(Cultures.Resources.Panel_x, index + 1),
+                Name = PanelConfigData.GetPanelName(index + 1),
             };
             
             data.SounderGroups = new();
