@@ -3841,7 +3841,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Site Panel Configuration.
+        ///   Looks up a localized string similar to Panel Configuration.
         /// </summary>
         public static string Panel_Site_Configuration {
             get {

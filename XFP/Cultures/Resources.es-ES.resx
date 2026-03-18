@@ -2039,7 +2039,7 @@ Se perderán todos sus datos.</value>
     <value>min</value>
   </data>
   <data name="Panel_Site_Configuration" xml:space="preserve">
-    <value>Configuración del panel del sitio</value>
+    <value>Configuración del panel</value>
   </data>
   <data name="Validation_Header_Panel_Data" xml:space="preserve">
     <value>Datos del panel:</value>

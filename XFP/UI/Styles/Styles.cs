@@ -17,7 +17,7 @@ namespace Xfp.UI
         private static SolidColorBrush _triggerDelayedBrush      = Application.Current.FindResource("TriggerDelayedBrush") as SolidColorBrush;
         private static SolidColorBrush _triggerNotTriggeredBrush = Application.Current.FindResource("TriggerNotTriggeredBrush") as SolidColorBrush;
 
-        private static SolidColorBrush _columnSeparatorBrush       =  Application.Current.FindResource("ColumnSeparatorBrush") as SolidColorBrush;
+        private static SolidColorBrush _envisionMessageHeaderBackgroundBrush = Application.Current.TryFindResource("BrushEnvisionMessageHeaderBackground") as SolidColorBrush;
 
         private static Style _alarmIconStyle = Application.Current.FindResource("AlarmIcon") as Style;
 
@@ -31,7 +31,8 @@ namespace Xfp.UI
         public static SolidColorBrush TriggerContinuousBrush     => _triggerContinuousBrush;
         public static SolidColorBrush TriggerDelayedBrush        => _triggerDelayedBrush;
         public static SolidColorBrush TriggerNotTriggeredBrush   => _triggerNotTriggeredBrush;
-        public static SolidColorBrush ColumnSeparatorBrush       => _columnSeparatorBrush;
+
+        public static SolidColorBrush EnvisionMessageHeaderBackgroundBrush => _envisionMessageHeaderBackgroundBrush;
 
         public static Style AlarmIconStyle => _alarmIconStyle;
     }

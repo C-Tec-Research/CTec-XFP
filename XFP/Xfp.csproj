@@ -138,6 +138,7 @@
     <Resource Include="UI\Images\download-single.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="UI\Images\envision.png" />
     <Resource Include="UI\Images\nav-comments.png" />
     <Resource Include="UI\Images\nav-device-details.png" />
     <Resource Include="UI\Images\nav-device-summary.png" />

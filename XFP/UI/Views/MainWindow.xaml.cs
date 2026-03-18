@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Markup;
-using CTecUtil;
 using CTecControls.UI;
-using Xfp.ViewModels;
-using Xfp.Config;
+using CTecUtil;
 using CTecUtil.Utils;
-using System.Threading;
+using Xfp.Config;
+using Xfp.ViewModels;
 
 namespace Xfp.Views
 {
@@ -70,11 +72,11 @@ namespace Xfp.Views
 
 
         #region Window controls & resizing
-        private void btnMinimise_Click(object sender, RoutedEventArgs e) { /*_context.ClosePopups();*/ WindowState = WindowState.Minimized; }
-        private void btnMaximise_Click(object sender, RoutedEventArgs e) { /*_context.ClosePopups();*/ WindowState = WindowState.Maximized; XfpApplicationConfig.Settings.MainWindow.IsMaximised = true; /*updateWindowParams(true);*/ }
-        private void btnRestore_Click(object sender, RoutedEventArgs e) { /*_context.ClosePopups(); XfpApplicationConfig.Instance.RestoreMainWindowState(this);*/ WindowState = WindowState.Normal; XfpApplicationConfig.Settings.MainWindow.IsMaximised = false; /*updateWindowParams(true);*/ }
-        private void window_StateChanged(object sender, EventArgs e) { /*_context.ClosePopups();*/ _context.ChangeWindowState(WindowState); }
-        private void btnExit_Click(object sender, RoutedEventArgs e) => exitApp();
+        private void btnMinimise_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+        private void btnMaximise_Click(object sender, RoutedEventArgs e) => toggleWindowState();
+        private void btnRestore_Click(object sender, RoutedEventArgs e)  => toggleWindowState();
+        private void window_StateChanged(object sender, EventArgs e)     => _context.ChangeWindowState(WindowState);
+        private void btnExit_Click(object sender, RoutedEventArgs e)     => exitApp();
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e) { _context.ClosePopups(); updateWindowParams(); }
         private void window_LocationChanged(object sender, EventArgs e) { _context.ClosePopups(); updateWindowParams(); }
@@ -105,6 +107,26 @@ namespace Xfp.Views
 
             EventLog.WriteInfo("Exiting app");
             _context?.ExitApp();
+        }
+
+        
+        /// <summary>
+        /// Toggles between maximised and normal window states.<br/>
+        /// When maximising, the window size is set to the working area of the screen (i.e. taskbar is not covered).
+        /// </summary>
+        private void toggleWindowState()
+        {
+            switch (WindowState)
+            {
+                case WindowState.Normal:
+                    WindowState = WindowState.Maximized;
+                    XfpApplicationConfig.Settings.MainWindow.IsMaximised = true;
+                    break;
+                case WindowState.Maximized:
+                    WindowState = WindowState.Normal;
+                    XfpApplicationConfig.Settings.MainWindow.IsMaximised = false;
+                    break;
+            }
         }
 
 
@@ -293,8 +315,6 @@ namespace Xfp.Views
         private void FileSaveAs_MouseDown(object sender, MouseButtonEventArgs e) => _context.FileSaveAsCommand.Execute(null);
         private void Print_MouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
         private void Print_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrintCommand.Execute(null);
-        //private void PrintReport_Click(object sender, RoutedEventArgs e) => _context.PrintDocument();
-        //private void PrintProperties_Click(object sender, RoutedEventArgs e) => _context.PrinterProperties();
         private void ClosePrint_Click(object sender, EventArgs e) { }// => _context.ClosePrintOption();
         private void CancelPrint_Click(object sender, RoutedEventArgs e) { }// => _context.ClosePrintOption();
         private void ConnectSerial_MouseDown(object sender, MouseButtonEventArgs e) => _context.ConnectSerialCommand.Execute(null);
@@ -325,11 +345,5 @@ namespace Xfp.Views
         }
 
         private void History_Click(object sender, RoutedEventArgs e) => _context.ShowRevisionHistoryWindow();
-
-        
-        //private void cboPrinter_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = true;
-        //private void PrintOptions_PreviewMouseDown(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
-        //private void PrinterList_MouseUp(object sender, MouseButtonEventArgs e) => _context.PrinterListIsOpen = false;
-
     }
 }

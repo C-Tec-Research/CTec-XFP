@@ -2135,7 +2135,7 @@ All of its data will be lost.</value>
     <value>mins</value>
   </data>
   <data name="Panel_Site_Configuration" xml:space="preserve">
-    <value>Site Panel Configuration</value>
+    <value>Panel Configuration</value>
   </data>
   <data name="Default_AL2String" xml:space="preserve">
     <value>3333</value>

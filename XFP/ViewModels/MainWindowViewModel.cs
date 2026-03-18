@@ -41,6 +41,7 @@ using Xfp.UI.Interfaces;
 using Xfp.UI.Views;
 using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
+using Xfp.UI.Util;
 
 namespace Xfp.ViewModels
 {
@@ -1882,7 +1883,7 @@ namespace Xfp.ViewModels
                 //are any devices or zones not already prefixed correctly?
                 if (!checkEnvisionPrefixes())
                 {
-                    if (CTecMessageBox.ShowYesNoWarn(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support, CTecControls.UI.Styles.EnvisionMessageHeaderBackgroundBrush) == MessageBoxResult.Yes)
+                    if (CTecMessageBox.ShowYesNo(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support, Bitmaps.GetBitmap("envision"), UI.Styles.EnvisionMessageHeaderBackgroundBrush) == MessageBoxResult.Yes)
                         updateEnvisionPrefixes();
                 }
             }
