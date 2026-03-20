@@ -127,9 +127,6 @@
   <data name="Option_Print" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Print_Num_Copies" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="Device_Name_x_Value_y" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>

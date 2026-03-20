@@ -1780,29 +1780,14 @@ Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
   <data name="Print_Loop_Information" xml:space="preserve">
     <value>Información de bucle</value>
   </data>
-  <data name="Select_Print_Options" xml:space="preserve">
-    <value>Seleccionar opciones de impresión</value>
-  </data>
   <data name="Option_Print" xml:space="preserve">
     <value>_Imprimir</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Imprimir todos los dispositivos de bucle</value>
   </data>
-  <data name="Print_All_Pages" xml:space="preserve">
-    <value>Todas las páginas</value>
-  </data>
-  <data name="Print_Current_Page" xml:space="preserve">
-    <value>Página actual</value>
-  </data>
-  <data name="Print_Num_Copies" xml:space="preserve">
-    <value>Copias:</value>
-  </data>
   <data name="Print_Only_Fitted_Devices" xml:space="preserve">
     <value>Imprimir solo los dispositivos instalados</value>
-  </data>
-  <data name="Print_Order_By" xml:space="preserve">
-    <value>Ordenar por:</value>
   </data>
   <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Número de dispositivo</value>
@@ -1815,9 +1800,6 @@ Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Propiedades</value>
-  </data>
-  <data name="Print_Select_Pages" xml:space="preserve">
-    <value>Seleccionar páginas:</value>
   </data>
   <data name="Cancel_Changes" xml:space="preserve">
     <value>¿Cancelar cambios?</value>
@@ -1863,12 +1845,6 @@ Los ajustes del bucle 2 configurados aquí no se guardarán en el panel.</value>
   </data>
   <data name="Printer_Status" xml:space="preserve">
     <value>Estado:</value>
-  </data>
-  <data name="Select_Printer" xml:space="preserve">
-    <value>Impresora:</value>
-  </data>
-  <data name="Error_Printing_Document" xml:space="preserve">
-    <value>Se ha producido un error al imprimir el documento.</value>
   </data>
   <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
     <value>Los detalles de la configuración del sitio están incompletos; consulte la ventana Validación de datos para obtener más información.
@@ -2005,9 +1981,6 @@ Se perderán todos sus datos.</value>
   <data name="Error_Validation_Window_Timeout" xml:space="preserve">
     <value>Se ha producido un error de tiempo de espera al mostrar la ventana de validación</value>
   </data>
-  <data name="Printer_Not_Found" xml:space="preserve">
-    <value>No se ha encontrado la impresora</value>
-  </data>
   <data name="Print_Orientation_Format" xml:space="preserve">
     <value>Formato:</value>
   </data>
@@ -2071,14 +2044,8 @@ Se perderán todos sus datos.</value>
   <data name="Print_Current_Panel" xml:space="preserve">
     <value>Panel actual</value>
   </data>
-  <data name="Print_Panels" xml:space="preserve">
-    <value>Paneles:</value>
-  </data>
   <data name="Subaddress_Abbr" xml:space="preserve">
     <value>Sub.addr</value>
-  </data>
-  <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
-    <value>** nombre del sistema no establecido **</value>
   </data>
   <data name="See_IO_Configuration_Abbr" xml:space="preserve">
     <value>Ver E/S  →</value>

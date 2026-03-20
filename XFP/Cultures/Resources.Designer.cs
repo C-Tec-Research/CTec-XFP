@@ -2484,15 +2484,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while printing document..
-        /// </summary>
-        public static string Error_Printing_Document {
-            get {
-                return ResourceManager.GetString("Error_Printing_Document", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Normal string is blank.
         /// </summary>
         public static string Error_Quiescent_String_Blank {
@@ -3976,15 +3967,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All pages.
-        /// </summary>
-        public static string Print_All_Pages {
-            get {
-                return ResourceManager.GetString("Print_All_Pages", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to All panels.
         /// </summary>
         public static string Print_All_Panels {
@@ -3994,29 +3976,11 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current page.
-        /// </summary>
-        public static string Print_Current_Page {
-            get {
-                return ResourceManager.GetString("Print_Current_Page", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Current panel.
         /// </summary>
         public static string Print_Current_Panel {
             get {
                 return ResourceManager.GetString("Print_Current_Panel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ** system name not set **.
-        /// </summary>
-        public static string Print_Error_System_Name_Not_Set {
-            get {
-                return ResourceManager.GetString("Print_Error_System_Name_Not_Set", resourceCulture);
             }
         }
         
@@ -4039,29 +4003,11 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copies:.
-        /// </summary>
-        public static string Print_Num_Copies {
-            get {
-                return ResourceManager.GetString("Print_Num_Copies", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Print only fitted devices.
         /// </summary>
         public static string Print_Only_Fitted_Devices {
             get {
                 return ResourceManager.GetString("Print_Only_Fitted_Devices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Order by:.
-        /// </summary>
-        public static string Print_Order_By {
-            get {
-                return ResourceManager.GetString("Print_Order_By", resourceCulture);
             }
         }
         
@@ -4120,38 +4066,11 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Panels:.
-        /// </summary>
-        public static string Print_Panels {
-            get {
-                return ResourceManager.GetString("Print_Panels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string Print_Properties {
             get {
                 return ResourceManager.GetString("Print_Properties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select pages:.
-        /// </summary>
-        public static string Print_Select_Pages {
-            get {
-                return ResourceManager.GetString("Print_Select_Pages", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Printer not found.
-        /// </summary>
-        public static string Printer_Not_Found {
-            get {
-                return ResourceManager.GetString("Printer_Not_Found", resourceCulture);
             }
         }
         
@@ -4632,24 +4551,6 @@ namespace Xfp.Cultures {
         public static string Select_Port {
             get {
                 return ResourceManager.GetString("Select_Port", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select Print Options.
-        /// </summary>
-        public static string Select_Print_Options {
-            get {
-                return ResourceManager.GetString("Select_Print_Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Printer:.
-        /// </summary>
-        public static string Select_Printer {
-            get {
-                return ResourceManager.GetString("Select_Printer", resourceCulture);
             }
         }
         

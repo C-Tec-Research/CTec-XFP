@@ -1773,29 +1773,14 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   <data name="Print_Loop_Information" xml:space="preserve">
     <value>Informations Circuits</value>
   </data>
-  <data name="Select_Print_Options" xml:space="preserve">
-    <value>Options d'Impression</value>
-  </data>
   <data name="Option_Print" xml:space="preserve">
     <value>_Imprimer</value>
   </data>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Imprimer tous les dispositifs de circuit</value>
   </data>
-  <data name="Print_All_Pages" xml:space="preserve">
-    <value>Toutes les pages</value>
-  </data>
-  <data name="Print_Current_Page" xml:space="preserve">
-    <value>Page actuelle</value>
-  </data>
-  <data name="Print_Num_Copies" xml:space="preserve">
-    <value>Exemplaires :</value>
-  </data>
   <data name="Print_Only_Fitted_Devices" xml:space="preserve">
     <value>Imprimer uniquement les dispositifs présents</value>
-  </data>
-  <data name="Print_Order_By" xml:space="preserve">
-    <value>Trier par :</value>
   </data>
   <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Numéro du dispositif</value>
@@ -1808,9 +1793,6 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Propriétés</value>
-  </data>
-  <data name="Print_Select_Pages" xml:space="preserve">
-    <value>Sélectionner des pages :</value>
   </data>
   <data name="Cancel_Changes" xml:space="preserve">
     <value>Annuler les modifications ?</value>
@@ -1856,12 +1838,6 @@ Que voulez-vous faire avec les paramètres du panneau {1} ?</value>
   </data>
   <data name="Printer_Status" xml:space="preserve">
     <value>Statut :</value>
-  </data>
-  <data name="Select_Printer" xml:space="preserve">
-    <value>Imprimante :</value>
-  </data>
-  <data name="Error_Printing_Document" xml:space="preserve">
-    <value>Une erreur s'est produite lors de l'impression du document.</value>
   </data>
   <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
     <value>La configuration du site manque d'informations - voir La fenêtre Validation des données pour plus de détails.
@@ -1998,9 +1974,6 @@ Toutes ses données seront perdues.</value>
   <data name="Error_Validation_Window_Timeout" xml:space="preserve">
     <value>Une erreur de délai d'attente s'est produite lors de l'affichage de la Fenêtre de Validation.</value>
   </data>
-  <data name="Printer_Not_Found" xml:space="preserve">
-    <value>Imprimante non trouvée</value>
-  </data>
   <data name="Print_Orientation_Format" xml:space="preserve">
     <value>Format :</value>
   </data>
@@ -2064,14 +2037,8 @@ Toutes ses données seront perdues.</value>
   <data name="Print_Current_Panel" xml:space="preserve">
     <value>Actuel</value>
   </data>
-  <data name="Print_Panels" xml:space="preserve">
-    <value>Panneaux :</value>
-  </data>
   <data name="Subaddress_Abbr" xml:space="preserve">
     <value>S.addr</value>
-  </data>
-  <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
-    <value>** nom du système non défini **</value>
   </data>
   <data name="See_IO_Configuration_Abbr" xml:space="preserve">
     <value>Voir E/S  →</value>

@@ -35,7 +35,7 @@ namespace Xfp.Printing
         {
             if (printParams.PrintQueue == null)
             {
-                CTecMessageBox.ShowOKError(Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
+                CTecMessageBox.ShowOKError(CTecUtil.Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace Xfp.Printing
 
                 if (printQueue == null)
                 {
-                    CTecMessageBox.ShowOKError(Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
+                    CTecMessageBox.ShowOKError(CTecUtil.Cultures.Resources.Printer_Not_Found, CTecControls.Cultures.Resources.Print);
                     return;
                 }
 
@@ -60,7 +60,7 @@ namespace Xfp.Printing
                 var pageMargin = new Thickness(20);
 
                 var noSysName = string.IsNullOrWhiteSpace(data.SiteConfig.SystemName);
-                var sysName = noSysName ? Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
+                var sysName = noSysName ? CTecUtil.Cultures.Resources.Print_Error_System_Name_Not_Set : data.SiteConfig.SystemName;
 
                 // Create a FlowDocument
                 FlowDocument doc = new FlowDocument(PrintUtil.DocumentHeader(Cultures.Resources.XFP_Config_Print_Description, sysName, noSysName));
@@ -97,7 +97,7 @@ namespace Xfp.Printing
             }
             catch (Exception ex)
             {
-                CTecMessageBox.ShowException(Cultures.Resources.Error_Printing_Document, CTecControls.Cultures.Resources.Print, ex);
+                CTecMessageBox.ShowException(CTecUtil.Cultures.Resources.Error_Printing_Document, CTecControls.Cultures.Resources.Print, ex);
             }
         }
 

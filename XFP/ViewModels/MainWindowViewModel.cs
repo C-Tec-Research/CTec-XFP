@@ -925,21 +925,21 @@ namespace Xfp.ViewModels
 
         #region menu & button commands
         public void ShowPanelManagementWindow(Window parent) { ClosePopups(); CloseValidationWindow(); ShowPanelManagementPopup(parent); }
-        public ICommand FileNewCommand { get => new DelegateCommand(() => { ClosePopups(); FileNew(); }); }
-        public ICommand FileOpenCommand { get => new DelegateCommand(() => { ClosePopups(); FileOpen(); }); }
-        public ICommand FileSaveCommand { get => new DelegateCommand(() => { ClosePopups(); FileSave(); }); }
-        public ICommand FileSaveAsCommand { get => new DelegateCommand(() => { ClosePopups(); FileSaveAs(); }); }
-        public ICommand PrintCommand { get => new DelegateCommand(() => { ClosePopups(); showPrintOptions(); }); }
-        public ICommand ConnectSerialCommand { get => new DelegateCommand(() => { ClosePopups(); ConnectSerialPort(); }); }
+        public ICommand FileNewCommand          { get => new DelegateCommand(() => { ClosePopups(); FileNew(); }); }
+        public ICommand FileOpenCommand         { get => new DelegateCommand(() => { ClosePopups(); FileOpen(); }); }
+        public ICommand FileSaveCommand         { get => new DelegateCommand(() => { ClosePopups(); FileSave(); }); }
+        public ICommand FileSaveAsCommand       { get => new DelegateCommand(() => { ClosePopups(); FileSaveAs(); }); }
+        public ICommand PrintCommand            { get => new DelegateCommand(() => { ClosePopups(); showPrintOptions(); }); }
+        public ICommand ConnectSerialCommand    { get => new DelegateCommand(() => { ClosePopups(); ConnectSerialPort(); }); }
         public ICommand DisconnectSerialCommand { get => new DelegateCommand(() => { ClosePopups(); DisconnectSerialPort(); }); }
-        public ICommand SelectLanguageCommand { get => new DelegateCommand(() => { ClosePopups(); ShowLanguageSelector(); }); }
-        public ICommand ApolloProtocolCommand { get => new DelegateCommand(() => { ClosePopups(); setProtocol(CTecDevices.ObjectTypes.XfpApollo); }); }
-        public ICommand CastProtocolCommand { get => new DelegateCommand(() => { ClosePopups(); setProtocol(CTecDevices.ObjectTypes.XfpCast); }); }
-        public ICommand ZoomCommand { get => new DelegateCommand(() => { ClosePopups(); showZoomControl(); }); }
-        public ICommand DataCommand { get => new DelegateCommand(() => { ClosePopups(); showDataPopup(); }); }
-        public ICommand CommsLogCommand { get => new DelegateCommand(() => { ClosePopups(); ShowCommsLog(false); }); }
-        public ICommand AboutCommand { get => new DelegateCommand(() => { ClosePopups(); ShowAboutPopup(); }); }
-        public ICommand SwitchDebugModeCommand { get => new DelegateCommand(() => { ClosePopups(); ToggleDebugMode(); }); }
+        public ICommand SelectLanguageCommand   { get => new DelegateCommand(() => { ClosePopups(); ShowLanguageSelector(); }); }
+        public ICommand ApolloProtocolCommand   { get => new DelegateCommand(() => { ClosePopups(); setProtocol(CTecDevices.ObjectTypes.XfpApollo); }); }
+        public ICommand CastProtocolCommand     { get => new DelegateCommand(() => { ClosePopups(); setProtocol(CTecDevices.ObjectTypes.XfpCast); }); }
+        public ICommand ZoomCommand             { get => new DelegateCommand(() => { ClosePopups(); showZoomControl(); }); }
+        public ICommand DataCommand             { get => new DelegateCommand(() => { ClosePopups(); showDataPopup(); }); }
+        public ICommand CommsLogCommand         { get => new DelegateCommand(() => { ClosePopups(); ShowCommsLog(false); }); }
+        public ICommand AboutCommand            { get => new DelegateCommand(() => { ClosePopups(); ShowAboutPopup(); }); }
+        public ICommand SwitchDebugModeCommand  { get => new DelegateCommand(() => { ClosePopups(); ToggleDebugMode(); }); }
         #endregion
 
 
@@ -1475,8 +1475,6 @@ namespace Xfp.ViewModels
                 XfpPrinting.PrintConfig(_data, printDialog.PrintParams, PrintActions.Print);
             }
         }
-
-        internal void PrintPreview() { }
         #endregion
 
 

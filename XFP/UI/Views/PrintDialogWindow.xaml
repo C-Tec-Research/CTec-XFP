@@ -13,7 +13,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:PrintDialogWindowViewModel}"
         mc:Ignorable="d"
         ShowInTaskbar="True"
-        Title="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}"
+        Title="{Binding SelectPrintOptionsText}"
         Foreground="White"
         Loaded="window_Loaded"
         SizeChanged="window_SizeChanged"
@@ -87,7 +87,7 @@
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource Brush07}">
                 <StackPanel Orientation="Horizontal">
                     <ctc:Icon IconType="Print" Foreground="{StaticResource Brush02}" Width="16" Height="16" Margin="8,0,0,0"/>
-                    <TextBlock Text="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}" 
+                    <TextBlock Text="{Binding SelectPrintOptionsText}" 
                                Style="{StaticResource PopupTextTitle}" 
                                Visibility="{Binding LogText, Converter={StaticResource NonNullToVisibilityConverter}}"
                                Foreground="{StaticResource Brush02}" 
@@ -179,36 +179,36 @@
                     
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical" Margin="5,0,0,0">
 
-                        <RadioButton Content="{Binding Path=Print_All_Pages, Source={StaticResource Resources}}"
+                        <RadioButton Content="{Binding PrintAllPagesText}"
                                      GroupName="grpPages" 
                                      IsChecked="{Binding PrintAllPages}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,0,0,0"/>
                         <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" 
                                      GroupName="grpPages" 
-                                     IsChecked="{Binding PrintCurrentPage}" 
+                                     IsChecked="{Binding PrintCurrentPageText}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,2,0,0"/>
-                        <RadioButton Content="{Binding Path=Print_Select_Pages, Source={StaticResource Resources}}" 
+                        <RadioButton Content="{Binding PrintSelectedPagesText}" 
                                      GroupName="grpPages" 
                                      IsChecked="{Binding SelectPagesToPrint}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,10,0,0"/>
 
                         <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="15,5,0,0" IsEnabled="{Binding SelectPagesToPrint}" Opacity="{Binding SelectPagesToPrint, Converter={StaticResource BoolToOpacity80pcConverter}}">
-                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Site_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSiteConfig}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Print_Loop_Information, Source={StaticResource Resources}}" IsChecked="{Binding PrintLoopInfo}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
                             <StackPanel Orientation="Horizontal" Visibility="{Binding MaxLoops, Converter={StaticResource GreaterThanOneToVisibilityConverter}}" Margin="20,0,0,0">
                                 <TextBlock Text="{Binding Path=Loop_Select, Source={StaticResource Resources}}" Opacity="{Binding LoopSelectionAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}" Margin="0,0,10,5"/>
                                 <CheckBox Content="1" IsChecked="{Binding PrintLoop1}" IsEnabled="{Binding Loop1Available}" PreviewMouseDown="chk_PreviewMouseDown" Margin="0,0,10,0"/>
                                 <CheckBox Content="2" IsChecked="{Binding PrintLoop2}" IsEnabled="{Binding Loop2Available}" PreviewMouseDown="chk_PreviewMouseDown"/>
                             </StackPanel>
-                            <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}" PreviewMouseDown="chk_PreviewMouseDown"/>
-                            <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}" PreviewMouseDown="chk_PreviewMouseDown"/>
+                            <CheckBox Content="{Binding Path=Nav_Zone_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintZones}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Nav_Group_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintGroups}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Nav_Set_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintSets}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Nav_Network_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintNetworkConfig}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Nav_C_And_E_Configuration, Source={StaticResource Resources}}" IsChecked="{Binding PrintCAndE}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
+                            <CheckBox Content="{Binding Path=Print_Event_Log, Source={StaticResource Resources}}" IsChecked="{Binding PrintEventLog}" PreviewMouseDown="chk_PreviewMouseDown" Height="18"/>
                             <CheckBox Content="{Binding Path=Nav_Comments, Source={StaticResource Resources}}" IsChecked="{Binding PrintComments}" PreviewMouseDown="chk_PreviewMouseDown"/>
                         </StackPanel>
 
@@ -243,7 +243,7 @@
 
                     
                     <StackPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="15,10,0,30">
-                        <TextBlock Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,5,5,2"/>
+                        <TextBlock Text="{Binding PrintNumCopiesText}" Margin="0,5,5,2"/>
                         <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" PreviewMouseDown="cbo_PreviewMouseDown" PreviewKeyDown="cbo_PreviewMouseDown" Minimum="1" Maximum="10" Margin="0,5,0,0"/>
                     </StackPanel>
 

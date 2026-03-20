@@ -1866,9 +1866,6 @@ What do you want to do with the settings for panel {1}?</value>
   <data name="Print_Loop_Information" xml:space="preserve">
     <value>Loop Information</value>
   </data>
-  <data name="Select_Print_Options" xml:space="preserve">
-    <value>Select Print Options</value>
-  </data>
   <data name="Option_Print" xml:space="preserve">
     <value>_Print</value>
     <comment>Print option.  Underscore precedes shortcut key.</comment>
@@ -1876,22 +1873,8 @@ What do you want to do with the settings for panel {1}?</value>
   <data name="Print_All_Loop_Devices" xml:space="preserve">
     <value>Print all loop devices</value>
   </data>
-  <data name="Print_All_Pages" xml:space="preserve">
-    <value>All pages</value>
-  </data>
-  <data name="Print_Current_Page" xml:space="preserve">
-    <value>Current page</value>
-  </data>
-  <data name="Print_Num_Copies" xml:space="preserve">
-    <value>Copies:</value>
-    <comment>The number of print copies</comment>
-  </data>
   <data name="Print_Only_Fitted_Devices" xml:space="preserve">
     <value>Print only fitted devices</value>
-  </data>
-  <data name="Print_Order_By" xml:space="preserve">
-    <value>Order by:</value>
-    <comment>Sorting order</comment>
   </data>
   <data name="Print_Order_By_Device_Number" xml:space="preserve">
     <value>Device number</value>
@@ -1907,9 +1890,6 @@ What do you want to do with the settings for panel {1}?</value>
   </data>
   <data name="Print_Properties" xml:space="preserve">
     <value>Properties</value>
-  </data>
-  <data name="Print_Select_Pages" xml:space="preserve">
-    <value>Select pages:</value>
   </data>
   <data name="Cancel_Changes" xml:space="preserve">
     <value>Cancel changes?</value>
@@ -1955,12 +1935,6 @@ What do you want to do with the settings for panel {1}?</value>
   </data>
   <data name="Printer_Status" xml:space="preserve">
     <value>Status:</value>
-  </data>
-  <data name="Select_Printer" xml:space="preserve">
-    <value>Printer:</value>
-  </data>
-  <data name="Error_Printing_Document" xml:space="preserve">
-    <value>An error occurred while printing document.</value>
   </data>
   <data name="Query_Site_Config_Warnings_Save_Anyway" xml:space="preserve">
     <value>The Site Configuration details are incomplete - see Data Validation window for details.
@@ -2100,9 +2074,6 @@ All of its data will be lost.</value>
   <data name="Error_Validation_Window_Timeout" xml:space="preserve">
     <value>There was a timeout error while showing the Validation window</value>
   </data>
-  <data name="Printer_Not_Found" xml:space="preserve">
-    <value>Printer not found</value>
-  </data>
   <data name="Print_Orientation_Format" xml:space="preserve">
     <value>Format:</value>
   </data>
@@ -2175,14 +2146,8 @@ All of its data will be lost.</value>
   <data name="Print_Current_Panel" xml:space="preserve">
     <value>Current panel</value>
   </data>
-  <data name="Print_Panels" xml:space="preserve">
-    <value>Panels:</value>
-  </data>
   <data name="Subaddress_Abbr" xml:space="preserve">
     <value>Sub.</value>
-  </data>
-  <data name="Print_Error_System_Name_Not_Set" xml:space="preserve">
-    <value>** system name not set **</value>
   </data>
   <data name="See_IO_Configuration_Abbr" xml:space="preserve">
     <value>See I/O  →</value>
