@@ -14,6 +14,8 @@ namespace Xfp.DataTypes
         internal XfpData()
         {
             ToolsVersion = BuildInfo.Details.Version;
+
+            var v = CTecUtil.BuildInfo.ParseProductVersionString(typeof(XfpData).Assembly);
             Comments = "";
         }
 
