@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using CTecUtil.StandardPanelDataTypes;
-using CTecUtil.Utils;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CTecControls.UI.ViewHelpers;
 using CTecDevices.Protocol;
-using Windows.ApplicationModel.SocialInfo;
-using Windows.ApplicationModel.Store;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData

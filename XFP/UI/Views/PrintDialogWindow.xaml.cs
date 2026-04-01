@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Printing;
@@ -9,7 +8,6 @@ using System.Windows.Input;
 using CTecControls.UI;
 using CTecUtil;
 using CTecUtil.Config;
-using Windows.Media.Devices;
 using Xfp.DataTypes;
 using Xfp.Printing;
 using Xfp.ViewModels;

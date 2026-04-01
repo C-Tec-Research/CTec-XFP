@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Windows;
 using CTecControls.UI;
 using CTecUtil;

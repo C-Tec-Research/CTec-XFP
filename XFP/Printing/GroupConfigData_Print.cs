@@ -1,13 +1,10 @@
-﻿using CTecControls.UI;
-using CTecUtil.Printing;
-using CTecUtil.Utils;
-using System;
-using System.Drawing.Printing;
-using System.Security.Policy;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Media;
+using CTecControls.UI;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 
 namespace Xfp.DataTypes.PanelData
 {

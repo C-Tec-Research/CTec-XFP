@@ -1,6 +1,6 @@
-﻿using CTecUtil.Utils;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
+using CTecUtil.Utils;
 using Xfp.DataTypes;
 using Xfp.ViewModels.PanelTools;
 

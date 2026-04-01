@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Xps;
 using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
-using TomsToolbox.Essentials;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;

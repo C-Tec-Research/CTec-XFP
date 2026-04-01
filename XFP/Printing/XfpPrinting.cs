@@ -1,20 +1,15 @@
-﻿using CTecControls.UI;
-using CTecUtil.Printing;
-using CTecUtil.UI;
-using CTecUtil.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Printing;
-using System.Reflection.Metadata;
-using System.Security.Cryptography;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
+using CTecControls.UI;
+using CTecUtil.Printing;
+using CTecUtil.UI;
 using Xfp.Config;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
-using Xfp.UI.Views.PanelTools;
 
 namespace Xfp.Printing
 {

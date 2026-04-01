@@ -1,6 +1,4 @@
-﻿using System.Printing;
-using System.Windows.Controls;
-using CTecUtil;
+﻿using CTecUtil;
 using CTecUtil.Printing;
 using Xfp.Config;
 

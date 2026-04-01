@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using CTecUtil;
 using CTecControls.UI;
 using Xfp.ViewModels;
 using Xfp.Config;
 using CTecUtil.Utils;
-using System.Threading;
 
 namespace Xfp.Views
 {

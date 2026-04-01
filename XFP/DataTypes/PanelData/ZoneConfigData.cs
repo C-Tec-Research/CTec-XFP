@@ -1,6 +1,5 @@
 ﻿﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using Xfp.UI.Interfaces;
 
 namespace Xfp.DataTypes.PanelData

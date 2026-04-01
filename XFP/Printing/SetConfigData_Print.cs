@@ -1,17 +1,12 @@
-﻿using CTecControls.UI;
-using CTecUtil.Printing;
-using CTecUtil.Utils;
-using System;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Xml.Linq;
-using Windows.ApplicationModel.Email.DataProvider;
+using CTecControls.UI;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 using Xfp.UI.ViewHelpers;
-using static Xfp.DataTypes.PanelData.GroupConfigData;
 
 namespace Xfp.DataTypes.PanelData
 {

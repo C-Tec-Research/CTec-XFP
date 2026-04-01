@@ -1,7 +1,6 @@
 ﻿using CTecDevices;
 using CTecDevices.Protocol;
 using System;
-using System.Security.Policy;
 
 namespace Xfp.DataTypes.PanelData
 {

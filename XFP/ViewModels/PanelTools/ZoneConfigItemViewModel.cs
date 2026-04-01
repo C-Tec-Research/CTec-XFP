@@ -1,9 +1,8 @@
-﻿using CTecDevices.Protocol;
-using CTecUtil.StandardPanelDataTypes;
-using CTecUtil.ViewModels;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using CTecUtil.StandardPanelDataTypes;
+using CTecUtil.ViewModels;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 

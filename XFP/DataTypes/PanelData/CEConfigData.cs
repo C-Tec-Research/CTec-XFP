@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Xfp.UI.Interfaces;
 using CTecUtil.StandardPanelDataTypes;
-using CTecDevices.Protocol;
 
 namespace Xfp.DataTypes.PanelData
 {

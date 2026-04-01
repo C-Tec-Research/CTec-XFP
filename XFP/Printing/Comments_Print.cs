@@ -1,6 +1,6 @@
-﻿using CTecUtil.Printing;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Documents;
+using CTecUtil.Printing;
 
 namespace Xfp.DataTypes.PanelData
 {

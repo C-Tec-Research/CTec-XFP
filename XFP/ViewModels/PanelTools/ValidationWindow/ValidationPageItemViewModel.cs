@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using Xfp.DataTypes;
+﻿using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 
 namespace Xfp.ViewModels.PanelTools.ValidationWindow

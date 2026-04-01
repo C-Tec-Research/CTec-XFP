@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using CTecControls.UI;
 using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
 using CTecUtil.Utils;

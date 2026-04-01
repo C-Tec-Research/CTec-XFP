@@ -1,12 +1,4 @@
-﻿using CTecUtil.Printing;
-using CTecUtil.Utils;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using Xfp.UI.Interfaces;
-
-namespace Xfp.DataTypes.PanelData
+﻿namespace Xfp.DataTypes.PanelData
 {
     public partial class EventLogData
     {

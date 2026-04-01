@@ -1,21 +1,12 @@
-﻿using CTecControls.UI;
-using CTecDevices.Protocol;
-using CTecUtil.Printing;
-using CTecUtil.UI;
-using CTecUtil.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Xml.Linq;
-using Xfp.DataTypes;
+using CTecUtil.Printing;
+using CTecUtil.Utils;
 using Xfp.UI.ViewHelpers;
-using static System.Windows.Forms.Design.AxImporter;
 
 namespace Xfp.DataTypes.PanelData
 {

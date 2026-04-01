@@ -1,9 +1,8 @@
-﻿using CTecUtil.Pipes;
-using System;
+﻿using System;
 using System.Globalization;
-using System.Threading;
 using System.Windows;
 using System.Windows.Markup;
+using CTecUtil.Pipes;
 
 namespace Xfp
 {

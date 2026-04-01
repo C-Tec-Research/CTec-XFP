@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using CTecControls.UI;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 
