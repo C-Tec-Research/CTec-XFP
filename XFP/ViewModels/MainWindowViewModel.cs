@@ -1661,13 +1661,11 @@ namespace Xfp.ViewModels
         public string   ExeVersion       { get => string.Format(Cultures.Resources.Version_x_Abbr, BuildInfo.Details.Version); }
         public string   ControlsVersion  { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecControls.BuildInfo.Details.Version); }
         public string   DevicesVersion   { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecDevices.BuildInfo.Details.Version); }
-        public string   FtdiVersion      { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecFtdi.BuildInfo.Details.Version); }
         public string   UtilVersion      { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecUtil.BuildInfo.Details.Version); }
 
         public DateTime ExeDate          { get => BuildInfo.Details.BuildDate.Value; }
         public DateTime ControlsDate     { get => CTecControls.BuildInfo.Details.BuildDate.Value; }
         public DateTime DevicesDate      { get => CTecDevices.BuildInfo.Details.BuildDate.Value; }
-        public DateTime FtdiDate         { get => CTecFtdi.BuildInfo.Details.BuildDate.Value; }
         public DateTime UtilDate         { get => CTecUtil.BuildInfo.Details.BuildDate.Value; }
 
         public string   CopyrightDetails { get => string.Format(Cultures.Resources.Copyright_Details, BuildInfo.Details.BuildYear); }

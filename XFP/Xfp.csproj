@@ -129,7 +129,6 @@
     </EmbeddedResource>
     <ProjectReference Include="..\..\CTecControls\CTecControls.csproj" />
     <ProjectReference Include="..\..\CTecDevices\CTecDevices.csproj" />
-    <ProjectReference Include="..\..\CTecFtdi\CTecFtdi.csproj" />
     <ProjectReference Include="..\..\CTecUtil\CTecUtil.csproj" />
     <Resource Include="UI\Images\c-tec.gif" />
     <Resource Include="UI\Images\download-all.png">

@@ -1265,9 +1265,6 @@
                                 <TextBlock Grid.Row="3" Grid.Column="0" Text="CTecDevices" FontWeight="DemiBold" Margin="20,0,0,3"/>
                                 <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding DevicesVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
 
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="CTecFtdi" FontWeight="DemiBold" Margin="20,0,0,3"/>
-                                <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding FtdiVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
-
                                 <TextBlock Grid.Row="5" Grid.Column="0" Text="CTecUtil" FontWeight="DemiBold" Margin="20,0,0,3"/>
                                 <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding UtilVersion}" FontWeight="DemiBold" Margin="0,0,0,3"/>
 
