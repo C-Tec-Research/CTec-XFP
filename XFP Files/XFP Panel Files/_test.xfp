@@ -17777,9 +17777,9 @@ File XFPTools
   InstallerAddress1 = 
   InstallerAddress5 = 
   InstallerAddress4 = 
-  NightBegin = 00:00
-  NightEnd = 00:00
-  ReCal = 04:00
+  NightBegin = 23:59
+  NightEnd = 06:36
+  ReCal = 01:00
   PanelSounder1_Group = 15
   PanelSounder2_Group = 16
   Day_Enable_Flags = 0
