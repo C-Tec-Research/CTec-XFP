@@ -47,11 +47,12 @@ namespace Xfp.ViewModels
 {
     public class MainWindowViewModel : PanelToolsPageViewModelBase, IPanelToolsViewModel, IDisposable
     {
-        public MainWindowViewModel(Window window, HamburgerMenu hamb, NumberSpinner panelControl) : base(window)
+        public MainWindowViewModel(Window window, HamburgerMenu hamb, NumberSpinner panelControl, TextBlock aboutHeaderTextBlock) : base(window)
         {
             _mainAppWindow = window;
             _mainMenu = hamb;
             _panelControl = panelControl;
+            AboutHeaderTextBlock = aboutHeaderTextBlock;
 
             XfpApplicationConfig.Settings.InitConfigSettings(SupportedApps.XFP, updateFileMenuRecentFiles);
 
@@ -1644,9 +1645,10 @@ namespace Xfp.ViewModels
 
         public bool CloseAboutPopup()
         {
-            bool closedIt = AboutIsOpen;
-            AboutIsOpen = false;
-            return closedIt;
+            //bool closedIt = AboutIsOpen;
+            //AboutIsOpen = false;
+            //return closedIt;
+return true;
         }
 
 

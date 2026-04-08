@@ -29,11 +29,10 @@ namespace Xfp.Views
             //initialize icon definition resources
             CTecControls.Util.IconUtilities.InitIconResources();
 
-            DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl/*, popPanelManagement*/);
+            DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl, txtAboutHeader);
 
             _context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
             _context.RecentFilesChanged = recentFilesChanged;
-            _context.AboutHeaderTextBlock = txtAboutHeader;
 
             recentFilesChanged();
 
