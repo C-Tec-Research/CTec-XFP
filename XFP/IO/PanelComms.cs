@@ -83,7 +83,7 @@ namespace Xfp.IO
         #region add request commands
 
         #region firmware version
-        internal static void AddCommandRequestFirmwareVersion() => SerialComms.EnqueueCommand(XfpCommands.RequestFirmwareVersion(), null, receiveFirmwareVersion);
+        //internal static void AddCommandRequestFirmwareVersion() => SerialComms.EnqueueCommand(XfpCommands.RequestFirmwareVersion(), null, receiveFirmwareVersion);
         #endregion
 
         # region devices
@@ -185,9 +185,9 @@ namespace Xfp.IO
 
         internal delegate bool PanelDataHandler(object d);
 
-        internal static PanelDataHandler AckReceived;
+        //internal static PanelDataHandler AckReceived;
 
-        internal static PanelDataHandler FirmwareVersionReceived;
+        //internal static PanelDataHandler FirmwareVersionReceived;
 
         internal static PanelDataHandler DeviceReceived;
         internal static PanelDataHandler BaseSounderGroupReceived;
@@ -229,7 +229,7 @@ namespace Xfp.IO
         private static SerialComms.ReceivedResponseDataHandler receiveZoneGroup          = new((data, index) => (bool)ZoneGroupReceived?.Invoke        (GroupConfigData.GroupBundle.Parse          (data, XfpCommands.ResponseIsZoneGroupRequest, index)));
         private static SerialComms.ReceivedResponseDataHandler receiveZoneSet            = new((data, index) => (bool)ZoneSetReceived?.Invoke          (SetConfigData.SetBundle.Parse              (data, XfpCommands.ResponseIsZoneSetRequest, index)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveFirmwareVersion    = new((data, index) => (bool)FirmwareVersionReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsFirmwareVersionRequest,   XfpPanelData.FirmwareVersionLength, true)));
+        //private static SerialComms.ReceivedResponseDataHandler receiveFirmwareVersion    = new((data, index) => (bool)FirmwareVersionReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsFirmwareVersionRequest,   XfpPanelData.FirmwareVersionLength, true)));
         private static SerialComms.ReceivedResponseDataHandler receiveQuiescentString    = new((data, index) => (bool)QuiescentStringReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsQuiescentStringRequest,   PanelConfigData.MaxQuiescentStringLength)));
         private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceString  = new((data, index) => (bool)MaintenanceStringReceived?.Invoke(Text.Parse                                 (data, XfpCommands.ResponseIsMaintenanceStringRequest, PanelConfigData.MaxMaintenanceStringLength)));
         private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceDate    = new((data, index) => (bool)MaintenanceDateReceived?.Invoke  (Date.Parse                                 (data, XfpCommands.ResponseIsMaintenanceDateRequest)));
