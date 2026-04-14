@@ -1818,7 +1818,7 @@ namespace Xfp.ViewModels
                 }
             }
 
-            if (!dataHasBeenEdited || askOverwriteChanges(Cultures.Resources.Download_System))
+            if (!dataHasBeenEdited || askOverwriteChanges(allPages ? Cultures.Resources.Download_System : Cultures.Resources.Download_Page))
             {
                 CloseValidationWindow();
                 CloseCommsLog();
