@@ -1645,10 +1645,9 @@ namespace Xfp.ViewModels
 
         public bool CloseAboutPopup()
         {
-            //bool closedIt = AboutIsOpen;
-            //AboutIsOpen = false;
-            //return closedIt;
-return true;
+            bool closedIt = AboutIsOpen;
+            AboutIsOpen = false;
+            return closedIt;
         }
 
 
