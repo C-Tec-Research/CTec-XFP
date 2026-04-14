@@ -289,7 +289,7 @@ namespace Xfp.ViewModels.PanelTools
             for (int i = 0; i < _zoneConfigItems.Count; i++)
             {
                 var name = _zoneConfigItems[i].ZoneDesc;
-                PanelComms.AddCommandSetZoneName(new(i + 1, name, ZoneConfigData.MaxNameLength), string.Format(Cultures.Resources.Zone_x_Name_y, i + 1, name));
+                PanelComms.AddCommandSetZoneName(new(i, name, ZoneConfigData.MaxNameLength), string.Format(Cultures.Resources.Zone_x_Name_y, i + 1, name));
             }
 
             PanelComms.InitNewUploadCommandSubqueue(Cultures.Resources.Comms_Zones, uploadRequestsCompleted);
