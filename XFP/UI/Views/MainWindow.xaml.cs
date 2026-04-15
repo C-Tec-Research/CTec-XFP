@@ -328,6 +328,7 @@ namespace Xfp.Views
         private void Exit_PreviewMouseDown(object sender, MouseButtonEventArgs e) => exitApp();
         private void LeftBar_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();
         private void MainPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e) => closeMenus();
+        private void History_Click(object sender, RoutedEventArgs e) => _context.ShowRevisionHistoryWindow();
 
         private void recentFilesMenuItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -342,7 +343,5 @@ namespace Xfp.Views
             if (e.ClickCount > 1)
                 _context.HighlightProtocolsMenu(mnuProtocol, mnuProtocols, mnuExit);
         }
-
-        private void History_Click(object sender, RoutedEventArgs e) => _context.ShowRevisionHistoryWindow();
     }
 }
