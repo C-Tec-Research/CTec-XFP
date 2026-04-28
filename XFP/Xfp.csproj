@@ -8,8 +8,8 @@
     <ApplicationIcon>Resources/xfp.ico</ApplicationIcon>
 	<SourceRevisionId>Build=$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))</SourceRevisionId>
 	<AssemblyName>XfpTools</AssemblyName>
-	<AssemblyVersion>8.1.15</AssemblyVersion>
-	<FileVersion>8.1.15</FileVersion>
+	<AssemblyVersion>8.1.16</AssemblyVersion>
+	<FileVersion>8.1.16</FileVersion>
 	<PlatformTarget>AnyCPU</PlatformTarget>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
 	<SignAssembly>True</SignAssembly>
