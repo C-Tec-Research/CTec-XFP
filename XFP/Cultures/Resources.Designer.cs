@@ -3967,24 +3967,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All panels.
-        /// </summary>
-        public static string Print_All_Panels {
-            get {
-                return ResourceManager.GetString("Print_All_Panels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current panel.
-        /// </summary>
-        public static string Print_Current_Panel {
-            get {
-                return ResourceManager.GetString("Print_Current_Panel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Event Log.
         /// </summary>
         public static string Print_Event_Log {

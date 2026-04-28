@@ -147,14 +147,14 @@ namespace Xfp.ViewModels
 
         #region text
         public string SelectPrintOptionsText => CTecUtil.Cultures.Resources.Select_Print_Options;
-        public string SelectPrinterText => CTecUtil.Cultures.Resources.Select_Printer;
-        public string CurentPanelText => Cultures.Resources.Print_Current_Panel;
-        public string AllPanelsText => Cultures.Resources.Print_All_Panels;
-        public string PrintAllPagesText => CTecUtil.Cultures.Resources.Print_All_Pages;
-        public string PrintCurrentPageText => CTecUtil.Cultures.Resources.Print_Current_Page;
+        public string SelectPrinterText      => CTecUtil.Cultures.Resources.Select_Printer;
+        public string CurentPanelText        => CTecUtil.Cultures.Resources.Print_Current_Panel;
+        public string AllPanelsText          => CTecUtil.Cultures.Resources.Print_All_Panels;
+        public string PrintAllPagesText      => CTecUtil.Cultures.Resources.Print_All_Pages;
+        public string PrintCurrentPageText   => CTecUtil.Cultures.Resources.Print_Current_Page;
         public string PrintSelectedPagesText => CTecUtil.Cultures.Resources.Print_Select_Pages;
-        public string PrintOrderByText => CTecUtil.Cultures.Resources.Print_Order_By;
-        public string PrintNumCopiesText => CTecUtil.Cultures.Resources.Print_Num_Copies;
+        public string PrintOrderByText       => CTecUtil.Cultures.Resources.Print_Order_By;
+        public string PrintNumCopiesText     => CTecUtil.Cultures.Resources.Print_Num_Copies;
         #endregion
 
 

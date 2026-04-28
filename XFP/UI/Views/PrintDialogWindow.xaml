@@ -13,7 +13,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:PrintDialogWindowViewModel}"
         mc:Ignorable="d"
         ShowInTaskbar="True"
-        Title="{Binding SelectPrintOptionsText}"
+        Title="{Binding Path=Select_Print_Options, Source={StaticResource Resources}}"
         Foreground="White"
         Loaded="window_Loaded"
         SizeChanged="window_SizeChanged"
@@ -136,45 +136,26 @@
                         <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboPrinter"
                                   ItemsSource="{Binding Printers}"
                                   SelectedItem="{Binding SelectedPrinter}"
-                                    
                                   PreviewMouseDown="cboPrinter_PreviewMouseDown"
                                   MinWidth="150" MaxWidth="295"/>
-
-                        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Print_Num_Copies, Source={StaticResource Resources}}" Margin="0,5,5,2"/>
-                        <ctc:NumberSpinner Grid.Row="1" Grid.Column="1" Value="{Binding NumCopies}" Minimum="1" Maximum="10" Margin="0,5,0,0"/>-->
                         
                     </Grid>
                     <!--#endregion-->
-
-                    <!--<StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Visibility="{Binding Loop}" Margin="25,0,0,0">
-                        <CheckBox IsChecked="{Binding Print_All_Panels}" Content="{Binding Path=All_Panels, Source={StaticResource Resources}}" Margin="0,0,0,5"/>
-                        <ListView FlowDirection="LeftToRight" Margin="15,0,0,0">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Content="1"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>-->
+                    
 
                     <!--#region data range-->
                     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0,0,10">
-                        <TextBlock Text="{Binding Path=Print_Panels, Source={StaticResource Resources}}" Margin="0,0,8,2"/>
-                        <RadioButton Content="{Binding Path=Print_Current_Panel, Source={StaticResource Resources}}" GroupName="grpPanels" 
+                        <TextBlock Text="{Binding Path=Print_Panels, Source={StaticResource Resources}}" Margin="5,0,0,2"/>
+                        <RadioButton Content="{Binding CurrentPanelText}" GroupName="grpPanels" 
                                      IsChecked="{Binding PrintSelectedPanel}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,3,0,0"/>
-                        <RadioButton Content="{Binding Path=Print_All_Panels, Source={StaticResource Resources}}" GroupName="grpPanels" 
+                        <RadioButton Content="{Binding AllPanelsText}" GroupName="grpPanels" 
                                      IsChecked="{Binding PrintAllPanels}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      IsEnabled="{Binding PanelCount, Converter={StaticResource GreaterThanOneConverter}}" 
                                      Opacity="{Binding PanelCount, Converter={StaticResource EqualsOneToOpacity40Converter}}" 
-                                     FontSize="13" Margin="5,3,0,0"/>
+                                     FontSize="13" Margin="8,3,0,0"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical" Margin="5,0,0,0">
@@ -184,9 +165,9 @@
                                      IsChecked="{Binding PrintAllPages}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,0,0,0"/>
-                        <RadioButton Content="{Binding Path=Print_Current_Page, Source={StaticResource Resources}}" 
+                        <RadioButton Content="{Binding PrintCurrentPageText}" 
                                      GroupName="grpPages" 
-                                     IsChecked="{Binding PrintCurrentPageText}" 
+                                     IsChecked="{Binding PrintCurrentPage}" 
                                      PreviewMouseDown="rad_PreviewMouseDown"
                                      FontSize="13" Margin="0,2,0,0"/>
                         <RadioButton Content="{Binding PrintSelectedPagesText}" 

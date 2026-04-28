@@ -2038,12 +2038,6 @@ Se perderán todos sus datos.</value>
   <data name="Panel_x_Settings" xml:space="preserve">
     <value>Configuración del panel {0}</value>
   </data>
-  <data name="Print_All_Panels" xml:space="preserve">
-    <value>Todos los paneles</value>
-  </data>
-  <data name="Print_Current_Panel" xml:space="preserve">
-    <value>Panel actual</value>
-  </data>
   <data name="Subaddress_Abbr" xml:space="preserve">
     <value>Sub.addr</value>
   </data>
