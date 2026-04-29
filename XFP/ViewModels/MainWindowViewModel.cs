@@ -1880,8 +1880,14 @@ namespace Xfp.ViewModels
                 //are any devices or zones not already prefixed correctly?
                 if (!checkEnvisionPrefixes())
                 {
-                    if (CTecMessageBox.ShowYesNo(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support, Bitmaps.GetBitmap("envision"), UI.Styles.EnvisionMessageHeaderBackgroundBrush) == MessageBoxResult.Yes)
-                        updateEnvisionPrefixes();
+                    switch (CTecMessageBox.ShowYesNoCancelQuery(Cultures.Resources.Query_Is_Panel_Envision_Enabled, Cultures.Resources.Envision_Support, CTecDevices.Util.Bitmaps.GetBitmap("envision-logo", CTecDevices.ObjectTypes.Envision), UI.Styles.EnvisionMessageHeaderBackgroundBrush))
+                    {
+                        case MessageBoxResult.Yes:
+                            updateEnvisionPrefixes();
+                            break;
+                        case MessageBoxResult.Cancel:
+                            return;
+                    }
                 }
             }
 
