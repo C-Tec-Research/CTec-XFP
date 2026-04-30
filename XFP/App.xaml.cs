@@ -1,5 +1,8 @@
-﻿using CTecUtil.Pipes;
+﻿using CTecControls.UI;
+using CTecUtil.Pipes;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -56,23 +59,25 @@ namespace Xfp
 
             CTecUtil.UI.UIState.SetBusyState();
 
-            AnotherInstanceIsRunning = CTecUtil.SingletonApp.CheckForAnotherInstance();
-
-            ////don't start up if an instance of the app is already running
-            //if (CTecUtil.SingletonApp.SwitchIfAlreadyRunning())
+            //if ((AnotherInstanceIsRunning = CTecUtil.SingletonApp.CheckForAnotherInstance())
+            // && CTecMessageBox.ShowYesNoQuery("Another instance of Xfp is already running. Do you want to switch to it?", "Xfp") == MessageBoxResult.Yes)
             //{
-            //    if (e.Args.Length > 0)
+            //    //don't start up if an instance of the app is already running
+            //    if (CTecUtil.SingletonApp.TrySwitchToOtherInstance())
             //    {
-            //        //if args is present treat it as an XFP file path: send this to the other app instance which can then attempt to open it
-            //        List<PipeTransferData> dataToSend = new() { new(PipeTransferData.DataTypes.Path, e.Args[0])};
-            //        _pipeClient = new PipeClient();
-            //        //data is sent in json format
-            //        _pipeClient.Send(JsonConvert.SerializeObject(dataToSend, Formatting.Indented), SingletonPipeName, 3000);
-            //        _pipeClient = null;
-            //    }
+            //        if (e.Args.Length > 0)
+            //        {
+            //            //if args is present treat it as an XFP file path: send this to the other app instance which can then attempt to open it
+            //            List<PipeTransferData> dataToSend = new() { new(PipeTransferData.DataTypes.Path, e.Args[0])};
+            //            _pipeClient = new PipeClient();
+            //            //data is sent in json format
+            //            _pipeClient.Send(JsonConvert.SerializeObject(dataToSend, Formatting.Indented), SingletonPipeName, 3000);
+            //            _pipeClient = null;
+            //        }
 
-            //    close();
-            //    return;
+            //        close();
+            //        return;
+            //    }
             //}
 
             base.OnStartup(e);
