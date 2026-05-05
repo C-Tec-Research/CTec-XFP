@@ -286,7 +286,7 @@ namespace Xfp.DataTypes
         {
             _zones = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                _zones.Add(SetConfigData.GetSetName(i + 1));
+                _zones.Add(ZoneConfigData.GetZoneName(i + 1));
             return _zones;
         }
   
@@ -302,7 +302,7 @@ namespace Xfp.DataTypes
         {
             _zonesPanels = new();
             for (int i = 0; i < ZoneConfigData.NumZones; i++)
-                _zonesPanels.Add(SetConfigData.GetSetName(i + 1));
+                _zonesPanels.Add(ZoneConfigData.GetZoneName(i + 1));
             for (int i = 0; i < ZonePanelConfigData.NumZonePanels; i++)
                 _zonesPanels.Add(PanelConfigData.GetPanelName(i + 1));
             return _zonesPanels;
