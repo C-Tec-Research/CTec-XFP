@@ -501,7 +501,7 @@ namespace Xfp.DataTypes.PanelData
             };
         }
 
-        private string getTrueOrFalse(bool condition) => string.Format(Cultures.Resources.Condition_Is_x, condition ? Cultures.Resources.True : Cultures.Resources.False);
+        private string getTrueOrFalse(bool condition) => string.Format(Cultures.Resources.Condition_Is_x, TextUtil.BoolToString(condition));
 
 
         private int? getActionDeviceType(int? param, CEActionTypes actionType)
