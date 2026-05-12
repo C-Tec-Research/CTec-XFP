@@ -13,7 +13,7 @@
       Title="EventLogViewer">
 
     <Page.Resources>
-        <ctcvh:IsBlankToVisibilityConverter x:Key="IsBlankToVisibilityConverter"/>
+        <ctcvh:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Page.Resources>
     
     <Grid Margin="10,5,10,10">
@@ -32,7 +32,13 @@
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0" Padding="0">
 
             <Grid>
-                <ctc:CTecTextBox Text="{Binding Comments}"  PreviewKeyDown="comments_PreviewKeyDown" Style="{StaticResource CommentsText}" SpellCheck.IsEnabled="True" Margin="6" AcceptsReturn="True" AcceptsTab="True"/>
+                <ctc:CTecTextBox Text="{Binding Comments}"
+                                 PreviewKeyDown="comments_PreviewKeyDown"
+                                 PreviewKeyUp="comments_PreviewKeyUp"
+                                 Style="{StaticResource CommentsText}"
+                                 SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"
+                                 Margin="6"/>
+                
                 <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Text="{Binding Path=Comments_Is_Blank, Source={StaticResource Resources}}"
@@ -42,7 +48,7 @@
                            FontStyle="Italic"
                            FontSize="18"
                            IsHitTestVisible="False"
-                           Visibility="{Binding Comments, Converter={StaticResource IsBlankToVisibilityConverter}}"
+                           Visibility="{Binding CommentsIsBlank, Converter={StaticResource BoolToVisibilityConverter}}"
                            x:Name="UserMessage">
                 </TextBlock>
             </Grid>

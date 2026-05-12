@@ -25,5 +25,7 @@ namespace Xfp.UI.Views.PanelTools
             if (!_context.CheckChangesAreAllowed?.Invoke() ?? true)
                 e.Handled = true;
         }
+
+        private void comments_PreviewKeyUp(object sender, KeyEventArgs e) => _context.Comments = (sender as TextBox).Text;
     }
 }
