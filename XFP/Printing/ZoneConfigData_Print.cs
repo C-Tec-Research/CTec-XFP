@@ -242,46 +242,44 @@ namespace Xfp.DataTypes.PanelData
 
 
         private void setColumnWidths()
-        {
-            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
-            
+        {   
             //measure required column widths for columns
-            _wNum     = TableUtil.MeasureText("99").Width + cellMargins;
+            _wNum     = TableUtil.MeasureText("99").Width + PrintUtil.DefaultCellMargins;
             _wName    = GetMaxZonePanelNameLength();
             //_wNumZone = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins;
 
-            var wTime     = TableUtil.MeasureText("00:00").Width + cellMargins;
-            var wSounders = TableUtil.MeasureText(Cultures.Resources.Sounders).Width + cellMargins;
-            var wRelay1   = TableUtil.MeasureText(Cultures.Resources.Relay_1).Width + cellMargins;
-            var wRelay2   = TableUtil.MeasureText(Cultures.Resources.Relay_2).Width + cellMargins;
-            var wOutputs  = TableUtil.MeasureText(Cultures.Resources.Outputs).Width + cellMargins;
+            var wTime     = TableUtil.MeasureText("00:00").Width + PrintUtil.DefaultCellMargins;
+            var wSounders = TableUtil.MeasureText(Cultures.Resources.Sounders).Width + PrintUtil.DefaultCellMargins;
+            var wRelay1   = TableUtil.MeasureText(Cultures.Resources.Relay_1).Width + PrintUtil.DefaultCellMargins;
+            var wRelay2   = TableUtil.MeasureText(Cultures.Resources.Relay_2).Width + PrintUtil.DefaultCellMargins;
+            var wOutputs  = TableUtil.MeasureText(Cultures.Resources.Outputs).Width + PrintUtil.DefaultCellMargins;
             _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width;
 
             _wOutputDelaysCol  = Math.Max(wTime, Math.Max(wSounders, Math.Max(wRelay1, Math.Max(wRelay2, wOutputs))));
             //_wOutputDelaysMins = Math.Max(_wOutputDelaysCol * 4, TableUtil.MeasureText(Cultures.Resources.Output_Delays_Mins).Width + cellMargins);
 
-            var wDetectors = TableUtil.MeasureText(Cultures.Resources.Detectors).Width + cellMargins;
-            var wMCPs      = TableUtil.MeasureText(Cultures.Resources.MCPs).Width + cellMargins;
+            var wDetectors = TableUtil.MeasureText(Cultures.Resources.Detectors).Width + PrintUtil.DefaultCellMargins;
+            var wMCPs      = TableUtil.MeasureText(Cultures.Resources.MCPs).Width + PrintUtil.DefaultCellMargins;
             _wFunctioningWithCol = Math.Max(wDetectors, wMCPs);
             //_wFunctioningWith    = Math.Max(_wFunctioningWithCol * 4, TableUtil.MeasureText(Cultures.Resources.Functioning_With).Width + cellMargins);
 
             _wMultipleAlarmsEndDelays = 42;
 
-            var wDepOptionNotSet = TableUtil.MeasureText(Cultures.Resources.Not_Set).Width + cellMargins;
-            var wDepOptionNormal = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Normal).Width + cellMargins;
-            var wDepOptionInvest = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Investigation).Width + cellMargins;
-            var wDepOptionDwell  = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Dwelling).Width + cellMargins;
-            var wDepOptionA      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_A).Width + cellMargins;
-            var wDepOptionB      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_B).Width + cellMargins;
-            var wDepOptionC      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_C).Width + cellMargins;
+            var wDepOptionNotSet = TableUtil.MeasureText(Cultures.Resources.Not_Set).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionNormal = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Normal).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionInvest = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Investigation).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionDwell  = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_Dwelling).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionA      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_A).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionB      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_B).Width + PrintUtil.DefaultCellMargins;
+            var wDepOptionC      = TableUtil.MeasureText(Cultures.Resources.Zone_Dependency_C).Width + PrintUtil.DefaultCellMargins;
             var wDepOptions      = Math.Max(wDepOptionNotSet, Math.Max(wDepOptionNormal, Math.Max(wDepOptionInvest, Math.Max(wDepOptionDwell, Math.Max(wDepOptionA, Math.Max(wDepOptionB, wDepOptionC))))));
-            _wOption   = Math.Max(wDepOptions, TableUtil.MeasureText(Cultures.Resources.Option).Width + cellMargins);
-            var wDetector = TableUtil.MeasureText(Cultures.Resources.Detector).Width + cellMargins;
-            var wAlarm    = TableUtil.MeasureText(Cultures.Resources.Alarm).Width + cellMargins;
+            _wOption   = Math.Max(wDepOptions, TableUtil.MeasureText(Cultures.Resources.Option).Width + PrintUtil.DefaultCellMargins);
+            var wDetector = TableUtil.MeasureText(Cultures.Resources.Detector).Width + PrintUtil.DefaultCellMargins;
+            var wAlarm    = TableUtil.MeasureText(Cultures.Resources.Alarm).Width + PrintUtil.DefaultCellMargins;
             _wDetAlarmCol = Math.Max(wTime, Math.Max(wDetector, wAlarm));
 
-            var wDayDependenciesText   = TableUtil.MeasureText(Cultures.Resources.Day_Dependencies).Width + cellMargins;
-            var wNightDependenciesText = TableUtil.MeasureText(Cultures.Resources.Night_Dependencies).Width + cellMargins;
+            var wDayDependenciesText   = TableUtil.MeasureText(Cultures.Resources.Day_Dependencies).Width + PrintUtil.DefaultCellMargins;
+            var wNightDependenciesText = TableUtil.MeasureText(Cultures.Resources.Night_Dependencies).Width + PrintUtil.DefaultCellMargins;
 
             if (wDayDependenciesText   > _wOption + _wDetAlarmCol * 2) _wDetAlarmCol = (wDayDependenciesText - _wOption) / 2;
             if (wNightDependenciesText > _wOption + _wDetAlarmCol * 2) _wDetAlarmCol = (wNightDependenciesText - _wOption) / 2;

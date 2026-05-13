@@ -304,13 +304,11 @@ namespace Xfp.DataTypes.PanelData
 
         private void setColumnWidths()
         {
-            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right) + 1;
-            
             //measure required column widths for columns
             _wNum         = TableUtil.MeasureText("99").Width + 1;
             _wName        = _data.ZoneConfig.GetMaxZonePanelNameLength();
-            _wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + cellMargins + 1;
-            _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + cellMargins + 1;
+            _wNumGroup    = Math.Max(_wNum + _wName, TableUtil.MeasureText(Cultures.Resources.Zone).Width) + PrintUtil.DefaultCellMargins + 1;
+            _wArrow       = FontUtil.MeasureText(_arrow, TableUtil.FontFamily, _arrowFontSize, TableUtil.FontStyle, FontWeights.Normal, TableUtil.FontStretch).Width + PrintUtil.DefaultCellMargins + 1;
             _wSilenceable = TableUtil.MeasureText(Cultures.Resources.Is_Set_Silenceable).Width;
         }
 

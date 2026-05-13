@@ -286,31 +286,30 @@ namespace Xfp.DataTypes.PanelData
         private void setColumnWidths(int loopNum)
         {
             _wDeviceType = _wZGS = _wName = _wChan = _wVS = _wDN = _wRLED = _wBSG = _wSubaddr = _wIO = 0.0;
-            var cellMargins = (int)(PrintUtil.DefaultTableMargin.Left + PrintUtil.DefaultTableMargin.Right);
  
             foreach (var d in Loops[loopNum].Devices)
-                _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + cellMargins);
+                _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + PrintUtil.DefaultCellMargins);
             
             _wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones)).Width, 
                                        TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
-                                       TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + cellMargins;
+                                       TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + PrintUtil.DefaultCellMargins;
             _wName = 75;
-            _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + cellMargins;
+            _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + PrintUtil.DefaultCellMargins;
             _wVS   = 46;
-            _wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + cellMargins;
+            _wDN   = TableUtil.MeasureText(Cultures.Resources.Day_Night).Width + PrintUtil.DefaultCellMargins;
             _wRLED = 50;
             _wBSG  = 50;
             
             _subaddressHeader = Cultures.Resources.Subaddress_Short;
-            _wSubaddr  = (int)TableUtil.MeasureText(_subaddressHeader).Width  + cellMargins;
+            _wSubaddr  = (int)TableUtil.MeasureText(_subaddressHeader).Width  + PrintUtil.DefaultCellMargins;
             
             foreach (var s in DeviceTypes.CurrentProtocolIsXfpCast ? _xfpHushSubaddressNames : _defaultSubaddressNames)
-                _wSubaddr = Math.Max(_wSubaddr, (int)TableUtil.MeasureText(s).Width + cellMargins);
+                _wSubaddr = Math.Max(_wSubaddr, (int)TableUtil.MeasureText(s).Width + PrintUtil.DefaultCellMargins);
             
             var wIn  = (int)TableUtil.MeasureText(Cultures.Resources.Input).Width;
             var wOut = (int)TableUtil.MeasureText(Cultures.Resources.Output).Width;
             _wIO = Math.Max(wIn, wOut);
-            _wIO += cellMargins;
+            _wIO += PrintUtil.DefaultCellMargins;
 
             //_wDeviceType = Math.Min(_wDeviceType, 100);
         }
@@ -456,8 +455,8 @@ namespace Xfp.DataTypes.PanelData
             var isIODevice = device.IsIODevice && ioIndex.HasValue;
             var value      = isIODevice ? device.IOConfig[(int)ioIndex].ZoneGroupSet : device.Zone;
             
-            if (value < 0 || value > ZoneConfigData.NumZones)
-                return (null);
+            if (value is null || value < 0 || value > ZoneConfigData.NumZones)
+                return null;
 
             if (value == 0)
                 return Cultures.Resources.Use_In_Special_C_And_E;
@@ -465,10 +464,10 @@ namespace Xfp.DataTypes.PanelData
             var isSet = isIOSetting && device.IsZonalDevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output;
 
             if (device.IsGroupedDevice) 
-                return GroupConfigData.GetGroupName((int)value);
+                return GroupConfigData.GetGroupName(value);
             if (isSet) 
                 return SetConfigData.GetSetName((int)value);
-            return ZoneConfigData.GetZoneName((int)value);
+            return ZoneConfigData.GetZoneName(value);
         }
 
         private string getAncillaryBaseSounder(DeviceData device, int? group)
