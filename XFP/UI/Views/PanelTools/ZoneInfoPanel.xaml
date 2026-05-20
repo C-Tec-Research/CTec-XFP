@@ -128,6 +128,7 @@
                             <TextBox Text="{Binding ZoneDesc}" 
                                      MaxLength="{Binding MaxNameLength}"
                                      CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                     KeyUp="zoneDesc_KeyUp"
                                      HorizontalAlignment="Left"
                                      MinWidth="100" Margin="2,0,2,0"/>
                         </Border>

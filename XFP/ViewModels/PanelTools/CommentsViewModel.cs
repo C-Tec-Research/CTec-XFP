@@ -12,8 +12,8 @@ namespace Xfp.ViewModels.PanelTools
         public CommentsViewModel(FrameworkElement parent) : base(parent) { }
 
 
-        public string Comments { get => _data.Comments; set { _data.Comments = value; OnPropertyChanged(); OnPropertyChanged(nameof(CommentsIsBlank)); } }
-        public bool CommentsIsBlank =>  string.IsNullOrWhiteSpace(_data.Comments);
+        public string Comments       { get => _data.Comments; set { _data.Comments = value; OnPropertyChanged(); OnPropertyChanged(nameof(CommentsIsBlank)); } }
+        public bool CommentsIsBlank => string.IsNullOrWhiteSpace(_data.Comments);
 
 
         #region IAppViewModel implementation
@@ -28,6 +28,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             Validator.IsValid(Parent);
             OnPropertyChanged(nameof(IsReadOnly));
+            OnPropertyChanged(nameof(CommentsIsBlank));
         }
         #endregion
 

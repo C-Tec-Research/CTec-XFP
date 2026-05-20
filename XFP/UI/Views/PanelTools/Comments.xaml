@@ -32,7 +32,9 @@
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputPanelBorder}" Margin="0" Padding="0">
 
             <Grid>
-                <ctc:CTecTextBox Text="{Binding Comments}"
+                <ctc:CTecTextBox x:Name="comments"
+                                 Text="{Binding Comments}"
+                                 CommandManager.PreviewExecuted="comments_PreviewExecuted" 
                                  PreviewKeyDown="comments_PreviewKeyDown"
                                  PreviewKeyUp="comments_PreviewKeyUp"
                                  Style="{StaticResource CommentsText}"

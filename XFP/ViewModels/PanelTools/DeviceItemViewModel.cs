@@ -78,6 +78,7 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
+
         /// <summary>
         /// Check for Envision compatibility: for Apollo, the DeviceName must be 
         /// prefixed with the Envision device type code; returns true if protocol is CAST.

@@ -16,6 +16,9 @@ namespace Xfp.UI.Views.PanelTools
         {
             InitializeComponent();
             DataContext = _context = new DeviceInfoPanelViewModel(this);
+
+            //explicitly set the index
+            _context.OnZoneIndexSet = new((i) => cboZones.SelectedIndex = i);
         }
 
 

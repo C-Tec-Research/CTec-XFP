@@ -258,7 +258,8 @@
                                                       PreviewKeyDown="comboBox_PreviewKeyDown" 
                                                       IsEnabled="False" 
                                                       Opacity="0.4"/>
-                                            <ComboBox ItemsSource="{Binding Zones}"
+                                            <ComboBox x:Name="cboZones"
+                                                      ItemsSource="{Binding Zones}"
                                                       SelectedItem="{Binding Zone}"
                                                       MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                       PreviewMouseDown="comboBox_PreviewMouseDown" 
