@@ -3805,7 +3805,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Panel name #{0}: &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Panel name #{0} - {1}.
         /// </summary>
         public static string Panel_Name_x_Value_y {
             get {
@@ -6034,7 +6034,7 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zone {0} - &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Zone {0} - {1}.
         /// </summary>
         public static string Zone_x_Name_y {
             get {

@@ -1285,7 +1285,7 @@ de la sonda base</value>
     <value>Guardar archivo...</value>
   </data>
   <data name="Zone_x_Name_y" xml:space="preserve">
-    <value>Zona {0} - «{1}»</value>
+    <value>Zona {0} - {1}</value>
   </data>
   <data name="Not_Set" xml:space="preserve">
     <value>No configurado</value>
@@ -1958,7 +1958,7 @@ Se perderán todos sus datos.</value>
     <value>Dispositivo de bucle {0} #{1}</value>
   </data>
   <data name="Panel_Name_x_Value_y" xml:space="preserve">
-    <value>Nombre del panel #{0}: “{1}”</value>
+    <value>Nombre del panel #{0} - {1}</value>
   </data>
   <data name="Phased_Settings" xml:space="preserve">
     <value>Configuración por fases</value>

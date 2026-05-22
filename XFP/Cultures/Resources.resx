@@ -1358,7 +1358,7 @@ Do you want to replace it?</value>
     <value>Save File...</value>
   </data>
   <data name="Zone_x_Name_y" xml:space="preserve">
-    <value>Zone {0} - '{1}'</value>
+    <value>Zone {0} - {1}</value>
     <comment>Zone number and name</comment>
   </data>
   <data name="Not_Set" xml:space="preserve">
@@ -2049,7 +2049,7 @@ All of its data will be lost.</value>
     <value>Loop {0} device #{1}</value>
   </data>
   <data name="Panel_Name_x_Value_y" xml:space="preserve">
-    <value>Panel name #{0}: '{1}'</value>
+    <value>Panel name #{0} - {1}</value>
   </data>
   <data name="Phased_Settings" xml:space="preserve">
     <value>Phased settings</value>

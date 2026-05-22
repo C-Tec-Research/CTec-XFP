@@ -17,8 +17,12 @@ namespace Xfp.UI.Views.PanelTools
             InitializeComponent();
             DataContext = _context = new DeviceInfoPanelViewModel(this);
 
-            //explicitly set the index
-            _context.OnZoneIndexSet = new((i) => cboZones.SelectedIndex = i);
+            //explicitly set the indices
+            _context.OnZoneIndexSet    = new((idx)     => cboZones.SelectedIndex = idx);
+            _context.OnGroupIndexSet   = new((idx)     => cboGroups.SelectedIndex = cboGroupsPro.SelectedIndex = idx);
+            _context.OnIOZoneIndexSet  = new((io, idx) => (io switch { 1 => cboIO2Zone,  2 => cboIO3Zone,  3 => cboIO4Zone,  _ => cboIO1Zone  }).SelectedIndex = idx);
+            _context.OnIOGroupIndexSet = new((io, idx) => (io switch { 1 => cboIO2Group, 2 => cboIO3Group, 3 => cboIO4Group, _ => cboIO1Group }).SelectedIndex = idx);
+            _context.OnIOSetIndexSet   = new((io, idx) => (io switch { 1 => cboIO2Set,   2 => cboIO3Set,   3 => cboIO4Set,   _ => cboIO1Set   }).SelectedIndex = idx);
         }
 
 

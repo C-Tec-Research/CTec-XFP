@@ -1276,7 +1276,7 @@ Voulez-vous le remplacer?</value>
     <value>Enregistrer...</value>
   </data>
   <data name="Zone_x_Name_y" xml:space="preserve">
-    <value>Zone {0} - '{1}'</value>
+    <value>Zone {0} - {1}</value>
   </data>
   <data name="Not_Set" xml:space="preserve">
     <value>Non défini</value>
@@ -1951,7 +1951,7 @@ Toutes ses données seront perdues.</value>
     <value>Circuit {0} dispositif #{1}</value>
   </data>
   <data name="Panel_Name_x_Value_y" xml:space="preserve">
-    <value>Nom de panneau #{0}: '{1}'</value>
+    <value>Nom de panneau #{0} - {1}</value>
   </data>
   <data name="Phased_Settings" xml:space="preserve">
     <value>Paramètres des phases</value>

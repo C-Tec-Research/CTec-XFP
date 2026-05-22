@@ -24,12 +24,12 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
         
-        internal ZoneConfigData        ZoneData        { set => _zoneData = value; }
-        internal GroupConfigData       GroupData       { set => _groupData = value; }
+        internal ZoneConfigData  ZoneData  { set => _zoneData = value; }
+        internal GroupConfigData GroupData { set => _groupData = value; }
 
 
-        private DeviceData _deviceData;
-        private ZoneConfigData _zoneData;
+        private DeviceData      _deviceData;
+        private ZoneConfigData  _zoneData;
         private GroupConfigData _groupData;
 
         public delegate string DeviceNamesEntryGetter(int index);
@@ -39,9 +39,9 @@ namespace Xfp.ViewModels.PanelTools
         public DeviceNamesEntrySetter SetDeviceNamesEntry;
 
 
-        public int?   DeviceType { get => _deviceData.DeviceType;  set { _deviceData.DeviceType = value; RefreshView(); OnPropertyChanged(nameof(DeviceTypeIsValid)); } }
-        public int    Zone       { get => _deviceData.Zone;        set { _deviceData.Zone = value; RefreshView(); OnPropertyChanged(nameof(ZoneIsValid)); } }
-        public int    Group      { get => _deviceData.Group;       set { _deviceData.Group = value; RefreshView(); OnPropertyChanged(nameof(GroupIsValid)); } }
+        public int? DeviceType { get => _deviceData.DeviceType;  set { _deviceData.DeviceType = value; RefreshView(); OnPropertyChanged(nameof(DeviceTypeIsValid)); } }
+        public int  Zone       { get => _deviceData.Zone;        set { _deviceData.Zone = value; RefreshView(); OnPropertyChanged(nameof(ZoneIsValid)); } }
+        public int  Group      { get => _deviceData.Group;       set { _deviceData.Group = value; RefreshView(); OnPropertyChanged(nameof(GroupIsValid)); } }
         
         public int DeviceNameIndex
         {
@@ -104,18 +104,18 @@ namespace Xfp.ViewModels.PanelTools
         public bool?  RemoteLEDEnabled          { get => _deviceData.RemoteLEDEnabled;                                  set { _deviceData.RemoteLEDEnabled = value; OnPropertyChanged(); } }
         public bool?  HasAncillaryBaseSounder         => RemoteLEDEnabled == false;
         public int?   AncillaryBaseSounderGroup { get => _deviceData.AncillaryBaseSounderGroup;                         set { _deviceData.AncillaryBaseSounderGroup = value; OnPropertyChanged(); OnPropertyChanged(nameof(AncillaryBaseSounderGroupIsValid)); } }
-        public int?   DaySensitivity            { get => DaySensitivityIsValid ? _deviceData.DaySensitivity : null;     set { _deviceData.DaySensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
+        public int?   DaySensitivity            { get => DaySensitivityIsValid   ? _deviceData.DaySensitivity : null;   set { _deviceData.DaySensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
         public int?   NightSensitivity          { get => NightSensitivityIsValid ? _deviceData.NightSensitivity : null; set { _deviceData.NightSensitivity = value; OnPropertyChanged(); OnPropertyChanged(nameof(SensitivityValue)); OnPropertyChanged(nameof(DaySensitivityIsValid)); OnPropertyChanged(nameof(SensitivityIsValid)); } }
-        public int?   DayVolume                 { get => DayVolumeIsValid ? _deviceData.DayVolume : null;               set { _deviceData.DayVolume = value; OnPropertyChanged(); OnPropertyChanged(nameof(VolumeValue)); OnPropertyChanged(nameof(DayVolumeIsValid)); OnPropertyChanged(nameof(VolumeIsValid)); } }
-        public int?   NightVolume               { get => NightVolumeIsValid ? _deviceData.NightVolume : null;           set { _deviceData.NightVolume = value; OnPropertyChanged(); OnPropertyChanged(nameof(VolumeValue)); OnPropertyChanged(nameof(DayVolumeIsValid)); OnPropertyChanged(nameof(VolumeIsValid)); } }
-        public int?   DayMode                   { get => DayModeIsValid ? _deviceData.DayMode : null;                   set { _deviceData.DayMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(ModeValue)); OnPropertyChanged(nameof(DayModeIsValid)); OnPropertyChanged(nameof(ModeIsValid)); } }
-        public int?   NightMode                 { get => NightModeIsValid ? _deviceData.NightMode : null;               set { _deviceData.NightMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(ModeValue)); OnPropertyChanged(nameof(NightModeIsValid)); OnPropertyChanged(nameof(ModeIsValid)); } }
-        public string SensitivityDesc             => IsSensitivityDevice ? Cultures.Resources.Sensitivity : "--";
-        public string VolumeDesc                  => IsVolumeDevice ? Cultures.Resources.Volume : "--";
-        public string ModeDesc                    => IsModeDevice ? Cultures.Resources.Mode : "--";
-        public string SensitivityValue            => IsSensitivityDevice ? string.Format("{0} : {1}", DaySensitivity, NightSensitivity) : null;
-        public string VolumeValue                 => IsVolumeDevice      ? string.Format("{0} : {1}", DayVolume + 1, NightVolume + 1) : null;
-        public string ModeValue                   => IsModeDevice        ? string.Format("{0} : {1}", DayMode, NightMode) : null;
+        public int?   DayVolume                 { get => DayVolumeIsValid        ? _deviceData.DayVolume : null;        set { _deviceData.DayVolume = value; OnPropertyChanged(); OnPropertyChanged(nameof(VolumeValue)); OnPropertyChanged(nameof(DayVolumeIsValid)); OnPropertyChanged(nameof(VolumeIsValid)); } }
+        public int?   NightVolume               { get => NightVolumeIsValid      ? _deviceData.NightVolume : null;      set { _deviceData.NightVolume = value; OnPropertyChanged(); OnPropertyChanged(nameof(VolumeValue)); OnPropertyChanged(nameof(DayVolumeIsValid)); OnPropertyChanged(nameof(VolumeIsValid)); } }
+        public int?   DayMode                   { get => DayModeIsValid          ? _deviceData.DayMode : null;          set { _deviceData.DayMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(ModeValue)); OnPropertyChanged(nameof(DayModeIsValid)); OnPropertyChanged(nameof(ModeIsValid)); } }
+        public int?   NightMode                 { get => NightModeIsValid        ? _deviceData.NightMode : null;        set { _deviceData.NightMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(ModeValue)); OnPropertyChanged(nameof(NightModeIsValid)); OnPropertyChanged(nameof(ModeIsValid)); } }
+        public string SensitivityDesc             => IsSensitivityDevice         ? Cultures.Resources.Sensitivity : "--";
+        public string VolumeDesc                  => IsVolumeDevice              ? Cultures.Resources.Volume : "--";
+        public string ModeDesc                    => IsModeDevice                ? Cultures.Resources.Mode : "--";
+        public string SensitivityValue            => IsSensitivityDevice         ? string.Format("{0} : {1}", DaySensitivity, NightSensitivity) : null;
+        public string VolumeValue                 => IsVolumeDevice              ? string.Format("{0} : {1}", DayVolume + 1, NightVolume + 1) : null;
+        public string ModeValue                   => IsModeDevice                ? string.Format("{0} : {1}", DayMode, NightMode) : null;
         
 
         private int? _deviceSelectorDeviceType;

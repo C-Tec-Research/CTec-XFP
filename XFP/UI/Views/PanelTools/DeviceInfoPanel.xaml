@@ -304,7 +304,8 @@
                                                           PreviewKeyDown="comboBox_PreviewKeyDown" 
                                                           IsEnabled="False" 
                                                           Opacity="0.4"/>
-                                                <ComboBox ItemsSource="{Binding Groups}"
+                                                <ComboBox x:Name="cboGroups"
+                                                          ItemsSource="{Binding Groups}"
                                                           SelectedItem="{Binding Group}"
                                                           MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
@@ -767,7 +768,8 @@
                                                           PreviewKeyDown="comboBox_PreviewKeyDown" 
                                                           IsEnabled="False" 
                                                           Opacity="0.4"/>
-                                                <ComboBox ItemsSource="{Binding Groups}"
+                                                <ComboBox x:Name="cboGroupsPro"
+                                                          ItemsSource="{Binding Groups}"
                                                           SelectedItem="{Binding Group}"
                                                           MinWidth="80" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
@@ -867,21 +869,21 @@
                                 <Border BorderBrush="{Binding IOInputOutput1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0" Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
-                                                SelectedIndex="{Binding IOInputOutput1}"
-                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
-                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                PreviewKeyDown="showComboBoxDropdown" />
+                                              SelectedIndex="{Binding IOInputOutput1}"
+                                              MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                              PreviewKeyDown="showComboBoxDropdown" />
                                 </Border>
                                 <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
-                                            FontSize="18"
-                                            Foreground="{StaticResource BrushInfo}"
-                                            Visibility="{Binding DevicesHaveCommonIOInputOutput1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                           FontSize="18"
+                                           Foreground="{StaticResource BrushInfo}"
+                                           Visibility="{Binding DevicesHaveCommonIOInputOutput1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                             </StackPanel>
                             <TextBlock Grid.Row="2" Grid.Column="1" 
-                                        Text="{Binding IOInputOutputDesc1, Mode=OneWay}"
-                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                        Opacity="{Binding IOInUse1, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
-                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                                       Text="{Binding IOInputOutputDesc1, Mode=OneWay}"
+                                       Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                       Opacity="{Binding IOInUse1, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                       MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
 
                             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
@@ -1076,30 +1078,33 @@
                                         <Border BorderBrush="{Binding IOZoneSet1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
-                                                <ComboBox ItemsSource="{Binding Zones}"
-                                                            Text="{Binding IOZoneSet1}"
-                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <ComboBox x:Name="cboIO1Zone"
+                                                          ItemsSource="{Binding Zones}"
+                                                          Text="{Binding IOZoneSet1}"
+                                                          MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                                                 <Grid Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
-                                                    <ComboBox ItemsSource="{Binding Groups}"
-                                                                Text="{Binding IOZoneSet1}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                                    <ComboBox ItemsSource="{Binding Sets}"
-                                                                Text="{Binding IOZoneSet1}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO1Group"
+                                                              ItemsSource="{Binding Groups}"
+                                                              Text="{Binding IOZoneSet1}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO1Set"
+                                                              ItemsSource="{Binding Sets}"
+                                                              Text="{Binding IOZoneSet1}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1113,33 +1118,36 @@
                                         <Border BorderBrush="{Binding IOZoneSet2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
-                                                <ComboBox ItemsSource="{Binding Zones}"
-                                                            Text="{Binding IOZoneSet2}"
-                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown" 
-                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <ComboBox x:Name="cboIO2Zone"
+                                                          ItemsSource="{Binding Zones}"
+                                                          Text="{Binding IOZoneSet2}"
+                                                          MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown" 
+                                                          Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                                                 <Grid Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}">
-                                                    <ComboBox ItemsSource="{Binding Groups}"
-                                                                Text="{Binding IOZoneSet2}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                PreviewKeyDown="showComboBoxDropdown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                                    <ComboBox ItemsSource="{Binding Sets}"
-                                                                Text="{Binding IOZoneSet2}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                PreviewKeyDown="showComboBoxDropdown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO2Group"
+                                                              ItemsSource="{Binding Groups}"
+                                                              Text="{Binding IOZoneSet2}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO2Set"
+                                                              ItemsSource="{Binding Sets}"
+                                                              Text="{Binding IOZoneSet2}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1153,33 +1161,36 @@
                                         <Border BorderBrush="{Binding IOZoneSet3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
-                                                <ComboBox ItemsSource="{Binding Zones}"
-                                                            Text="{Binding IOZoneSet3}"
-                                                            MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown" 
-                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <ComboBox x:Name="cboIO3Zone"
+                                                          ItemsSource="{Binding Zones}"
+                                                          Text="{Binding IOZoneSet3}"
+                                                          MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown" 
+                                                          Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                                                 <Grid Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}">
-                                                    <ComboBox ItemsSource="{Binding Groups}"
-                                                                Text="{Binding IOZoneSet3}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                PreviewKeyDown="showComboBoxDropdown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                                    <ComboBox ItemsSource="{Binding Sets}"
-                                                                Text="{Binding IOZoneSet3}"
-                                                                MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                                PreviewKeyDown="showComboBoxDropdown" 
-                                                                Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO3Group"
+                                                              ItemsSource="{Binding Groups}"
+                                                              Text="{Binding IOZoneSet3}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    <ComboBox x:Name="cboIO3Set"
+                                                              ItemsSource="{Binding Sets}"
+                                                              Text="{Binding IOZoneSet3}"
+                                                              MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                              PreviewKeyDown="showComboBoxDropdown" 
+                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOZoneSet3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1193,7 +1204,8 @@
                                         <Border BorderBrush="{Binding IOZoneSet4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
-                                                <ComboBox ItemsSource="{Binding Zones}"
+                                                <ComboBox x:Name="cboIO4Zone"
+                                                          ItemsSource="{Binding Zones}"
                                                           Text="{Binding IOZoneSet4}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
@@ -1201,13 +1213,15 @@
                                                           Visibility="{Binding IOIsInput4, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                                                 <Grid Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}">
-                                                    <ComboBox ItemsSource="{Binding Groups}"
+                                                    <ComboBox x:Name="cboIO4Group"
+                                                              ItemsSource="{Binding Groups}"
                                                               Text="{Binding IOZoneSet4}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                                    <ComboBox ItemsSource="{Binding Sets}"
+                                                    <ComboBox x:Name="cboIO4Set"
+                                                              ItemsSource="{Binding Sets}"
                                                               Text="{Binding IOZoneSet4}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 

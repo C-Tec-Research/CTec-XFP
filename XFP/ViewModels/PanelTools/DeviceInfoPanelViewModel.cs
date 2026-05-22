@@ -245,56 +245,11 @@ namespace Xfp.ViewModels.PanelTools
 
         public string Zone
         {
-            get
-            {
-                return NoDeviceDetails ? "" : zoneIndex >= 0 && zoneIndex < Zones.Count ? Zones[(int)zoneIndex] : "";
-            //    zoneIndex = null;
-
-            //    if (NoDeviceDetails)
-            //        return null;
-
-            //    if (IsZonedDevice is null)
-            //        return null;
-
-            //    if (_deviceList.Count == 1)
-            //    {
-            //        zoneIndex = _deviceList[0].ZoneIndex;
-            //        if (!ZoneIsValid)
-            //        {
-            //            zoneIndex = -1;
-            //            return null;
-            //        }
-            //        return zoneIndex == -1 || zoneIndex >= Zones.Count ? null : Zones[zoneIndex??0];
-            //    }
-
-            //    zoneIndex = null;
-            //    foreach (var d in _deviceList)
-            //    {
-            //        if (d?.DeviceType is null)
-            //            continue;
-
-            //        if (zoneIndex is null)
-            //            zoneIndex = d.ZoneIndex;
-            //        else if (zoneIndex != d.ZoneIndex)
-            //        {
-            //            zoneIndex = null;
-            //            return null;
-            //        }
-            //    }
-
-            //    return zoneIndex is not null && zoneIndex > -1 && zoneIndex < ZoneConfigData.NumZones ?  Zones[(int)zoneIndex] : null;
-            }
+            get => NoDeviceDetails ? "" : zoneIndex >= 0 && zoneIndex < Zones.Count ? Zones[(int)zoneIndex] : "";
             set
             {
                 if (NoDeviceDetails)
                     return;
-
-                //if (value is not null)
-                //    foreach (var d in _deviceList)
-                //    {
-                //        d.ZoneIndex = (zoneIndex = findIndexInCombo(Zones, value))??0;
-                //        d.RefreshView();
-                //    }
 
                 for (int i = 0; i < Zones.Count; i++)
                 {
@@ -358,56 +313,147 @@ namespace Xfp.ViewModels.PanelTools
                 OnPropertyChanged(nameof(IndicateMultipleValues));
             }
         }
-
-        public string Group
+        
+        
+        private int? groupIndex
         {
             get
             {
-                _groupIndex = null;
-
                 if (NoDeviceDetails)
                     return null;
 
-                if (IsGroupedDevice is null)
-                    return null;
+                if (_deviceList.Count == 0)
+                    return _deviceList[0].GroupIndex;
 
-                if (_deviceList.Count == 1)
-                {
-                    _groupIndex = _deviceList[0].GroupIndex;
-                    if (!GroupIsValid)
-                    {
-                        _groupIndex = -1;
-                        return null;
-                    }
-
-                    return _groupIndex == -1 || _groupIndex >= Groups.Count ? null : Groups[_groupIndex??0];
-                }
-
-                _groupIndex = null;
+                int? result = null;
                 foreach (var d in _deviceList)
                 {
-                    if (d?.DeviceType is null)
+                    if (d.DeviceType is null)
                         continue;
 
-                    if (_groupIndex is null)
-                        _groupIndex = d.GroupIndex;
-                    else if (_groupIndex != d.GroupIndex)
-                    {
-                        _groupIndex = null;
-                        return null;
-                    }
-                }
+                    if (DeviceTypes.DeviceIsNetworkController(d.DeviceType))
+                        continue;
 
-                return GroupConfigData.IsValidGroup(_groupIndex) ? Groups[(int)_groupIndex] : null;
+                    if (result is null)
+                        result = d.GroupIndex;
+                    else if (result != d.GroupIndex)
+                        return null;
+                }
+                return result;
             }
             set
             {
-                if (value is not null & !NoDeviceDetails)
+                if (value is not null)
                     foreach (var d in _deviceList)
+                        d.GroupIndex = NoDeviceDetails ? - 1 : value.Value;
+                
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Group));
+                OnPropertyChanged(nameof(DevicesHaveCommonGroup));
+                OnPropertyChanged(nameof(IndicateMultipleValues));
+            }
+        }
+
+
+        private int? getIOZGSIndex(int ioIndex)
+        {
+            if (NoDeviceDetails)
+                return null;
+
+            if (_deviceList.Count == 0)
+                return _deviceList[0].IOConfigItems[ioIndex].ZoneGroupSet;
+
+            int? result = null;
+            foreach (var d in _deviceList)
+            {
+                if (d.DeviceType is null)
+                    continue;
+
+                if (DeviceTypes.DeviceIsNetworkController(d.DeviceType))
+                    continue;
+
+                if (result is null)
+                    result = d.IOConfigItems[ioIndex].ZoneGroupSet;
+                else if (result != d.IOConfigItems[ioIndex].ZoneGroupSet)
+                    return null;
+            }
+            return result;
+        }
+
+        private int? setIOZGSIndex(int ioIndex, int? value)
+        {
+            if (value is not null)
+                foreach (var d in _deviceList)
+                    d.IOConfigItems[ioIndex].ZoneGroupSet = NoDeviceDetails ? -1 : value.Value;
+
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(IOZoneSet1));
+            OnPropertyChanged(nameof(IOZoneSet2));
+            OnPropertyChanged(nameof(IOZoneSet3));
+            OnPropertyChanged(nameof(IOZoneSet4));
+            OnPropertyChanged(nameof(DevicesHaveCommonZone));
+            OnPropertyChanged(nameof(IndicateMultipleValues));
+
+            return value;
+        }
+
+
+        public string Group
+        {
+            get => NoDeviceDetails ? "" : groupIndex >= 0 && groupIndex < Groups.Count ? Groups[(int)groupIndex] : "";
+            //{
+            //    _groupIndex = null;
+
+            //    if (NoDeviceDetails)
+            //        return null;
+
+            //    if (IsGroupedDevice is null)
+            //        return null;
+
+            //    if (_deviceList.Count == 1)
+            //    {
+            //        _groupIndex = _deviceList[0].GroupIndex;
+            //        if (!GroupIsValid)
+            //        {
+            //            _groupIndex = -1;
+            //            return null;
+            //        }
+
+            //        return _groupIndex == -1 || _groupIndex >= Groups.Count ? null : Groups[_groupIndex??0];
+            //    }
+
+            //    _groupIndex = null;
+            //    foreach (var d in _deviceList)
+            //    {
+            //        if (d?.DeviceType is null)
+            //            continue;
+
+            //        if (_groupIndex is null)
+            //            _groupIndex = d.GroupIndex;
+            //        else if (_groupIndex != d.GroupIndex)
+            //        {
+            //            _groupIndex = null;
+            //            return null;
+            //        }
+            //    }
+
+            //    return GroupConfigData.IsValidGroup(_groupIndex) ? Groups[(int)_groupIndex] : null;
+            //}
+            set
+            {
+                if (NoDeviceDetails)
+                    return;
+
+                for (int i = 0; i < Groups.Count; i++)
+                {
+                    if (Groups[i] == value)
                     {
-                        d.GroupIndex = (_groupIndex = findIndexInCombo(Groups, value))??0;
-                        d.RefreshView();
+                        foreach (var d in _deviceList)
+                            if (d.DeviceType is not null)
+                                d.GroupIndex = i;
+                        break;
                     }
+                }
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(GroupIsValid));
@@ -415,7 +461,7 @@ namespace Xfp.ViewModels.PanelTools
                 OnPropertyChanged(nameof(IOZoneSet2IsValid));
                 OnPropertyChanged(nameof(IOZoneSet3IsValid));
                 OnPropertyChanged(nameof(IOZoneSet4IsValid));
-                OnPropertyChanged(nameof(DevicesHaveCommonZone));
+                OnPropertyChanged(nameof(DevicesHaveCommonGroup));
                 OnPropertyChanged(nameof(DevicesHaveCommonZGSType));
                 OnPropertyChanged(nameof(IndicateMultipleValues));
             }
@@ -1197,10 +1243,21 @@ namespace Xfp.ViewModels.PanelTools
                         d.IOConfigItems[index].ZoneGroupSet = string.IsNullOrEmpty(value) ? null
                                                          : value == Cultures.Resources.Use_In_Special_C_And_E ? 0
                                                          : d.IOConfigItems[index].InputOutput == IOTypes.Input ? findIndexInCombo(_zones, value)
-                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Output ? findIndexInCombo(_sets, value) : null;
+                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Output ? (IsSetDevice == true ? findIndexInCombo(_sets, value) : findIndexInCombo(_groups, value)) : null;
                         d.RefreshView();
                     }
-                }
+                }                
+
+                //for (int i = 0; i < Zones.Count; i++)
+                //{
+                //    if (Zones[i] == value)
+                //    {
+                //        foreach (var d in _deviceList)
+                //            if (d.DeviceType is not null)
+                //                d.ZoneIndex = i;
+                //        break;
+                //    }
+                //}
             }
 
             OnPropertyChanged(nameof(IOZoneSet1));
@@ -2173,7 +2230,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool DeviceTypeIsValid       => DeviceType is null || DeviceTypes.IsValidDeviceType(DeviceType, DeviceTypes.CurrentProtocolType);
         public bool DeviceTypeIsNonSpecific => NoDeviceType || !DevicesHaveCommonDeviceType || DeviceListContainsNullDevices;
         public bool ZoneIsValid             => (!IsZonedDevice??false)   || zoneIndex >= 0 && zoneIndex <= ZoneConfigData.NumZones;
-        public bool GroupIsValid            => (!IsGroupedDevice??false) || _groupIndex >= 0 && _groupIndex <= GroupConfigData.NumSounderGroups;
+        public bool GroupIsValid            => (!IsGroupedDevice??false) || groupIndex >= 0 && groupIndex <= GroupConfigData.NumSounderGroups;
         public bool DeviceNameIsValid       => NoDeviceType || DeviceName is null || DeviceName.Length <= MaxNameLength;
         public bool AncillaryBaseSounderGroupIsValid => ancillaryBaseSounderGroupIndexIsValid(_ancillaryBaseSounderGroupIndex);
         public bool DaySensitivityIsValid   => sensitivityIsValid(DaySensitivity);
@@ -2431,13 +2488,11 @@ namespace Xfp.ViewModels.PanelTools
 
         #region comboboxes
         private ObservableCollection<string> _zones;
-        //private ObservableCollection<string> _zoneNames;
         private ObservableCollection<string> _groups;
         private ObservableCollection<string> _sets;
         private ObservableCollection<string> _baseSounderGroups;    
         private ObservableCollection<string> _volumes;    
         private ObservableCollection<ModeSettingOption> _modeSettings = new();    
-        //private ObservableCollection<string> _modes;    
         private ObservableCollection<string> _inputOutputs;
         private ObservableCollection<string> _inputChannels;
         private ObservableCollection<string> _outputChannels;
@@ -2454,8 +2509,13 @@ namespace Xfp.ViewModels.PanelTools
 
         public bool                         EnableIOEdit     => !DeviceTypes.CurrentProtocolIsXfpCast;
 
-        public delegate void ZoneIndexSet(int index);
-        public ZoneIndexSet OnZoneIndexSet;
+        public delegate void ZoneGroupIndexSet(int index);
+        public delegate void IOZoneIndexSet(int ioIndex, int index);
+        public ZoneGroupIndexSet OnZoneIndexSet;
+        public ZoneGroupIndexSet OnGroupIndexSet;
+        public IOZoneIndexSet    OnIOZoneIndexSet;
+        public IOZoneIndexSet    OnIOGroupIndexSet;
+        public IOZoneIndexSet    OnIOSetIndexSet;
 
 
         private void initLists()
@@ -2471,13 +2531,26 @@ namespace Xfp.ViewModels.PanelTools
             initModesList();
         }
 
+        private enum ZgsType { Zone, Group, Set };
+
+        private ZgsType deviceZgs(int? deviceType) => DeviceTypes.IsGroupedDevice(deviceType) ? ZgsType.Group : DeviceTypes.IsSetDevice(deviceType) ? ZgsType.Set : ZgsType.Zone;
+
+
         private void initZGSLists()
         {
             if (_data is null)
                 return;
 
-            var zIdx = zoneIndex;
-            var gIdx = _groupIndex;
+            var zIdx   = zoneIndex;
+            var gIdx   = groupIndex;
+            var io1Idx = getIOZGSIndex(0);
+            var io2Idx = getIOZGSIndex(1);
+            var io3Idx = getIOZGSIndex(2);
+            var io4Idx = getIOZGSIndex(3);
+            var io1Str = getIOZoneSet(0);
+            var io2Str = getIOZoneSet(1);
+            var io3Str = getIOZoneSet(2);
+            var io4Str = getIOZoneSet(3);
             
             if (_zones is null)
             {
@@ -2518,25 +2591,47 @@ namespace Xfp.ViewModels.PanelTools
                     _sets[s] = SetConfigData.GetSetName(s);
             }
 
-            //ZoneGroup = "";
-
             OnPropertyChanged(nameof(Zones));
             OnPropertyChanged(nameof(Groups));
             OnPropertyChanged(nameof(Sets));
             
 
-            #region bodge
             //temporarily unset the value, otherwise OnPropertyChanged
             //doesn't always update the UI and the combo is blank
-            if (_zones.Count > 0)
-                Zone = _zones[^1];
-            #endregion
+            //if (_zones.Count > 0)
+            //    Zone = _zones[^1];
+            Zone = Group = IOZoneSet1 = IOZoneSet2 = IOZoneSet3 = IOZoneSet4 = "";
+           
+            if (IsZonedDevice == true)
+            {
+                OnZoneIndexSet?.Invoke((zoneIndex = zIdx)??-1);
+                ////OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+                //OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+                //OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+                //OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            }
 
-            //_zoneIndex = zIdx;
-            _groupIndex = gIdx;
-            //OnPropertyChanged(nameof(Zone));
-            
-            OnZoneIndexSet?.Invoke((zoneIndex = zIdx)??-1);
+            if (IsGroupedDevice == true)
+            {
+                OnGroupIndexSet?.Invoke((groupIndex = gIdx)??-1);
+                ////OnIOGroupIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+                //OnIOGroupIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+                //OnIOGroupIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+                //OnIOGroupIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            }
+
+            //if (IsSetDevice == true)
+            //{
+            //    //OnIOSetIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+            //    OnIOSetIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+            //    OnIOSetIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+            //    OnIOSetIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            //}
+
+            OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+            OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+            OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+            OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
         }
         
         private void initBaseSounderList()
@@ -2623,9 +2718,6 @@ namespace Xfp.ViewModels.PanelTools
 
         private void initVolumesList()
         {
-            //var dayVolIdx = _dayVolumeIndex;
-            //var nightVolIdx = _nightVolumeIndex;
-
             if (_volumes is null)
             {
                 _volumes = new();
@@ -2645,9 +2737,6 @@ namespace Xfp.ViewModels.PanelTools
             }
 
             OnPropertyChanged(nameof(Volumes));
-
-            //_dayVolumeIndex = dayVolIdx;
-            //_nightVolumeIndex = nightVolIdx;
         }
 
         private void initModesList()
