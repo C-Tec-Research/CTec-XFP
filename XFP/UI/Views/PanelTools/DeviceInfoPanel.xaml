@@ -1080,7 +1080,7 @@
                                             <Grid>
                                                 <ComboBox x:Name="cboIO1Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZoneSet1}"
+                                                          Text="{Binding IOZoneGroupSet1}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -1088,13 +1088,13 @@
                                                 <Grid Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO1Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOZoneSet1}"
+                                                              Text="{Binding IOZoneGroupSet1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO1Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOZoneSet1}"
+                                                              Text="{Binding IOZoneGroupSet1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
@@ -1120,7 +1120,7 @@
                                             <Grid>
                                                 <ComboBox x:Name="cboIO2Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZoneSet2}"
+                                                          Text="{Binding IOZoneGroupSet2}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           PreviewKeyDown="showComboBoxDropdown" 
@@ -1129,14 +1129,14 @@
                                                 <Grid Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO2Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOZoneSet2}"
+                                                              Text="{Binding IOZoneGroupSet2}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO2Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOZoneSet2}"
+                                                              Text="{Binding IOZoneGroupSet2}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
@@ -1163,7 +1163,7 @@
                                             <Grid>
                                                 <ComboBox x:Name="cboIO3Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZoneSet3}"
+                                                          Text="{Binding IOZoneGroupSet3}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           PreviewKeyDown="showComboBoxDropdown" 
@@ -1172,14 +1172,14 @@
                                                 <Grid Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO3Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOZoneSet3}"
+                                                              Text="{Binding IOZoneGroupSet3}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO3Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOZoneSet3}"
+                                                              Text="{Binding IOZoneGroupSet3}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
@@ -1206,7 +1206,7 @@
                                             <Grid>
                                                 <ComboBox x:Name="cboIO4Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZoneSet4}"
+                                                          Text="{Binding IOZoneGroupSet4}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           PreviewKeyDown="showComboBoxDropdown" 
@@ -1215,14 +1215,14 @@
                                                 <Grid Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO4Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOZoneSet4}"
+                                                              Text="{Binding IOZoneGroupSet4}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
                                                               Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO4Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOZoneSet4}"
+                                                              Text="{Binding IOZoneGroupSet4}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 

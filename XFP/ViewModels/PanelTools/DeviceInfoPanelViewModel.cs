@@ -387,10 +387,10 @@ namespace Xfp.ViewModels.PanelTools
                     d.IOConfigItems[ioIndex].ZoneGroupSet = NoDeviceDetails ? -1 : value.Value;
 
             OnPropertyChanged();
-            OnPropertyChanged(nameof(IOZoneSet1));
-            OnPropertyChanged(nameof(IOZoneSet2));
-            OnPropertyChanged(nameof(IOZoneSet3));
-            OnPropertyChanged(nameof(IOZoneSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet2));
+            OnPropertyChanged(nameof(IOZoneGroupSet3));
+            OnPropertyChanged(nameof(IOZonGroupSet4));
             OnPropertyChanged(nameof(DevicesHaveCommonZone));
             OnPropertyChanged(nameof(IndicateMultipleValues));
 
@@ -1014,10 +1014,10 @@ namespace Xfp.ViewModels.PanelTools
         public int?   IOOutputChannel2   { get => getIOChannel(1);         set => setChannel(1, value); }
         public int?   IOOutputChannel3   { get => getIOChannel(2);         set => setChannel(2, value); }
         public int?   IOOutputChannel4   { get => getIOChannel(3);         set => setChannel(3, value); }
-        public string IOZoneSet1         { get => getIOZoneSet(0);         set => setIOZoneSet(0, value); }
-        public string IOZoneSet2         { get => getIOZoneSet(1);         set => setIOZoneSet(1, value); }
-        public string IOZoneSet3         { get => getIOZoneSet(2);         set => setIOZoneSet(2, value); }
-        public string IOZoneSet4         { get => getIOZoneSet(3);         set => setIOZoneSet(3, value); }
+        public string IOZoneGroupSet1    { get => getIOZoneGroupSet(0);    set => setIOZoneSet(0, value); }
+        public string IOZoneGroupSet2    { get => getIOZoneGroupSet(1);    set => setIOZoneSet(1, value); }
+        public string IOZoneGroupSet3    { get => getIOZoneGroupSet(2);    set => setIOZoneSet(2, value); }
+        public string IOZoneGroupSet4    { get => getIOZoneGroupSet(3);    set => setIOZoneSet(3, value); }
         public string IODescription1     { get => getIODescription(0);     set => DeviceName = value; }
         public string IODescription2     { get => getIODescription(1);     set { setIODescription(1, value); updateDebugInfo(); } }
         public string IODescription3     { get => getIODescription(2);     set { setIODescription(2, value); updateDebugInfo(); } }
@@ -1043,6 +1043,9 @@ namespace Xfp.ViewModels.PanelTools
             {
                 if (d?.DeviceType is null)
                     return (IOTypes)(-1);
+
+                if (DeviceTypes.DeviceIsNetworkController(d.DeviceType))
+                    continue;
 
                 if (d.IsIODevice && validIOIndex(index, d))
                 {
@@ -1078,10 +1081,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOIsInput2));
             OnPropertyChanged(nameof(IOIsInput3));
             OnPropertyChanged(nameof(IOIsInput4));
-            OnPropertyChanged(nameof(IOZoneSet1));
-            OnPropertyChanged(nameof(IOZoneSet2));
-            OnPropertyChanged(nameof(IOZoneSet3));
-            OnPropertyChanged(nameof(IOZoneSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet2));
+            OnPropertyChanged(nameof(IOZoneGroupSet3));
+            OnPropertyChanged(nameof(IOZonGroupSet4));
             OnPropertyChanged(nameof(IOInputOutput1IsValid));
             OnPropertyChanged(nameof(IOInputOutput2IsValid));
             OnPropertyChanged(nameof(IOInputOutput3IsValid));
@@ -1196,7 +1199,7 @@ namespace Xfp.ViewModels.PanelTools
             return zoneGroup;
         }
 
-        private string getIOZoneSet(int index)
+        private string getIOZoneGroupSet(int index)
         {
             if (NoDeviceDetails)
                 return null;
@@ -1220,8 +1223,8 @@ namespace Xfp.ViewModels.PanelTools
                         zg = d.IOConfigItems[index].ZoneGroupSet == 0 ? Cultures.Resources.Use_In_Special_C_And_E
                            : d.IOConfigItems[index].InputOutput == IOTypes.Input ? zgsi < _zones.Count ? _zones[zgsi] : null
                            : d.IOConfigItems[index].InputOutput == IOTypes.Output ?
-                               d.IsGroupedDevice ? zgsi < _groups.Count ? _groups[zgsi] : null
-                                                   : zgsi < _sets.Count   ? _sets[zgsi] : null : null;
+                               d.IOOutputIsGrouped == true ? zgsi < _groups.Count ? _groups[zgsi] : null
+                                                           : zgsi < _sets.Count   ? _sets[zgsi] : null : null;
                     if (zoneGroup is null)
                         zoneGroup = zg;
                     else if (zoneGroup != zg)
@@ -1241,9 +1244,10 @@ namespace Xfp.ViewModels.PanelTools
                     if (validIOIndex(index, d))
                     {
                         d.IOConfigItems[index].ZoneGroupSet = string.IsNullOrEmpty(value) ? null
-                                                         : value == Cultures.Resources.Use_In_Special_C_And_E ? 0
-                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Input ? findIndexInCombo(_zones, value)
-                                                         : d.IOConfigItems[index].InputOutput == IOTypes.Output ? (IsSetDevice == true ? findIndexInCombo(_sets, value) : findIndexInCombo(_groups, value)) : null;
+                                                            : value == Cultures.Resources.Use_In_Special_C_And_E ? 0
+                                                            : d.IOConfigItems[index].InputOutput == IOTypes.Input ? findIndexInCombo(_zones, value)
+                                                            : d.IOConfigItems[index].InputOutput == IOTypes.Output ? (IOOutputIsGrouped == true ? findIndexInCombo(_groups, value) 
+                                                                                                                                                : findIndexInCombo(_sets, value)) : null;
                         d.RefreshView();
                     }
                 }                
@@ -1260,10 +1264,10 @@ namespace Xfp.ViewModels.PanelTools
                 //}
             }
 
-            OnPropertyChanged(nameof(IOZoneSet1));
-            OnPropertyChanged(nameof(IOZoneSet2));
-            OnPropertyChanged(nameof(IOZoneSet3));
-            OnPropertyChanged(nameof(IOZoneSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet2));
+            OnPropertyChanged(nameof(IOZoneGroupSet3));
+            OnPropertyChanged(nameof(IOZonGroupSet4));
             OnPropertyChanged(nameof(IOZoneSet1IsValid));
             OnPropertyChanged(nameof(IOZoneSet2IsValid));
             OnPropertyChanged(nameof(IOZoneSet3IsValid));
@@ -2547,10 +2551,10 @@ namespace Xfp.ViewModels.PanelTools
             var io2Idx = getIOZGSIndex(1);
             var io3Idx = getIOZGSIndex(2);
             var io4Idx = getIOZGSIndex(3);
-            var io1Str = getIOZoneSet(0);
-            var io2Str = getIOZoneSet(1);
-            var io3Str = getIOZoneSet(2);
-            var io4Str = getIOZoneSet(3);
+            var io1Str = getIOZoneGroupSet(0);
+            var io2Str = getIOZoneGroupSet(1);
+            var io3Str = getIOZoneGroupSet(2);
+            var io4Str = getIOZoneGroupSet(3);
             
             if (_zones is null)
             {
@@ -2600,33 +2604,33 @@ namespace Xfp.ViewModels.PanelTools
             //doesn't always update the UI and the combo is blank
             //if (_zones.Count > 0)
             //    Zone = _zones[^1];
-            Zone = Group = IOZoneSet1 = IOZoneSet2 = IOZoneSet3 = IOZoneSet4 = "";
+            Zone = Group = IOZoneGroupSet1 = IOZoneGroupSet2 = IOZoneGroupSet3 = IOZonGroupSet4 = "";
            
             if (IsZonedDevice == true)
             {
                 OnZoneIndexSet?.Invoke((zoneIndex = zIdx)??-1);
-                ////OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-                //OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-                //OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-                //OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+                OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+                OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+                OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+                OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
             }
 
             if (IsGroupedDevice == true)
             {
                 OnGroupIndexSet?.Invoke((groupIndex = gIdx)??-1);
-                ////OnIOGroupIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-                //OnIOGroupIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-                //OnIOGroupIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-                //OnIOGroupIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+                OnIOGroupIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+                OnIOGroupIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+                OnIOGroupIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+                OnIOGroupIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
             }
 
-            //if (IsSetDevice == true)
-            //{
-            //    //OnIOSetIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
-            //}
+            if (IsSetDevice == true)
+            {
+                OnIOSetIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+                OnIOSetIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+                OnIOSetIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+                OnIOSetIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            }
 
             OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
             OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
@@ -2966,10 +2970,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOOutputChannel3));
             OnPropertyChanged(nameof(IOOutputChannel4));
             OnPropertyChanged(nameof(IOOutputIsGrouped));
-            OnPropertyChanged(nameof(IOZoneSet1));
-            OnPropertyChanged(nameof(IOZoneSet2));
-            OnPropertyChanged(nameof(IOZoneSet3));
-            OnPropertyChanged(nameof(IOZoneSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet2));
+            OnPropertyChanged(nameof(IOZoneGroupSet3));
+            OnPropertyChanged(nameof(IOZonGroupSet4));
             OnPropertyChanged(nameof(IODescription1));
             OnPropertyChanged(nameof(IODescription2));
             OnPropertyChanged(nameof(IODescription3));
