@@ -4,6 +4,7 @@ using System.Windows;
 using Newtonsoft.Json;
 using CTecControls.UI;
 using Xfp.DataTypes;
+using Xfp.Config;
 
 namespace Xfp.Files
 {
@@ -14,7 +15,7 @@ namespace Xfp.Files
         internal static readonly List<string> OpenFileExts = new() { XfpFileExt, LegacyFileExt };
 
 
-        internal static new bool OpenFile() => OpenFile(GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, OpenFileExts));
+        internal static new bool OpenFile() => OpenFile(GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, OpenFileExts), XfpApplicationConfig.Settings.LastPanelFilesFolder);
 
 
         internal static string SaveFile(XfpData data, int panelNumber)
@@ -33,7 +34,7 @@ namespace Xfp.Files
 
             data.SetDescriptorsForFile();
 
-            CTecUtil.IO.TextFile.SaveFile(JsonConvert.SerializeObject(data, Formatting.Indented));
+            CTecUtil.IO.TextFile.SaveFile(JsonConvert.SerializeObject(data, Formatting.Indented), XfpApplicationConfig.Settings.LastPanelFilesFolder);
             CurrentFolder = Path.GetDirectoryName(FilePath);
             return FilePath;
         }
@@ -47,8 +48,8 @@ namespace Xfp.Files
             data.SetDescriptorsForFile();
 
             FilePath = SetFileNameSuffix(string.IsNullOrWhiteSpace(FilePath) ? Path.Combine(CurrentFolder ?? "", data.SiteConfig.SystemName.Trim()) : FilePath, XfpFileExt);
-            Filter = GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, XfpFileExt);
-            return FilePath = CTecUtil.IO.TextFile.SaveFileAs(JsonConvert.SerializeObject(data, Formatting.Indented));
+            Filter   = GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, XfpFileExt);
+            return FilePath = CTecUtil.IO.TextFile.SaveFileAs(JsonConvert.SerializeObject(data, Formatting.Indented), XfpApplicationConfig.Settings.LastPanelFilesFolder);
         }
 
 

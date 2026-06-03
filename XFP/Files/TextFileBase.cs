@@ -1,5 +1,7 @@
-﻿using CTecUtil.IO;
-using System;
+﻿using System;
+using CTecUtil.Config;
+using CTecUtil.IO;
+using Xfp.Config;
 
 namespace Xfp.Files
 {
@@ -10,11 +12,11 @@ namespace Xfp.Files
 
         internal static new bool OpenFile() => throw new NotImplementedException("OpenFile()");
 
-        internal static bool OpenFile(string filter)
+        internal static bool OpenFile(string filter, ApplicationConfig.LastFolderInfo lastFolder)
         {
             FilePath = CurrentFolder;
             Filter = filter;
-            return TextFile.OpenFile();
+            return TextFile.OpenFile(lastFolder);
         }
     }
 }

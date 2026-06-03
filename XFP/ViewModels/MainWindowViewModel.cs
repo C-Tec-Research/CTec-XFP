@@ -1601,7 +1601,7 @@ namespace Xfp.ViewModels
 
 
         #region download log window
-        private CTecControls.UI.CommsLogWindow _logWindow;
+        private CommsLogWindow _logWindow;
         
         
         public void ShowCommsLog(bool scrollToEnd)
@@ -1610,7 +1610,7 @@ namespace Xfp.ViewModels
             CloseCommsLog();
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
                                                      {
-                                                         (_logWindow = new CTecControls.UI.CommsLogWindow(XfpApplicationConfig.Settings, DebugMode)).Show();
+                                                         (_logWindow = new CommsLogWindow(XfpApplicationConfig.Settings.LastCommsLogFilesFolder, DebugMode)).Show();
                                                          if (scrollToEnd) _logWindow.ScrollToEnd();
                                                      }), DispatcherPriority.Background);
         }

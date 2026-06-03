@@ -14,6 +14,11 @@ namespace Xfp.Config
 
 
         public static XfpApplicationConfig Settings { get; protected set; }
+        
+        public LastFolderInfo LastPanelFilesFolder        => new(this, 0);
+        public LastFolderInfo LastEventLogFilesFolder     => new(this, 1);
+        public LastFolderInfo LastCommsLogFilesFolder     => new(this, 2);
+        public LastFolderInfo LastPrintFilesFolder        => new(this, 3);
 
 
         protected override ApplicationConfigData newConfigDataData() => new XfpApplicationConfigData();

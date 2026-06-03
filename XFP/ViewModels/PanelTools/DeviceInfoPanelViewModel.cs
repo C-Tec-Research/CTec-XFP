@@ -390,7 +390,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOZoneGroupSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
-            OnPropertyChanged(nameof(IOZonGroupSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet4));
             OnPropertyChanged(nameof(DevicesHaveCommonZone));
             OnPropertyChanged(nameof(IndicateMultipleValues));
 
@@ -1084,7 +1084,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOZoneGroupSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
-            OnPropertyChanged(nameof(IOZonGroupSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet4));
             OnPropertyChanged(nameof(IOInputOutput1IsValid));
             OnPropertyChanged(nameof(IOInputOutput2IsValid));
             OnPropertyChanged(nameof(IOInputOutput3IsValid));
@@ -1267,7 +1267,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOZoneGroupSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
-            OnPropertyChanged(nameof(IOZonGroupSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet4));
             OnPropertyChanged(nameof(IOZoneSet1IsValid));
             OnPropertyChanged(nameof(IOZoneSet2IsValid));
             OnPropertyChanged(nameof(IOZoneSet3IsValid));
@@ -2604,7 +2604,7 @@ namespace Xfp.ViewModels.PanelTools
             //doesn't always update the UI and the combo is blank
             //if (_zones.Count > 0)
             //    Zone = _zones[^1];
-            Zone = Group = IOZoneGroupSet1 = IOZoneGroupSet2 = IOZoneGroupSet3 = IOZonGroupSet4 = "";
+            Zone = Group = IOZoneGroupSet1 = IOZoneGroupSet2 = IOZoneGroupSet3 = IOZoneGroupSet4 = "";
            
             if (IsZonedDevice == true)
             {
@@ -2973,7 +2973,7 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOZoneGroupSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
-            OnPropertyChanged(nameof(IOZonGroupSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet4));
             OnPropertyChanged(nameof(IODescription1));
             OnPropertyChanged(nameof(IODescription2));
             OnPropertyChanged(nameof(IODescription3));

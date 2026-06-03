@@ -7,6 +7,7 @@ using CTecControls.UI;
 using CTecUtil;
 using CTecUtil.IO;
 using CTecUtil.StandardPanelDataTypes;
+using Xfp.Config;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
@@ -123,7 +124,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             TextFile.FilePath = CurrentFolder;
             TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.EventLogFileExt + "; *" + CTecUtil.IO.TextFile.LogFileExt + ")|*" + CTecUtil.IO.TextFile.EventLogFileExt + ";*" + CTecUtil.IO.TextFile.LogFileExt;
-            if (TextFile.OpenFile())
+            if (TextFile.OpenFile(XfpApplicationConfig.Settings.LastEventLogFilesFolder))
             {
                 EventLogFilePath = TextFile.FilePath;
                 EventLogText = File.ReadAllText(TextFile.FilePath).ReplaceLineEndings("\r");      // <-- replace CRLF with CR to prevent double-spaced lines in RichTextBox
@@ -136,7 +137,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             TextFile.FilePath = CurrentFolder;
             TextFile.Filter = Cultures.Resources.XFP_Log_Files + " (*" + CTecUtil.IO.TextFile.EventLogFileExt + ")|*" + CTecUtil.IO.TextFile.EventLogFileExt;
-            TextFile.SaveFileAs(EventLogText);
+            TextFile.SaveFileAs(EventLogText, XfpApplicationConfig.Settings.LastEventLogFilesFolder);
             CurrentFolder = System.IO.Path.GetDirectoryName(TextFile.FilePath);
         }
 
