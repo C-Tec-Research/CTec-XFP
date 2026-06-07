@@ -890,63 +890,63 @@
                                 <Border BorderBrush="{Binding IOInputOutput2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
-                                                SelectedIndex="{Binding IOInputOutput2}"
-                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
-                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                              SelectedIndex="{Binding IOInputOutput2}"
+                                              MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                              PreviewKeyDown="showComboBoxDropdown"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
-                                            FontSize="18"
-                                            Foreground="{StaticResource BrushInfo}"
-                                            Visibility="{Binding DevicesHaveCommonIOInputOutput2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                           FontSize="18"
+                                           Foreground="{StaticResource BrushInfo}"
+                                           Visibility="{Binding DevicesHaveCommonIOInputOutput2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                             </StackPanel>
                             <TextBlock Grid.Row="3" Grid.Column="1" 
-                                        Text="{Binding IOInputOutputDesc2, Mode=OneWay}"
-                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                        Opacity="{Binding IOInUse2, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
-                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                                       Text="{Binding IOInputOutputDesc2, Mode=OneWay}"
+                                       Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                       Opacity="{Binding IOInUse2, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                       MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
 
                             <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <Border BorderBrush="{Binding IOInputOutput3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
-                                                SelectedIndex="{Binding IOInputOutput3}"
-                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
-                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                              SelectedIndex="{Binding IOInputOutput3}"
+                                              MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                              PreviewKeyDown="showComboBoxDropdown"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
-                                            FontSize="18"
-                                            Foreground="{StaticResource BrushInfo}"
-                                            Visibility="{Binding DevicesHaveCommonIOInputOutput3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                           FontSize="18"
+                                           Foreground="{StaticResource BrushInfo}"
+                                           Visibility="{Binding DevicesHaveCommonIOInputOutput3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                             </StackPanel>
                             <TextBlock Grid.Row="4" Grid.Column="1" 
-                                        Text="{Binding IOInputOutputDesc3, Mode=OneWay}"
-                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                        Opacity="{Binding IOInUse3, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
-                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                                       Text="{Binding IOInputOutputDesc3, Mode=OneWay}"
+                                       Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                       Opacity="{Binding IOInUse3, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                       MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
 
                             <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal"
                                         Visibility="{Binding EnableIOEdit, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <Border BorderBrush="{Binding IOInputOutput4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                         BorderThickness="1" HorizontalAlignment="Left" Margin="2,0,2,0"  Padding="2,0,0,0">
                                     <ComboBox ItemsSource="{Binding InputOutputs}"
-                                                SelectedIndex="{Binding IOInputOutput4}"
-                                                MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
-                                                PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                PreviewKeyDown="showComboBoxDropdown"/>
+                                              SelectedIndex="{Binding IOInputOutput4}"
+                                              MinWidth="50" HorizontalAlignment="Left" MaxDropDownHeight="500" Margin="0"
+                                              PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                              PreviewKeyDown="showComboBoxDropdown"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,2,0" Padding="0" 
-                                            FontSize="18"
-                                            Foreground="{StaticResource BrushInfo}"
-                                            Visibility="{Binding DevicesHaveCommonIOInputOutput4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                           FontSize="18"
+                                           Foreground="{StaticResource BrushInfo}"
+                                           Visibility="{Binding DevicesHaveCommonIOInputOutput4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                             </StackPanel>
                             <TextBlock Grid.Row="5" Grid.Column="1" 
-                                        Text="{Binding IOInputOutputDesc4, Mode=OneWay}"
-                                        Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                        Opacity="{Binding IOInUse4, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
-                                        MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                                       Text="{Binding IOInputOutputDesc4, Mode=OneWay}"
+                                       Visibility="{Binding EnableIOEdit, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                       Opacity="{Binding IOInUse4, Converter={StaticResource BoolToOpacity40pcConverter}}" FontStyle="Italic"
+                                       MinWidth="50" HorizontalAlignment="Left" Margin="5,0,5,0"/>
                             <!--#endregion-->
 
 
@@ -958,23 +958,23 @@
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
-                                                            SelectedIndex="{Binding IOInputChannel1}"
-                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOInputChannel1}"
+                                                          Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                                 <ComboBox ItemsSource="{Binding OutputChannels}"
-                                                            SelectedIndex="{Binding IOOutputChannel1}"
-                                                            Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOOutputChannel1}"
+                                                          Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOChannel1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOChannel1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
@@ -987,23 +987,23 @@
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
-                                                            SelectedIndex="{Binding IOInputChannel2}"
-                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOInputChannel2}"
+                                                          Visibility="{Binding IOIsInput2, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                                 <ComboBox ItemsSource="{Binding OutputChannels}"
-                                                            SelectedIndex="{Binding IOOutputChannel2}"
-                                                            Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOOutputChannel2}"
+                                                          Visibility="{Binding IOIsInput2, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOChannel2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOChannel2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
@@ -1016,23 +1016,23 @@
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
-                                                            SelectedIndex="{Binding IOInputChannel3}"
-                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOInputChannel3}"
+                                                          Visibility="{Binding IOIsInput3, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                                 <ComboBox ItemsSource="{Binding OutputChannels}"
-                                                            SelectedIndex="{Binding IOOutputChannel3}"
-                                                            Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOOutputChannel3}"
+                                                          Visibility="{Binding IOIsInput3, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOChannel3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOChannel3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>
@@ -1045,23 +1045,23 @@
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox ItemsSource="{Binding InputChannels}"
-                                                            SelectedIndex="{Binding IOInputChannel4}"
-                                                            Visibility="{Binding IOIsInput4, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOInputChannel4}"
+                                                          Visibility="{Binding IOIsInput4, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                                 <ComboBox ItemsSource="{Binding OutputChannels}"
-                                                            SelectedIndex="{Binding IOOutputChannel4}"
-                                                            Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                                            MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
-                                                            PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                            PreviewKeyDown="showComboBoxDropdown"/>
+                                                          SelectedIndex="{Binding IOOutputChannel4}"
+                                                          Visibility="{Binding IOIsInput4, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                                          MinWidth="30" HorizontalAlignment="Left" MaxDropDownHeight="500"
+                                                          PreviewMouseDown="comboBox_PreviewMouseDown" 
+                                                          PreviewKeyDown="showComboBoxDropdown"/>
                                             </Grid>
                                         </Border>
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="0,0,0,0" Padding="0" 
-                                                    FontSize="18"
-                                                    Foreground="{StaticResource BrushInfo}"
-                                                    Visibility="{Binding DevicesHaveCommonIOChannel4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   FontSize="18"
+                                                   Foreground="{StaticResource BrushInfo}"
+                                                   Visibility="{Binding DevicesHaveCommonIOChannel4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="30" Visibility="{Binding IOInputOutput4, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="3,0,0,0"/>

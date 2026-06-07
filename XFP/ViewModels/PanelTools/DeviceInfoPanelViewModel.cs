@@ -1014,10 +1014,10 @@ namespace Xfp.ViewModels.PanelTools
         public int?   IOOutputChannel2   { get => getIOChannel(1);         set => setChannel(1, value); }
         public int?   IOOutputChannel3   { get => getIOChannel(2);         set => setChannel(2, value); }
         public int?   IOOutputChannel4   { get => getIOChannel(3);         set => setChannel(3, value); }
-        public string IOZoneGroupSet1    { get => getIOZoneGroupSet(0);    set => setIOZoneSet(0, value); }
-        public string IOZoneGroupSet2    { get => getIOZoneGroupSet(1);    set => setIOZoneSet(1, value); }
-        public string IOZoneGroupSet3    { get => getIOZoneGroupSet(2);    set => setIOZoneSet(2, value); }
-        public string IOZoneGroupSet4    { get => getIOZoneGroupSet(3);    set => setIOZoneSet(3, value); }
+        public string IOZoneGroupSet1    { get => getIOZoneGroupSet(0);    set => setIOZoneGroupSet(0, value); }
+        public string IOZoneGroupSet2    { get => getIOZoneGroupSet(1);    set => setIOZoneGroupSet(1, value); }
+        public string IOZoneGroupSet3    { get => getIOZoneGroupSet(2);    set => setIOZoneGroupSet(2, value); }
+        public string IOZoneGroupSet4    { get => getIOZoneGroupSet(3);    set => setIOZoneGroupSet(3, value); }
         public string IODescription1     { get => getIODescription(0);     set => DeviceName = value; }
         public string IODescription2     { get => getIODescription(1);     set { setIODescription(1, value); updateDebugInfo(); } }
         public string IODescription3     { get => getIODescription(2);     set { setIODescription(2, value); updateDebugInfo(); } }
@@ -1235,7 +1235,7 @@ namespace Xfp.ViewModels.PanelTools
             return zoneGroup;
         }
 
-        private void setIOZoneSet(int index, string value)
+        private void setIOZoneGroupSet(int index, string value)
         {
             if (value is not null)
             {
