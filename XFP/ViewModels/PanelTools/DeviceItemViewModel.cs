@@ -245,7 +245,8 @@ namespace Xfp.ViewModels.PanelTools
         [JsonIgnore]
         public bool IsIODevice              => DeviceTypes.IsIODevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         [JsonIgnore]
-        public bool IOOutputIsGrouped       => DeviceTypes.IOOutputIsGrouped(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
+        public bool IOOutputIsGroups        => DeviceTypes.IOOutputIsGroups(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
+        public bool IOOutputIsSets          => DeviceTypes.IOOutputIsSets(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         public bool IsSensitivityDevice     => DeviceTypes.IsSensitivityDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         public bool IsSensitivityHighDevice => DeviceTypes.IsSensitivityHighDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);
         public bool IsVolumeDevice          => DeviceTypes.IsVolumeDevice(_deviceData.DeviceType, DeviceTypes.CurrentProtocolType);

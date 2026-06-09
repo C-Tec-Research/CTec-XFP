@@ -1080,7 +1080,7 @@
                                             <Grid>
                                                 <ComboBox x:Name="cboIO1Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZoneGroupSet1}"
+                                                          Text="{Binding IOZone1}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -1088,16 +1088,16 @@
                                                 <Grid Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO1Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOZoneGroupSet1}"
+                                                              Text="{Binding IOGroup1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsGroups, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO1Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOZoneGroupSet1}"
+                                                              Text="{Binding IOSet1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsSets, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
@@ -1133,14 +1133,14 @@
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsGroups, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO2Set"
                                                               ItemsSource="{Binding Sets}"
                                                               Text="{Binding IOZoneGroupSet2}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsSets, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
@@ -1176,14 +1176,14 @@
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsGroups, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO3Set"
                                                               ItemsSource="{Binding Sets}"
                                                               Text="{Binding IOZoneGroupSet3}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsSets, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>
@@ -1219,14 +1219,14 @@
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsGroups, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO4Set"
                                                               ItemsSource="{Binding Sets}"
                                                               Text="{Binding IOZoneGroupSet4}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               PreviewKeyDown="showComboBoxDropdown" 
-                                                              Visibility="{Binding IOOutputIsGrouped, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                                              Visibility="{Binding IOOutputIsSets, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 </Grid>
                                             </Grid>
                                         </Border>

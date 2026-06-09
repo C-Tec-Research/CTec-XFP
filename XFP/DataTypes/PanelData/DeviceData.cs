@@ -108,14 +108,15 @@ namespace Xfp.DataTypes.PanelData
         public bool? RemoteLEDEnabled { get; set; } = false;
         //public bool TypeChanged { get; set; }     //not used?
 
-        internal bool IsGroupedDevice => DeviceTypes.IsGroupedDevice(DeviceType, DeviceTypes.CurrentProtocolType);
-        internal bool IsZonalDevice => DeviceTypes.IsZonalDevice(DeviceType, DeviceTypes.CurrentProtocolType);
-        internal bool IsIODevice => DeviceTypes.IsIODevice(DeviceType, DeviceTypes.CurrentProtocolType) && IsRealDevice;
-        internal bool IOOutputIsGrouped => DeviceTypes.IOOutputIsGrouped(DeviceType, DeviceTypes.CurrentProtocolType); 
-        internal bool IsSensitivityDevice => DeviceTypes.IsSensitivityDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool IsGroupedDevice         => DeviceTypes.IsGroupedDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool IsZonalDevice           => DeviceTypes.IsZonalDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool IsIODevice              => DeviceTypes.IsIODevice(DeviceType, DeviceTypes.CurrentProtocolType) && IsRealDevice;
+        internal bool IOOutputIsGroups        => DeviceTypes.IOOutputIsGroups(DeviceType, DeviceTypes.CurrentProtocolType); 
+        internal bool IOOutputIsSets          => DeviceTypes.IOOutputIsSets(DeviceType, DeviceTypes.CurrentProtocolType); 
+        internal bool IsSensitivityDevice     => DeviceTypes.IsSensitivityDevice(DeviceType, DeviceTypes.CurrentProtocolType);
         internal bool IsSensitivityHighDevice => DeviceTypes.IsSensitivityHighDevice(DeviceType, DeviceTypes.CurrentProtocolType);
-        internal bool IsVolumeDevice => DeviceTypes.IsVolumeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
-        internal bool IsModeDevice => DeviceTypes.IsModeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool IsVolumeDevice          => DeviceTypes.IsVolumeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
+        internal bool IsModeDevice            => DeviceTypes.IsModeDevice(DeviceType, DeviceTypes.CurrentProtocolType);
 
         internal bool IsBaseSounderRecord => DeviceTypes.CurrentProtocolIsXfpApollo && Index >= DeviceConfigData.NumDevices;
         //internal DeviceData ParentDevice { get; set; }   //for ancillary base sounder records, to link back to the main device record [ <-- excellent comment supplied automatically by VS Copilot AI! ]

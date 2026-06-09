@@ -78,7 +78,7 @@ namespace Xfp.DataTypes.PanelData
                     if (!ZoneConfigData.IsValidZone(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
                 }
-                else if (DeviceTypes.IOOutputIsGrouped(DeviceType, DeviceTypes.CurrentProtocolType))
+                else if (DeviceTypes.IOOutputIsGroups(DeviceType, DeviceTypes.CurrentProtocolType))
                 {
                     if (!GroupConfigData.IsValidGroup(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);

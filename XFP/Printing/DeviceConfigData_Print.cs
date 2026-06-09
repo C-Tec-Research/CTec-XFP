@@ -509,8 +509,8 @@ namespace Xfp.DataTypes.PanelData
 
                     if (i == 0)
                     {
-                        var d1Grouped = DeviceTypes.IOOutputIsGrouped(d1.DeviceType, DeviceTypes.CurrentProtocolType);
-                        var d2Grouped = DeviceTypes.IOOutputIsGrouped(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+                        var d1Grouped = DeviceTypes.IOOutputIsGroups(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+                        var d2Grouped = DeviceTypes.IOOutputIsGroups(d2.DeviceType, DeviceTypes.CurrentProtocolType);
 
                         if (d1Grouped && !d2Grouped) return -1;
                         if (!d1Grouped && d2Grouped) return 1;
