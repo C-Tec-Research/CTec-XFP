@@ -41,7 +41,7 @@ namespace Xfp.ViewModels.PanelTools
         {
             if (ZoneDesc is null || !ZoneDescIsEnvisionCompatible())
             {
-                ZoneDesc = string.Format("{0:00} {1}", (IsPanelData ? ZoneConfigData.NumZones + ZoneNum : ZoneNum), ZoneDesc ?? "");
+                ZoneDesc = string.Format("{0:00} {1}", IsPanelData ? ZoneConfigData.NumZones + ZoneNum : ZoneNum, ZoneDesc ?? "");
 
                 if (ZoneDesc.Length > ZoneConfigData.MaxNameLength)
                     ZoneDesc = ZoneDesc.Remove(ZoneConfigData.MaxNameLength);

@@ -264,10 +264,10 @@ namespace Xfp.ViewModels.PanelTools
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ZoneIsValid));
-                OnPropertyChanged(nameof(IOZoneSet1IsValid));
-                OnPropertyChanged(nameof(IOZoneSet2IsValid));
-                OnPropertyChanged(nameof(IOZoneSet3IsValid));
-                OnPropertyChanged(nameof(IOZoneSet4IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
                 OnPropertyChanged(nameof(DevicesHaveCommonZone));
                 OnPropertyChanged(nameof(DevicesHaveCommonZGSType));
                 OnPropertyChanged(nameof(IndicateMultipleValues));
@@ -383,14 +383,16 @@ namespace Xfp.ViewModels.PanelTools
         private int? setIOZGSIndex(int ioIndex, int? value)
         {
             if (value is not null)
+            {
                 foreach (var d in _deviceList)
+                {
                     d.IOConfigItems[ioIndex].ZoneGroupSet = NoDeviceDetails ? -1 : value.Value;
+                    d.RefreshView();
+                }
+            }
 
             OnPropertyChanged();
             OnPropertyChanged(nameof(IOZoneGroupSet1));
-            OnPropertyChanged(nameof(IOZone1));
-            OnPropertyChanged(nameof(IOGroup1));
-            OnPropertyChanged(nameof(IOSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
             OnPropertyChanged(nameof(IOZoneGroupSet4));
@@ -460,10 +462,10 @@ namespace Xfp.ViewModels.PanelTools
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(GroupIsValid));
-                OnPropertyChanged(nameof(IOZoneSet1IsValid));
-                OnPropertyChanged(nameof(IOZoneSet2IsValid));
-                OnPropertyChanged(nameof(IOZoneSet3IsValid));
-                OnPropertyChanged(nameof(IOZoneSet4IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+                OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
                 OnPropertyChanged(nameof(DevicesHaveCommonGroup));
                 OnPropertyChanged(nameof(DevicesHaveCommonZGSType));
                 OnPropertyChanged(nameof(IndicateMultipleValues));
@@ -1018,9 +1020,6 @@ namespace Xfp.ViewModels.PanelTools
         public int?   IOOutputChannel3   { get => getIOChannel(2);         set => setChannel(2, value); }
         public int?   IOOutputChannel4   { get => getIOChannel(3);         set => setChannel(3, value); }
         public string IOZoneGroupSet1    { get => getIOZoneGroupSet(0);    set => setIOZoneGroupSet(0, value); }
-        public string IOZone1            { get => getIOZoneGroupSet(0);    set => setIOZoneGroupSet(0, value); }
-        public string IOGroup1           { get => getIOZoneGroupSet(0);    set => setIOZoneGroupSet(0, value); }
-        public string IOSet1             { get => getIOZoneGroupSet(0);    set => setIOZoneGroupSet(0, value); }
         public string IOZoneGroupSet2    { get => getIOZoneGroupSet(1);    set => setIOZoneGroupSet(1, value); }
         public string IOZoneGroupSet3    { get => getIOZoneGroupSet(2);    set => setIOZoneGroupSet(2, value); }
         public string IOZoneGroupSet4    { get => getIOZoneGroupSet(3);    set => setIOZoneGroupSet(3, value); }
@@ -1088,9 +1087,6 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOIsInput3));
             OnPropertyChanged(nameof(IOIsInput4));
             OnPropertyChanged(nameof(IOZoneGroupSet1));
-            OnPropertyChanged(nameof(IOZone1));
-            OnPropertyChanged(nameof(IOGroup1));
-            OnPropertyChanged(nameof(IOSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
             OnPropertyChanged(nameof(IOZoneGroupSet4));
@@ -1102,10 +1098,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOChannel2IsValid));
             OnPropertyChanged(nameof(IOChannel3IsValid));
             OnPropertyChanged(nameof(IOChannel4IsValid));
-            OnPropertyChanged(nameof(IOZoneSet1IsValid));
-            OnPropertyChanged(nameof(IOZoneSet2IsValid));
-            OnPropertyChanged(nameof(IOZoneSet3IsValid));
-            OnPropertyChanged(nameof(IOZoneSet4IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
             OnPropertyChanged(nameof(IODescription1IsValid));
             OnPropertyChanged(nameof(IODescription2IsValid));
             OnPropertyChanged(nameof(IODescription3IsValid));
@@ -1118,10 +1114,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel2));
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel3));
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel4));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet1));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet2));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet3));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet4));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet1));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet2));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet3));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet4));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription1));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription2));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription3));
@@ -1274,20 +1270,17 @@ namespace Xfp.ViewModels.PanelTools
             }
 
             OnPropertyChanged(nameof(IOZoneGroupSet1));
-            OnPropertyChanged(nameof(IOZone1));
-            OnPropertyChanged(nameof(IOGroup1));
-            OnPropertyChanged(nameof(IOSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
             OnPropertyChanged(nameof(IOZoneGroupSet4));
-            OnPropertyChanged(nameof(IOZoneSet1IsValid));
-            OnPropertyChanged(nameof(IOZoneSet2IsValid));
-            OnPropertyChanged(nameof(IOZoneSet3IsValid));
-            OnPropertyChanged(nameof(IOZoneSet4IsValid));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet1));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet2));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet3));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet4));
+            OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet1));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet2));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet3));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet4));
         }
 
         private string getIODescription(int index)
@@ -2045,26 +2038,26 @@ namespace Xfp.ViewModels.PanelTools
             }
         }
 
-        public bool DevicesHaveCommonIOInputOutput1 => devicesHaveCommonIOInputOutput(0);
-        public bool DevicesHaveCommonIOInputOutput2 => devicesHaveCommonIOInputOutput(1);
-        public bool DevicesHaveCommonIOInputOutput3 => devicesHaveCommonIOInputOutput(2);
-        public bool DevicesHaveCommonIOInputOutput4 => devicesHaveCommonIOInputOutput(3);
-        public bool DevicesHaveCommonIOChannel1 => devicesHaveCommonIOChannel(0);
-        public bool DevicesHaveCommonIOChannel2 => devicesHaveCommonIOChannel(1);
-        public bool DevicesHaveCommonIOChannel3 => devicesHaveCommonIOChannel(2);
-        public bool DevicesHaveCommonIOChannel4 => devicesHaveCommonIOChannel(3);
-        public bool DevicesHaveCommonIOZoneSet1 => devicesHaveCommonIOZoneSet(0);
-        public bool DevicesHaveCommonIOZoneSet2 => devicesHaveCommonIOZoneSet(1);
-        public bool DevicesHaveCommonIOZoneSet3 => devicesHaveCommonIOZoneSet(2);
-        public bool DevicesHaveCommonIOZoneSet4 => devicesHaveCommonIOZoneSet(3);
-        public bool DevicesHaveCommonIODescription1 => devicesHaveCommonIODescription(0);
-        public bool DevicesHaveCommonIODescription2 => devicesHaveCommonIODescription(1);
-        public bool DevicesHaveCommonIODescription3 => devicesHaveCommonIODescription(2);
-        public bool DevicesHaveCommonIODescription4 => devicesHaveCommonIODescription(3);
+        public bool DevicesHaveCommonIOInputOutput1  => devicesHaveCommonIOInputOutput(0);
+        public bool DevicesHaveCommonIOInputOutput2  => devicesHaveCommonIOInputOutput(1);
+        public bool DevicesHaveCommonIOInputOutput3  => devicesHaveCommonIOInputOutput(2);
+        public bool DevicesHaveCommonIOInputOutput4  => devicesHaveCommonIOInputOutput(3);
+        public bool DevicesHaveCommonIOChannel1      => devicesHaveCommonIOChannel(0);
+        public bool DevicesHaveCommonIOChannel2      => devicesHaveCommonIOChannel(1);
+        public bool DevicesHaveCommonIOChannel3      => devicesHaveCommonIOChannel(2);
+        public bool DevicesHaveCommonIOChannel4      => devicesHaveCommonIOChannel(3);
+        public bool DevicesHaveCommonIOZoneGroupSet1 => devicesHaveCommonIOZoneGroupSet(0);
+        public bool DevicesHaveCommonIOZoneGroupSet2 => devicesHaveCommonIOZoneGroupSet(1);
+        public bool DevicesHaveCommonIOZoneGroupSet3 => devicesHaveCommonIOZoneGroupSet(2);
+        public bool DevicesHaveCommonIOZoneGroupSet4 => devicesHaveCommonIOZoneGroupSet(3);
+        public bool DevicesHaveCommonIODescription1  => devicesHaveCommonIODescription(0);
+        public bool DevicesHaveCommonIODescription2  => devicesHaveCommonIODescription(1);
+        public bool DevicesHaveCommonIODescription3  => devicesHaveCommonIODescription(2);
+        public bool DevicesHaveCommonIODescription4  => devicesHaveCommonIODescription(3);
 
         private bool devicesHaveCommonIOInputOutputs => devicesHaveCommonIOInputOutput(0) && devicesHaveCommonIOInputOutput(1) && devicesHaveCommonIOInputOutput(2) && devicesHaveCommonIOInputOutput(3);
         private bool devicesHaveCommonIOChannels     => devicesHaveCommonIOChannel(0) && devicesHaveCommonIOChannel(1) && devicesHaveCommonIOChannel(2) && devicesHaveCommonIOChannel(3);
-        private bool devicesHaveCommonIOZoneSets     => devicesHaveCommonIOZoneSet(0) && devicesHaveCommonIOZoneSet(1) && devicesHaveCommonIOZoneSet(2) && devicesHaveCommonIOZoneSet(3);
+        private bool devicesHaveCommonIOZoneGroupSets=> devicesHaveCommonIOZoneGroupSet(0) && devicesHaveCommonIOZoneGroupSet(1) && devicesHaveCommonIOZoneGroupSet(2) && devicesHaveCommonIOZoneGroupSet(3);
         private bool devicesHaveCommonIODescriptions => devicesHaveCommonIODescription(0) && devicesHaveCommonIODescription(1) && devicesHaveCommonIODescription(2) && devicesHaveCommonIODescription(3);
 
         private bool devicesHaveCommonIOInputOutput(int index)
@@ -2127,7 +2120,7 @@ namespace Xfp.ViewModels.PanelTools
             return dCount < 2 || channel != null;
         }
 
-        private bool devicesHaveCommonIOZoneSet(int index)
+        private bool devicesHaveCommonIOZoneGroupSet(int index)
         {
             if (NoDeviceDetails)
                 return true;
@@ -2138,7 +2131,7 @@ namespace Xfp.ViewModels.PanelTools
             if (IsIODevice != true)
                 return true;
 
-            int? zoneSet = null;
+            int? zoneGroupSet = null;
             int dCount = 0;
             foreach (var d in _deviceList)
             {
@@ -2148,13 +2141,13 @@ namespace Xfp.ViewModels.PanelTools
                 if (!d.IsIODevice)
                     return true;
 
-                if (zoneSet is not null && zoneSet != d.IOConfigItems[index].ZoneGroupSet)
+                if (zoneGroupSet is not null && zoneGroupSet != d.IOConfigItems[index].ZoneGroupSet)
                     return false;
                     
-                zoneSet = d.IOConfigItems[index].ZoneGroupSet;
+                zoneGroupSet = d.IOConfigItems[index].ZoneGroupSet;
                 dCount++;
             }
-            return dCount < 2 || zoneSet != null;
+            return dCount < 2 || zoneGroupSet != null;
         }
 
         private bool devicesHaveCommonIODescription(int index)
@@ -2201,7 +2194,7 @@ namespace Xfp.ViewModels.PanelTools
                                             || !DevicesHaveCommonAncillaryBaseSounderGroup 
                                             || !devicesHaveCommonIOInputOutputs 
                                             || !devicesHaveCommonIOChannels 
-                                            || !devicesHaveCommonIOZoneSets 
+                                            || !devicesHaveCommonIOZoneGroupSets 
                                             || !devicesHaveCommonIODescriptions;
 
 
@@ -2286,10 +2279,10 @@ namespace Xfp.ViewModels.PanelTools
         public bool IOChannel2IsValid       => ioChannelIsValid(1);
         public bool IOChannel3IsValid       => ioChannelIsValid(2);
         public bool IOChannel4IsValid       => ioChannelIsValid(3);
-        public bool IOZoneSet1IsValid       => ioZoneSetIsValid(0);
-        public bool IOZoneSet2IsValid       => ioZoneSetIsValid(1);
-        public bool IOZoneSet3IsValid       => ioZoneSetIsValid(2);
-        public bool IOZoneSet4IsValid       => ioZoneSetIsValid(3);
+        public bool IOZoneGroupSet1IsValid  => ioZoneSetIsValid(0);
+        public bool IOZoneGroupSet2IsValid  => ioZoneSetIsValid(1);
+        public bool IOZoneGroupSet3IsValid  => ioZoneSetIsValid(2);
+        public bool IOZoneGroupSet4IsValid  => ioZoneSetIsValid(3);
         public bool IODescription1IsValid   => ioDescriptionIsValid(0);
         public bool IODescription2IsValid   => ioDescriptionIsValid(1);
         public bool IODescription3IsValid   => ioDescriptionIsValid(2);
@@ -2570,10 +2563,6 @@ namespace Xfp.ViewModels.PanelTools
             initModesList();
         }
 
-        private enum ZgsType { Zone, Group, Set };
-
-        private ZgsType deviceZgs(int? deviceType) => DeviceTypes.IsGroupedDevice(deviceType) ? ZgsType.Group : DeviceTypes.IsSetDevice(deviceType) ? ZgsType.Set : ZgsType.Zone;
-
 
         private void initZGSLists()
         {
@@ -2636,11 +2625,8 @@ namespace Xfp.ViewModels.PanelTools
             
 
             //temporarily unset the value, otherwise OnPropertyChanged
-            //doesn't always update the UI and the combo is blank
-            //if (_zones.Count > 0)
-            //    Zone = _zones[^1];
+            //doesn't always update the UI and the combo ends up blank
             Zone = Group = IOZoneGroupSet1 = IOZoneGroupSet2 = IOZoneGroupSet3 = IOZoneGroupSet4 = "";
-            IOZone1 = IOGroup1 = IOSet1 = "";
            
             if (IsZonedDevice == true)
                 OnZoneIndexSet?.Invoke((zoneIndex = zIdx)??-1);
@@ -2648,35 +2634,34 @@ namespace Xfp.ViewModels.PanelTools
             if (IsGroupedDevice == true)
                 OnGroupIndexSet?.Invoke((groupIndex = gIdx)??-1);
 
-
-            if (IOOutputIsGroups == true)
-            {
-                OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-                OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-                OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-                OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
-            }
-
-            if (IOOutputIsSets == true)
-            {
+            //set the combo values and update them on the screen
+            if (IOIsInput1)
+                OnIOZoneIndexSet?.Invoke (0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+            else if (IOOutputIsGroups == true)
                 OnIOGroupIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+            else if (IOOutputIsSets == true)
+                OnIOSetIndexSet?.Invoke  (0, (setIOZGSIndex(0, io1Idx)) ?? -1);
+
+            if (IOIsInput2)
+                OnIOZoneIndexSet?.Invoke (1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+            else if (IOOutputIsGroups == true)
                 OnIOGroupIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+            else if (IOOutputIsSets == true)
+                OnIOSetIndexSet?.Invoke  (1, (setIOZGSIndex(1, io2Idx)) ?? -1);
+
+            if (IOIsInput3)
+                OnIOZoneIndexSet?.Invoke (2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+            else if (IOOutputIsGroups == true)
                 OnIOGroupIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+            else if (IOOutputIsSets == true)
+                OnIOSetIndexSet?.Invoke  (2, (setIOZGSIndex(2, io3Idx)) ?? -1);
+
+            if (IOIsInput4)
+                OnIOZoneIndexSet?.Invoke (3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            else if (IOOutputIsGroups == true)
                 OnIOGroupIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
-            }
-
-            //if (IsSetDevice == true)
-            //{
-            //    OnIOSetIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-            //    OnIOSetIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
-            //}
-
-            OnIOZoneIndexSet?.Invoke(0, (setIOZGSIndex(0, io1Idx)) ?? -1);
-            OnIOZoneIndexSet?.Invoke(1, (setIOZGSIndex(1, io2Idx)) ?? -1);
-            OnIOZoneIndexSet?.Invoke(2, (setIOZGSIndex(2, io3Idx)) ?? -1);
-            OnIOZoneIndexSet?.Invoke(3, (setIOZGSIndex(3, io4Idx)) ?? -1);
+            else if (IOOutputIsSets == true)
+                OnIOSetIndexSet?.Invoke  (3, (setIOZGSIndex(3, io4Idx)) ?? -1);
         }
         
         private void initBaseSounderList()
@@ -3013,9 +2998,9 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOOutputIsGroups));
             OnPropertyChanged(nameof(IOOutputIsSets));
             OnPropertyChanged(nameof(IOZoneGroupSet1));
-            OnPropertyChanged(nameof(IOZone1));
-            OnPropertyChanged(nameof(IOGroup1));
-            OnPropertyChanged(nameof(IOSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
+            OnPropertyChanged(nameof(IOZoneGroupSet1));
             OnPropertyChanged(nameof(IOZoneGroupSet2));
             OnPropertyChanged(nameof(IOZoneGroupSet3));
             OnPropertyChanged(nameof(IOZoneGroupSet4));
@@ -3031,14 +3016,14 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(IOChannel2IsValid));
             OnPropertyChanged(nameof(IOChannel3IsValid));
             OnPropertyChanged(nameof(IOChannel4IsValid));
-            OnPropertyChanged(nameof(IOZoneSet1IsValid));
-            OnPropertyChanged(nameof(IOZoneSet2IsValid));
-            OnPropertyChanged(nameof(IOZoneSet3IsValid));
-            OnPropertyChanged(nameof(IOZoneSet4IsValid));
-            OnPropertyChanged(nameof(IOZoneSet1IsValid));
-            OnPropertyChanged(nameof(IOZoneSet2IsValid));
-            OnPropertyChanged(nameof(IOZoneSet3IsValid));
-            OnPropertyChanged(nameof(IOZoneSet4IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet1IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet2IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet3IsValid));
+            OnPropertyChanged(nameof(IOZoneGroupSet4IsValid));
             OnPropertyChanged(nameof(IODescription1IsValid));
             OnPropertyChanged(nameof(IODescription2IsValid));
             OnPropertyChanged(nameof(IODescription3IsValid));
@@ -3051,10 +3036,10 @@ namespace Xfp.ViewModels.PanelTools
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel2));
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel3));
             OnPropertyChanged(nameof(DevicesHaveCommonIOChannel4));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet1));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet2));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet3));
-            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneSet4));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet1));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet2));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet3));
+            OnPropertyChanged(nameof(DevicesHaveCommonIOZoneGroupSet4));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription1));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription2));
             OnPropertyChanged(nameof(DevicesHaveCommonIODescription3));

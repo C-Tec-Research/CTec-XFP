@@ -1075,12 +1075,12 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput1, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneGroupSet1IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox x:Name="cboIO1Zone"
                                                           ItemsSource="{Binding Zones}"
-                                                          Text="{Binding IOZone1}"
+                                                          Text="{Binding IOZoneGroupSet1}"
                                                           MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                           PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                           Visibility="{Binding IOIsInput1, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -1088,13 +1088,13 @@
                                                 <Grid Visibility="{Binding IOIsInput1, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                                     <ComboBox x:Name="cboIO1Group"
                                                               ItemsSource="{Binding Groups}"
-                                                              Text="{Binding IOGroup1}"
+                                                              Text="{Binding IOZoneGroupSet1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               Visibility="{Binding IOOutputIsGroups, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                     <ComboBox x:Name="cboIO1Set"
                                                               ItemsSource="{Binding Sets}"
-                                                              Text="{Binding IOSet1}"
+                                                              Text="{Binding IOZoneGroupSet1}"
                                                               MinWidth="100" HorizontalAlignment="Left" MaxDropDownHeight="500"
                                                               PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                               Visibility="{Binding IOOutputIsSets, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -1104,7 +1104,7 @@
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
                                                    FontSize="18"
                                                    Foreground="{StaticResource BrushInfo}"
-                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneGroupSet1, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput1, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1115,7 +1115,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput2, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneGroupSet2IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox x:Name="cboIO2Zone"
@@ -1147,7 +1147,7 @@
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
                                                    FontSize="18"
                                                    Foreground="{StaticResource BrushInfo}"
-                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneGroupSet2, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput2, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1158,7 +1158,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput3, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneGroupSet3IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox x:Name="cboIO3Zone"
@@ -1190,7 +1190,7 @@
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
                                                    FontSize="18"
                                                    Foreground="{StaticResource BrushInfo}"
-                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneGroupSet3, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput3, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>
@@ -1201,7 +1201,7 @@
                                     Margin="2,0,0,0">
                                 <Grid Visibility="{Binding IOInputOutput4, Converter={StaticResource NonNullToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="{Binding IOZoneSet4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
+                                        <Border BorderBrush="{Binding IOZoneGroupSet4IsValid, Converter={StaticResource InverseBoolToErrorBrushConverter}}"
                                                 BorderThickness="1" HorizontalAlignment="Left" Margin="-3,0,0,0"  Padding="2,0,2,0">
                                             <Grid>
                                                 <ComboBox x:Name="cboIO4Zone"
@@ -1233,7 +1233,7 @@
                                         <TextBlock Text="{Binding Path=Asterisk, Source={StaticResource Resources}}" Margin="-1,0,0,0" Padding="0" 
                                                    FontSize="18"
                                                    Foreground="{StaticResource BrushInfo}"
-                                                   Visibility="{Binding DevicesHaveCommonIOZoneSet4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
+                                                   Visibility="{Binding DevicesHaveCommonIOZoneGroupSet4, Converter={StaticResource InverseBoolToVisibilityHiddenConverter}}"/>
                                     </StackPanel>
                                 </Grid>
                                 <ComboBox IsEnabled="False" Width="100" Visibility="{Binding IOInputOutput4, Converter={StaticResource IsNullToVisibilityConverter}}" HorizontalAlignment="Left" Opacity="0.4" Margin="0,0,0,0"/>

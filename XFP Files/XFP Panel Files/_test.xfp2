@@ -597,14 +597,14 @@
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "ZoneGroupSet": 5,
                   "NameIndex": 0
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
+                  "ZoneGroupSet": 7,
                   "NameIndex": -1
                 },
                 {
@@ -645,21 +645,21 @@
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": 0
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": 3,
+                  "ZoneGroupSet": 2,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": 3,
+                  "ZoneGroupSet": 6,
                   "NameIndex": -1
                 },
                 {

@@ -1677,13 +1677,13 @@ namespace Xfp.ViewModels
         #region Revision History & Registration
         public void ShowRevisionHistoryWindow()
         {
-            UIState.SetBusyState();
             try
             {
+                UIState.SetBusyState();
                 MainWindowEnabled = false;
 
                 var document = DocxToFlowDocumentConverter.ReadDocxResource("XFP Revision History");
-                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History, XfpApplicationConfig.Settings).ShowDialog();
+                new FlowDocumentViewer(document, Cultures.Resources.XFP_Revision_History, XfpApplicationConfig.Settings).Show();
             }
             catch (Exception ex) { }
             finally { MainWindowEnabled = true; }

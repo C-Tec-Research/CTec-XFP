@@ -123,7 +123,7 @@ namespace Xfp.ViewModels.PanelTools
 
         internal List<IOSettingData> IOConfigItems { get => _deviceData.IOConfig;      set { _deviceData.IOConfig = value; OnPropertyChanged(); } }
 
-        public string DeviceTypeToolTip            { get => DeviceSelectorDeviceType != null ? Cultures.Resources.ToolTip_Click_To_Change_Device_Type : Cultures.Resources.ToolTip_Click_To_Show_Device_Details; }
+        public string DeviceTypeToolTip              => DeviceSelectorDeviceType != null ? Cultures.Resources.ToolTip_Click_To_Change_Device_Type : Cultures.Resources.ToolTip_Click_To_Show_Device_Details;
 
         private bool _showOnlyIfFitted;
 
