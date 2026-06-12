@@ -82,6 +82,9 @@ namespace Xfp.DataTypes.PanelData
                     {
                         dataRows++;
 
+                        //find number of rows of zone/group values
+                        var zgsRows = dev.IsZonalDevice && dev.IsGroupedDevice ? 2 : 1;
+
                         //find number of rows of Mode/Sensitivity/Volume values
                         var vsmRows = 0;
                         if (DeviceTypes.IsSensitivityDevice(dev.DeviceType, DeviceTypes.CurrentProtocolType))
@@ -98,7 +101,7 @@ namespace Xfp.DataTypes.PanelData
 
                         //rows required depends on the above
                         var mvsRows = (dev.IsModeDevice ? 1 : 0) + (dev.IsVolumeDevice ? 1 : 0) + (dev.IsSensitivityDevice ? 1 : 0);
-                        var numRows = Math.Max(Math.Max(ioRows, vsmRows), mvsRows);
+                        var numRows = Math.Max(Math.Max(zgsRows, ioRows), Math.Max(vsmRows, mvsRows));
 
                         //create the required number of table rows
                         var newRows = new List<TableRow>();
@@ -125,7 +128,12 @@ namespace Xfp.DataTypes.PanelData
                             if (dev.IsIODevice)
                                 newRows[0].Cells.Add(TableUtil.NewCell(Cultures.Resources.See_IO_Configuration_Abbr, numRows, 1, _seeIoSettingsForeground, FontStyles.Italic));
                             else
-                                newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev), numRows, 1, true));
+                            {
+                                newRows[0].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, 0)));
+
+                                if (dev.IsZonalDevice && dev.IsGroupedDevice)
+                                    newRows[1].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, 1)));
+                            }
 
                             //name
                             newRows[0].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.NameIndex), numRows, 1));
@@ -133,7 +141,6 @@ namespace Xfp.DataTypes.PanelData
 
                             //volume/sensitivity/mode & day:night values
                             int modeSensVolRows = 0;
-                            bool modeSensVolIsValid = true;
 
                             if (dev.IsModeDevice || dev.IsVolumeDevice || dev.IsSensitivityDevice)
                             {
@@ -185,7 +192,7 @@ namespace Xfp.DataTypes.PanelData
                             {
                                 newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1));
                                 newRows[0].Cells.Add(TableUtil.NewCell("--", numRows, 1, TextAlignment.Center));
-                                modeSensVolRows++;
+                                //modeSensVolRows++;
                             }
 
                             if (DeviceTypes.CurrentProtocolIsXfpApollo)
@@ -213,8 +220,8 @@ namespace Xfp.DataTypes.PanelData
                             if (dev.IsIODevice)
                             {
                                 List<string> subaddressNames = DeviceTypes.CurrentProtocolIsXfpCast && dev.DeviceType == (int)XfpCastDeviceTypeIds.HS2
-                                                            ? _xfpHushSubaddressNames
-                                                            : _defaultSubaddressNames;
+                                                             ? _xfpHushSubaddressNames
+                                                             : _defaultSubaddressNames;
 
                                 for (int io = 0; io < dev.IOConfig.Count; io++)
                                 {
@@ -230,7 +237,7 @@ namespace Xfp.DataTypes.PanelData
 
                                         newRows[io].Cells.Add(TableUtil.NewCell(CTecDevices.Enums.IOTypeToString(dev.IOConfig[io].InputOutput)));
                                         newRows[io].Cells.Add(TableUtil.NewCell(getChannel(dev.IOConfig[io].Channel, dev.IOConfig[io].InputOutput == IOTypes.Input), true, true));
-                                        newRows[io].Cells.Add(TableUtil.NewCell(getZGSDescription(dev, true, io), true));
+                                        newRows[io].Cells.Add(TableUtil.NewCell(getIOZGSDescription(dev, true, io), true));
                                         newRows[io].Cells.Add(TableUtil.NewCell(GetDeviceName?.Invoke(dev.IOConfig[io].NameIndex)));
 
                                         ioRowsUsed++;
@@ -290,9 +297,10 @@ namespace Xfp.DataTypes.PanelData
             foreach (var d in Loops[loopNum].Devices)
                 _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + PrintUtil.DefaultCellMargins);
             
-            _wZGS  = Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones)).Width, 
-                                       TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
-                                       TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width) + PrintUtil.DefaultCellMargins;
+            _wZGS  = Math.Max(Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones)).Width, 
+                                                TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
+                                                TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width),
+                                                TableUtil.MeasureText(Cultures.Resources.Use_In_Special_C_And_E).Width) + PrintUtil.DefaultCellMargins;
             _wName = 75;
             _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + PrintUtil.DefaultCellMargins;
             _wVS   = 46;
@@ -318,26 +326,26 @@ namespace Xfp.DataTypes.PanelData
         private void defineColumnHeaders(Table table, string reportHeader)
         {
             _totalColumns = 0;
-            table.Columns.Add(new TableColumn() { Width = new GridLength(18) });              _totalColumns++;    // num
-            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });              _totalColumns++;    // icon
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDeviceType) });    _totalColumns++;    // type name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });           _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });          _totalColumns++;    // name
-            table.Columns.Add(new TableColumn() { Width = new GridLength(46) });              _totalColumns++;    // v/s/m
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDN) });            _totalColumns++;    // day:night
+            table.Columns.Add(new TableColumn() { Width = new GridLength(18) });            _totalColumns++;    // num
+            table.Columns.Add(new TableColumn() { Width = new GridLength(30) });            _totalColumns++;    // icon
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDeviceType) });  _totalColumns++;    // type name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });         _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });        _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(46) });            _totalColumns++;    // v/s/m
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wDN) });          _totalColumns++;    // day:night
 
             if (DeviceTypes.CurrentProtocolIsXfpApollo)
             {
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_wRLED) });      _totalColumns++;    // remote LED
-                table.Columns.Add(new TableColumn() { Width = new GridLength(_wBSG) });       _totalColumns++;    // base sounder grp
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_wRLED) });    _totalColumns++;    // remote LED
+                table.Columns.Add(new TableColumn() { Width = new GridLength(_wBSG) });     _totalColumns++;    // base sounder grp
             }
             _leftColumns = _totalColumns;
 
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wSubaddr) });       _totalColumns++;    // subaddress
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wIO) });            _totalColumns++;    // i/o
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wChan) });          _totalColumns++;    // chan
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });           _totalColumns++;    // z/g/s
-            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });          _totalColumns++;    // name
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wSubaddr) });     _totalColumns++;    // subaddress
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wIO) });          _totalColumns++;    // i/o
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wChan) });        _totalColumns++;    // chan
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wZGS) });         _totalColumns++;    // z/g/s
+            table.Columns.Add(new TableColumn() { Width = new GridLength(_wName) });        _totalColumns++;    // name
             
             //define rows for the header
             var headerRow1 = new TableRow();
@@ -422,20 +430,29 @@ namespace Xfp.DataTypes.PanelData
             var validD1 = DeviceTypes.IsValidDeviceType(d1.DeviceType, DeviceTypes.CurrentProtocolType);
             var validD2 = DeviceTypes.IsValidDeviceType(d2.DeviceType, DeviceTypes.CurrentProtocolType);
 
-            if (!validD1 && !validD2) return d1.Index.CompareTo(d2.Index);
-            if (!validD1) return 1;
-            if (!validD2) return -1;
+            if (!validD1 || !validD2)
+            {
+                if (validD1) return -1;
+                if (validD2) return 1;
+                return d1.Index.CompareTo(d2.Index);
+            }
+
+            if (d1.IsIODevice || d2.IsIODevice) return getIOSortZGS(d1, d2);
+
+            if (d1.IsZonalDevice && d1.IsGroupedDevice && d2.IsZonalDevice && d2.IsGroupedDevice)
+            {
+                var z = d1.Zone.CompareTo(d2.Zone);
+                if (z != 0) return z;
+                return d1.Group.CompareTo(d2.Group);
+            }
+
+            if (d1.IsZonalDevice && !d2.IsZonalDevice) return -1;
+            if (d2.IsZonalDevice && !d1.IsZonalDevice) return 1;
 
             if (d1.IsGroupedDevice && d2.IsGroupedDevice) return d1.Group.CompareTo(d2.Group);
             if (d1.IsZonalDevice   && d2.IsZonalDevice)   return d1.Zone.CompareTo(d2.Zone);
-            if (d1.IsGroupedDevice && d2.IsZonalDevice)   return d1.Group > 0 && d2.Zone == 0 ? 1 : -1;
-            if (d1.IsZonalDevice   && d2.IsGroupedDevice) return d1.Zone == 0 && d2.Group > 0 ? -1 : 1;
-            if (d1.IsGroupedDevice && d2.IsIODevice)      return -1;
-            if (d1.IsIODevice      && d2.IsGroupedDevice) return 1;
-            if (d1.IsZonalDevice   && d2.IsIODevice)      return -1;
-            if (d1.IsIODevice      && d2.IsGroupedDevice) return 1;
 
-            return getIOSortZGS(d1, d2).CompareTo(getIOSortZGS(d2, d1));
+            return 0;
         }
         
 
@@ -450,10 +467,20 @@ namespace Xfp.DataTypes.PanelData
             };
         
 
-        private string getZGSDescription(DeviceData device, bool isIOSetting = false, int? ioIndex = null)
+        private string getZGSDescription(DeviceData device, int idx)
+        {
+            if (idx == 0 && device.IsZonalDevice) 
+                return device.Zone >= 0 && device.Zone < ZoneConfigData.NumZones ? ZoneConfigData.GetZoneName(device.Zone) : null;
+            if (device.IsGroupedDevice)           
+                return device.Group >= 0 && device.Group < GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(device.Group) : null;
+            return null;
+        }
+        
+
+        private string getIOZGSDescription(DeviceData device, bool isIOSetting = false, int? ioIndex = null)
         {
             var isIODevice = device.IsIODevice && ioIndex.HasValue;
-            var value      = isIODevice ? device.IOConfig[(int)ioIndex].ZoneGroupSet : device.Zone;
+            var value      = isIODevice ? device.IOConfig[(int)ioIndex].ZoneGroupSet : device.IsGroupedDevice ? device.Group : device.Zone;
             
             if (value is null || value < 0 || value > ZoneConfigData.NumZones)
                 return null;
@@ -461,12 +488,22 @@ namespace Xfp.DataTypes.PanelData
             if (value == 0)
                 return Cultures.Resources.Use_In_Special_C_And_E;
 
-            var isSet = isIOSetting && device.IsZonalDevice && device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output;
+            if (isIODevice)
+            {
+                if (device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output)
+                {
+                    if (device.IOOutputIsGroups)
+                        return GroupConfigData.GetGroupName(value);
+                    if (device.IOOutputIsSets)
+                        return SetConfigData.GetSetName((int)value);
+                }
+            }
+            else
+            {
+                if (device.IsGroupedDevice)
+                    return GroupConfigData.GetGroupName(value);
+            }
 
-            if (device.IsGroupedDevice) 
-                return GroupConfigData.GetGroupName(value);
-            if (isSet) 
-                return SetConfigData.GetSetName((int)value);
             return ZoneConfigData.GetZoneName(value);
         }
 
@@ -496,35 +533,38 @@ namespace Xfp.DataTypes.PanelData
 
         private int getIOSortZGS(DeviceData d1, DeviceData d2)
         {
-            if (d1.IsIODevice)
+            if (!d1.IsIODevice) return -1;
+            if (!d2.IsIODevice) return 1;
+
+            if (d1.IsIODevice && d2.IsIODevice)
             {
                 for (int i = 0; i < DeviceData.NumIOSettings; i++)
                 {
-                    if (i >= d1.IOConfig.Count) return int.MaxValue;
+                    if (i >= d1.IOConfig.Count) return 1;
                     if (i >= d2.IOConfig.Count) return -1;
-                    if (d1.IOConfig[i].InputOutput == IOTypes.NotUsed && d2.IOConfig[i].InputOutput != IOTypes.NotUsed) return int.MaxValue;
+                    if (d1.IOConfig[i].InputOutput == IOTypes.NotUsed && d2.IOConfig[i].InputOutput != IOTypes.NotUsed) return 1;
                     if (d2.IOConfig[i].InputOutput == IOTypes.NotUsed) return -1;
 
-                    int comp;
+                    var d1IsGroups = DeviceTypes.IOOutputIsGroups(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+                    var d2IsGroups = DeviceTypes.IOOutputIsGroups(d2.DeviceType, DeviceTypes.CurrentProtocolType);
+                    var d1IsSets   = DeviceTypes.IOOutputIsSets(d1.DeviceType, DeviceTypes.CurrentProtocolType);
+                    var d2IsSets   = DeviceTypes.IOOutputIsSets(d2.DeviceType, DeviceTypes.CurrentProtocolType);
 
-                    if (i == 0)
+                    if (d1IsGroups)
                     {
-                        var d1Grouped = DeviceTypes.IOOutputIsGroups(d1.DeviceType, DeviceTypes.CurrentProtocolType);
-                        var d2Grouped = DeviceTypes.IOOutputIsGroups(d2.DeviceType, DeviceTypes.CurrentProtocolType);
-
-                        if (d1Grouped && !d2Grouped) return -1;
-                        if (!d1Grouped && d2Grouped) return 1;
-
-                        if ((comp = d1.IOConfig[i].ZoneGroupSet.Value.CompareTo(d2.IOConfig[i].ZoneGroupSet)) == 0)
-                            continue;
-
-                        return comp > 0 ? int.MaxValue : comp;
+                        if (d2IsSets) return -1;
+                        if (!d2IsGroups) return 1;
                     }
+
+                    if (d1IsSets)
+                        if (d2IsGroups || !d2IsSets) return 1;
+
+                    int comp;
 
                     if ((comp = d1.IOConfig[i].ZoneGroupSet.Value.CompareTo(d2.IOConfig[i].ZoneGroupSet)) == 0)
                         continue;
 
-                    return comp > 0 ? int.MaxValue : comp;
+                    return comp;
                 }
             }
 

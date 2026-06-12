@@ -102,23 +102,6 @@ namespace Xfp.ViewModels
         }
 
 
-        //private static string getDefaultPrinterName()
-        //{
-        //    var query = new ObjectQuery("SELECT * FROM Win32_Printer");
-        //    var searcher = new ManagementObjectSearcher(query);
-
-        //    foreach (ManagementObject mo in searcher.Get())
-        //    {
-        //        if (((bool?) mo["Default"]) ?? false)
-        //        {
-        //            return mo["Name"] as string;
-        //        }
-        //    }
-
-        //    return null;
-        //}
-
-
         public bool   PrinterListIsOpen { get => _printerListIsOpen;          set { _printerListIsOpen = value; OnPropertyChanged(); } }
         public string SelectedPrinter   { get => PrintParams.PrintQueue.Name; set { PrintParams.SetPrinter(value); OnPropertyChanged(); PrinterListIsOpen = false; } }
 
@@ -134,7 +117,6 @@ namespace Xfp.ViewModels
 
 
         #region printer settings
-        //public CTecUtil.PrinterSettings PrinterSettings { get; set; } = new();
         public bool IsPortrait
         {
             get => PrintParams.Orientation == PageOrientation.Portrait; 
@@ -281,10 +263,6 @@ namespace Xfp.ViewModels
         }
 
 
-        //internal delegate void OptionSelectedAction(CTecUtil.PrintActions action);
-        //internal OptionSelectedAction CloseAction;
-
-
         public bool CheckHotKey(KeyEventArgs e)
         {
             var alt = (e.KeyboardDevice.Modifiers & ModifierKeys.Alt) == ModifierKeys.Alt;
@@ -306,23 +284,6 @@ namespace Xfp.ViewModels
         #region zoom
         private ScaleTransform _layoutTransform;
         public ScaleTransform LayoutTransform { get => _layoutTransform; set { _layoutTransform = value; OnPropertyChanged(); } }
-
-        //public double WindowWidth => _outerGrid.ActualWidth * ZoomLevel;
-
-        //public double ZoomLevel
-        //{
-        //    get => _applicationConfig.PrintParametersWindow.Scale;
-        //    set
-        //    {
-        //        //_applicationConfig.PrintParametersWindow.Scale = value;
-        //        //LayoutTransform = new ScaleTransform(value, value);
-        //        //OnPropertyChanged();
-        //        //OnPropertyChanged(nameof(WindowWidth));
-        //    }
-        //}
-
-        //public void ZoomIn()  { /*ZoomLevel = (float)Math.Min(LayoutTransform.ScaleX + ApplicationConfig.ZoomStep, ApplicationConfig.MaxZoom);*/ }
-        //public void ZoomOut() { /*ZoomLevel = (float)Math.Max(LayoutTransform.ScaleX - ApplicationConfig.ZoomStep, ApplicationConfig.MinZoom);*/ }
         #endregion
     }
 }

@@ -62,7 +62,7 @@ namespace Xfp.DataTypes.PanelData
         public List<bool> OutputSetIsSilenceable { get; set; }
         public List<bool> PanelRelayIsSilenceable { get; set; }
 
-        public static string GetZoneName(int? index) => string.Format(Cultures.Resources.Zone_x, index is not null ? index : "...");
+        public static string GetZoneName(int? index) => index == 0 ? Cultures.Resources.Use_In_Special_C_And_E : string.Format(Cultures.Resources.Zone_x, index is not null ? index : "...");
 
 
         public static bool HasDetectorReset(ZoneDependencyOptions option) => option == ZoneDependencyOptions.A;
