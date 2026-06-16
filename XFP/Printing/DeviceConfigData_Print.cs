@@ -203,7 +203,7 @@ namespace Xfp.DataTypes.PanelData
                                     newRows[0].Cells.Add(TableUtil.NewCell(dev.RemoteLEDEnabled ?? false ? "Y" : "N", numRows, 1, TextAlignment.Center));
 
                                     //base sounder group
-                                    newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? Cultures.Resources.None : GroupConfigData.GetGroupName(dev.AncillaryBaseSounderGroup.Value), numRows, 1));
+                                    newRows[0].Cells.Add(TableUtil.NewCell((dev.RemoteLEDEnabled ?? false) || dev.AncillaryBaseSounderGroup is null || dev.AncillaryBaseSounderGroup == 0 ? Cultures.Resources.None : GroupConfigData.GetGroupName(dev.AncillaryBaseSounderGroup.Value, true), numRows, 1));
                                 }
                                 else
                                 {
@@ -297,10 +297,12 @@ namespace Xfp.DataTypes.PanelData
             foreach (var d in Loops[loopNum].Devices)
                 _wDeviceType = Math.Max(_wDeviceType, TableUtil.MeasureText(DeviceTypes.DeviceTypeName(d.DeviceType, DeviceTypes.CurrentProtocolType)).Width + PrintUtil.DefaultCellMargins);
             
-            _wZGS  = Math.Max(Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones)).Width, 
-                                                TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
-                                                TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width),
-                                                TableUtil.MeasureText(Cultures.Resources.Use_In_Special_C_And_E).Width) + PrintUtil.DefaultCellMargins;
+            _wZGS  = Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(TableUtil.MeasureText(ZoneConfigData.GetZoneName(ZoneConfigData.NumZones, true)).Width, 
+                                                                  TableUtil.MeasureText(GroupConfigData.GetGroupName(ZoneConfigData.NumZones, true)).Width), 
+                                                                  TableUtil.MeasureText(SetConfigData.GetSetName(ZoneConfigData.NumZones, true)).Width), 
+                                                                  TableUtil.MeasureText(PanelConfigData.GetPanelName(ZonePanelConfigData.NumZonePanels)).Width), 
+                                                                  TableUtil.MeasureText(Cultures.Resources.See_IO_Configuration_Abbr).Width),
+                                                                  TableUtil.MeasureText(Cultures.Resources.Use_In_Special_C_And_E).Width) + PrintUtil.DefaultCellMargins;
             _wName = 75;
             _wChan = TableUtil.MeasureText(Cultures.Resources.Channel_Abbr).Width + PrintUtil.DefaultCellMargins;
             _wVS   = 46;
@@ -470,9 +472,9 @@ namespace Xfp.DataTypes.PanelData
         private string getZGSDescription(DeviceData device, int idx)
         {
             if (idx == 0 && device.IsZonalDevice) 
-                return device.Zone >= 0 && device.Zone < ZoneConfigData.NumZones ? ZoneConfigData.GetZoneName(device.Zone) : null;
+                return device.Zone >= 0 && device.Zone < ZoneConfigData.NumZones ? ZoneConfigData.GetZoneName(device.Zone, true) : null;
             if (device.IsGroupedDevice)           
-                return device.Group >= 0 && device.Group < GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(device.Group) : null;
+                return device.Group >= 0 && device.Group < GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(device.Group, true) : null;
             return null;
         }
         
@@ -493,18 +495,18 @@ namespace Xfp.DataTypes.PanelData
                 if (device.IOConfig[(int)ioIndex].InputOutput == IOTypes.Output)
                 {
                     if (device.IOOutputIsGroups)
-                        return GroupConfigData.GetGroupName(value);
+                        return GroupConfigData.GetGroupName(value, true);
                     if (device.IOOutputIsSets)
-                        return SetConfigData.GetSetName((int)value);
+                        return SetConfigData.GetSetName((int)value, true);
                 }
             }
             else
             {
                 if (device.IsGroupedDevice)
-                    return GroupConfigData.GetGroupName(value);
+                    return GroupConfigData.GetGroupName(value, true);
             }
 
-            return ZoneConfigData.GetZoneName(value);
+            return ZoneConfigData.GetZoneName(value, true);
         }
 
         private string getAncillaryBaseSounder(DeviceData device, int? group)
@@ -512,7 +514,7 @@ namespace Xfp.DataTypes.PanelData
             if (!device.CanHaveAncillaryBaseSounder || device.RemoteLEDEnabled == true)
                 return "--";
             
-            return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(group.Value) : null;
+            return group.HasValue && group >= 0 && group <= GroupConfigData.NumSounderGroups ? GroupConfigData.GetGroupName(group.Value, true) : null;
         }
 
         private string getChannel(int? channel, bool isInput)

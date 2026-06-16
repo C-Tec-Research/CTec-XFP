@@ -32,7 +32,7 @@ namespace Xfp.DataTypes.PanelData
 
         public static bool isValidSet(int? set) => set.HasValue && set >= 0 && set <= NumOutputSetTriggers;
 
-        public static string GetSetName(int index) => index == 0 ? Cultures.Resources.Use_In_Special_C_And_E : string.Format(Cultures.Resources.Set_x, index);
+        public static string GetSetName(int index, bool zeroIsCE = false) => index == 0 && zeroIsCE ? Cultures.Resources.Use_In_Special_C_And_E : string.Format(Cultures.Resources.Set_x, index);
 
 
         public new static SetConfigData InitialisedNew()
