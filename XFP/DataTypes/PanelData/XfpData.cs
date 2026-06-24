@@ -13,7 +13,7 @@ namespace Xfp.DataTypes
     {
         internal XfpData()
         {
-            ToolsVersion = BuildInfo.Details.Version;
+            ToolsVersion = BuildInfo.BuildDetails.Version;
             Comments = "";
         }
 

@@ -41,7 +41,6 @@ using Xfp.UI.Interfaces;
 using Xfp.UI.Views;
 using Xfp.UI.Views.PanelTools;
 using Xfp.ViewModels.PanelTools;
-using Xfp.UI.Util;
 
 namespace Xfp.ViewModels
 {
@@ -49,6 +48,8 @@ namespace Xfp.ViewModels
     {
         public MainWindowViewModel(Window window, HamburgerMenu hamb, NumberSpinner panelControl, TextBlock aboutHeaderTextBlock) : base(window)
         {
+            IsBetaRelease = BuildInfo.IsBetaRelease;
+
             _mainAppWindow = window;
             _mainMenu = hamb;
             _panelControl = panelControl;
@@ -398,7 +399,7 @@ namespace Xfp.ViewModels
 
 
         #region ViewModel properties
-        public static string VersionString { get => string.Format(Cultures.Resources.Version_x, BuildInfo.Details.Version); }
+        public static string VersionString { get => string.Format(Cultures.Resources.Version_x, BuildInfo.BuildDetails.Version); }
 
         public string CultureName { get => CultureInfo.CurrentCulture.Name; }
 
@@ -1659,17 +1660,17 @@ namespace Xfp.ViewModels
         public double AboutHeaderWidth => FontUtil.MeasureText(AboutHeader, AboutHeaderTextBlock.FontFamily, AboutHeaderTextBlock.FontSize, AboutHeaderTextBlock.FontStyle, AboutHeaderTextBlock.FontWeight, AboutHeaderTextBlock.FontStretch).Width;
 
 
-        public string   ExeVersion       { get => string.Format(Cultures.Resources.Version_x_Abbr, BuildInfo.Details.Version); }
+        public string   ExeVersion       { get => string.Format(Cultures.Resources.Version_x_Abbr, BuildInfo.BuildDetails.Version); }
         public string   ControlsVersion  { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecControls.BuildInfo.Details.Version); }
         public string   DevicesVersion   { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecDevices.BuildInfo.Details.Version); }
         public string   UtilVersion      { get => string.Format(Cultures.Resources.Version_x_Abbr, CTecUtil.BuildInfo.Details.Version); }
 
-        public DateTime ExeDate          { get => BuildInfo.Details.BuildDate.Value; }
+        public DateTime ExeDate          { get => BuildInfo.BuildDetails.BuildDate.Value; }
         public DateTime ControlsDate     { get => CTecControls.BuildInfo.Details.BuildDate.Value; }
         public DateTime DevicesDate      { get => CTecDevices.BuildInfo.Details.BuildDate.Value; }
         public DateTime UtilDate         { get => CTecUtil.BuildInfo.Details.BuildDate.Value; }
 
-        public string   CopyrightDetails { get => string.Format(Cultures.Resources.Copyright_Details, BuildInfo.Details.BuildYear); }
+        public string   CopyrightDetails { get => string.Format(Cultures.Resources.Copyright_Details, BuildInfo.BuildDetails.BuildYear); }
         public string   Who              { get => Credits.Components[0].Notes; }
         #endregion
 
