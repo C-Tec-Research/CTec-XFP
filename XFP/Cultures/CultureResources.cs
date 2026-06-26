@@ -38,19 +38,9 @@ namespace Xfp.Cultures
             //remain on the current culture if the desired culture cannot be found
             // - otherwise it would revert to the default resources set, which may or may not be what is wanted.
             if (CTecUtil.Cultures.CultureResources.SupportedCultures.Contains(culture))
-            {
-                Cultures.Resources.Culture = culture;
-                CTecUtil.Cultures.CultureResources.ChangeCulture(culture);
                 CTecControls.Cultures.CultureResources.ChangeCulture(culture);
-                CTecDevices.Cultures.CultureResources.ChangeCulture(culture);
-            }
             else
-            {
-                Cultures.Resources.Culture = CultureInfo.CurrentCulture;
-                CTecUtil.Cultures.CultureResources.ChangeCulture(CultureInfo.CurrentCulture);
                 CTecControls.Cultures.CultureResources.ChangeCulture(CultureInfo.CurrentCulture);
-                CTecDevices.Cultures.CultureResources.ChangeCulture(CultureInfo.CurrentCulture);
-            }
             ResourceProvider.Refresh();
         }
     }

@@ -407,7 +407,7 @@ namespace Xfp.DataTypes.PanelData
             {
                 if (printOrder == SortOrder.Type)
                     result.Sort(compareByDeviceType);
-                else if (printOrder == SortOrder.ZoneGroupSet)
+                else if (printOrder == SortOrder.GroupZoneSet)
                     result.Sort(compareByZoneGroupSet);
             }
 

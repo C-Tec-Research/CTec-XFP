@@ -164,7 +164,7 @@ namespace Xfp.ViewModels
         public bool PrintAllLoopDevices    { get => PrintParams.PrintAllLoopDevices; set { PrintParams.PrintAllLoopDevices = value; RefreshView(); } }
         public bool PrintOrderDeviceNumber { get => PrintParams.LoopPrintOrder == SortOrder.Number;       set { PrintParams.LoopPrintOrder = SortOrder.Number; RefreshView(); } }
         public bool PrintOrderDeviceType   { get => PrintParams.LoopPrintOrder == SortOrder.Type;         set { PrintParams.LoopPrintOrder = SortOrder.Type; RefreshView(); } }
-        public bool PrintOrderGroupZone    { get => PrintParams.LoopPrintOrder == SortOrder.ZoneGroupSet; set { PrintParams.LoopPrintOrder = SortOrder.ZoneGroupSet; RefreshView(); } }
+        public bool PrintOrderGroupZone    { get => PrintParams.LoopPrintOrder == SortOrder.GroupZoneSet; set { PrintParams.LoopPrintOrder = SortOrder.GroupZoneSet; RefreshView(); } }
 
         public bool LoopSelectionAvailable => PrintParams.SelectPagesToPrint && PrintParams.PrintLoopInfo && (PrintLoop1 || PrintLoop2);
         public bool Loop1Available         => PrintParams.PrintLoopInfo;
