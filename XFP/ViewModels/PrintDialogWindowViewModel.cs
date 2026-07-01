@@ -93,7 +93,7 @@ namespace Xfp.ViewModels
                     catch { }
 
                     foreach (var p in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-                        if (p is string printer && printer.ToLower() != defaultPrinter.ToLower())
+                        if (p is string printer && string.Compare(printer, defaultPrinter, true) != 0)
                             result.Add(printer);
                 }
 
