@@ -50,8 +50,8 @@
                             IsEnabled="{Binding IsStartAvailable}"
                             Visibility="{Binding IsStartVisible, Converter={StaticResource BoolToVisibilityConverter}}"
                             Opacity="{Binding IsStartAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                            Style="{StaticResource NoBordersButton}" VerticalAlignment="Center" Margin="20,4,0,2">
-                        <ctc:Icon IconType="Play" Width="28" Height="28" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                            Style="{StaticResource HiddenBordersButton}" VerticalAlignment="Center" Margin="20,4,0,2">
+                        <ctc:Icon IconType="Play" Width="28" Height="28" Padding="0" Margin="2,2,1,2" Foreground="{StaticResource Brush03}"/>
                     </Button>
 
                     <!--pause-->
@@ -60,9 +60,9 @@
                             Click="buttonPause_Click"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Pause, Source={StaticResource Resources}}"
                             Visibility="{Binding IsPauseAvailable, Converter={StaticResource BoolToVisibilityConverter}}"
-                            Style="{StaticResource NoBordersButton}" 
+                            Style="{StaticResource HiddenBordersButton}" 
                             VerticalAlignment="Center" Margin="20,4,0,2">
-                        <ctc:Icon IconType="Pause" Width="28" Height="28" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                        <ctc:Icon IconType="Pause" Width="28" Height="28" Padding="0" Margin="1,2,2,2" Foreground="{StaticResource Brush03}"/>
                     </Button>
 
                     <!--resume-->
@@ -71,9 +71,9 @@
                             Click="buttonResume_Click"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Resume, Source={StaticResource Resources}}"
                             Visibility="{Binding IsResumeAvailable, Converter={StaticResource BoolToVisibilityConverter}}"
-                            Style="{StaticResource NoBordersButton}" 
+                            Style="{StaticResource HiddenBordersButton}" 
                             VerticalAlignment="Center" Margin="20,4,-4,2">
-                        <ctc:Icon IconType="Resume" Width="28" Height="28" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                        <ctc:Icon IconType="Resume" Width="28" Height="28" Padding="0" Margin="1,2,0,2" Foreground="{StaticResource Brush03}"/>
                     </Button>
 
                     <!--stop-->
@@ -83,22 +83,10 @@
                             IsEnabled="{Binding IsStopAvailable}"
                             Opacity="{Binding IsStopAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Stop, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}" 
+                            Style="{StaticResource HiddenBordersButton}" 
                             VerticalAlignment="Center" Margin="14,2,0,2">
                         <ctc:Icon IconType="Stop" Width="28" Height="28" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
                     </Button>
-
-                    <!--reset-->
-                    <!--<Button Background="Transparent" BorderThickness="0" 
-                            WindowChrome.IsHitTestVisibleInChrome="True"
-                            Click="buttonReset_Click"
-                            IsEnabled="{Binding IsResetAvailable}"
-                            Opacity="{Binding IsResetAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                            ToolTip="{Binding Path=ToolTip_Event_Log_Reset, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}" 
-                            VerticalAlignment="Center" Margin="10,2,0,2">
-                        <ctc:Icon IconType="Restart" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
-                    </Button>-->
 
                     <!--clear-->
                     <Button Background="Transparent" BorderThickness="0" 
@@ -107,9 +95,9 @@
                             IsEnabled="{Binding IsClearAvailable}"
                             Opacity="{Binding IsClearAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Clear, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}"
+                            Style="{StaticResource HiddenBordersButton}"
                             VerticalAlignment="Top" Margin="10,1,0,2">
-                        <ctc:Icon IconType="Delete" Width="28" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                        <ctc:Icon IconType="Delete" Width="28" Height="26" Padding="0" Margin="0,2,3,2" Foreground="{StaticResource Brush03}"/>
                     </Button>
 
                     <!--save-->
@@ -119,7 +107,7 @@
                             IsEnabled="{Binding IsSaveAvailable}"
                             Opacity="{Binding IsSaveAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Save, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}"
+                            Style="{StaticResource HiddenBordersButton}"
                             VerticalAlignment="Center" Margin="10,2,0,2">
                         <ctc:Icon IconType="SaveFile" Width="28" Height="28" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
                     </Button>
@@ -131,22 +119,10 @@
                             IsEnabled="{Binding IsOpenAvailable}"
                             Opacity="{Binding IsOpenAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
                             ToolTip="{Binding Path=ToolTip_Event_Log_Open, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}" 
+                            Style="{StaticResource HiddenBordersButton}" 
                             VerticalAlignment="Center" Margin="10,2,0,2">
-                        <ctc:Icon IconType="OpenFile" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
+                        <ctc:Icon IconType="OpenFile" Width="26" Height="26" Padding="0" Margin="2,2,1,2" Foreground="{StaticResource Brush03}"/>
                     </Button>
-
-                    <!--print-->
-                    <!--<Button Background="Transparent" BorderThickness="0" 
-                            WindowChrome.IsHitTestVisibleInChrome="True"
-                            Click="buttonPrint_Click"
-                            IsEnabled="{Binding IsClearAvailable}"
-                            Opacity="{Binding IsClearAvailable, Converter={StaticResource BoolToOpacity40pcConverter}}"
-                            ToolTip="{Binding Path=ToolTip_Print_Event_Log, Source={StaticResource Resources}}"
-                            Style="{StaticResource NoBordersButton}" 
-                            VerticalAlignment="Center" Margin="10,2,0,2">
-                        <ctc:Icon IconType="Print" Width="26" Height="26" Padding="0" Margin="2" Foreground="{StaticResource Brush03}"/>
-                    </Button>-->
 
                 </StackPanel>
             </Grid>

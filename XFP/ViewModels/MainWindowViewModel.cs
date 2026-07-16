@@ -674,6 +674,9 @@ namespace Xfp.ViewModels
                         // underscore precedes the hotkey
                         key = text.ToUpper(CultureInfo.CurrentCulture)[ul + 1].ToString();
 
+                        //hidden option:
+                        //  ctrl-alt-shift + U = debug mode
+
                         if (text == CTecControls.Cultures.Resources.Menu_Hotkey_Debug_Mode)
                             ctrl = alt = shift = true;
                         else if (text == CTecControls.Cultures.Resources.Menu_Hotkey_Serial_Monitor)

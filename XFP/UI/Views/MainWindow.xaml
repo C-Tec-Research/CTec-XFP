@@ -913,7 +913,7 @@
                             <!--#endregion-->
 
                             <!--#region invisible hotkey options-->
-                            <ctc:HamburgerMenuOption IconType="SerialMonitor" Visibility="Collapsed"/>
+                            <!-- ctrl-alt-shift + U = debug mode-->
                             <ctc:HamburgerMenuOption IconType="DebugMode" Visibility="Collapsed"/>
                             <!--#endregion-->
 
