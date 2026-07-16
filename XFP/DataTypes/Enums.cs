@@ -146,18 +146,6 @@
         Investigation,
         Dwelling,
     }
-    
-
-    public enum NodeConfigCopyTypes
-    {
-        PanelOperation,
-        PrintOptions,
-        VerificationTimes,
-        Security,
-        MaintenanceDate,
-        MaintenanceString,
-        RecalibrationTimeMaintenanceDate,
-    }
 
 
     public enum ValidationCodes
