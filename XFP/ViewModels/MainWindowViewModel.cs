@@ -65,9 +65,9 @@ namespace Xfp.ViewModels
             PanelComms.InitialisePingCommands();
             PanelComms.PollingMode = SerialComms.PingModes.NoPing;
 
-            DeviceTypes.CurrentProtocolType = CTecDevices.ObjectTypes.XfpCast;
-
             CTecUtil.Cultures.CultureResources.InitSupportedCultures(Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location));
+            
+            DeviceTypes.CurrentProtocolType = CTecDevices.ObjectTypes.XfpCast;
 
             PanelNumber = XfpData.MinPanelNumber;
 

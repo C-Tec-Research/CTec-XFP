@@ -21,7 +21,7 @@ namespace Xfp.ViewModels.PanelTools
     {
         public SiteConfigViewModel(FrameworkElement parent) : base(parent)
         {
-            updateTime();
+            //updateTime();
         }
 
 
@@ -72,15 +72,29 @@ namespace Xfp.ViewModels.PanelTools
         public bool AutoAdjustDST            { get => _data?.CurrentPanel.PanelConfig.AutoAdjustDST ?? false;       set { if (_data is not null) { _data.CurrentPanel.PanelConfig.AutoAdjustDST = value; OnPropertyChanged(); } } }
 
 
-        private string _currentTime;
+        #region date & time
+        private string    _currentTime;
+        private const int _clockPeriod = 1000;
+        private bool      _clockRunning = true;
+
         public string CurrentTime { get => _currentTime; set { if (_currentTime != value) { _currentTime = value; OnPropertyChanged(nameof(CurrentTime), false); } } }
 
         private async void updateTime()
         {
             CurrentTime = DateTime.Now.ToString("G");
-            await Task.Delay(1000);
+            await Task.Delay(_clockPeriod);
+            if (_clockRunning)
+                updateTime();
+        }
+
+        private async void restartClock()
+        {
+            _clockRunning = false;
+            await Task.Delay(_clockPeriod * 2);
+            _clockRunning = true;
             updateTime();
         }
+        #endregion
 
 
         public bool AL2CodeIsValid           => PanelConfigData.IsValidAccessCode(AL2Code);
@@ -158,6 +172,7 @@ namespace Xfp.ViewModels.PanelTools
             OccupiedEnds = saveE;
 
             RefreshView();
+            restartClock();
 
             CultureChanged?.Invoke(culture);
         }
