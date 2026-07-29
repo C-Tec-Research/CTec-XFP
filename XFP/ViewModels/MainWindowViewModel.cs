@@ -607,7 +607,7 @@ namespace Xfp.ViewModels
 
             if (ctrl is HamburgerMenu menu)
             {
-                var children = UITools.GetLogicalChildCollection<Control>(menu.Content);
+                var children = DependencyUtil.GetLogicalChildCollection<Control>(menu.Content);
 
                 foreach (var child in children)
                 {
@@ -615,7 +615,7 @@ namespace Xfp.ViewModels
                     {
                         assignHotKeys(submenu, hotKeys);
 
-                        var grandchildren = UITools.GetLogicalChildCollection<Control>(submenu.Content);
+                        var grandchildren = DependencyUtil.GetLogicalChildCollection<Control>(submenu.Content);
                         foreach (var grandchild in grandchildren)
                             assignHotKeys(grandchild, hotKeys);
                     }

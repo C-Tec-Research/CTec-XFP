@@ -50,13 +50,13 @@ namespace Xfp.UI.Views
 
         private void AddPanel_Click(object sender, RoutedEventArgs e)
         {
-            if (UITools.FindDataGridRow((DependencyObject)e.OriginalSource, 2)?.DataContext is PanelManagementItemViewModel panel)
+            if (DataGridUtil.FindDataGridRow((DependencyObject)e.OriginalSource, 2)?.DataContext is PanelManagementItemViewModel panel)
                 _context.AddPanel(panel);
         }
 
         private void RemovePanel_Click(object sender, RoutedEventArgs e)
         {
-            if (UITools.FindDataGridRow((DependencyObject)e.OriginalSource, 3)?.DataContext is PanelManagementItemViewModel panel)
+            if (DataGridUtil.FindDataGridRow((DependencyObject)e.OriginalSource, 3)?.DataContext is PanelManagementItemViewModel panel)
                 _context.RemovePanel(panel);
         }
 

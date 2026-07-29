@@ -148,6 +148,7 @@
 
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=Installed_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,3,5,0"/>
                             <ctc:CTecDatePicker Grid.Row="4" Grid.Column="1" 
+                                                x:Name="dtpInstallDate"
                                                 SelectedDate="{Binding InstallDate}" 
                                                 SelectedDateFormat="Short"
                                                 PreviewMouseDown="ctrl_PreviewMouseDown" 
@@ -156,6 +157,7 @@
 
                             <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=Commissioned_On, Source={StaticResource Resources}}" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                             <ctc:CTecDatePicker Grid.Row="5" Grid.Column="1" 
+                                                x:Name="dtpCommissionDate"
                                                 SelectedDate="{Binding CommissionDate}"
                                                 SelectedDateFormat="Short"
                                                 PreviewMouseDown="ctrl_PreviewMouseDown" 
@@ -214,6 +216,7 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=Maintenance_Date, Source={StaticResource Resources}}" MaxWidth="160" Style="{StaticResource StandardTextBlock}" HorizontalAlignment="Right" Margin="0,2,5,0" Padding="0"/>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                             <ctc:CTecDatePicker Grid.Row="2" Grid.Column="1" 
+                                                x:Name="dtpMaintenanceDate"
                                                 SelectedDate="{Binding MaintenanceDate}" 
                                                 SelectedDateFormat="Short"
                                                 PreviewMouseDown="ctrl_PreviewMouseDown" 

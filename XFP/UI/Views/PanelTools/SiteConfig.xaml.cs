@@ -1,6 +1,7 @@
-﻿using CTecUtil.Utils;
+﻿using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Input;
+using CTecUtil.Utils;
 using Xfp.DataTypes;
 using Xfp.ViewModels.PanelTools;
 
@@ -12,11 +13,22 @@ namespace Xfp.UI.Views.PanelTools
         {
             InitializeComponent();
             DataContext = _context = new SiteConfigViewModel(this);
-            _context.CultureChanged = new((C) => { tpOccupied.SetCulture(C); tpUnoccupied.SetCulture(C); });
+            _context.CultureChanged = setCulture;
         }
 
 
         private SiteConfigViewModel _context;
+
+
+        private void setCulture(CultureInfo culture)
+        {
+            dtpInstallDate.SetCulture(culture);
+            dtpCommissionDate.SetCulture(culture);
+            dtpMaintenanceDate.SetCulture(culture);
+            tpOccupied.SetCulture(culture); 
+            tpUnoccupied.SetCulture(culture);
+        }
+
 
         private void ctrl_PreviewKeyDown(object sender, KeyEventArgs e)                { if (!TextUtil.KeyIsSafeEditKey(e.Key) && !(_context.CheckChangesAreAllowed?.Invoke() ?? true)) e.Handled = true; }
         private void ctrl_PreviewMouseDown(object sender, MouseButtonEventArgs e)      { if (!_context.CheckChangesAreAllowed?.Invoke() ?? true) e.Handled = true; }
