@@ -180,12 +180,6 @@
   <data name="Control_Button_Restore" xml:space="preserve">
     <value>Restaurar Abajo</value>
   </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
-  </data>
-  <data name="Copyright_Details" xml:space="preserve">
-    <value>© {0} Computionics Ltd (C-Tec)</value>
-  </data>
   <data name="Send_To_Panel" xml:space="preserve">
     <value>¿Enviar al panel?</value>
   </data>
@@ -770,7 +764,7 @@ establecer o cambiar a ese tipo, o seleccione Eliminar para eliminar un disposit
   <data name="Blink_Polling_LED" xml:space="preserve">
     <value>LED de sondeo parpadeante</value>
   </data>
-  <data name="XFP_Panel_Config_Files" xml:space="preserve">
+  <data name="XFP_Panel_Files" xml:space="preserve">
     <value>Archivos XFP</value>
   </data>
   <data name="Auto_Adjust_DST" xml:space="preserve">

@@ -15,7 +15,7 @@ namespace Xfp.Files
         internal static readonly List<string> OpenFileExts = new() { XfpFileExt, LegacyFileExt };
 
 
-        internal static new bool OpenFile() => OpenFile(GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, OpenFileExts), XfpApplicationConfig.Settings.LastPanelFilesFolder);
+        internal static new bool OpenFile() => OpenFile(GetFilterString(Cultures.Resources.XFP_Panel_Files, OpenFileExts), XfpApplicationConfig.Settings.LastPanelFilesFolder);
 
 
         internal static string SaveFile(XfpData data, int panelNumber)
@@ -48,7 +48,7 @@ namespace Xfp.Files
             data.SetDescriptorsForFile();
 
             FilePath = SetFileNameSuffix(string.IsNullOrWhiteSpace(FilePath) ? Path.Combine(CurrentFolder ?? "", data.SiteConfig.SystemName.Trim()) : FilePath, XfpFileExt);
-            Filter   = GetFilterString(Cultures.Resources.XFP_Panel_Config_Files, XfpFileExt);
+            Filter   = GetFilterString(Cultures.Resources.XFP_Panel_Files, XfpFileExt);
             return FilePath = CTecUtil.IO.TextFile.SaveFileAs(JsonConvert.SerializeObject(data, Formatting.Indented), XfpApplicationConfig.Settings.LastPanelFilesFolder);
         }
 

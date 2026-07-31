@@ -1673,8 +1673,7 @@ namespace Xfp.ViewModels
         public DateTime DevicesDate      { get => CTecDevices.BuildInfo.Details.BuildDate.Value; }
         public DateTime UtilDate         { get => CTecUtil.BuildInfo.Details.BuildDate.Value; }
 
-        public string   CopyrightDetails { get => string.Format(Cultures.Resources.Copyright_Details, BuildInfo.BuildDetails.BuildYear); }
-        public string   Who              { get => Credits.Components[0].Notes; }
+        public string   CopyrightDetails { get => string.Format(CTecUtil.Cultures.Resources.Copyright_Details, BuildInfo.BuildDetails.BuildYear); }
         #endregion
 
 

@@ -876,24 +876,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright.
-        /// </summary>
-        public static string Copyright {
-            get {
-                return ResourceManager.GetString("Copyright", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to © {0} Computionics Ltd (C-Tec).
-        /// </summary>
-        public static string Copyright_Details {
-            get {
-                return ResourceManager.GetString("Copyright_Details", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Remaining:.
         /// </summary>
         public static string Data_Info_Bytes_Remaining {
@@ -5820,9 +5802,9 @@ namespace Xfp.Cultures {
         /// <summary>
         ///   Looks up a localized string similar to XFP files.
         /// </summary>
-        public static string XFP_Panel_Config_Files {
+        public static string XFP_Panel_Files {
             get {
-                return ResourceManager.GetString("XFP_Panel_Config_Files", resourceCulture);
+                return ResourceManager.GetString("XFP_Panel_Files", resourceCulture);
             }
         }
         

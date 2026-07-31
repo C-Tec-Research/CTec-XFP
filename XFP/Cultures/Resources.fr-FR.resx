@@ -180,9 +180,6 @@
   <data name="Control_Button_Restore" xml:space="preserve">
     <value>Niveau inf.</value>
   </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Droits d'auteur</value>
-  </data>
   <data name="Send_To_Panel" xml:space="preserve">
     <value>Copier au panneau?</value>
   </data>
@@ -760,7 +757,7 @@ ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</v
   <data name="Blink_Polling_LED" xml:space="preserve">
     <value>DEL d'interrogation clignotante</value>
   </data>
-  <data name="XFP_Panel_Config_Files" xml:space="preserve">
+  <data name="XFP_Panel_Files" xml:space="preserve">
     <value>Fichiers XFP</value>
   </data>
   <data name="Auto_Adjust_DST" xml:space="preserve">

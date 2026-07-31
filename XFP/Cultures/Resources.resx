@@ -187,13 +187,6 @@
     <value>Restore Down</value>
     <comment>Button: restore down</comment>
   </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
-  </data>
-  <data name="Copyright_Details" xml:space="preserve">
-    <value>© {0} Computionics Ltd (C-Tec)</value>
-    <comment>Not translated</comment>
-  </data>
   <data name="Send_To_Panel" xml:space="preserve">
     <value>Send to Panel?</value>
   </data>
@@ -791,7 +784,7 @@ change to that type, or select Delete to remove a device</value>
   <data name="Blink_Polling_LED" xml:space="preserve">
     <value>Blink polling LED</value>
   </data>
-  <data name="XFP_Panel_Config_Files" xml:space="preserve">
+  <data name="XFP_Panel_Files" xml:space="preserve">
     <value>XFP files</value>
   </data>
   <data name="Auto_Adjust_DST" xml:space="preserve">
