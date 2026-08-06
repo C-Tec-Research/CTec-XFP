@@ -15,7 +15,7 @@ namespace Xfp.Files
         internal static readonly List<string> OpenFileExts = new() { XfpFileExt, LegacyFileExt };
 
 
-        internal static new bool OpenFile() => OpenFile(GetFilterString(Cultures.Resources.XFP_Panel_Files, OpenFileExts), XfpApplicationConfig.Settings.LastPanelFilesFolder);
+        internal static new bool OpenFile() => OpenFile(GetFilterString([(Cultures.Resources.XFP_Panel_Files, OpenFileExts)]), XfpApplicationConfig.Settings.LastPanelFilesFolder);
 
 
         internal static string SaveFile(XfpData data, int panelNumber)
