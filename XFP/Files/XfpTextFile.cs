@@ -11,7 +11,7 @@ namespace Xfp.Files
     internal class XfpTextFile : TextFileBase
     {
         internal const string LegacyFileExt = ".xfp";
-        internal const string XfpFileExt = ".xfp2";
+        internal const string XfpFileExt    = ".xfp2";
         internal static readonly List<string> OpenFileExts = new() { XfpFileExt, LegacyFileExt };
 
 
