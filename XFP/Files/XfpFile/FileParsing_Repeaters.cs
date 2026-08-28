@@ -14,7 +14,7 @@ namespace Xfp.Files.XfpFile
                 switch (ItemName(currentLine))
                 {
                     case XfpTags.RepeaterSegment:       result.CurrentPanel.NetworkConfig.RepeaterSettings.Segment = parseInt(currentLine); break;
-                    case XfpTags.RepeaterPanelName:     /*result.NetworkConfig.RepeaterSettings.PanelName = ParseString(currentLine);*/ break;
+                    case XfpTags.RepeaterPanelName:     /*result.networkconfig.repeatersettings.panelname = parsestring(currentline);*/ break;
                     case XfpTags.RepeaterArrayRepeater: parseRepeaters(inputStream, ref result); break;
                     case XfpTags.RepeaterArrayOutput:   parseOutputs(inputStream, ref result); break;
 
@@ -40,16 +40,16 @@ namespace Xfp.Files.XfpFile
 
         private static void parseOutputs(StreamReader inputStream, ref XfpData result)
         {
-            //string currentLine;
-            //while ((currentLine = readNext(inputStream, XfpTags.EndArray)) != null)
-            //{
-            //    if (ItemName(currentLine) == XfpTags.ObjectItem)
-            //    {
-            //        int index = parseItemIndex(currentLine);
-            //        if (index > 0 && index <= result.CurrentPanel.NetworkConfig.PanelSettings.Count)
-            //            parseNetworkPanelItem(inputStream, result.CurrentPanel.NetworkConfig.PanelSettings, index);
-            //    }
-            //}
+            string currentLine;
+            while ((currentLine = readNext(inputStream, XfpTags.EndArray)) != null)
+            {
+                //if (ItemName(currentLine) == XfpTags.ObjectItem)
+                //{
+                //    int index = parseItemIndex(currentLine);
+                //    if (index > 0 && index <= result.CurrentPanel.NetworkConfig.PanelSettings.Count)
+                //        parseNetworkPanelItem(inputStream, result.CurrentPanel.NetworkConfig.PanelSettings, index);
+                //}
+            }
         }
 
 
