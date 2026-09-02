@@ -4,6 +4,7 @@ using Xfp.DataTypes.PanelData;
 using CTecDevices.Protocol;
 using Xfp.DataTypes;
 using CTecDevices;
+using CTecDevices.DeviceTypes;
 
 namespace Xfp.Files.XfpFile
 {
@@ -11,16 +12,24 @@ namespace Xfp.Files.XfpFile
     {
         private static void parseDeviceConfig(StreamReader inputStream, ref XfpData result, int loopNum)
         {
+            //if a file states it is single-loop but contain loop2 devices we will ignore them
+            var isValidLoop = loopNum <= result.CurrentPanel.LoopConfig.NumLoops;
+
             string currentLine;
             while ((currentLine = readNext(inputStream, XfpTags.EndObject)) != null)
             {
-                // NB: the "Loop As IO Unit" tag is not used.
-
                 switch (ItemName(currentLine))
                 {
-                    //case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;
-                    //case XfpTags.LoopGroup:       loop.Group       = parseInt(currentLine); break;
-                    case XfpTags.LoopArrayDevice: parseDevices(inputStream, ref result, loopNum); break;
+                    //case XfpTags.LoopDeviceIndex: loop.DeviceIndex = parseInt(currentLine); break;        // <-- not used
+                    //case XfpTags.LoopGroup:       loop.Group       = parseInt(currentLine); break;        // <-- not used
+                    //case XfpTags.LoopAsIOUnit:    loop.AsIoUnit    = parseBool(currentLine); break;       // <-- not used
+
+                    case XfpTags.LoopArrayDevice: 
+                        if (isValidLoop) 
+                            parseLoopDevices(inputStream, ref result, loopNum);
+                        else
+                            skipLoopDevices(inputStream);
+                        break;
                 }
             }
         }
@@ -36,7 +45,7 @@ namespace Xfp.Files.XfpFile
         }
 
 
-        private static void parseDevices(StreamReader inputStream, ref XfpData result, int loopNum)
+        private static void parseLoopDevices(StreamReader inputStream, ref XfpData result, int loopNum)
         {
             var loopData = loopNum > 1 ? result.CurrentPanel.LoopConfig.Loop2 : result.CurrentPanel.LoopConfig.Loop1;
 
@@ -46,6 +55,10 @@ namespace Xfp.Files.XfpFile
                 if (ItemName(currentLine) == XfpTags.ObjectItem)
                 {
                     var index = parseItemIndex(currentLine);
+
+                    if (index >= loopData.Devices.Count)
+                        loopData.Devices.Add(DeviceData.InitialisedNew(null, loopNum, index));
+
                     while ((currentLine = readNext(inputStream, XfpTags.EndObject)) != null)
                     {
                         if (index >= 0)
@@ -69,7 +82,7 @@ namespace Xfp.Files.XfpFile
                                 {
                                     case XfpTags.LoopDeviceType:            int dType = parseInt(currentLine); device.DeviceType = dType > 0 && dType < 254 ? dType : null; break;
                                     case XfpTags.LoopDeviceZone:            parseZone(currentLine, ref result, ref device); break;
-                                    case XfpTags.LoopDeviceName:            device.NameIndex      = device.IOConfig[0].NameIndex = parseDeviceName(ref result, currentLine); break;
+                                    case XfpTags.LoopDeviceName:            device.NameIndex = device.IOConfig[0].NameIndex = parseDeviceName(ref result, currentLine); break;
                                     case XfpTags.LoopDeviceArraySharedData: parseSharedData(inputStream, ref result, ref device); break;
                                     case XfpTags.LoopDeviceArraySubName:    parseSubNames(inputStream, ref result, ref device); break;
                                     //case XfpTags.LoopDeviceHasBaseSounder:  
@@ -209,5 +222,32 @@ namespace Xfp.Files.XfpFile
             }
         }
 
+
+        /// <summary>
+        /// Read to the end of the loop's devices block without processing any data
+        /// </summary>
+        private static void skipLoopDevices(StreamReader inputStream)
+        {
+            var nestedBlockCount = 1;
+
+            do
+            {
+                switch (ItemName(readNext(inputStream, XfpTags.EndFile)))
+                {
+                    case XfpTags.ObjectItem: 
+                    case XfpTags.LoopDeviceArraySharedData:
+                    case XfpTags.LoopDeviceArraySubName:
+                        nestedBlockCount++; break;
+
+                    case XfpTags.EndObject: 
+                    case XfpTags.EndArray:
+                        nestedBlockCount--; break;
+
+                    case null:
+                        nestedBlockCount = 0; break;
+                }
+                
+            } while (nestedBlockCount > 0);
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Xfp.Files.XfpFile
                 switch (ItemName(currentLine))
                 {
                     case XfpTags.RepeaterSegment:       result.CurrentPanel.NetworkConfig.RepeaterSettings.Segment = parseInt(currentLine); break;
-                    case XfpTags.RepeaterPanelName:     /*result.networkconfig.repeatersettings.panelname = parsestring(currentline);*/ break;
+                    case XfpTags.RepeaterPanelName:     /*result.networkconfig.RepeaterSettings.PanelName = ParseString(currentLine);*/ break;
                     case XfpTags.RepeaterArrayRepeater: parseRepeaters(inputStream, ref result); break;
                     case XfpTags.RepeaterArrayOutput:   parseOutputs(inputStream, ref result); break;
 
