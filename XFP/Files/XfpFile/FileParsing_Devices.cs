@@ -12,7 +12,7 @@ namespace Xfp.Files.XfpFile
     {
         private static void parseDeviceConfig(StreamReader inputStream, ref XfpData result, int loopNum)
         {
-            //if a file states it is single-loop but contain loop2 devices we will ignore them
+            //if a file states it is single-loop we will ignore any loop2 devices
             var isValidLoop = loopNum <= result.CurrentPanel.LoopConfig.NumLoops;
 
             string currentLine;
