@@ -223,7 +223,7 @@ namespace Xfp.IO
 
         private static SerialComms.ReceivedResponseDataHandler receiveDeviceName         = new((data, index) => (bool)DeviceNameReceived?.Invoke       (DeviceData.ParseDeviceName                 (data, XfpCommands.ResponseIsDeviceNameRequest, index)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveZoneName           = new((data, index) => (bool)ZoneNameReceived?.Invoke         (IndexedText.Parse                          (data, XfpCommands.ResponseIsZoneNameRequest, index, ZoneConfigData.MaxNameLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveZoneName           = new((data, index) => (bool)ZoneNameReceived?.Invoke         (IndexedText.Parse                          (data, XfpCommands.ResponseIsZoneNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
         private static SerialComms.ReceivedResponseDataHandler receiveZoneTimers         = new((data, index) => (bool)ZoneTimersReceived?.Invoke       (ZoneConfigData.ZoneTimersBundle.Parse      (data, XfpCommands.ResponseIsZoneTimersRequest, index)));
         private static SerialComms.ReceivedResponseDataHandler receivePhasedSettings     = new((data, index) => (bool)PhasedSettingsReceived?.Invoke   (ZoneConfigData.PhasedSettingsBundle.Parse  (data, XfpCommands.ResponseIsPhasedSettingsRequest)));
         private static SerialComms.ReceivedResponseDataHandler receiveZoneGroup          = new((data, index) => (bool)ZoneGroupReceived?.Invoke        (GroupConfigData.GroupBundle.Parse          (data, XfpCommands.ResponseIsZoneGroupRequest, index)));
@@ -239,7 +239,7 @@ namespace Xfp.IO
 
         private static SerialComms.ReceivedResponseDataHandler receiveCEEvent            = new((data, index) => (bool)CEEventReceived?.Invoke          (CEConfigData.CEBundle.Parse                (data, XfpCommands.ResponseIsCEEventRequest, index)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveRepeaterName       = new((data, index) => (bool)RepeaterNameReceived?.Invoke     (IndexedText.Parse                          (data, XfpCommands.ResponseIsRepeaterNameRequest, index, ZoneConfigData.MaxNameLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveRepeaterName       = new((data, index) => (bool)RepeaterNameReceived?.Invoke     (IndexedText.Parse                          (data, XfpCommands.ResponseIsRepeaterNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
         private static SerialComms.ReceivedResponseDataHandler receiveNetworkPanelData   = new((data, index) => (bool)NetworkPanelDataReceived?.Invoke (NetworkConfigData.NetworkBundle.Parse      (data, XfpCommands.ResponseIsNetworkPanelDataRequest)));
 
         private static SerialComms.ReceivedResponseDataHandler receiveEventLogData       = new((data, index) => (bool)EventLogDataReceived?.Invoke     (Text.Parse                                 (data, XfpCommands.ResponseIsEventLogDataRequest, XfpData.EventLogDataLength)));
