@@ -14,6 +14,7 @@
 	<ApplicationManifest>app.manifest</ApplicationManifest>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
+	<Copyright>Copyright © C-TEC 2026</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
