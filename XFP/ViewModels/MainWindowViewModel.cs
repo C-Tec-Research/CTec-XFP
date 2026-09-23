@@ -805,7 +805,7 @@ namespace Xfp.ViewModels
                                     }
 
                                     //recent files' numeric shortcuts
-                                    if (TextUtil.CharIsNumeric(shortcutKey) && menuItem.Tag is string path)
+                                    if (TextUtil.CharIsDigit(shortcutKey) && menuItem.Tag is string path)
                                     {
                                         FileOpen(path);
                                         return true;
