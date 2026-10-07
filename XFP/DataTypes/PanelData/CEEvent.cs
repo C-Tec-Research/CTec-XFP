@@ -47,15 +47,25 @@ namespace Xfp.DataTypes.PanelData
         public bool ResetCondition { get; set; }
 
         
+        [JsonIgnore]
         public string ActionTypeName { get; set; }
+        [JsonIgnore]
         public string ActionParamDesc { get; set; }
+        [JsonIgnore]
         public string TriggerTypeName { get; set; }
+        [JsonIgnore]
         public string TriggerParamDesc { get; set; }
+        [JsonIgnore]
         public string TriggerParam2Desc { get; set; }
+        [JsonIgnore]
         public string TriggerConditionDesc { get; set; }
+        [JsonIgnore]
         public string ResetTypeName { get; set; }
+        [JsonIgnore]
         public string ResetParamDesc { get; set; }
+        [JsonIgnore]
         public string ResetParam2Desc { get; set; }
+        [JsonIgnore]
         public bool ResetConditionDesc { get; set; }
 
 
