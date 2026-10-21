@@ -1825,6 +1825,30 @@ namespace Xfp.ViewModels
 
             if (!dataHasBeenEdited || askOverwriteChanges(allPages ? Cultures.Resources.Download_System : Cultures.Resources.Download_Page))
             {
+                if (allPages || currentPageDownloadList.Contains(_deviceDetailsPage) || currentPageDownloadList.Contains(_loop1Page) || currentPageDownloadList.Contains(_loop2Page))
+                {
+                    string messy = null;
+                    var needToAddLoop2 = false;
+
+                    var loopNum = CurrentPage == _deviceDetailsPage
+                    //warn if current loop does not exist on the panel or if the number of
+                    //loops on the connected panel does not match what has been configured
+                    if (!allPages && LoopNum > LoopConfigData.DetectedLoops)
+                        messy = string.Format(Cultures.Resources.Comms_Download_Warn_Loop_x_Not_Present, LoopNum);
+                    else if (NumLoops != LoopConfigData.DetectedLoops)
+                        messy = (needToAddLoop2 = NumLoops == 1) ? Cultures.Resources.Comms_Download_Warn_Loop_Count_2_Loops : Cultures.Resources.Comms_Download_Warn_Loop_Count_1_Loop;
+
+                    if (messy is not null)
+                    {
+                        var tit = allPages ? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page;
+                        CTecMessageBox.ShowOKInfo(messy, tit);
+
+                        if (needToAddLoop2)
+                            AddLoop2(false);
+                    }
+                }
+
+
                 CloseValidationWindow();
                 CloseCommsLog();
                 ClosePopups();

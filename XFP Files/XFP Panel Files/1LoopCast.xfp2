@@ -38,7 +38,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 1,
@@ -51,7 +61,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 2,
@@ -64,7 +84,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 3,
@@ -77,7 +107,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 4,
@@ -90,7 +130,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 5,
@@ -103,7 +153,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 6,
@@ -116,7 +176,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 7,
@@ -129,7 +199,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 8,
@@ -142,7 +222,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 9,
@@ -155,7 +245,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 10,
@@ -168,7 +268,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 11,
@@ -181,7 +291,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 12,
@@ -194,7 +314,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 13,
@@ -207,7 +337,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 14,
@@ -220,7 +360,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           },
           {
             "Index": 15,
@@ -233,7 +383,17 @@
             "ResetType": 0,
             "ResetParam": 0,
             "ResetParam2": 0,
-            "ResetCondition": false
+            "ResetCondition": false,
+            "ActionTypeName": "None",
+            "ActionParamDesc": null,
+            "TriggerTypeName": "",
+            "TriggerParamDesc": null,
+            "TriggerParam2Desc": null,
+            "TriggerConditionDesc": null,
+            "ResetTypeName": "",
+            "ResetParamDesc": null,
+            "ResetParam2Desc": null,
+            "ResetConditionDesc": false
           }
         ],
         "TimerEventTimes": [
@@ -428,7 +588,7 @@
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 1,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 3,
                   "NameIndex": -1
                 },
                 {
@@ -460,8 +620,8 @@
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 4,
-              "NightVolume": 4,
+              "DayVolume": 0,
+              "NightVolume": 1,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [
@@ -556,8 +716,8 @@
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 4,
-              "NightVolume": 4,
+              "DayVolume": 0,
+              "NightVolume": 1,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [
@@ -620,7 +780,7 @@
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 1,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 6,
                   "NameIndex": -1
                 },
                 {
@@ -667,22 +827,22 @@
                 {
                   "Index": 1,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 4,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 2,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 9,
                   "NameIndex": -1
                 }
               ],
@@ -811,22 +971,22 @@
                 {
                   "Index": 1,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 1,
+                  "ZoneGroupSet": 2,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 1,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 2,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 1,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 }
               ],
@@ -844,8 +1004,8 @@
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 4,
-              "NightVolume": 4,
+              "DayVolume": 3,
+              "NightVolume": 1,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [
@@ -892,8 +1052,8 @@
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 4,
-              "NightVolume": 4,
+              "DayVolume": 0,
+              "NightVolume": 3,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [
@@ -940,8 +1100,8 @@
               "Group": 0,
               "DaySensitivity": 3,
               "NightSensitivity": 3,
-              "DayVolume": 4,
-              "NightVolume": 4,
+              "DayVolume": 1,
+              "NightVolume": 3,
               "DayMode": 1,
               "NightMode": 1,
               "IOConfig": [

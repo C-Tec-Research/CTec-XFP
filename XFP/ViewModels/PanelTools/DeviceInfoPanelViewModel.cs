@@ -2855,9 +2855,9 @@ namespace Xfp.ViewModels.PanelTools
 
 
         #region debug info
-        public string DebugNamesUsed          => _data.CurrentPanel?.DeviceNamesConfig?.TotalNamesUsedText;
-        public int    DebugNameBytesUsed      => _data.CurrentPanel?.DeviceNamesConfig?.BytesUsed??0;
-        public int    DebugNameBytesRemaining => _data.CurrentPanel?.DeviceNamesConfig?.BytesRemaining??0;
+        public string DebugNamesUsed          => _data?.CurrentPanel?.DeviceNamesConfig?.TotalNamesUsedText;
+        public int    DebugNameBytesUsed      => _data?.CurrentPanel?.DeviceNamesConfig?.BytesUsed??0;
+        public int    DebugNameBytesRemaining => _data?.CurrentPanel?.DeviceNamesConfig?.BytesRemaining??0;
         #endregion
 
 

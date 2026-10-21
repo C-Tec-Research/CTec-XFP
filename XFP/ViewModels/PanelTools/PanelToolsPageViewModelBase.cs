@@ -20,7 +20,7 @@ namespace Xfp.ViewModels.PanelTools
 
 
         private int _panelNumber = XfpData.MinPanelNumber;
-        public int PanelNumber { get => _panelNumber; set { _panelNumber = value; OnPropertyChanged(); OnPropertyChanged(nameof(PanelDesc)); } }
+        public int PanelNumber { get => _data.CurrentPanel.PanelNumber; set { /*_panelNumber = value;*/ OnPropertyChanged(); OnPropertyChanged(nameof(PanelDesc)); } }
         public string PanelDesc => string.Format(Cultures.Resources.Panel_x_Configuration, PanelNumber);
 
 
