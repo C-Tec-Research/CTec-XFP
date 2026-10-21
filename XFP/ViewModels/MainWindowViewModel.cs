@@ -1338,9 +1338,11 @@ namespace Xfp.ViewModels
                 {
                     ShowValidationWindow();
 
-                    return CTecMessageBox.ShowYesNoWarn(siteWarnings ? Cultures.Resources.Query_Site_Config_Warnings_Save_Anyway 
-                                                                     : Cultures.Resources.Query_Data_Errors_Save_Anyway,
-                                                        Cultures.Resources.Pre_Save_Check) == MessageBoxResult.Yes;
+                    if (CTecMessageBox.ShowYesNoWarn(otherErrors ? Cultures.Resources.Query_Data_Errors_Save_Anyway
+                                                                 : Cultures.Resources.Query_Site_Config_Warnings_Save_Anyway, Cultures.Resources.Pre_Save_Check) != MessageBoxResult.Yes)
+                        return false;
+                 
+                    CloseValidationWindow();
                 }
             }
 

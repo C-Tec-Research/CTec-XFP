@@ -5,12 +5,11 @@
       "SupportsEnvision": false,
       "PanelConfig": {
         "FirmwareVersion": null,
-        "LoopCount": 2,
         "DateEnabled": false,
         "SoundersPulsed": false,
         "CopyTime": false,
-        "MaintenanceString": null,
-        "QuiescentString": null,
+        "MaintenanceString": "Call the Engineer",
+        "QuiescentString": "XFP Fire Panel",
         "MaintenanceDate": null,
         "AL2Code": "3333",
         "AL3Code": "4444",
@@ -23,6 +22,7 @@
         "NightStart": null,
         "BlinkPollingLED": false,
         "AutoAdjustDST": false,
+        "RecalibrationTime": "00:00:00",
         "RealTimeEventOutput": false
       },
       "CEConfig": {
@@ -30,209 +30,209 @@
           {
             "Index": 0,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 1,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 2,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 3,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 4,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 5,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 6,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 7,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 8,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 9,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 10,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 11,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 12,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 13,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 14,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           },
           {
             "Index": 15,
             "ActionType": 0,
-            "ActionParam": -1,
+            "ActionParam": 0,
             "TriggerType": 0,
-            "TriggerParam": -1,
-            "TriggerParam2": -1,
-            "TriggerCondition": false,
+            "TriggerParam": 0,
+            "TriggerParam2": 0,
+            "TriggerCondition": true,
             "ResetType": 0,
-            "ResetParam": -1,
-            "ResetParam2": -1,
+            "ResetParam": 0,
+            "ResetParam2": 0,
             "ResetCondition": false
           }
         ],
@@ -261,6 +261,7 @@
           "Devices": [
             {
               "DeviceType": 31,
+              "DeviceTypeName": "CAST MCP",
               "LoopNum": 0,
               "Index": 0,
               "Zone": 0,
@@ -277,7 +278,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 1
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
@@ -308,6 +309,7 @@
             },
             {
               "DeviceType": 192,
+              "DeviceTypeName": "CAST Heat",
               "LoopNum": 0,
               "Index": 1,
               "Zone": 0,
@@ -324,7 +326,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 8
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
@@ -355,6 +357,7 @@
             },
             {
               "DeviceType": 31,
+              "DeviceTypeName": "CAST MCP",
               "LoopNum": 0,
               "Index": 2,
               "Zone": 0,
@@ -371,7 +374,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 1
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
@@ -402,6 +405,7 @@
             },
             {
               "DeviceType": 65,
+              "DeviceTypeName": "CAST HS-2 Unit",
               "LoopNum": 0,
               "Index": 3,
               "Zone": 0,
@@ -449,6 +453,7 @@
             },
             {
               "DeviceType": 32,
+              "DeviceTypeName": "CAST Sounder",
               "LoopNum": 0,
               "Index": 4,
               "Zone": 0,
@@ -465,7 +470,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 9
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
@@ -496,6 +501,7 @@
             },
             {
               "DeviceType": 192,
+              "DeviceTypeName": "CAST Heat",
               "LoopNum": 0,
               "Index": 5,
               "Zone": 0,
@@ -543,6 +549,7 @@
             },
             {
               "DeviceType": 32,
+              "DeviceTypeName": "CAST Sounder",
               "LoopNum": 0,
               "Index": 6,
               "Zone": 0,
@@ -590,6 +597,7 @@
             },
             {
               "DeviceType": 8,
+              "DeviceTypeName": "CAST I/O Unit",
               "LoopNum": 0,
               "Index": 7,
               "Zone": 0,
@@ -606,7 +614,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 24
+                  "NameIndex": 0
                 },
                 {
                   "Index": 1,
@@ -637,6 +645,7 @@
             },
             {
               "DeviceType": 16,
+              "DeviceTypeName": "CAST ZMU",
               "LoopNum": 0,
               "Index": 8,
               "Zone": 0,
@@ -653,7 +662,7 @@
                   "InputOutput": 0,
                   "Channel": 1,
                   "ZoneGroupSet": 19,
-                  "NameIndex": 11
+                  "NameIndex": 0
                 },
                 {
                   "Index": 1,
@@ -684,6 +693,7 @@
             },
             {
               "DeviceType": 160,
+              "DeviceTypeName": "CAST Optical",
               "LoopNum": 0,
               "Index": 9,
               "Zone": 0,
@@ -731,6 +741,7 @@
             },
             {
               "DeviceType": 184,
+              "DeviceTypeName": "CAST Multi",
               "LoopNum": 0,
               "Index": 10,
               "Zone": 0,
@@ -778,6 +789,7 @@
             },
             {
               "DeviceType": 16,
+              "DeviceTypeName": "CAST ZMU",
               "LoopNum": 0,
               "Index": 11,
               "Zone": 0,
@@ -794,7 +806,7 @@
                   "InputOutput": 0,
                   "Channel": 0,
                   "ZoneGroupSet": 0,
-                  "NameIndex": 23
+                  "NameIndex": 0
                 },
                 {
                   "Index": 1,
@@ -825,6 +837,7 @@
             },
             {
               "DeviceType": 32,
+              "DeviceTypeName": "CAST Sounder",
               "LoopNum": 0,
               "Index": 12,
               "Zone": 0,
@@ -872,6 +885,7 @@
             },
             {
               "DeviceType": 52,
+              "DeviceTypeName": "CAST Voice Sounder",
               "LoopNum": 0,
               "Index": 13,
               "Zone": 0,
@@ -919,6 +933,7 @@
             },
             {
               "DeviceType": 52,
+              "DeviceTypeName": "CAST Voice Sounder",
               "LoopNum": 0,
               "Index": 14,
               "Zone": 0,
@@ -966,6 +981,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 15,
               "Zone": 0,
@@ -974,8 +990,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1013,6 +1029,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 16,
               "Zone": 0,
@@ -1021,8 +1038,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1060,6 +1077,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 17,
               "Zone": 0,
@@ -1068,8 +1086,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1107,6 +1125,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 18,
               "Zone": 0,
@@ -1115,8 +1134,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1154,6 +1173,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 19,
               "Zone": 0,
@@ -1162,8 +1182,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1201,6 +1221,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 20,
               "Zone": 0,
@@ -1209,8 +1230,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1248,6 +1269,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 21,
               "Zone": 0,
@@ -1256,8 +1278,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1295,6 +1317,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 22,
               "Zone": 0,
@@ -1303,8 +1326,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1342,6 +1365,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 23,
               "Zone": 0,
@@ -1350,8 +1374,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1389,6 +1413,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 24,
               "Zone": 0,
@@ -1397,8 +1422,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1436,6 +1461,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 25,
               "Zone": 0,
@@ -1444,8 +1470,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1483,6 +1509,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 26,
               "Zone": 0,
@@ -1491,8 +1518,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1530,6 +1557,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 27,
               "Zone": 0,
@@ -1538,8 +1566,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1577,6 +1605,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 28,
               "Zone": 0,
@@ -1585,8 +1614,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1624,6 +1653,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 29,
               "Zone": 0,
@@ -1632,8 +1662,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1671,6 +1701,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 30,
               "Zone": 0,
@@ -1679,8 +1710,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1718,6 +1749,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 31,
               "Zone": 0,
@@ -1726,8 +1758,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1765,6 +1797,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 32,
               "Zone": 0,
@@ -1773,8 +1806,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1812,6 +1845,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 33,
               "Zone": 0,
@@ -1820,8 +1854,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1859,6 +1893,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 34,
               "Zone": 0,
@@ -1867,8 +1902,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1906,6 +1941,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 35,
               "Zone": 0,
@@ -1914,8 +1950,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1953,6 +1989,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 36,
               "Zone": 0,
@@ -1961,8 +1998,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2000,6 +2037,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 37,
               "Zone": 0,
@@ -2008,8 +2046,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2047,6 +2085,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 38,
               "Zone": 0,
@@ -2055,8 +2094,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2094,6 +2133,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 39,
               "Zone": 0,
@@ -2102,8 +2142,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2141,6 +2181,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 40,
               "Zone": 0,
@@ -2149,8 +2190,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2188,6 +2229,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 41,
               "Zone": 0,
@@ -2196,8 +2238,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2235,6 +2277,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 42,
               "Zone": 0,
@@ -2243,8 +2286,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2282,6 +2325,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 43,
               "Zone": 0,
@@ -2290,8 +2334,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2329,6 +2373,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 44,
               "Zone": 0,
@@ -2337,8 +2382,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2376,6 +2421,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 45,
               "Zone": 0,
@@ -2384,8 +2430,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2423,6 +2469,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 46,
               "Zone": 0,
@@ -2431,8 +2478,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2470,6 +2517,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 47,
               "Zone": 0,
@@ -2478,8 +2526,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2517,6 +2565,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 48,
               "Zone": 0,
@@ -2525,8 +2574,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2564,6 +2613,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 49,
               "Zone": 0,
@@ -2572,8 +2622,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2611,6 +2661,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 50,
               "Zone": 0,
@@ -2619,8 +2670,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2658,6 +2709,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 51,
               "Zone": 0,
@@ -2666,8 +2718,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2705,6 +2757,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 52,
               "Zone": 0,
@@ -2713,8 +2766,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2752,6 +2805,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 53,
               "Zone": 0,
@@ -2760,8 +2814,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2799,6 +2853,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 54,
               "Zone": 0,
@@ -2807,8 +2862,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2846,6 +2901,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 55,
               "Zone": 0,
@@ -2854,8 +2910,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2893,6 +2949,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 56,
               "Zone": 0,
@@ -2901,8 +2958,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2940,6 +2997,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 57,
               "Zone": 0,
@@ -2948,8 +3006,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -2987,6 +3045,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 58,
               "Zone": 0,
@@ -2995,8 +3054,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3034,6 +3093,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 59,
               "Zone": 0,
@@ -3042,8 +3102,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3081,6 +3141,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 60,
               "Zone": 0,
@@ -3089,8 +3150,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3128,6 +3189,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 61,
               "Zone": 0,
@@ -3136,8 +3198,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3175,6 +3237,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 62,
               "Zone": 0,
@@ -3183,8 +3246,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3222,6 +3285,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 63,
               "Zone": 0,
@@ -3230,8 +3294,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3269,6 +3333,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 64,
               "Zone": 0,
@@ -3277,8 +3342,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3316,6 +3381,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 65,
               "Zone": 0,
@@ -3324,8 +3390,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3363,6 +3429,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 66,
               "Zone": 0,
@@ -3371,8 +3438,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3410,6 +3477,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 67,
               "Zone": 0,
@@ -3418,8 +3486,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3457,6 +3525,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 68,
               "Zone": 0,
@@ -3465,8 +3534,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3504,6 +3573,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 69,
               "Zone": 0,
@@ -3512,8 +3582,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3551,6 +3621,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 70,
               "Zone": 0,
@@ -3559,8 +3630,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3598,6 +3669,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 71,
               "Zone": 0,
@@ -3606,8 +3678,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3645,6 +3717,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 72,
               "Zone": 0,
@@ -3653,8 +3726,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3692,6 +3765,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 73,
               "Zone": 0,
@@ -3700,8 +3774,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3739,6 +3813,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 74,
               "Zone": 0,
@@ -3747,8 +3822,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3786,6 +3861,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 75,
               "Zone": 0,
@@ -3794,8 +3870,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3833,6 +3909,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 76,
               "Zone": 0,
@@ -3841,8 +3918,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3880,6 +3957,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 77,
               "Zone": 0,
@@ -3888,8 +3966,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3927,6 +4005,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 78,
               "Zone": 0,
@@ -3935,8 +4014,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -3974,6 +4053,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 79,
               "Zone": 0,
@@ -3982,8 +4062,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4021,6 +4101,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 80,
               "Zone": 0,
@@ -4029,8 +4110,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4068,6 +4149,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 81,
               "Zone": 0,
@@ -4076,8 +4158,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4115,6 +4197,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 82,
               "Zone": 0,
@@ -4123,8 +4206,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4162,6 +4245,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 83,
               "Zone": 0,
@@ -4170,8 +4254,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4209,6 +4293,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 84,
               "Zone": 0,
@@ -4217,8 +4302,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4256,6 +4341,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 85,
               "Zone": 0,
@@ -4264,8 +4350,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4303,6 +4389,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 86,
               "Zone": 0,
@@ -4311,8 +4398,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4350,6 +4437,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 87,
               "Zone": 0,
@@ -4358,8 +4446,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4397,6 +4485,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 88,
               "Zone": 0,
@@ -4405,8 +4494,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4444,6 +4533,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 89,
               "Zone": 0,
@@ -4452,8 +4542,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4491,6 +4581,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 90,
               "Zone": 0,
@@ -4499,8 +4590,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4538,6 +4629,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 91,
               "Zone": 0,
@@ -4546,8 +4638,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4585,6 +4677,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 92,
               "Zone": 0,
@@ -4593,8 +4686,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4632,6 +4725,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 93,
               "Zone": 0,
@@ -4640,8 +4734,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4679,6 +4773,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 94,
               "Zone": 0,
@@ -4687,8 +4782,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4726,6 +4821,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 95,
               "Zone": 0,
@@ -4734,8 +4830,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4773,6 +4869,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 96,
               "Zone": 0,
@@ -4781,8 +4878,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4820,6 +4917,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 97,
               "Zone": 0,
@@ -4828,8 +4926,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4867,6 +4965,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 98,
               "Zone": 0,
@@ -4875,8 +4974,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4914,6 +5013,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 99,
               "Zone": 0,
@@ -4922,8 +5022,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -4961,6 +5061,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 100,
               "Zone": 0,
@@ -4969,8 +5070,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5008,6 +5109,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 101,
               "Zone": 0,
@@ -5016,8 +5118,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5055,6 +5157,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 102,
               "Zone": 0,
@@ -5063,8 +5166,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5102,6 +5205,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 103,
               "Zone": 0,
@@ -5110,8 +5214,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5149,6 +5253,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 104,
               "Zone": 0,
@@ -5157,8 +5262,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5196,6 +5301,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 105,
               "Zone": 0,
@@ -5204,8 +5310,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5243,6 +5349,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 106,
               "Zone": 0,
@@ -5251,8 +5358,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5290,6 +5397,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 107,
               "Zone": 0,
@@ -5298,8 +5406,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5337,6 +5445,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 108,
               "Zone": 0,
@@ -5345,8 +5454,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5384,6 +5493,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 109,
               "Zone": 0,
@@ -5392,8 +5502,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5431,6 +5541,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 110,
               "Zone": 0,
@@ -5439,8 +5550,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5478,6 +5589,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 111,
               "Zone": 0,
@@ -5486,8 +5598,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5525,6 +5637,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 112,
               "Zone": 0,
@@ -5533,8 +5646,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5572,6 +5685,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 113,
               "Zone": 0,
@@ -5580,8 +5694,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5619,6 +5733,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 114,
               "Zone": 0,
@@ -5627,8 +5742,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5666,6 +5781,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 115,
               "Zone": 0,
@@ -5674,8 +5790,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5713,6 +5829,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 116,
               "Zone": 0,
@@ -5721,8 +5838,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5760,6 +5877,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 117,
               "Zone": 0,
@@ -5768,8 +5886,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5807,6 +5925,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 118,
               "Zone": 0,
@@ -5815,8 +5934,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5854,6 +5973,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 119,
               "Zone": 0,
@@ -5862,8 +5982,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5901,6 +6021,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 120,
               "Zone": 0,
@@ -5909,8 +6030,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5948,6 +6069,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 121,
               "Zone": 0,
@@ -5956,8 +6078,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -5995,6 +6117,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 122,
               "Zone": 0,
@@ -6003,8 +6126,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6042,6 +6165,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 123,
               "Zone": 0,
@@ -6050,8 +6174,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6089,6 +6213,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 124,
               "Zone": 0,
@@ -6097,8 +6222,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6136,6 +6261,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 125,
               "Zone": 0,
@@ -6144,8 +6270,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6183,6 +6309,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 126,
               "Zone": 0,
@@ -6191,8 +6318,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6230,6 +6357,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 127,
               "Zone": 0,
@@ -6238,8 +6366,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6277,6 +6405,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 128,
               "Zone": 0,
@@ -6285,8 +6414,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6324,6 +6453,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 129,
               "Zone": 0,
@@ -6332,8 +6462,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6371,6 +6501,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 130,
               "Zone": 0,
@@ -6379,8 +6510,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6418,6 +6549,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 131,
               "Zone": 0,
@@ -6426,8 +6558,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6465,6 +6597,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 132,
               "Zone": 0,
@@ -6473,8 +6606,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6512,6 +6645,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 133,
               "Zone": 0,
@@ -6520,8 +6654,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6559,6 +6693,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 134,
               "Zone": 0,
@@ -6567,8 +6702,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6606,6 +6741,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 135,
               "Zone": 0,
@@ -6614,8 +6750,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6653,6 +6789,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 136,
               "Zone": 0,
@@ -6661,8 +6798,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6700,6 +6837,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 137,
               "Zone": 0,
@@ -6708,8 +6846,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6747,6 +6885,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 138,
               "Zone": 0,
@@ -6755,8 +6894,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6794,6 +6933,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 139,
               "Zone": 0,
@@ -6802,8 +6942,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6841,6 +6981,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 140,
               "Zone": 0,
@@ -6849,8 +6990,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6888,6 +7029,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 141,
               "Zone": 0,
@@ -6896,8 +7038,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6935,6 +7077,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 142,
               "Zone": 0,
@@ -6943,8 +7086,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -6982,6 +7125,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 143,
               "Zone": 0,
@@ -6990,8 +7134,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7029,6 +7173,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 144,
               "Zone": 0,
@@ -7037,8 +7182,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7076,6 +7221,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 145,
               "Zone": 0,
@@ -7084,8 +7230,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7123,6 +7269,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 146,
               "Zone": 0,
@@ -7131,8 +7278,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7170,6 +7317,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 147,
               "Zone": 0,
@@ -7178,8 +7326,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7217,6 +7365,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 148,
               "Zone": 0,
@@ -7225,8 +7374,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7264,6 +7413,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 149,
               "Zone": 0,
@@ -7272,8 +7422,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7311,6 +7461,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 150,
               "Zone": 0,
@@ -7319,8 +7470,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7358,6 +7509,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 151,
               "Zone": 0,
@@ -7366,8 +7518,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7405,6 +7557,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 152,
               "Zone": 0,
@@ -7413,8 +7566,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7452,6 +7605,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 153,
               "Zone": 0,
@@ -7460,8 +7614,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7499,6 +7653,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 154,
               "Zone": 0,
@@ -7507,8 +7662,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7546,6 +7701,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 155,
               "Zone": 0,
@@ -7554,8 +7710,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7593,6 +7749,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 156,
               "Zone": 0,
@@ -7601,8 +7758,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7640,6 +7797,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 157,
               "Zone": 0,
@@ -7648,8 +7806,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7687,6 +7845,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 158,
               "Zone": 0,
@@ -7695,8 +7854,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7734,6 +7893,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 159,
               "Zone": 0,
@@ -7742,8 +7902,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7781,6 +7941,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 160,
               "Zone": 0,
@@ -7789,8 +7950,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7828,6 +7989,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 161,
               "Zone": 0,
@@ -7836,8 +7998,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7875,6 +8037,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 162,
               "Zone": 0,
@@ -7883,8 +8046,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7922,6 +8085,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 163,
               "Zone": 0,
@@ -7930,8 +8094,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -7969,6 +8133,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 164,
               "Zone": 0,
@@ -7977,8 +8142,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8016,6 +8181,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 165,
               "Zone": 0,
@@ -8024,8 +8190,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8063,6 +8229,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 166,
               "Zone": 0,
@@ -8071,8 +8238,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8110,6 +8277,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 167,
               "Zone": 0,
@@ -8118,8 +8286,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8157,6 +8325,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 168,
               "Zone": 0,
@@ -8165,8 +8334,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8204,6 +8373,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 169,
               "Zone": 0,
@@ -8212,8 +8382,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8251,6 +8421,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 170,
               "Zone": 0,
@@ -8259,8 +8430,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8298,6 +8469,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 171,
               "Zone": 0,
@@ -8306,8 +8478,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8345,6 +8517,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 172,
               "Zone": 0,
@@ -8353,8 +8526,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8392,6 +8565,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 173,
               "Zone": 0,
@@ -8400,8 +8574,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8439,6 +8613,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 174,
               "Zone": 0,
@@ -8447,8 +8622,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8486,6 +8661,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 175,
               "Zone": 0,
@@ -8494,8 +8670,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8533,6 +8709,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 176,
               "Zone": 0,
@@ -8541,8 +8718,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8580,6 +8757,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 177,
               "Zone": 0,
@@ -8588,8 +8766,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8627,6 +8805,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 178,
               "Zone": 0,
@@ -8635,8 +8814,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8674,6 +8853,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 179,
               "Zone": 0,
@@ -8682,8 +8862,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8721,6 +8901,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 180,
               "Zone": 0,
@@ -8729,8 +8910,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8768,6 +8949,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 181,
               "Zone": 0,
@@ -8776,8 +8958,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8815,6 +8997,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 182,
               "Zone": 0,
@@ -8823,8 +9006,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8862,6 +9045,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 183,
               "Zone": 0,
@@ -8870,8 +9054,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8909,6 +9093,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 184,
               "Zone": 0,
@@ -8917,8 +9102,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -8956,6 +9141,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 185,
               "Zone": 0,
@@ -8964,8 +9150,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9003,6 +9189,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 186,
               "Zone": 0,
@@ -9011,8 +9198,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9050,6 +9237,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 187,
               "Zone": 0,
@@ -9058,8 +9246,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9097,6 +9285,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 188,
               "Zone": 0,
@@ -9105,8 +9294,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9144,6 +9333,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 189,
               "Zone": 0,
@@ -9152,8 +9342,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9191,6 +9381,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 190,
               "Zone": 0,
@@ -9199,8 +9390,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9238,6 +9429,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 191,
               "Zone": 0,
@@ -9246,8 +9438,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9285,6 +9477,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 192,
               "Zone": 0,
@@ -9293,8 +9486,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9332,6 +9525,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 193,
               "Zone": 0,
@@ -9340,8 +9534,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9379,6 +9573,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 194,
               "Zone": 0,
@@ -9387,8 +9582,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9426,6 +9621,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 195,
               "Zone": 0,
@@ -9434,8 +9630,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9473,6 +9669,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 196,
               "Zone": 0,
@@ -9481,8 +9678,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9520,6 +9717,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 197,
               "Zone": 0,
@@ -9528,8 +9726,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9567,6 +9765,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 198,
               "Zone": 0,
@@ -9575,8 +9774,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9614,6 +9813,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 199,
               "Zone": 0,
@@ -9622,8 +9822,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9661,6 +9861,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 200,
               "Zone": 0,
@@ -9669,8 +9870,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9708,6 +9909,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 201,
               "Zone": 0,
@@ -9716,8 +9918,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9755,6 +9957,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 202,
               "Zone": 0,
@@ -9763,8 +9966,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9802,6 +10005,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 203,
               "Zone": 0,
@@ -9810,8 +10014,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9849,6 +10053,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 204,
               "Zone": 0,
@@ -9857,8 +10062,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9896,6 +10101,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 205,
               "Zone": 0,
@@ -9904,8 +10110,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9943,6 +10149,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 206,
               "Zone": 0,
@@ -9951,8 +10158,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -9990,6 +10197,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 207,
               "Zone": 0,
@@ -9998,8 +10206,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10037,6 +10245,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 208,
               "Zone": 0,
@@ -10045,8 +10254,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10084,6 +10293,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 209,
               "Zone": 0,
@@ -10092,8 +10302,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10131,6 +10341,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 210,
               "Zone": 0,
@@ -10139,8 +10350,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10178,6 +10389,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 211,
               "Zone": 0,
@@ -10186,8 +10398,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10225,6 +10437,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 212,
               "Zone": 0,
@@ -10233,8 +10446,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10272,6 +10485,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 213,
               "Zone": 0,
@@ -10280,8 +10494,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10319,6 +10533,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 214,
               "Zone": 0,
@@ -10327,8 +10542,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10366,6 +10581,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 215,
               "Zone": 0,
@@ -10374,8 +10590,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10413,6 +10629,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 216,
               "Zone": 0,
@@ -10421,8 +10638,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10460,6 +10677,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 217,
               "Zone": 0,
@@ -10468,8 +10686,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10507,6 +10725,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 218,
               "Zone": 0,
@@ -10515,8 +10734,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10554,6 +10773,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 219,
               "Zone": 0,
@@ -10562,8 +10782,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10601,6 +10821,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 220,
               "Zone": 0,
@@ -10609,8 +10830,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10648,6 +10869,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 221,
               "Zone": 0,
@@ -10656,8 +10878,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10695,6 +10917,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 222,
               "Zone": 0,
@@ -10703,8 +10926,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10742,6 +10965,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 223,
               "Zone": 0,
@@ -10750,8 +10974,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10789,6 +11013,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 224,
               "Zone": 0,
@@ -10797,8 +11022,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10836,6 +11061,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 225,
               "Zone": 0,
@@ -10844,8 +11070,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10883,6 +11109,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 226,
               "Zone": 0,
@@ -10891,8 +11118,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10930,6 +11157,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 227,
               "Zone": 0,
@@ -10938,8 +11166,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -10977,6 +11205,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 228,
               "Zone": 0,
@@ -10985,8 +11214,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11024,6 +11253,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 229,
               "Zone": 0,
@@ -11032,8 +11262,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11071,6 +11301,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 230,
               "Zone": 0,
@@ -11079,8 +11310,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11118,6 +11349,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 231,
               "Zone": 0,
@@ -11126,8 +11358,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11165,6 +11397,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 232,
               "Zone": 0,
@@ -11173,8 +11406,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11212,6 +11445,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 233,
               "Zone": 0,
@@ -11220,8 +11454,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11259,6 +11493,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 234,
               "Zone": 0,
@@ -11267,8 +11502,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11306,6 +11541,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 235,
               "Zone": 0,
@@ -11314,8 +11550,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11353,6 +11589,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 236,
               "Zone": 0,
@@ -11361,8 +11598,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11400,6 +11637,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 237,
               "Zone": 0,
@@ -11408,8 +11646,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11447,6 +11685,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 238,
               "Zone": 0,
@@ -11455,8 +11694,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11494,6 +11733,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 239,
               "Zone": 0,
@@ -11502,8 +11742,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11541,6 +11781,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 240,
               "Zone": 0,
@@ -11549,8 +11790,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11588,6 +11829,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 241,
               "Zone": 0,
@@ -11596,8 +11838,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11635,6 +11877,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 242,
               "Zone": 0,
@@ -11643,8 +11886,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11682,6 +11925,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 243,
               "Zone": 0,
@@ -11690,8 +11934,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11729,6 +11973,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 244,
               "Zone": 0,
@@ -11737,8 +11982,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11776,6 +12021,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 245,
               "Zone": 0,
@@ -11784,8 +12030,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11823,6 +12069,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 246,
               "Zone": 0,
@@ -11831,8 +12078,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11870,6 +12117,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 247,
               "Zone": 0,
@@ -11878,8 +12126,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11917,6 +12165,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 248,
               "Zone": 0,
@@ -11925,8 +12174,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -11964,6 +12213,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 249,
               "Zone": 0,
@@ -11972,8 +12222,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12011,6 +12261,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 250,
               "Zone": 0,
@@ -12019,8 +12270,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12058,6 +12309,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 251,
               "Zone": 0,
@@ -12066,8 +12318,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12105,6 +12357,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 252,
               "Zone": 0,
@@ -12113,8 +12366,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12152,6 +12405,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 253,
               "Zone": 0,
@@ -12160,8 +12414,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12199,6 +12453,7 @@
             },
             {
               "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 254,
               "Zone": 0,
@@ -12207,8 +12462,8 @@
               "NightSensitivity": 3,
               "DayVolume": 3,
               "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12244,9 +12499,11 @@
               "IsRealDevice": true,
               "RemoteLEDEnabled": null
             }
-          ],
-          "Group": 0
+          ]
         },
+        "Loop2": {
+          "Devices": []
+        }
       },
       "DeviceNamesConfig": {
         "DeviceNames": [
@@ -12558,11 +12815,11 @@
               "ShowAlarmReset": false
             },
             "Night": {
-              "DependencyOption": 3,
+              "DependencyOption": 2,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
-              "ShowAlarmReset": false
+              "ShowAlarmReset": true
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
@@ -12649,7 +12906,7 @@
             "AlarmReset": 0,
             "EndDelays": false,
             "Day": {
-              "DependencyOption": 3,
+              "DependencyOption": 6,
               "DetectorReset": "00:01:00",
               "AlarmReset": "00:05:00",
               "ShowDetectorReset": false,
@@ -15499,7 +15756,6 @@
     "EngineerNo": null,
     "FaultLockout": 0,
     "FrontPanel": null,
-    "RecalibrationTime": "00:00:00",
     "LoopCount": 0,
     "DateEnabled": false,
     "SoundersPulsed": false,
@@ -15518,6 +15774,7 @@
     "NightStart": null,
     "BlinkPollingLED": false,
     "AutoAdjustDST": false,
+    "RecalibrationTime": "00:00:00",
     "RealTimeEventOutput": false
   },
   "Comments": "",

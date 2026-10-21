@@ -318,6 +318,7 @@ namespace Xfp.ViewModels.PanelTools
 
             if (!zone.IsPanelData)
             {
+                //zone settings
                 result.DayDependency          = zone.Day.DependencyOption;
                 result.NightDependency        = zone.Night.DependencyOption;
                 result.DayDetectorResetTime   = zone.Day.DetectorReset;
@@ -327,6 +328,7 @@ namespace Xfp.ViewModels.PanelTools
             }
             else
             {
+                //panel settings
                 var zonePanelDefaults = new ZoneDependency();
                 result.DayDependency          = zonePanelDefaults.DependencyOption;
                 result.NightDependency        = zonePanelDefaults.DependencyOption;
@@ -336,6 +338,7 @@ namespace Xfp.ViewModels.PanelTools
                 result.NightDetectorAlarmTime = zonePanelDefaults.AlarmReset;
             }
 
+            CTecUtil.Debug.WriteLine((zone.IsPanelData ? "Panel " + (index - 31): "Zone " + (index + 1)) + ": " + CTecUtil.Utils.ByteArrayUtil.ByteArrayToHexString(result.ToByteArray()));
             return result;
         }
 
