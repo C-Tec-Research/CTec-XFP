@@ -64,6 +64,16 @@ namespace Xfp.Files.XfpFile
                         if (gotFw = !string.IsNullOrWhiteSpace(f))
                             firmwareVersions.Add(f);
                     }
+                    else if (item == XfpTags.PanelNumber)                       // <-- legacy file
+                    {
+                        var p = ParseString(currentLine);
+                        if (gotPan = !string.IsNullOrWhiteSpace(p))
+                        {
+                            int pNum;
+                            if (Int32.TryParse(p, out pNum))
+                                panelNumbers.Add(pNum);
+                        }
+                    }
                     else if (item == XfpTags.LoopCount)                         // <-- legacy file
                         numLoops = parseInt(currentLine);
                     else if (item.StartsWith(nameof(XfpPanelData.Protocol)))    // <-- json file

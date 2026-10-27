@@ -294,8 +294,10 @@ namespace Xfp.ViewModels
 
         /// <summary>Is the current page one of the Device view pages?</summary>
         public bool CurrentPageIsDevices => _currentPage == _deviceDetailsPage || _currentPage == _loop1Page || _currentPage == _loop2Page;
-        public bool CurrentPageIsZones => _currentPage == _zonesPage;
-
+        public bool CurrentPageIsZones   => _currentPage == _zonesPage;
+        public bool CurrentDownloadIncludesDevices => currentPageDownloadList is not null && (currentPageDownloadList.Contains(_deviceDetailsPage) 
+                                                                                           || currentPageDownloadList.Contains(_loop1Page) 
+                                                                                           || currentPageDownloadList.Contains(_loop2Page));
 
         /// <summary>List of pages to download - comprises the current page plus any others required</summary>
         private List<Page> currentPageDownloadList
@@ -1165,6 +1167,9 @@ namespace Xfp.ViewModels
             if (result.Panels.Count == 0)
                 result = openOlderXfp2File(path);
 
+            if (result.CurrentPanel is null)
+            { }
+
             if (result is null
                 || result.CurrentPanel.LoopConfig?.Loop1 is null
                 || result.CurrentPanel.LoopConfig?.Loop2 is null
@@ -1825,29 +1830,20 @@ namespace Xfp.ViewModels
 
             if (!dataHasBeenEdited || askOverwriteChanges(allPages ? Cultures.Resources.Download_System : Cultures.Resources.Download_Page))
             {
-                if (allPages || currentPageDownloadList.Contains(_deviceDetailsPage) || currentPageDownloadList.Contains(_loop1Page) || currentPageDownloadList.Contains(_loop2Page))
+                if (allPages || CurrentDownloadIncludesDevices)
                 {
-                    string messy = null;
-                    var needToAddLoop2 = false;
-
-                    var loopNum = CurrentPage == _deviceDetailsPage
-                    //warn if current loop does not exist on the panel or if the number of
-                    //loops on the connected panel does not match what has been configured
-                    if (!allPages && LoopNum > LoopConfigData.DetectedLoops)
-                        messy = string.Format(Cultures.Resources.Comms_Download_Warn_Loop_x_Not_Present, LoopNum);
-                    else if (NumLoops != LoopConfigData.DetectedLoops)
-                        messy = (needToAddLoop2 = NumLoops == 1) ? Cultures.Resources.Comms_Download_Warn_Loop_Count_2_Loops : Cultures.Resources.Comms_Download_Warn_Loop_Count_1_Loop;
-
-                    if (messy is not null)
+                    var loopAction = (CurrentPage.DataContext as DevicesViewModel).PredownloadLoop2Check(allPages);
+                    switch (loopAction)
                     {
-                        var tit = allPages ? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page;
-                        CTecMessageBox.ShowOKInfo(messy, tit);
-
-                        if (needToAddLoop2)
-                            AddLoop2(false);
+                        case 1: (CurrentPage.DataContext as DevicesViewModel).AddLoop2(false);
+                                //if (CurrentPage != _deviceDetailsPage) (_loop1Page.DataContext as DevicesViewModel).PopulateView(_data);
+                                //if (CurrentPage != _loop1Page)         (_loop1Page.DataContext as DevicesViewModel).PopulateView(_data);
+                                //if (CurrentPage != _loop2Page)         (_loop2Page.DataContext as DevicesViewModel).PopulateView(_data);
+                                break;
+                        default: 
+                            break;
                     }
                 }
-
 
                 CloseValidationWindow();
                 CloseCommsLog();
@@ -2313,10 +2309,13 @@ namespace Xfp.ViewModels
             _data = data;
 
             IsReadOnly = true;
+            
+            if (!data.Panels.ContainsKey(XfpData.CurrentPanelNumber))
+                XfpData.CurrentPanelNumber = data.Panels.First().Value.PanelNumber;
 
             foreach (var p in _pages)
             {
-                (p.DataContext as PanelToolsPageViewModelBase).PanelNumber = data.CurrentPanel.PanelNumber;
+                (p.DataContext as PanelToolsPageViewModelBase).PanelNumber = XfpData.CurrentPanelNumber;
 
                 if (p == _deviceDetailsPage)
                     (p.DataContext as DeviceDetailsViewModel)?.PopulateView(_data);

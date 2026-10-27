@@ -292,9 +292,9 @@ namespace Xfp.DataTypes.PanelData
             if (ResetParam2   == -1) ResetParam2 = 0;
             if (ResetParam    == 0)  ResetCondition = false;
 
-            ActionTypeName = Enums.CEActionTypesToString(ActionType);
+            ActionTypeName  = Enums.CEActionTypesToString(ActionType);
             TriggerTypeName = Enums.CETriggerTypesToString(TriggerType);
-            ResetTypeName = Enums.CETriggerTypesToString(ResetType);
+            ResetTypeName   = Enums.CETriggerTypesToString(ResetType);
         }
     }
 }

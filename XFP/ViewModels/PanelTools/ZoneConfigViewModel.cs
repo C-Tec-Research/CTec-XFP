@@ -32,14 +32,14 @@ namespace Xfp.ViewModels.PanelTools
 
         private void handleTimer()
         {
-            try
-            {
-                OnPropertyChanged(nameof(DelayTotalIsValid));
-                foreach (var z in ZoneConfigItems) 
-                    if (_data.CurrentPanel is not null)
-                        z.InputDelay = _data.CurrentPanel.ZoneConfig.InputDelay;
-            }
-            catch { } 
+            //try
+            //{
+            //    OnPropertyChanged(nameof(DelayTotalIsValid));
+            //    foreach (var z in ZoneConfigItems) 
+            //        if (_data.CurrentPanel is not null)
+            //            z.InputDelay = _data.CurrentPanel.ZoneConfig.InputDelay;
+            //}
+            //catch { } 
         }
 
         

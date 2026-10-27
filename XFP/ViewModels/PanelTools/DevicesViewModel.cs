@@ -1,4 +1,10 @@
-﻿using System;
+﻿using CTecControls.UI;
+using CTecDevices;
+using CTecDevices.DeviceTypes;
+using CTecDevices.Protocol;
+using CTecUtil;
+using CTecUtil.StandardPanelDataTypes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -7,19 +13,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Windows.Xps;
-using CTecControls.UI;
-using CTecDevices;
-using CTecDevices.DeviceTypes;
-using CTecDevices.Protocol;
-using CTecUtil;
-using CTecUtil.StandardPanelDataTypes;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 using Xfp.IO;
 using Xfp.UI.Interfaces;
+using Xfp.UI.ViewHelpers;
 using Xfp.UI.Views.PanelTools;
 using XFP.Config;
-using Xfp.UI.ViewHelpers;
 
 namespace Xfp.ViewModels.PanelTools
 {
@@ -58,13 +58,38 @@ namespace Xfp.ViewModels.PanelTools
         public List<ObservableCollection<DeviceItemViewModel>> Loops => new() { _loop1, _loop2 };
 
 
+        public int PredownloadLoop2Check(bool allPages)
+        {
+            var numLoops = _data.CurrentPanel.LoopConfig.NumLoops;
+
+            //warn if current loop does not exist on the panel or if the number of
+            //loops on the connected panel does not match what has been configured
+            if (numLoops != LoopConfigData.DetectedLoops)
+            {
+                var messy = (numLoops == 1) ? Cultures.Resources.Comms_Download_Warn_Loop_Count_2_Loops : Cultures.Resources.Comms_Download_Warn_Loop_Count_1_Loop;
+                var tit   = allPages ? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page;
+                var needToAddLoop2    = numLoops == 1;
+                var needToDeleteLoop2 = LoopNum > LoopConfigData.DetectedLoops;
+
+                CTecMessageBox.ShowOKInfo(messy, tit);
+
+                if (needToAddLoop2) return 1;
+                if (needToDeleteLoop2) return -1;
+            }
+
+            return 0;
+        }
+
         public void AddLoop2(bool askFirst = true)
         {
             if (!askFirst || CTecMessageBox.ShowYesNoQuery(Cultures.Resources.Query_Add_Second_Loop, PageHeader) == MessageBoxResult.Yes)
             {
-                _data.CurrentPanel.Loop2Config.Devices = DeviceConfigData.InitialisedNew(1).Devices;
-                PopulateLoop(2);
+                //NumLoops = 2;
+                //_data.CurrentPanel.Loop2Config.Devices = DeviceConfigData.InitialisedNew(1).Devices;
+                _data.CurrentPanel.LoopConfig.Loop2 = DeviceConfigData.InitialisedNew(1);
                 NumLoops = 2;
+                //PopulateLoop(2);
+                PopulateView(_data);
                 OnPropertyChanged(nameof(CurrentLoop));
                 OnPropertyChanged(nameof(LoopIsFitted));
             }
@@ -624,26 +649,6 @@ namespace Xfp.ViewModels.PanelTools
         #region IConfigToolsPageViewModel implementation
         public void EnqueuePanelDownloadCommands(bool allPages)
         {
-            //string messy = null;
-            //var needToAddLoop2 = false;
-
-            ////warn if current loop does not exist on the panel or if the number of
-            ////loops on the connected panel does not match what has been configured
-            //if (!allPages && LoopNum > LoopConfigData.DetectedLoops)
-            //    messy = string.Format(Cultures.Resources.Comms_Download_Warn_Loop_x_Not_Present, LoopNum);
-            //else if (NumLoops != LoopConfigData.DetectedLoops)
-            //    messy = (needToAddLoop2 = NumLoops == 1) ? Cultures.Resources.Comms_Download_Warn_Loop_Count_2_Loops : Cultures.Resources.Comms_Download_Warn_Loop_Count_1_Loop;
-
-            //if (messy is not null)
-            //{
-            //    var tit = allPages ? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page;
-            //    CTecMessageBox.ShowOKInfo(messy, tit);
-
-            //    if (needToAddLoop2)
-            //        AddLoop2(false);
-            //}
-
-
             //get the device names list first
             //NB: the list MUST be cleared first
             _data.CurrentPanel.DeviceNamesConfig.DeviceNames.Clear();
@@ -807,27 +812,25 @@ namespace Xfp.ViewModels.PanelTools
         #region Panel comms receive-data handlers
         private bool deviceReceived(object data)
         {
-            //LoopConfigData.DetectedLoops is updated by the panel 'heartbeat'
-            //comms, so will reflect what is actually connected
-            if (LoopConfigData.DetectedLoops is not null && NumLoops != LoopConfigData.DetectedLoops)
-            {
-                //if (NumLoops < LoopConfigData.DetectedLoops)
-                //{ 
-                //    //AddLoop2(false);
-                //    //Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => AddLoop2(false)), DispatcherPriority.Normal);
-                //    //_data.CurrentPanel.Loop2Config.Devices = DeviceConfigData.InitialisedNew(1).Devices;
-                //    //PopulateLoop(2);
-                //}
-
-                NumLoops = (int)LoopConfigData.DetectedLoops;
-                OnPropertyChanged(nameof(LoopIsFitted));
-            }
-
-            if (data is not DeviceData device
-             || device.Index < 0
-             || device.Index >= (device.LoopNum > 0 ? Loop2.Count : Loop1.Count)
-             || device.LoopNum < 0 || device.LoopNum > 1)
+            if (data is not DeviceData device)
                 return false;
+
+            if (device.Index < 0)
+                return false;
+
+             //if (device.Index >= (device.LoopNum > 0 ? Loop2.Count : Loop1.Count))
+             if (device.Index >= (device.LoopNum > 0 ? _data.CurrentPanel.LoopConfig.Loop2.Devices.Count : _data.CurrentPanel.LoopConfig.Loop1.Devices.Count))
+                return false;
+
+             if (device.LoopNum < 0)
+                return false;
+             
+             if (device.LoopNum > 1)
+                return false;
+
+            if (device.LoopNum > 0)
+            {
+            }
 
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.Loop_x_Device_y_Type_z, 
                                                             device.LoopNum + 1, 
@@ -836,12 +839,14 @@ namespace Xfp.ViewModels.PanelTools
             
             if (device.LoopNum > 0)
             {
-                setDevice(Loop2[device.Index], device);
+                if (Loop2.Count > device.Index)
+                    setDevice(Loop2[device.Index], device);
                 _data.CurrentPanel.LoopConfig.Loop2.Devices[device.Index] = device;
             }
             else
             {
-                setDevice(Loop1[device.Index], device);
+                if (Loop1.Count > device.Index)
+                    setDevice(Loop1[device.Index], device);
                 _data.CurrentPanel.LoopConfig.Loop1.Devices[device.Index] = device;
             }
 
