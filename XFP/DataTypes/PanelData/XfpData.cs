@@ -65,7 +65,7 @@ namespace Xfp.DataTypes
         public Dictionary<int, XfpPanelData> Panels { get; set; } = new();
 
         [JsonIgnore]
-        internal static int CurrentPanelNumber { get; set; } = MinPanelNumber;
+        internal int CurrentPanelNumber { get; set; } = MinPanelNumber;
 
         [JsonIgnore]
         public XfpPanelData CurrentPanel
@@ -111,7 +111,7 @@ namespace Xfp.DataTypes
             data.Panels.Add(panelNumber, XfpPanelData.InitialisedNew(protocol, panelNumber, numLoops));
             data.SiteConfig = SiteConfigData.InitialisedNew();
             if (setCurrentToThis)
-                CurrentPanelNumber = panelNumber;
+                data.CurrentPanelNumber = panelNumber;
             return data;
         }
 

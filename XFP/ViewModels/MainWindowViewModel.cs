@@ -458,14 +458,14 @@ namespace Xfp.ViewModels
 
         public new int PanelNumber
         {
-            get => XfpData.CurrentPanelNumber;
+            get => _data?.CurrentPanelNumber ?? 1;
             set
             {
-                if (value != XfpData.CurrentPanelNumber)
+                if (_data is not null && value != _data.CurrentPanelNumber)
                 {
                     var readOnlyState = IsReadOnly;
 
-                    XfpData.CurrentPanelNumber = value;
+                    _data.CurrentPanelNumber = value;
                     PopulateView(_data);
                     foreach (var p in _pages)
                         if (p.DataContext is PanelToolsPageViewModelBase vm)
@@ -1052,7 +1052,7 @@ namespace Xfp.ViewModels
                 {
                     if (!DataHasChanged || askOverwriteChanges(string.Format(Cultures.Resources.Open_File_x, Path.GetFileName(path))))
                     {
-                        InitNewDataset();
+                        //InitNewDataset();
 
                         if (isLegacyFile = LocalXfpFile.CheckForLegacyXfpFile(TextFile.FilePath))
                         {
@@ -1084,12 +1084,16 @@ namespace Xfp.ViewModels
                 XfpApplicationConfig.Settings.RecentPanelFiles.Add(TextFile.FilePath);
 
                 PopulateView(newData);
+                
+                // Ensure PanelNumber binding is refreshed after loading new file
+                PanelNumber = _data.CurrentPanelNumber;
+
+                OnPropertyChanged(nameof(SystemName));
+
                 SaveCopyOfDataFromFile();
 
                 if (!newData.Validate())
                     ShowValidationWindow();
-
-                OnPropertyChanged(nameof(SystemName));
                 return true;
             }
             catch (Exception ex)
@@ -1137,8 +1141,8 @@ namespace Xfp.ViewModels
                                                     : _data.CurrentPanel.PanelConfig.FirmwareVersionCompare(firmwareVersions[idx]) switch
                                                     {
                                                         -1 => string.Format(Cultures.Resources.File_Data_Is_Older_Firmware_x, firmwareVersions[idx]),
-                                                        1 => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, firmwareVersions[idx]),
-                                                        _ => Cultures.Resources.File_Data_Is_Unknown_Firmware,
+                                                        1  => string.Format(Cultures.Resources.File_Data_Is_Newer_Firmware_x, firmwareVersions[idx]),
+                                                        _  => Cultures.Resources.File_Data_Is_Unknown_Firmware,
                                                     });
                         }
 
@@ -1305,6 +1309,7 @@ namespace Xfp.ViewModels
             else
                 result.Panels.Add(PanelNumber = panelNumber, panelData.Panels[panelNumber]);
 
+            result.CurrentPanelNumber = panelNumber;
             result.CurrentPanel.PanelConfig.FirmwareVersion = panelData.CurrentPanel.PanelConfig.FirmwareVersion;
             result.ToolsVersion = panelData.ToolsVersion;
             result.SiteConfig = new(panelData.SiteConfig);
@@ -2302,20 +2307,17 @@ namespace Xfp.ViewModels
         public void PopulateView(XfpData data)
         {
             UIState.SetBusyState();
-
-            //if (CurrentProtocol != _data?.CurrentPanel?.Protocol)
-            //    changeProtocol(data.CurrentPanel.Protocol, false);
             
             _data = data;
 
             IsReadOnly = true;
             
-            if (!data.Panels.ContainsKey(XfpData.CurrentPanelNumber))
-                XfpData.CurrentPanelNumber = data.Panels.First().Value.PanelNumber;
+            if (!data.Panels.ContainsKey(data.CurrentPanelNumber))
+                data.CurrentPanelNumber = data.Panels.First().Value.PanelNumber;
 
             foreach (var p in _pages)
             {
-                (p.DataContext as PanelToolsPageViewModelBase).PanelNumber = XfpData.CurrentPanelNumber;
+                (p.DataContext as PanelToolsPageViewModelBase).PanelNumber = data.CurrentPanelNumber;
 
                 if (p == _deviceDetailsPage)
                     (p.DataContext as DeviceDetailsViewModel)?.PopulateView(_data);

@@ -17791,7 +17791,7 @@ File XFPTools
   ReSound_Function = FALSE
   BST_Adjustment = TRUE
   RealTime_Event_Output = TRUE
-  Panel Number = 3
+  Panel Number = 6
   Memo Comments
   End Memo
   Intermittent Tone = 1
