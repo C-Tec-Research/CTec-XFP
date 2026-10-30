@@ -46,6 +46,9 @@ namespace Xfp.ViewModels.PanelTools
 
             _loopNum = loopNum;
             DeviceNameKeyToValueConverter.GetDeviceName = getDeviceNamesEntry;
+
+            //all device pages (Device Details, Loop 1, Loop 2) show devices as they are received from the panel
+            DeviceReceivedFromPanel += showReceivedDevice;
         }
 
 
@@ -838,51 +841,39 @@ namespace Xfp.ViewModels.PanelTools
                                                             DeviceTypes.DeviceTypeName(device.DeviceType, DeviceTypes.CurrentProtocolType)??Cultures.Resources.Not_Fitted));
             
             if (device.LoopNum > 0)
-            {
-                if (Loop2.Count > device.Index)
-                    setDevice(Loop2[device.Index], device);
                 _data.CurrentPanel.LoopConfig.Loop2.Devices[device.Index] = device;
-            }
             else
-            {
-                if (Loop1.Count > device.Index)
-                    setDevice(Loop1[device.Index], device);
                 _data.CurrentPanel.LoopConfig.Loop1.Devices[device.Index] = device;
-            }
+
+            notifyDeviceReceived(device);
 
             return true;
         }
 
 
-        private void setDevice(DeviceItemViewModel item, DeviceData device)
+        /// <summary>
+        /// Raised when a device has been received from the panel, so every device page can show it straight away.
+        /// </summary>
+        private static event Action<DeviceData> DeviceReceivedFromPanel;
+
+
+        /// <summary>
+        /// Update the device pages on the UI thread without holding up the comms (the receive handlers run on a background task).
+        /// </summary>
+        private static void notifyDeviceReceived(DeviceData device)
+            => Application.Current?.Dispatcher.InvokeAsync(() => DeviceReceivedFromPanel?.Invoke(device), DispatcherPriority.Background);
+
+
+        /// <summary>
+        /// Point this page's item for the received device at the new device data.
+        /// </summary>
+        private void showReceivedDevice(DeviceData device)
         {
-            item.LoopNum = device.LoopNum;
-            item.Index = device.Index;
-            item.DeviceType = device.DeviceType;
-            item.ZoneIndex = device.Zone;
-            item.GroupIndex = device.Group;
-            item.DeviceNameIndex = device.NameIndex;
-            item.DaySensitivity = device.DaySensitivity;
-            item.NightSensitivity = device.NightSensitivity;
-            item.DayVolume = device.DayVolume;
-            item.NightVolume = device.NightVolume;
-            item.DayMode = device.DayMode;
-            item.NightMode = device.NightMode;
-            item.AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
-            item.RemoteLEDEnabled = device.RemoteLEDEnabled;
-
-            for (int i = 0; i < item.IOConfigItems.Count; i++)
-            {
-                item.IOConfigItems[i].Index = device.IOConfig[i].Index;
-                item.IOConfigItems[i].DeviceType = device.DeviceType;
-                item.IOConfigItems[i].InputOutput = device.IOConfig[i].InputOutput;
-                item.IOConfigItems[i].Channel = device.IOConfig[i].Channel;
-                item.IOConfigItems[i].ZoneGroupSet = device.IOConfig[i].ZoneGroupSet;
-                item.IOConfigItems[i].NameIndex = device.IOConfig[i].NameIndex;
-            }
-
-            item.RefreshView();
+            var loop = device.LoopNum > 0 ? _loop2 : _loop1;
+            if (device.Index >= 0 && device.Index < loop.Count)
+                loop[device.Index].DeviceData = device;     //setter calls RefreshView()
         }
+
 
         private bool baseSounderGroupReceived(object data)
         {
@@ -894,21 +885,16 @@ namespace Xfp.ViewModels.PanelTools
              || device.LoopNum < 0 || device.LoopNum > 1)
                 return false;
 
-            if (device.Index >= (device.LoopNum > 0 ? Loop2.Count : Loop1.Count))
+            var devices = device.LoopNum > 0 ? _data.CurrentPanel.LoopConfig.Loop2.Devices : _data.CurrentPanel.LoopConfig.Loop1.Devices;
+
+            if (device.Index >= devices.Count)
                 return false;
 
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.Loop_x_Base_Sounder_Group_y, device.LoopNum + 1, device.Index + 1));
 
-            if (device.LoopNum > 0)
-            {
-                Loop2[device.Index].DeviceData.AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
-                _data.CurrentPanel.LoopConfig.Loop2.Devices[device.Index].AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
-            }
-            else
-            {
-                Loop1[device.Index].DeviceData.AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
-                _data.CurrentPanel.LoopConfig.Loop1.Devices[device.Index].AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
-            }
+            //update the stored device (the device pages' items point at this same object) and refresh the pages
+            devices[device.Index].AncillaryBaseSounderGroup = device.AncillaryBaseSounderGroup;
+            notifyDeviceReceived(devices[device.Index]);
 
             return true;
         }

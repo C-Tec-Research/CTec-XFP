@@ -5,6 +5,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Media;
 using CTecUtil.ViewModels;
+using CTecControls;
 using Xfp.Config;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;

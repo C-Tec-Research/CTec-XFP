@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using CTecControls;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
 

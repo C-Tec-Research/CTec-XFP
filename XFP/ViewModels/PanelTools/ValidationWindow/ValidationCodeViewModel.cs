@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using CTecControls;
+using System.ComponentModel;
 using Xfp.DataTypes;
 
 namespace Xfp.ViewModels.PanelTools.ValidationWindow

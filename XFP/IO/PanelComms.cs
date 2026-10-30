@@ -217,32 +217,32 @@ namespace Xfp.IO
 
 
         #region handlers for received data
-        private static SerialComms.MultiIndexResponseDataHandler receiveDevice           = new((data, index1, index2) => (bool)DeviceReceived?.Invoke  (DeviceData.Parse                           (data, XfpCommands.ResponseIsDeviceRequest, index1, index2)));
+        private static SerialComms.MultiIndexResponseDataHandler receiveDevice           = new((data, index1, index2) => (bool)DeviceReceived.Invoke  (DeviceData.Parse                           (data, XfpCommands.ResponseIsDeviceRequest, index1, index2)));
 
-        private static SerialComms.MultiIndexResponseDataHandler receiveBaseSounderGroup = new((data, index1, index2) => (bool)BaseSounderGroupReceived?.Invoke(DeviceData.Parse                   (data, XfpCommands.ResponseIsDeviceRequest, index1, index2)));
+        private static SerialComms.MultiIndexResponseDataHandler receiveBaseSounderGroup = new((data, index1, index2) => (bool)BaseSounderGroupReceived.Invoke(DeviceData.Parse                   (data, XfpCommands.ResponseIsDeviceRequest, index1, index2)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveDeviceName         = new((data, index) => (bool)DeviceNameReceived?.Invoke       (DeviceData.ParseDeviceName                 (data, XfpCommands.ResponseIsDeviceNameRequest, index)));
+        private static SerialComms.ReceivedResponseDataHandler receiveDeviceName         = new((data, index) => (bool)DeviceNameReceived.Invoke       (DeviceData.ParseDeviceName                 (data, XfpCommands.ResponseIsDeviceNameRequest, index)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveZoneName           = new((data, index) => (bool)ZoneNameReceived?.Invoke         (IndexedText.Parse                          (data, XfpCommands.ResponseIsZoneNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
-        private static SerialComms.ReceivedResponseDataHandler receiveZoneTimers         = new((data, index) => (bool)ZoneTimersReceived?.Invoke       (ZoneConfigData.ZoneTimersBundle.Parse      (data, XfpCommands.ResponseIsZoneTimersRequest, index)));
-        private static SerialComms.ReceivedResponseDataHandler receivePhasedSettings     = new((data, index) => (bool)PhasedSettingsReceived?.Invoke   (ZoneConfigData.PhasedSettingsBundle.Parse  (data, XfpCommands.ResponseIsPhasedSettingsRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveZoneGroup          = new((data, index) => (bool)ZoneGroupReceived?.Invoke        (GroupConfigData.GroupBundle.Parse          (data, XfpCommands.ResponseIsZoneGroupRequest, index)));
-        private static SerialComms.ReceivedResponseDataHandler receiveZoneSet            = new((data, index) => (bool)ZoneSetReceived?.Invoke          (SetConfigData.SetBundle.Parse              (data, XfpCommands.ResponseIsZoneSetRequest, index)));
+        private static SerialComms.ReceivedResponseDataHandler receiveZoneName           = new((data, index) => (bool)ZoneNameReceived.Invoke         (IndexedText.Parse                          (data, XfpCommands.ResponseIsZoneNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
+        private static SerialComms.ReceivedResponseDataHandler receiveZoneTimers         = new((data, index) => (bool)ZoneTimersReceived.Invoke       (ZoneConfigData.ZoneTimersBundle.Parse      (data, XfpCommands.ResponseIsZoneTimersRequest, index)));
+        private static SerialComms.ReceivedResponseDataHandler receivePhasedSettings     = new((data, index) => (bool)PhasedSettingsReceived.Invoke   (ZoneConfigData.PhasedSettingsBundle.Parse  (data, XfpCommands.ResponseIsPhasedSettingsRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveZoneGroup          = new((data, index) => (bool)ZoneGroupReceived.Invoke        (GroupConfigData.GroupBundle.Parse          (data, XfpCommands.ResponseIsZoneGroupRequest, index)));
+        private static SerialComms.ReceivedResponseDataHandler receiveZoneSet            = new((data, index) => (bool)ZoneSetReceived.Invoke          (SetConfigData.SetBundle.Parse              (data, XfpCommands.ResponseIsZoneSetRequest, index)));
 
-        //private static SerialComms.ReceivedResponseDataHandler receiveFirmwareVersion    = new((data, index) => (bool)FirmwareVersionReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsFirmwareVersionRequest,   XfpPanelData.FirmwareVersionLength, true)));
-        private static SerialComms.ReceivedResponseDataHandler receiveQuiescentString    = new((data, index) => (bool)QuiescentStringReceived?.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsQuiescentStringRequest,   PanelConfigData.MaxQuiescentStringLength)));
-        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceString  = new((data, index) => (bool)MaintenanceStringReceived?.Invoke(Text.Parse                                 (data, XfpCommands.ResponseIsMaintenanceStringRequest, PanelConfigData.MaxMaintenanceStringLength)));
-        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceDate    = new((data, index) => (bool)MaintenanceDateReceived?.Invoke  (Date.Parse                                 (data, XfpCommands.ResponseIsMaintenanceDateRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveAL2Code            = new((data, index) => (bool)AL2CodeReceived?.Invoke          (PanelConfigData.ParseAL2Code           (data, XfpCommands.ResponseIsAL2CodeRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveAL3Code            = new((data, index) => (bool)AL3CodeReceived?.Invoke          (PanelConfigData.AL3CodeBundle.Parse    (data, XfpCommands.ResponseIsAL3CodeRequest)));
-        private static SerialComms.ReceivedResponseDataHandler receiveDayNight           = new((data, index) => (bool)DayNightReceived?.Invoke         (SiteConfigData.DayNightBundle.Parse        (data, XfpCommands.ResponseIsDayNightRequest)));
+        //private static SerialComms.ReceivedResponseDataHandler receiveFirmwareVersion    = new((data, index) => (bool)FirmwareVersionReceived.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsFirmwareVersionRequest,   XfpPanelData.FirmwareVersionLength, true)));
+        private static SerialComms.ReceivedResponseDataHandler receiveQuiescentString    = new((data, index) => (bool)QuiescentStringReceived.Invoke  (Text.Parse                                 (data, XfpCommands.ResponseIsQuiescentStringRequest,   PanelConfigData.MaxQuiescentStringLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceString  = new((data, index) => (bool)MaintenanceStringReceived.Invoke(Text.Parse                                 (data, XfpCommands.ResponseIsMaintenanceStringRequest, PanelConfigData.MaxMaintenanceStringLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveMaintenanceDate    = new((data, index) => (bool)MaintenanceDateReceived.Invoke  (Date.Parse                                 (data, XfpCommands.ResponseIsMaintenanceDateRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveAL2Code            = new((data, index) => (bool)AL2CodeReceived.Invoke          (PanelConfigData.ParseAL2Code           (data, XfpCommands.ResponseIsAL2CodeRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveAL3Code            = new((data, index) => (bool)AL3CodeReceived.Invoke          (PanelConfigData.AL3CodeBundle.Parse    (data, XfpCommands.ResponseIsAL3CodeRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveDayNight           = new((data, index) => (bool)DayNightReceived.Invoke         (SiteConfigData.DayNightBundle.Parse        (data, XfpCommands.ResponseIsDayNightRequest)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveCEEvent            = new((data, index) => (bool)CEEventReceived?.Invoke          (CEConfigData.CEBundle.Parse                (data, XfpCommands.ResponseIsCEEventRequest, index)));
+        private static SerialComms.ReceivedResponseDataHandler receiveCEEvent            = new((data, index) => (bool)CEEventReceived.Invoke          (CEConfigData.CEBundle.Parse                (data, XfpCommands.ResponseIsCEEventRequest, index)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveRepeaterName       = new((data, index) => (bool)RepeaterNameReceived?.Invoke     (IndexedText.Parse                          (data, XfpCommands.ResponseIsRepeaterNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
-        private static SerialComms.ReceivedResponseDataHandler receiveNetworkPanelData   = new((data, index) => (bool)NetworkPanelDataReceived?.Invoke (NetworkConfigData.NetworkBundle.Parse      (data, XfpCommands.ResponseIsNetworkPanelDataRequest)));
+        private static SerialComms.ReceivedResponseDataHandler receiveRepeaterName       = new((data, index) => (bool)RepeaterNameReceived.Invoke     (IndexedText.Parse                          (data, XfpCommands.ResponseIsRepeaterNameRequest, index, ZoneConfigData.MaxNameLength, 0, 2)));
+        private static SerialComms.ReceivedResponseDataHandler receiveNetworkPanelData   = new((data, index) => (bool)NetworkPanelDataReceived.Invoke (NetworkConfigData.NetworkBundle.Parse      (data, XfpCommands.ResponseIsNetworkPanelDataRequest)));
 
-        private static SerialComms.ReceivedResponseDataHandler receiveEventLogData       = new((data, index) => (bool)EventLogDataReceived?.Invoke     (Text.Parse                                 (data, XfpCommands.ResponseIsEventLogDataRequest, XfpData.EventLogDataLength)));
+        private static SerialComms.ReceivedResponseDataHandler receiveEventLogData       = new((data, index) => (bool)EventLogDataReceived.Invoke     (Text.Parse                                 (data, XfpCommands.ResponseIsEventLogDataRequest, XfpData.EventLogDataLength)));
         #endregion
     }
 }

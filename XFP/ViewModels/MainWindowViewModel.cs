@@ -194,14 +194,15 @@ namespace Xfp.ViewModels
         /// <summary>
         /// Initialise an empty dataset with confirmation on changes to current data.
         /// </summary>
-        public void InitNewDataset() => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops);
+        public void InitNewDataset() => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops, true, XfpData.MinPanelNumber);
         //public void InitNewDataset(bool repopulateView) => InitNewDataset(CurrentProtocol, true, LoopConfigData.DetectedLoops ?? LoopConfigData.MaxLoops, repopulateView);
 
         /// <summary>
         /// Initialise an empty dataset with optional confirmation on changes to current data.
         /// </summary>
         /// <param name="checkForChanges">Set to True to check the current data for changes and ask for confirmation</param>
-        public void InitNewDataset(CTecDevices.ObjectTypes protocol, bool checkForChanges, int numLoops, bool repopulateView = true)
+        /// <param name="panelNumber">The panel number for the new dataset; if null the current panel number is retained</param>
+        public void InitNewDataset(CTecDevices.ObjectTypes protocol, bool checkForChanges, int numLoops, bool repopulateView = true, int? panelNumber = null)
         {
             if (checkForChanges && DataHasChanged && !askClearCurrentData((_currentPage.DataContext as PanelToolsPageViewModelBase)?.PageHeader))
                 return;
@@ -212,7 +213,7 @@ namespace Xfp.ViewModels
 
             if (repopulateView)
             {
-                PopulateView(XfpData.InitialisedNew(CurrentProtocol, PanelNumber = PanelNumber, true, numLoops));
+                PopulateView(XfpData.InitialisedNew(CurrentProtocol, panelNumber ?? PanelNumber, true, numLoops));
                 EventLogData.ClearEventLogViewer?.Invoke();
             }
 
@@ -422,8 +423,8 @@ namespace Xfp.ViewModels
             }
         }
 
-        public bool PanelIsConnected { get => SerialComms.IsConnected; }
-        public bool PanelIsDisconnected { get => SerialComms.IsDisconnected; }
+        //public bool PanelIsConnected { get => SerialComms.IsConnected; }
+        //public bool PanelIsDisconnected { get => SerialComms.IsDisconnected; }
 
         public string PanelDisconnectedIconSvgPathData => IconUtilities.IconSvgPathData(IconTypes.DisconnectedSerial);
 
@@ -456,26 +457,34 @@ namespace Xfp.ViewModels
         }
 
 
+        /// <summary>Set while PopulateView() is refreshing the view, so that values written back by the panel number spinner<br/>
+        /// (which clamps its Value to its range while NumberSet is changing) are ignored.</summary>
+        private bool _populating;
+
         public new int PanelNumber
         {
-            get => _data?.CurrentPanelNumber ?? 1;
+            get => _data?.CurrentPanelNumber ?? XfpData.MinPanelNumber;
             set
             {
-                if (_data is not null && value != _data.CurrentPanelNumber)
-                {
-                    var readOnlyState = IsReadOnly;
+                //ignore spinner write-backs while the view is being refreshed, and numbers not in the data
+                if (_populating || _data is null || value == _data.CurrentPanelNumber || !_data.Panels.ContainsKey(value))
+                    return;
 
-                    _data.CurrentPanelNumber = value;
-                    PopulateView(_data);
-                    foreach (var p in _pages)
-                        if (p.DataContext is PanelToolsPageViewModelBase vm)
-                            vm.PanelNumber = value;
-                    OnPropertyChanged();
+                var readOnlyState = IsReadOnly;
 
-                    IsReadOnly = readOnlyState;
-                }
+                _data.CurrentPanelNumber = value;
+                PopulateView(_data);    //sets the pages' PanelNumber and raises PanelNumber
+
+                IsReadOnly = readOnlyState;
             }
         }
+
+
+        /// <summary>
+        /// Select the panel to show from newly-loaded data: keep the current panel if the data contains it, otherwise the lowest-numbered panel in the data.
+        /// </summary>
+        private void selectPanelToShow(XfpData data)
+            => data.CurrentPanelNumber = data.Panels.ContainsKey(PanelNumber) ? PanelNumber : data.Panels.Keys.Min();
 
 
         public List<int> PanelNumberSet => [.. _data.Panels.Keys];
@@ -957,7 +966,7 @@ namespace Xfp.ViewModels
             {
                 CloseMainMenu();
 
-                InitNewDataset(CurrentProtocol, false, LoopConfigData.MaxLoops);
+                InitNewDataset(CurrentProtocol, true, LoopConfigData.MaxLoops, true, XfpData.MinPanelNumber);
             }
             finally
             {
@@ -1084,9 +1093,6 @@ namespace Xfp.ViewModels
                 XfpApplicationConfig.Settings.RecentPanelFiles.Add(TextFile.FilePath);
 
                 PopulateView(newData);
-                
-                // Ensure PanelNumber binding is refreshed after loading new file
-                PanelNumber = _data.CurrentPanelNumber;
 
                 OnPropertyChanged(nameof(SystemName));
 
@@ -1130,7 +1136,7 @@ namespace Xfp.ViewModels
 
             if (_data.CurrentPanel.PanelConfig.FirmwareVersion != CTecControls.Cultures.Resources.Not_Available)
             {
-                if (panelNumbers?.IndexOf(PanelNumber - 1) is int idx)
+                if (panelNumbers?.IndexOf(PanelNumber) is int idx)
                 {
                     if (idx >= 0 && idx < firmwareVersions.Count)
                     {
@@ -1168,14 +1174,19 @@ namespace Xfp.ViewModels
             result = LocalXfpFile.ReadJsonXfpFile(TextFile.FilePath);
 
             //no panels may indicate older single-panel xfp2 file
-            if (result.Panels.Count == 0)
+            if (result?.Panels is null || result.Panels.Count == 0)
                 result = openOlderXfp2File(path);
 
-            if (result.CurrentPanel is null)
-            { }
+            if (result?.Panels is null || result.Panels.Count == 0)
+            {
+                errorOpeningFile(Cultures.Resources.Product_Full_Name, TextFile.FilePath, Cultures.Resources.Error_File_Data_Is_Not_Panel_Data);
+                return null;
+            }
 
-            if (result is null
-                || result.CurrentPanel.LoopConfig?.Loop1 is null
+            //select the panel to show in the new data (NB: not via PanelNumber, which applies to the data currently displayed)
+            selectPanelToShow(result);
+
+            if (result.CurrentPanel.LoopConfig?.Loop1 is null
                 || result.CurrentPanel.LoopConfig?.Loop2 is null
                 || result.CurrentPanel.ZoneConfig is null
                 || result.CurrentPanel.GroupConfig is null
@@ -1184,9 +1195,6 @@ namespace Xfp.ViewModels
                 errorOpeningFile(Cultures.Resources.Product_Full_Name, TextFile.FilePath, Cultures.Resources.Error_File_Data_Is_Not_Panel_Data);
                 return null;
             }
-
-            if (!result.Panels.ContainsKey(PanelNumber))
-                PanelNumber = result.Panels.First().Value.PanelNumber;
 
             if (result.CurrentPanel.Protocol == CTecDevices.ObjectTypes.NotSet)
             {
@@ -1212,8 +1220,7 @@ namespace Xfp.ViewModels
 
             result = LocalXfpFile.ReadOlderJsonXfpFile(TextFile.FilePath);
 
-            if (!result.Panels.ContainsKey(PanelNumber))
-                PanelNumber = result.Panels.First().Value.PanelNumber;
+            //NB: the panel to show is selected by the caller - openXfp2File()
 
             //if (result is null
             //    || result.CurrentPanel.LoopConfig?.Loop1 is null
@@ -1307,7 +1314,7 @@ namespace Xfp.ViewModels
             if (result.Panels.Keys.Contains(panelNumber))
                 result.Panels[panelNumber] = panelData.Panels[panelNumber];
             else
-                result.Panels.Add(PanelNumber = panelNumber, panelData.Panels[panelNumber]);
+                result.Panels.Add(panelNumber, panelData.Panels[panelNumber]);
 
             result.CurrentPanelNumber = panelNumber;
             result.CurrentPanel.PanelConfig.FirmwareVersion = panelData.CurrentPanel.PanelConfig.FirmwareVersion;
@@ -1370,101 +1377,99 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        #region serial port
+        //#region serial port
 
-        SerialPortWatcher _comPortWatcher;
-        private bool _noPortsAvailable;
+        //SerialPortWatcher _comPortWatcher;
+        //private bool _noPortsAvailable;
 
-        private void startComPortWatcher()
-        {
-            var portNames = SerialComms.GetPortNames();
-            PortNamesList = [.. portNames];
-            _comPortWatcher = new();
-            _comPortWatcher.PortsChanged = new((ports) => initPortsComboList(ports));
-        }
-
-
-        public bool SerialPortIsIdle => SerialComms.IsIdle;
-        public string ToolTip_SelectCOMPort => CTecControls.Cultures.Resources.ToolTip_Select_COM_Port;
+        //private void startComPortWatcher()
+        //{
+        //    var portNames = SerialComms.GetPortNames();
+        //    PortNamesList = [.. portNames];
+        //    _comPortWatcher = new();
+        //    _comPortWatcher.PortsChanged = new((ports) => initPortsComboList(ports));
+        //}
 
 
-        public void ConnectSerialPort()
-        {
-            if (!SerialComms.IsConnected)
-            {
-                CTecUtil.UI.UIState.SetBusyState();
-                //Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Mouse.OverrideCursor = Cursors.Wait; Thread.Sleep(2000); Mouse.OverrideCursor = null; }), DispatcherPriority.Normal);
-                //Dispatcher.CurrentDispatcher.Invoke(new Action(() => SerialComms.Connect()), DispatcherPriority.Normal);
-                SerialComms.Connect();
-                Thread.Sleep(2000);
-                OnPropertyChanged(nameof(PanelIsConnected));
-                OnPropertyChanged(nameof(PanelIsDisconnected));
-            }
-        }
-
-        public void DisconnectSerialPort()
-        {
-            if (SerialPortIsIdle)
-            {
-                CTecUtil.UI.UIState.SetBusyState();
-                SerialComms.Disconnect();
-                Thread.Sleep(2000);
-                OnPropertyChanged(nameof(PanelIsConnected));
-                OnPropertyChanged(nameof(PanelIsDisconnected));
-            }
-        }
-
-        public ObservableCollection<string> PortNamesList { get; set; }
-
-        public bool NoPortsAvailable { get => _noPortsAvailable; set { _noPortsAvailable = value; OnPropertyChanged(); } }
-
-        //public string SerialPortNameIconPathData => IconUtilities.IconSvgPathData(IconTypes.PortName);
+        //public bool SerialPortIsIdle => SerialComms.IsIdle;
+        //public string ToolTip_SelectCOMPort => CTecControls.Cultures.Resources.ToolTip_Select_COM_Port;
 
 
-        public int PortNameIndex
-        {
-            get => PortNamesList.IndexOf(PortName);
-            set { try { PortName = PortNamesList[value]; } catch { PortName = ""; } }
-        }
+        //public void ConnectSerialPort()
+        //{
+        //    if (!SerialComms.IsConnected)
+        //    {
+        //        CTecUtil.UI.UIState.SetBusyState();
+        //        SerialComms.Connect();
+        //        Thread.Sleep(2000);
+        //        OnPropertyChanged(nameof(PanelIsConnected));
+        //        OnPropertyChanged(nameof(PanelIsDisconnected));
+        //    }
+        //}
 
-        public string PortName
-        {
-            get => XfpApplicationConfig.Settings.SerialPortSettings.PortName;
-            set
-            {
-                if (!string.IsNullOrEmpty(value) && value != SerialComms.PortName)
-                    XfpApplicationConfig.SerialPortName = SerialComms.PortName = value;
-                OnPropertyChanged();
-            }
-        }
+        //public void DisconnectSerialPort()
+        //{
+        //    if (SerialPortIsIdle)
+        //    {
+        //        CTecUtil.UI.UIState.SetBusyState();
+        //        SerialComms.Disconnect();
+        //        Thread.Sleep(2000);
+        //        OnPropertyChanged(nameof(PanelIsConnected));
+        //        OnPropertyChanged(nameof(PanelIsDisconnected));
+        //    }
+        //}
 
-        private void initPortsComboList()
-        {
-            try
-            {
-                var port = SerialComms.Settings.PortName;
+        //public ObservableCollection<string> PortNamesList { get; set; }
 
-                NoPortsAvailable = PortNamesList.Count == 0;
-                PortNameIndex = PortNamesList.IndexOf(port);
+        //public bool NoPortsAvailable { get => _noPortsAvailable; set { _noPortsAvailable = value; OnPropertyChanged(); } }
 
-                OnPropertyChanged(nameof(PortNamesList));
-                OnPropertyChanged(nameof(PortNameIndex));
-                OnPropertyChanged(nameof(PortName));
-                OnPropertyChanged(nameof(NoPortsAvailable));
-            }
-            catch (InvalidOperationException) { }
-        }
+        ////public string SerialPortNameIconPathData => IconUtilities.IconSvgPathData(IconTypes.PortName);
 
-        private void initPortsComboList(List<string> ports)
-        {
-            try
-            {
-                PortNamesList = new(ports);
-                initPortsComboList();
-            }
-            catch (InvalidOperationException) { }
-        }
-        #endregion
+
+        //public int PortNameIndex
+        //{
+        //    get => PortNamesList.IndexOf(PortName);
+        //    set { try { PortName = PortNamesList[value]; } catch { PortName = ""; } }
+        //}
+
+        //public string PortName
+        //{
+        //    get => XfpApplicationConfig.Settings.SerialPortSettings.PortName;
+        //    set
+        //    {
+        //        if (!string.IsNullOrEmpty(value) && value != SerialComms.PortName)
+        //            XfpApplicationConfig.SerialPortName = SerialComms.PortName = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //private void initPortsComboList()
+        //{
+        //    try
+        //    {
+        //        var port = SerialComms.Settings.PortName;
+
+        //        NoPortsAvailable = PortNamesList.Count == 0;
+        //        PortNameIndex = PortNamesList.IndexOf(port);
+
+        //        OnPropertyChanged(nameof(PortNamesList));
+        //        OnPropertyChanged(nameof(PortNameIndex));
+        //        OnPropertyChanged(nameof(PortName));
+        //        OnPropertyChanged(nameof(NoPortsAvailable));
+        //    }
+        //    catch (InvalidOperationException) { }
+        //}
+
+        //private void initPortsComboList(List<string> ports)
+        //{
+        //    try
+        //    {
+        //        PortNamesList = new(ports);
+        //        initPortsComboList();
+        //    }
+        //    catch (InvalidOperationException) { }
+        //}
+        //#endregion
 
 
         #region Print dialog
@@ -1528,8 +1533,9 @@ namespace Xfp.ViewModels
 
             MainWindowEnabled = true;
 
-            OnPropertyChanged(nameof(PanelNumber));
+            //NumberSet before Value, so the spinner's range includes the panel number
             OnPropertyChanged(nameof(PanelNumberSet));
+            OnPropertyChanged(nameof(PanelNumber));
         }
         #endregion
 
@@ -1769,40 +1775,24 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        #region Minimise/Maximise/Restore/Exit
+        #region Minimise/Maximise/Restore
         
         private WindowState _windowState;
         public bool WindowIsMaximised => _windowState == WindowState.Maximized;
         public void ChangeWindowState(WindowState windowState) { _windowState = windowState; OnPropertyChanged(nameof(WindowIsMaximised)); }
-
-
-        public void ExitApp()
-        {
-            try
-            {
-                UIState.SetBusyState();
-                
-                //kill if we get a freeze on closing ports
-                System.Timers.Timer killer = new(3000) { AutoReset = false, Enabled = true };
-                killer.Elapsed += (s, e) => Environment.Exit(0);
-
-                CTecUtil.IO.SerialComms.ClosePort();
-                Thread closePort = new Thread(new ThreadStart(CloseSerialPort));
-                Environment.Exit(0);
-            }
-            catch (Exception ex)
-            {
-                CTecUtil.Debug.WriteLine(EventLog.WriteError("Error on exiting app\n\n" + ex.ToString()));
-            }
-        }
-
-        private void CloseSerialPort() { try { SerialComms.ClosePort(); } catch { } }
         #endregion
 
 
         #region Panel comms upload/download
+        private bool _downloading = false;
+        private bool _uploading = false;
+
+
         public void DownloadFromPanel(bool allPages)
         {
+            if (_downloading)
+                return;
+
             if (_currentPage == _eventLogPage || _currentPage == _commentsPage)
                 return;
 
@@ -1856,6 +1846,8 @@ namespace Xfp.ViewModels
 
                 if (checkProtocol(CommsDirection.Download, allPages))
                 {
+                    _downloading = true;
+
                     if (allPages)
                     {
                         PanelComms.InitCommandQueue(CommsDirection.Download, Cultures.Resources.Comms_Downloading_System);
@@ -1875,8 +1867,12 @@ namespace Xfp.ViewModels
             }
         }
 
+
         public void UploadToPanel(bool allPages)
         {
+            if (_uploading)
+                return;
+
             if (_currentPage == _eventLogPage
              || _currentPage == _commentsPage
              || !checkPanelStatus(CommsDirection.Upload, allPages)
@@ -1920,6 +1916,8 @@ namespace Xfp.ViewModels
                     }
                 }
             }
+
+            _uploading = true;
 
             PanelComms.InitCommandQueue(CommsDirection.Upload, allPages ? Cultures.Resources.Comms_Uploading_System : Cultures.Resources.Comms_Uploading_Page);
 
@@ -2008,13 +2006,13 @@ namespace Xfp.ViewModels
 
             if (direction == CommsDirection.Download)
             {
-                var yes = CTecMessageBox.ShowYesNoWarn(string.Format(Cultures.Resources.Error_Comms_Panel_Protocol_x_Does_Not_Match_Tools_y,
-                                                                     CTecDevices.Enums.ObjectTypeName(_panelProtocol),
-                                                                     CTecDevices.Enums.ObjectTypeName(CurrentProtocol)) + "\n\n" + Cultures.Resources.Warn_Confirm_Continue,
-                                                       allPages? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page) == MessageBoxResult.Yes;
-                if (yes)
+                var result = CTecMessageBox.ShowYesNoWarn(string.Format(Cultures.Resources.Error_Comms_Panel_Protocol_x_Does_Not_Match_Tools_y,
+                                                                        CTecDevices.Enums.ObjectTypeName(_panelProtocol),
+                                                                        CTecDevices.Enums.ObjectTypeName(CurrentProtocol)) + "\n\n" + Cultures.Resources.Warn_Confirm_Continue,
+                                                          allPages? Cultures.Resources.Comms_Downloading_System : Cultures.Resources.Comms_Downloading_Page) == MessageBoxResult.Yes;
+                if (result)
                     CurrentProtocol = _panelProtocol;
-                return yes;
+                return result;
             }
 
             CTecMessageBox.ShowOKError(string.Format(Cultures.Resources.Error_Comms_Panel_Protocol_x_Does_Not_Match_Tools_y,
@@ -2117,9 +2115,9 @@ namespace Xfp.ViewModels
                     }
 
                     OnPropertyChanged(nameof(SystemName));
+                    OnPropertyChanged(nameof(PanelNumberSet));     //before PanelNumber, so the spinner's range includes the panel number
                     OnPropertyChanged(nameof(PanelNumber));
                     OnPropertyChanged(nameof(IsReadOnly));
-                    OnPropertyChanged(nameof(PanelNumberSet));
                     OnPropertyChanged(nameof(NumberOfPanels));
                     OnPropertyChanged(nameof(PanelNumberToolTip));
                     OnPropertyChanged(nameof(PanelCount));
@@ -2131,6 +2129,10 @@ namespace Xfp.ViewModels
             catch (Exception ex)
             {
                 CTecUtil.CommsLog.AddException(Cultures.Resources.Error_After_Download_End, ex, true);
+            }
+            finally
+            {
+                _downloading = false;
             }
 
             if (DebugMode)
@@ -2159,6 +2161,7 @@ namespace Xfp.ViewModels
             finally
             {
                 commsEnded();
+                _uploading = false;
             }
         }
 
@@ -2307,33 +2310,46 @@ namespace Xfp.ViewModels
         public void PopulateView(XfpData data)
         {
             UIState.SetBusyState();
-            
-            _data = data;
 
-            IsReadOnly = true;
-            
-            if (!data.Panels.ContainsKey(data.CurrentPanelNumber))
-                data.CurrentPanelNumber = data.Panels.First().Value.PanelNumber;
-
-            foreach (var p in _pages)
+            _populating = true;
+            try
             {
-                (p.DataContext as PanelToolsPageViewModelBase).PanelNumber = data.CurrentPanelNumber;
+                _data = data;
 
-                if (p == _deviceDetailsPage)
-                    (p.DataContext as DeviceDetailsViewModel)?.PopulateView(_data);
-                else if (p == _zonesPage)
-                    (p.DataContext as ZoneConfigViewModel)?.PopulateView(_data);
-                else
-                    (p?.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+                IsReadOnly = true;
+
+                if (!data.Panels.ContainsKey(data.CurrentPanelNumber))
+                    data.CurrentPanelNumber = data.Panels.Keys.Min();
+
+                foreach (var p in _pages)
+                {
+                    if (p == _deviceDetailsPage)
+                        (p.DataContext as DeviceDetailsViewModel)?.PopulateView(_data);
+                    else if (p == _zonesPage)
+                        (p.DataContext as ZoneConfigViewModel)?.PopulateView(_data);
+                    else
+                        (p?.DataContext as IPanelToolsViewModel)?.PopulateView(_data);
+
+                    //set after the page has the new data, so its PanelDesc reads the right panel
+                    if (p?.DataContext is PanelToolsPageViewModelBase vm)
+                        vm.PanelNumber = data.CurrentPanelNumber;
+                }
+
+                OnPropertyChanged(nameof(SystemName));
+                OnPropertyChanged(nameof(PanelNumberSet));     //before PanelNumber, so the spinner's range includes the new panel
+                OnPropertyChanged(nameof(PanelNumber));
+                OnPropertyChanged(nameof(IsReadOnly));
+                OnPropertyChanged(nameof(NumberOfPanels));
+                OnPropertyChanged(nameof(PanelNumberToolTip));
+                OnPropertyChanged(nameof(PanelCount));
+            }
+            finally
+            {
+                _populating = false;
             }
 
-            OnPropertyChanged(nameof(SystemName));
+            //the spinner may have clamped its Value while its range was changing (those write-backs were ignored), so resync it with the data
             OnPropertyChanged(nameof(PanelNumber));
-            OnPropertyChanged(nameof(IsReadOnly));
-            OnPropertyChanged(nameof(PanelNumberSet));
-            OnPropertyChanged(nameof(NumberOfPanels));
-            OnPropertyChanged(nameof(PanelNumberToolTip));
-            OnPropertyChanged(nameof(PanelCount));
 
             SaveCopyOfCurrentData();
         }
@@ -2342,14 +2358,14 @@ namespace Xfp.ViewModels
         #endregion
 
 
-        #region IDisposable Members
+        //#region IDisposable Members
 
-        public void Dispose()
-        {
-            _comPortWatcher.Dispose();
-        }
+        //public void Dispose()
+        //{
+        //    _comPortWatcher.Dispose();
+        //}
 
-        #endregion
+        //#endregion
 
 
         public void ToggleDebugMode()

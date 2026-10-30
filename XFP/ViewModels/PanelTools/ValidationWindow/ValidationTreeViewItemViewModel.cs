@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CTecControls;
 using CTecUtil;
 using Xfp.DataTypes;
 using Xfp.DataTypes.PanelData;
@@ -29,7 +28,7 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
 
         private bool _isExpanded;
         private bool _isSelected;
-        private Visibility _visibility = Visibility.Visible;
+        
         private bool _hideIfNoErrors = false;
 
 
@@ -40,7 +39,11 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         public ValidationTreeViewItemViewModel Add(ValidationTreeViewItemViewModel item) => AddToChildren(this, item);
         public void Remove(string name) => RemoveFromChildren(this, name);
 
-
+        
+        /// <summary>
+        /// Gets/sets whether the TreeViewItem 
+        /// associated with this object is expanded.
+        /// </summary>
         public bool IsExpanded
         {
             get { return _isExpanded; }
@@ -59,6 +62,10 @@ namespace Xfp.ViewModels.PanelTools.ValidationWindow
         }
 
 
+        /// <summary>
+        /// Gets/sets whether the TreeViewItem 
+        /// associated with this object is selected.
+        /// </summary>
         public bool IsSelected
         {
             get { return _isSelected; }

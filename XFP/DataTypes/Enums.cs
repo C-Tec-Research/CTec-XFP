@@ -275,10 +275,10 @@
         // - miscellaneous error in 900s
     }
 
-    public enum ErrorLevels
-    {
-        OK,
-        Warning,
-        Error
-    }
+    //public enum ErrorLevels
+    //{
+    //    OK,
+    //    Warning,
+    //    Error
+    //}
 }

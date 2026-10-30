@@ -61,12 +61,12 @@ namespace Xfp.Views
 
 
         #region header panel actions
-        private void uploadSystem_Click(object sender, RoutedEventArgs e)      => _context.UploadToPanel(true);
-        private void downloadSystem_Click(object sender, RoutedEventArgs e)    => _context.DownloadFromPanel(true);
-        private void uploadPage_Click(object sender, RoutedEventArgs e)        => _context.UploadToPanel(false);
-        private void downloadPage_Click(object sender, RoutedEventArgs e)      => _context.DownloadFromPanel(false);
-        private void commsLog_MouseDown(object sender, MouseButtonEventArgs e) => _context.ShowCommsLog(false);
-        private void info_MouseDown(object sender, MouseButtonEventArgs e)     => _context.ShowValidationWindow();
+        private void uploadSystem_Click(object sender, RoutedEventArgs e)   => _context.UploadToPanel(true);
+        private void downloadSystem_Click(object sender, RoutedEventArgs e) => _context.DownloadFromPanel(true);
+        private void uploadPage_Click(object sender, RoutedEventArgs e)     => _context.UploadToPanel(false);
+        private void downloadPage_Click(object sender, RoutedEventArgs e)   => _context.DownloadFromPanel(false);
+        private void commsLog_MouseDown(object sender, MouseButtonEventArgs e)    => _context.ShowCommsLog(false);
+        private void info_MouseDown(object sender, MouseButtonEventArgs e)        => _context.ShowValidationWindow();
         #endregion
 
 
