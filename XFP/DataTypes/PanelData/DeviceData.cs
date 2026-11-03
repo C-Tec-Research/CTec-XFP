@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Windows;
 using CTecDevices;
+using CTecDevices.DeviceTypes;
 using CTecDevices.Protocol;
 using CTecUtil.StandardPanelDataTypes;
 using CTecUtil.Utils;
@@ -36,7 +39,7 @@ namespace Xfp.DataTypes.PanelData
             NightVolume = original.NightVolume;
             DayMode = original.DayMode;
             NightMode = original.NightMode;
-            IOConfig = new(original.IOConfig);
+            IOConfig = original.IOConfig.Select(io => new IOSettingData(io)).ToList();    //NB: deep copy - the IO settings must not be shared with the original
             AncillaryBaseSounderGroup = original.AncillaryBaseSounderGroup;
             IsRealDevice = original.IsRealDevice;
             RemoteLEDEnabled = original.RemoteLEDEnabled;
@@ -101,6 +104,19 @@ namespace Xfp.DataTypes.PanelData
         public int? DayMode { get; set; } = DeviceConfigData.DefaultMode;
         public int? NightMode { get; set; } = DeviceConfigData.DefaultMode;
         public List<IOSettingData> IOConfig { get; set; } = new();
+
+
+        /// <summary>
+        /// IOSettingData.DeviceType is not written to the file (its getter is private), so after reading a file
+        /// restore it from the device; otherwise IO output validation can't tell whether ZoneGroupSet is a zone, group or set.
+        /// </summary>
+        [System.Runtime.Serialization.OnDeserialized]
+        internal void OnDeserialized(System.Runtime.Serialization.StreamingContext context)
+        {
+            foreach (var io in IOConfig)
+                io.DeviceType = DeviceType;
+        }
+
         public int NameIndex { get; set; } = 0;
         internal bool CanHaveAncillaryBaseSounder => DeviceTypes.CanHaveAncillaryBaseSounder(DeviceType, DeviceTypes.CurrentProtocolType);
         public int? AncillaryBaseSounderGroup { get; set; } = null;
@@ -475,27 +491,79 @@ namespace Xfp.DataTypes.PanelData
                     
                     if (result.IsIODevice)
                     {
-                        inUse0 = data[5]  != 0xff;
-                        inUse1 = data[7]  != 0xff;
-                        inUse2 = data[9]  != 0xff;
-                        inUse3 = data[11] != 0xff;
+                        if (DeviceTypes.CurrentProtocolIsXfpCast)
+                        {
+                            switch (result.DeviceType)
+                            {
+                                case (int)XfpCastDeviceTypeIds.IOUnit:
+                                case (int)XfpCastDeviceTypeIds.MainsIOUnit:
+                                case (int)XfpCastDeviceTypeIds.NonLatchingIOUnit:
+                                    inUse0 = inUse1 = true;
+                                    result.IOConfig[0].InputOutput = IOTypes.Output;
+                                    result.IOConfig[1].InputOutput = IOTypes.Input;
+                                    break;
 
-                        //Input/Output
-                        //  bit 0: 0 = Input, 1 = Output
-                        
-                        result.IOConfig[0].InputOutput = inUse0 ? (data[5] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                        result.IOConfig[1].InputOutput = inUse1 ? (data[7] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                        result.IOConfig[2].InputOutput = inUse2 ? (data[9] & 0x80)  > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
-                        result.IOConfig[3].InputOutput = inUse3 ? (data[11] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                                case (int)XfpCastDeviceTypeIds.ZMU:
+                                    inUse0 = true;
+                                    result.IOConfig[0].InputOutput = IOTypes.Input;
+                                    break;
+
+                                case (int)XfpCastDeviceTypeIds.HS2:
+                                    inUse0 = inUse1 = inUse2 = true;
+                                    result.IOConfig[0].InputOutput = IOTypes.Output;
+                                    result.IOConfig[1].InputOutput = IOTypes.Input;
+                                    break;
+
+                                default:
+                                    inUse0 = data[5] != 0xff;
+                                    inUse1 = data[7] != 0xff;
+                                    inUse2 = data[9] != 0xff;
+                                    inUse3 = data[11] != 0xff;
+
+                                    //Input/Output
+                                    //  bit 0: 0 = Input, 1 = Output
+                                    result.IOConfig[0].InputOutput = inUse0 ? (data[5] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                                    result.IOConfig[1].InputOutput = inUse1 ? (data[7] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                                    result.IOConfig[2].InputOutput = inUse2 ? (data[9] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                                    result.IOConfig[3].InputOutput = inUse3 ? (data[11] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                                    break;
+                            }
+                        }
+                        else if (DeviceTypes.CurrentProtocolIsXfpCast)
+                        {
+                            inUse0 = data[5] != 0xff;
+                            inUse1 = data[7] != 0xff;
+                            inUse2 = data[9] != 0xff;
+                            inUse3 = data[11] != 0xff;
+
+                            //Input/Output
+                            //  bit 0: 0 = Input, 1 = Output
+                            result.IOConfig[0].InputOutput = inUse0 ? (data[5] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                            result.IOConfig[1].InputOutput = inUse1 ? (data[7] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                            result.IOConfig[2].InputOutput = inUse2 ? (data[9] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                            result.IOConfig[3].InputOutput = inUse3 ? (data[11] & 0x80) > 0 ? IOTypes.Output : IOTypes.Input : IOTypes.NotUsed;
+                        }
 
                         //Channel -
                         //  Input:  - bit 1: 0 = Ch1, 1 = Ch2
                         //  Output: - bits 1 & 2: 01 = Ch1, 10 = Ch2, 11 = Ch3
 
-                        if (inUse0) result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5]  & 0x60) == 0x60 ? 2 : ((data[5]  & 0x40) >> 6); else result.IOConfig[0].Channel = null;
-                        if (inUse1) result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7]  & 0x60) == 0x60 ? 2 : ((data[7]  & 0x40) >> 6); else result.IOConfig[1].Channel = null;
-                        if (inUse2) result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9]  & 0x60) == 0x60 ? 2 : ((data[9]  & 0x40) >> 6); else result.IOConfig[2].Channel = null;
-                        if (inUse3) result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6); else result.IOConfig[3].Channel = null;
+                        if (inUse0)
+                            result.IOConfig[0].Channel = result.IOConfig[0].InputOutput == IOTypes.Output && (data[5] & 0x60) == 0x60 ? 2 : ((data[5] & 0x40) >> 6);
+                        else
+                            result.IOConfig[0].Channel = null;
+                        if (inUse1)
+                            result.IOConfig[1].Channel = result.IOConfig[1].InputOutput == IOTypes.Output && (data[7] & 0x60) == 0x60 ? 2 : ((data[7] & 0x40) >> 6);
+                        else
+                            result.IOConfig[1].Channel = null;
+                        if (inUse2)
+                            result.IOConfig[2].Channel = result.IOConfig[2].InputOutput == IOTypes.Output && (data[9] & 0x60) == 0x60 ? 2 : ((data[9] & 0x40) >> 6);
+                        else
+                            result.IOConfig[2].Channel = null;
+                        if (inUse3)
+                            result.IOConfig[3].Channel = result.IOConfig[3].InputOutput == IOTypes.Output && (data[11] & 0x60) == 0x60 ? 2 : ((data[11] & 0x40) >> 6);
+                        else
+                            result.IOConfig[3].Channel = null;
 
                         if (inUse0)
                         {
@@ -505,50 +573,60 @@ namespace Xfp.DataTypes.PanelData
                                 result.Group = data[5] & 0x0f;
                         }
 
-                        //if (result.IsIODevice)
-                        //{
-                            //ZGS -
-                            //  Input: bits 2-7
-                            //  Output: bits 4-7
+                        //ZGS -
+                        //  Input: bits 2-7
+                        //  Output: bits 4-7
 
-                            if (inUse0) result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5]  & 0x3f : data[5]  & 0x1f; else result.IOConfig[0].ZoneGroupSet = null;
-                            if (inUse1) result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7]  & 0x3f : data[7]  & 0x1f; else result.IOConfig[1].ZoneGroupSet = null;
-                            if (inUse2) result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9]  & 0x3f : data[9]  & 0x1f; else result.IOConfig[2].ZoneGroupSet = null;
-                            if (inUse3) result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f; else result.IOConfig[3].ZoneGroupSet = null;
-                        //}
-                    //}
+                        if (inUse0)
+                            result.IOConfig[0].ZoneGroupSet = result.IOConfig[0].InputOutput == IOTypes.Input ? data[5] & 0x3f : data[5] & 0x1f;
+                        else
+                            result.IOConfig[0].ZoneGroupSet = null;
+                        if (inUse1)
+                            result.IOConfig[1].ZoneGroupSet = result.IOConfig[1].InputOutput == IOTypes.Input ? data[7] & 0x3f : data[7] & 0x1f;
+                        else
+                            result.IOConfig[1].ZoneGroupSet = null;
+                        if (inUse2)
+                            result.IOConfig[2].ZoneGroupSet = result.IOConfig[2].InputOutput == IOTypes.Input ? data[9] & 0x3f : data[9] & 0x1f;
+                        else
+                            result.IOConfig[2].ZoneGroupSet = null;
+                        if (inUse3)
+                            result.IOConfig[3].ZoneGroupSet = result.IOConfig[3].InputOutput == IOTypes.Input ? data[11] & 0x3f : data[11] & 0x1f;
+                        else
+                            result.IOConfig[3].ZoneGroupSet = null;
 
-                    //if (result.IsIODevice)
-                    //{
-                        if (inUse0) result.IOConfig[0].NameIndex = data[6];
-                        if (inUse1) result.IOConfig[1].NameIndex = data[8];
-                        if (inUse2) result.IOConfig[2].NameIndex = data[10];
-                        if (inUse3) result.IOConfig[3].NameIndex = data[12];
+                        if (inUse0)
+                            result.IOConfig[0].NameIndex = data[6];
+                        if (inUse1)
+                            result.IOConfig[1].NameIndex = data[8];
+                        if (inUse2)
+                            result.IOConfig[2].NameIndex = data[10];
+                        if (inUse3)
+                            result.IOConfig[3].NameIndex = data[12];
                     }
                     else
                     {
                         if (result.IsModeDevice)
                         {
-                            result.DayMode   = data[7];
+                            result.DayMode = data[7];
                             result.NightMode = data[8];
                         }
                         else if (result.IsSensitivityDevice)
                         {
-                            result.DaySensitivity   = data[7];
+                            result.DaySensitivity = data[7];
                             result.NightSensitivity = data[8];
                         }
-                        
+
                         if (result.IsVolumeDevice)
                         {
                             //CAST PRO has both mode and volume, so volume is offset from the usual bytes
                             if (result.IsModeDevice)
                             {
-                                result.DayVolume   = data[10] - 1;
+                                result.DayVolume = data[10] - 1;
                                 result.NightVolume = data[11] - 1;
                             }
                             else
                             {
-                                result.DayVolume   = data[7] - 1;
+                                result.DayVolume = data[7] - 1;
                                 result.NightVolume = data[8] - 1;
                             }
                         }

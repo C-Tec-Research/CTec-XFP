@@ -14,7 +14,7 @@ namespace Xfp.DataTypes.PanelData
             InputOutput = DeviceTypes.DefaultIOOutputType(deviceType, index, DeviceTypes.CurrentProtocolType);
             //InputOutput = index switch { 0 => IOTypes.Input, 1 => IOTypes.Output, _ => IOTypes.NotUsed };
             //Channel = index == 2 ? 2 : 1;
-            //ZoneGroupSet = index switch { 0 => 1, 1 => 1, _ => 0 };
+            ZoneGroupSet = index switch { 0 or 1 => 1, _ => 0 };
             NameIndex = -1;
         }
 
@@ -72,21 +72,29 @@ namespace Xfp.DataTypes.PanelData
             {
                 if (!IsValidChannel(Channel, InputOutput))
                     _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOChannel);
-                
+
                 if (InputOutput == IOTypes.Input)
                 {
                     if (!ZoneConfigData.IsValidZone(ZoneGroupSet))
                         _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
                 }
-                else if (DeviceTypes.IOOutputIsGroups(DeviceType, DeviceTypes.CurrentProtocolType))
+                else if (InputOutput == IOTypes.Output)
                 {
-                    if (!GroupConfigData.IsValidGroup(ZoneGroupSet))
-                        _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
-                }
-                else
-                {
-                    if (!SetConfigData.isValidSet(ZoneGroupSet))
-                        _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
+                    if (DeviceTypes.IOOutputIsGroups(DeviceType, DeviceTypes.CurrentProtocolType))
+                    {
+                        if (!GroupConfigData.IsValidGroup(ZoneGroupSet))
+                            _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
+                    }
+                    else if (DeviceTypes.IOOutputIsSets(DeviceType, DeviceTypes.CurrentProtocolType))
+                    {
+                        if (!SetConfigData.isValidSet(ZoneGroupSet))
+                            _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
+                    }
+                    else
+                    {
+                        if (!ZoneConfigData.IsValidZone(ZoneGroupSet))
+                            _errorItems.ValidationCodes.Add(ValidationCodes.DeviceConfigDataInvalidIOSet);
+                    }
                 }
             }
 

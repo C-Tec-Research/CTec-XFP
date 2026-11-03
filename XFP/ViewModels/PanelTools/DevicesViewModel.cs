@@ -831,10 +831,6 @@ namespace Xfp.ViewModels.PanelTools
              if (device.LoopNum > 1)
                 return false;
 
-            if (device.LoopNum > 0)
-            {
-            }
-
             CTecUtil.CommsLog.AddReceivedData(string.Format(Cultures.Resources.Loop_x_Device_y_Type_z, 
                                                             device.LoopNum + 1, 
                                                             device.Index + 1, 
