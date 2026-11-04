@@ -137,7 +137,7 @@
                                     <TextBlock Text="♦♦beta♦♦" Visibility="{Binding IsBetaRelease, Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{StaticResource BrushOk}" FontWeight="Bold" FontSize="10" HorizontalAlignment="Right" Margin="-5,0,10,1.5"/>
                                 </StackPanel>
                             </Border>
-                            
+
                         </StackPanel>
                         <!--#endregion-->
 
@@ -238,7 +238,6 @@
                         <Grid Grid.Column="0" Grid.Row="1" Height="22.5">
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="15,0,0,3"
-                                        Visibility="{Binding CurrentPageIsConfigurator, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                                         ToolTip="{Binding CommsStatus, Converter={StaticResource ConnectionStatusToStringConverter}}">
 
                                 <TextBlock Text="{Binding Path=Comms_Panel_Status, Source={StaticResource Resources}}" Foreground="{StaticResource Brush09}" Opacity="0.6" FontSize="13" Margin="0"/>
@@ -1103,6 +1102,8 @@
 
                 <!--#region language selector pop-up-->
                 <Popup x:Name="popLanguageSelector" 
+                       DataContext="{Binding PopLanguageSelectorContext}"
+                       d:DataContext="{d:DesignInstance Type=viewmodels:PopLanguageSelectorViewModel}"
                        IsOpen="{Binding LanguageSelectorIsOpen}" StaysOpen="{Binding LanguageSelectorStaysOpen}" 
                        Placement="RelativePoint" PlacementTarget="{Binding ElementName=mnuLanguage}" 
                        HorizontalOffset="-80" VerticalOffset="25" 
@@ -1264,10 +1265,7 @@
                                         <TextBlock Text="{Binding Path=Build_Date, Source={StaticResource Resources}}" FontWeight="UltraLight" Margin="10,0,0,0"/>
                                         <TextBlock Text="{Binding ExeDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="5,0,0,0"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Path=Copyright, Source={StaticResource Resources}}" HorizontalAlignment="Right"/>
-                                        <TextBlock Text="{Binding CopyrightDetails}"/>
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding CopyrightDetails}"/>
                                 </StackPanel>
                                 
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="CTecControls" FontWeight="DemiBold" Margin="20,0,0,3"/>

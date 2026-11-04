@@ -380,7 +380,9 @@
                                                 BorderThickness="1" 
                                                 HorizontalAlignment="Left" 
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
-                                            <ComboBox ItemsSource="{Binding Modes}"
+                                            <ComboBox x:Name="dayMode"
+                                                      ItemsSource="{Binding Modes}"
+                                                      ItemContainerStyle="{StaticResource EnableableComboBoxItem}"
                                                       SelectedItem="{Binding DayMode}"
                                                       PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                       PreviewKeyDown="comboBox_PreviewKeyDown"
@@ -416,6 +418,7 @@
                                                 Margin="7,0,0,0"  Padding="2,0,2,0">
                                             <ComboBox x:Name="nightMode"
                                                       ItemsSource="{Binding Modes}"
+                                                      ItemContainerStyle="{StaticResource EnableableComboBoxItem}"
                                                       SelectedItem="{Binding NightMode}"
                                                       PreviewMouseDown="comboBox_PreviewMouseDown" 
                                                       PreviewKeyDown="comboBox_PreviewKeyDown"

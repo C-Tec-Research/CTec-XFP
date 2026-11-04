@@ -32,7 +32,7 @@ namespace Xfp.ViewModels.PanelTools
         public bool   NameIsValid       => !string.IsNullOrEmpty(Name) && Name.Length <= MaxNameLength;
         public bool   LocationIsValid   => !IsFitted || !string.IsNullOrEmpty(Location) && Name.Length <= MaxNameLength;
         public int    MaxNameLength     => ZoneConfigData.MaxNameLength;
-        public int    MaxLocationLength => SiteConfigData.MaxLocationLength;
+        //public int    MaxLocationLength => SiteConfigData.MaxLocationLength;
 
 
         #region IAppViewModel implementation

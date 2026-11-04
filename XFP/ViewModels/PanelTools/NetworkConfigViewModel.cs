@@ -30,6 +30,8 @@ namespace Xfp.ViewModels.PanelTools
         public string Repeater7Location { get => _repeaters[6].Location; set { _repeaters[6].Location = value; OnPropertyChanged(); } }
         public string Repeater8Location { get => _repeaters[7].Location; set { _repeaters[7].Location = value; OnPropertyChanged(); } }
 
+        public int    MaxLocationLength => SiteConfigData.MaxLocationLength;
+
         public ObservableCollection<NetworkConfigPanelSettingsViewModel> PanelSettings => _panelSettings;
 
 

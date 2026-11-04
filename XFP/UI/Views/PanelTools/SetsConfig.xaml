@@ -28,64 +28,6 @@
         <vh:SetTriggerTypeToBrushConverter x:Key="SetTriggerTypeToBrushConverter"/>
         <vh:SetTriggerTypeToSvgPathConverter x:Key="SetTriggerTypeToSvgPathConverter"/>
 
-        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-            <Track x:Name="PART_Track" 
-                   IsDirectionReversed="True"
-                   ViewportSize="NaN"
-                   Margin="0,14,0,0" 
-                   Width="20">
-                <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}" MinHeight="30" Margin="0,1,9,3.5">
-                        <Thumb.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
-                        </Thumb.BorderBrush>
-                        <Thumb.Background>
-                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
-                        </Thumb.Background>
-                    </Thumb>
-                </Track.Thumb>
-            </Track>
-        </ControlTemplate>
-        <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-            <Setter Property="Width" Value="14"/>
-            <Setter Property="Margin" Value="-14,-14,-8,-2" />
-            <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="MinHeight" Value="{Binding Height, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ScrollBar}">
-                        <Grid x:Name="Bg" SnapsToDevicePixels="true">
-                            <Border Padding="0 4">
-                                <Track x:Name="PART_Track"
-                                       IsDirectionReversed="true"
-                                       IsEnabled="{TemplateBinding IsMouseOver}"
-                                       Width="10"
-                                       HorizontalAlignment="Center" >
-                                    <Track.Thumb>
-                                        <Thumb Style="{StaticResource ScrollBarThumb}"/>
-                                    </Track.Thumb>
-                                </Track>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Orientation" Value="Horizontal">
-                    <Setter Property="Width" Value="Auto" />
-                    <Setter Property="Height" Value="14" />
-                    <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
-                </Trigger>
-                <Trigger Property="Orientation" Value="Vertical">
-                    <Setter Property="Width" Value="18" />
-                    <Setter Property="Height" Value="Auto" />
-                    <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
         <Style x:Key="GridIconStyle" TargetType="{x:Type ToggleButton}">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -546,7 +488,7 @@
                                     <Grid Grid.Row="23" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[22].Name}" Padding="3,0,0,0"/></Grid>
                                     <Grid Grid.Row="24" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[23].Name}" Padding="3,0,0,0"/></Grid>
                                     <Grid Grid.Row="25" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[24].Name}" Padding="3,0,0,0"/></Grid>
-                                    <Grid Grid.Row="26" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[24].Name}" Padding="3,0,0,0"/></Grid>
+                                    <Grid Grid.Row="26" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[25].Name}" Padding="3,0,0,0"/></Grid>
                                     <Grid Grid.Row="27" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[26].Name}" Padding="3,0,0,0"/></Grid>
                                     <Grid Grid.Row="28" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[27].Name}" Padding="3,0,0,0"/></Grid>
                                     <Grid Grid.Row="29" Grid.Column="1" Background="{StaticResource Brush09}" Margin="0,0,0,0"><TextBlock Text="{Binding SetConfigItems[28].Name}" Padding="3,0,0,0"/></Grid>
@@ -1942,7 +1884,7 @@
                                             <Path Fill="{Binding SetConfigItems[14].OutputSetTriggers[13].Trigger, Converter={StaticResource SetTriggerTypeToBrushConverter}}" Data="{Binding SetConfigItems[14].OutputSetTriggers[13].Trigger, Converter={StaticResource SetTriggerTypeToSvgPathConverter}}"/>
                                         </Viewbox>
                                     </ToggleButton>
-                                    <ToggleButton Grid.Row="15" Grid.Column="18" Style="{DynamicResource GridIconStyle}" IsChecked="{Binding SetConfigItems[13].OutputSetTriggers[14].IsChecked}" PreviewMouseDown="ToggleButton_PreviewMouseDown" MouseEnter="ToggleButton_MouseEnter">
+                                    <ToggleButton Grid.Row="15" Grid.Column="18" Style="{DynamicResource GridIconStyle}" IsChecked="{Binding SetConfigItems[14].OutputSetTriggers[14].IsChecked}" PreviewMouseDown="ToggleButton_PreviewMouseDown" MouseEnter="ToggleButton_MouseEnter">
                                         <Viewbox Width="20" Height="20" HorizontalAlignment="Center">
                                             <Path Fill="{Binding SetConfigItems[14].OutputSetTriggers[14].Trigger, Converter={StaticResource SetTriggerTypeToBrushConverter}}" Data="{Binding SetConfigItems[14].OutputSetTriggers[14].Trigger, Converter={StaticResource SetTriggerTypeToSvgPathConverter}}"/>
                                         </Viewbox>
@@ -1957,7 +1899,7 @@
                                             <Path Fill="{Binding SetConfigItems[14].PanelRelayTriggers[0].Trigger, Converter={StaticResource SetTriggerTypeToBrushConverter}}" Data="{Binding SetConfigItems[14].PanelRelayTriggers[0].Trigger, Converter={StaticResource SetTriggerTypeToSvgPathConverter}}"/>
                                         </Viewbox>
                                     </ToggleButton>
-                                    <ToggleButton Grid.Row="15" Grid.Column="23" Style="{DynamicResource GridIconStyle}" IsChecked="{Binding SetConfigItems[141].PanelRelayTriggers[1].IsChecked}" PreviewMouseDown="ToggleButton_PreviewMouseDown" MouseEnter="ToggleButton_MouseEnter" HorizontalAlignment="Left" Margin="3,0,0,0">
+                                    <ToggleButton Grid.Row="15" Grid.Column="23" Style="{DynamicResource GridIconStyle}" IsChecked="{Binding SetConfigItems[14].PanelRelayTriggers[1].IsChecked}" PreviewMouseDown="ToggleButton_PreviewMouseDown" MouseEnter="ToggleButton_MouseEnter" HorizontalAlignment="Left" Margin="3,0,0,0">
                                         <Viewbox Width="20" Height="20" HorizontalAlignment="Center">
                                             <Path Fill="{Binding SetConfigItems[14].PanelRelayTriggers[1].Trigger, Converter={StaticResource SetTriggerTypeToBrushConverter}}" Data="{Binding SetConfigItems[14].PanelRelayTriggers[1].Trigger, Converter={StaticResource SetTriggerTypeToSvgPathConverter}}"/>
                                         </Viewbox>

@@ -21,64 +21,6 @@
         <ctcvh:BoolToOpacity40pcConverter x:Key="BoolToOpacity40pcConverter"/>
         <ctcvh:IsInvalidToErrorBrushConverter x:Key="IsInvalidToErrorBrushConverter"/>
         <vh:DeviceIconConverter x:Key="DeviceIconConverter"/>
-        
-        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-            <Track x:Name="PART_Track" 
-                   IsDirectionReversed="True"
-                   ViewportSize="NaN"
-                   Margin="0,13,0,0" 
-                   Width="20">
-                <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}" MinHeight="60" Margin="0,1,9,1.5">
-                        <Thumb.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
-                        </Thumb.BorderBrush>
-                        <Thumb.Background>
-                            <SolidColorBrush Color="{StaticResource ColourScrollBarThumb}"/>
-                        </Thumb.Background>
-                    </Thumb>
-                </Track.Thumb>
-            </Track>
-        </ControlTemplate>
-        <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-            <Setter Property="Width" Value="14"/>
-            <Setter Property="Margin" Value="-14,-14,-10,-2" />
-            <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="MinHeight" Value="{Binding Height, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ScrollBar}">
-                        <Grid x:Name="Bg" SnapsToDevicePixels="true">
-                            <Border Padding="0 4">
-                                <Track x:Name="PART_Track"
-                                       IsDirectionReversed="true"
-                                       IsEnabled="{TemplateBinding IsMouseOver}"
-                                       Width="10"
-                                       HorizontalAlignment="Center" >
-                                    <Track.Thumb>
-                                        <Thumb Style="{StaticResource ScrollBarThumb}"/>
-                                    </Track.Thumb>
-                                </Track>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Orientation" Value="Horizontal">
-                    <Setter Property="Width" Value="Auto" />
-                    <Setter Property="Height" Value="14" />
-                    <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
-                </Trigger>
-                <Trigger Property="Orientation" Value="Vertical">
-                    <Setter Property="Width" Value="18" />
-                    <Setter Property="Height" Value="Auto" />
-                    <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
 
     <Grid Margin="10,5,0,5">

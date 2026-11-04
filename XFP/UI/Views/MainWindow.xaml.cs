@@ -31,7 +31,7 @@ namespace Xfp.Views
 
             DataContext = _context = new MainWindowViewModel(this, hbgMainMenu, PanelControl, txtAboutHeader);
 
-            _context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
+            //_context.NewLanguageSelectorContext = new((c) => popLanguageSelector.DataContext = c);
             _context.RecentFilesChanged = recentFilesChanged;
 
             recentFilesChanged();

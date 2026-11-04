@@ -1541,22 +1541,20 @@ namespace Xfp.ViewModels
 
 
         #region language selector pop-up
-        public PopLanguageSelectorViewModel PopLanguageSelectorContext;
-
-        public delegate void NewLanguageSelectorContextNotifier(PopLanguageSelectorViewModel context);
-        
-        /// <summary>
-        /// Notify when language pop-up's data context has changed
-        /// </summary>
-        public NewLanguageSelectorContextNotifier NewLanguageSelectorContext;
+        private PopLanguageSelectorViewModel _popLanguageSelectorContext;
+        public PopLanguageSelectorViewModel PopLanguageSelectorContext
+        {
+            get => _popLanguageSelectorContext;
+            set { _popLanguageSelectorContext = value; OnPropertyChanged(); }
+        }
 
         public void ShowLanguageSelector()
         {
-            NewLanguageSelectorContext?.Invoke(PopLanguageSelectorContext = new PopLanguageSelectorViewModel()
+            PopLanguageSelectorContext = new PopLanguageSelectorViewModel()
             {
                 OnCultureChanged = cultureChanged,
                 LanguageSelectorIsOpen = true
-            });
+            };
         }
 
         public bool CloseLanguageSelector()
@@ -1593,13 +1591,11 @@ namespace Xfp.ViewModels
         }
 
         private bool _zoomControlIsOpen;
-        private bool _dataPopupIsOpen;
         public bool ZoomControlIsOpen { get => _zoomControlIsOpen; set { _zoomControlIsOpen = value; OnPropertyChanged(); } }
-        public bool DataPopupIsOpen   { get => _dataPopupIsOpen;   set { if (_dataPopupIsOpen = value) refreshDataInfo(); OnPropertyChanged(); } }
 
-        public double MinZoom => CTecUtil.Config.UI.MinZoom;
-        public double MaxZoom => CTecUtil.Config.UI.MaxZoom;
-        public double ZoomStep => CTecUtil.Config.UI.ZoomStep;
+        public double MinZoom => XfpApplicationConfig.MinZoom;
+        public double MaxZoom => XfpApplicationConfig.MaxZoom;
+        public double ZoomStep => XfpApplicationConfig.ZoomStep;
         public double LargeZoomStep => ZoomStep * 2;
         public double TickFrequency => (MaxZoom - MinZoom) / 4;
 
@@ -1614,12 +1610,14 @@ namespace Xfp.ViewModels
             ZoomControlIsOpen = false;
             return closedIt;
         }
-
-        public ZoomControl ZoomControl = new();
         #endregion
 
-
+        
+        #region screen zoom pop-up
+        private bool _dataPopupIsOpen;
+        public bool DataPopupIsOpen   { get => _dataPopupIsOpen;   set { if (_dataPopupIsOpen = value) refreshDataInfo(); OnPropertyChanged(); } }
         private void showDataPopup() => DataPopupIsOpen = true;
+        #endregion
 
 
         #region download log window

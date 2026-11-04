@@ -266,14 +266,12 @@
                         <TextBlock Grid.Row="1" Grid.Column="0"
                                   Text="{Binding Path=Day_Begins_At, Source={StaticResource Resources}}" 
                                   Style="{StaticResource StandardTextBlock}" 
-                                  Opacity="{Binding EnableAutoNightMode, Converter={StaticResource BoolToOpacity40pcConverter}}" 
                                   HorizontalAlignment="Right" Margin="0,-5,5,0"/>
                         <ctc:TimePicker Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="tpOccupied" HorizontalAlignment="Center" Value="{Binding OccupiedBegins}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
 
                         <TextBlock Grid.Row="2" Grid.Column="0"
                                    Text="{Binding Path=Night_Begins_At, Source={StaticResource Resources}}"
                                    Style="{StaticResource StandardTextBlock}"
-                                   Opacity="{Binding EnableAutoNightMode, Converter={StaticResource BoolToOpacity40pcConverter}}"
                                    HorizontalAlignment="Right" Margin="0,-5,5,0"/>
                         <ctc:TimePicker Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="tpUnoccupied" HorizontalAlignment="Center" Value="{Binding OccupiedEnds}" PreviewMouseDown="ctrl_PreviewMouseDown" PreviewMouseWheel="ctrl_PreviewMouseWheel"/>
 

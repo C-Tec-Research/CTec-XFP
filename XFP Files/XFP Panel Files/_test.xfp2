@@ -36,7 +36,7 @@
           false,
           false
         ],
-        "BlinkPollingLED": false,
+        "BlinkPollingLED": true,
         "AutoAdjustDST": true,
         "RecalibrationTime": "04:00:00",
         "RealTimeEventOutput": false
@@ -276,18 +276,18 @@
         "Loop1": {
           "Devices": [
             {
-              "DeviceType": 31,
-              "DeviceTypeName": "CAST MCP",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 0,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -318,72 +318,72 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 1,
-              "AncillaryBaseSounderGroup": 1,
+              "NameIndex": 0,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 192,
-              "DeviceTypeName": "CAST Heat",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 1,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 31,
-              "DeviceTypeName": "CAST MCP",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 2,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -414,120 +414,120 @@
                   "NameIndex": -1
                 }
               ],
-              "NameIndex": 1,
-              "AncillaryBaseSounderGroup": 1,
+              "NameIndex": 0,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 3,
-              "Zone": 1,
-              "Group": 15,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
-                  "Channel": 2,
-                  "ZoneGroupSet": 31,
-                  "NameIndex": 0
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
-                  "Channel": 1,
-                  "ZoneGroupSet": 3,
-                  "NameIndex": 0
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
-                  "Channel": 1,
-                  "ZoneGroupSet": 32,
-                  "NameIndex": 0
+                  "InputOutput": 0,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 32,
-              "DeviceTypeName": "CAST Sounder",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 4,
-              "Zone": 1,
+              "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
               "DayVolume": 0,
-              "NightVolume": 1,
-              "DayMode": 1,
-              "NightMode": 1,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 192,
-              "DeviceTypeName": "CAST Heat",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 5,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -559,23 +559,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 32,
-              "DeviceTypeName": "CAST Sounder",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 6,
-              "Zone": 1,
+              "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
               "DayVolume": 0,
-              "NightVolume": 1,
-              "DayMode": 1,
-              "NightMode": 1,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -607,119 +607,119 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 8,
-              "DeviceTypeName": "CAST I/O Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 7,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
-                  "Channel": 2,
-                  "ZoneGroupSet": 31,
-                  "NameIndex": 0
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
-                  "Channel": 1,
-                  "ZoneGroupSet": 6,
-                  "NameIndex": 0
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
-              "DeviceTypeName": "CAST ZMU",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 8,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
-                  "Channel": 1,
-                  "ZoneGroupSet": 63,
-                  "NameIndex": 0
+                  "InputOutput": 2,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "InputOutput": 1,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 160,
-              "DeviceTypeName": "CAST Optical",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 9,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -751,23 +751,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 184,
-              "DeviceTypeName": "CAST Multi",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 10,
               "Zone": 0,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -799,71 +799,71 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 16,
-              "DeviceTypeName": "CAST ZMU",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 11,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
-                  "InputOutput": 1,
-                  "Channel": 1,
-                  "ZoneGroupSet": 63,
-                  "NameIndex": 0
+                  "InputOutput": 2,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
-                  "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "InputOutput": 1,
+                  "Channel": 0,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 32,
-              "DeviceTypeName": "CAST Sounder",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 12,
-              "Zone": 1,
+              "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 1,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -895,23 +895,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 52,
-              "DeviceTypeName": "CAST Voice Sounder",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 13,
-              "Zone": 1,
+              "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
               "DayVolume": 0,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -943,23 +943,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 52,
-              "DeviceTypeName": "CAST Voice Sounder",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 14,
-              "Zone": 1,
+              "Zone": 0,
               "Group": 0,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 1,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -991,7 +991,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1044,18 +1044,18 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 186,
-              "DeviceTypeName": "CAST PRO OpHt T",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 16,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 7,
-              "NightMode": 7,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1087,7 +1087,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -1140,18 +1140,18 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 186,
-              "DeviceTypeName": "CAST PRO OpHt T",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 0,
               "Index": 18,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 7,
-              "NightMode": 7,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -1183,7 +1183,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -3749,28 +3749,28 @@
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 1,
                   "NameIndex": -1
                 },
                 {
                   "Index": 2,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": null,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
@@ -12520,18 +12520,18 @@
         "Loop2": {
           "Devices": [
             {
-              "DeviceType": 161,
-              "DeviceTypeName": "CAST PRO Op",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 0,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 2,
-              "NightMode": 2,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12563,23 +12563,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 1,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12611,23 +12611,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 2,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12659,23 +12659,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 3,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12707,23 +12707,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 4,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12755,23 +12755,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 5,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12803,23 +12803,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 6,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12851,23 +12851,23 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 212,
-              "DeviceTypeName": "CAST PRO V",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 7,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
@@ -12899,7 +12899,7 @@
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -13144,50 +13144,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 13,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -13816,50 +13816,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 27,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -14488,50 +14488,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 41,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -15160,50 +15160,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 55,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -15832,50 +15832,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 69,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -16504,50 +16504,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 83,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -17176,50 +17176,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 97,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -17848,50 +17848,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 111,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -18520,50 +18520,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 125,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -19192,50 +19192,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 139,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -19864,50 +19864,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 153,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -20536,50 +20536,50 @@
               "RemoteLEDEnabled": false
             },
             {
-              "DeviceType": 65,
-              "DeviceTypeName": "CAST HS-2 Unit",
+              "DeviceType": null,
+              "DeviceTypeName": "** No device **",
               "LoopNum": 1,
               "Index": 167,
-              "Zone": 1,
-              "Group": 1,
-              "DaySensitivity": 3,
-              "NightSensitivity": 3,
-              "DayVolume": 3,
-              "NightVolume": 3,
-              "DayMode": 1,
-              "NightMode": 1,
+              "Zone": 0,
+              "Group": 0,
+              "DaySensitivity": null,
+              "NightSensitivity": null,
+              "DayVolume": 0,
+              "NightVolume": 0,
+              "DayMode": 0,
+              "NightMode": 0,
               "IOConfig": [
                 {
                   "Index": 0,
                   "InputOutput": 2,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 1,
                   "InputOutput": 1,
                   "Channel": 0,
                   "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "NameIndex": -1
                 },
                 {
                   "Index": 2,
-                  "InputOutput": 1,
+                  "InputOutput": 0,
                   "Channel": 0,
-                  "ZoneGroupSet": 1,
-                  "NameIndex": 0
+                  "ZoneGroupSet": 0,
+                  "NameIndex": -1
                 },
                 {
                   "Index": 3,
                   "InputOutput": 0,
-                  "Channel": null,
-                  "ZoneGroupSet": null,
+                  "Channel": 0,
+                  "ZoneGroupSet": 0,
                   "NameIndex": -1
                 }
               ],
               "NameIndex": 0,
-              "AncillaryBaseSounderGroup": 1,
+              "AncillaryBaseSounderGroup": null,
               "IsRealDevice": true,
               "RemoteLEDEnabled": false
             },
@@ -24764,8 +24764,7 @@
       },
       "DeviceNamesConfig": {
         "DeviceNames": [
-          "No name allocated",
-          "sdfsdf sdf sdfs df"
+          "No name allocated"
         ]
       },
       "ZoneConfig": {
@@ -24774,34 +24773,6 @@
             {
               "IsPanelData": true,
               "Index": 0,
-              "Name": "Zone 32",
-              "InputDelay": "00:00:00",
-              "SounderDelay": "00:00:00",
-              "Relay1Delay": "00:00:00",
-              "Relay2Delay": "00:00:00",
-              "RemoteDelay": "00:00:00",
-              "SounderGroups": [
-                2,
-                2,
-                2,
-                2,
-                2,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ]
-            },
-            {
-              "IsPanelData": true,
-              "Index": 1,
               "Name": "Panel 1",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24829,7 +24800,7 @@
             },
             {
               "IsPanelData": true,
-              "Index": 2,
+              "Index": 1,
               "Name": "Panel 2",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24857,7 +24828,7 @@
             },
             {
               "IsPanelData": true,
-              "Index": 3,
+              "Index": 2,
               "Name": "Panel 3",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24885,7 +24856,7 @@
             },
             {
               "IsPanelData": true,
-              "Index": 4,
+              "Index": 3,
               "Name": "Panel 4",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24913,7 +24884,7 @@
             },
             {
               "IsPanelData": true,
-              "Index": 5,
+              "Index": 4,
               "Name": "Panel 5",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24941,7 +24912,7 @@
             },
             {
               "IsPanelData": true,
-              "Index": 6,
+              "Index": 5,
               "Name": "Panel 6",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
@@ -24969,8 +24940,36 @@
             },
             {
               "IsPanelData": true,
-              "Index": 7,
+              "Index": 6,
               "Name": "Panel 7",
+              "InputDelay": "00:00:00",
+              "SounderDelay": "00:00:00",
+              "Relay1Delay": "00:00:00",
+              "Relay2Delay": "00:00:00",
+              "RemoteDelay": "00:00:00",
+              "SounderGroups": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "IsPanelData": true,
+              "Index": 7,
+              "Name": "Panel 8",
               "InputDelay": "00:00:00",
               "SounderDelay": "00:00:00",
               "Relay1Delay": "00:00:00",
@@ -25071,55 +25070,6 @@
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
             "Index": 1,
-            "Name": "Zone 1",
-            "InputDelay": "00:00:00",
-            "SounderDelay": "00:00:00",
-            "Relay1Delay": "00:00:00",
-            "Relay2Delay": "00:00:00",
-            "RemoteDelay": "00:00:00",
-            "SounderGroups": [
-              2,
-              2,
-              2,
-              2,
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "IsPanelData": false,
-            "MCPs": false,
-            "Detectors": true,
-            "DetectorReset": 0,
-            "AlarmReset": 0,
-            "EndDelays": false,
-            "Day": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "Night": {
-              "DependencyOption": 4,
-              "DetectorReset": "00:01:00",
-              "AlarmReset": "00:05:00",
-              "ShowDetectorReset": false,
-              "ShowAlarmReset": false
-            },
-            "OutputSetTriggers": null,
-            "PanelRelayTriggers": null,
-            "Index": 2,
             "Name": "Zone 2",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25168,7 +25118,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 3,
+            "Index": 2,
             "Name": "Zone 3",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25217,7 +25167,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 4,
+            "Index": 3,
             "Name": "Zone 4",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25266,7 +25216,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 5,
+            "Index": 4,
             "Name": "Zone 5",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25315,7 +25265,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 6,
+            "Index": 5,
             "Name": "Zone 6",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25364,7 +25314,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 7,
+            "Index": 6,
             "Name": "Zone 7",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25413,7 +25363,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 8,
+            "Index": 7,
             "Name": "Zone 8",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25462,7 +25412,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 9,
+            "Index": 8,
             "Name": "Zone 9",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25511,7 +25461,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 10,
+            "Index": 9,
             "Name": "Zone 10",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25560,7 +25510,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 11,
+            "Index": 10,
             "Name": "Zone 11",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25609,7 +25559,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 12,
+            "Index": 11,
             "Name": "Zone 12",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25658,7 +25608,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 13,
+            "Index": 12,
             "Name": "Zone 13",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25707,7 +25657,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 14,
+            "Index": 13,
             "Name": "Zone 14",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25756,7 +25706,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 15,
+            "Index": 14,
             "Name": "Zone 15",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25805,7 +25755,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 16,
+            "Index": 15,
             "Name": "Zone 16",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25854,7 +25804,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 17,
+            "Index": 16,
             "Name": "Zone 17",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25903,7 +25853,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 18,
+            "Index": 17,
             "Name": "Zone 18",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -25952,7 +25902,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 19,
+            "Index": 18,
             "Name": "Zone 19",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26001,7 +25951,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 20,
+            "Index": 19,
             "Name": "Zone 20",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26050,7 +26000,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 21,
+            "Index": 20,
             "Name": "Zone 21",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26099,7 +26049,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 22,
+            "Index": 21,
             "Name": "Zone 22",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26148,7 +26098,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 23,
+            "Index": 22,
             "Name": "Zone 23",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26197,7 +26147,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 24,
+            "Index": 23,
             "Name": "Zone 24",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26246,7 +26196,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 25,
+            "Index": 24,
             "Name": "Zone 25",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26295,7 +26245,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 26,
+            "Index": 25,
             "Name": "Zone 26",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26344,7 +26294,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 27,
+            "Index": 26,
             "Name": "Zone 27",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26393,7 +26343,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 28,
+            "Index": 27,
             "Name": "Zone 28",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26442,7 +26392,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 29,
+            "Index": 28,
             "Name": "Zone 29",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26491,7 +26441,7 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 30,
+            "Index": 29,
             "Name": "Zone 30",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26540,8 +26490,57 @@
             },
             "OutputSetTriggers": null,
             "PanelRelayTriggers": null,
-            "Index": 31,
+            "Index": 30,
             "Name": "Zone 31",
+            "InputDelay": "00:00:00",
+            "SounderDelay": "00:00:00",
+            "Relay1Delay": "00:00:00",
+            "Relay2Delay": "00:00:00",
+            "RemoteDelay": "00:00:00",
+            "SounderGroups": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "IsPanelData": false,
+            "MCPs": false,
+            "Detectors": true,
+            "DetectorReset": 0,
+            "AlarmReset": 0,
+            "EndDelays": false,
+            "Day": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "Night": {
+              "DependencyOption": 4,
+              "DetectorReset": "00:01:00",
+              "AlarmReset": "00:05:00",
+              "ShowDetectorReset": false,
+              "ShowAlarmReset": false
+            },
+            "OutputSetTriggers": null,
+            "PanelRelayTriggers": null,
+            "Index": 31,
+            "Name": "Zone 32",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -26597,34 +26596,6 @@
           {
             "IsPanelData": true,
             "Index": 0,
-            "Name": "Zone 32",
-            "InputDelay": "00:00:00",
-            "SounderDelay": "00:00:00",
-            "Relay1Delay": "00:00:00",
-            "Relay2Delay": "00:00:00",
-            "RemoteDelay": "00:00:00",
-            "SounderGroups": [
-              2,
-              2,
-              2,
-              2,
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "IsPanelData": true,
-            "Index": 1,
             "Name": "Panel 1",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26652,7 +26623,7 @@
           },
           {
             "IsPanelData": true,
-            "Index": 2,
+            "Index": 1,
             "Name": "Panel 2",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26680,7 +26651,7 @@
           },
           {
             "IsPanelData": true,
-            "Index": 3,
+            "Index": 2,
             "Name": "Panel 3",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26708,7 +26679,7 @@
           },
           {
             "IsPanelData": true,
-            "Index": 4,
+            "Index": 3,
             "Name": "Panel 4",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26736,7 +26707,7 @@
           },
           {
             "IsPanelData": true,
-            "Index": 5,
+            "Index": 4,
             "Name": "Panel 5",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26764,7 +26735,7 @@
           },
           {
             "IsPanelData": true,
-            "Index": 6,
+            "Index": 5,
             "Name": "Panel 6",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
@@ -26792,8 +26763,36 @@
           },
           {
             "IsPanelData": true,
-            "Index": 7,
+            "Index": 6,
             "Name": "Panel 7",
+            "InputDelay": "00:00:00",
+            "SounderDelay": "00:00:00",
+            "Relay1Delay": "00:00:00",
+            "Relay2Delay": "00:00:00",
+            "RemoteDelay": "00:00:00",
+            "SounderGroups": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "IsPanelData": true,
+            "Index": 7,
+            "Name": "Panel 8",
             "InputDelay": "00:00:00",
             "SounderDelay": "00:00:00",
             "Relay1Delay": "00:00:00",
@@ -27200,12 +27199,12 @@
               0,
               0,
               0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
+              2,
+              3,
+              1,
+              2,
+              3,
+              1
             ],
             "PanelRelayTriggers": [
               2,
