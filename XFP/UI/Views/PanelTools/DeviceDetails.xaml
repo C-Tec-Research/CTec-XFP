@@ -110,7 +110,7 @@
                     <!--#region device selector-->
                     <ctcds:DeviceSelectorMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                             x:Name="ctcDeviceSelector" 
-                                            ToolTip="{Binding Path=ToolTip_DeviceSelector_Select, Source={StaticResource Resources}}" 
+                                            ToolTip="{Binding Path=ToolTip_DeviceSelector_Select, Source={StaticResource CTecControls}}" 
                                             Margin="10,0,10,0"/>
                     <!--#endregion-->
 

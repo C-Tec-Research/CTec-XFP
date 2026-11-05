@@ -649,10 +649,6 @@ dispositivo</value>
   <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
     <value>Haga clic para mostrar los detalles del dispositivo</value>
   </data>
-  <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
-    <value>Seleccione un tipo de dispositivo y, a continuación, haga clic en la lista de dispositivos para
-establecer o cambiar a ese tipo, o seleccione Eliminar para eliminar un dispositivo</value>
-  </data>
   <data name="ToolTip_Next_Area" xml:space="preserve">
     <value>Seleccionar siguiente área</value>
   </data>
@@ -1930,9 +1926,6 @@ Se perderán todos sus datos.</value>
   <data name="Zone_Group_Settings_x" xml:space="preserve">
     <value>Configuración del grupo de zonas {0}</value>
   </data>
-  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
-    <value>Ver el último registro de descargas</value>
-  </data>
   <data name="Error_After_Download_End" xml:space="preserve">
     <value>Se ha producido un error al finalizar la descarga</value>
   </data>
@@ -2046,9 +2039,6 @@ Se perderán todos sus datos.</value>
   </data>
   <data name="ToolTip_Print_Event_Log" xml:space="preserve">
     <value>Imprimir el registro de eventos</value>
-  </data>
-  <data name="Build_Date" xml:space="preserve">
-    <value>Fecha de creación:</value>
   </data>
   <data name="Revision_History" xml:space="preserve">
     <value>Historial de revisiones</value>

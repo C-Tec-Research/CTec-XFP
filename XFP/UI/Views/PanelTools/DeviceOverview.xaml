@@ -38,7 +38,7 @@
                 </Grid.RowDefinitions>
 
                 <!--#region device selector-->
-                <ctcds:DeviceSelectorMenu Grid.ColumnSpan="2" x:Name="ctcDeviceSelector" ToolTip="{Binding Path=ToolTip_DeviceSelector_Select, Source={StaticResource Resources}}" Margin="0,0,10,5"/>
+                <ctcds:DeviceSelectorMenu Grid.ColumnSpan="2" x:Name="ctcDeviceSelector" ToolTip="{Binding Path=ToolTip_DeviceSelector_Select, Source={StaticResource CTecControls}}" Margin="0,0,10,5"/>
                 <!--#endregion-->
 
 

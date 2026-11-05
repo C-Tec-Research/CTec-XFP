@@ -668,10 +668,6 @@ Are you sure you want to exit without saving?</value>
   <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
     <value>Click to show the device details</value>
   </data>
-  <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
-    <value>Select a device type, then click on the device list to set or
-change to that type, or select Delete to remove a device</value>
-  </data>
   <data name="ToolTip_Next_Area" xml:space="preserve">
     <value>Select next area</value>
   </data>
@@ -2020,9 +2016,6 @@ All of its data will be lost.</value>
   <data name="Zone_Group_Settings_x" xml:space="preserve">
     <value>Zone group settings {0}</value>
   </data>
-  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
-    <value>View last download log</value>
-  </data>
   <data name="Error_After_Download_End" xml:space="preserve">
     <value>An error occurred after download ended</value>
   </data>
@@ -2147,9 +2140,6 @@ All of its data will be lost.</value>
   </data>
   <data name="ToolTip_Print_Event_Log" xml:space="preserve">
     <value>Print the Event Log</value>
-  </data>
-  <data name="Build_Date" xml:space="preserve">
-    <value>Build date:</value>
   </data>
   <data name="Revision_History" xml:space="preserve">
     <value>Revision history</value>

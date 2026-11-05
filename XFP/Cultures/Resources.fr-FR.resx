@@ -642,10 +642,6 @@ Veuillez insérer le lien et réessayer.</value>
   <data name="ToolTip_Click_To_Show_Device_Details" xml:space="preserve">
     <value>Cliquez pour afficher les détails du dispositif</value>
   </data>
-  <data name="ToolTip_DeviceSelector_Select" xml:space="preserve">
-    <value>Sélectionnez un type de dispositif, puis cliquez sur la liste des dispositifs pour définir
-ou modifier à ce type, ou sélectionnez Supprimer pour retirer un dispositif</value>
-  </data>
   <data name="ToolTip_Next_Area" xml:space="preserve">
     <value>Selectioner le secteur suivant</value>
   </data>
@@ -1926,9 +1922,6 @@ Toutes ses données seront perdues.</value>
   <data name="Zone_Group_Settings_x" xml:space="preserve">
     <value>Paramètres du groupe zone {0}</value>
   </data>
-  <data name="ToolTip_View_Last_Comms_Log" xml:space="preserve">
-    <value>Voyez le journal du dernier téléchargement du centrale</value>
-  </data>
   <data name="Error_After_Download_End" xml:space="preserve">
     <value>Une erreur s'est produite après la fin du téléchargement</value>
   </data>
@@ -2042,9 +2035,6 @@ Toutes ses données seront perdues.</value>
   </data>
   <data name="ToolTip_Print_Event_Log" xml:space="preserve">
     <value>Imprimer le Journal des Événements</value>
-  </data>
-  <data name="Build_Date" xml:space="preserve">
-    <value>Daté :</value>
   </data>
   <data name="Revision_History" xml:space="preserve">
     <value>Historique des révisions</value>

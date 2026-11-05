@@ -514,19 +514,6 @@
 
                             <StackPanel Grid.Column="3" Orientation="Horizontal">
 
-                                <!--#region download log-->
-                                <!--<Border Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}"
-                                        ToolTip="{Binding Path=ToolTip_View_Last_Comms_Log, Source={StaticResource Resources}}"
-                                        Style="{StaticResource HeaderPanelControlsBorderi}"
-                                        BorderBrush="{StaticResource Brush02}" BorderThickness="1"
-                                        Background="{StaticResource BrushDebug}"
-                                        WindowChrome.IsHitTestVisibleInChrome="True"
-                                        VerticalAlignment="Top" Margin="0,22,16,0"
-                                        MouseDown="commsLog_MouseDown">
-                                    <ctc:Icon IconType="CommsLog" Foreground="{StaticResource Brush02}" Width="18" Height="18" Margin="0,3,2,3"/>
-                                </Border>-->
-                                <!--#endregion-->
-
                                 <!--#region info-->
                                 <Border Grid.Column="3" 
                                         ToolTip="{Binding Path=Check_Validity_Of_Panel_Data, Source={StaticResource Resources}}"
@@ -813,7 +800,7 @@
                                                 <ctc:HamburgerMenuOption x:Name="mnuConnect" IconType="ConnectSerial" PreviewMouseDown="ConnectSerial_MouseDown" Margin="0,0,0,0" Padding="30,0,0,0"/>
                                             </Grid>
                                             <Grid Visibility="{Binding PanelIsConnected, Converter={StaticResource BoolToVisibilityConverter}}">
-                                                <ctc:HamburgerMenuOption x:Name="mnuDisconnect" IconType="DisconnectSerial" PreviewMouseDown="DisconnectSerial_MouseDown" IsEnabled="{Binding SerialPortIsIdle}" Margin="0,0,0,0" Padding="30,0,0,0"/>
+                                                <ctc:HamburgerMenuOption x:Name="mnuDisconnect" IconType="DisconnectSerial" PreviewMouseDown="DisconnectSerial_MouseDown" IsEnabled="{Binding DataContext.SerialPortIsIdle, RelativeSource={RelativeSource AncestorType=Window}}" Margin="0,0,0,0" Padding="30,0,0,0"/>
                                             </Grid>
                                         </StackPanel>
                                         
@@ -1262,7 +1249,7 @@
                                 <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical" Margin="0,0,0,20">
                                     <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
                                         <TextBlock Text="{Binding ExeVersion}"/>
-                                        <TextBlock Text="{Binding Path=Build_Date, Source={StaticResource Resources}}" FontWeight="UltraLight" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{Binding Path=Build_Date, Source={StaticResource CTecUtil}}" FontWeight="UltraLight" Margin="10,0,0,0"/>
                                         <TextBlock Text="{Binding ExeDate, StringFormat='dd MMM yyyy HH:mm:ss'}" FontWeight="UltraLight" Margin="5,0,0,0"/>
                                     </StackPanel>
                                     <TextBlock Text="{Binding CopyrightDetails}"/>

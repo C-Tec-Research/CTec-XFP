@@ -494,15 +494,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Build date:.
-        /// </summary>
-        public static string Build_Date {
-            get {
-                return ResourceManager.GetString("Build_Date", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cause &amp; Effect Event #{0}.
         /// </summary>
         public static string C_And_E_Event_x {
@@ -5077,16 +5068,6 @@ namespace Xfp.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a device type, then click on the device list to set or
-        ///change to that type, or select Delete to remove a device.
-        /// </summary>
-        public static string ToolTip_DeviceSelector_Select {
-            get {
-                return ResourceManager.GetString("ToolTip_DeviceSelector_Select", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Double-click to open Protocol menu.
         /// </summary>
         public static string ToolTip_Double_Click_For_Protocol_Menu {
@@ -5264,15 +5245,6 @@ namespace Xfp.Cultures {
         public static string ToolTip_Select_Protocol {
             get {
                 return ResourceManager.GetString("ToolTip_Select_Protocol", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View last download log.
-        /// </summary>
-        public static string ToolTip_View_Last_Comms_Log {
-            get {
-                return ResourceManager.GetString("ToolTip_View_Last_Comms_Log", resourceCulture);
             }
         }
         
