@@ -15,8 +15,15 @@ namespace Xfp
     /// </summary>
     public partial class App
     {
+        /// <summary>
+        /// The computer's display language, captured before the default thread cultures are overridden below.
+        /// </summary>
+        public static CultureInfo SystemUICulture { get; private set; }
+
         static App()
         {
+            SystemUICulture = CultureInfo.CurrentUICulture;
+
             // Ensure resource parsing and any culture-sensitive conversions use invariant culture
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;

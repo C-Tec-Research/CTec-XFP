@@ -15,6 +15,7 @@
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 	<Copyright>Copyright © C-TEC 2026</Copyright>
+	<NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

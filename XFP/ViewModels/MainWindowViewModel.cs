@@ -182,10 +182,55 @@ namespace Xfp.ViewModels
         {
             SerialComms.Settings = XfpApplicationConfig.Settings.SerialPortSettings;
             ZoomLevel = XfpApplicationConfig.Settings.MainWindow.Scale;
-            var cultureName = XfpApplicationConfig.Settings.Culture;
             DeviceTypes.CurrentProtocolType = CTecDevices.Enums.StringToObjectType(XfpApplicationConfig.Settings.Protocol);
-            SetCulture(cultureName is null ? CultureInfo.CurrentCulture : CultureInfo.GetCultureInfo(cultureName));
+            SetCulture(getStartupCulture(XfpApplicationConfig.Settings.Culture));
             updateFileMenuRecentFiles();
+        }
+
+
+        /// <summary>
+        /// Determines the culture to use at startup:<br/>
+        /// 1. the culture saved in the app config, if it is one of the supported cultures;<br/>
+        /// 2. otherwise the computer's display language, if it is supported - matching on language alone if the region differs (e.g. en-US -> en-GB, fr-CA -> fr-FR);<br/>
+        /// 3. otherwise the default culture (en-GB).
+        /// </summary>
+        private static CultureInfo getStartupCulture(string cultureName)
+        {
+            var supported      = CTecUtil.Cultures.CultureResources.SupportedCultures;
+            var defaultCulture = CultureInfo.GetCultureInfo(CTecUtil.Cultures.CultureResources.DefaultCulture);
+
+            //1. saved culture
+            if (!string.IsNullOrWhiteSpace(cultureName))
+            {
+                try
+                {
+                    var saved = CultureInfo.GetCultureInfo(cultureName);
+                    if (supported.Contains(saved))
+                        return saved;
+                }
+                catch (CultureNotFoundException) { }
+            }
+
+            //2. computer's display language
+            var display = App.SystemUICulture;
+            if (display is not null && !string.IsNullOrEmpty(display.Name))
+            {
+                if (supported.Contains(display))
+                    return display;
+
+                var language = display.TwoLetterISOLanguageName;
+
+                //prefer the default culture where it is the same language (e.g. any English -> en-GB)
+                if (defaultCulture.TwoLetterISOLanguageName == language && supported.Contains(defaultCulture))
+                    return defaultCulture;
+
+                foreach (var c in supported)
+                    if (c.TwoLetterISOLanguageName == language)
+                        return c;
+            }
+
+            //3. default culture
+            return defaultCulture;
         }
         #endregion
 

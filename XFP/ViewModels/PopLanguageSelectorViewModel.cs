@@ -53,7 +53,7 @@ namespace Xfp.ViewModels
 
         private string getLanguagePrefix(string cultureName)
         {
-            var split = CultureInfo.CurrentCulture.Name.Split(new char[] { '-' });
+            var split = cultureName.Split(new char[] { '-' });
             return split.Length > 0 ? split[0].ToLower() : "";
         }
 
